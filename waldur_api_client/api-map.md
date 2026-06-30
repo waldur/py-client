@@ -1295,15 +1295,15 @@ Module: `waldur_api_client.api.marketplace_offering_groups`
 ## marketplace-offering-permissions
 Module: `waldur_api_client.api.marketplace_offering_permissions`
 
-- `marketplace_offering_permissions_list` GET `/api/marketplace-offering-permissions/` (18 query params)
-- `marketplace_offering_permissions_count` HEAD `/api/marketplace-offering-permissions/` — Get number of items in the collection matching the request parameters (18 query params)
+- `marketplace_offering_permissions_list` GET `/api/marketplace-offering-permissions/` (19 query params)
+- `marketplace_offering_permissions_count` HEAD `/api/marketplace-offering-permissions/` — Get number of items in the collection matching the request parameters (19 query params)
 - `marketplace_offering_permissions_retrieve` GET `/api/marketplace-offering-permissions/{id}/` (path: id)
 
 ## marketplace-offering-permissions-log
 Module: `waldur_api_client.api.marketplace_offering_permissions_log`
 
-- `marketplace_offering_permissions_log_list` GET `/api/marketplace-offering-permissions-log/` (18 query params)
-- `marketplace_offering_permissions_log_count` HEAD `/api/marketplace-offering-permissions-log/` — Get number of items in the collection matching the request parameters (18 query params)
+- `marketplace_offering_permissions_log_list` GET `/api/marketplace-offering-permissions-log/` (19 query params)
+- `marketplace_offering_permissions_log_count` HEAD `/api/marketplace-offering-permissions-log/` — Get number of items in the collection matching the request parameters (19 query params)
 - `marketplace_offering_permissions_log_retrieve` GET `/api/marketplace-offering-permissions-log/{id}/` (path: id)
 
 ## marketplace-offering-profiles
@@ -1848,7 +1848,7 @@ Module: `waldur_api_client.api.marketplace_service_providers`
 - `marketplace_service_providers_keys_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/keys/` — List SSH keys of a service provider (path: service_provider_uuid | 13 query params)
 - `marketplace_service_providers_offerings_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/offerings/` — List offerings of a service provider (path: service_provider_uuid | 41 query params)
 - `marketplace_service_providers_offerings_types_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/offerings/types/` — List distinct offering types for a service provider (path: service_provider_uuid | 40 query params)
-- `marketplace_service_providers_project_permissions_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_permissions/` — List project permissions of a service provider (path: service_provider_uuid | 18 query params)
+- `marketplace_service_providers_project_permissions_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_permissions/` — List project permissions of a service provider (path: service_provider_uuid | 19 query params)
 - `marketplace_service_providers_project_service_accounts_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_service_accounts/` — List project service accounts for a service provider (path: service_provider_uuid | 5 query params)
 - `marketplace_service_providers_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/projects/` — List projects of a service provider (path: service_provider_uuid | 27 query params)
 - `marketplace_service_providers_user_customers_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/user_customers/` — List customers of a specific user within a service provider's scope (path: service_provider_uuid | 18 query params)
@@ -3762,9 +3762,11 @@ Module: `waldur_api_client.api.user_permission_requests`
 ## user-permissions
 Module: `waldur_api_client.api.user_permissions`
 
-- `user_permissions_list` GET `/api/user-permissions/` — List user permissions (17 query params)
-- `user_permissions_count` HEAD `/api/user-permissions/` — List user permissions (17 query params)
+- `user_permissions_list` GET `/api/user-permissions/` — List user permissions (19 query params)
+- `user_permissions_count` HEAD `/api/user-permissions/` — List user permissions (19 query params)
 - `user_permissions_retrieve` GET `/api/user-permissions/{uuid}/` — Get permission details (path: uuid)
+- `user_permissions_restore` POST `/api/user-permissions/{uuid}/restore/` — Restore a revoked user role (path: uuid | request body)
+- `user_permissions_revoke` POST `/api/user-permissions/{uuid}/revoke/` — Revoke a user role (path: uuid | request body)
 
 ## users
 Module: `waldur_api_client.api.users`

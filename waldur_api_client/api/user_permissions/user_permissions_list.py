@@ -19,6 +19,7 @@ def _get_kwargs(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -30,6 +31,7 @@ def _get_kwargs(
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
+    show_inactive: Union[Unset, bool] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -53,6 +55,8 @@ def _get_kwargs(
     params["expiration_time"] = json_expiration_time
 
     params["full_name"] = full_name
+
+    params["is_active"] = is_active
 
     json_modified: Union[Unset, str] = UNSET
     if not isinstance(modified, Unset):
@@ -91,6 +95,8 @@ def _get_kwargs(
     params["scope_type"] = scope_type
 
     params["scope_uuid"] = scope_uuid
+
+    params["show_inactive"] = show_inactive
 
     json_user: Union[Unset, str] = UNSET
     if not isinstance(user, Unset):
@@ -147,6 +153,7 @@ def sync_detailed(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -158,6 +165,7 @@ def sync_detailed(
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
+    show_inactive: Union[Unset, bool] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -166,13 +174,16 @@ def sync_detailed(
     """List user permissions
 
      Get a list of all permissions for the current user. Staff and support users can view all user
-    permissions. The list can be filtered by user, scope, role, etc.
+    permissions. The list can be filtered by user, scope, role, etc. By default only active grants are
+    returned; staff and support can pass show_inactive=true to include revoked grants (the full
+    history).
 
     Args:
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
         full_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -184,6 +195,7 @@ def sync_detailed(
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
+        show_inactive (Union[Unset, bool]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -202,6 +214,7 @@ def sync_detailed(
         created_before=created_before,
         expiration_time=expiration_time,
         full_name=full_name,
+        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,
@@ -213,6 +226,7 @@ def sync_detailed(
         scope_name=scope_name,
         scope_type=scope_type,
         scope_uuid=scope_uuid,
+        show_inactive=show_inactive,
         user=user,
         user_slug=user_slug,
         user_url=user_url,
@@ -233,6 +247,7 @@ def sync(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -244,6 +259,7 @@ def sync(
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
+    show_inactive: Union[Unset, bool] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -252,13 +268,16 @@ def sync(
     """List user permissions
 
      Get a list of all permissions for the current user. Staff and support users can view all user
-    permissions. The list can be filtered by user, scope, role, etc.
+    permissions. The list can be filtered by user, scope, role, etc. By default only active grants are
+    returned; staff and support can pass show_inactive=true to include revoked grants (the full
+    history).
 
     Args:
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
         full_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -270,6 +289,7 @@ def sync(
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
+        show_inactive (Union[Unset, bool]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -289,6 +309,7 @@ def sync(
         created_before=created_before,
         expiration_time=expiration_time,
         full_name=full_name,
+        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,
@@ -300,6 +321,7 @@ def sync(
         scope_name=scope_name,
         scope_type=scope_type,
         scope_uuid=scope_uuid,
+        show_inactive=show_inactive,
         user=user,
         user_slug=user_slug,
         user_url=user_url,
@@ -314,6 +336,7 @@ async def asyncio_detailed(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -325,6 +348,7 @@ async def asyncio_detailed(
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
+    show_inactive: Union[Unset, bool] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -333,13 +357,16 @@ async def asyncio_detailed(
     """List user permissions
 
      Get a list of all permissions for the current user. Staff and support users can view all user
-    permissions. The list can be filtered by user, scope, role, etc.
+    permissions. The list can be filtered by user, scope, role, etc. By default only active grants are
+    returned; staff and support can pass show_inactive=true to include revoked grants (the full
+    history).
 
     Args:
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
         full_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -351,6 +378,7 @@ async def asyncio_detailed(
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
+        show_inactive (Union[Unset, bool]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -369,6 +397,7 @@ async def asyncio_detailed(
         created_before=created_before,
         expiration_time=expiration_time,
         full_name=full_name,
+        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,
@@ -380,6 +409,7 @@ async def asyncio_detailed(
         scope_name=scope_name,
         scope_type=scope_type,
         scope_uuid=scope_uuid,
+        show_inactive=show_inactive,
         user=user,
         user_slug=user_slug,
         user_url=user_url,
@@ -398,6 +428,7 @@ async def asyncio(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -409,6 +440,7 @@ async def asyncio(
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
+    show_inactive: Union[Unset, bool] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -417,13 +449,16 @@ async def asyncio(
     """List user permissions
 
      Get a list of all permissions for the current user. Staff and support users can view all user
-    permissions. The list can be filtered by user, scope, role, etc.
+    permissions. The list can be filtered by user, scope, role, etc. By default only active grants are
+    returned; staff and support can pass show_inactive=true to include revoked grants (the full
+    history).
 
     Args:
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
         full_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -435,6 +470,7 @@ async def asyncio(
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
+        show_inactive (Union[Unset, bool]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -455,6 +491,7 @@ async def asyncio(
             created_before=created_before,
             expiration_time=expiration_time,
             full_name=full_name,
+            is_active=is_active,
             modified=modified,
             modified_before=modified_before,
             native_name=native_name,
@@ -466,6 +503,7 @@ async def asyncio(
             scope_name=scope_name,
             scope_type=scope_type,
             scope_uuid=scope_uuid,
+            show_inactive=show_inactive,
             user=user,
             user_slug=user_slug,
             user_url=user_url,
@@ -481,6 +519,7 @@ def sync_all(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -490,6 +529,7 @@ def sync_all(
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
+    show_inactive: Union[Unset, bool] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -507,6 +547,7 @@ def sync_all(
         created_before (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
         full_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -516,6 +557,7 @@ def sync_all(
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
+        show_inactive (Union[Unset, bool]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -538,6 +580,7 @@ def sync_all(
         created_before=created_before,
         expiration_time=expiration_time,
         full_name=full_name,
+        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,
@@ -547,6 +590,7 @@ def sync_all(
         scope_name=scope_name,
         scope_type=scope_type,
         scope_uuid=scope_uuid,
+        show_inactive=show_inactive,
         user=user,
         user_slug=user_slug,
         user_url=user_url,
@@ -602,6 +646,7 @@ async def asyncio_all(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -611,6 +656,7 @@ async def asyncio_all(
     scope_name: Union[Unset, str] = UNSET,
     scope_type: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, str] = UNSET,
+    show_inactive: Union[Unset, bool] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
     user_url: Union[Unset, str] = UNSET,
@@ -628,6 +674,7 @@ async def asyncio_all(
         created_before (Union[Unset, datetime.datetime]):
         expiration_time (Union[Unset, datetime.datetime]):
         full_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -637,6 +684,7 @@ async def asyncio_all(
         scope_name (Union[Unset, str]):
         scope_type (Union[Unset, str]):
         scope_uuid (Union[Unset, str]):
+        show_inactive (Union[Unset, bool]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
         user_url (Union[Unset, str]):
@@ -659,6 +707,7 @@ async def asyncio_all(
         created_before=created_before,
         expiration_time=expiration_time,
         full_name=full_name,
+        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,
@@ -668,6 +717,7 @@ async def asyncio_all(
         scope_name=scope_name,
         scope_type=scope_type,
         scope_uuid=scope_uuid,
+        show_inactive=show_inactive,
         user=user,
         user_slug=user_slug,
         user_url=user_url,

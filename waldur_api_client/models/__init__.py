@@ -2782,6 +2782,7 @@ from .user_role_details import UserRoleDetails
 from .user_role_details_field_enum import UserRoleDetailsFieldEnum
 from .user_role_details_o_enum import UserRoleDetailsOEnum
 from .user_role_expiration_time import UserRoleExpirationTime
+from .user_role_permission_action_request import UserRolePermissionActionRequest
 from .user_role_update_request import UserRoleUpdateRequest
 from .username_generation_policy_enum import UsernameGenerationPolicyEnum
 from .users_history_at_retrieve_response_400 import UsersHistoryAtRetrieveResponse400
@@ -5507,6 +5508,7 @@ __all__ = (
     "UserRoleDetailsFieldEnum",
     "UserRoleDetailsOEnum",
     "UserRoleExpirationTime",
+    "UserRolePermissionActionRequest",
     "UserRoleUpdateRequest",
     "UsersHistoryAtRetrieveResponse400",
     "UsersHistoryAtRetrieveResponse404",

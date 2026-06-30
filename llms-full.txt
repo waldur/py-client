@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.3.dev.20260629233337
+# Version: 8.1.0-rc.3.dev.20260630233345
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -6947,11 +6947,12 @@ Path parameters:
 
 ### marketplace_offering_permissions_list
 GET /api/marketplace-offering-permissions/
-Query parameters (18):
+Query parameters (19):
   - created — Created after
   - created_before — Created before
   - customer
   - full_name — User full name contains
+  - is_active
   - modified — Modified after
   - modified_before — Modified before
   - native_name
@@ -6971,11 +6972,12 @@ Query parameters (18):
 HEAD /api/marketplace-offering-permissions/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (18):
+Query parameters (19):
   - created — Created after
   - created_before — Created before
   - customer
   - full_name — User full name contains
+  - is_active
   - modified — Modified after
   - modified_before — Modified before
   - native_name
@@ -7002,11 +7004,12 @@ Path parameters:
 
 ### marketplace_offering_permissions_log_list
 GET /api/marketplace-offering-permissions-log/
-Query parameters (18):
+Query parameters (19):
   - created — Created after
   - created_before — Created before
   - customer
   - full_name — User full name contains
+  - is_active
   - modified — Modified after
   - modified_before — Modified before
   - native_name
@@ -7026,11 +7029,12 @@ Query parameters (18):
 HEAD /api/marketplace-offering-permissions-log/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (18):
+Query parameters (19):
   - created — Created after
   - created_before — Created before
   - customer
   - full_name — User full name contains
+  - is_active
   - modified — Modified after
   - modified_before — Modified before
   - native_name
@@ -11361,12 +11365,13 @@ Summary: List project permissions of a service provider
 Description: Returns a paginated list of project permissions for all projects that have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (18):
+Query parameters (19):
   - created — Created after
   - created_before — Created before
   - expiration_time
   - field
   - full_name — User full name contains
+  - is_active
   - modified — Modified after
   - modified_before — Modified before
   - native_name
@@ -22659,12 +22664,13 @@ Request body: yes
 ### user_permissions_list
 GET /api/user-permissions/
 Summary: List user permissions
-Description: Get a list of all permissions for the current user. Staff and support users can view all user permissions. The list can be filtered by user, scope, role, etc.
-Query parameters (17):
+Description: Get a list of all permissions for the current user. Staff and support users can view all user permissions. The list can be filtered by user, scope, role, etc. By default only active grants are returned; staff and support can pass show_inactive=true to include revoked grants (the full history).
+Query parameters (19):
   - created — Created after
   - created_before — Created before
   - expiration_time
   - full_name — User full name contains
+  - is_active
   - modified — Modified after
   - modified_before — Modified before
   - native_name
@@ -22674,6 +22680,7 @@ Query parameters (17):
   - scope_name — Scope name
   - scope_type — Scope type
   - scope_uuid — Scope UUID
+  - show_inactive — Staff/support only. Include revoked (inactive) role grants in addition to active ones. Ignored for other users, who only ever see their own active roles.
   - user
   - user_slug — User slug contains
   - user_url
@@ -22683,11 +22690,12 @@ Query parameters (17):
 HEAD /api/user-permissions/
 Summary: List user permissions
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (17):
+Query parameters (19):
   - created — Created after
   - created_before — Created before
   - expiration_time
   - full_name — User full name contains
+  - is_active
   - modified — Modified after
   - modified_before — Modified before
   - native_name
@@ -22697,6 +22705,7 @@ Query parameters (17):
   - scope_name — Scope name
   - scope_type — Scope type
   - scope_uuid — Scope UUID
+  - show_inactive — Staff/support only. Include revoked (inactive) role grants in addition to active ones. Ignored for other users, who only ever see their own active roles.
   - user
   - user_slug — User slug contains
   - user_url
@@ -22708,6 +22717,22 @@ Summary: Get permission details
 Description: Retrieve the details of a specific user permission grant by its UUID.
 Path parameters:
   - uuid
+
+### user_permissions_restore
+POST /api/user-permissions/{uuid}/restore/
+Summary: Restore a revoked user role
+Description: Restores a previously revoked user role grant, reinstating the associated permissions immediately. Restoring a role whose scope (e.g. a project) has been soft-deleted is not allowed.
+Path parameters:
+  - uuid
+Request body: yes
+
+### user_permissions_revoke
+POST /api/user-permissions/{uuid}/revoke/
+Summary: Revoke a user role
+Description: Revokes a specific user role grant, deactivating the associated permissions immediately.
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## users  (module: waldur_api_client.api.users)

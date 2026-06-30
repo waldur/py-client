@@ -22,6 +22,7 @@ def _get_kwargs(
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -65,6 +66,8 @@ def _get_kwargs(
     params["field"] = json_field
 
     params["full_name"] = full_name
+
+    params["is_active"] = is_active
 
     json_modified: Union[Unset, str] = UNSET
     if not isinstance(modified, Unset):
@@ -163,6 +166,7 @@ def sync_detailed(
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -191,6 +195,7 @@ def sync_detailed(
         expiration_time (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[ProjectPermissionLogFieldEnum]]):
         full_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -222,6 +227,7 @@ def sync_detailed(
         expiration_time=expiration_time,
         field=field,
         full_name=full_name,
+        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,
@@ -255,6 +261,7 @@ def sync(
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -283,6 +290,7 @@ def sync(
         expiration_time (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[ProjectPermissionLogFieldEnum]]):
         full_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -315,6 +323,7 @@ def sync(
         expiration_time=expiration_time,
         field=field,
         full_name=full_name,
+        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,
@@ -342,6 +351,7 @@ async def asyncio_detailed(
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -370,6 +380,7 @@ async def asyncio_detailed(
         expiration_time (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[ProjectPermissionLogFieldEnum]]):
         full_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -401,6 +412,7 @@ async def asyncio_detailed(
         expiration_time=expiration_time,
         field=field,
         full_name=full_name,
+        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,
@@ -432,6 +444,7 @@ async def asyncio(
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -460,6 +473,7 @@ async def asyncio(
         expiration_time (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[ProjectPermissionLogFieldEnum]]):
         full_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -493,6 +507,7 @@ async def asyncio(
             expiration_time=expiration_time,
             field=field,
             full_name=full_name,
+            is_active=is_active,
             modified=modified,
             modified_before=modified_before,
             native_name=native_name,
@@ -521,6 +536,7 @@ def sync_all(
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -549,6 +565,7 @@ def sync_all(
         expiration_time (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[ProjectPermissionLogFieldEnum]]):
         full_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -582,6 +599,7 @@ def sync_all(
         expiration_time=expiration_time,
         field=field,
         full_name=full_name,
+        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,
@@ -648,6 +666,7 @@ async def asyncio_all(
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -676,6 +695,7 @@ async def asyncio_all(
         expiration_time (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[ProjectPermissionLogFieldEnum]]):
         full_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -709,6 +729,7 @@ async def asyncio_all(
         expiration_time=expiration_time,
         field=field,
         full_name=full_name,
+        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,
