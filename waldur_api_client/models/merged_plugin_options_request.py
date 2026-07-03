@@ -54,6 +54,11 @@ class MergedPluginOptionsRequest:
             'PROJECT.MANAGER') allowed to view and order this offering. When set, the offering is hidden from the catalog
             for other users and they cannot create orders for it. Whether their orders skip consumer review still depends on
             the role having the order-approval permission.
+        auto_approve_for_roles (Union[Unset, list[str]]): List of project or organization role names (e.g.
+            'PROJECT.MANAGER') whose orders skip consumer review for this offering. The creator must hold the role on the
+            target project or its organization. Independent of restricted_to_roles (which governs visibility/ordering) and
+            of the ORDER.APPROVE permission. Provider review and purchase-order requirements still apply. Only staff can
+            change this option.
         enable_purchase_order_upload (Union[Unset, bool]): If set to True, users will be able to upload purchase orders.
         require_purchase_order_upload (Union[Unset, bool]): If set to True, users will be required to upload purchase
             orders.
@@ -193,6 +198,7 @@ class MergedPluginOptionsRequest:
     unique_resource_per_attribute: Union[Unset, str] = UNSET
     required_team_role_for_provisioning: Union[None, Unset, str] = UNSET
     restricted_to_roles: Union[Unset, list[str]] = UNSET
+    auto_approve_for_roles: Union[Unset, list[str]] = UNSET
     enable_purchase_order_upload: Union[Unset, bool] = UNSET
     require_purchase_order_upload: Union[Unset, bool] = UNSET
     conceal_billing_data: Union[Unset, bool] = UNSET
@@ -305,6 +311,10 @@ class MergedPluginOptionsRequest:
         restricted_to_roles: Union[Unset, list[str]] = UNSET
         if not isinstance(self.restricted_to_roles, Unset):
             restricted_to_roles = self.restricted_to_roles
+
+        auto_approve_for_roles: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.auto_approve_for_roles, Unset):
+            auto_approve_for_roles = self.auto_approve_for_roles
 
         enable_purchase_order_upload = self.enable_purchase_order_upload
 
@@ -513,6 +523,8 @@ class MergedPluginOptionsRequest:
             field_dict["required_team_role_for_provisioning"] = required_team_role_for_provisioning
         if restricted_to_roles is not UNSET:
             field_dict["restricted_to_roles"] = restricted_to_roles
+        if auto_approve_for_roles is not UNSET:
+            field_dict["auto_approve_for_roles"] = auto_approve_for_roles
         if enable_purchase_order_upload is not UNSET:
             field_dict["enable_purchase_order_upload"] = enable_purchase_order_upload
         if require_purchase_order_upload is not UNSET:
@@ -716,6 +728,8 @@ class MergedPluginOptionsRequest:
         )
 
         restricted_to_roles = cast(list[str], d.pop("restricted_to_roles", UNSET))
+
+        auto_approve_for_roles = cast(list[str], d.pop("auto_approve_for_roles", UNSET))
 
         enable_purchase_order_upload = d.pop("enable_purchase_order_upload", UNSET)
 
@@ -946,6 +960,7 @@ class MergedPluginOptionsRequest:
             unique_resource_per_attribute=unique_resource_per_attribute,
             required_team_role_for_provisioning=required_team_role_for_provisioning,
             restricted_to_roles=restricted_to_roles,
+            auto_approve_for_roles=auto_approve_for_roles,
             enable_purchase_order_upload=enable_purchase_order_upload,
             require_purchase_order_upload=require_purchase_order_upload,
             conceal_billing_data=conceal_billing_data,
