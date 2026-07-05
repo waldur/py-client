@@ -4,6 +4,7 @@ from typing import Any, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.discount_aggregation_enum import DiscountAggregationEnum
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="DiscountConfigRequest")
@@ -13,34 +14,34 @@ T = TypeVar("T", bound="DiscountConfigRequest")
 class DiscountConfigRequest:
     """
     Attributes:
-        discount_threshold (Union[None, Unset, int]): Minimum quantity to be eligible for discount.
-        discount_rate (Union[None, Unset, int]): Discount rate in percentage (0-100).
+        discount_formula (Union[None, Unset, str]): Volume discount formula evaluated with the billed quantity bound to
+            `usage`; returns a discount percentage (0-100). Empty removes the discount. Example: '10 if usage >= 100 else
+            0'.
+        discount_aggregation (Union[Unset, DiscountAggregationEnum]):
     """
 
-    discount_threshold: Union[None, Unset, int] = UNSET
-    discount_rate: Union[None, Unset, int] = UNSET
+    discount_formula: Union[None, Unset, str] = UNSET
+    discount_aggregation: Union[Unset, DiscountAggregationEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        discount_threshold: Union[None, Unset, int]
-        if isinstance(self.discount_threshold, Unset):
-            discount_threshold = UNSET
+        discount_formula: Union[None, Unset, str]
+        if isinstance(self.discount_formula, Unset):
+            discount_formula = UNSET
         else:
-            discount_threshold = self.discount_threshold
+            discount_formula = self.discount_formula
 
-        discount_rate: Union[None, Unset, int]
-        if isinstance(self.discount_rate, Unset):
-            discount_rate = UNSET
-        else:
-            discount_rate = self.discount_rate
+        discount_aggregation: Union[Unset, str] = UNSET
+        if not isinstance(self.discount_aggregation, Unset):
+            discount_aggregation = self.discount_aggregation.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if discount_threshold is not UNSET:
-            field_dict["discount_threshold"] = discount_threshold
-        if discount_rate is not UNSET:
-            field_dict["discount_rate"] = discount_rate
+        if discount_formula is not UNSET:
+            field_dict["discount_formula"] = discount_formula
+        if discount_aggregation is not UNSET:
+            field_dict["discount_aggregation"] = discount_aggregation
 
         return field_dict
 
@@ -48,27 +49,25 @@ class DiscountConfigRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
 
-        def _parse_discount_threshold(data: object) -> Union[None, Unset, int]:
+        def _parse_discount_formula(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, int], data)
+            return cast(Union[None, Unset, str], data)
 
-        discount_threshold = _parse_discount_threshold(d.pop("discount_threshold", UNSET))
+        discount_formula = _parse_discount_formula(d.pop("discount_formula", UNSET))
 
-        def _parse_discount_rate(data: object) -> Union[None, Unset, int]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, int], data)
-
-        discount_rate = _parse_discount_rate(d.pop("discount_rate", UNSET))
+        _discount_aggregation = d.pop("discount_aggregation", UNSET)
+        discount_aggregation: Union[Unset, DiscountAggregationEnum]
+        if isinstance(_discount_aggregation, Unset):
+            discount_aggregation = UNSET
+        else:
+            discount_aggregation = DiscountAggregationEnum(_discount_aggregation)
 
         discount_config_request = cls(
-            discount_threshold=discount_threshold,
-            discount_rate=discount_rate,
+            discount_formula=discount_formula,
+            discount_aggregation=discount_aggregation,
         )
 
         discount_config_request.additional_properties = d

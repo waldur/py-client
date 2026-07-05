@@ -90,6 +90,7 @@ class Customer:
         payment_profiles (Union[Unset, list['PaymentProfile']]):
         customer_credit (Union[None, Unset, float]):
         customer_unallocated_credit (Union[None, Unset, float]):
+        has_affiliate_links (Union[Unset, bool]):
         is_service_provider (Union[Unset, bool]):
         service_provider (Union[None, Unset, str]):
         service_provider_uuid (Union[None, UUID, Unset]):
@@ -153,6 +154,7 @@ class Customer:
     payment_profiles: Union[Unset, list["PaymentProfile"]] = UNSET
     customer_credit: Union[None, Unset, float] = UNSET
     customer_unallocated_credit: Union[None, Unset, float] = UNSET
+    has_affiliate_links: Union[Unset, bool] = UNSET
     is_service_provider: Union[Unset, bool] = UNSET
     service_provider: Union[None, Unset, str] = UNSET
     service_provider_uuid: Union[None, UUID, Unset] = UNSET
@@ -348,6 +350,8 @@ class Customer:
         else:
             customer_unallocated_credit = self.customer_unallocated_credit
 
+        has_affiliate_links = self.has_affiliate_links
+
         is_service_provider = self.is_service_provider
 
         service_provider: Union[None, Unset, str]
@@ -489,6 +493,8 @@ class Customer:
             field_dict["customer_credit"] = customer_credit
         if customer_unallocated_credit is not UNSET:
             field_dict["customer_unallocated_credit"] = customer_unallocated_credit
+        if has_affiliate_links is not UNSET:
+            field_dict["has_affiliate_links"] = has_affiliate_links
         if is_service_provider is not UNSET:
             field_dict["is_service_provider"] = is_service_provider
         if service_provider is not UNSET:
@@ -765,6 +771,8 @@ class Customer:
 
         customer_unallocated_credit = _parse_customer_unallocated_credit(d.pop("customer_unallocated_credit", UNSET))
 
+        has_affiliate_links = d.pop("has_affiliate_links", UNSET)
+
         is_service_provider = d.pop("is_service_provider", UNSET)
 
         def _parse_service_provider(data: object) -> Union[None, Unset, str]:
@@ -868,6 +876,7 @@ class Customer:
             payment_profiles=payment_profiles,
             customer_credit=customer_credit,
             customer_unallocated_credit=customer_unallocated_credit,
+            has_affiliate_links=has_affiliate_links,
             is_service_provider=is_service_provider,
             service_provider=service_provider,
             service_provider_uuid=service_provider_uuid,

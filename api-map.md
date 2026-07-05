@@ -638,6 +638,26 @@ Module: `waldur_api_client.api.conflicts_of_interest`
 - `conflicts_of_interest_recuse` POST `/api/conflicts-of-interest/{uuid}/recuse/` — Recuse reviewer from the proposal (path: uuid | request body)
 - `conflicts_of_interest_waive` POST `/api/conflicts-of-interest/{uuid}/waive/` — Waive a conflict with a management plan (path: uuid | request body)
 
+## credit-transactions
+Module: `waldur_api_client.api.credit_transactions`
+
+- `credit_transactions_list` GET `/api/credit-transactions/` (4 query params)
+- `credit_transactions_count` HEAD `/api/credit-transactions/` — Get number of items in the collection matching the request parameters (4 query params)
+- `credit_transactions_retrieve` GET `/api/credit-transactions/{uuid}/` (path: uuid)
+
+## customer-affiliates
+Module: `waldur_api_client.api.customer_affiliates`
+
+- `customer_affiliates_list` GET `/api/customer-affiliates/` (6 query params)
+- `customer_affiliates_count` HEAD `/api/customer-affiliates/` — Get number of items in the collection matching the request parameters (6 query params)
+- `customer_affiliates_create` POST `/api/customer-affiliates/` (request body)
+- `customer_affiliates_retrieve` GET `/api/customer-affiliates/{uuid}/` (path: uuid)
+- `customer_affiliates_update` PUT `/api/customer-affiliates/{uuid}/` (path: uuid | request body)
+- `customer_affiliates_partial_update` PATCH `/api/customer-affiliates/{uuid}/` (path: uuid | request body)
+- `customer_affiliates_destroy` DELETE `/api/customer-affiliates/{uuid}/` (path: uuid)
+- `customer_affiliates_accruals_list` GET `/api/customer-affiliates/{uuid}/accruals/` — List fees accrued from this affiliate link (path: uuid | 6 query params)
+- `customer_affiliates_earnings_retrieve` GET `/api/customer-affiliates/{uuid}/earnings/` — Earnings summary of this affiliate link: lifetime total, per-month series and the affiliate organization's withdrawable credit balance (path: uuid)
+
 ## customer-credits
 Module: `waldur_api_client.api.customer_credits`
 
@@ -648,6 +668,7 @@ Module: `waldur_api_client.api.customer_credits`
 - `customer_credits_update` PUT `/api/customer-credits/{uuid}/` (path: uuid | request body)
 - `customer_credits_partial_update` PATCH `/api/customer-credits/{uuid}/` (path: uuid | request body)
 - `customer_credits_destroy` DELETE `/api/customer-credits/{uuid}/` (path: uuid)
+- `customer_credits_adjust_withdrawable` POST `/api/customer-credits/{uuid}/adjust_withdrawable/` — Staff adjustment of the withdrawable part of the credit (path: uuid | request body)
 - `customer_credits_apply_compensations` POST `/api/customer-credits/{uuid}/apply_compensations/` (path: uuid)
 - `customer_credits_clear_compensations` POST `/api/customer-credits/{uuid}/clear_compensations/` (path: uuid)
 - `customer_credits_consumptions_list` GET `/api/customer-credits/{uuid}/consumptions/` — Get credit consumption history grouped by month (path: uuid | 5 query params)

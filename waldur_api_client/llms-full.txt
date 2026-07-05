@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.5.dev.20260704233338
+# Version: 8.1.0-rc.5.dev.20260705100026
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -3376,6 +3376,106 @@ Path parameters:
 Request body: yes
 
 ============================================================
+## credit-transactions  (module: waldur_api_client.api.credit_transactions)
+============================================================
+
+### credit_transactions_list
+GET /api/credit-transactions/
+Query parameters (4):
+  - credit_uuid
+  - customer_uuid
+  - o — Ordering
+  - transaction_type
+
+### credit_transactions_count
+HEAD /api/credit-transactions/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - credit_uuid
+  - customer_uuid
+  - o — Ordering
+  - transaction_type
+
+### credit_transactions_retrieve
+GET /api/credit-transactions/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
+## customer-affiliates  (module: waldur_api_client.api.customer_affiliates)
+============================================================
+
+### customer_affiliates_list
+GET /api/customer-affiliates/
+Query parameters (6):
+  - affiliate_name
+  - affiliate_uuid
+  - customer_name
+  - customer_uuid
+  - is_active
+  - o — Ordering
+
+### customer_affiliates_count
+HEAD /api/customer-affiliates/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (6):
+  - affiliate_name
+  - affiliate_uuid
+  - customer_name
+  - customer_uuid
+  - is_active
+  - o — Ordering
+
+### customer_affiliates_create
+POST /api/customer-affiliates/
+Request body: yes
+
+### customer_affiliates_retrieve
+GET /api/customer-affiliates/{uuid}/
+Path parameters:
+  - uuid
+
+### customer_affiliates_update
+PUT /api/customer-affiliates/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### customer_affiliates_partial_update
+PATCH /api/customer-affiliates/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### customer_affiliates_destroy
+DELETE /api/customer-affiliates/{uuid}/
+Path parameters:
+  - uuid
+
+### customer_affiliates_accruals_list
+GET /api/customer-affiliates/{uuid}/accruals/
+Summary: List fees accrued from this affiliate link
+Description: List fees accrued from this affiliate link. Exposes the fee amount and invoice period only — never the referred customer's invoice contents.
+Path parameters:
+  - uuid
+Query parameters (6):
+  - affiliate_name
+  - affiliate_uuid
+  - customer_name
+  - customer_uuid
+  - is_active
+  - o — Ordering
+
+### customer_affiliates_earnings_retrieve
+GET /api/customer-affiliates/{uuid}/earnings/
+Summary: Earnings summary of this affiliate link: lifetime total, per-month series and the affiliate organization's withdrawable credit balance
+Description: Earnings summary of this affiliate link: lifetime total, per-month series and the affiliate organization's withdrawable credit balance.
+Path parameters:
+  - uuid
+
+============================================================
 ## customer-credits  (module: waldur_api_client.api.customer_credits)
 ============================================================
 
@@ -3424,6 +3524,14 @@ Request body: yes
 DELETE /api/customer-credits/{uuid}/
 Path parameters:
   - uuid
+
+### customer_credits_adjust_withdrawable
+POST /api/customer-credits/{uuid}/adjust_withdrawable/
+Summary: Staff adjustment of the withdrawable part of the credit
+Description: Staff adjustment of the withdrawable part of the credit. Records a signed ledger entry with a comment and changes the credit value by the same amount.
+Path parameters:
+  - uuid
+Request body: yes
 
 ### customer_credits_apply_compensations
 POST /api/customer-credits/{uuid}/apply_compensations/

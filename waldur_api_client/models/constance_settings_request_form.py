@@ -318,6 +318,7 @@ class ConstanceSettingsRequestForm:
         ssh_key_allowed_types (Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]]):
         ssh_key_min_rsa_key_size (Union[Unset, int]):
         enabled_reporting_screens (Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]]):
+        affiliates_enabled (Union[Unset, bool]):
         matrix_enabled (Union[Unset, bool]):
         matrix_homeserver_url (Union[Unset, str]):
         matrix_homeserver_public_url (Union[Unset, str]):
@@ -618,6 +619,7 @@ class ConstanceSettingsRequestForm:
     ssh_key_allowed_types: Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]] = UNSET
     ssh_key_min_rsa_key_size: Union[Unset, int] = UNSET
     enabled_reporting_screens: Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]] = UNSET
+    affiliates_enabled: Union[Unset, bool] = UNSET
     matrix_enabled: Union[Unset, bool] = UNSET
     matrix_homeserver_url: Union[Unset, str] = UNSET
     matrix_homeserver_public_url: Union[Unset, str] = UNSET
@@ -1449,6 +1451,8 @@ class ConstanceSettingsRequestForm:
 
                 enabled_reporting_screens.append(enabled_reporting_screens_item)
 
+        affiliates_enabled = self.affiliates_enabled
+
         matrix_enabled = self.matrix_enabled
 
         matrix_homeserver_url = self.matrix_homeserver_url
@@ -2060,6 +2064,8 @@ class ConstanceSettingsRequestForm:
             field_dict["SSH_KEY_MIN_RSA_KEY_SIZE"] = ssh_key_min_rsa_key_size
         if enabled_reporting_screens is not UNSET:
             field_dict["ENABLED_REPORTING_SCREENS"] = enabled_reporting_screens
+        if affiliates_enabled is not UNSET:
+            field_dict["AFFILIATES_ENABLED"] = affiliates_enabled
         if matrix_enabled is not UNSET:
             field_dict["MATRIX_ENABLED"] = matrix_enabled
         if matrix_homeserver_url is not UNSET:
@@ -3207,6 +3213,8 @@ class ConstanceSettingsRequestForm:
 
             enabled_reporting_screens.append(enabled_reporting_screens_item)
 
+        affiliates_enabled = d.pop("AFFILIATES_ENABLED", UNSET)
+
         matrix_enabled = d.pop("MATRIX_ENABLED", UNSET)
 
         matrix_homeserver_url = d.pop("MATRIX_HOMESERVER_URL", UNSET)
@@ -3526,6 +3534,7 @@ class ConstanceSettingsRequestForm:
             ssh_key_allowed_types=ssh_key_allowed_types,
             ssh_key_min_rsa_key_size=ssh_key_min_rsa_key_size,
             enabled_reporting_screens=enabled_reporting_screens,
+            affiliates_enabled=affiliates_enabled,
             matrix_enabled=matrix_enabled,
             matrix_homeserver_url=matrix_homeserver_url,
             matrix_homeserver_public_url=matrix_homeserver_public_url,

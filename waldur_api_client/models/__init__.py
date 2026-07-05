@@ -23,6 +23,9 @@ from .admin_announcement_request import AdminAnnouncementRequest
 from .admin_announcement_type_enum import AdminAnnouncementTypeEnum
 from .admin_user import AdminUser
 from .administrative_access import AdministrativeAccess
+from .affiliate_earnings import AffiliateEarnings
+from .affiliate_earnings_month import AffiliateEarningsMonth
+from .affiliate_fee_accrual import AffiliateFeeAccrual
 from .affiliated_organization import AffiliatedOrganization
 from .affiliated_organization_field_enum import AffiliatedOrganizationFieldEnum
 from .affiliated_organization_report_row import AffiliatedOrganizationReportRow
@@ -518,6 +521,8 @@ from .course_account_request import CourseAccountRequest
 from .course_account_state_enum import CourseAccountStateEnum
 from .course_accounts_bulk_create_request import CourseAccountsBulkCreateRequest
 from .create_attachments_request import CreateAttachmentsRequest
+from .create_customer_affiliate import CreateCustomerAffiliate
+from .create_customer_affiliate_request import CreateCustomerAffiliateRequest
 from .create_customer_credit import CreateCustomerCredit
 from .create_customer_credit_request import CreateCustomerCreditRequest
 from .create_feedback import CreateFeedback
@@ -537,8 +542,11 @@ from .create_pool_request import CreatePoolRequest
 from .create_router import CreateRouter
 from .create_router_request import CreateRouterRequest
 from .credentials_validation_response import CredentialsValidationResponse
+from .credit_transaction import CreditTransaction
 from .current_qos_status_enum import CurrentQosStatusEnum
 from .customer import Customer
+from .customer_affiliate import CustomerAffiliate
+from .customer_affiliate_o_enum import CustomerAffiliateOEnum
 from .customer_billing_summary_billing_sync import CustomerBillingSummaryBillingSync
 from .customer_billing_summary_consumption_record import CustomerBillingSummaryConsumptionRecord
 from .customer_billing_summary_response import CustomerBillingSummaryResponse
@@ -650,6 +658,7 @@ from .digital_ocean_image import DigitalOceanImage
 from .digital_ocean_image_o_enum import DigitalOceanImageOEnum
 from .digital_ocean_region import DigitalOceanRegion
 from .digital_ocean_size import DigitalOceanSize
+from .discount_aggregation_enum import DiscountAggregationEnum
 from .discount_config_request import DiscountConfigRequest
 from .discount_type_enum import DiscountTypeEnum
 from .discounts_update_request import DiscountsUpdateRequest
@@ -1639,6 +1648,7 @@ from .patched_cluster_security_group_request import PatchedClusterSecurityGroupR
 from .patched_comment_request import PatchedCommentRequest
 from .patched_component_user_usage_limit_request import PatchedComponentUserUsageLimitRequest
 from .patched_conflict_of_interest_request import PatchedConflictOfInterestRequest
+from .patched_create_customer_affiliate_request import PatchedCreateCustomerAffiliateRequest
 from .patched_create_customer_credit_request import PatchedCreateCustomerCreditRequest
 from .patched_customer_component_usage_policy_request import PatchedCustomerComponentUsagePolicyRequest
 from .patched_customer_component_usage_policy_request_options import PatchedCustomerComponentUsagePolicyRequestOptions
@@ -2705,6 +2715,7 @@ from .topology_node_attrs_additional_property import TopologyNodeAttrsAdditional
 from .topology_node_type_enum import TopologyNodeTypeEnum
 from .total_customer_cost import TotalCustomerCost
 from .transaction_stats import TransactionStats
+from .transaction_type_enum import TransactionTypeEnum
 from .transition_mode_enum import TransitionModeEnum
 from .trigger_coi_detection_job_type_enum import TriggerCOIDetectionJobTypeEnum
 from .trigger_coi_detection_request import TriggerCOIDetectionRequest
@@ -2852,6 +2863,7 @@ from .web_hook_receiver import WebHookReceiver
 from .web_hook_receiver_request import WebHookReceiverRequest
 from .web_hook_request import WebHookRequest
 from .widget_enum import WidgetEnum
+from .withdrawable_adjustment_request import WithdrawableAdjustmentRequest
 from .workflow_criterion import WorkflowCriterion
 from .workflow_criterion_request import WorkflowCriterionRequest
 from .zammadarticletype_enum import ZAMMADARTICLETYPEEnum
@@ -2885,6 +2897,9 @@ __all__ = (
     "AffiliatedOrganizationReportRow",
     "AffiliatedOrganizationRequest",
     "AffiliatedOrganizationStats",
+    "AffiliateEarnings",
+    "AffiliateEarningsMonth",
+    "AffiliateFeeAccrual",
     "AffiliationTypeEnum",
     "AffinityMatrixEntry",
     "AffinityMatrixResponse",
@@ -3357,6 +3372,8 @@ __all__ = (
     "CourseAccountsBulkCreateRequest",
     "CourseAccountStateEnum",
     "CreateAttachmentsRequest",
+    "CreateCustomerAffiliate",
+    "CreateCustomerAffiliateRequest",
     "CreateCustomerCredit",
     "CreateCustomerCreditRequest",
     "CreateFeedback",
@@ -3376,8 +3393,11 @@ __all__ = (
     "CreateRouter",
     "CreateRouterRequest",
     "CredentialsValidationResponse",
+    "CreditTransaction",
     "CurrentQosStatusEnum",
     "Customer",
+    "CustomerAffiliate",
+    "CustomerAffiliateOEnum",
     "CustomerBillingSummaryBillingSync",
     "CustomerBillingSummaryConsumptionRecord",
     "CustomerBillingSummaryResponse",
@@ -3485,6 +3505,7 @@ __all__ = (
     "DigitalOceanImageOEnum",
     "DigitalOceanRegion",
     "DigitalOceanSize",
+    "DiscountAggregationEnum",
     "DiscountConfigRequest",
     "DiscountsUpdateRequest",
     "DiscountsUpdateRequestDiscounts",
@@ -4414,6 +4435,7 @@ __all__ = (
     "PatchedCommentRequest",
     "PatchedComponentUserUsageLimitRequest",
     "PatchedConflictOfInterestRequest",
+    "PatchedCreateCustomerAffiliateRequest",
     "PatchedCreateCustomerCreditRequest",
     "PatchedCustomerComponentUsagePolicyRequest",
     "PatchedCustomerComponentUsagePolicyRequestOptions",
@@ -5430,6 +5452,7 @@ __all__ = (
     "ToSConsentDashboard",
     "TotalCustomerCost",
     "TransactionStats",
+    "TransactionTypeEnum",
     "TransitionModeEnum",
     "TriggerCOIDetectionJobTypeEnum",
     "TriggerCOIDetectionRequest",
@@ -5569,6 +5592,7 @@ __all__ = (
     "WebHookReceiverRequest",
     "WebHookRequest",
     "WidgetEnum",
+    "WithdrawableAdjustmentRequest",
     "WorkflowCriterion",
     "WorkflowCriterionRequest",
     "ZAMMADARTICLETYPEEnum",
