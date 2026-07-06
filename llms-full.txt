@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.6.dev.20260706094955
+# Version: 8.1.0-rc.6.dev.20260706101610
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -5688,7 +5688,7 @@ Path parameters:
 GET /api/maintenance-announcements/
 Summary: List maintenance announcements
 Description: Returns a paginated list of maintenance announcements.
-Query parameters (8):
+Query parameters (9):
   - maintenance_type — Maintenance type
   - o — Ordering
   - scheduled_end_after — Scheduled end after
@@ -5697,12 +5697,13 @@ Query parameters (8):
   - scheduled_start_before — Scheduled start before
   - service_provider_uuid — Service provider UUID
   - state — Maintenance state
+  - timing_bucket — Timing bucket (comma-separated: on_time, late_start, overrun, early, pending)
 
 ### maintenance_announcements_count
 HEAD /api/maintenance-announcements/
 Summary: List maintenance announcements
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (8):
+Query parameters (9):
   - maintenance_type — Maintenance type
   - o — Ordering
   - scheduled_end_after — Scheduled end after
@@ -5711,6 +5712,7 @@ Query parameters (8):
   - scheduled_start_before — Scheduled start before
   - service_provider_uuid — Service provider UUID
   - state — Maintenance state
+  - timing_bucket — Timing bucket (comma-separated: on_time, late_start, overrun, early, pending)
 
 ### maintenance_announcements_create
 POST /api/maintenance-announcements/
@@ -7467,7 +7469,7 @@ Query parameters (20):
   - offering_uuid — Multiple values may be separated by commas.
   - parent_offering_uuid
   - provider_uuid — Provider UUID
-  - query — Search by offering name, username or user name
+  - query — Search by offering name, username, user name, UID or primary GID
   - runtime_state — Offering user runtime state
   - state — Offering user state
   - user_username — User username
@@ -7492,7 +7494,7 @@ Query parameters (19):
   - offering_uuid — Multiple values may be separated by commas.
   - parent_offering_uuid
   - provider_uuid — Provider UUID
-  - query — Search by offering name, username or user name
+  - query — Search by offering name, username, user name, UID or primary GID
   - runtime_state — Offering user runtime state
   - state — Offering user state
   - user_username — User username
@@ -7517,6 +7519,56 @@ Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
 Query parameters (1):
   - parent_uuid (required) — UUID of the parent object (e.g., customer UUID for new projects)
+
+### marketplace_offering_users_posix_identities_list
+GET /api/marketplace-offering-users/posix_identities/
+Summary: List a user's POSIX identities across all their offerings
+Description: Consolidated view of one user's POSIX identifiers (UID, primary GID and project group GIDs) across every offering they have an account on, each with the range it was allocated from. Scoped to the offering users the requester is allowed to see.
+Query parameters (19):
+  - created — Created after
+  - created_before — Created before
+  - has_complete_profile — User has complete profile for the offering
+  - has_consent — User Has Consent
+  - is_restricted — Is restricted
+  - modified — Modified after
+  - modified_before — Modified before
+  - o — Ordering
+  - offering
+  - offering_has_active_tos — Offering has active Terms of Service
+  - offering_slug — Multiple values may be separated by commas.
+  - offering_uuid — Multiple values may be separated by commas.
+  - parent_offering_uuid
+  - provider_uuid — Provider UUID
+  - query — Search by offering name, username, user name, UID or primary GID
+  - runtime_state — Offering user runtime state
+  - state — Offering user state
+  - user_username — User username
+  - user_uuid (required)
+
+### marketplace_offering_users_posix_identities_count
+HEAD /api/marketplace-offering-users/posix_identities/
+Summary: List a user's POSIX identities across all their offerings
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (19):
+  - created — Created after
+  - created_before — Created before
+  - has_complete_profile — User has complete profile for the offering
+  - has_consent — User Has Consent
+  - is_restricted — Is restricted
+  - modified — Modified after
+  - modified_before — Modified before
+  - o — Ordering
+  - offering
+  - offering_has_active_tos — Offering has active Terms of Service
+  - offering_slug — Multiple values may be separated by commas.
+  - offering_uuid — Multiple values may be separated by commas.
+  - parent_offering_uuid
+  - provider_uuid — Provider UUID
+  - query — Search by offering name, username, user name, UID or primary GID
+  - runtime_state — Offering user runtime state
+  - state — Offering user state
+  - user_username — User username
+  - user_uuid (required)
 
 ### marketplace_offering_users_profile_field_warnings_retrieve
 GET /api/marketplace-offering-users/profile_field_warnings/
@@ -7593,6 +7645,60 @@ Description: Get checklist completion status.
 Path parameters:
   - uuid
 
+### marketplace_offering_users_posix_allocations_list
+GET /api/marketplace-offering-users/{uuid}/posix_allocations/
+Summary: List POSIX UID/GID allocations of an offering user
+Description: Returns the user's POSIX identifiers (UID, primary GID) and, for each, the POSIX ID pool that tracks it. The pool fields are null when the value is not tracked by a pool.
+Path parameters:
+  - uuid
+Query parameters (19):
+  - created — Created after
+  - created_before — Created before
+  - has_complete_profile — User has complete profile for the offering
+  - has_consent — User Has Consent
+  - is_restricted — Is restricted
+  - modified — Modified after
+  - modified_before — Modified before
+  - o — Ordering
+  - offering
+  - offering_has_active_tos — Offering has active Terms of Service
+  - offering_slug — Multiple values may be separated by commas.
+  - offering_uuid — Multiple values may be separated by commas.
+  - parent_offering_uuid
+  - provider_uuid — Provider UUID
+  - query — Search by offering name, username, user name, UID or primary GID
+  - runtime_state — Offering user runtime state
+  - state — Offering user state
+  - user_username — User username
+  - user_uuid — User UUID
+
+### marketplace_offering_users_posix_groups_list
+GET /api/marketplace-offering-users/{uuid}/posix_groups/
+Summary: List project group GIDs an offering user belongs to
+Description: Returns the project group GIDs (shared GIDs that appear in the user's GLAuth otherGroups) for this offering user.
+Path parameters:
+  - uuid
+Query parameters (19):
+  - created — Created after
+  - created_before — Created before
+  - has_complete_profile — User has complete profile for the offering
+  - has_consent — User Has Consent
+  - is_restricted — Is restricted
+  - modified — Modified after
+  - modified_before — Modified before
+  - o — Ordering
+  - offering
+  - offering_has_active_tos — Offering has active Terms of Service
+  - offering_slug — Multiple values may be separated by commas.
+  - offering_uuid — Multiple values may be separated by commas.
+  - parent_offering_uuid
+  - provider_uuid — Provider UUID
+  - query — Search by offering name, username, user name, UID or primary GID
+  - runtime_state — Offering user runtime state
+  - state — Offering user state
+  - user_username — User username
+  - user_uuid — User UUID
+
 ### marketplace_offering_users_request_deletion
 POST /api/marketplace-offering-users/{uuid}/request_deletion/
 Summary: Request deletion of an offering user
@@ -7647,6 +7753,14 @@ Request body: yes
 POST /api/marketplace-offering-users/{uuid}/set_pending_additional_validation/
 Summary: Set state to Pending Additional Validation
 Description: Transitions the state to 'Pending Additional Validation' and allows a service provider to add a comment and a URL for the user to follow.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_offering_users_set_posix_attributes
+POST /api/marketplace-offering-users/{uuid}/set_posix_attributes/
+Summary: Set POSIX attributes for an offering user
+Description: Override the login shell, home directory, UID and/or primary GID for a single offering user, taking precedence over the offering-level defaults / the range allocator. UID and primary GID re-point the allocation ledger; values outside every active range are accepted but reported in the response 'w...
 Path parameters:
   - uuid
 Request body: yes
@@ -8127,6 +8241,86 @@ Description: Returns a list of all registered marketplace plugins (offering type
         - `compon...
 
 ============================================================
+## marketplace-posix-id-pools  (module: waldur_api_client.api.marketplace_posix_id_pools)
+============================================================
+
+### marketplace_posix_id_pools_list
+GET /api/marketplace-posix-id-pools/
+Query parameters (4):
+  - customer_uuid — Customer UUID
+  - field
+  - offering_uuid — Offering UUID
+  - service_provider_uuid — Service provider UUID
+
+### marketplace_posix_id_pools_count
+HEAD /api/marketplace-posix-id-pools/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - customer_uuid — Customer UUID
+  - offering_uuid — Offering UUID
+  - service_provider_uuid — Service provider UUID
+
+### marketplace_posix_id_pools_create
+POST /api/marketplace-posix-id-pools/
+Request body: yes
+
+### marketplace_posix_id_pools_retrieve
+GET /api/marketplace-posix-id-pools/{uuid}/
+Path parameters:
+  - uuid
+Query parameters (1):
+  - field
+
+### marketplace_posix_id_pools_update
+PUT /api/marketplace-posix-id-pools/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_posix_id_pools_partial_update
+PATCH /api/marketplace-posix-id-pools/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_posix_id_pools_destroy
+DELETE /api/marketplace-posix-id-pools/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_posix_id_pools_stats_retrieve
+GET /api/marketplace-posix-id-pools/{uuid}/stats/
+Summary: Pool utilization statistics
+Path parameters:
+  - uuid
+
+============================================================
+## marketplace-posix-identities  (module: waldur_api_client.api.marketplace_posix_identities)
+============================================================
+
+### marketplace_posix_identities_list
+GET /api/marketplace-posix-identities/
+Query parameters (3):
+  - is_released
+  - offering_uuid — Offering UUID
+  - pool_uuid — POSIX ID pool UUID
+
+### marketplace_posix_identities_count
+HEAD /api/marketplace-posix-identities/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - is_released
+  - offering_uuid — Offering UUID
+  - pool_uuid — POSIX ID pool UUID
+
+### marketplace_posix_identities_retrieve
+GET /api/marketplace-posix-identities/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
 ## marketplace-project-estimated-cost-policies  (module: waldur_api_client.api.marketplace_project_estimated_cost_policies)
 ============================================================
 
@@ -8233,6 +8427,24 @@ Request body: yes
 DELETE /api/marketplace-project-order-auto-approvals/{uuid}/
 Path parameters:
   - uuid
+
+============================================================
+## marketplace-project-posix-groups  (module: waldur_api_client.api.marketplace_project_posix_groups)
+============================================================
+
+### marketplace_project_posix_groups_list
+GET /api/marketplace-project-posix-groups/
+Summary: List POSIX group GIDs assigned to a project
+Description: Returns every POSIX group GID a project has been assigned, across all offerings: project-mapped groups (project_group_gid) and resource / resource-project role groups (role_group_gid). The project_uuid query parameter is required.
+Query parameters (1):
+  - project_uuid (required)
+
+### marketplace_project_posix_groups_count
+HEAD /api/marketplace-project-posix-groups/
+Summary: List POSIX group GIDs assigned to a project
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (1):
+  - project_uuid (required)
 
 ============================================================
 ## marketplace-project-service-accounts  (module: waldur_api_client.api.marketplace_project_service_accounts)
@@ -8855,6 +9067,15 @@ Summary: Move an offering to draft
 Description: Moves an active or paused offering back to the draft state for editing.
 Path parameters:
   - uuid
+
+### marketplace_provider_offerings_effective_posix_id_pool_retrieve
+GET /api/marketplace-provider-offerings/{uuid}/effective_posix_id_pool/
+Summary: Effective POSIX ID pool
+Description: The POSIX ID pool that governs this offering: its own override pool if present, otherwise the service provider's default pool. Returns null when no pool is configured.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - field
 
 ### marketplace_provider_offerings_export_offering
 POST /api/marketplace-provider-offerings/{uuid}/export_offering/
@@ -19461,7 +19682,7 @@ Path parameters:
 GET /api/public-maintenance-announcements/
 Summary: List public maintenance announcements
 Description: Returns a paginated list of public maintenance announcements. Only announcements that are 'Scheduled', 'In progress', or 'Completed' are visible. This endpoint is accessible to unauthenticated users.
-Query parameters (8):
+Query parameters (9):
   - maintenance_type — Maintenance type
   - o — Ordering
   - scheduled_end_after — Scheduled end after
@@ -19470,12 +19691,13 @@ Query parameters (8):
   - scheduled_start_before — Scheduled start before
   - service_provider_uuid — Service provider UUID
   - state — Maintenance state
+  - timing_bucket — Timing bucket (comma-separated: on_time, late_start, overrun, early, pending)
 
 ### public_maintenance_announcements_count
 HEAD /api/public-maintenance-announcements/
 Summary: List public maintenance announcements
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (8):
+Query parameters (9):
   - maintenance_type — Maintenance type
   - o — Ordering
   - scheduled_end_after — Scheduled end after
@@ -19484,6 +19706,7 @@ Query parameters (8):
   - scheduled_start_before — Scheduled start before
   - service_provider_uuid — Service provider UUID
   - state — Maintenance state
+  - timing_bucket — Timing bucket (comma-separated: on_time, late_start, overrun, early, pending)
 
 ### public_maintenance_announcements_retrieve
 GET /api/public-maintenance-announcements/{uuid}/

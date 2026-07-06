@@ -48,6 +48,8 @@ class OfferingUserAttributeConfig:
         expose_civil_number (Union[Unset, bool]):
         expose_birth_date (Union[Unset, bool]):
         expose_active_isds (Union[Unset, bool]):
+        expose_uid_number (Union[Unset, bool]):
+        expose_primary_gid (Union[Unset, bool]):
     """
 
     uuid: UUID
@@ -82,6 +84,8 @@ class OfferingUserAttributeConfig:
     expose_civil_number: Union[Unset, bool] = UNSET
     expose_birth_date: Union[Unset, bool] = UNSET
     expose_active_isds: Union[Unset, bool] = UNSET
+    expose_uid_number: Union[Unset, bool] = UNSET
+    expose_primary_gid: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -149,6 +153,10 @@ class OfferingUserAttributeConfig:
 
         expose_active_isds = self.expose_active_isds
 
+        expose_uid_number = self.expose_uid_number
+
+        expose_primary_gid = self.expose_primary_gid
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -212,6 +220,10 @@ class OfferingUserAttributeConfig:
             field_dict["expose_birth_date"] = expose_birth_date
         if expose_active_isds is not UNSET:
             field_dict["expose_active_isds"] = expose_active_isds
+        if expose_uid_number is not UNSET:
+            field_dict["expose_uid_number"] = expose_uid_number
+        if expose_primary_gid is not UNSET:
+            field_dict["expose_primary_gid"] = expose_primary_gid
 
         return field_dict
 
@@ -282,6 +294,10 @@ class OfferingUserAttributeConfig:
 
         expose_active_isds = d.pop("expose_active_isds", UNSET)
 
+        expose_uid_number = d.pop("expose_uid_number", UNSET)
+
+        expose_primary_gid = d.pop("expose_primary_gid", UNSET)
+
         offering_user_attribute_config = cls(
             uuid=uuid,
             created=created,
@@ -315,6 +331,8 @@ class OfferingUserAttributeConfig:
             expose_civil_number=expose_civil_number,
             expose_birth_date=expose_birth_date,
             expose_active_isds=expose_active_isds,
+            expose_uid_number=expose_uid_number,
+            expose_primary_gid=expose_primary_gid,
         )
 
         offering_user_attribute_config.additional_properties = d

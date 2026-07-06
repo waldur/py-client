@@ -1335,6 +1335,10 @@ from .offering_user_attribute_config_request import OfferingUserAttributeConfigR
 from .offering_user_consent_data_type_0 import OfferingUserConsentDataType0
 from .offering_user_field_enum import OfferingUserFieldEnum
 from .offering_user_o_enum import OfferingUserOEnum
+from .offering_user_posix_allocation import OfferingUserPosixAllocation
+from .offering_user_posix_attributes_request import OfferingUserPosixAttributesRequest
+from .offering_user_posix_group import OfferingUserPosixGroup
+from .offering_user_posix_update_response import OfferingUserPosixUpdateResponse
 from .offering_user_request import OfferingUserRequest
 from .offering_user_service_provider_comment import OfferingUserServiceProviderComment
 from .offering_user_state import OfferingUserState
@@ -1742,6 +1746,7 @@ from .patched_payment_profile_request import PatchedPaymentProfileRequest
 from .patched_payment_request import PatchedPaymentRequest
 from .patched_payment_request_form import PatchedPaymentRequestForm
 from .patched_payment_request_multipart import PatchedPaymentRequestMultipart
+from .patched_posix_id_pool_request import PatchedPosixIdPoolRequest
 from .patched_project_credit_request import PatchedProjectCreditRequest
 from .patched_project_digest_config_request import PatchedProjectDigestConfigRequest
 from .patched_project_estimated_cost_policy_request import PatchedProjectEstimatedCostPolicyRequest
@@ -1900,6 +1905,13 @@ from .plugin_offering_type import PluginOfferingType
 from .policy_enum import PolicyEnum
 from .policy_period_enum import PolicyPeriodEnum
 from .policy_type_enum import PolicyTypeEnum
+from .posix_id_pool import PosixIdPool
+from .posix_id_pool_field_enum import PosixIdPoolFieldEnum
+from .posix_id_pool_namespace_stats import PosixIdPoolNamespaceStats
+from .posix_id_pool_request import PosixIdPoolRequest
+from .posix_id_pool_stats import PosixIdPoolStats
+from .posix_id_source_enum import PosixIdSourceEnum
+from .posix_identity import PosixIdentity
 from .preset_enum import PresetEnum
 from .preview_period import PreviewPeriod
 from .preview_service_attributes_request_request import PreviewServiceAttributesRequestRequest
@@ -1948,6 +1960,8 @@ from .project_order_auto_approval_request import ProjectOrderAutoApprovalRequest
 from .project_permission_log import ProjectPermissionLog
 from .project_permission_log_field_enum import ProjectPermissionLogFieldEnum
 from .project_permission_review import ProjectPermissionReview
+from .project_posix_group import ProjectPosixGroup
+from .project_posix_group_kind_enum import ProjectPosixGroupKindEnum
 from .project_quotas import ProjectQuotas
 from .project_recovery_request import ProjectRecoveryRequest
 from .project_request import ProjectRequest
@@ -2700,6 +2714,7 @@ from .thread_session_o_enum import ThreadSessionOEnum
 from .thread_session_request import ThreadSessionRequest
 from .thread_session_scope_enum import ThreadSessionScopeEnum
 from .time_series_to_s_data import TimeSeriesToSData
+from .timing_bucket_enum import TimingBucketEnum
 from .to_s_consent_dashboard import ToSConsentDashboard
 from .token_exchange_request import TokenExchangeRequest
 from .token_quota_usage_response import TokenQuotaUsageResponse
@@ -2783,6 +2798,7 @@ from .user_offering_consent_o_enum import UserOfferingConsentOEnum
 from .user_offering_consent_request import UserOfferingConsentRequest
 from .user_organization_count import UserOrganizationCount
 from .user_organization_type_count import UserOrganizationTypeCount
+from .user_posix_identity import UserPosixIdentity
 from .user_registration_trend import UserRegistrationTrend
 from .user_request import UserRequest
 from .user_request_form import UserRequestForm
@@ -4159,6 +4175,10 @@ __all__ = (
     "OfferingUserConsentDataType0",
     "OfferingUserFieldEnum",
     "OfferingUserOEnum",
+    "OfferingUserPosixAllocation",
+    "OfferingUserPosixAttributesRequest",
+    "OfferingUserPosixGroup",
+    "OfferingUserPosixUpdateResponse",
     "OfferingUserRequest",
     "OfferingUserServiceProviderComment",
     "OfferingUserState",
@@ -4522,6 +4542,7 @@ __all__ = (
     "PatchedPaymentRequest",
     "PatchedPaymentRequestForm",
     "PatchedPaymentRequestMultipart",
+    "PatchedPosixIdPoolRequest",
     "PatchedProjectCreditRequest",
     "PatchedProjectDigestConfigRequest",
     "PatchedProjectEstimatedCostPolicyRequest",
@@ -4664,6 +4685,13 @@ __all__ = (
     "PolicyEnum",
     "PolicyPeriodEnum",
     "PolicyTypeEnum",
+    "PosixIdentity",
+    "PosixIdPool",
+    "PosixIdPoolFieldEnum",
+    "PosixIdPoolNamespaceStats",
+    "PosixIdPoolRequest",
+    "PosixIdPoolStats",
+    "PosixIdSourceEnum",
     "PresetEnum",
     "PreviewPeriod",
     "PreviewServiceAttributesRequestRequest",
@@ -4712,6 +4740,8 @@ __all__ = (
     "ProjectPermissionLog",
     "ProjectPermissionLogFieldEnum",
     "ProjectPermissionReview",
+    "ProjectPosixGroup",
+    "ProjectPosixGroupKindEnum",
     "ProjectQuotas",
     "ProjectRecoveryRequest",
     "ProjectRequest",
@@ -5438,6 +5468,7 @@ __all__ = (
     "ThreadSessionRequest",
     "ThreadSessionScopeEnum",
     "TimeSeriesToSData",
+    "TimingBucketEnum",
     "TokenExchangeRequest",
     "TokenQuotaUsageResponse",
     "TokenRequest",
@@ -5522,6 +5553,7 @@ __all__ = (
     "UserOfferingConsentRequest",
     "UserOrganizationCount",
     "UserOrganizationTypeCount",
+    "UserPosixIdentity",
     "UserRegistrationTrend",
     "UserRequest",
     "UserRequestForm",

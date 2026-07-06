@@ -14,6 +14,7 @@ class ProviderOfferingFieldEnum(str, Enum):
     RESOURCES_COUNT = "resources_count"
     RESOURCE_OPTIONS = "resource_options"
     SECRET_OPTIONS = "secret_options"
+    SERVICE_PROVIDER_CAN_CREATE_OFFERING_USER = "service_provider_can_create_offering_user"
     SLUG = "slug"
     STATE = "state"
     THUMBNAIL = "thumbnail"

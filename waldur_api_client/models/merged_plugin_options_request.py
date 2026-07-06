@@ -7,6 +7,7 @@ from attrs import field as _attrs_field
 from ..models.account_name_generation_policy_enum import AccountNameGenerationPolicyEnum
 from ..models.billing_source_enum import BillingSourceEnum
 from ..models.deployment_mode_enum import DeploymentModeEnum
+from ..models.posix_id_source_enum import PosixIdSourceEnum
 from ..models.storage_mode_enum import StorageModeEnum
 from ..models.username_generation_policy_enum import UsernameGenerationPolicyEnum
 from ..types import UNSET, Unset
@@ -112,12 +113,8 @@ class MergedPluginOptionsRequest:
         homedir_prefix (Union[Unset, str]): GLAuth homedir prefix Default: '/home/'.
         scratch_project_directory (Union[Unset, str]): HEAppE scratch project directory
         project_permanent_directory (Union[Unset, str]): HEAppE project permanent directory
-        initial_primarygroup_number (Union[Unset, int]): GLAuth initial primary group number Default: 5000.
-        initial_uidnumber (Union[Unset, int]): GLAuth initial uidnumber Default: 5000.
-        initial_usergroup_number (Union[Unset, int]): GLAuth initial usergroup number Default: 6000.
-        initial_rolegroup_number (Union[Unset, int]): GLAuth initial gid for role-aware groups (one per
-            (resource|resource-project, role) tuple). Must leave at least 50000 gids of headroom above
-            initial_usergroup_number to avoid collisions. Default: 60000.
+        enable_posix_account (Union[Unset, bool]): Manage a POSIX/LDAP account (UID, GID, home directory, login shell
+            and GLAuth exposure) for this offering's users. Disable for offerings that only need a username. Default: True.
         resource_role_map (Union[Unset, MergedPluginOptionsRequestResourceRoleMap]): Mapping of Waldur role names (on
             Resource scope) to emitted role tokens used in group name rendering. Roles outside the map are skipped. Example:
             {"PI": "admin", "Member": "member"}.
@@ -132,6 +129,13 @@ class MergedPluginOptionsRequest:
         username_anonymized_prefix (Union[Unset, str]): GLAuth prefix for anonymized usernames Default: 'waldur_'.
         username_generation_policy (Union[Unset, UsernameGenerationPolicyEnum]):  Default:
             UsernameGenerationPolicyEnum.SERVICE_PROVIDER.
+        login_shell (Union[Unset, str]): Default login shell assigned to GLAuth/LDAP accounts. Default: '/bin/bash'.
+        uid_source (Union[Unset, PosixIdSourceEnum]):  Default: PosixIdSourceEnum.POOL.
+        gid_source (Union[Unset, PosixIdSourceEnum]):  Default: PosixIdSourceEnum.POOL.
+        emit_display_name (Union[Unset, bool]): Emit the user's full name as a GLAuth displayName custom attribute
+            (rendered to LDAP displayName). Default: False.
+        emit_waldur_username (Union[Unset, bool]): Emit the Waldur username as a GLAuth waldurUsername custom attribute,
+            alongside the generated POSIX login name. Default: False.
         enable_issues_for_membership_changes (Union[Unset, bool]): Enable issues for membership changes
         deployment_mode (Union[Unset, DeploymentModeEnum]):
         flavors_regex (Union[Unset, str]): Regular expression to limit flavors list
@@ -232,10 +236,7 @@ class MergedPluginOptionsRequest:
     homedir_prefix: Union[Unset, str] = "/home/"
     scratch_project_directory: Union[Unset, str] = UNSET
     project_permanent_directory: Union[Unset, str] = UNSET
-    initial_primarygroup_number: Union[Unset, int] = 5000
-    initial_uidnumber: Union[Unset, int] = 5000
-    initial_usergroup_number: Union[Unset, int] = 6000
-    initial_rolegroup_number: Union[Unset, int] = 60000
+    enable_posix_account: Union[Unset, bool] = True
     resource_role_map: Union[Unset, "MergedPluginOptionsRequestResourceRoleMap"] = UNSET
     resource_project_role_map: Union[Unset, "MergedPluginOptionsRequestResourceProjectRoleMap"] = UNSET
     resource_role_group_template: Union[Unset, str] = "${resource_slug}_${role_name}"
@@ -244,6 +245,11 @@ class MergedPluginOptionsRequest:
     username_generation_policy: Union[Unset, UsernameGenerationPolicyEnum] = (
         UsernameGenerationPolicyEnum.SERVICE_PROVIDER
     )
+    login_shell: Union[Unset, str] = "/bin/bash"
+    uid_source: Union[Unset, PosixIdSourceEnum] = PosixIdSourceEnum.POOL
+    gid_source: Union[Unset, PosixIdSourceEnum] = PosixIdSourceEnum.POOL
+    emit_display_name: Union[Unset, bool] = False
+    emit_waldur_username: Union[Unset, bool] = False
     enable_issues_for_membership_changes: Union[Unset, bool] = UNSET
     deployment_mode: Union[Unset, DeploymentModeEnum] = UNSET
     flavors_regex: Union[Unset, str] = UNSET
@@ -397,13 +403,7 @@ class MergedPluginOptionsRequest:
 
         project_permanent_directory = self.project_permanent_directory
 
-        initial_primarygroup_number = self.initial_primarygroup_number
-
-        initial_uidnumber = self.initial_uidnumber
-
-        initial_usergroup_number = self.initial_usergroup_number
-
-        initial_rolegroup_number = self.initial_rolegroup_number
+        enable_posix_account = self.enable_posix_account
 
         resource_role_map: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.resource_role_map, Unset):
@@ -422,6 +422,20 @@ class MergedPluginOptionsRequest:
         username_generation_policy: Union[Unset, str] = UNSET
         if not isinstance(self.username_generation_policy, Unset):
             username_generation_policy = self.username_generation_policy.value
+
+        login_shell = self.login_shell
+
+        uid_source: Union[Unset, str] = UNSET
+        if not isinstance(self.uid_source, Unset):
+            uid_source = self.uid_source.value
+
+        gid_source: Union[Unset, str] = UNSET
+        if not isinstance(self.gid_source, Unset):
+            gid_source = self.gid_source.value
+
+        emit_display_name = self.emit_display_name
+
+        emit_waldur_username = self.emit_waldur_username
 
         enable_issues_for_membership_changes = self.enable_issues_for_membership_changes
 
@@ -594,14 +608,8 @@ class MergedPluginOptionsRequest:
             field_dict["scratch_project_directory"] = scratch_project_directory
         if project_permanent_directory is not UNSET:
             field_dict["project_permanent_directory"] = project_permanent_directory
-        if initial_primarygroup_number is not UNSET:
-            field_dict["initial_primarygroup_number"] = initial_primarygroup_number
-        if initial_uidnumber is not UNSET:
-            field_dict["initial_uidnumber"] = initial_uidnumber
-        if initial_usergroup_number is not UNSET:
-            field_dict["initial_usergroup_number"] = initial_usergroup_number
-        if initial_rolegroup_number is not UNSET:
-            field_dict["initial_rolegroup_number"] = initial_rolegroup_number
+        if enable_posix_account is not UNSET:
+            field_dict["enable_posix_account"] = enable_posix_account
         if resource_role_map is not UNSET:
             field_dict["resource_role_map"] = resource_role_map
         if resource_project_role_map is not UNSET:
@@ -614,6 +622,16 @@ class MergedPluginOptionsRequest:
             field_dict["username_anonymized_prefix"] = username_anonymized_prefix
         if username_generation_policy is not UNSET:
             field_dict["username_generation_policy"] = username_generation_policy
+        if login_shell is not UNSET:
+            field_dict["login_shell"] = login_shell
+        if uid_source is not UNSET:
+            field_dict["uid_source"] = uid_source
+        if gid_source is not UNSET:
+            field_dict["gid_source"] = gid_source
+        if emit_display_name is not UNSET:
+            field_dict["emit_display_name"] = emit_display_name
+        if emit_waldur_username is not UNSET:
+            field_dict["emit_waldur_username"] = emit_waldur_username
         if enable_issues_for_membership_changes is not UNSET:
             field_dict["enable_issues_for_membership_changes"] = enable_issues_for_membership_changes
         if deployment_mode is not UNSET:
@@ -833,13 +851,7 @@ class MergedPluginOptionsRequest:
 
         project_permanent_directory = d.pop("project_permanent_directory", UNSET)
 
-        initial_primarygroup_number = d.pop("initial_primarygroup_number", UNSET)
-
-        initial_uidnumber = d.pop("initial_uidnumber", UNSET)
-
-        initial_usergroup_number = d.pop("initial_usergroup_number", UNSET)
-
-        initial_rolegroup_number = d.pop("initial_rolegroup_number", UNSET)
+        enable_posix_account = d.pop("enable_posix_account", UNSET)
 
         _resource_role_map = d.pop("resource_role_map", UNSET)
         resource_role_map: Union[Unset, MergedPluginOptionsRequestResourceRoleMap]
@@ -869,6 +881,26 @@ class MergedPluginOptionsRequest:
             username_generation_policy = UNSET
         else:
             username_generation_policy = UsernameGenerationPolicyEnum(_username_generation_policy)
+
+        login_shell = d.pop("login_shell", UNSET)
+
+        _uid_source = d.pop("uid_source", UNSET)
+        uid_source: Union[Unset, PosixIdSourceEnum]
+        if isinstance(_uid_source, Unset):
+            uid_source = UNSET
+        else:
+            uid_source = PosixIdSourceEnum(_uid_source)
+
+        _gid_source = d.pop("gid_source", UNSET)
+        gid_source: Union[Unset, PosixIdSourceEnum]
+        if isinstance(_gid_source, Unset):
+            gid_source = UNSET
+        else:
+            gid_source = PosixIdSourceEnum(_gid_source)
+
+        emit_display_name = d.pop("emit_display_name", UNSET)
+
+        emit_waldur_username = d.pop("emit_waldur_username", UNSET)
 
         enable_issues_for_membership_changes = d.pop("enable_issues_for_membership_changes", UNSET)
 
@@ -1008,16 +1040,18 @@ class MergedPluginOptionsRequest:
             homedir_prefix=homedir_prefix,
             scratch_project_directory=scratch_project_directory,
             project_permanent_directory=project_permanent_directory,
-            initial_primarygroup_number=initial_primarygroup_number,
-            initial_uidnumber=initial_uidnumber,
-            initial_usergroup_number=initial_usergroup_number,
-            initial_rolegroup_number=initial_rolegroup_number,
+            enable_posix_account=enable_posix_account,
             resource_role_map=resource_role_map,
             resource_project_role_map=resource_project_role_map,
             resource_role_group_template=resource_role_group_template,
             resource_project_role_group_template=resource_project_role_group_template,
             username_anonymized_prefix=username_anonymized_prefix,
             username_generation_policy=username_generation_policy,
+            login_shell=login_shell,
+            uid_source=uid_source,
+            gid_source=gid_source,
+            emit_display_name=emit_display_name,
+            emit_waldur_username=emit_waldur_username,
             enable_issues_for_membership_changes=enable_issues_for_membership_changes,
             deployment_mode=deployment_mode,
             flavors_regex=flavors_regex,

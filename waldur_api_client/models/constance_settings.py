@@ -314,6 +314,7 @@ class ConstanceSettings:
         ssh_key_allowed_types (Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]]):
         ssh_key_min_rsa_key_size (Union[Unset, int]):
         enabled_reporting_screens (Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]]):
+        posix_id_pool_utilization_threshold (Union[Unset, int]):
         affiliates_enabled (Union[Unset, bool]):
         matrix_enabled (Union[Unset, bool]):
         matrix_homeserver_url (Union[Unset, str]):
@@ -615,6 +616,7 @@ class ConstanceSettings:
     ssh_key_allowed_types: Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]] = UNSET
     ssh_key_min_rsa_key_size: Union[Unset, int] = UNSET
     enabled_reporting_screens: Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]] = UNSET
+    posix_id_pool_utilization_threshold: Union[Unset, int] = UNSET
     affiliates_enabled: Union[Unset, bool] = UNSET
     matrix_enabled: Union[Unset, bool] = UNSET
     matrix_homeserver_url: Union[Unset, str] = UNSET
@@ -1411,6 +1413,8 @@ class ConstanceSettings:
 
                 enabled_reporting_screens.append(enabled_reporting_screens_item)
 
+        posix_id_pool_utilization_threshold = self.posix_id_pool_utilization_threshold
+
         affiliates_enabled = self.affiliates_enabled
 
         matrix_enabled = self.matrix_enabled
@@ -2024,6 +2028,8 @@ class ConstanceSettings:
             field_dict["SSH_KEY_MIN_RSA_KEY_SIZE"] = ssh_key_min_rsa_key_size
         if enabled_reporting_screens is not UNSET:
             field_dict["ENABLED_REPORTING_SCREENS"] = enabled_reporting_screens
+        if posix_id_pool_utilization_threshold is not UNSET:
+            field_dict["POSIX_ID_POOL_UTILIZATION_THRESHOLD"] = posix_id_pool_utilization_threshold
         if affiliates_enabled is not UNSET:
             field_dict["AFFILIATES_ENABLED"] = affiliates_enabled
         if matrix_enabled is not UNSET:
@@ -3073,6 +3079,8 @@ class ConstanceSettings:
 
             enabled_reporting_screens.append(enabled_reporting_screens_item)
 
+        posix_id_pool_utilization_threshold = d.pop("POSIX_ID_POOL_UTILIZATION_THRESHOLD", UNSET)
+
         affiliates_enabled = d.pop("AFFILIATES_ENABLED", UNSET)
 
         matrix_enabled = d.pop("MATRIX_ENABLED", UNSET)
@@ -3394,6 +3402,7 @@ class ConstanceSettings:
             ssh_key_allowed_types=ssh_key_allowed_types,
             ssh_key_min_rsa_key_size=ssh_key_min_rsa_key_size,
             enabled_reporting_screens=enabled_reporting_screens,
+            posix_id_pool_utilization_threshold=posix_id_pool_utilization_threshold,
             affiliates_enabled=affiliates_enabled,
             matrix_enabled=matrix_enabled,
             matrix_homeserver_url=matrix_homeserver_url,

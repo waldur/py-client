@@ -1044,8 +1044,8 @@ Module: `waldur_api_client.api.maintenance_announcement_template_offerings`
 ## maintenance-announcements
 Module: `waldur_api_client.api.maintenance_announcements`
 
-- `maintenance_announcements_list` GET `/api/maintenance-announcements/` — List maintenance announcements (8 query params)
-- `maintenance_announcements_count` HEAD `/api/maintenance-announcements/` — List maintenance announcements (8 query params)
+- `maintenance_announcements_list` GET `/api/maintenance-announcements/` — List maintenance announcements (9 query params)
+- `maintenance_announcements_count` HEAD `/api/maintenance-announcements/` — List maintenance announcements (9 query params)
 - `maintenance_announcements_create` POST `/api/maintenance-announcements/` — Create a maintenance announcement (request body)
 - `maintenance_announcements_maintenance_stats_retrieve` GET `/api/maintenance-announcements/maintenance_stats/` — Get maintenance announcement statistics (3 query params)
 - `maintenance_announcements_maintenance_stats_count` HEAD `/api/maintenance-announcements/maintenance_stats/` — Get maintenance announcement statistics (3 query params)
@@ -1397,6 +1397,8 @@ Module: `waldur_api_client.api.marketplace_offering_users`
 - `marketplace_offering_users_create` POST `/api/marketplace-offering-users/` — Create an offering user (request body)
 - `marketplace_offering_users_checklist_template_retrieve` GET `/api/marketplace-offering-users/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `marketplace_offering_users_checklist_template_count` HEAD `/api/marketplace-offering-users/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
+- `marketplace_offering_users_posix_identities_list` GET `/api/marketplace-offering-users/posix_identities/` — List a user's POSIX identities across all their offerings (19 query params)
+- `marketplace_offering_users_posix_identities_count` HEAD `/api/marketplace-offering-users/posix_identities/` — List a user's POSIX identities across all their offerings (19 query params)
 - `marketplace_offering_users_profile_field_warnings_retrieve` GET `/api/marketplace-offering-users/profile_field_warnings/` — Get profile field warnings (no params)
 - `marketplace_offering_users_profile_field_warnings_count` HEAD `/api/marketplace-offering-users/profile_field_warnings/` — Get profile field warnings (no params)
 - `marketplace_offering_users_retrieve` GET `/api/marketplace-offering-users/{uuid}/` — Retrieve an offering user (path: uuid | 1 query param)
@@ -1408,6 +1410,8 @@ Module: `waldur_api_client.api.marketplace_offering_users`
 - `marketplace_offering_users_checklist_review_retrieve` GET `/api/marketplace-offering-users/{uuid}/checklist_review/` — Get checklist with questions and existing answers including review logic (reviewers only) (path: uuid)
 - `marketplace_offering_users_completion_review_status_retrieve` GET `/api/marketplace-offering-users/{uuid}/completion_review_status/` — Get checklist completion status with review triggers (reviewers only) (path: uuid)
 - `marketplace_offering_users_completion_status_retrieve` GET `/api/marketplace-offering-users/{uuid}/completion_status/` — Get checklist completion status (path: uuid)
+- `marketplace_offering_users_posix_allocations_list` GET `/api/marketplace-offering-users/{uuid}/posix_allocations/` — List POSIX UID/GID allocations of an offering user (path: uuid | 19 query params)
+- `marketplace_offering_users_posix_groups_list` GET `/api/marketplace-offering-users/{uuid}/posix_groups/` — List project group GIDs an offering user belongs to (path: uuid | 19 query params)
 - `marketplace_offering_users_request_deletion` POST `/api/marketplace-offering-users/{uuid}/request_deletion/` — Request deletion of an offering user (path: uuid)
 - `marketplace_offering_users_set_deleted` POST `/api/marketplace-offering-users/{uuid}/set_deleted/` — Set state to Deleted (path: uuid)
 - `marketplace_offering_users_set_deleting` POST `/api/marketplace-offering-users/{uuid}/set_deleting/` — Begin deletion process (path: uuid)
@@ -1416,6 +1420,7 @@ Module: `waldur_api_client.api.marketplace_offering_users`
 - `marketplace_offering_users_set_ok` POST `/api/marketplace-offering-users/{uuid}/set_ok/` — Set state to OK (path: uuid)
 - `marketplace_offering_users_set_pending_account_linking` POST `/api/marketplace-offering-users/{uuid}/set_pending_account_linking/` — Set state to Pending Account Linking (path: uuid | request body)
 - `marketplace_offering_users_set_pending_additional_validation` POST `/api/marketplace-offering-users/{uuid}/set_pending_additional_validation/` — Set state to Pending Additional Validation (path: uuid | request body)
+- `marketplace_offering_users_set_posix_attributes` POST `/api/marketplace-offering-users/{uuid}/set_posix_attributes/` — Set POSIX attributes for an offering user (path: uuid | request body)
 - `marketplace_offering_users_set_validation_complete` POST `/api/marketplace-offering-users/{uuid}/set_validation_complete/` — Set state to Validation Complete (path: uuid)
 - `marketplace_offering_users_submit_answers` POST `/api/marketplace-offering-users/{uuid}/submit_answers/` — Submit checklist answers (path: uuid | request body)
 - `marketplace_offering_users_update_comments_partial_update` PATCH `/api/marketplace-offering-users/{uuid}/update_comments/` — Update service provider comments (path: uuid | request body)
@@ -1483,6 +1488,25 @@ Module: `waldur_api_client.api.marketplace_plugins`
 
 - `marketplace_plugins_list` GET `/api/marketplace-plugins/` — List available marketplace plugins and their components (no params)
 
+## marketplace-posix-id-pools
+Module: `waldur_api_client.api.marketplace_posix_id_pools`
+
+- `marketplace_posix_id_pools_list` GET `/api/marketplace-posix-id-pools/` (4 query params)
+- `marketplace_posix_id_pools_count` HEAD `/api/marketplace-posix-id-pools/` — Get number of items in the collection matching the request parameters (3 query params)
+- `marketplace_posix_id_pools_create` POST `/api/marketplace-posix-id-pools/` (request body)
+- `marketplace_posix_id_pools_retrieve` GET `/api/marketplace-posix-id-pools/{uuid}/` (path: uuid | 1 query param)
+- `marketplace_posix_id_pools_update` PUT `/api/marketplace-posix-id-pools/{uuid}/` (path: uuid | request body)
+- `marketplace_posix_id_pools_partial_update` PATCH `/api/marketplace-posix-id-pools/{uuid}/` (path: uuid | request body)
+- `marketplace_posix_id_pools_destroy` DELETE `/api/marketplace-posix-id-pools/{uuid}/` (path: uuid)
+- `marketplace_posix_id_pools_stats_retrieve` GET `/api/marketplace-posix-id-pools/{uuid}/stats/` — Pool utilization statistics (path: uuid)
+
+## marketplace-posix-identities
+Module: `waldur_api_client.api.marketplace_posix_identities`
+
+- `marketplace_posix_identities_list` GET `/api/marketplace-posix-identities/` (3 query params)
+- `marketplace_posix_identities_count` HEAD `/api/marketplace-posix-identities/` — Get number of items in the collection matching the request parameters (3 query params)
+- `marketplace_posix_identities_retrieve` GET `/api/marketplace-posix-identities/{uuid}/` (path: uuid)
+
 ## marketplace-project-estimated-cost-policies
 Module: `waldur_api_client.api.marketplace_project_estimated_cost_policies`
 
@@ -1506,6 +1530,12 @@ Module: `waldur_api_client.api.marketplace_project_order_auto_approvals`
 - `marketplace_project_order_auto_approvals_update` PUT `/api/marketplace-project-order-auto-approvals/{uuid}/` (path: uuid | request body)
 - `marketplace_project_order_auto_approvals_partial_update` PATCH `/api/marketplace-project-order-auto-approvals/{uuid}/` (path: uuid | request body)
 - `marketplace_project_order_auto_approvals_destroy` DELETE `/api/marketplace-project-order-auto-approvals/{uuid}/` (path: uuid)
+
+## marketplace-project-posix-groups
+Module: `waldur_api_client.api.marketplace_project_posix_groups`
+
+- `marketplace_project_posix_groups_list` GET `/api/marketplace-project-posix-groups/` — List POSIX group GIDs assigned to a project (1 query param)
+- `marketplace_project_posix_groups_count` HEAD `/api/marketplace-project-posix-groups/` — List POSIX group GIDs assigned to a project (1 query param)
 
 ## marketplace-project-service-accounts
 Module: `waldur_api_client.api.marketplace_project_service_accounts`
@@ -1564,6 +1594,7 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_delete_thumbnail` POST `/api/marketplace-provider-offerings/{uuid}/delete_thumbnail/` — Delete offering thumbnail (path: uuid)
 - `marketplace_provider_offerings_delete_user` POST `/api/marketplace-provider-offerings/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `marketplace_provider_offerings_draft` POST `/api/marketplace-provider-offerings/{uuid}/draft/` — Move an offering to draft (path: uuid)
+- `marketplace_provider_offerings_effective_posix_id_pool_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/effective_posix_id_pool/` — Effective POSIX ID pool (path: uuid | 1 query param)
 - `marketplace_provider_offerings_export_offering` POST `/api/marketplace-provider-offerings/{uuid}/export_offering/` — Export offering data (path: uuid | request body)
 - `marketplace_provider_offerings_glauth_tree_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/glauth_tree/` — Get structured GLauth tree for an offering (path: uuid)
 - `marketplace_provider_offerings_glauth_users_config_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/glauth_users_config/` — Get GLauth user configuration (path: uuid)
@@ -3113,8 +3144,8 @@ Module: `waldur_api_client.api.provider_invoice_items`
 ## public-maintenance-announcements
 Module: `waldur_api_client.api.public_maintenance_announcements`
 
-- `public_maintenance_announcements_list` GET `/api/public-maintenance-announcements/` — List public maintenance announcements (8 query params)
-- `public_maintenance_announcements_count` HEAD `/api/public-maintenance-announcements/` — List public maintenance announcements (8 query params)
+- `public_maintenance_announcements_list` GET `/api/public-maintenance-announcements/` — List public maintenance announcements (9 query params)
+- `public_maintenance_announcements_count` HEAD `/api/public-maintenance-announcements/` — List public maintenance announcements (9 query params)
 - `public_maintenance_announcements_retrieve` GET `/api/public-maintenance-announcements/{uuid}/` — Retrieve a public maintenance announcement (path: uuid)
 
 ## query
