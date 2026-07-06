@@ -268,6 +268,7 @@ from .basic_project import BasicProject
 from .basic_user import BasicUser
 from .bid_enum import BidEnum
 from .billing_mode_enum import BillingModeEnum
+from .billing_source_enum import BillingSourceEnum
 from .billing_type_enum import BillingTypeEnum
 from .billing_unit import BillingUnit
 from .blank_enum import BlankEnum
@@ -3125,6 +3126,7 @@ __all__ = (
     "BasicUser",
     "BidEnum",
     "BillingModeEnum",
+    "BillingSourceEnum",
     "BillingTypeEnum",
     "BillingUnit",
     "BlankEnum",

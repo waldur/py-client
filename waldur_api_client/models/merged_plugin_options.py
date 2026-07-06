@@ -5,6 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.account_name_generation_policy_enum import AccountNameGenerationPolicyEnum
+from ..models.billing_source_enum import BillingSourceEnum
 from ..models.deployment_mode_enum import DeploymentModeEnum
 from ..models.storage_mode_enum import StorageModeEnum
 from ..models.username_generation_policy_enum import UsernameGenerationPolicyEnum
@@ -101,6 +102,7 @@ class MergedPluginOptions:
             tenants from this offering.
         usage_poll_interval_minutes (Union[Unset, int]): Interval in minutes between usage polling for this offering
             (default: 60)
+        billing_source (Union[Unset, BillingSourceEnum]):
         heappe_cluster_id (Union[Unset, str]): HEAppE cluster id
         heappe_local_base_path (Union[Unset, str]): HEAppE local base path
         heappe_url (Union[Unset, str]): HEAppE url
@@ -220,6 +222,7 @@ class MergedPluginOptions:
     snapshot_size_limit_gb: Union[Unset, int] = UNSET
     lbaas_enabled: Union[Unset, bool] = UNSET
     usage_poll_interval_minutes: Union[Unset, int] = UNSET
+    billing_source: Union[Unset, BillingSourceEnum] = UNSET
     heappe_cluster_id: Union[Unset, str] = UNSET
     heappe_local_base_path: Union[Unset, str] = UNSET
     heappe_url: Union[Unset, str] = UNSET
@@ -373,6 +376,10 @@ class MergedPluginOptions:
         lbaas_enabled = self.lbaas_enabled
 
         usage_poll_interval_minutes = self.usage_poll_interval_minutes
+
+        billing_source: Union[Unset, str] = UNSET
+        if not isinstance(self.billing_source, Unset):
+            billing_source = self.billing_source.value
 
         heappe_cluster_id = self.heappe_cluster_id
 
@@ -569,6 +576,8 @@ class MergedPluginOptions:
             field_dict["lbaas_enabled"] = lbaas_enabled
         if usage_poll_interval_minutes is not UNSET:
             field_dict["usage_poll_interval_minutes"] = usage_poll_interval_minutes
+        if billing_source is not UNSET:
+            field_dict["billing_source"] = billing_source
         if heappe_cluster_id is not UNSET:
             field_dict["heappe_cluster_id"] = heappe_cluster_id
         if heappe_local_base_path is not UNSET:
@@ -799,6 +808,13 @@ class MergedPluginOptions:
 
         usage_poll_interval_minutes = d.pop("usage_poll_interval_minutes", UNSET)
 
+        _billing_source = d.pop("billing_source", UNSET)
+        billing_source: Union[Unset, BillingSourceEnum]
+        if isinstance(_billing_source, Unset):
+            billing_source = UNSET
+        else:
+            billing_source = BillingSourceEnum(_billing_source)
+
         heappe_cluster_id = d.pop("heappe_cluster_id", UNSET)
 
         heappe_local_base_path = d.pop("heappe_local_base_path", UNSET)
@@ -978,6 +994,7 @@ class MergedPluginOptions:
             snapshot_size_limit_gb=snapshot_size_limit_gb,
             lbaas_enabled=lbaas_enabled,
             usage_poll_interval_minutes=usage_poll_interval_minutes,
+            billing_source=billing_source,
             heappe_cluster_id=heappe_cluster_id,
             heappe_local_base_path=heappe_local_base_path,
             heappe_url=heappe_url,
