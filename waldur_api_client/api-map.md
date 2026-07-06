@@ -1427,6 +1427,12 @@ Module: `waldur_api_client.api.marketplace_offering_users`
 - `marketplace_offering_users_update_restricted` POST `/api/marketplace-offering-users/{uuid}/update_restricted/` — Update restriction status (path: uuid | request body)
 - `marketplace_offering_users_update_runtime_state` POST `/api/marketplace-offering-users/{uuid}/update_runtime_state/` — Update runtime state (path: uuid | request body)
 
+## marketplace-openstack-duplicate-offerings
+Module: `waldur_api_client.api.marketplace_openstack_duplicate_offerings`
+
+- `marketplace_openstack_duplicate_offerings_list` GET `/api/marketplace-openstack-duplicate-offerings/` (no params)
+- `marketplace_openstack_duplicate_offerings_count` HEAD `/api/marketplace-openstack-duplicate-offerings/` — Get number of items in the collection matching the request parameters (no params)
+
 ## marketplace-orders
 Module: `waldur_api_client.api.marketplace_orders`
 

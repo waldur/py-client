@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.6.dev.20260706111248
+# Version: 8.1.0-rc.6.dev.20260706140731
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -7803,6 +7803,18 @@ Description: Allows a service provider to set the operational/access state of an
 Path parameters:
   - uuid
 Request body: yes
+
+============================================================
+## marketplace-openstack-duplicate-offerings  (module: waldur_api_client.api.marketplace_openstack_duplicate_offerings)
+============================================================
+
+### marketplace_openstack_duplicate_offerings_list
+GET /api/marketplace-openstack-duplicate-offerings/
+
+### marketplace_openstack_duplicate_offerings_count
+HEAD /api/marketplace-openstack-duplicate-offerings/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
 
 ============================================================
 ## marketplace-orders  (module: waldur_api_client.api.marketplace_orders)

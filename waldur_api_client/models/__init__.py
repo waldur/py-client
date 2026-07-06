@@ -687,6 +687,8 @@ from .dry_run_request_attributes import DryRunRequestAttributes
 from .dry_run_state_enum import DryRunStateEnum
 from .dry_run_type_enum import DryRunTypeEnum
 from .duplicate_call_request_request import DuplicateCallRequestRequest
+from .duplicate_offering_candidate import DuplicateOfferingCandidate
+from .duplicate_offering_group import DuplicateOfferingGroup
 from .effective_route import EffectiveRoute
 from .effective_route_source_enum import EffectiveRouteSourceEnum
 from .effective_routes_response import EffectiveRoutesResponse
@@ -3551,6 +3553,8 @@ __all__ = (
     "DryRunStateEnum",
     "DryRunTypeEnum",
     "DuplicateCallRequestRequest",
+    "DuplicateOfferingCandidate",
+    "DuplicateOfferingGroup",
     "EffectiveRoute",
     "EffectiveRouteSourceEnum",
     "EffectiveRoutesResponse",
