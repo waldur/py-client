@@ -206,6 +206,7 @@ class ConstanceSettingsRequest:
         scim_inbound_enabled (Union[Unset, bool]):
         scim_inbound_source_name (Union[Unset, str]):
         scim_inbound_allowed_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
+        scim_inbound_ssh_keys_enabled (Union[Unset, bool]):
         scim_pull_api_url (Union[Unset, str]):
         scim_pull_api_key (Union[Unset, str]):
         scim_pull_source_name (Union[Unset, str]):
@@ -508,6 +509,7 @@ class ConstanceSettingsRequest:
     scim_inbound_enabled: Union[Unset, bool] = UNSET
     scim_inbound_source_name: Union[Unset, str] = UNSET
     scim_inbound_allowed_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
+    scim_inbound_ssh_keys_enabled: Union[Unset, bool] = UNSET
     scim_pull_api_url: Union[Unset, str] = UNSET
     scim_pull_api_key: Union[Unset, str] = UNSET
     scim_pull_source_name: Union[Unset, str] = UNSET
@@ -1099,6 +1101,8 @@ class ConstanceSettingsRequest:
                     scim_inbound_allowed_attributes_item = scim_inbound_allowed_attributes_item_data.value
 
                 scim_inbound_allowed_attributes.append(scim_inbound_allowed_attributes_item)
+
+        scim_inbound_ssh_keys_enabled = self.scim_inbound_ssh_keys_enabled
 
         scim_pull_api_url = self.scim_pull_api_url
 
@@ -1838,6 +1842,8 @@ class ConstanceSettingsRequest:
             field_dict["SCIM_INBOUND_SOURCE_NAME"] = scim_inbound_source_name
         if scim_inbound_allowed_attributes is not UNSET:
             field_dict["SCIM_INBOUND_ALLOWED_ATTRIBUTES"] = scim_inbound_allowed_attributes
+        if scim_inbound_ssh_keys_enabled is not UNSET:
+            field_dict["SCIM_INBOUND_SSH_KEYS_ENABLED"] = scim_inbound_ssh_keys_enabled
         if scim_pull_api_url is not UNSET:
             field_dict["SCIM_PULL_API_URL"] = scim_pull_api_url
         if scim_pull_api_key is not UNSET:
@@ -2717,6 +2723,8 @@ class ConstanceSettingsRequest:
 
             scim_inbound_allowed_attributes.append(scim_inbound_allowed_attributes_item)
 
+        scim_inbound_ssh_keys_enabled = d.pop("SCIM_INBOUND_SSH_KEYS_ENABLED", UNSET)
+
         scim_pull_api_url = d.pop("SCIM_PULL_API_URL", UNSET)
 
         scim_pull_api_key = d.pop("SCIM_PULL_API_KEY", UNSET)
@@ -3428,6 +3436,7 @@ class ConstanceSettingsRequest:
             scim_inbound_enabled=scim_inbound_enabled,
             scim_inbound_source_name=scim_inbound_source_name,
             scim_inbound_allowed_attributes=scim_inbound_allowed_attributes,
+            scim_inbound_ssh_keys_enabled=scim_inbound_ssh_keys_enabled,
             scim_pull_api_url=scim_pull_api_url,
             scim_pull_api_key=scim_pull_api_key,
             scim_pull_source_name=scim_pull_source_name,

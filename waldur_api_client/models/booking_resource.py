@@ -108,7 +108,9 @@ class BookingResource:
         end_date_updated_at (Union[None, Unset, datetime.datetime]): Timestamp of the last end_date change.
         username (Union[None, Unset, str]):
         limit_usage (Union[Unset, BookingResourceLimitUsage]): Dictionary mapping limit-based component types to their
-            consumed usage. For monthly periods, maps from current_usages; for longer periods, aggregates historical usage.
+            consumed usage. Sums the ComponentUsage rows of the component's current period (the monthly billing period
+            unless the component defines a longer limit_period), i.e. the period's high-watermark rather than the
+            instantaneous current_usages value.
         downscaled (Union[Unset, bool]):
         restrict_member_access (Union[Unset, bool]):
         paused (Union[Unset, bool]):
