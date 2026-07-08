@@ -601,6 +601,8 @@ from .customer_user_identity_sources import CustomerUserIdentitySources
 from .customer_user_o_enum import CustomerUserOEnum
 from .customers_history_at_retrieve_response_400 import CustomersHistoryAtRetrieveResponse400
 from .customers_history_at_retrieve_response_404 import CustomersHistoryAtRetrieveResponse404
+from .customers_users_count_organization_role_item_type_0 import CustomersUsersCountOrganizationRoleItemType0
+from .customers_users_count_project_role_item_type_0 import CustomersUsersCountProjectRoleItemType0
 from .customers_users_list_organization_role_item_type_0 import CustomersUsersListOrganizationRoleItemType0
 from .customers_users_list_project_role_item_type_0 import CustomersUsersListProjectRoleItemType0
 from .daily_maintenance_stats import DailyMaintenanceStats
@@ -3465,6 +3467,8 @@ __all__ = (
     "CustomerServiceAccountRequest",
     "CustomersHistoryAtRetrieveResponse400",
     "CustomersHistoryAtRetrieveResponse404",
+    "CustomersUsersCountOrganizationRoleItemType0",
+    "CustomersUsersCountProjectRoleItemType0",
     "CustomersUsersListOrganizationRoleItemType0",
     "CustomersUsersListProjectRoleItemType0",
     "CustomerUser",

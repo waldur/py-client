@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.8.dev.20260708165300
+# Version: 8.1.0-rc.8.dev.20260708170356
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2636,6 +2636,24 @@ Query parameters (10):
   - user_url — User URL
   - username — User username
 
+### call_managing_organisations_list_users_count
+HEAD /api/call-managing-organisations/{uuid}/list_users/
+Summary: List users and their roles in a scope
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - uuid
+Query parameters (10):
+  - field — Fields to include in response
+  - full_name — User full name
+  - native_name — User native name
+  - o — Ordering fields
+  - role — Role UUID or name
+  - search_string — Search string for user
+  - user — User UUID
+  - user_slug — User slug
+  - user_url — User URL
+  - username — User username
+
 ### call_managing_organisations_stats_retrieve
 GET /api/call-managing-organisations/{uuid}/stats/
 Summary: Return statistics for call managing organisation
@@ -3743,10 +3761,24 @@ Description: Provides detailed compliance status for all projects within a custo
 Path parameters:
   - customer_uuid — UUID of the customer
 
+### customers_project_metadata_compliance_details_count
+HEAD /api/customers/{customer_uuid}/project-metadata-compliance-details/
+Summary: Get detailed project metadata compliance
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - customer_uuid — UUID of the customer
+
 ### customers_project_metadata_compliance_overview_list
 GET /api/customers/{customer_uuid}/project-metadata-compliance-overview/
 Summary: Get project metadata compliance overview
 Description: Provides aggregated statistics about project metadata compliance for all projects within a customer.
+Path parameters:
+  - customer_uuid — UUID of the customer
+
+### customers_project_metadata_compliance_overview_count
+HEAD /api/customers/{customer_uuid}/project-metadata-compliance-overview/
+Summary: Get project metadata compliance overview
+Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - customer_uuid — UUID of the customer
 
@@ -3757,10 +3789,24 @@ Description: Provides a paginated list of projects with their checklist completi
 Path parameters:
   - customer_uuid — UUID of the customer
 
+### customers_project_metadata_compliance_projects_count
+HEAD /api/customers/{customer_uuid}/project-metadata-compliance-projects/
+Summary: List projects with compliance data
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - customer_uuid — UUID of the customer
+
 ### customers_project_metadata_question_answers_list
 GET /api/customers/{customer_uuid}/project-metadata-question-answers/
 Summary: List questions with project answers
 Description: Provides a paginated list of all questions from the customer's compliance checklist, including the answers given in each project.
+Path parameters:
+  - customer_uuid — UUID of the customer
+
+### customers_project_metadata_question_answers_count
+HEAD /api/customers/{customer_uuid}/project-metadata-question-answers/
+Summary: List questions with project answers
+Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - customer_uuid — UUID of the customer
 
@@ -3777,6 +3823,32 @@ Query parameters (19):
   - description
   - email — Email
   - field
+  - full_name — Full name
+  - is_active — Is active
+  - job_title — Job title
+  - modified — Date modified after
+  - native_name — Native name
+  - o — Ordering. Sort by a combination of first name, last name, and username.
+  - organization — Organization
+  - organization_role — Filter by one or more organization roles. Select a standard role or provide a custom role string. Can be specified multiple times.
+  - phone_number
+  - project_role — Filter by one or more project roles. Select a standard role or provide a custom role string. Can be specified multiple times.
+  - registration_method
+  - user_keyword — User keyword
+  - username — Username
+
+### customers_users_count
+HEAD /api/customers/{customer_uuid}/users/
+Summary: List users of a customer
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - customer_uuid — UUID of the customer
+Query parameters (18):
+  - agreement_date — Agreement date after
+  - civil_number
+  - date_joined — Date joined after
+  - description
+  - email — Email
   - full_name — Full name
   - is_active — Is active
   - job_title — Job title
@@ -3893,6 +3965,24 @@ Query parameters (1):
 GET /api/customers/{uuid}/list_users/
 Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
+Path parameters:
+  - uuid
+Query parameters (10):
+  - field — Fields to include in response
+  - full_name — User full name
+  - native_name — User native name
+  - o — Ordering fields
+  - role — Role UUID or name
+  - search_string — Search string for user
+  - user — User UUID
+  - user_slug — User slug
+  - user_url — User URL
+  - username — User username
+
+### customers_list_users_count
+HEAD /api/customers/{uuid}/list_users/
+Summary: List users and their roles in a scope
+Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
 Query parameters (10):
@@ -9377,6 +9467,24 @@ Query parameters (10):
   - user_url — User URL
   - username — User username
 
+### marketplace_provider_offerings_list_users_count
+HEAD /api/marketplace-provider-offerings/{uuid}/list_users/
+Summary: List users and their roles in a scope
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - uuid
+Query parameters (10):
+  - field — Fields to include in response
+  - full_name — User full name
+  - native_name — User native name
+  - o — Ordering fields
+  - role — Role UUID or name
+  - search_string — Search string for user
+  - user — User UUID
+  - user_slug — User slug
+  - user_url — User URL
+  - username — User username
+
 ### marketplace_provider_offerings_make_available
 POST /api/marketplace-provider-offerings/{uuid}/make_available/
 Summary: Mark an offering as available
@@ -9794,6 +9902,24 @@ Query parameters (10):
   - user_url — User URL
   - username — User username
 
+### marketplace_provider_resource_projects_list_users_count
+HEAD /api/marketplace-provider-resource-projects/{uuid}/list_users/
+Summary: List users and their roles in a scope
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - uuid
+Query parameters (10):
+  - field — Fields to include in response
+  - full_name — User full name
+  - native_name — User native name
+  - o — Ordering fields
+  - role — Role UUID or name
+  - search_string — Search string for user
+  - user — User UUID
+  - user_slug — User slug
+  - user_url — User URL
+  - username — User username
+
 ### marketplace_provider_resource_projects_set_backend_id
 POST /api/marketplace-provider-resource-projects/{uuid}/set_backend_id/
 Path parameters:
@@ -10067,6 +10193,24 @@ Query parameters (1):
 GET /api/marketplace-provider-resources/{uuid}/list_users/
 Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
+Path parameters:
+  - uuid
+Query parameters (10):
+  - field — Fields to include in response
+  - full_name — User full name
+  - native_name — User native name
+  - o — Ordering fields
+  - role — Role UUID or name
+  - search_string — Search string for user
+  - user — User UUID
+  - user_slug — User slug
+  - user_url — User URL
+  - username — User username
+
+### marketplace_provider_resources_list_users_count
+HEAD /api/marketplace-provider-resources/{uuid}/list_users/
+Summary: List users and their roles in a scope
+Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
 Query parameters (10):
@@ -10657,6 +10801,24 @@ Query parameters (10):
   - user_url — User URL
   - username — User username
 
+### marketplace_resource_projects_list_users_count
+HEAD /api/marketplace-resource-projects/{uuid}/list_users/
+Summary: List users and their roles in a scope
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - uuid
+Query parameters (10):
+  - field — Fields to include in response
+  - full_name — User full name
+  - native_name — User native name
+  - o — Ordering fields
+  - role — Role UUID or name
+  - search_string — Search string for user
+  - user — User UUID
+  - user_slug — User slug
+  - user_url — User URL
+  - username — User username
+
 ### marketplace_resource_projects_recover
 POST /api/marketplace-resource-projects/{uuid}/recover/
 Summary: Recover a soft-deleted resource project
@@ -10934,6 +11096,24 @@ Query parameters (1):
 GET /api/marketplace-resources/{uuid}/list_users/
 Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
+Path parameters:
+  - uuid
+Query parameters (10):
+  - field — Fields to include in response
+  - full_name — User full name
+  - native_name — User native name
+  - o — Ordering fields
+  - role — Role UUID or name
+  - search_string — Search string for user
+  - user — User UUID
+  - user_slug — User slug
+  - user_url — User URL
+  - username — User username
+
+### marketplace_resources_list_users_count
+HEAD /api/marketplace-resources/{uuid}/list_users/
+Summary: List users and their roles in a scope
+Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
 Query parameters (10):
@@ -11484,10 +11664,24 @@ Description: Returns a summary of all compliance checklists used by this service
 Path parameters:
   - service_provider_uuid
 
+### marketplace_service_providers_compliance_checklists_summary_count
+HEAD /api/marketplace-service-providers/{service_provider_uuid}/compliance/checklists_summary/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - service_provider_uuid
+
 ### service_provider_compliance_overview
 GET /api/marketplace-service-providers/{service_provider_uuid}/compliance/compliance_overview/
 Summary: Get compliance overview for a service provider
 Description: Returns compliance overview statistics for all offerings managed by this service provider.
+Path parameters:
+  - service_provider_uuid
+
+### marketplace_service_providers_compliance_compliance_overview_count
+HEAD /api/marketplace-service-providers/{service_provider_uuid}/compliance/compliance_overview/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - service_provider_uuid
 
@@ -11501,6 +11695,13 @@ Query parameters (2):
   - compliance_status — Filter by compliance status: completed, pending, no_checklist.
   - offering_uuid — Filter by offering UUID.
 
+### marketplace_service_providers_compliance_offering_users_count
+HEAD /api/marketplace-service-providers/{service_provider_uuid}/compliance/offering_users/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - service_provider_uuid
+
 ### marketplace_service_providers_course_accounts_list
 GET /api/marketplace-service-providers/{service_provider_uuid}/course_accounts/
 Summary: List course project accounts for a service provider
@@ -11509,6 +11710,23 @@ Description: Returns a paginated list of course project accounts that have acces
         This includes:
         - Projects with active resources of the service provider.
         - Course accounts with non-blank users.
+Path parameters:
+  - service_provider_uuid
+Query parameters (9):
+  - email — Email contains
+  - o — Ordering
+  - project_end_date_after — Project end date range
+  - project_end_date_before — Project end date range
+  - project_start_date_after — Project start date range
+  - project_start_date_before — Project start date range
+  - project_uuid — Project UUID
+  - state — Course account state
+  - username — Username
+
+### marketplace_service_providers_course_accounts_count
+HEAD /api/marketplace-service-providers/{service_provider_uuid}/course_accounts/
+Summary: List course project accounts for a service provider
+Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - service_provider_uuid
 Query parameters (9):
@@ -11558,6 +11776,41 @@ Query parameters (28):
   - slug — Slug
   - user_uuid_with_active_role — Filter projects where the given user has a role.
 
+### marketplace_service_providers_customer_projects_count
+HEAD /api/marketplace-service-providers/{service_provider_uuid}/customer_projects/
+Summary: List customer projects of a service provider
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - service_provider_uuid
+Query parameters (27):
+  - affiliation_name — Affiliation name
+  - affiliation_uuid — Affiliation UUID
+  - backend_id
+  - can_admin — Return a list of projects where current user is admin.
+  - can_manage — Return a list of projects where current user is manager or a customer owner.
+  - conceal_finished_projects — Conceal finished projects
+  - created — Created after
+  - created_before — Created before
+  - current_user_has_role — Multiple values may be separated by commas.
+  - customer — Multiple values may be separated by commas.
+  - customer_abbreviation — Customer abbreviation
+  - customer_name — Customer name
+  - customer_native_name — Customer native name
+  - description — Description
+  - has_affiliation — Filter projects that have an affiliation.
+  - is_removed — Is removed
+  - modified — Modified after
+  - modified_before — Modified before
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Ordering
+  - project_customer_uuid (required) — UUID of the customer to filter projects by.
+  - query — Filter by name, slug, UUID, backend ID or resource effective ID
+  - science_domain_uuid — Science domain UUID
+  - science_sub_domain_uuid — Science sub-domain UUID
+  - slug — Slug
+  - user_uuid_with_active_role — Filter projects where the given user has a role.
+
 ### marketplace_service_providers_customers_list
 GET /api/marketplace-service-providers/{service_provider_uuid}/customers/
 Summary: List customers of a service provider
@@ -11573,6 +11826,30 @@ Query parameters (17):
   - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
   - current_user_has_role — Multiple values may be separated by commas.
   - field
+  - name — Name
+  - name_exact — Name (exact)
+  - native_name — Native name
+  - organization_group_name — Organization group name
+  - organization_group_uuid — Organization group UUID
+  - owned_by_current_user — Return a list of customers where current user is owner.
+  - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
+  - registration_code
+  - slug — Slug
+
+### marketplace_service_providers_customers_count
+HEAD /api/marketplace-service-providers/{service_provider_uuid}/customers/
+Summary: List customers of a service provider
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - service_provider_uuid
+Query parameters (16):
+  - abbreviation — Abbreviation
+  - agreement_number
+  - archived
+  - backend_id
+  - contact_details — Contact details
+  - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - current_user_has_role — Multiple values may be separated by commas.
   - name — Name
   - name_exact — Name (exact)
   - native_name — Native name
@@ -11604,6 +11881,26 @@ Query parameters (13):
   - o — Ordering
   - user_uuid — User UUID
 
+### marketplace_service_providers_keys_count
+HEAD /api/marketplace-service-providers/{service_provider_uuid}/keys/
+Summary: List SSH keys of a service provider
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - service_provider_uuid
+Query parameters (12):
+  - created — Created after
+  - created_before — Created before
+  - fingerprint_md5
+  - fingerprint_sha256
+  - fingerprint_sha512
+  - is_shared
+  - modified — Modified after
+  - modified_before — Modified before
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Ordering
+  - user_uuid — User UUID
+
 ### marketplace_service_providers_offerings_list
 GET /api/marketplace-service-providers/{service_provider_uuid}/offerings/
 Summary: List offerings of a service provider
@@ -11624,6 +11921,54 @@ Query parameters (41):
   - customer_uuid — Customer UUID
   - description — Description contains
   - field
+  - has_active_terms_of_service — Has Active Terms of Service
+  - has_terms_of_service — Has Terms of Service
+  - keyword — Keyword
+  - modified — Modified after
+  - modified_before — Modified before
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Ordering
+  - offering_group_uuid — Offering group UUID
+  - organization_group_uuid — Organization group UUID
+  - parent_uuid — Parent offering UUID
+  - project_uuid — Project UUID
+  - query — Search by offering name, slug or description
+  - resource_customer_uuid — Resource customer UUID
+  - resource_project_uuid — Resource project UUID
+  - scope_uuid — Scope UUID
+  - service_manager_uuid — Service manager UUID
+  - shared — Shared
+  - slug — Slug
+  - state — Offering state
+  - tag — Tag UUID (OR logic)
+  - tag_name — Tag name (OR logic)
+  - tag_names_and — Tag names with AND logic (comma-separated)
+  - tags_and — Tag UUIDs with AND logic (comma-separated)
+  - type — Offering type
+  - user_has_consent — User Has Consent
+  - user_has_offering_user — User Has Offering User
+  - uuid_list — Comma-separated offering UUIDs
+
+### marketplace_service_providers_offerings_count
+HEAD /api/marketplace-service-providers/{service_provider_uuid}/offerings/
+Summary: List offerings of a service provider
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - service_provider_uuid
+Query parameters (40):
+  - accessible_via_calls — Accessible via calls
+  - allowed_customer_uuid — Allowed customer UUID
+  - attributes — Offering attributes (JSON)
+  - billable — Billable
+  - can_create_offering_user
+  - category_group_uuid — Category group UUID
+  - category_uuid — Category UUID
+  - created — Created after
+  - created_before — Created before
+  - customer — Customer URL
+  - customer_uuid — Customer UUID
+  - description — Description contains
   - has_active_terms_of_service — Has Active Terms of Service
   - has_terms_of_service — Has Terms of Service
   - keyword — Keyword
@@ -11700,6 +12045,54 @@ Query parameters (40):
   - user_has_offering_user — User Has Offering User
   - uuid_list — Comma-separated offering UUIDs
 
+### marketplace_service_providers_offerings_types_count
+HEAD /api/marketplace-service-providers/{service_provider_uuid}/offerings/types/
+Summary: List distinct offering types for a service provider
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - service_provider_uuid
+Query parameters (40):
+  - accessible_via_calls — Accessible via calls
+  - allowed_customer_uuid — Allowed customer UUID
+  - attributes — Offering attributes (JSON)
+  - billable — Billable
+  - can_create_offering_user
+  - category_group_uuid — Category group UUID
+  - category_uuid — Category UUID
+  - created — Created after
+  - created_before — Created before
+  - customer — Customer URL
+  - customer_uuid — Customer UUID
+  - description — Description contains
+  - has_active_terms_of_service — Has Active Terms of Service
+  - has_terms_of_service — Has Terms of Service
+  - keyword — Keyword
+  - modified — Modified after
+  - modified_before — Modified before
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Ordering
+  - offering_group_uuid — Offering group UUID
+  - organization_group_uuid — Organization group UUID
+  - parent_uuid — Parent offering UUID
+  - project_uuid — Project UUID
+  - query — Search by offering name, slug or description
+  - resource_customer_uuid — Resource customer UUID
+  - resource_project_uuid — Resource project UUID
+  - scope_uuid — Scope UUID
+  - service_manager_uuid — Service manager UUID
+  - shared — Shared
+  - slug — Slug
+  - state — Offering state
+  - tag — Tag UUID (OR logic)
+  - tag_name — Tag name (OR logic)
+  - tag_names_and — Tag names with AND logic (comma-separated)
+  - tags_and — Tag UUIDs with AND logic (comma-separated)
+  - type — Offering type
+  - user_has_consent — User Has Consent
+  - user_has_offering_user — User Has Offering User
+  - uuid_list — Comma-separated offering UUIDs
+
 ### marketplace_service_providers_project_permissions_list
 GET /api/marketplace-service-providers/{service_provider_uuid}/project_permissions/
 Summary: List project permissions of a service provider
@@ -11727,6 +12120,32 @@ Query parameters (19):
   - user_url
   - username
 
+### marketplace_service_providers_project_permissions_count
+HEAD /api/marketplace-service-providers/{service_provider_uuid}/project_permissions/
+Summary: List project permissions of a service provider
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - service_provider_uuid
+Query parameters (18):
+  - created — Created after
+  - created_before — Created before
+  - expiration_time
+  - full_name — User full name contains
+  - is_active
+  - modified — Modified after
+  - modified_before — Modified before
+  - native_name
+  - o — Ordering
+  - role_name — Role name contains
+  - role_uuid — Role UUID
+  - scope_name — Scope name
+  - scope_type — Scope type
+  - scope_uuid — Scope UUID
+  - user
+  - user_slug — User slug contains
+  - user_url
+  - username
+
 ### marketplace_service_providers_project_service_accounts_list
 GET /api/marketplace-service-providers/{service_provider_uuid}/project_service_accounts/
 Summary: List project service accounts for a service provider
@@ -11735,6 +12154,19 @@ Description: Returns a paginated list of project service accounts that have acce
         This includes:
         - Projects with active resources of the service provider.
         - Service accounts with non-blank usernames.
+Path parameters:
+  - service_provider_uuid
+Query parameters (5):
+  - email — Email contains
+  - project — Project URL
+  - project_uuid — Project UUID
+  - state — Service account state
+  - username — Username
+
+### marketplace_service_providers_project_service_accounts_count
+HEAD /api/marketplace-service-providers/{service_provider_uuid}/project_service_accounts/
+Summary: List project service accounts for a service provider
+Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - service_provider_uuid
 Query parameters (5):
@@ -11779,6 +12211,40 @@ Query parameters (27):
   - slug — Slug
   - user_uuid_with_active_role — Filter projects where the given user has a role.
 
+### marketplace_service_providers_projects_count
+HEAD /api/marketplace-service-providers/{service_provider_uuid}/projects/
+Summary: List projects of a service provider
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - service_provider_uuid
+Query parameters (26):
+  - affiliation_name — Affiliation name
+  - affiliation_uuid — Affiliation UUID
+  - backend_id
+  - can_admin — Return a list of projects where current user is admin.
+  - can_manage — Return a list of projects where current user is manager or a customer owner.
+  - conceal_finished_projects — Conceal finished projects
+  - created — Created after
+  - created_before — Created before
+  - current_user_has_role — Multiple values may be separated by commas.
+  - customer — Multiple values may be separated by commas.
+  - customer_abbreviation — Customer abbreviation
+  - customer_name — Customer name
+  - customer_native_name — Customer native name
+  - description — Description
+  - has_affiliation — Filter projects that have an affiliation.
+  - is_removed — Is removed
+  - modified — Modified after
+  - modified_before — Modified before
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Ordering
+  - query — Filter by name, slug, UUID, backend ID or resource effective ID
+  - science_domain_uuid — Science domain UUID
+  - science_sub_domain_uuid — Science sub-domain UUID
+  - slug — Slug
+  - user_uuid_with_active_role — Filter projects where the given user has a role.
+
 ### marketplace_service_providers_user_customers_list
 GET /api/marketplace-service-providers/{service_provider_uuid}/user_customers/
 Summary: List customers of a specific user within a service provider's scope
@@ -11810,6 +12276,31 @@ Query parameters (18):
   - slug — Slug
   - user_uuid (required) — UUID of the user to get related customers for.
 
+### marketplace_service_providers_user_customers_count
+HEAD /api/marketplace-service-providers/{service_provider_uuid}/user_customers/
+Summary: List customers of a specific user within a service provider's scope
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - service_provider_uuid
+Query parameters (17):
+  - abbreviation — Abbreviation
+  - agreement_number
+  - archived
+  - backend_id
+  - contact_details — Contact details
+  - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - current_user_has_role — Multiple values may be separated by commas.
+  - name — Name
+  - name_exact — Name (exact)
+  - native_name — Native name
+  - organization_group_name — Organization group name
+  - organization_group_uuid — Organization group UUID
+  - owned_by_current_user — Return a list of customers where current user is owner.
+  - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
+  - registration_code
+  - slug — Slug
+  - user_uuid (required) — UUID of the user to get related customers for.
+
 ### marketplace_service_providers_users_list
 GET /api/marketplace-service-providers/{service_provider_uuid}/users/
 Summary: List users of a service provider
@@ -11824,6 +12315,38 @@ Query parameters (25):
   - description
   - email — Email
   - field
+  - full_name — Full name
+  - is_active — Is active
+  - is_staff — Is staff
+  - is_support — Is support
+  - job_title — Job title
+  - modified — Date modified after
+  - native_name — Native name
+  - o — Ordering
+  - organization — Organization
+  - organization_roles — Organization roles
+  - phone_number
+  - project_roles — Project roles
+  - project_uuid — Project UUID
+  - query — Filter by first name, last name, civil number, username or email
+  - registration_method
+  - user_keyword — User keyword
+  - username — Username (exact)
+  - username_list — Comma-separated usernames
+
+### marketplace_service_providers_users_count
+HEAD /api/marketplace-service-providers/{service_provider_uuid}/users/
+Summary: List users of a service provider
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - service_provider_uuid
+Query parameters (24):
+  - agreement_date — Agreement date after
+  - civil_number
+  - customer_uuid — Customer UUID
+  - date_joined — Date joined after
+  - description
+  - email — Email
   - full_name — Full name
   - is_active — Is active
   - is_staff — Is staff
@@ -11917,6 +12440,24 @@ Request body: yes
 GET /api/marketplace-service-providers/{uuid}/list_users/
 Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
+Path parameters:
+  - uuid
+Query parameters (10):
+  - field — Fields to include in response
+  - full_name — User full name
+  - native_name — User native name
+  - o — Ordering fields
+  - role — Role UUID or name
+  - search_string — Search string for user
+  - user — User UUID
+  - user_slug — User slug
+  - user_url — User URL
+  - username — User username
+
+### marketplace_service_providers_list_users_count
+HEAD /api/marketplace-service-providers/{uuid}/list_users/
+Summary: List users and their roles in a scope
+Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
 Query parameters (10):
@@ -14780,6 +15321,24 @@ Request body: yes
 GET /api/openportal-unmanaged-projects/{uuid}/list_users/
 Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
+Path parameters:
+  - uuid
+Query parameters (10):
+  - field — Fields to include in response
+  - full_name — User full name
+  - native_name — User native name
+  - o — Ordering fields
+  - role — Role UUID or name
+  - search_string — Search string for user
+  - user — User UUID
+  - user_slug — User slug
+  - user_url — User URL
+  - username — User username
+
+### openportal_unmanaged_projects_list_users_count
+HEAD /api/openportal-unmanaged-projects/{uuid}/list_users/
+Summary: List users and their roles in a scope
+Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
 Query parameters (10):
@@ -18365,6 +18924,30 @@ Query parameters (16):
   - user_keyword — User keyword
   - username — Username
 
+### projects_other_users_count
+HEAD /api/projects/{project_uuid}/other_users/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - project_uuid — UUID of the project
+Query parameters (16):
+  - agreement_date — Agreement date after
+  - civil_number
+  - date_joined — Date joined after
+  - description
+  - email — Email
+  - full_name — Full name
+  - is_active — Is active
+  - job_title — Job title
+  - modified — Date modified after
+  - native_name — Native name
+  - o — Ordering. Sort by a combination of first name, last name, and username.
+  - organization — Organization
+  - phone_number
+  - registration_method
+  - user_keyword — User keyword
+  - username — Username
+
 ### projects_retrieve
 GET /api/projects/{uuid}/
 Summary: Retrieve project details
@@ -18433,6 +19016,24 @@ Request body: yes
 GET /api/projects/{uuid}/list_users/
 Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
+Path parameters:
+  - uuid
+Query parameters (10):
+  - field — Fields to include in response
+  - full_name — User full name
+  - native_name — User native name
+  - o — Ordering fields
+  - role — Role UUID or name
+  - search_string — Search string for user
+  - user — User UUID
+  - user_slug — User slug
+  - user_url — User URL
+  - username — User username
+
+### projects_list_users_count
+HEAD /api/projects/{uuid}/list_users/
+Summary: List users and their roles in a scope
+Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
 Query parameters (10):
@@ -18738,6 +19339,24 @@ Request body: yes
 GET /api/proposal-proposals/{uuid}/list_users/
 Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
+Path parameters:
+  - uuid
+Query parameters (10):
+  - field — Fields to include in response
+  - full_name — User full name
+  - native_name — User native name
+  - o — Ordering fields
+  - role — Role UUID or name
+  - search_string — Search string for user
+  - user — User UUID
+  - user_slug — User slug
+  - user_url — User URL
+  - username — User username
+
+### proposal_proposals_list_users_count
+HEAD /api/proposal-proposals/{uuid}/list_users/
+Summary: List users and their roles in a scope
+Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
 Query parameters (10):
@@ -19116,6 +19735,24 @@ Request body: yes
 GET /api/proposal-protected-calls/{uuid}/list_users/
 Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
+Path parameters:
+  - uuid
+Query parameters (10):
+  - field — Fields to include in response
+  - full_name — User full name
+  - native_name — User native name
+  - o — Ordering fields
+  - role — Role UUID or name
+  - search_string — Search string for user
+  - user — User UUID
+  - user_slug — User slug
+  - user_url — User URL
+  - username — User username
+
+### proposal_protected_calls_list_users_count
+HEAD /api/proposal-protected-calls/{uuid}/list_users/
+Summary: List users and their roles in a scope
+Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
 Query parameters (10):
@@ -21108,6 +21745,13 @@ GET /api/reviewer-profiles/{reviewer_profile_uuid}/affiliations/
 Path parameters:
   - reviewer_profile_uuid — UUID of the parent reviewer profile
 
+### nested_reviewer_profile_affiliations_count
+HEAD /api/reviewer-profiles/{reviewer_profile_uuid}/affiliations/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - reviewer_profile_uuid — UUID of the parent reviewer profile
+
 ### nested_reviewer_profile_affiliations_create
 POST /api/reviewer-profiles/{reviewer_profile_uuid}/affiliations/
 Path parameters:
@@ -21145,6 +21789,13 @@ GET /api/reviewer-profiles/{reviewer_profile_uuid}/expertise/
 Path parameters:
   - reviewer_profile_uuid — UUID of the parent reviewer profile
 
+### nested_reviewer_profile_expertise_count
+HEAD /api/reviewer-profiles/{reviewer_profile_uuid}/expertise/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Path parameters:
+  - reviewer_profile_uuid — UUID of the parent reviewer profile
+
 ### nested_reviewer_profile_expertise_create
 POST /api/reviewer-profiles/{reviewer_profile_uuid}/expertise/
 Path parameters:
@@ -21179,6 +21830,13 @@ Path parameters:
 
 ### nested_reviewer_profile_publications_list
 GET /api/reviewer-profiles/{reviewer_profile_uuid}/publications/
+Path parameters:
+  - reviewer_profile_uuid — UUID of the parent reviewer profile
+
+### nested_reviewer_profile_publications_count
+HEAD /api/reviewer-profiles/{reviewer_profile_uuid}/publications/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - reviewer_profile_uuid — UUID of the parent reviewer profile
 
