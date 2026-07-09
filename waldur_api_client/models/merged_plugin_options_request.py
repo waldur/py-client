@@ -5,7 +5,9 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.account_name_generation_policy_enum import AccountNameGenerationPolicyEnum
+from ..models.action_on_usage_limit_enum import ActionOnUsageLimitEnum
 from ..models.billing_source_enum import BillingSourceEnum
+from ..models.blank_enum import BlankEnum
 from ..models.deployment_mode_enum import DeploymentModeEnum
 from ..models.posix_id_source_enum import PosixIdSourceEnum
 from ..models.storage_mode_enum import StorageModeEnum
@@ -45,6 +47,10 @@ class MergedPluginOptionsRequest:
             approval, overriding auto_approve_in_service_provider_projects
         supports_downscaling (Union[Unset, bool]): If set to True, it will be possible to downscale resources
         supports_pausing (Union[Unset, bool]): If set to True, it will be possible to pause resources
+        action_on_usage_limit (Union[ActionOnUsageLimitEnum, BlankEnum, None, Unset]): If set to 'pause' or 'downscale',
+            resources are automatically paused or downscaled when reported usage in the current period reaches a component's
+            limit_amount, and the restriction is lifted when usage drops below the limit again (e.g. a new billing period or
+            a raised limit).
         minimal_team_count_for_provisioning (Union[Unset, int]): Minimal team count required for provisioning of
             resources
         maximal_resource_count_per_project (Union[Unset, int]): Maximal number of offering resources allowed per project
@@ -199,6 +205,7 @@ class MergedPluginOptionsRequest:
     disable_autoapprove: Union[Unset, bool] = UNSET
     supports_downscaling: Union[Unset, bool] = UNSET
     supports_pausing: Union[Unset, bool] = UNSET
+    action_on_usage_limit: Union[ActionOnUsageLimitEnum, BlankEnum, None, Unset] = UNSET
     minimal_team_count_for_provisioning: Union[Unset, int] = UNSET
     maximal_resource_count_per_project: Union[Unset, int] = UNSET
     unique_resource_per_attribute: Union[Unset, str] = UNSET
@@ -304,6 +311,16 @@ class MergedPluginOptionsRequest:
         supports_downscaling = self.supports_downscaling
 
         supports_pausing = self.supports_pausing
+
+        action_on_usage_limit: Union[None, Unset, str]
+        if isinstance(self.action_on_usage_limit, Unset):
+            action_on_usage_limit = UNSET
+        elif isinstance(self.action_on_usage_limit, ActionOnUsageLimitEnum):
+            action_on_usage_limit = self.action_on_usage_limit.value
+        elif isinstance(self.action_on_usage_limit, BlankEnum):
+            action_on_usage_limit = self.action_on_usage_limit.value
+        else:
+            action_on_usage_limit = self.action_on_usage_limit
 
         minimal_team_count_for_provisioning = self.minimal_team_count_for_provisioning
 
@@ -534,6 +551,8 @@ class MergedPluginOptionsRequest:
             field_dict["supports_downscaling"] = supports_downscaling
         if supports_pausing is not UNSET:
             field_dict["supports_pausing"] = supports_pausing
+        if action_on_usage_limit is not UNSET:
+            field_dict["action_on_usage_limit"] = action_on_usage_limit
         if minimal_team_count_for_provisioning is not UNSET:
             field_dict["minimal_team_count_for_provisioning"] = minimal_team_count_for_provisioning
         if maximal_resource_count_per_project is not UNSET:
@@ -736,6 +755,31 @@ class MergedPluginOptionsRequest:
         supports_downscaling = d.pop("supports_downscaling", UNSET)
 
         supports_pausing = d.pop("supports_pausing", UNSET)
+
+        def _parse_action_on_usage_limit(data: object) -> Union[ActionOnUsageLimitEnum, BlankEnum, None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                action_on_usage_limit_type_0 = ActionOnUsageLimitEnum(data)
+
+                return action_on_usage_limit_type_0
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                action_on_usage_limit_type_1 = BlankEnum(data)
+
+                return action_on_usage_limit_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union[ActionOnUsageLimitEnum, BlankEnum, None, Unset], data)
+
+        action_on_usage_limit = _parse_action_on_usage_limit(d.pop("action_on_usage_limit", UNSET))
 
         minimal_team_count_for_provisioning = d.pop("minimal_team_count_for_provisioning", UNSET)
 
@@ -1003,6 +1047,7 @@ class MergedPluginOptionsRequest:
             disable_autoapprove=disable_autoapprove,
             supports_downscaling=supports_downscaling,
             supports_pausing=supports_pausing,
+            action_on_usage_limit=action_on_usage_limit,
             minimal_team_count_for_provisioning=minimal_team_count_for_provisioning,
             maximal_resource_count_per_project=maximal_resource_count_per_project,
             unique_resource_per_attribute=unique_resource_per_attribute,

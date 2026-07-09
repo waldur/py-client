@@ -10,6 +10,7 @@ from dateutil.parser import isoparse
 from ..models.billing_unit import BillingUnit
 from ..models.offering_state import OfferingState
 from ..models.resource_state import ResourceState
+from ..models.usage_limit_restriction_enum import UsageLimitRestrictionEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -114,6 +115,7 @@ class BookingResource:
         downscaled (Union[Unset, bool]):
         restrict_member_access (Union[Unset, bool]):
         paused (Union[Unset, bool]):
+        usage_limit_restriction (Union[Unset, UsageLimitRestrictionEnum]):
         endpoints (Union[Unset, list['NestedEndpoint']]):
         error_message (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
@@ -209,6 +211,7 @@ class BookingResource:
     downscaled: Union[Unset, bool] = UNSET
     restrict_member_access: Union[Unset, bool] = UNSET
     paused: Union[Unset, bool] = UNSET
+    usage_limit_restriction: Union[Unset, UsageLimitRestrictionEnum] = UNSET
     endpoints: Union[Unset, list["NestedEndpoint"]] = UNSET
     error_message: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
@@ -479,6 +482,10 @@ class BookingResource:
 
         paused = self.paused
 
+        usage_limit_restriction: Union[Unset, str] = UNSET
+        if not isinstance(self.usage_limit_restriction, Unset):
+            usage_limit_restriction = self.usage_limit_restriction.value
+
         endpoints: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.endpoints, Unset):
             endpoints = []
@@ -709,6 +716,8 @@ class BookingResource:
             field_dict["restrict_member_access"] = restrict_member_access
         if paused is not UNSET:
             field_dict["paused"] = paused
+        if usage_limit_restriction is not UNSET:
+            field_dict["usage_limit_restriction"] = usage_limit_restriction
         if endpoints is not UNSET:
             field_dict["endpoints"] = endpoints
         if error_message is not UNSET:
@@ -1148,6 +1157,13 @@ class BookingResource:
 
         paused = d.pop("paused", UNSET)
 
+        _usage_limit_restriction = d.pop("usage_limit_restriction", UNSET)
+        usage_limit_restriction: Union[Unset, UsageLimitRestrictionEnum]
+        if isinstance(_usage_limit_restriction, Unset):
+            usage_limit_restriction = UNSET
+        else:
+            usage_limit_restriction = UsageLimitRestrictionEnum(_usage_limit_restriction)
+
         endpoints = []
         _endpoints = d.pop("endpoints", UNSET)
         for endpoints_item_data in _endpoints or []:
@@ -1351,6 +1367,7 @@ class BookingResource:
             downscaled=downscaled,
             restrict_member_access=restrict_member_access,
             paused=paused,
+            usage_limit_restriction=usage_limit_restriction,
             endpoints=endpoints,
             error_message=error_message,
             error_traceback=error_traceback,

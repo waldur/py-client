@@ -10,6 +10,7 @@ from .access_type_enum import AccessTypeEnum
 from .accessor_type_enum import AccessorTypeEnum
 from .accessor_user import AccessorUser
 from .account_name_generation_policy_enum import AccountNameGenerationPolicyEnum
+from .action_on_usage_limit_enum import ActionOnUsageLimitEnum
 from .action_taken_enum import ActionTakenEnum
 from .active_agent_task import ActiveAgentTask
 from .active_queries_stats import ActiveQueriesStats
@@ -2754,6 +2755,7 @@ from .update_pool_member_request import UpdatePoolMemberRequest
 from .update_pool_request import UpdatePoolRequest
 from .urgency_enum import UrgencyEnum
 from .usage import Usage
+from .usage_limit_restriction_enum import UsageLimitRestrictionEnum
 from .usage_timeseries_bucket import UsageTimeseriesBucket
 from .user import User
 from .user_action import UserAction
@@ -2898,6 +2900,7 @@ __all__ = (
     "AccessSubnetRequest",
     "AccessTypeEnum",
     "AccountNameGenerationPolicyEnum",
+    "ActionOnUsageLimitEnum",
     "ActionTakenEnum",
     "ActiveAgentTask",
     "ActiveQueriesStats",
@@ -5510,6 +5513,7 @@ __all__ = (
     "UpdatePoolRequest",
     "UrgencyEnum",
     "Usage",
+    "UsageLimitRestrictionEnum",
     "UsageTimeseriesBucket",
     "User",
     "UserAction",

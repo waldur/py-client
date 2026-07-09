@@ -89,6 +89,7 @@ class BookingResourceFieldEnum(str, Enum):
     SLUG = "slug"
     STATE = "state"
     URL = "url"
+    USAGE_LIMIT_RESTRICTION = "usage_limit_restriction"
     USERNAME = "username"
     USER_REQUIRES_RECONSENT = "user_requires_reconsent"
     UUID = "uuid"
