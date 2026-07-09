@@ -79,7 +79,11 @@ class BookingResource:
         project_end_date (Union[None, Unset, datetime.date]): The date is inclusive. Once reached, all project resource
             will be scheduled for termination.
         project_effective_end_date (Union[None, Unset, datetime.date]): Effective project end date including grace
-            period. After this date, resources will be terminated.
+            period. After this date, resources are terminated, except resources of offerings that disable the grace period —
+            those are terminated on the raw project end date.
+        resource_effective_end_date (Union[None, Unset, datetime.date]): The date this resource is scheduled to
+            terminate: the earliest of its own end date and the project-driven termination date (the raw project end date if
+            the offering disables the grace period, otherwise the effective with-grace end date).
         project_is_in_grace_period (Union[Unset, bool]): True if the project is past its end date but still within the
             grace period.
         project_end_date_requested_by (Union[None, Unset, str]):
@@ -184,6 +188,7 @@ class BookingResource:
     project_description: Union[Unset, str] = UNSET
     project_end_date: Union[None, Unset, datetime.date] = UNSET
     project_effective_end_date: Union[None, Unset, datetime.date] = UNSET
+    resource_effective_end_date: Union[None, Unset, datetime.date] = UNSET
     project_is_in_grace_period: Union[Unset, bool] = UNSET
     project_end_date_requested_by: Union[None, Unset, str] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
@@ -386,6 +391,14 @@ class BookingResource:
             project_effective_end_date = self.project_effective_end_date.isoformat()
         else:
             project_effective_end_date = self.project_effective_end_date
+
+        resource_effective_end_date: Union[None, Unset, str]
+        if isinstance(self.resource_effective_end_date, Unset):
+            resource_effective_end_date = UNSET
+        elif isinstance(self.resource_effective_end_date, datetime.date):
+            resource_effective_end_date = self.resource_effective_end_date.isoformat()
+        else:
+            resource_effective_end_date = self.resource_effective_end_date
 
         project_is_in_grace_period = self.project_is_in_grace_period
 
@@ -662,6 +675,8 @@ class BookingResource:
             field_dict["project_end_date"] = project_end_date
         if project_effective_end_date is not UNSET:
             field_dict["project_effective_end_date"] = project_effective_end_date
+        if resource_effective_end_date is not UNSET:
+            field_dict["resource_effective_end_date"] = resource_effective_end_date
         if project_is_in_grace_period is not UNSET:
             field_dict["project_is_in_grace_period"] = project_is_in_grace_period
         if project_end_date_requested_by is not UNSET:
@@ -1015,6 +1030,23 @@ class BookingResource:
 
         project_effective_end_date = _parse_project_effective_end_date(d.pop("project_effective_end_date", UNSET))
 
+        def _parse_resource_effective_end_date(data: object) -> Union[None, Unset, datetime.date]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                resource_effective_end_date_type_0 = isoparse(data).date()
+
+                return resource_effective_end_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.date], data)
+
+        resource_effective_end_date = _parse_resource_effective_end_date(d.pop("resource_effective_end_date", UNSET))
+
         project_is_in_grace_period = d.pop("project_is_in_grace_period", UNSET)
 
         def _parse_project_end_date_requested_by(data: object) -> Union[None, Unset, str]:
@@ -1340,6 +1372,7 @@ class BookingResource:
             project_description=project_description,
             project_end_date=project_end_date,
             project_effective_end_date=project_effective_end_date,
+            resource_effective_end_date=resource_effective_end_date,
             project_is_in_grace_period=project_is_in_grace_period,
             project_end_date_requested_by=project_end_date_requested_by,
             customer_uuid=customer_uuid,

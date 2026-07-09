@@ -47,6 +47,8 @@ class MergedPluginOptionsRequest:
             approval, overriding auto_approve_in_service_provider_projects
         supports_downscaling (Union[Unset, bool]): If set to True, it will be possible to downscale resources
         supports_pausing (Union[Unset, bool]): If set to True, it will be possible to pause resources
+        disable_grace_period (Union[Unset, bool]): If set to True, this offering's resources ignore the project grace
+            period and are terminated on the project end date. Only staff can change this option.
         action_on_usage_limit (Union[ActionOnUsageLimitEnum, BlankEnum, None, Unset]): If set to 'pause' or 'downscale',
             resources are automatically paused or downscaled when reported usage in the current period reaches a component's
             limit_amount, and the restriction is lifted when usage drops below the limit again (e.g. a new billing period or
@@ -205,6 +207,7 @@ class MergedPluginOptionsRequest:
     disable_autoapprove: Union[Unset, bool] = UNSET
     supports_downscaling: Union[Unset, bool] = UNSET
     supports_pausing: Union[Unset, bool] = UNSET
+    disable_grace_period: Union[Unset, bool] = UNSET
     action_on_usage_limit: Union[ActionOnUsageLimitEnum, BlankEnum, None, Unset] = UNSET
     minimal_team_count_for_provisioning: Union[Unset, int] = UNSET
     maximal_resource_count_per_project: Union[Unset, int] = UNSET
@@ -311,6 +314,8 @@ class MergedPluginOptionsRequest:
         supports_downscaling = self.supports_downscaling
 
         supports_pausing = self.supports_pausing
+
+        disable_grace_period = self.disable_grace_period
 
         action_on_usage_limit: Union[None, Unset, str]
         if isinstance(self.action_on_usage_limit, Unset):
@@ -551,6 +556,8 @@ class MergedPluginOptionsRequest:
             field_dict["supports_downscaling"] = supports_downscaling
         if supports_pausing is not UNSET:
             field_dict["supports_pausing"] = supports_pausing
+        if disable_grace_period is not UNSET:
+            field_dict["disable_grace_period"] = disable_grace_period
         if action_on_usage_limit is not UNSET:
             field_dict["action_on_usage_limit"] = action_on_usage_limit
         if minimal_team_count_for_provisioning is not UNSET:
@@ -755,6 +762,8 @@ class MergedPluginOptionsRequest:
         supports_downscaling = d.pop("supports_downscaling", UNSET)
 
         supports_pausing = d.pop("supports_pausing", UNSET)
+
+        disable_grace_period = d.pop("disable_grace_period", UNSET)
 
         def _parse_action_on_usage_limit(data: object) -> Union[ActionOnUsageLimitEnum, BlankEnum, None, Unset]:
             if data is None:
@@ -1047,6 +1056,7 @@ class MergedPluginOptionsRequest:
             disable_autoapprove=disable_autoapprove,
             supports_downscaling=supports_downscaling,
             supports_pausing=supports_pausing,
+            disable_grace_period=disable_grace_period,
             action_on_usage_limit=action_on_usage_limit,
             minimal_team_count_for_provisioning=minimal_team_count_for_provisioning,
             maximal_resource_count_per_project=maximal_resource_count_per_project,

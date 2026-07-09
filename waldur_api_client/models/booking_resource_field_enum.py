@@ -80,6 +80,7 @@ class BookingResourceFieldEnum(str, Enum):
     PROVIDER_UUID = "provider_uuid"
     RENEWAL_DATE = "renewal_date"
     REPORT = "report"
+    RESOURCE_EFFECTIVE_END_DATE = "resource_effective_end_date"
     RESOURCE_TYPE = "resource_type"
     RESOURCE_UUID = "resource_uuid"
     RESTRICT_MEMBER_ACCESS = "restrict_member_access"
