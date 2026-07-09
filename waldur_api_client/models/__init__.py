@@ -630,7 +630,6 @@ from .data_volume_request import DataVolumeRequest
 from .database_size_stats import DatabaseSizeStats
 from .database_stats_response import DatabaseStatsResponse
 from .dead_letter_queue import DeadLetterQueue
-from .deciding_entity_enum import DecidingEntityEnum
 from .default_permission_enum import DefaultPermissionEnum
 from .defaultidp_enum import DEFAULTIDPEnum
 from .delete_attachments_request import DeleteAttachmentsRequest
@@ -2414,7 +2413,6 @@ from .responsible_role_enum import ResponsibleRoleEnum
 from .restrictedofferingvisibilitymode_enum import RESTRICTEDOFFERINGVISIBILITYMODEEnum
 from .review_comment_request import ReviewCommentRequest
 from .review_progress_stat import ReviewProgressStat
-from .review_strategy_enum import ReviewStrategyEnum
 from .review_submit_request import ReviewSubmitRequest
 from .reviewer_affiliation import ReviewerAffiliation
 from .reviewer_affiliation_request import ReviewerAffiliationRequest
@@ -3500,7 +3498,6 @@ __all__ = (
     "DataVolume",
     "DataVolumeRequest",
     "DeadLetterQueue",
-    "DecidingEntityEnum",
     "DEFAULTIDPEnum",
     "DefaultPermissionEnum",
     "DeleteAttachmentsRequest",
@@ -5211,7 +5208,6 @@ __all__ = (
     "ReviewerSuggestionTopMatchingProposal",
     "ReviewerSuggestionTopMatchingProposalRequest",
     "ReviewProgressStat",
-    "ReviewStrategyEnum",
     "ReviewSubmitRequest",
     "RichTextToolbarLevelEnum",
     "RmqClientProperties",
