@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.9.dev.20260709113614
+# Version: 8.1.0-rc.9.dev.20260709122558
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -5178,17 +5178,19 @@ Query parameters (2):
 GET /api/invoice-items/project_costs_for_period/
 Summary: Get resource cost breakdown for a project over a specified period
 Description: Get resource cost breakdown for a project over a specified period.
-Query parameters (2):
+Query parameters (3):
   - period — Period for which statistics should be calculated (1, 3 or 12 months).
   - project_uuid — UUID of the project for which statistics should be calculated.
+  - resource_uuid — Optional marketplace resource UUID. When provided, costs are limited to this resource only.
 
 ### invoice_items_project_costs_for_period_count
 HEAD /api/invoice-items/project_costs_for_period/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (2):
+Query parameters (3):
   - period — Period for which statistics should be calculated (1, 3 or 12 months).
   - project_uuid — UUID of the project for which statistics should be calculated.
+  - resource_uuid — Optional marketplace resource UUID. When provided, costs are limited to this resource only.
 
 ### invoice_items_total_price_retrieve
 GET /api/invoice-items/total_price/
