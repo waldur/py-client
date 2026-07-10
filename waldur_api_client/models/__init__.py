@@ -2031,7 +2031,6 @@ from .proposal_applicant_active_isds import ProposalApplicantActiveIsds
 from .proposal_applicant_affiliations import ProposalApplicantAffiliations
 from .proposal_applicant_eduperson_assurance import ProposalApplicantEdupersonAssurance
 from .proposal_applicant_nationalities import ProposalApplicantNationalities
-from .proposal_approve_request import ProposalApproveRequest
 from .proposal_can_submit_response import ProposalCanSubmitResponse
 from .proposal_checklist_answer_submit_response import ProposalChecklistAnswerSubmitResponse
 from .proposal_compliance_status import ProposalComplianceStatus
@@ -4807,7 +4806,6 @@ __all__ = (
     "ProposalApplicantAffiliations",
     "ProposalApplicantEdupersonAssurance",
     "ProposalApplicantNationalities",
-    "ProposalApproveRequest",
     "ProposalCanSubmitResponse",
     "ProposalChecklistAnswerSubmitResponse",
     "ProposalComplianceStatus",

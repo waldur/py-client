@@ -28,7 +28,8 @@ class PatchedCallWorkflowStepRequest:
         blind_review (Union[Unset, bool]): Evaluators cannot see each other's assessments.
         requires_coi_confirmation (Union[Unset, bool]): Evaluator must confirm absence of conflict of interest.
         min_reviewers (Union[None, Unset, int]): Minimum reviews required before step can complete.
-        min_score_threshold (Union[None, Unset, str]): Minimum average score to pass this step.
+        min_score_threshold (Union[None, Unset, str]): Minimum average score required before this step can complete (a
+            completion gate; it does not auto-reject lower scores).
         applicant_visible (Union[Unset, bool]): Whether the applicant can see step details (not just status).
         responsible_role (Union[BlankEnum, None, ResponsibleRoleEnum, Unset]): Role expected to act on this step.
         transition_mode (Union[Unset, TransitionModeEnum]):

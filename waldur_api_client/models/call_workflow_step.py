@@ -31,6 +31,7 @@ class CallWorkflowStep:
         step (StepEnum):
         call_uuid (UUID):
         call_name (str):
+        is_mandatory (bool):
         checklist_name (Union[None, str]):
         is_enabled (Union[Unset, bool]): Whether this step is enabled. Disabled steps are skipped.
         duration_in_days (Union[None, Unset, int]): Duration in days. Used to calculate deadlines.
@@ -38,7 +39,8 @@ class CallWorkflowStep:
         blind_review (Union[Unset, bool]): Evaluators cannot see each other's assessments.
         requires_coi_confirmation (Union[Unset, bool]): Evaluator must confirm absence of conflict of interest.
         min_reviewers (Union[None, Unset, int]): Minimum reviews required before step can complete.
-        min_score_threshold (Union[None, Unset, str]): Minimum average score to pass this step.
+        min_score_threshold (Union[None, Unset, str]): Minimum average score required before this step can complete (a
+            completion gate; it does not auto-reject lower scores).
         applicant_visible (Union[Unset, bool]): Whether the applicant can see step details (not just status).
         responsible_role (Union[BlankEnum, None, ResponsibleRoleEnum, Unset]): Role expected to act on this step.
         transition_mode (Union[Unset, TransitionModeEnum]):
@@ -55,6 +57,7 @@ class CallWorkflowStep:
     step: StepEnum
     call_uuid: UUID
     call_name: str
+    is_mandatory: bool
     checklist_name: Union[None, str]
     is_enabled: Union[Unset, bool] = UNSET
     duration_in_days: Union[None, Unset, int] = UNSET
@@ -84,6 +87,8 @@ class CallWorkflowStep:
         call_uuid = str(self.call_uuid)
 
         call_name = self.call_name
+
+        is_mandatory = self.is_mandatory
 
         checklist_name: Union[None, str]
         checklist_name = self.checklist_name
@@ -165,6 +170,7 @@ class CallWorkflowStep:
                 "step": step,
                 "call_uuid": call_uuid,
                 "call_name": call_name,
+                "is_mandatory": is_mandatory,
                 "checklist_name": checklist_name,
             }
         )
@@ -215,6 +221,8 @@ class CallWorkflowStep:
         call_uuid = UUID(d.pop("call_uuid"))
 
         call_name = d.pop("call_name")
+
+        is_mandatory = d.pop("is_mandatory")
 
         def _parse_checklist_name(data: object) -> Union[None, str]:
             if data is None:
@@ -339,6 +347,7 @@ class CallWorkflowStep:
             step=step,
             call_uuid=call_uuid,
             call_name=call_name,
+            is_mandatory=is_mandatory,
             checklist_name=checklist_name,
             is_enabled=is_enabled,
             duration_in_days=duration_in_days,
