@@ -27,6 +27,8 @@ class CallWorkflowStepRequest:
         is_enabled (Union[Unset, bool]): Whether this step is enabled. Disabled steps are skipped.
         duration_in_days (Union[None, Unset, int]): Duration in days. Used to calculate deadlines.
         checklist (Union[None, UUID, Unset]):
+        checklist_required (Union[Unset, bool]): When the step has a checklist, block completion until its required
+            questions are answered. Set False to make the checklist advisory.
         blind_review (Union[Unset, bool]): Evaluators cannot see each other's assessments.
         requires_coi_confirmation (Union[Unset, bool]): Evaluator must confirm absence of conflict of interest.
         min_reviewers (Union[None, Unset, int]): Minimum reviews required before step can complete.
@@ -46,6 +48,7 @@ class CallWorkflowStepRequest:
     is_enabled: Union[Unset, bool] = UNSET
     duration_in_days: Union[None, Unset, int] = UNSET
     checklist: Union[None, UUID, Unset] = UNSET
+    checklist_required: Union[Unset, bool] = UNSET
     blind_review: Union[Unset, bool] = UNSET
     requires_coi_confirmation: Union[Unset, bool] = UNSET
     min_reviewers: Union[None, Unset, int] = UNSET
@@ -77,6 +80,8 @@ class CallWorkflowStepRequest:
             checklist = str(self.checklist)
         else:
             checklist = self.checklist
+
+        checklist_required = self.checklist_required
 
         blind_review = self.blind_review
 
@@ -142,6 +147,8 @@ class CallWorkflowStepRequest:
             field_dict["duration_in_days"] = duration_in_days
         if checklist is not UNSET:
             field_dict["checklist"] = checklist
+        if checklist_required is not UNSET:
+            field_dict["checklist_required"] = checklist_required
         if blind_review is not UNSET:
             field_dict["blind_review"] = blind_review
         if requires_coi_confirmation is not UNSET:
@@ -201,6 +208,8 @@ class CallWorkflowStepRequest:
             return cast(Union[None, UUID, Unset], data)
 
         checklist = _parse_checklist(d.pop("checklist", UNSET))
+
+        checklist_required = d.pop("checklist_required", UNSET)
 
         blind_review = d.pop("blind_review", UNSET)
 
@@ -288,6 +297,7 @@ class CallWorkflowStepRequest:
             is_enabled=is_enabled,
             duration_in_days=duration_in_days,
             checklist=checklist,
+            checklist_required=checklist_required,
             blind_review=blind_review,
             requires_coi_confirmation=requires_coi_confirmation,
             min_reviewers=min_reviewers,

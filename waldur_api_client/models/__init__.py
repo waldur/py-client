@@ -2657,6 +2657,8 @@ from .ssh_key_request import SshKeyRequest
 from .sshkeyallowedtypes_enum import SSHKEYALLOWEDTYPESEnum
 from .state_transition_error import StateTransitionError
 from .status import Status
+from .step_checklist_response_group import StepChecklistResponseGroup
+from .step_checklist_status import StepChecklistStatus
 from .step_enum import StepEnum
 from .storage_data_type import StorageDataType
 from .storage_data_type_request import StorageDataTypeRequest
@@ -2701,6 +2703,8 @@ from .tag import Tag
 from .tag_request import TagRequest
 from .tags_request import TagsRequest
 from .target_user import TargetUser
+from .technical_assessment_answer import TechnicalAssessmentAnswer
+from .technical_assessment_answer_answer_data import TechnicalAssessmentAnswerAnswerData
 from .template import Template
 from .template_attachment import TemplateAttachment
 from .template_attachment_request import TemplateAttachmentRequest
@@ -5414,6 +5418,8 @@ __all__ = (
     "SshKeyRequest",
     "StateTransitionError",
     "Status",
+    "StepChecklistResponseGroup",
+    "StepChecklistStatus",
     "StepEnum",
     "StorageDataType",
     "StorageDataTypeRequest",
@@ -5458,6 +5464,8 @@ __all__ = (
     "TagRequest",
     "TagsRequest",
     "TargetUser",
+    "TechnicalAssessmentAnswer",
+    "TechnicalAssessmentAnswerAnswerData",
     "Template",
     "TemplateAttachment",
     "TemplateAttachmentRequest",

@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.11.dev.20260710233347
+# Version: 8.1.0-rc.12.dev.20260711094502
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -19414,6 +19414,45 @@ Path parameters:
   - obj_uuid
   - uuid
 
+### proposal_proposals_step_checklist_responses_list
+GET /api/proposal-proposals/{uuid}/step-checklist-responses/
+Summary: List a workflow step's checklist answers grouped by reviewer, for the threaded technical-assessment view
+Description: List a workflow step's checklist answers grouped by reviewer, for the threaded technical-assessment view. Each technical reviewer (offering manager) answers the same checklist; this returns every reviewer's decision and comment.
+Path parameters:
+  - uuid
+Query parameters (11):
+  - call_uuid
+  - created_by_uuid
+  - my_proposals
+  - name
+  - o — Ordering
+  - organization_uuid
+  - round
+  - round_uuid
+  - slug — Slug
+  - state
+  - step (required) — Workflow step key (e.g. technical_assessment).
+
+### proposal_proposals_step_checklist_retrieve
+GET /api/proposal-proposals/{uuid}/step-checklist/
+Summary: Get a workflow step's checklist with questions and answers
+Description: Get a workflow step's checklist with questions and answers.
+Path parameters:
+  - uuid
+Query parameters (2):
+  - include_all — Return all questions ignoring dynamic visibility.
+  - step (required) — Workflow step key (e.g. technical_assessment).
+
+### proposal_proposals_submit_step_checklist_answers
+POST /api/proposal-proposals/{uuid}/submit-step-checklist-answers/
+Summary: Submit answers to a workflow step's checklist
+Description: Submit answers to a workflow step's checklist.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - step (required) — Workflow step key (e.g. technical_assessment).
+Request body: yes
+
 ### proposal_proposals_submit
 POST /api/proposal-proposals/{uuid}/submit/
 Summary: Submit a proposal
@@ -19528,6 +19567,38 @@ Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid (required) — Customer UUID to check permissions for. Required to verify user has CREATE_CALL permission on that customer's call managing organization.
+  - has_active_round
+  - name
+  - o — Ordering
+  - offering_uuid
+  - offerings_provider_uuid
+  - slug — Slug
+  - state
+
+### proposal_protected_calls_step_checklists_list
+GET /api/proposal-protected-calls/step_checklists/
+Summary: List checklists that can be attached to a workflow step (WORKFLOW_STEP-typed)
+Description: List checklists that can be attached to a workflow step (WORKFLOW_STEP-typed). Available to call managers so the workflow config UI can populate its checklist picker without staff-only access to the checklist admin API.
+Query parameters (10):
+  - customer
+  - customer_keyword
+  - customer_uuid
+  - has_active_round
+  - name
+  - o — Ordering
+  - offering_uuid
+  - offerings_provider_uuid
+  - slug — Slug
+  - state
+
+### proposal_protected_calls_step_checklists_count
+HEAD /api/proposal-protected-calls/step_checklists/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (10):
+  - customer
+  - customer_keyword
+  - customer_uuid
   - has_active_round
   - name
   - o — Ordering
