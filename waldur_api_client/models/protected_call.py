@@ -76,6 +76,8 @@ class ProtectedCall:
         user_assurance_levels (Union[Unset, ProtectedCallUserAssuranceLevels]): List of required assurance URIs
             (REFEDS). User must have ALL of these.
         applicant_visibility_config (Union['CallApplicantVisibilityConfig', None, Unset]):
+        has_proposals (Union[Unset, bool]): Whether any proposal has been submitted to this call. Used by the frontend
+            to gate slug-template and checklist fields.
     """
 
     url: Union[Unset, str] = UNSET
@@ -113,6 +115,7 @@ class ProtectedCall:
     user_organization_types: Union[Unset, "ProtectedCallUserOrganizationTypes"] = UNSET
     user_assurance_levels: Union[Unset, "ProtectedCallUserAssuranceLevels"] = UNSET
     applicant_visibility_config: Union["CallApplicantVisibilityConfig", None, Unset] = UNSET
+    has_proposals: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -262,6 +265,8 @@ class ProtectedCall:
         else:
             applicant_visibility_config = self.applicant_visibility_config
 
+        has_proposals = self.has_proposals
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -335,6 +340,8 @@ class ProtectedCall:
             field_dict["user_assurance_levels"] = user_assurance_levels
         if applicant_visibility_config is not UNSET:
             field_dict["applicant_visibility_config"] = applicant_visibility_config
+        if has_proposals is not UNSET:
+            field_dict["has_proposals"] = has_proposals
 
         return field_dict
 
@@ -566,6 +573,8 @@ class ProtectedCall:
 
         applicant_visibility_config = _parse_applicant_visibility_config(d.pop("applicant_visibility_config", UNSET))
 
+        has_proposals = d.pop("has_proposals", UNSET)
+
         protected_call = cls(
             url=url,
             uuid=uuid,
@@ -602,6 +611,7 @@ class ProtectedCall:
             user_organization_types=user_organization_types,
             user_assurance_levels=user_assurance_levels,
             applicant_visibility_config=applicant_visibility_config,
+            has_proposals=has_proposals,
         )
 
         protected_call.additional_properties = d
