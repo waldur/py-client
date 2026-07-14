@@ -582,23 +582,11 @@ from .customer_quotas import CustomerQuotas
 from .customer_quotas_quota_name_enum import CustomerQuotasQuotaNameEnum
 from .customer_request import CustomerRequest
 from .customer_request_form import CustomerRequestForm
-from .customer_request_form_user_affiliations import CustomerRequestFormUserAffiliations
-from .customer_request_form_user_email_patterns import CustomerRequestFormUserEmailPatterns
-from .customer_request_form_user_identity_sources import CustomerRequestFormUserIdentitySources
 from .customer_request_multipart import CustomerRequestMultipart
-from .customer_request_multipart_user_affiliations import CustomerRequestMultipartUserAffiliations
-from .customer_request_multipart_user_email_patterns import CustomerRequestMultipartUserEmailPatterns
-from .customer_request_multipart_user_identity_sources import CustomerRequestMultipartUserIdentitySources
-from .customer_request_user_affiliations import CustomerRequestUserAffiliations
-from .customer_request_user_email_patterns import CustomerRequestUserEmailPatterns
-from .customer_request_user_identity_sources import CustomerRequestUserIdentitySources
 from .customer_service_account import CustomerServiceAccount
 from .customer_service_account_request import CustomerServiceAccountRequest
 from .customer_user import CustomerUser
-from .customer_user_affiliations import CustomerUserAffiliations
-from .customer_user_email_patterns import CustomerUserEmailPatterns
 from .customer_user_field_enum import CustomerUserFieldEnum
-from .customer_user_identity_sources import CustomerUserIdentitySources
 from .customer_user_o_enum import CustomerUserOEnum
 from .customers_history_at_retrieve_response_400 import CustomersHistoryAtRetrieveResponse400
 from .customers_history_at_retrieve_response_404 import CustomersHistoryAtRetrieveResponse404
@@ -1065,11 +1053,7 @@ from .marketplace_resources_history_at_retrieve_response_404 import MarketplaceR
 from .marketplace_resources_pull_response_202 import MarketplaceResourcesPullResponse202
 from .marketplace_resources_suggest_name_response_200 import MarketplaceResourcesSuggestNameResponse200
 from .marketplace_service_provider_user import MarketplaceServiceProviderUser
-from .marketplace_service_provider_user_active_isds import MarketplaceServiceProviderUserActiveIsds
-from .marketplace_service_provider_user_affiliations import MarketplaceServiceProviderUserAffiliations
-from .marketplace_service_provider_user_eduperson_assurance import MarketplaceServiceProviderUserEdupersonAssurance
 from .marketplace_service_provider_user_field_enum import MarketplaceServiceProviderUserFieldEnum
-from .marketplace_service_provider_user_nationalities import MarketplaceServiceProviderUserNationalities
 from .marketplace_service_provider_user_o_enum import MarketplaceServiceProviderUserOEnum
 from .marketplacecardstyle_enum import MARKETPLACECARDSTYLEEnum
 from .marketplacelayoutmode_enum import MARKETPLACELAYOUTMODEEnum
@@ -1665,16 +1649,7 @@ from .patched_customer_estimated_cost_policy_request import PatchedCustomerEstim
 from .patched_customer_estimated_cost_policy_request_options import PatchedCustomerEstimatedCostPolicyRequestOptions
 from .patched_customer_request import PatchedCustomerRequest
 from .patched_customer_request_form import PatchedCustomerRequestForm
-from .patched_customer_request_form_user_affiliations import PatchedCustomerRequestFormUserAffiliations
-from .patched_customer_request_form_user_email_patterns import PatchedCustomerRequestFormUserEmailPatterns
-from .patched_customer_request_form_user_identity_sources import PatchedCustomerRequestFormUserIdentitySources
 from .patched_customer_request_multipart import PatchedCustomerRequestMultipart
-from .patched_customer_request_multipart_user_affiliations import PatchedCustomerRequestMultipartUserAffiliations
-from .patched_customer_request_multipart_user_email_patterns import PatchedCustomerRequestMultipartUserEmailPatterns
-from .patched_customer_request_multipart_user_identity_sources import PatchedCustomerRequestMultipartUserIdentitySources
-from .patched_customer_request_user_affiliations import PatchedCustomerRequestUserAffiliations
-from .patched_customer_request_user_email_patterns import PatchedCustomerRequestUserEmailPatterns
-from .patched_customer_request_user_identity_sources import PatchedCustomerRequestUserIdentitySources
 from .patched_customer_service_account_request import PatchedCustomerServiceAccountRequest
 from .patched_digital_ocean_droplet_request import PatchedDigitalOceanDropletRequest
 from .patched_email_hook_request import PatchedEmailHookRequest
@@ -1759,16 +1734,7 @@ from .patched_project_info_request import PatchedProjectInfoRequest
 from .patched_project_order_auto_approval_request import PatchedProjectOrderAutoApprovalRequest
 from .patched_project_request import PatchedProjectRequest
 from .patched_project_request_form import PatchedProjectRequestForm
-from .patched_project_request_form_user_affiliations import PatchedProjectRequestFormUserAffiliations
-from .patched_project_request_form_user_email_patterns import PatchedProjectRequestFormUserEmailPatterns
-from .patched_project_request_form_user_identity_sources import PatchedProjectRequestFormUserIdentitySources
 from .patched_project_request_multipart import PatchedProjectRequestMultipart
-from .patched_project_request_multipart_user_affiliations import PatchedProjectRequestMultipartUserAffiliations
-from .patched_project_request_multipart_user_email_patterns import PatchedProjectRequestMultipartUserEmailPatterns
-from .patched_project_request_multipart_user_identity_sources import PatchedProjectRequestMultipartUserIdentitySources
-from .patched_project_request_user_affiliations import PatchedProjectRequestUserAffiliations
-from .patched_project_request_user_email_patterns import PatchedProjectRequestUserEmailPatterns
-from .patched_project_request_user_identity_sources import PatchedProjectRequestUserIdentitySources
 from .patched_project_service_account_request import PatchedProjectServiceAccountRequest
 from .patched_project_template_request import PatchedProjectTemplateRequest
 from .patched_project_template_request_allocation_units_mapping import (
@@ -1778,12 +1744,6 @@ from .patched_project_template_request_role_mapping import PatchedProjectTemplat
 from .patched_proposal_project_role_mapping_request import PatchedProposalProjectRoleMappingRequest
 from .patched_proposal_review_request import PatchedProposalReviewRequest
 from .patched_protected_call_request import PatchedProtectedCallRequest
-from .patched_protected_call_request_user_affiliations import PatchedProtectedCallRequestUserAffiliations
-from .patched_protected_call_request_user_assurance_levels import PatchedProtectedCallRequestUserAssuranceLevels
-from .patched_protected_call_request_user_email_patterns import PatchedProtectedCallRequestUserEmailPatterns
-from .patched_protected_call_request_user_identity_sources import PatchedProtectedCallRequestUserIdentitySources
-from .patched_protected_call_request_user_nationalities import PatchedProtectedCallRequestUserNationalities
-from .patched_protected_call_request_user_organization_types import PatchedProtectedCallRequestUserOrganizationTypes
 from .patched_protected_round_request import PatchedProtectedRoundRequest
 from .patched_provider_plan_details_request import PatchedProviderPlanDetailsRequest
 from .patched_question_admin_request import PatchedQuestionAdminRequest
@@ -1970,16 +1930,7 @@ from .project_quotas import ProjectQuotas
 from .project_recovery_request import ProjectRecoveryRequest
 from .project_request import ProjectRequest
 from .project_request_form import ProjectRequestForm
-from .project_request_form_user_affiliations import ProjectRequestFormUserAffiliations
-from .project_request_form_user_email_patterns import ProjectRequestFormUserEmailPatterns
-from .project_request_form_user_identity_sources import ProjectRequestFormUserIdentitySources
 from .project_request_multipart import ProjectRequestMultipart
-from .project_request_multipart_user_affiliations import ProjectRequestMultipartUserAffiliations
-from .project_request_multipart_user_email_patterns import ProjectRequestMultipartUserEmailPatterns
-from .project_request_multipart_user_identity_sources import ProjectRequestMultipartUserIdentitySources
-from .project_request_user_affiliations import ProjectRequestUserAffiliations
-from .project_request_user_email_patterns import ProjectRequestUserEmailPatterns
-from .project_request_user_identity_sources import ProjectRequestUserIdentitySources
 from .project_service_account import ProjectServiceAccount
 from .project_service_account_request import ProjectServiceAccountRequest
 from .project_storage_report import ProjectStorageReport
@@ -2003,9 +1954,6 @@ from .project_usage_report import ProjectUsageReport
 from .project_usage_report_reports import ProjectUsageReportReports
 from .project_usage_report_users import ProjectUsageReportUsers
 from .project_user import ProjectUser
-from .project_user_affiliations import ProjectUserAffiliations
-from .project_user_email_patterns import ProjectUserEmailPatterns
-from .project_user_identity_sources import ProjectUserIdentitySources
 from .projects_limits_grouped_by_industry_flag import ProjectsLimitsGroupedByIndustryFlag
 from .projects_limits_grouped_by_industry_flag_limits import ProjectsLimitsGroupedByIndustryFlagLimits
 from .projects_limits_grouped_by_industry_flag_limits_additional_property import (
@@ -2027,10 +1975,6 @@ from .projects_usages_grouped_by_oecd_usages_additional_property import (
     ProjectsUsagesGroupedByOecdUsagesAdditionalProperty,
 )
 from .proposal import Proposal
-from .proposal_applicant_active_isds import ProposalApplicantActiveIsds
-from .proposal_applicant_affiliations import ProposalApplicantAffiliations
-from .proposal_applicant_eduperson_assurance import ProposalApplicantEdupersonAssurance
-from .proposal_applicant_nationalities import ProposalApplicantNationalities
 from .proposal_can_submit_response import ProposalCanSubmitResponse
 from .proposal_checklist_answer_submit_response import ProposalChecklistAnswerSubmitResponse
 from .proposal_compliance_status import ProposalComplianceStatus
@@ -2059,18 +2003,6 @@ from .protected_call import ProtectedCall
 from .protected_call_field_enum import ProtectedCallFieldEnum
 from .protected_call_o_enum import ProtectedCallOEnum
 from .protected_call_request import ProtectedCallRequest
-from .protected_call_request_user_affiliations import ProtectedCallRequestUserAffiliations
-from .protected_call_request_user_assurance_levels import ProtectedCallRequestUserAssuranceLevels
-from .protected_call_request_user_email_patterns import ProtectedCallRequestUserEmailPatterns
-from .protected_call_request_user_identity_sources import ProtectedCallRequestUserIdentitySources
-from .protected_call_request_user_nationalities import ProtectedCallRequestUserNationalities
-from .protected_call_request_user_organization_types import ProtectedCallRequestUserOrganizationTypes
-from .protected_call_user_affiliations import ProtectedCallUserAffiliations
-from .protected_call_user_assurance_levels import ProtectedCallUserAssuranceLevels
-from .protected_call_user_email_patterns import ProtectedCallUserEmailPatterns
-from .protected_call_user_identity_sources import ProtectedCallUserIdentitySources
-from .protected_call_user_nationalities import ProtectedCallUserNationalities
-from .protected_call_user_organization_types import ProtectedCallUserOrganizationTypes
 from .protected_proposal_list import ProtectedProposalList
 from .protected_proposal_list_request import ProtectedProposalListRequest
 from .protected_round import ProtectedRound
@@ -3457,16 +3389,7 @@ __all__ = (
     "CustomerQuotasQuotaNameEnum",
     "CustomerRequest",
     "CustomerRequestForm",
-    "CustomerRequestFormUserAffiliations",
-    "CustomerRequestFormUserEmailPatterns",
-    "CustomerRequestFormUserIdentitySources",
     "CustomerRequestMultipart",
-    "CustomerRequestMultipartUserAffiliations",
-    "CustomerRequestMultipartUserEmailPatterns",
-    "CustomerRequestMultipartUserIdentitySources",
-    "CustomerRequestUserAffiliations",
-    "CustomerRequestUserEmailPatterns",
-    "CustomerRequestUserIdentitySources",
     "CustomerServiceAccount",
     "CustomerServiceAccountRequest",
     "CustomersHistoryAtRetrieveResponse400",
@@ -3476,10 +3399,7 @@ __all__ = (
     "CustomersUsersListOrganizationRoleItemType0",
     "CustomersUsersListProjectRoleItemType0",
     "CustomerUser",
-    "CustomerUserAffiliations",
-    "CustomerUserEmailPatterns",
     "CustomerUserFieldEnum",
-    "CustomerUserIdentitySources",
     "CustomerUserOEnum",
     "DailyMaintenanceStats",
     "DailyMaintenanceStatsByState",
@@ -3920,11 +3840,7 @@ __all__ = (
     "MarketplaceResourcesPullResponse202",
     "MarketplaceResourcesSuggestNameResponse200",
     "MarketplaceServiceProviderUser",
-    "MarketplaceServiceProviderUserActiveIsds",
-    "MarketplaceServiceProviderUserAffiliations",
-    "MarketplaceServiceProviderUserEdupersonAssurance",
     "MarketplaceServiceProviderUserFieldEnum",
-    "MarketplaceServiceProviderUserNationalities",
     "MarketplaceServiceProviderUserOEnum",
     "MatchingAlgorithm",
     "MatchingConfiguration",
@@ -4476,16 +4392,7 @@ __all__ = (
     "PatchedCustomerEstimatedCostPolicyRequestOptions",
     "PatchedCustomerRequest",
     "PatchedCustomerRequestForm",
-    "PatchedCustomerRequestFormUserAffiliations",
-    "PatchedCustomerRequestFormUserEmailPatterns",
-    "PatchedCustomerRequestFormUserIdentitySources",
     "PatchedCustomerRequestMultipart",
-    "PatchedCustomerRequestMultipartUserAffiliations",
-    "PatchedCustomerRequestMultipartUserEmailPatterns",
-    "PatchedCustomerRequestMultipartUserIdentitySources",
-    "PatchedCustomerRequestUserAffiliations",
-    "PatchedCustomerRequestUserEmailPatterns",
-    "PatchedCustomerRequestUserIdentitySources",
     "PatchedCustomerServiceAccountRequest",
     "PatchedDigitalOceanDropletRequest",
     "PatchedEmailHookRequest",
@@ -4562,16 +4469,7 @@ __all__ = (
     "PatchedProjectOrderAutoApprovalRequest",
     "PatchedProjectRequest",
     "PatchedProjectRequestForm",
-    "PatchedProjectRequestFormUserAffiliations",
-    "PatchedProjectRequestFormUserEmailPatterns",
-    "PatchedProjectRequestFormUserIdentitySources",
     "PatchedProjectRequestMultipart",
-    "PatchedProjectRequestMultipartUserAffiliations",
-    "PatchedProjectRequestMultipartUserEmailPatterns",
-    "PatchedProjectRequestMultipartUserIdentitySources",
-    "PatchedProjectRequestUserAffiliations",
-    "PatchedProjectRequestUserEmailPatterns",
-    "PatchedProjectRequestUserIdentitySources",
     "PatchedProjectServiceAccountRequest",
     "PatchedProjectTemplateRequest",
     "PatchedProjectTemplateRequestAllocationUnitsMapping",
@@ -4579,12 +4477,6 @@ __all__ = (
     "PatchedProposalProjectRoleMappingRequest",
     "PatchedProposalReviewRequest",
     "PatchedProtectedCallRequest",
-    "PatchedProtectedCallRequestUserAffiliations",
-    "PatchedProtectedCallRequestUserAssuranceLevels",
-    "PatchedProtectedCallRequestUserEmailPatterns",
-    "PatchedProtectedCallRequestUserIdentitySources",
-    "PatchedProtectedCallRequestUserNationalities",
-    "PatchedProtectedCallRequestUserOrganizationTypes",
     "PatchedProtectedRoundRequest",
     "PatchedProviderPlanDetailsRequest",
     "PatchedQuestionAdminRequest",
@@ -4757,16 +4649,7 @@ __all__ = (
     "ProjectRecoveryRequest",
     "ProjectRequest",
     "ProjectRequestForm",
-    "ProjectRequestFormUserAffiliations",
-    "ProjectRequestFormUserEmailPatterns",
-    "ProjectRequestFormUserIdentitySources",
     "ProjectRequestMultipart",
-    "ProjectRequestMultipartUserAffiliations",
-    "ProjectRequestMultipartUserEmailPatterns",
-    "ProjectRequestMultipartUserIdentitySources",
-    "ProjectRequestUserAffiliations",
-    "ProjectRequestUserEmailPatterns",
-    "ProjectRequestUserIdentitySources",
     "ProjectServiceAccount",
     "ProjectServiceAccountRequest",
     "ProjectsLimitsGroupedByIndustryFlag",
@@ -4802,14 +4685,7 @@ __all__ = (
     "ProjectUsageReportReports",
     "ProjectUsageReportUsers",
     "ProjectUser",
-    "ProjectUserAffiliations",
-    "ProjectUserEmailPatterns",
-    "ProjectUserIdentitySources",
     "Proposal",
-    "ProposalApplicantActiveIsds",
-    "ProposalApplicantAffiliations",
-    "ProposalApplicantEdupersonAssurance",
-    "ProposalApplicantNationalities",
     "ProposalCanSubmitResponse",
     "ProposalChecklistAnswerSubmitResponse",
     "ProposalComplianceStatus",
@@ -4836,18 +4712,6 @@ __all__ = (
     "ProtectedCallFieldEnum",
     "ProtectedCallOEnum",
     "ProtectedCallRequest",
-    "ProtectedCallRequestUserAffiliations",
-    "ProtectedCallRequestUserAssuranceLevels",
-    "ProtectedCallRequestUserEmailPatterns",
-    "ProtectedCallRequestUserIdentitySources",
-    "ProtectedCallRequestUserNationalities",
-    "ProtectedCallRequestUserOrganizationTypes",
-    "ProtectedCallUserAffiliations",
-    "ProtectedCallUserAssuranceLevels",
-    "ProtectedCallUserEmailPatterns",
-    "ProtectedCallUserIdentitySources",
-    "ProtectedCallUserNationalities",
-    "ProtectedCallUserOrganizationTypes",
     "ProtectedProposalList",
     "ProtectedProposalListRequest",
     "ProtectedRound",

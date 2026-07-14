@@ -15,10 +15,6 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.nested_round import NestedRound
-    from ..models.proposal_applicant_active_isds import ProposalApplicantActiveIsds
-    from ..models.proposal_applicant_affiliations import ProposalApplicantAffiliations
-    from ..models.proposal_applicant_eduperson_assurance import ProposalApplicantEdupersonAssurance
-    from ..models.proposal_applicant_nationalities import ProposalApplicantNationalities
     from ..models.proposal_can_submit_response import ProposalCanSubmitResponse
     from ..models.proposal_compliance_status import ProposalComplianceStatus
     from ..models.proposal_documentation import ProposalDocumentation
@@ -56,22 +52,19 @@ class Proposal:
         applicant_organization_vat_code (str): VAT code of the user's organization
         applicant_organization_address (Union[None, str]): Postal address of the user's organization
         applicant_job_title (str):
-        applicant_affiliations (ProposalApplicantAffiliations): Person's affiliation within organization such as
-            student, faculty, staff.
+        applicant_affiliations (list[str]):
         applicant_gender (Union[BlankEnum, GenderEnum, None]): User's gender (male, female, or unknown)
         applicant_personal_title (str): Honorific title (Mr, Ms, Dr, Prof, etc.)
         applicant_place_of_birth (str):
         applicant_address (str):
         applicant_country_of_residence (str):
         applicant_nationality (str): Primary citizenship (ISO 3166-1 alpha-2 code)
-        applicant_nationalities (ProposalApplicantNationalities): List of all citizenships (ISO 3166-1 alpha-2 codes)
-        applicant_eduperson_assurance (ProposalApplicantEdupersonAssurance): REFEDS assurance profile URIs from identity
-            provider
+        applicant_nationalities (list[str]):
+        applicant_eduperson_assurance (list[str]):
         applicant_identity_source (str): Indicates what identity provider was used.
         applicant_civil_number (Union[None, str]):
         applicant_birth_date (Union[None, datetime.date]):
-        applicant_active_isds (ProposalApplicantActiveIsds): List of ISDs that have asserted this user exists. User is
-            deactivated when this becomes empty.
+        applicant_active_isds (list[str]):
         project (Union[None, str]):
         round_ (NestedRound):
         call_uuid (UUID):
@@ -120,19 +113,19 @@ class Proposal:
     applicant_organization_vat_code: str
     applicant_organization_address: Union[None, str]
     applicant_job_title: str
-    applicant_affiliations: "ProposalApplicantAffiliations"
+    applicant_affiliations: list[str]
     applicant_gender: Union[BlankEnum, GenderEnum, None]
     applicant_personal_title: str
     applicant_place_of_birth: str
     applicant_address: str
     applicant_country_of_residence: str
     applicant_nationality: str
-    applicant_nationalities: "ProposalApplicantNationalities"
-    applicant_eduperson_assurance: "ProposalApplicantEdupersonAssurance"
+    applicant_nationalities: list[str]
+    applicant_eduperson_assurance: list[str]
     applicant_identity_source: str
     applicant_civil_number: Union[None, str]
     applicant_birth_date: Union[None, datetime.date]
-    applicant_active_isds: "ProposalApplicantActiveIsds"
+    applicant_active_isds: list[str]
     project: Union[None, str]
     round_: "NestedRound"
     call_uuid: UUID
@@ -215,7 +208,7 @@ class Proposal:
 
         applicant_job_title = self.applicant_job_title
 
-        applicant_affiliations = self.applicant_affiliations.to_dict()
+        applicant_affiliations = self.applicant_affiliations
 
         applicant_gender: Union[None, str]
         if isinstance(self.applicant_gender, GenderEnum):
@@ -235,9 +228,9 @@ class Proposal:
 
         applicant_nationality = self.applicant_nationality
 
-        applicant_nationalities = self.applicant_nationalities.to_dict()
+        applicant_nationalities = self.applicant_nationalities
 
-        applicant_eduperson_assurance = self.applicant_eduperson_assurance.to_dict()
+        applicant_eduperson_assurance = self.applicant_eduperson_assurance
 
         applicant_identity_source = self.applicant_identity_source
 
@@ -250,7 +243,7 @@ class Proposal:
         else:
             applicant_birth_date = self.applicant_birth_date
 
-        applicant_active_isds = self.applicant_active_isds.to_dict()
+        applicant_active_isds = self.applicant_active_isds
 
         project: Union[None, str]
         project = self.project
@@ -396,10 +389,6 @@ class Proposal:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_round import NestedRound
-        from ..models.proposal_applicant_active_isds import ProposalApplicantActiveIsds
-        from ..models.proposal_applicant_affiliations import ProposalApplicantAffiliations
-        from ..models.proposal_applicant_eduperson_assurance import ProposalApplicantEdupersonAssurance
-        from ..models.proposal_applicant_nationalities import ProposalApplicantNationalities
         from ..models.proposal_can_submit_response import ProposalCanSubmitResponse
         from ..models.proposal_compliance_status import ProposalComplianceStatus
         from ..models.proposal_documentation import ProposalDocumentation
@@ -475,7 +464,7 @@ class Proposal:
 
         applicant_job_title = d.pop("applicant_job_title")
 
-        applicant_affiliations = ProposalApplicantAffiliations.from_dict(d.pop("applicant_affiliations"))
+        applicant_affiliations = cast(list[str], d.pop("applicant_affiliations"))
 
         def _parse_applicant_gender(data: object) -> Union[BlankEnum, GenderEnum, None]:
             if data is None:
@@ -510,11 +499,9 @@ class Proposal:
 
         applicant_nationality = d.pop("applicant_nationality")
 
-        applicant_nationalities = ProposalApplicantNationalities.from_dict(d.pop("applicant_nationalities"))
+        applicant_nationalities = cast(list[str], d.pop("applicant_nationalities"))
 
-        applicant_eduperson_assurance = ProposalApplicantEdupersonAssurance.from_dict(
-            d.pop("applicant_eduperson_assurance")
-        )
+        applicant_eduperson_assurance = cast(list[str], d.pop("applicant_eduperson_assurance"))
 
         applicant_identity_source = d.pop("applicant_identity_source")
 
@@ -540,7 +527,7 @@ class Proposal:
 
         applicant_birth_date = _parse_applicant_birth_date(d.pop("applicant_birth_date"))
 
-        applicant_active_isds = ProposalApplicantActiveIsds.from_dict(d.pop("applicant_active_isds"))
+        applicant_active_isds = cast(list[str], d.pop("applicant_active_isds"))
 
         def _parse_project(data: object) -> Union[None, str]:
             if data is None:

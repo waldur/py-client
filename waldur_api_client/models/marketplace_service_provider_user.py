@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -10,15 +10,6 @@ from dateutil.parser import isoparse
 from ..models.blank_enum import BlankEnum
 from ..models.gender_enum import GenderEnum
 from ..types import UNSET, Unset
-
-if TYPE_CHECKING:
-    from ..models.marketplace_service_provider_user_active_isds import MarketplaceServiceProviderUserActiveIsds
-    from ..models.marketplace_service_provider_user_affiliations import MarketplaceServiceProviderUserAffiliations
-    from ..models.marketplace_service_provider_user_eduperson_assurance import (
-        MarketplaceServiceProviderUserEdupersonAssurance,
-    )
-    from ..models.marketplace_service_provider_user_nationalities import MarketplaceServiceProviderUserNationalities
-
 
 T = TypeVar("T", bound="MarketplaceServiceProviderUser")
 
@@ -38,8 +29,8 @@ class MarketplaceServiceProviderUser:
         phone_number (Union[Unset, str]):
         projects_count (Union[Unset, int]):
         registration_method (Union[Unset, str]): Indicates what registration method was used.
-        affiliations (Union[Unset, MarketplaceServiceProviderUserAffiliations]): Person's affiliation within
-            organization such as student, faculty, staff.
+        affiliations (Union[Unset, list[str]]): Person's affiliation within organization such as student, faculty,
+            staff.
         is_active (Union[Unset, bool]): Designates whether this user should be treated as active. Unselect this instead
             of deleting accounts.
         job_title (Union[Unset, str]):
@@ -49,20 +40,18 @@ class MarketplaceServiceProviderUser:
         address (Union[Unset, str]):
         country_of_residence (Union[Unset, str]):
         nationality (Union[Unset, str]): Primary citizenship (ISO 3166-1 alpha-2 code)
-        nationalities (Union[Unset, MarketplaceServiceProviderUserNationalities]): List of all citizenships (ISO 3166-1
-            alpha-2 codes)
+        nationalities (Union[Unset, list[str]]): List of all citizenships (ISO 3166-1 alpha-2 codes)
         organization_country (Union[Unset, str]):
         organization_type (Union[Unset, str]): SCHAC URN (e.g., urn:schac:homeOrganizationType:int:university)
         organization_registry_code (Union[Unset, str]): Company registration code of the user's organization, if known
         organization_vat_code (Union[Unset, str]): VAT code of the user's organization
         organization_address (Union[Unset, str]): Postal address of the user's organization
-        eduperson_assurance (Union[Unset, MarketplaceServiceProviderUserEdupersonAssurance]): REFEDS assurance profile
-            URIs from identity provider
+        eduperson_assurance (Union[Unset, list[str]]): REFEDS assurance profile URIs from identity provider
         civil_number (Union[None, Unset, str]):
         birth_date (Union[None, Unset, datetime.date]):
         identity_source (Union[Unset, str]): Indicates what identity provider was used.
-        active_isds (Union[Unset, MarketplaceServiceProviderUserActiveIsds]): List of ISDs that have asserted this user
-            exists. User is deactivated when this becomes empty.
+        active_isds (Union[Unset, list[str]]): List of ISDs that have asserted this user exists. User is deactivated
+            when this becomes empty.
     """
 
     uuid: Union[Unset, UUID] = UNSET
@@ -75,7 +64,7 @@ class MarketplaceServiceProviderUser:
     phone_number: Union[Unset, str] = UNSET
     projects_count: Union[Unset, int] = UNSET
     registration_method: Union[Unset, str] = UNSET
-    affiliations: Union[Unset, "MarketplaceServiceProviderUserAffiliations"] = UNSET
+    affiliations: Union[Unset, list[str]] = UNSET
     is_active: Union[Unset, bool] = UNSET
     job_title: Union[Unset, str] = UNSET
     gender: Union[BlankEnum, GenderEnum, None, Unset] = UNSET
@@ -84,17 +73,17 @@ class MarketplaceServiceProviderUser:
     address: Union[Unset, str] = UNSET
     country_of_residence: Union[Unset, str] = UNSET
     nationality: Union[Unset, str] = UNSET
-    nationalities: Union[Unset, "MarketplaceServiceProviderUserNationalities"] = UNSET
+    nationalities: Union[Unset, list[str]] = UNSET
     organization_country: Union[Unset, str] = UNSET
     organization_type: Union[Unset, str] = UNSET
     organization_registry_code: Union[Unset, str] = UNSET
     organization_vat_code: Union[Unset, str] = UNSET
     organization_address: Union[Unset, str] = UNSET
-    eduperson_assurance: Union[Unset, "MarketplaceServiceProviderUserEdupersonAssurance"] = UNSET
+    eduperson_assurance: Union[Unset, list[str]] = UNSET
     civil_number: Union[None, Unset, str] = UNSET
     birth_date: Union[None, Unset, datetime.date] = UNSET
     identity_source: Union[Unset, str] = UNSET
-    active_isds: Union[Unset, "MarketplaceServiceProviderUserActiveIsds"] = UNSET
+    active_isds: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -120,9 +109,9 @@ class MarketplaceServiceProviderUser:
 
         registration_method = self.registration_method
 
-        affiliations: Union[Unset, dict[str, Any]] = UNSET
+        affiliations: Union[Unset, list[str]] = UNSET
         if not isinstance(self.affiliations, Unset):
-            affiliations = self.affiliations.to_dict()
+            affiliations = self.affiliations
 
         is_active = self.is_active
 
@@ -148,9 +137,9 @@ class MarketplaceServiceProviderUser:
 
         nationality = self.nationality
 
-        nationalities: Union[Unset, dict[str, Any]] = UNSET
+        nationalities: Union[Unset, list[str]] = UNSET
         if not isinstance(self.nationalities, Unset):
-            nationalities = self.nationalities.to_dict()
+            nationalities = self.nationalities
 
         organization_country = self.organization_country
 
@@ -162,9 +151,9 @@ class MarketplaceServiceProviderUser:
 
         organization_address = self.organization_address
 
-        eduperson_assurance: Union[Unset, dict[str, Any]] = UNSET
+        eduperson_assurance: Union[Unset, list[str]] = UNSET
         if not isinstance(self.eduperson_assurance, Unset):
-            eduperson_assurance = self.eduperson_assurance.to_dict()
+            eduperson_assurance = self.eduperson_assurance
 
         civil_number: Union[None, Unset, str]
         if isinstance(self.civil_number, Unset):
@@ -182,9 +171,9 @@ class MarketplaceServiceProviderUser:
 
         identity_source = self.identity_source
 
-        active_isds: Union[Unset, dict[str, Any]] = UNSET
+        active_isds: Union[Unset, list[str]] = UNSET
         if not isinstance(self.active_isds, Unset):
-            active_isds = self.active_isds.to_dict()
+            active_isds = self.active_isds
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -254,13 +243,6 @@ class MarketplaceServiceProviderUser:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.marketplace_service_provider_user_active_isds import MarketplaceServiceProviderUserActiveIsds
-        from ..models.marketplace_service_provider_user_affiliations import MarketplaceServiceProviderUserAffiliations
-        from ..models.marketplace_service_provider_user_eduperson_assurance import (
-            MarketplaceServiceProviderUserEdupersonAssurance,
-        )
-        from ..models.marketplace_service_provider_user_nationalities import MarketplaceServiceProviderUserNationalities
-
         d = dict(src_dict)
         _uuid = d.pop("uuid", UNSET)
         uuid: Union[Unset, UUID]
@@ -287,12 +269,7 @@ class MarketplaceServiceProviderUser:
 
         registration_method = d.pop("registration_method", UNSET)
 
-        _affiliations = d.pop("affiliations", UNSET)
-        affiliations: Union[Unset, MarketplaceServiceProviderUserAffiliations]
-        if isinstance(_affiliations, Unset):
-            affiliations = UNSET
-        else:
-            affiliations = MarketplaceServiceProviderUserAffiliations.from_dict(_affiliations)
+        affiliations = cast(list[str], d.pop("affiliations", UNSET))
 
         is_active = d.pop("is_active", UNSET)
 
@@ -333,12 +310,7 @@ class MarketplaceServiceProviderUser:
 
         nationality = d.pop("nationality", UNSET)
 
-        _nationalities = d.pop("nationalities", UNSET)
-        nationalities: Union[Unset, MarketplaceServiceProviderUserNationalities]
-        if isinstance(_nationalities, Unset):
-            nationalities = UNSET
-        else:
-            nationalities = MarketplaceServiceProviderUserNationalities.from_dict(_nationalities)
+        nationalities = cast(list[str], d.pop("nationalities", UNSET))
 
         organization_country = d.pop("organization_country", UNSET)
 
@@ -350,12 +322,7 @@ class MarketplaceServiceProviderUser:
 
         organization_address = d.pop("organization_address", UNSET)
 
-        _eduperson_assurance = d.pop("eduperson_assurance", UNSET)
-        eduperson_assurance: Union[Unset, MarketplaceServiceProviderUserEdupersonAssurance]
-        if isinstance(_eduperson_assurance, Unset):
-            eduperson_assurance = UNSET
-        else:
-            eduperson_assurance = MarketplaceServiceProviderUserEdupersonAssurance.from_dict(_eduperson_assurance)
+        eduperson_assurance = cast(list[str], d.pop("eduperson_assurance", UNSET))
 
         def _parse_civil_number(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -385,12 +352,7 @@ class MarketplaceServiceProviderUser:
 
         identity_source = d.pop("identity_source", UNSET)
 
-        _active_isds = d.pop("active_isds", UNSET)
-        active_isds: Union[Unset, MarketplaceServiceProviderUserActiveIsds]
-        if isinstance(_active_isds, Unset):
-            active_isds = UNSET
-        else:
-            active_isds = MarketplaceServiceProviderUserActiveIsds.from_dict(_active_isds)
+        active_isds = cast(list[str], d.pop("active_isds", UNSET))
 
         marketplace_service_provider_user = cls(
             uuid=uuid,
