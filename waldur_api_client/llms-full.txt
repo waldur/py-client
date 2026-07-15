@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.14.dev.20260714233340
+# Version: 8.1.0-rc.14.dev.20260715152824
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -8688,7 +8688,8 @@ Path parameters:
 GET /api/marketplace-provider-offerings/
 Summary: List provider offerings
 Description: Returns a paginated list of offerings for the provider.
-Query parameters (42):
+Query parameters (43):
+  - accessible — Only offerings the current user can order
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -8736,7 +8737,8 @@ Query parameters (42):
 HEAD /api/marketplace-provider-offerings/
 Summary: List provider offerings
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (41):
+Query parameters (42):
+  - accessible — Only offerings the current user can order
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -8789,7 +8791,8 @@ Request body: yes
 GET /api/marketplace-provider-offerings/groups/
 Summary: List offerings grouped by provider
 Description: Returns a paginated list of active, shared offerings grouped by their service provider.
-Query parameters (40):
+Query parameters (41):
+  - accessible — Only offerings the current user can order
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -8835,7 +8838,8 @@ Query parameters (40):
 HEAD /api/marketplace-provider-offerings/groups/
 Summary: List offerings grouped by provider
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (40):
+Query parameters (41):
+  - accessible — Only offerings the current user can order
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -8959,7 +8963,8 @@ Summary: Get statistics for offering components
 Description: Returns monthly usage statistics for the components of an offering within a specified date range.
 Path parameters:
   - uuid
-Query parameters (43):
+Query parameters (44):
+  - accessible — Only offerings the current user can order
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -9010,7 +9015,8 @@ Summary: Get costs for an offering
 Description: Returns monthly cost data for an offering within a specified date range.
 Path parameters:
   - uuid
-Query parameters (44):
+Query parameters (45):
+  - accessible — Only offerings the current user can order
   - accessible_via_calls — Accessible via calls
   - accounting_is_running
   - allowed_customer_uuid — Allowed customer UUID
@@ -9070,7 +9076,8 @@ Summary: Get customers for an offering
 Description: Returns a paginated list of customers who have resources for this offering.
 Path parameters:
   - uuid
-Query parameters (42):
+Query parameters (43):
+  - accessible — Only offerings the current user can order
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -9218,7 +9225,8 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (42):
+Query parameters (43):
+  - accessible — Only offerings the current user can order
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -9292,7 +9300,8 @@ Summary: List course accounts for an offering
 Description: Returns a paginated list of course accounts for projects that have resources of this offering.
 Path parameters:
   - uuid
-Query parameters (41):
+Query parameters (42):
+  - accessible — Only offerings the current user can order
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -9350,7 +9359,8 @@ Summary: List customer service accounts for an offering
 Description: Returns a paginated list of customer-level service accounts for customers who have resources of this offering.
 Path parameters:
   - uuid
-Query parameters (41):
+Query parameters (42):
+  - accessible — Only offerings the current user can order
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -9408,7 +9418,8 @@ Summary: List project service accounts for an offering
 Description: Returns a paginated list of project-level service accounts for projects that have resources of this offering.
 Path parameters:
   - uuid
-Query parameters (41):
+Query parameters (42):
+  - accessible — Only offerings the current user can order
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -10484,7 +10495,8 @@ Request body: yes
 GET /api/marketplace-public-offerings/
 Summary: List public offerings
 Description: Returns a paginated list of public offerings. The list is filtered to show only offerings that are active or paused and available for ordering by the current user. If anonymous access is enabled, it shows shared offerings available to unauthenticated users.
-Query parameters (41):
+Query parameters (42):
+  - accessible — Only offerings the current user can order
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -10531,7 +10543,8 @@ Query parameters (41):
 HEAD /api/marketplace-public-offerings/
 Summary: List public offerings
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (40):
+Query parameters (41):
+  - accessible — Only offerings the current user can order
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -11909,7 +11922,8 @@ Summary: List offerings of a service provider
 Description: Returns a paginated list of all billable, shared offerings provided by the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (41):
+Query parameters (42):
+  - accessible — Only offerings the current user can order
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -11958,7 +11972,8 @@ Summary: List offerings of a service provider
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - service_provider_uuid
-Query parameters (40):
+Query parameters (41):
+  - accessible — Only offerings the current user can order
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -12005,7 +12020,8 @@ GET /api/marketplace-service-providers/{service_provider_uuid}/offerings/types/
 Summary: List distinct offering types for a service provider
 Path parameters:
   - service_provider_uuid
-Query parameters (40):
+Query parameters (41):
+  - accessible — Only offerings the current user can order
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -12053,7 +12069,8 @@ Summary: List distinct offering types for a service provider
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - service_provider_uuid
-Query parameters (40):
+Query parameters (41):
+  - accessible — Only offerings the current user can order
   - accessible_via_calls — Accessible via calls
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
