@@ -1,0 +1,112 @@
+variables:
+  UV_CACHE_DIR: "$CI_PROJECT_DIR/.uv-cache"
+
+cache:
+  key:
+    files:
+      - poetry.lock
+  paths:
+    - .uv-cache/
+
+stages:
+  - test
+  - release
+  - publish
+
+Build Python SDK:
+  stage: test
+  image: registry.hpc.ut.ee/mirror/library/python:3.13-bookworm
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+    - if: '$CI_PIPELINE_SOURCE == "trigger"'
+  needs:
+    - pipeline: $CI_PARENT_PIPELINE_ID
+      job: Generate OpenAPI schema
+  script:
+    - pip install uv
+    - uv pip install --system git+https://github.com/waldur/openapi-python-client.git pyyaml
+    - rm -rf gen-client waldur_api_client
+    - openapi-python-client generate --path waldur-openapi-schema.yaml --output-path gen-client --overwrite --meta poetry
+    - python scripts/generate_llm_docs.py waldur-openapi-schema.yaml gen-client/
+    - cp -a gen-client/waldur_api_client waldur_api_client
+    - cp gen-client/llms.txt llms.txt
+    - cp gen-client/llms-full.txt llms-full.txt
+    - cp gen-client/api-map.md api-map.md
+    - rm -rf gen-client
+    - echo "Compiling generated Python module..."
+    - python -m py_compile $(find waldur_api_client -name "*.py")
+  artifacts:
+    paths:
+      - waldur_api_client/
+      - llms.txt
+      - llms-full.txt
+      - api-map.md
+    expire_in: 1 day
+
+Release Python SDK:
+  stage: release
+  image: registry.hpc.ut.ee/mirror/library/python:3.13-bookworm
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+    - if: '$CI_PIPELINE_SOURCE == "trigger"'
+  needs:
+    - job: Build Python SDK
+      artifacts: true
+  before_script:
+    - git config --global user.name "$GITLAB_USER_NAME"
+    - git config --global user.email "$GITLAB_USER_EMAIL"
+    # Authenticate origin with token for pushing back commits & tags
+    - git remote set-url origin "https://gitlab-ci-token:${GITLAB_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git"
+  script:
+    - |
+      if [ -n "$RELEASE_VERSION" ]; then
+        sed -i 's/^version = "[^"]*"/version = "'$RELEASE_VERSION'"/' pyproject.toml
+        git add pyproject.toml waldur_api_client llms.txt llms-full.txt api-map.md
+        git diff --cached --quiet && echo "py-client version already set" || git commit -m "Release: bump version and update code to $RELEASE_VERSION"
+        git tag -a $RELEASE_VERSION -m "Release version $RELEASE_VERSION" || echo "Tag $RELEASE_VERSION already exists"
+        git push origin $RELEASE_VERSION || echo "Tag $RELEASE_VERSION already pushed"
+      else
+        git add waldur_api_client llms.txt llms-full.txt api-map.md
+        git diff --cached --quiet && echo "No changes" || git commit -m "chore: nightly update of Waldur Python SDK"
+      fi
+    - git push origin HEAD:main || echo "main branch already up to date"
+
+Publish Dev to PyPI:
+  stage: publish
+  image: registry.hpc.ut.ee/mirror/library/python:3.13-bookworm
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline" && $RELEASE_VERSION == ""'
+    - if: '$CI_PIPELINE_SOURCE == "trigger" && $RELEASE_VERSION == ""'
+  needs:
+    - job: Build Python SDK
+      artifacts: true
+  script:
+    - pip install uv
+    - uv pip install --system poetry
+    - |
+      CURRENT=$(poetry version -s)
+      IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT"
+      NEXT_PATCH=$((PATCH + 1))
+      DEV_VERSION="${MAJOR}.${MINOR}.${NEXT_PATCH}.dev${CI_PIPELINE_IID}"
+      echo "Publishing dev version: $DEV_VERSION"
+      poetry version "$DEV_VERSION"
+    - poetry build
+    - poetry config pypi-token.pypi "$PYPI_TOKEN"
+    - poetry publish --no-interaction
+
+Publish Release to PyPI:
+  stage: publish
+  image: registry.hpc.ut.ee/mirror/library/python:3.13-bookworm
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline" && $RELEASE_VERSION =~ /^\d+\.\d+\.\d+$/'
+    - if: '$CI_PIPELINE_SOURCE == "trigger" && $RELEASE_VERSION =~ /^\d+\.\d+\.\d+$/'
+  needs:
+    - job: Build Python SDK
+      artifacts: true
+  script:
+    - pip install uv
+    - uv pip install --system poetry
+    - poetry version "$RELEASE_VERSION"
+    - poetry build
+    - poetry config pypi-token.pypi "$PYPI_TOKEN"
+    - poetry publish --no-interaction
