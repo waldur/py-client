@@ -9,6 +9,12 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.call_applicant_visibility_config_request import CallApplicantVisibilityConfigRequest
+    from ..models.protected_call_request_user_affiliations import ProtectedCallRequestUserAffiliations
+    from ..models.protected_call_request_user_assurance_levels import ProtectedCallRequestUserAssuranceLevels
+    from ..models.protected_call_request_user_email_patterns import ProtectedCallRequestUserEmailPatterns
+    from ..models.protected_call_request_user_identity_sources import ProtectedCallRequestUserIdentitySources
+    from ..models.protected_call_request_user_nationalities import ProtectedCallRequestUserNationalities
+    from ..models.protected_call_request_user_organization_types import ProtectedCallRequestUserOrganizationTypes
 
 
 T = TypeVar("T", bound="ProtectedCallRequest")
@@ -35,15 +41,18 @@ class ProtectedCallRequest:
             submission
         proposal_slug_template (Union[None, Unset, str]): Template for proposal slugs. Supports: {call_slug},
             {round_slug}, {org_slug}, {year}, {month}, {counter}, {counter_padded}. Default: {round_slug}-{counter_padded}
-        user_email_patterns (Union[Unset, list[str]]): List of email regex patterns. User must match one.
-        user_affiliations (Union[Unset, list[str]]): List of allowed affiliations. User must have one.
-        user_identity_sources (Union[Unset, list[str]]): List of allowed identity sources (identity providers).
-        user_nationalities (Union[Unset, list[str]]): List of allowed nationality codes (ISO 3166-1 alpha-2). User must
+        user_email_patterns (Union[Unset, ProtectedCallRequestUserEmailPatterns]): List of email regex patterns. User
+            must match one.
+        user_affiliations (Union[Unset, ProtectedCallRequestUserAffiliations]): List of allowed affiliations. User must
             have one.
-        user_organization_types (Union[Unset, list[str]]): List of allowed organization type URNs (SCHAC). User must
-            match one.
-        user_assurance_levels (Union[Unset, list[str]]): List of required assurance URIs (REFEDS). User must have ALL of
-            these.
+        user_identity_sources (Union[Unset, ProtectedCallRequestUserIdentitySources]): List of allowed identity sources
+            (identity providers).
+        user_nationalities (Union[Unset, ProtectedCallRequestUserNationalities]): List of allowed nationality codes (ISO
+            3166-1 alpha-2). User must have one.
+        user_organization_types (Union[Unset, ProtectedCallRequestUserOrganizationTypes]): List of allowed organization
+            type URNs (SCHAC). User must match one.
+        user_assurance_levels (Union[Unset, ProtectedCallRequestUserAssuranceLevels]): List of required assurance URIs
+            (REFEDS). User must have ALL of these.
         applicant_visibility_config (Union['CallApplicantVisibilityConfigRequest', None, Unset]):
     """
 
@@ -60,12 +69,12 @@ class ProtectedCallRequest:
     reference_code: Union[Unset, str] = UNSET
     compliance_checklist: Union[None, UUID, Unset] = UNSET
     proposal_slug_template: Union[None, Unset, str] = UNSET
-    user_email_patterns: Union[Unset, list[str]] = UNSET
-    user_affiliations: Union[Unset, list[str]] = UNSET
-    user_identity_sources: Union[Unset, list[str]] = UNSET
-    user_nationalities: Union[Unset, list[str]] = UNSET
-    user_organization_types: Union[Unset, list[str]] = UNSET
-    user_assurance_levels: Union[Unset, list[str]] = UNSET
+    user_email_patterns: Union[Unset, "ProtectedCallRequestUserEmailPatterns"] = UNSET
+    user_affiliations: Union[Unset, "ProtectedCallRequestUserAffiliations"] = UNSET
+    user_identity_sources: Union[Unset, "ProtectedCallRequestUserIdentitySources"] = UNSET
+    user_nationalities: Union[Unset, "ProtectedCallRequestUserNationalities"] = UNSET
+    user_organization_types: Union[Unset, "ProtectedCallRequestUserOrganizationTypes"] = UNSET
+    user_assurance_levels: Union[Unset, "ProtectedCallRequestUserAssuranceLevels"] = UNSET
     applicant_visibility_config: Union["CallApplicantVisibilityConfigRequest", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -120,29 +129,29 @@ class ProtectedCallRequest:
         else:
             proposal_slug_template = self.proposal_slug_template
 
-        user_email_patterns: Union[Unset, list[str]] = UNSET
+        user_email_patterns: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.user_email_patterns, Unset):
-            user_email_patterns = self.user_email_patterns
+            user_email_patterns = self.user_email_patterns.to_dict()
 
-        user_affiliations: Union[Unset, list[str]] = UNSET
+        user_affiliations: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.user_affiliations, Unset):
-            user_affiliations = self.user_affiliations
+            user_affiliations = self.user_affiliations.to_dict()
 
-        user_identity_sources: Union[Unset, list[str]] = UNSET
+        user_identity_sources: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.user_identity_sources, Unset):
-            user_identity_sources = self.user_identity_sources
+            user_identity_sources = self.user_identity_sources.to_dict()
 
-        user_nationalities: Union[Unset, list[str]] = UNSET
+        user_nationalities: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.user_nationalities, Unset):
-            user_nationalities = self.user_nationalities
+            user_nationalities = self.user_nationalities.to_dict()
 
-        user_organization_types: Union[Unset, list[str]] = UNSET
+        user_organization_types: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.user_organization_types, Unset):
-            user_organization_types = self.user_organization_types
+            user_organization_types = self.user_organization_types.to_dict()
 
-        user_assurance_levels: Union[Unset, list[str]] = UNSET
+        user_assurance_levels: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.user_assurance_levels, Unset):
-            user_assurance_levels = self.user_assurance_levels
+            user_assurance_levels = self.user_assurance_levels.to_dict()
 
         applicant_visibility_config: Union[None, Unset, dict[str, Any]]
         if isinstance(self.applicant_visibility_config, Unset):
@@ -202,6 +211,12 @@ class ProtectedCallRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.call_applicant_visibility_config_request import CallApplicantVisibilityConfigRequest
+        from ..models.protected_call_request_user_affiliations import ProtectedCallRequestUserAffiliations
+        from ..models.protected_call_request_user_assurance_levels import ProtectedCallRequestUserAssuranceLevels
+        from ..models.protected_call_request_user_email_patterns import ProtectedCallRequestUserEmailPatterns
+        from ..models.protected_call_request_user_identity_sources import ProtectedCallRequestUserIdentitySources
+        from ..models.protected_call_request_user_nationalities import ProtectedCallRequestUserNationalities
+        from ..models.protected_call_request_user_organization_types import ProtectedCallRequestUserOrganizationTypes
 
         d = dict(src_dict)
         name = d.pop("name")
@@ -273,17 +288,47 @@ class ProtectedCallRequest:
 
         proposal_slug_template = _parse_proposal_slug_template(d.pop("proposal_slug_template", UNSET))
 
-        user_email_patterns = cast(list[str], d.pop("user_email_patterns", UNSET))
+        _user_email_patterns = d.pop("user_email_patterns", UNSET)
+        user_email_patterns: Union[Unset, ProtectedCallRequestUserEmailPatterns]
+        if isinstance(_user_email_patterns, Unset):
+            user_email_patterns = UNSET
+        else:
+            user_email_patterns = ProtectedCallRequestUserEmailPatterns.from_dict(_user_email_patterns)
 
-        user_affiliations = cast(list[str], d.pop("user_affiliations", UNSET))
+        _user_affiliations = d.pop("user_affiliations", UNSET)
+        user_affiliations: Union[Unset, ProtectedCallRequestUserAffiliations]
+        if isinstance(_user_affiliations, Unset):
+            user_affiliations = UNSET
+        else:
+            user_affiliations = ProtectedCallRequestUserAffiliations.from_dict(_user_affiliations)
 
-        user_identity_sources = cast(list[str], d.pop("user_identity_sources", UNSET))
+        _user_identity_sources = d.pop("user_identity_sources", UNSET)
+        user_identity_sources: Union[Unset, ProtectedCallRequestUserIdentitySources]
+        if isinstance(_user_identity_sources, Unset):
+            user_identity_sources = UNSET
+        else:
+            user_identity_sources = ProtectedCallRequestUserIdentitySources.from_dict(_user_identity_sources)
 
-        user_nationalities = cast(list[str], d.pop("user_nationalities", UNSET))
+        _user_nationalities = d.pop("user_nationalities", UNSET)
+        user_nationalities: Union[Unset, ProtectedCallRequestUserNationalities]
+        if isinstance(_user_nationalities, Unset):
+            user_nationalities = UNSET
+        else:
+            user_nationalities = ProtectedCallRequestUserNationalities.from_dict(_user_nationalities)
 
-        user_organization_types = cast(list[str], d.pop("user_organization_types", UNSET))
+        _user_organization_types = d.pop("user_organization_types", UNSET)
+        user_organization_types: Union[Unset, ProtectedCallRequestUserOrganizationTypes]
+        if isinstance(_user_organization_types, Unset):
+            user_organization_types = UNSET
+        else:
+            user_organization_types = ProtectedCallRequestUserOrganizationTypes.from_dict(_user_organization_types)
 
-        user_assurance_levels = cast(list[str], d.pop("user_assurance_levels", UNSET))
+        _user_assurance_levels = d.pop("user_assurance_levels", UNSET)
+        user_assurance_levels: Union[Unset, ProtectedCallRequestUserAssuranceLevels]
+        if isinstance(_user_assurance_levels, Unset):
+            user_assurance_levels = UNSET
+        else:
+            user_assurance_levels = ProtectedCallRequestUserAssuranceLevels.from_dict(_user_assurance_levels)
 
         def _parse_applicant_visibility_config(
             data: object,

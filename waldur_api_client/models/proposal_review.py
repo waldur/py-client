@@ -35,9 +35,6 @@ class ProposalReview:
         call_uuid (UUID):
         call_slug (str):
         call_managing_organisation_uuid (UUID):
-        coi_confirmed (bool): Reviewer confirmed absence of conflict of interest with this proposal.
-        coi_confirmed_at (Union[None, datetime.datetime]):
-        coi_confirmation_required (bool):
         created (datetime.datetime):
         modified (datetime.datetime):
         reviewer (Union[Unset, str]):
@@ -78,9 +75,6 @@ class ProposalReview:
     call_uuid: UUID
     call_slug: str
     call_managing_organisation_uuid: UUID
-    coi_confirmed: bool
-    coi_confirmed_at: Union[None, datetime.datetime]
-    coi_confirmation_required: bool
     created: datetime.datetime
     modified: datetime.datetime
     reviewer: Union[Unset, str] = UNSET
@@ -137,16 +131,6 @@ class ProposalReview:
         call_slug = self.call_slug
 
         call_managing_organisation_uuid = str(self.call_managing_organisation_uuid)
-
-        coi_confirmed = self.coi_confirmed
-
-        coi_confirmed_at: Union[None, str]
-        if isinstance(self.coi_confirmed_at, datetime.datetime):
-            coi_confirmed_at = self.coi_confirmed_at.isoformat()
-        else:
-            coi_confirmed_at = self.coi_confirmed_at
-
-        coi_confirmation_required = self.coi_confirmation_required
 
         created = self.created.isoformat()
 
@@ -248,9 +232,6 @@ class ProposalReview:
                 "call_uuid": call_uuid,
                 "call_slug": call_slug,
                 "call_managing_organisation_uuid": call_managing_organisation_uuid,
-                "coi_confirmed": coi_confirmed,
-                "coi_confirmed_at": coi_confirmed_at,
-                "coi_confirmation_required": coi_confirmation_required,
                 "created": created,
                 "modified": modified,
             }
@@ -328,25 +309,6 @@ class ProposalReview:
         call_slug = d.pop("call_slug")
 
         call_managing_organisation_uuid = UUID(d.pop("call_managing_organisation_uuid"))
-
-        coi_confirmed = d.pop("coi_confirmed")
-
-        def _parse_coi_confirmed_at(data: object) -> Union[None, datetime.datetime]:
-            if data is None:
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                coi_confirmed_at_type_0 = isoparse(data)
-
-                return coi_confirmed_at_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, datetime.datetime], data)
-
-        coi_confirmed_at = _parse_coi_confirmed_at(d.pop("coi_confirmed_at"))
-
-        coi_confirmation_required = d.pop("coi_confirmation_required")
 
         created = isoparse(d.pop("created"))
 
@@ -484,9 +446,6 @@ class ProposalReview:
             call_uuid=call_uuid,
             call_slug=call_slug,
             call_managing_organisation_uuid=call_managing_organisation_uuid,
-            coi_confirmed=coi_confirmed,
-            coi_confirmed_at=coi_confirmed_at,
-            coi_confirmation_required=coi_confirmation_required,
             created=created,
             modified=modified,
             reviewer=reviewer,

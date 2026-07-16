@@ -9,7 +9,6 @@ from dateutil.parser import isoparse
 
 from ..models.maintenance_announcement_state_enum import MaintenanceAnnouncementStateEnum
 from ..models.maintenance_type_enum import MaintenanceTypeEnum
-from ..models.timing_bucket_enum import TimingBucketEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -31,9 +30,6 @@ class MaintenanceAnnouncement:
         scheduled_end (datetime.datetime): When the maintenance is scheduled to complete
         actual_start (Union[None, datetime.datetime]): When the maintenance actually began
         actual_end (Union[None, datetime.datetime]): When the maintenance actually completed
-        overrun_minutes (Union[None, int]):
-        start_delta_minutes (Union[None, int]):
-        timing_bucket (TimingBucketEnum):
         service_provider (str): Service provider announcing the maintenance
         created_by (Union[None, str]):
         affected_offerings (list['MaintenanceAnnouncementOffering']):
@@ -53,9 +49,6 @@ class MaintenanceAnnouncement:
     scheduled_end: datetime.datetime
     actual_start: Union[None, datetime.datetime]
     actual_end: Union[None, datetime.datetime]
-    overrun_minutes: Union[None, int]
-    start_delta_minutes: Union[None, int]
-    timing_bucket: TimingBucketEnum
     service_provider: str
     created_by: Union[None, str]
     affected_offerings: list["MaintenanceAnnouncementOffering"]
@@ -91,14 +84,6 @@ class MaintenanceAnnouncement:
             actual_end = self.actual_end.isoformat()
         else:
             actual_end = self.actual_end
-
-        overrun_minutes: Union[None, int]
-        overrun_minutes = self.overrun_minutes
-
-        start_delta_minutes: Union[None, int]
-        start_delta_minutes = self.start_delta_minutes
-
-        timing_bucket = self.timing_bucket.value
 
         service_provider = self.service_provider
 
@@ -136,9 +121,6 @@ class MaintenanceAnnouncement:
                 "scheduled_end": scheduled_end,
                 "actual_start": actual_start,
                 "actual_end": actual_end,
-                "overrun_minutes": overrun_minutes,
-                "start_delta_minutes": start_delta_minutes,
-                "timing_bucket": timing_bucket,
                 "service_provider": service_provider,
                 "created_by": created_by,
                 "affected_offerings": affected_offerings,
@@ -204,22 +186,6 @@ class MaintenanceAnnouncement:
 
         actual_end = _parse_actual_end(d.pop("actual_end"))
 
-        def _parse_overrun_minutes(data: object) -> Union[None, int]:
-            if data is None:
-                return data
-            return cast(Union[None, int], data)
-
-        overrun_minutes = _parse_overrun_minutes(d.pop("overrun_minutes"))
-
-        def _parse_start_delta_minutes(data: object) -> Union[None, int]:
-            if data is None:
-                return data
-            return cast(Union[None, int], data)
-
-        start_delta_minutes = _parse_start_delta_minutes(d.pop("start_delta_minutes"))
-
-        timing_bucket = TimingBucketEnum(d.pop("timing_bucket"))
-
         service_provider = d.pop("service_provider")
 
         def _parse_created_by(data: object) -> Union[None, str]:
@@ -262,9 +228,6 @@ class MaintenanceAnnouncement:
             scheduled_end=scheduled_end,
             actual_start=actual_start,
             actual_end=actual_end,
-            overrun_minutes=overrun_minutes,
-            start_delta_minutes=start_delta_minutes,
-            timing_bucket=timing_bucket,
             service_provider=service_provider,
             created_by=created_by,
             affected_offerings=affected_offerings,

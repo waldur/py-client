@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -9,10 +9,6 @@ from dateutil.parser import isoparse
 
 from ..models.proposal_workflow_step_instance_status_enum import ProposalWorkflowStepInstanceStatusEnum
 from ..models.step_enum import StepEnum
-
-if TYPE_CHECKING:
-    from ..models.step_checklist_status import StepChecklistStatus
-
 
 T = TypeVar("T", bound="ProposalWorkflowStepInstance")
 
@@ -38,7 +34,6 @@ class ProposalWorkflowStepInstance:
         applicant_visible (bool):
         duration_in_days (Union[None, int]):
         is_required (bool):
-        checklist_status (Union['StepChecklistStatus', None]):
     """
 
     uuid: UUID
@@ -58,12 +53,9 @@ class ProposalWorkflowStepInstance:
     applicant_visible: bool
     duration_in_days: Union[None, int]
     is_required: bool
-    checklist_status: Union["StepChecklistStatus", None]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.step_checklist_status import StepChecklistStatus
-
         uuid = str(self.uuid)
 
         step = self.step.value
@@ -119,12 +111,6 @@ class ProposalWorkflowStepInstance:
 
         is_required = self.is_required
 
-        checklist_status: Union[None, dict[str, Any]]
-        if isinstance(self.checklist_status, StepChecklistStatus):
-            checklist_status = self.checklist_status.to_dict()
-        else:
-            checklist_status = self.checklist_status
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -146,7 +132,6 @@ class ProposalWorkflowStepInstance:
                 "applicant_visible": applicant_visible,
                 "duration_in_days": duration_in_days,
                 "is_required": is_required,
-                "checklist_status": checklist_status,
             }
         )
 
@@ -154,8 +139,6 @@ class ProposalWorkflowStepInstance:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.step_checklist_status import StepChecklistStatus
-
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
@@ -268,21 +251,6 @@ class ProposalWorkflowStepInstance:
 
         is_required = d.pop("is_required")
 
-        def _parse_checklist_status(data: object) -> Union["StepChecklistStatus", None]:
-            if data is None:
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                checklist_status_type_1 = StepChecklistStatus.from_dict(data)
-
-                return checklist_status_type_1
-            except:  # noqa: E722
-                pass
-            return cast(Union["StepChecklistStatus", None], data)
-
-        checklist_status = _parse_checklist_status(d.pop("checklist_status"))
-
         proposal_workflow_step_instance = cls(
             uuid=uuid,
             step=step,
@@ -301,7 +269,6 @@ class ProposalWorkflowStepInstance:
             applicant_visible=applicant_visible,
             duration_in_days=duration_in_days,
             is_required=is_required,
-            checklist_status=checklist_status,
         )
 
         proposal_workflow_step_instance.additional_properties = d

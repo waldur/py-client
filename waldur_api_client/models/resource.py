@@ -10,7 +10,6 @@ from dateutil.parser import isoparse
 from ..models.billing_unit import BillingUnit
 from ..models.offering_state import OfferingState
 from ..models.resource_state import ResourceState
-from ..models.usage_limit_restriction_enum import UsageLimitRestrictionEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -78,11 +77,7 @@ class Resource:
         project_end_date (Union[None, Unset, datetime.date]): The date is inclusive. Once reached, all project resource
             will be scheduled for termination.
         project_effective_end_date (Union[None, Unset, datetime.date]): Effective project end date including grace
-            period. After this date, resources are terminated, except resources of offerings that disable the grace period —
-            those are terminated on the raw project end date.
-        resource_effective_end_date (Union[None, Unset, datetime.date]): The date this resource is scheduled to
-            terminate: the earliest of its own end date and the project-driven termination date (the raw project end date if
-            the offering disables the grace period, otherwise the effective with-grace end date).
+            period. After this date, resources will be terminated.
         project_is_in_grace_period (Union[Unset, bool]): True if the project is past its end date but still within the
             grace period.
         project_end_date_requested_by (Union[None, Unset, str]):
@@ -112,13 +107,10 @@ class Resource:
         end_date_updated_at (Union[None, Unset, datetime.datetime]): Timestamp of the last end_date change.
         username (Union[None, Unset, str]):
         limit_usage (Union[Unset, ResourceLimitUsage]): Dictionary mapping limit-based component types to their consumed
-            usage. Sums the ComponentUsage rows of the component's current period (the monthly billing period unless the
-            component defines a longer limit_period), i.e. the period's high-watermark rather than the instantaneous
-            current_usages value.
+            usage. For monthly periods, maps from current_usages; for longer periods, aggregates historical usage.
         downscaled (Union[Unset, bool]):
         restrict_member_access (Union[Unset, bool]):
         paused (Union[Unset, bool]):
-        usage_limit_restriction (Union[Unset, UsageLimitRestrictionEnum]):
         endpoints (Union[Unset, list['NestedEndpoint']]):
         error_message (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
@@ -178,7 +170,6 @@ class Resource:
     project_description: Union[Unset, str] = UNSET
     project_end_date: Union[None, Unset, datetime.date] = UNSET
     project_effective_end_date: Union[None, Unset, datetime.date] = UNSET
-    resource_effective_end_date: Union[None, Unset, datetime.date] = UNSET
     project_is_in_grace_period: Union[Unset, bool] = UNSET
     project_end_date_requested_by: Union[None, Unset, str] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
@@ -206,7 +197,6 @@ class Resource:
     downscaled: Union[Unset, bool] = UNSET
     restrict_member_access: Union[Unset, bool] = UNSET
     paused: Union[Unset, bool] = UNSET
-    usage_limit_restriction: Union[Unset, UsageLimitRestrictionEnum] = UNSET
     endpoints: Union[Unset, list["NestedEndpoint"]] = UNSET
     error_message: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
@@ -375,14 +365,6 @@ class Resource:
         else:
             project_effective_end_date = self.project_effective_end_date
 
-        resource_effective_end_date: Union[None, Unset, str]
-        if isinstance(self.resource_effective_end_date, Unset):
-            resource_effective_end_date = UNSET
-        elif isinstance(self.resource_effective_end_date, datetime.date):
-            resource_effective_end_date = self.resource_effective_end_date.isoformat()
-        else:
-            resource_effective_end_date = self.resource_effective_end_date
-
         project_is_in_grace_period = self.project_is_in_grace_period
 
         project_end_date_requested_by: Union[None, Unset, str]
@@ -477,10 +459,6 @@ class Resource:
         restrict_member_access = self.restrict_member_access
 
         paused = self.paused
-
-        usage_limit_restriction: Union[Unset, str] = UNSET
-        if not isinstance(self.usage_limit_restriction, Unset):
-            usage_limit_restriction = self.usage_limit_restriction.value
 
         endpoints: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.endpoints, Unset):
@@ -639,8 +617,6 @@ class Resource:
             field_dict["project_end_date"] = project_end_date
         if project_effective_end_date is not UNSET:
             field_dict["project_effective_end_date"] = project_effective_end_date
-        if resource_effective_end_date is not UNSET:
-            field_dict["resource_effective_end_date"] = resource_effective_end_date
         if project_is_in_grace_period is not UNSET:
             field_dict["project_is_in_grace_period"] = project_is_in_grace_period
         if project_end_date_requested_by is not UNSET:
@@ -695,8 +671,6 @@ class Resource:
             field_dict["restrict_member_access"] = restrict_member_access
         if paused is not UNSET:
             field_dict["paused"] = paused
-        if usage_limit_restriction is not UNSET:
-            field_dict["usage_limit_restriction"] = usage_limit_restriction
         if endpoints is not UNSET:
             field_dict["endpoints"] = endpoints
         if error_message is not UNSET:
@@ -979,23 +953,6 @@ class Resource:
 
         project_effective_end_date = _parse_project_effective_end_date(d.pop("project_effective_end_date", UNSET))
 
-        def _parse_resource_effective_end_date(data: object) -> Union[None, Unset, datetime.date]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                resource_effective_end_date_type_0 = isoparse(data).date()
-
-                return resource_effective_end_date_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, Unset, datetime.date], data)
-
-        resource_effective_end_date = _parse_resource_effective_end_date(d.pop("resource_effective_end_date", UNSET))
-
         project_is_in_grace_period = d.pop("project_is_in_grace_period", UNSET)
 
         def _parse_project_end_date_requested_by(data: object) -> Union[None, Unset, str]:
@@ -1137,13 +1094,6 @@ class Resource:
         restrict_member_access = d.pop("restrict_member_access", UNSET)
 
         paused = d.pop("paused", UNSET)
-
-        _usage_limit_restriction = d.pop("usage_limit_restriction", UNSET)
-        usage_limit_restriction: Union[Unset, UsageLimitRestrictionEnum]
-        if isinstance(_usage_limit_restriction, Unset):
-            usage_limit_restriction = UNSET
-        else:
-            usage_limit_restriction = UsageLimitRestrictionEnum(_usage_limit_restriction)
 
         endpoints = []
         _endpoints = d.pop("endpoints", UNSET)
@@ -1302,7 +1252,6 @@ class Resource:
             project_description=project_description,
             project_end_date=project_end_date,
             project_effective_end_date=project_effective_end_date,
-            resource_effective_end_date=resource_effective_end_date,
             project_is_in_grace_period=project_is_in_grace_period,
             project_end_date_requested_by=project_end_date_requested_by,
             customer_uuid=customer_uuid,
@@ -1330,7 +1279,6 @@ class Resource:
             downscaled=downscaled,
             restrict_member_access=restrict_member_access,
             paused=paused,
-            usage_limit_restriction=usage_limit_restriction,
             endpoints=endpoints,
             error_message=error_message,
             error_traceback=error_traceback,

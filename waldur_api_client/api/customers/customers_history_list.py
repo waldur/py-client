@@ -23,7 +23,6 @@ def _get_kwargs(
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     has_resources: Union[Unset, str] = UNSET,
     is_call_managing_organization: Union[Unset, bool] = UNSET,
     is_service_provider: Union[Unset, bool] = UNSET,
@@ -61,12 +60,6 @@ def _get_kwargs(
     params["created_before"] = created_before
 
     params["current_user_has_project_create_permission"] = current_user_has_project_create_permission
-
-    json_current_user_has_role: Union[Unset, list[str]] = UNSET
-    if not isinstance(current_user_has_role, Unset):
-        json_current_user_has_role = current_user_has_role
-
-    params["current_user_has_role"] = json_current_user_has_role
 
     params["has_resources"] = has_resources
 
@@ -165,7 +158,6 @@ def sync_detailed(
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     has_resources: Union[Unset, str] = UNSET,
     is_call_managing_organization: Union[Unset, bool] = UNSET,
     is_service_provider: Union[Unset, bool] = UNSET,
@@ -199,7 +191,6 @@ def sync_detailed(
         created_after (Union[Unset, str]):
         created_before (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        current_user_has_role (Union[Unset, list[str]]):
         has_resources (Union[Unset, str]):
         is_call_managing_organization (Union[Unset, bool]):
         is_service_provider (Union[Unset, bool]):
@@ -237,7 +228,6 @@ def sync_detailed(
         created_after=created_after,
         created_before=created_before,
         current_user_has_project_create_permission=current_user_has_project_create_permission,
-        current_user_has_role=current_user_has_role,
         has_resources=has_resources,
         is_call_managing_organization=is_call_managing_organization,
         is_service_provider=is_service_provider,
@@ -277,7 +267,6 @@ def sync(
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     has_resources: Union[Unset, str] = UNSET,
     is_call_managing_organization: Union[Unset, bool] = UNSET,
     is_service_provider: Union[Unset, bool] = UNSET,
@@ -311,7 +300,6 @@ def sync(
         created_after (Union[Unset, str]):
         created_before (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        current_user_has_role (Union[Unset, list[str]]):
         has_resources (Union[Unset, str]):
         is_call_managing_organization (Union[Unset, bool]):
         is_service_provider (Union[Unset, bool]):
@@ -350,7 +338,6 @@ def sync(
         created_after=created_after,
         created_before=created_before,
         current_user_has_project_create_permission=current_user_has_project_create_permission,
-        current_user_has_role=current_user_has_role,
         has_resources=has_resources,
         is_call_managing_organization=is_call_managing_organization,
         is_service_provider=is_service_provider,
@@ -384,7 +371,6 @@ async def asyncio_detailed(
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     has_resources: Union[Unset, str] = UNSET,
     is_call_managing_organization: Union[Unset, bool] = UNSET,
     is_service_provider: Union[Unset, bool] = UNSET,
@@ -418,7 +404,6 @@ async def asyncio_detailed(
         created_after (Union[Unset, str]):
         created_before (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        current_user_has_role (Union[Unset, list[str]]):
         has_resources (Union[Unset, str]):
         is_call_managing_organization (Union[Unset, bool]):
         is_service_provider (Union[Unset, bool]):
@@ -456,7 +441,6 @@ async def asyncio_detailed(
         created_after=created_after,
         created_before=created_before,
         current_user_has_project_create_permission=current_user_has_project_create_permission,
-        current_user_has_role=current_user_has_role,
         has_resources=has_resources,
         is_call_managing_organization=is_call_managing_organization,
         is_service_provider=is_service_provider,
@@ -494,7 +478,6 @@ async def asyncio(
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     has_resources: Union[Unset, str] = UNSET,
     is_call_managing_organization: Union[Unset, bool] = UNSET,
     is_service_provider: Union[Unset, bool] = UNSET,
@@ -528,7 +511,6 @@ async def asyncio(
         created_after (Union[Unset, str]):
         created_before (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        current_user_has_role (Union[Unset, list[str]]):
         has_resources (Union[Unset, str]):
         is_call_managing_organization (Union[Unset, bool]):
         is_service_provider (Union[Unset, bool]):
@@ -568,7 +550,6 @@ async def asyncio(
             created_after=created_after,
             created_before=created_before,
             current_user_has_project_create_permission=current_user_has_project_create_permission,
-            current_user_has_role=current_user_has_role,
             has_resources=has_resources,
             is_call_managing_organization=is_call_managing_organization,
             is_service_provider=is_service_provider,
@@ -603,7 +584,6 @@ def sync_all(
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     has_resources: Union[Unset, str] = UNSET,
     is_call_managing_organization: Union[Unset, bool] = UNSET,
     is_service_provider: Union[Unset, bool] = UNSET,
@@ -638,7 +618,6 @@ def sync_all(
         created_after (Union[Unset, str]):
         created_before (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        current_user_has_role (Union[Unset, list[str]]):
         has_resources (Union[Unset, str]):
         is_call_managing_organization (Union[Unset, bool]):
         is_service_provider (Union[Unset, bool]):
@@ -678,7 +657,6 @@ def sync_all(
         created_after=created_after,
         created_before=created_before,
         current_user_has_project_create_permission=current_user_has_project_create_permission,
-        current_user_has_role=current_user_has_role,
         has_resources=has_resources,
         is_call_managing_organization=is_call_managing_organization,
         is_service_provider=is_service_provider,
@@ -751,7 +729,6 @@ async def asyncio_all(
     created_after: Union[Unset, str] = UNSET,
     created_before: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     has_resources: Union[Unset, str] = UNSET,
     is_call_managing_organization: Union[Unset, bool] = UNSET,
     is_service_provider: Union[Unset, bool] = UNSET,
@@ -786,7 +763,6 @@ async def asyncio_all(
         created_after (Union[Unset, str]):
         created_before (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        current_user_has_role (Union[Unset, list[str]]):
         has_resources (Union[Unset, str]):
         is_call_managing_organization (Union[Unset, bool]):
         is_service_provider (Union[Unset, bool]):
@@ -826,7 +802,6 @@ async def asyncio_all(
         created_after=created_after,
         created_before=created_before,
         current_user_has_project_create_permission=current_user_has_project_create_permission,
-        current_user_has_role=current_user_has_role,
         has_resources=has_resources,
         is_call_managing_organization=is_call_managing_organization,
         is_service_provider=is_service_provider,

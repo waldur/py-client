@@ -19,7 +19,6 @@ def _get_kwargs(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, UUID] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -55,8 +54,6 @@ def _get_kwargs(
     params["customer"] = json_customer
 
     params["full_name"] = full_name
-
-    params["is_active"] = is_active
 
     json_modified: Union[Unset, str] = UNSET
     if not isinstance(modified, Unset):
@@ -158,7 +155,6 @@ def sync_detailed(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, UUID] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -182,7 +178,6 @@ def sync_detailed(
         created_before (Union[Unset, datetime.datetime]):
         customer (Union[Unset, UUID]):
         full_name (Union[Unset, str]):
-        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -213,7 +208,6 @@ def sync_detailed(
         created_before=created_before,
         customer=customer,
         full_name=full_name,
-        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,
@@ -246,7 +240,6 @@ def sync(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, UUID] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -270,7 +263,6 @@ def sync(
         created_before (Union[Unset, datetime.datetime]):
         customer (Union[Unset, UUID]):
         full_name (Union[Unset, str]):
-        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -302,7 +294,6 @@ def sync(
         created_before=created_before,
         customer=customer,
         full_name=full_name,
-        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,
@@ -329,7 +320,6 @@ async def asyncio_detailed(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, UUID] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -353,7 +343,6 @@ async def asyncio_detailed(
         created_before (Union[Unset, datetime.datetime]):
         customer (Union[Unset, UUID]):
         full_name (Union[Unset, str]):
-        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -384,7 +373,6 @@ async def asyncio_detailed(
         created_before=created_before,
         customer=customer,
         full_name=full_name,
-        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,
@@ -415,7 +403,6 @@ async def asyncio(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, UUID] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -439,7 +426,6 @@ async def asyncio(
         created_before (Union[Unset, datetime.datetime]):
         customer (Union[Unset, UUID]):
         full_name (Union[Unset, str]):
-        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -472,7 +458,6 @@ async def asyncio(
             created_before=created_before,
             customer=customer,
             full_name=full_name,
-            is_active=is_active,
             modified=modified,
             modified_before=modified_before,
             native_name=native_name,
@@ -500,7 +485,6 @@ def sync_all(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, UUID] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -528,7 +512,6 @@ def sync_all(
         created_before (Union[Unset, datetime.datetime]):
         customer (Union[Unset, UUID]):
         full_name (Union[Unset, str]):
-        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -561,7 +544,6 @@ def sync_all(
         created_before=created_before,
         customer=customer,
         full_name=full_name,
-        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,
@@ -627,7 +609,6 @@ async def asyncio_all(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, UUID] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -655,7 +636,6 @@ async def asyncio_all(
         created_before (Union[Unset, datetime.datetime]):
         customer (Union[Unset, UUID]):
         full_name (Union[Unset, str]):
-        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -688,7 +668,6 @@ async def asyncio_all(
         created_before=created_before,
         customer=customer,
         full_name=full_name,
-        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,

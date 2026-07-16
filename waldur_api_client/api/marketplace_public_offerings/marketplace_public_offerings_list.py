@@ -17,7 +17,6 @@ from ...utils import parse_link_header
 
 def _get_kwargs(
     *,
-    accessible: Union[Unset, bool] = UNSET,
     accessible_via_calls: Union[Unset, bool] = UNSET,
     allowed_customer_uuid: Union[Unset, UUID] = UNSET,
     attributes: Union[Unset, str] = UNSET,
@@ -63,8 +62,6 @@ def _get_kwargs(
     uuid_list: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
-
-    params["accessible"] = accessible
 
     params["accessible_via_calls"] = accessible_via_calls
 
@@ -275,7 +272,6 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    accessible: Union[Unset, bool] = UNSET,
     accessible_via_calls: Union[Unset, bool] = UNSET,
     allowed_customer_uuid: Union[Unset, UUID] = UNSET,
     attributes: Union[Unset, str] = UNSET,
@@ -327,7 +323,6 @@ def sync_detailed(
     shows shared offerings available to unauthenticated users.
 
     Args:
-        accessible (Union[Unset, bool]):
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
         attributes (Union[Unset, str]):
@@ -381,7 +376,6 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        accessible=accessible,
         accessible_via_calls=accessible_via_calls,
         allowed_customer_uuid=allowed_customer_uuid,
         attributes=attributes,
@@ -437,7 +431,6 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    accessible: Union[Unset, bool] = UNSET,
     accessible_via_calls: Union[Unset, bool] = UNSET,
     allowed_customer_uuid: Union[Unset, UUID] = UNSET,
     attributes: Union[Unset, str] = UNSET,
@@ -489,7 +482,6 @@ def sync(
     shows shared offerings available to unauthenticated users.
 
     Args:
-        accessible (Union[Unset, bool]):
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
         attributes (Union[Unset, str]):
@@ -544,7 +536,6 @@ def sync(
 
     return sync_detailed(
         client=client,
-        accessible=accessible,
         accessible_via_calls=accessible_via_calls,
         allowed_customer_uuid=allowed_customer_uuid,
         attributes=attributes,
@@ -594,7 +585,6 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    accessible: Union[Unset, bool] = UNSET,
     accessible_via_calls: Union[Unset, bool] = UNSET,
     allowed_customer_uuid: Union[Unset, UUID] = UNSET,
     attributes: Union[Unset, str] = UNSET,
@@ -646,7 +636,6 @@ async def asyncio_detailed(
     shows shared offerings available to unauthenticated users.
 
     Args:
-        accessible (Union[Unset, bool]):
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
         attributes (Union[Unset, str]):
@@ -700,7 +689,6 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        accessible=accessible,
         accessible_via_calls=accessible_via_calls,
         allowed_customer_uuid=allowed_customer_uuid,
         attributes=attributes,
@@ -754,7 +742,6 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    accessible: Union[Unset, bool] = UNSET,
     accessible_via_calls: Union[Unset, bool] = UNSET,
     allowed_customer_uuid: Union[Unset, UUID] = UNSET,
     attributes: Union[Unset, str] = UNSET,
@@ -806,7 +793,6 @@ async def asyncio(
     shows shared offerings available to unauthenticated users.
 
     Args:
-        accessible (Union[Unset, bool]):
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
         attributes (Union[Unset, str]):
@@ -862,7 +848,6 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
-            accessible=accessible,
             accessible_via_calls=accessible_via_calls,
             allowed_customer_uuid=allowed_customer_uuid,
             attributes=attributes,
@@ -913,7 +898,6 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    accessible: Union[Unset, bool] = UNSET,
     accessible_via_calls: Union[Unset, bool] = UNSET,
     allowed_customer_uuid: Union[Unset, UUID] = UNSET,
     attributes: Union[Unset, str] = UNSET,
@@ -964,7 +948,6 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        accessible (Union[Unset, bool]):
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
         attributes (Union[Unset, str]):
@@ -1020,7 +1003,6 @@ def sync_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
-        accessible=accessible,
         accessible_via_calls=accessible_via_calls,
         allowed_customer_uuid=allowed_customer_uuid,
         attributes=attributes,
@@ -1109,7 +1091,6 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    accessible: Union[Unset, bool] = UNSET,
     accessible_via_calls: Union[Unset, bool] = UNSET,
     allowed_customer_uuid: Union[Unset, UUID] = UNSET,
     attributes: Union[Unset, str] = UNSET,
@@ -1160,7 +1141,6 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        accessible (Union[Unset, bool]):
         accessible_via_calls (Union[Unset, bool]):
         allowed_customer_uuid (Union[Unset, UUID]):
         attributes (Union[Unset, str]):
@@ -1216,7 +1196,6 @@ async def asyncio_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
-        accessible=accessible,
         accessible_via_calls=accessible_via_calls,
         allowed_customer_uuid=allowed_customer_uuid,
         attributes=attributes,

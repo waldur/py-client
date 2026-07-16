@@ -68,7 +68,6 @@ class ConstanceSettingsRequestMultipart:
         enable_issues_for_user_ssh_key_changes (Union[Unset, bool]):
         telemetry_url (Union[Unset, str]):
         telemetry_version (Union[Unset, int]):
-        check_for_updates (Union[Unset, bool]):
         script_run_mode (Union[Unset, SCRIPTRUNMODEEnum]):
         docker_client (Union[Unset, str]):
         docker_run_options (Union[Unset, str]):
@@ -210,7 +209,6 @@ class ConstanceSettingsRequestMultipart:
         scim_inbound_enabled (Union[Unset, bool]):
         scim_inbound_source_name (Union[Unset, str]):
         scim_inbound_allowed_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
-        scim_inbound_ssh_keys_enabled (Union[Unset, bool]):
         scim_pull_api_url (Union[Unset, str]):
         scim_pull_api_key (Union[Unset, str]):
         scim_pull_source_name (Union[Unset, str]):
@@ -321,8 +319,6 @@ class ConstanceSettingsRequestMultipart:
         ssh_key_allowed_types (Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]]):
         ssh_key_min_rsa_key_size (Union[Unset, int]):
         enabled_reporting_screens (Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]]):
-        posix_id_pool_utilization_threshold (Union[Unset, int]):
-        affiliates_enabled (Union[Unset, bool]):
         matrix_enabled (Union[Unset, bool]):
         matrix_homeserver_url (Union[Unset, str]):
         matrix_homeserver_public_url (Union[Unset, str]):
@@ -372,7 +368,6 @@ class ConstanceSettingsRequestMultipart:
     enable_issues_for_user_ssh_key_changes: Union[Unset, bool] = UNSET
     telemetry_url: Union[Unset, str] = UNSET
     telemetry_version: Union[Unset, int] = UNSET
-    check_for_updates: Union[Unset, bool] = UNSET
     script_run_mode: Union[Unset, SCRIPTRUNMODEEnum] = UNSET
     docker_client: Union[Unset, str] = UNSET
     docker_run_options: Union[Unset, str] = UNSET
@@ -514,7 +509,6 @@ class ConstanceSettingsRequestMultipart:
     scim_inbound_enabled: Union[Unset, bool] = UNSET
     scim_inbound_source_name: Union[Unset, str] = UNSET
     scim_inbound_allowed_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
-    scim_inbound_ssh_keys_enabled: Union[Unset, bool] = UNSET
     scim_pull_api_url: Union[Unset, str] = UNSET
     scim_pull_api_key: Union[Unset, str] = UNSET
     scim_pull_source_name: Union[Unset, str] = UNSET
@@ -625,8 +619,6 @@ class ConstanceSettingsRequestMultipart:
     ssh_key_allowed_types: Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]] = UNSET
     ssh_key_min_rsa_key_size: Union[Unset, int] = UNSET
     enabled_reporting_screens: Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]] = UNSET
-    posix_id_pool_utilization_threshold: Union[Unset, int] = UNSET
-    affiliates_enabled: Union[Unset, bool] = UNSET
     matrix_enabled: Union[Unset, bool] = UNSET
     matrix_homeserver_url: Union[Unset, str] = UNSET
     matrix_homeserver_public_url: Union[Unset, str] = UNSET
@@ -709,8 +701,6 @@ class ConstanceSettingsRequestMultipart:
         telemetry_url = self.telemetry_url
 
         telemetry_version = self.telemetry_version
-
-        check_for_updates = self.check_for_updates
 
         script_run_mode: Union[Unset, str] = UNSET
         if not isinstance(self.script_run_mode, Unset):
@@ -1109,8 +1099,6 @@ class ConstanceSettingsRequestMultipart:
 
                 scim_inbound_allowed_attributes.append(scim_inbound_allowed_attributes_item)
 
-        scim_inbound_ssh_keys_enabled = self.scim_inbound_ssh_keys_enabled
-
         scim_pull_api_url = self.scim_pull_api_url
 
         scim_pull_api_key = self.scim_pull_api_key
@@ -1462,10 +1450,6 @@ class ConstanceSettingsRequestMultipart:
 
                 enabled_reporting_screens.append(enabled_reporting_screens_item)
 
-        posix_id_pool_utilization_threshold = self.posix_id_pool_utilization_threshold
-
-        affiliates_enabled = self.affiliates_enabled
-
         matrix_enabled = self.matrix_enabled
 
         matrix_homeserver_url = self.matrix_homeserver_url
@@ -1565,8 +1549,6 @@ class ConstanceSettingsRequestMultipart:
             field_dict["TELEMETRY_URL"] = telemetry_url
         if telemetry_version is not UNSET:
             field_dict["TELEMETRY_VERSION"] = telemetry_version
-        if check_for_updates is not UNSET:
-            field_dict["CHECK_FOR_UPDATES"] = check_for_updates
         if script_run_mode is not UNSET:
             field_dict["SCRIPT_RUN_MODE"] = script_run_mode
         if docker_client is not UNSET:
@@ -1851,8 +1833,6 @@ class ConstanceSettingsRequestMultipart:
             field_dict["SCIM_INBOUND_SOURCE_NAME"] = scim_inbound_source_name
         if scim_inbound_allowed_attributes is not UNSET:
             field_dict["SCIM_INBOUND_ALLOWED_ATTRIBUTES"] = scim_inbound_allowed_attributes
-        if scim_inbound_ssh_keys_enabled is not UNSET:
-            field_dict["SCIM_INBOUND_SSH_KEYS_ENABLED"] = scim_inbound_ssh_keys_enabled
         if scim_pull_api_url is not UNSET:
             field_dict["SCIM_PULL_API_URL"] = scim_pull_api_url
         if scim_pull_api_key is not UNSET:
@@ -2081,10 +2061,6 @@ class ConstanceSettingsRequestMultipart:
             field_dict["SSH_KEY_MIN_RSA_KEY_SIZE"] = ssh_key_min_rsa_key_size
         if enabled_reporting_screens is not UNSET:
             field_dict["ENABLED_REPORTING_SCREENS"] = enabled_reporting_screens
-        if posix_id_pool_utilization_threshold is not UNSET:
-            field_dict["POSIX_ID_POOL_UTILIZATION_THRESHOLD"] = posix_id_pool_utilization_threshold
-        if affiliates_enabled is not UNSET:
-            field_dict["AFFILIATES_ENABLED"] = affiliates_enabled
         if matrix_enabled is not UNSET:
             field_dict["MATRIX_ENABLED"] = matrix_enabled
         if matrix_homeserver_url is not UNSET:
@@ -2264,9 +2240,6 @@ class ConstanceSettingsRequestMultipart:
 
         if not isinstance(self.telemetry_version, Unset):
             files.append(("TELEMETRY_VERSION", (None, str(self.telemetry_version).encode(), "text/plain")))
-
-        if not isinstance(self.check_for_updates, Unset):
-            files.append(("CHECK_FOR_UPDATES", (None, str(self.check_for_updates).encode(), "text/plain")))
 
         if not isinstance(self.script_run_mode, Unset):
             files.append(("SCRIPT_RUN_MODE", (None, str(self.script_run_mode.value).encode(), "text/plain")))
@@ -2926,14 +2899,6 @@ class ConstanceSettingsRequestMultipart:
                             (None, str(scim_inbound_allowed_attributes_item_element.value).encode(), "text/plain"),
                         )
                     )
-
-        if not isinstance(self.scim_inbound_ssh_keys_enabled, Unset):
-            files.append(
-                (
-                    "SCIM_INBOUND_SSH_KEYS_ENABLED",
-                    (None, str(self.scim_inbound_ssh_keys_enabled).encode(), "text/plain"),
-                )
-            )
 
         if not isinstance(self.scim_pull_api_url, Unset):
             files.append(("SCIM_PULL_API_URL", (None, str(self.scim_pull_api_url).encode(), "text/plain")))
@@ -3791,17 +3756,6 @@ class ConstanceSettingsRequestMultipart:
                         )
                     )
 
-        if not isinstance(self.posix_id_pool_utilization_threshold, Unset):
-            files.append(
-                (
-                    "POSIX_ID_POOL_UTILIZATION_THRESHOLD",
-                    (None, str(self.posix_id_pool_utilization_threshold).encode(), "text/plain"),
-                )
-            )
-
-        if not isinstance(self.affiliates_enabled, Unset):
-            files.append(("AFFILIATES_ENABLED", (None, str(self.affiliates_enabled).encode(), "text/plain")))
-
         if not isinstance(self.matrix_enabled, Unset):
             files.append(("MATRIX_ENABLED", (None, str(self.matrix_enabled).encode(), "text/plain")))
 
@@ -3976,8 +3930,6 @@ class ConstanceSettingsRequestMultipart:
         telemetry_url = d.pop("TELEMETRY_URL", UNSET)
 
         telemetry_version = d.pop("TELEMETRY_VERSION", UNSET)
-
-        check_for_updates = d.pop("CHECK_FOR_UPDATES", UNSET)
 
         _script_run_mode = d.pop("SCRIPT_RUN_MODE", UNSET)
         script_run_mode: Union[Unset, SCRIPTRUNMODEEnum]
@@ -4505,8 +4457,6 @@ class ConstanceSettingsRequestMultipart:
 
             scim_inbound_allowed_attributes.append(scim_inbound_allowed_attributes_item)
 
-        scim_inbound_ssh_keys_enabled = d.pop("SCIM_INBOUND_SSH_KEYS_ENABLED", UNSET)
-
         scim_pull_api_url = d.pop("SCIM_PULL_API_URL", UNSET)
 
         scim_pull_api_key = d.pop("SCIM_PULL_API_KEY", UNSET)
@@ -5005,10 +4955,6 @@ class ConstanceSettingsRequestMultipart:
 
             enabled_reporting_screens.append(enabled_reporting_screens_item)
 
-        posix_id_pool_utilization_threshold = d.pop("POSIX_ID_POOL_UTILIZATION_THRESHOLD", UNSET)
-
-        affiliates_enabled = d.pop("AFFILIATES_ENABLED", UNSET)
-
         matrix_enabled = d.pop("MATRIX_ENABLED", UNSET)
 
         matrix_homeserver_url = d.pop("MATRIX_HOMESERVER_URL", UNSET)
@@ -5077,7 +5023,6 @@ class ConstanceSettingsRequestMultipart:
             enable_issues_for_user_ssh_key_changes=enable_issues_for_user_ssh_key_changes,
             telemetry_url=telemetry_url,
             telemetry_version=telemetry_version,
-            check_for_updates=check_for_updates,
             script_run_mode=script_run_mode,
             docker_client=docker_client,
             docker_run_options=docker_run_options,
@@ -5219,7 +5164,6 @@ class ConstanceSettingsRequestMultipart:
             scim_inbound_enabled=scim_inbound_enabled,
             scim_inbound_source_name=scim_inbound_source_name,
             scim_inbound_allowed_attributes=scim_inbound_allowed_attributes,
-            scim_inbound_ssh_keys_enabled=scim_inbound_ssh_keys_enabled,
             scim_pull_api_url=scim_pull_api_url,
             scim_pull_api_key=scim_pull_api_key,
             scim_pull_source_name=scim_pull_source_name,
@@ -5330,8 +5274,6 @@ class ConstanceSettingsRequestMultipart:
             ssh_key_allowed_types=ssh_key_allowed_types,
             ssh_key_min_rsa_key_size=ssh_key_min_rsa_key_size,
             enabled_reporting_screens=enabled_reporting_screens,
-            posix_id_pool_utilization_threshold=posix_id_pool_utilization_threshold,
-            affiliates_enabled=affiliates_enabled,
             matrix_enabled=matrix_enabled,
             matrix_homeserver_url=matrix_homeserver_url,
             matrix_homeserver_public_url=matrix_homeserver_public_url,

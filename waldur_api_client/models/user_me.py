@@ -76,13 +76,7 @@ class UserMe:
         organization_country (Union[Unset, str]):
         organization_type (Union[Unset, str]): SCHAC URN (e.g., urn:schac:homeOrganizationType:int:university)
         organization_registry_code (Union[Unset, str]): Company registration code of the user's organization, if known
-        organization_vat_code (Union[Unset, str]): VAT code of the user's organization
-        organization_address (Union[Unset, str]): Postal address of the user's organization
         eduperson_assurance (Union[Unset, list[str]]):
-        uid_number (Union[None, Unset, int]): POSIX UID from the identity provider; used when an offering's uid_source
-            is 'user_attribute'.
-        primary_gid (Union[None, Unset, int]): POSIX primary GID from the identity provider; used when an offering's
-            gid_source is 'user_attribute'.
         is_identity_manager (Union[Unset, bool]): Designates whether the user is allowed to manage remote user
             identities.
         can_use_personal_access_tokens (Union[Unset, bool]): Designates whether the user is allowed to create and use
@@ -146,11 +140,7 @@ class UserMe:
     organization_country: Union[Unset, str] = UNSET
     organization_type: Union[Unset, str] = UNSET
     organization_registry_code: Union[Unset, str] = UNSET
-    organization_vat_code: Union[Unset, str] = UNSET
-    organization_address: Union[Unset, str] = UNSET
     eduperson_assurance: Union[Unset, list[str]] = UNSET
-    uid_number: Union[None, Unset, int] = UNSET
-    primary_gid: Union[None, Unset, int] = UNSET
     is_identity_manager: Union[Unset, bool] = UNSET
     can_use_personal_access_tokens: Union[Unset, bool] = UNSET
     attribute_sources: Union[Unset, "UserMeAttributeSources"] = UNSET
@@ -317,25 +307,9 @@ class UserMe:
 
         organization_registry_code = self.organization_registry_code
 
-        organization_vat_code = self.organization_vat_code
-
-        organization_address = self.organization_address
-
         eduperson_assurance: Union[Unset, list[str]] = UNSET
         if not isinstance(self.eduperson_assurance, Unset):
             eduperson_assurance = self.eduperson_assurance
-
-        uid_number: Union[None, Unset, int]
-        if isinstance(self.uid_number, Unset):
-            uid_number = UNSET
-        else:
-            uid_number = self.uid_number
-
-        primary_gid: Union[None, Unset, int]
-        if isinstance(self.primary_gid, Unset):
-            primary_gid = UNSET
-        else:
-            primary_gid = self.primary_gid
 
         is_identity_manager = self.is_identity_manager
 
@@ -462,16 +436,8 @@ class UserMe:
             field_dict["organization_type"] = organization_type
         if organization_registry_code is not UNSET:
             field_dict["organization_registry_code"] = organization_registry_code
-        if organization_vat_code is not UNSET:
-            field_dict["organization_vat_code"] = organization_vat_code
-        if organization_address is not UNSET:
-            field_dict["organization_address"] = organization_address
         if eduperson_assurance is not UNSET:
             field_dict["eduperson_assurance"] = eduperson_assurance
-        if uid_number is not UNSET:
-            field_dict["uid_number"] = uid_number
-        if primary_gid is not UNSET:
-            field_dict["primary_gid"] = primary_gid
         if is_identity_manager is not UNSET:
             field_dict["is_identity_manager"] = is_identity_manager
         if can_use_personal_access_tokens is not UNSET:
@@ -707,29 +673,7 @@ class UserMe:
 
         organization_registry_code = d.pop("organization_registry_code", UNSET)
 
-        organization_vat_code = d.pop("organization_vat_code", UNSET)
-
-        organization_address = d.pop("organization_address", UNSET)
-
         eduperson_assurance = cast(list[str], d.pop("eduperson_assurance", UNSET))
-
-        def _parse_uid_number(data: object) -> Union[None, Unset, int]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, int], data)
-
-        uid_number = _parse_uid_number(d.pop("uid_number", UNSET))
-
-        def _parse_primary_gid(data: object) -> Union[None, Unset, int]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, int], data)
-
-        primary_gid = _parse_primary_gid(d.pop("primary_gid", UNSET))
 
         is_identity_manager = d.pop("is_identity_manager", UNSET)
 
@@ -807,11 +751,7 @@ class UserMe:
             organization_country=organization_country,
             organization_type=organization_type,
             organization_registry_code=organization_registry_code,
-            organization_vat_code=organization_vat_code,
-            organization_address=organization_address,
             eduperson_assurance=eduperson_assurance,
-            uid_number=uid_number,
-            primary_gid=primary_gid,
             is_identity_manager=is_identity_manager,
             can_use_personal_access_tokens=can_use_personal_access_tokens,
             attribute_sources=attribute_sources,

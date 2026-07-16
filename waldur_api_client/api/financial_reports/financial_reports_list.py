@@ -20,7 +20,6 @@ def _get_kwargs(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     month: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -52,12 +51,6 @@ def _get_kwargs(
     params["contact_details"] = contact_details
 
     params["current_user_has_project_create_permission"] = current_user_has_project_create_permission
-
-    json_current_user_has_role: Union[Unset, list[str]] = UNSET
-    if not isinstance(current_user_has_role, Unset):
-        json_current_user_has_role = current_user_has_role
-
-    params["current_user_has_role"] = json_current_user_has_role
 
     json_customer_uuid: Union[Unset, str] = UNSET
     if not isinstance(customer_uuid, Unset):
@@ -146,7 +139,6 @@ def sync_detailed(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     month: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -172,7 +164,6 @@ def sync_detailed(
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        current_user_has_role (Union[Unset, list[str]]):
         customer_uuid (Union[Unset, UUID]):
         month (Union[Unset, int]):
         name (Union[Unset, str]):
@@ -205,7 +196,6 @@ def sync_detailed(
         backend_id=backend_id,
         contact_details=contact_details,
         current_user_has_project_create_permission=current_user_has_project_create_permission,
-        current_user_has_role=current_user_has_role,
         customer_uuid=customer_uuid,
         month=month,
         name=name,
@@ -240,7 +230,6 @@ def sync(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     month: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -266,7 +255,6 @@ def sync(
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        current_user_has_role (Union[Unset, list[str]]):
         customer_uuid (Union[Unset, UUID]):
         month (Union[Unset, int]):
         name (Union[Unset, str]):
@@ -300,7 +288,6 @@ def sync(
         backend_id=backend_id,
         contact_details=contact_details,
         current_user_has_project_create_permission=current_user_has_project_create_permission,
-        current_user_has_role=current_user_has_role,
         customer_uuid=customer_uuid,
         month=month,
         name=name,
@@ -329,7 +316,6 @@ async def asyncio_detailed(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     month: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -355,7 +341,6 @@ async def asyncio_detailed(
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        current_user_has_role (Union[Unset, list[str]]):
         customer_uuid (Union[Unset, UUID]):
         month (Union[Unset, int]):
         name (Union[Unset, str]):
@@ -388,7 +373,6 @@ async def asyncio_detailed(
         backend_id=backend_id,
         contact_details=contact_details,
         current_user_has_project_create_permission=current_user_has_project_create_permission,
-        current_user_has_role=current_user_has_role,
         customer_uuid=customer_uuid,
         month=month,
         name=name,
@@ -421,7 +405,6 @@ async def asyncio(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     month: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -447,7 +430,6 @@ async def asyncio(
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        current_user_has_role (Union[Unset, list[str]]):
         customer_uuid (Union[Unset, UUID]):
         month (Union[Unset, int]):
         name (Union[Unset, str]):
@@ -482,7 +464,6 @@ async def asyncio(
             backend_id=backend_id,
             contact_details=contact_details,
             current_user_has_project_create_permission=current_user_has_project_create_permission,
-            current_user_has_role=current_user_has_role,
             customer_uuid=customer_uuid,
             month=month,
             name=name,
@@ -512,7 +493,6 @@ def sync_all(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     month: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -542,7 +522,6 @@ def sync_all(
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        current_user_has_role (Union[Unset, list[str]]):
         customer_uuid (Union[Unset, UUID]):
         month (Union[Unset, int]):
         name (Union[Unset, str]):
@@ -577,7 +556,6 @@ def sync_all(
         backend_id=backend_id,
         contact_details=contact_details,
         current_user_has_project_create_permission=current_user_has_project_create_permission,
-        current_user_has_role=current_user_has_role,
         customer_uuid=customer_uuid,
         month=month,
         name=name,
@@ -645,7 +623,6 @@ async def asyncio_all(
     backend_id: Union[Unset, str] = UNSET,
     contact_details: Union[Unset, str] = UNSET,
     current_user_has_project_create_permission: Union[Unset, bool] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     month: Union[Unset, int] = UNSET,
     name: Union[Unset, str] = UNSET,
@@ -675,7 +652,6 @@ async def asyncio_all(
         backend_id (Union[Unset, str]):
         contact_details (Union[Unset, str]):
         current_user_has_project_create_permission (Union[Unset, bool]):
-        current_user_has_role (Union[Unset, list[str]]):
         customer_uuid (Union[Unset, UUID]):
         month (Union[Unset, int]):
         name (Union[Unset, str]):
@@ -710,7 +686,6 @@ async def asyncio_all(
         backend_id=backend_id,
         contact_details=contact_details,
         current_user_has_project_create_permission=current_user_has_project_create_permission,
-        current_user_has_role=current_user_has_role,
         customer_uuid=customer_uuid,
         month=month,
         name=name,

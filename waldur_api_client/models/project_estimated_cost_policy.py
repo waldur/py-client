@@ -38,13 +38,10 @@ class ProjectEstimatedCostPolicy:
         period_name (str):
         project_credit (Union[None, str]):
         customer_credit (Union[None, str]):
-        resource_name (str):
         billing_price_estimate (NestedPriceEstimate):
         options (Union[Unset, ProjectEstimatedCostPolicyOptions]): Fields for saving actions extra data. Keys are name
             of actions.
         period (Union[Unset, PolicyPeriodEnum]):
-        resource (Union[None, UUID, Unset]):
-        use_credit (Union[Unset, bool]):
     """
 
     uuid: UUID
@@ -63,12 +60,9 @@ class ProjectEstimatedCostPolicy:
     period_name: str
     project_credit: Union[None, str]
     customer_credit: Union[None, str]
-    resource_name: str
     billing_price_estimate: "NestedPriceEstimate"
     options: Union[Unset, "ProjectEstimatedCostPolicyOptions"] = UNSET
     period: Union[Unset, PolicyPeriodEnum] = UNSET
-    resource: Union[None, UUID, Unset] = UNSET
-    use_credit: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -106,8 +100,6 @@ class ProjectEstimatedCostPolicy:
         customer_credit: Union[None, str]
         customer_credit = self.customer_credit
 
-        resource_name = self.resource_name
-
         billing_price_estimate = self.billing_price_estimate.to_dict()
 
         options: Union[Unset, dict[str, Any]] = UNSET
@@ -117,16 +109,6 @@ class ProjectEstimatedCostPolicy:
         period: Union[Unset, int] = UNSET
         if not isinstance(self.period, Unset):
             period = self.period.value
-
-        resource: Union[None, Unset, str]
-        if isinstance(self.resource, Unset):
-            resource = UNSET
-        elif isinstance(self.resource, UUID):
-            resource = str(self.resource)
-        else:
-            resource = self.resource
-
-        use_credit = self.use_credit
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -148,7 +130,6 @@ class ProjectEstimatedCostPolicy:
                 "period_name": period_name,
                 "project_credit": project_credit,
                 "customer_credit": customer_credit,
-                "resource_name": resource_name,
                 "billing_price_estimate": billing_price_estimate,
             }
         )
@@ -156,10 +137,6 @@ class ProjectEstimatedCostPolicy:
             field_dict["options"] = options
         if period is not UNSET:
             field_dict["period"] = period
-        if resource is not UNSET:
-            field_dict["resource"] = resource
-        if use_credit is not UNSET:
-            field_dict["use_credit"] = use_credit
 
         return field_dict
 
@@ -211,8 +188,6 @@ class ProjectEstimatedCostPolicy:
 
         customer_credit = _parse_customer_credit(d.pop("customer_credit"))
 
-        resource_name = d.pop("resource_name")
-
         billing_price_estimate = NestedPriceEstimate.from_dict(d.pop("billing_price_estimate"))
 
         _options = d.pop("options", UNSET)
@@ -228,25 +203,6 @@ class ProjectEstimatedCostPolicy:
             period = UNSET
         else:
             period = PolicyPeriodEnum(_period)
-
-        def _parse_resource(data: object) -> Union[None, UUID, Unset]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                resource_type_0 = UUID(data)
-
-                return resource_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, UUID, Unset], data)
-
-        resource = _parse_resource(d.pop("resource", UNSET))
-
-        use_credit = d.pop("use_credit", UNSET)
 
         project_estimated_cost_policy = cls(
             uuid=uuid,
@@ -265,12 +221,9 @@ class ProjectEstimatedCostPolicy:
             period_name=period_name,
             project_credit=project_credit,
             customer_credit=customer_credit,
-            resource_name=resource_name,
             billing_price_estimate=billing_price_estimate,
             options=options,
             period=period,
-            resource=resource,
-            use_credit=use_credit,
         )
 
         project_estimated_cost_policy.additional_properties = d

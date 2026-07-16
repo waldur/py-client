@@ -31,10 +31,6 @@ class CustomerCredit:
         minimal_consumption (float):
         allocated_to_projects (float):
         consumption_last_month (float):
-        withdrawable_balance (float): Part of the credit that may leave the platform via payouts or
-            transfers: earnings-typed ledger inflows minus outflows, capped by
-            the current credit value so that staff-granted (promotional) credit
-            is never withdrawable and credit expiry wipes earnings too.
         value (Union[Unset, str]):
         end_date (Union[None, Unset, datetime.date]):
         expected_consumption (Union[Unset, str]):
@@ -53,7 +49,6 @@ class CustomerCredit:
     minimal_consumption: float
     allocated_to_projects: float
     consumption_last_month: float
-    withdrawable_balance: float
     value: Union[Unset, str] = UNSET
     end_date: Union[None, Unset, datetime.date] = UNSET
     expected_consumption: Union[Unset, str] = UNSET
@@ -85,8 +80,6 @@ class CustomerCredit:
         allocated_to_projects = self.allocated_to_projects
 
         consumption_last_month = self.consumption_last_month
-
-        withdrawable_balance = self.withdrawable_balance
 
         value = self.value
 
@@ -122,7 +115,6 @@ class CustomerCredit:
                 "minimal_consumption": minimal_consumption,
                 "allocated_to_projects": allocated_to_projects,
                 "consumption_last_month": consumption_last_month,
-                "withdrawable_balance": withdrawable_balance,
             }
         )
         if value is not UNSET:
@@ -170,8 +162,6 @@ class CustomerCredit:
 
         consumption_last_month = d.pop("consumption_last_month")
 
-        withdrawable_balance = d.pop("withdrawable_balance")
-
         value = d.pop("value", UNSET)
 
         def _parse_end_date(data: object) -> Union[None, Unset, datetime.date]:
@@ -215,7 +205,6 @@ class CustomerCredit:
             minimal_consumption=minimal_consumption,
             allocated_to_projects=allocated_to_projects,
             consumption_last_month=consumption_last_month,
-            withdrawable_balance=withdrawable_balance,
             value=value,
             end_date=end_date,
             expected_consumption=expected_consumption,

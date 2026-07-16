@@ -16,50 +16,38 @@ T = TypeVar("T", bound="Permission")
 class Permission:
     """
     Attributes:
-        uuid (Union[Unset, UUID]):
         user_uuid (Union[Unset, UUID]):
         user_name (Union[Unset, str]):
         user_slug (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[None, Unset, datetime.datetime]):
-        is_active (Union[None, Unset, bool]):
         created_by_full_name (Union[Unset, str]):
         created_by_username (Union[Unset, str]):
-        revoked_by_full_name (Union[None, Unset, str]):
-        revoked_by_username (Union[None, Unset, str]):
-        revoke_reason (Union[Unset, str]):
         role_name (Union[Unset, str]):
         role_description (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
         scope_type (Union[None, Unset, str]):
         scope_uuid (Union[Unset, UUID]):
         scope_name (Union[Unset, str]):
-        scope_is_removed (Union[Unset, bool]):
         customer_uuid (Union[Unset, UUID]):
         customer_name (Union[Unset, str]):
         resource_uuid (Union[None, UUID, Unset]):
         project_uuid (Union[None, UUID, Unset]):
     """
 
-    uuid: Union[Unset, UUID] = UNSET
     user_uuid: Union[Unset, UUID] = UNSET
     user_name: Union[Unset, str] = UNSET
     user_slug: Union[Unset, str] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     expiration_time: Union[None, Unset, datetime.datetime] = UNSET
-    is_active: Union[None, Unset, bool] = UNSET
     created_by_full_name: Union[Unset, str] = UNSET
     created_by_username: Union[Unset, str] = UNSET
-    revoked_by_full_name: Union[None, Unset, str] = UNSET
-    revoked_by_username: Union[None, Unset, str] = UNSET
-    revoke_reason: Union[Unset, str] = UNSET
     role_name: Union[Unset, str] = UNSET
     role_description: Union[Unset, str] = UNSET
     role_uuid: Union[Unset, UUID] = UNSET
     scope_type: Union[None, Unset, str] = UNSET
     scope_uuid: Union[Unset, UUID] = UNSET
     scope_name: Union[Unset, str] = UNSET
-    scope_is_removed: Union[Unset, bool] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
     customer_name: Union[Unset, str] = UNSET
     resource_uuid: Union[None, UUID, Unset] = UNSET
@@ -67,10 +55,6 @@ class Permission:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.uuid, Unset):
-            uuid = str(self.uuid)
-
         user_uuid: Union[Unset, str] = UNSET
         if not isinstance(self.user_uuid, Unset):
             user_uuid = str(self.user_uuid)
@@ -91,29 +75,9 @@ class Permission:
         else:
             expiration_time = self.expiration_time
 
-        is_active: Union[None, Unset, bool]
-        if isinstance(self.is_active, Unset):
-            is_active = UNSET
-        else:
-            is_active = self.is_active
-
         created_by_full_name = self.created_by_full_name
 
         created_by_username = self.created_by_username
-
-        revoked_by_full_name: Union[None, Unset, str]
-        if isinstance(self.revoked_by_full_name, Unset):
-            revoked_by_full_name = UNSET
-        else:
-            revoked_by_full_name = self.revoked_by_full_name
-
-        revoked_by_username: Union[None, Unset, str]
-        if isinstance(self.revoked_by_username, Unset):
-            revoked_by_username = UNSET
-        else:
-            revoked_by_username = self.revoked_by_username
-
-        revoke_reason = self.revoke_reason
 
         role_name = self.role_name
 
@@ -134,8 +98,6 @@ class Permission:
             scope_uuid = str(self.scope_uuid)
 
         scope_name = self.scope_name
-
-        scope_is_removed = self.scope_is_removed
 
         customer_uuid: Union[Unset, str] = UNSET
         if not isinstance(self.customer_uuid, Unset):
@@ -162,8 +124,6 @@ class Permission:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if uuid is not UNSET:
-            field_dict["uuid"] = uuid
         if user_uuid is not UNSET:
             field_dict["user_uuid"] = user_uuid
         if user_name is not UNSET:
@@ -174,18 +134,10 @@ class Permission:
             field_dict["created"] = created
         if expiration_time is not UNSET:
             field_dict["expiration_time"] = expiration_time
-        if is_active is not UNSET:
-            field_dict["is_active"] = is_active
         if created_by_full_name is not UNSET:
             field_dict["created_by_full_name"] = created_by_full_name
         if created_by_username is not UNSET:
             field_dict["created_by_username"] = created_by_username
-        if revoked_by_full_name is not UNSET:
-            field_dict["revoked_by_full_name"] = revoked_by_full_name
-        if revoked_by_username is not UNSET:
-            field_dict["revoked_by_username"] = revoked_by_username
-        if revoke_reason is not UNSET:
-            field_dict["revoke_reason"] = revoke_reason
         if role_name is not UNSET:
             field_dict["role_name"] = role_name
         if role_description is not UNSET:
@@ -198,8 +150,6 @@ class Permission:
             field_dict["scope_uuid"] = scope_uuid
         if scope_name is not UNSET:
             field_dict["scope_name"] = scope_name
-        if scope_is_removed is not UNSET:
-            field_dict["scope_is_removed"] = scope_is_removed
         if customer_uuid is not UNSET:
             field_dict["customer_uuid"] = customer_uuid
         if customer_name is not UNSET:
@@ -214,13 +164,6 @@ class Permission:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        _uuid = d.pop("uuid", UNSET)
-        uuid: Union[Unset, UUID]
-        if isinstance(_uuid, Unset):
-            uuid = UNSET
-        else:
-            uuid = UUID(_uuid)
-
         _user_uuid = d.pop("user_uuid", UNSET)
         user_uuid: Union[Unset, UUID]
         if isinstance(_user_uuid, Unset):
@@ -256,38 +199,9 @@ class Permission:
 
         expiration_time = _parse_expiration_time(d.pop("expiration_time", UNSET))
 
-        def _parse_is_active(data: object) -> Union[None, Unset, bool]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, bool], data)
-
-        is_active = _parse_is_active(d.pop("is_active", UNSET))
-
         created_by_full_name = d.pop("created_by_full_name", UNSET)
 
         created_by_username = d.pop("created_by_username", UNSET)
-
-        def _parse_revoked_by_full_name(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        revoked_by_full_name = _parse_revoked_by_full_name(d.pop("revoked_by_full_name", UNSET))
-
-        def _parse_revoked_by_username(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        revoked_by_username = _parse_revoked_by_username(d.pop("revoked_by_username", UNSET))
-
-        revoke_reason = d.pop("revoke_reason", UNSET)
 
         role_name = d.pop("role_name", UNSET)
 
@@ -317,8 +231,6 @@ class Permission:
             scope_uuid = UUID(_scope_uuid)
 
         scope_name = d.pop("scope_name", UNSET)
-
-        scope_is_removed = d.pop("scope_is_removed", UNSET)
 
         _customer_uuid = d.pop("customer_uuid", UNSET)
         customer_uuid: Union[Unset, UUID]
@@ -364,25 +276,19 @@ class Permission:
         project_uuid = _parse_project_uuid(d.pop("project_uuid", UNSET))
 
         permission = cls(
-            uuid=uuid,
             user_uuid=user_uuid,
             user_name=user_name,
             user_slug=user_slug,
             created=created,
             expiration_time=expiration_time,
-            is_active=is_active,
             created_by_full_name=created_by_full_name,
             created_by_username=created_by_username,
-            revoked_by_full_name=revoked_by_full_name,
-            revoked_by_username=revoked_by_username,
-            revoke_reason=revoke_reason,
             role_name=role_name,
             role_description=role_description,
             role_uuid=role_uuid,
             scope_type=scope_type,
             scope_uuid=scope_uuid,
             scope_name=scope_name,
-            scope_is_removed=scope_is_removed,
             customer_uuid=customer_uuid,
             customer_name=customer_name,
             resource_uuid=resource_uuid,

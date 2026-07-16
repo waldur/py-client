@@ -41,7 +41,6 @@ class ProviderOffering:
         thumbnail (Union[None, Unset, str]):
         offering_group_uuid (Union[None, UUID, Unset]):
         offering_group_title (Union[None, Unset, str]):
-        service_provider_can_create_offering_user (Union[Unset, bool]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
@@ -61,7 +60,6 @@ class ProviderOffering:
     thumbnail: Union[None, Unset, str] = UNSET
     offering_group_uuid: Union[None, UUID, Unset] = UNSET
     offering_group_title: Union[None, Unset, str] = UNSET
-    service_provider_can_create_offering_user: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -137,8 +135,6 @@ class ProviderOffering:
         else:
             offering_group_title = self.offering_group_title
 
-        service_provider_can_create_offering_user = self.service_provider_can_create_offering_user
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -176,8 +172,6 @@ class ProviderOffering:
             field_dict["offering_group_uuid"] = offering_group_uuid
         if offering_group_title is not UNSET:
             field_dict["offering_group_title"] = offering_group_title
-        if service_provider_can_create_offering_user is not UNSET:
-            field_dict["service_provider_can_create_offering_user"] = service_provider_can_create_offering_user
 
         return field_dict
 
@@ -299,8 +293,6 @@ class ProviderOffering:
 
         offering_group_title = _parse_offering_group_title(d.pop("offering_group_title", UNSET))
 
-        service_provider_can_create_offering_user = d.pop("service_provider_can_create_offering_user", UNSET)
-
         provider_offering = cls(
             uuid=uuid,
             customer_uuid=customer_uuid,
@@ -319,7 +311,6 @@ class ProviderOffering:
             thumbnail=thumbnail,
             offering_group_uuid=offering_group_uuid,
             offering_group_title=offering_group_title,
-            service_provider_can_create_offering_user=service_provider_can_create_offering_user,
         )
 
         provider_offering.additional_properties = d
