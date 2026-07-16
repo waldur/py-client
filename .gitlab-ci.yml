@@ -92,23 +92,23 @@ Publish Dev to PyPI:
     - uv pip install --system poetry
     - |
       DEV_VERSION=$(python3 -c "
-import re, sys
-version = '0.0.0'
-try:
-    with open('waldur-openapi-schema.yaml', 'r') as f:
-        for line in f:
-            m = re.match(r'^\s*version:\s*[\"\'\']?([^\"\'\']+)[\"\'\']?', line)
-            if m:
-                version = m.group(1)
-                break
-except Exception:
-    pass
-version = version.replace('-rc.', 'rc').replace('-rc', 'rc')
-version = version.replace('.dev.', '.dev').replace('-dev.', '.dev')
-if 'dev' not in version:
-    version = f'{version}.dev{sys.argv[1]}'
-print(version)
-" "$CI_PIPELINE_IID")
+      import re, sys
+      version = '0.0.0'
+      try:
+          with open('waldur-openapi-schema.yaml', 'r') as f:
+              for line in f:
+                  m = re.match(r'^\s*version:\s*[\"\'\']?([^\"\'\']+)[\"\'\']?', line)
+                  if m:
+                      version = m.group(1)
+                      break
+      except Exception:
+          pass
+      version = version.replace('-rc.', 'rc').replace('-rc', 'rc')
+      version = version.replace('.dev.', '.dev').replace('-dev.', '.dev')
+      if 'dev' not in version:
+          version = f'{version}.dev{sys.argv[1]}'
+      print(version)
+      " "$CI_PIPELINE_IID")
       echo "Publishing dev version: $DEV_VERSION"
       poetry version "$DEV_VERSION"
     - poetry build
