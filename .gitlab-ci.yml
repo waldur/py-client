@@ -99,7 +99,7 @@ Publish Dev to PyPI:
               for line in f:
                   m = re.match(r'^\s*version:\s*[\"\'\']?([^\"\'\']+)[\"\'\']?', line)
                   if m:
-                      version = m.group(1)
+                      version = m.group(1).strip()
                       break
       except Exception:
           pass
