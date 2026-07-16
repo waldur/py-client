@@ -47,6 +47,7 @@ Build Python SDK:
       - llms.txt
       - llms-full.txt
       - api-map.md
+      - waldur-openapi-schema.yaml
     expire_in: 1 day
 
 Release Python SDK:
