@@ -27,6 +27,8 @@ class CallApplicantVisibilityConfig:
         expose_organization_country (Union[Unset, bool]):
         expose_organization_type (Union[Unset, bool]):
         expose_organization_registry_code (Union[Unset, bool]):
+        expose_organization_vat_code (Union[Unset, bool]):
+        expose_organization_address (Union[Unset, bool]):
         expose_affiliations (Union[Unset, bool]):
         expose_phone_number (Union[Unset, bool]):
         expose_job_title (Union[Unset, bool]):
@@ -42,6 +44,8 @@ class CallApplicantVisibilityConfig:
         expose_civil_number (Union[Unset, bool]):
         expose_birth_date (Union[Unset, bool]):
         expose_active_isds (Union[Unset, bool]):
+        expose_uid_number (Union[Unset, bool]):
+        expose_primary_gid (Union[Unset, bool]):
         exposed_fields (Union[Unset, list[str]]):
         is_default (Union[Unset, bool]): Return True if this is a default (unsaved) config.
     """
@@ -57,6 +61,8 @@ class CallApplicantVisibilityConfig:
     expose_organization_country: Union[Unset, bool] = UNSET
     expose_organization_type: Union[Unset, bool] = UNSET
     expose_organization_registry_code: Union[Unset, bool] = UNSET
+    expose_organization_vat_code: Union[Unset, bool] = UNSET
+    expose_organization_address: Union[Unset, bool] = UNSET
     expose_affiliations: Union[Unset, bool] = UNSET
     expose_phone_number: Union[Unset, bool] = UNSET
     expose_job_title: Union[Unset, bool] = UNSET
@@ -72,6 +78,8 @@ class CallApplicantVisibilityConfig:
     expose_civil_number: Union[Unset, bool] = UNSET
     expose_birth_date: Union[Unset, bool] = UNSET
     expose_active_isds: Union[Unset, bool] = UNSET
+    expose_uid_number: Union[Unset, bool] = UNSET
+    expose_primary_gid: Union[Unset, bool] = UNSET
     exposed_fields: Union[Unset, list[str]] = UNSET
     is_default: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -105,6 +113,10 @@ class CallApplicantVisibilityConfig:
 
         expose_organization_registry_code = self.expose_organization_registry_code
 
+        expose_organization_vat_code = self.expose_organization_vat_code
+
+        expose_organization_address = self.expose_organization_address
+
         expose_affiliations = self.expose_affiliations
 
         expose_phone_number = self.expose_phone_number
@@ -134,6 +146,10 @@ class CallApplicantVisibilityConfig:
         expose_birth_date = self.expose_birth_date
 
         expose_active_isds = self.expose_active_isds
+
+        expose_uid_number = self.expose_uid_number
+
+        expose_primary_gid = self.expose_primary_gid
 
         exposed_fields: Union[Unset, list[str]] = UNSET
         if not isinstance(self.exposed_fields, Unset):
@@ -166,6 +182,10 @@ class CallApplicantVisibilityConfig:
             field_dict["expose_organization_type"] = expose_organization_type
         if expose_organization_registry_code is not UNSET:
             field_dict["expose_organization_registry_code"] = expose_organization_registry_code
+        if expose_organization_vat_code is not UNSET:
+            field_dict["expose_organization_vat_code"] = expose_organization_vat_code
+        if expose_organization_address is not UNSET:
+            field_dict["expose_organization_address"] = expose_organization_address
         if expose_affiliations is not UNSET:
             field_dict["expose_affiliations"] = expose_affiliations
         if expose_phone_number is not UNSET:
@@ -196,6 +216,10 @@ class CallApplicantVisibilityConfig:
             field_dict["expose_birth_date"] = expose_birth_date
         if expose_active_isds is not UNSET:
             field_dict["expose_active_isds"] = expose_active_isds
+        if expose_uid_number is not UNSET:
+            field_dict["expose_uid_number"] = expose_uid_number
+        if expose_primary_gid is not UNSET:
+            field_dict["expose_primary_gid"] = expose_primary_gid
         if exposed_fields is not UNSET:
             field_dict["exposed_fields"] = exposed_fields
         if is_default is not UNSET:
@@ -243,6 +267,10 @@ class CallApplicantVisibilityConfig:
 
         expose_organization_registry_code = d.pop("expose_organization_registry_code", UNSET)
 
+        expose_organization_vat_code = d.pop("expose_organization_vat_code", UNSET)
+
+        expose_organization_address = d.pop("expose_organization_address", UNSET)
+
         expose_affiliations = d.pop("expose_affiliations", UNSET)
 
         expose_phone_number = d.pop("expose_phone_number", UNSET)
@@ -273,6 +301,10 @@ class CallApplicantVisibilityConfig:
 
         expose_active_isds = d.pop("expose_active_isds", UNSET)
 
+        expose_uid_number = d.pop("expose_uid_number", UNSET)
+
+        expose_primary_gid = d.pop("expose_primary_gid", UNSET)
+
         exposed_fields = cast(list[str], d.pop("exposed_fields", UNSET))
 
         is_default = d.pop("is_default", UNSET)
@@ -289,6 +321,8 @@ class CallApplicantVisibilityConfig:
             expose_organization_country=expose_organization_country,
             expose_organization_type=expose_organization_type,
             expose_organization_registry_code=expose_organization_registry_code,
+            expose_organization_vat_code=expose_organization_vat_code,
+            expose_organization_address=expose_organization_address,
             expose_affiliations=expose_affiliations,
             expose_phone_number=expose_phone_number,
             expose_job_title=expose_job_title,
@@ -304,6 +338,8 @@ class CallApplicantVisibilityConfig:
             expose_civil_number=expose_civil_number,
             expose_birth_date=expose_birth_date,
             expose_active_isds=expose_active_isds,
+            expose_uid_number=expose_uid_number,
+            expose_primary_gid=expose_primary_gid,
             exposed_fields=exposed_fields,
             is_default=is_default,
         )

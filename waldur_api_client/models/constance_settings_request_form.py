@@ -67,6 +67,7 @@ class ConstanceSettingsRequestForm:
         enable_issues_for_user_ssh_key_changes (Union[Unset, bool]):
         telemetry_url (Union[Unset, str]):
         telemetry_version (Union[Unset, int]):
+        check_for_updates (Union[Unset, bool]):
         script_run_mode (Union[Unset, SCRIPTRUNMODEEnum]):
         docker_client (Union[Unset, str]):
         docker_run_options (Union[Unset, str]):
@@ -208,6 +209,7 @@ class ConstanceSettingsRequestForm:
         scim_inbound_enabled (Union[Unset, bool]):
         scim_inbound_source_name (Union[Unset, str]):
         scim_inbound_allowed_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
+        scim_inbound_ssh_keys_enabled (Union[Unset, bool]):
         scim_pull_api_url (Union[Unset, str]):
         scim_pull_api_key (Union[Unset, str]):
         scim_pull_source_name (Union[Unset, str]):
@@ -313,11 +315,15 @@ class ConstanceSettingsRequestForm:
         slurm_policy_evaluation_log_retention_days (Union[Unset, int]):
         federated_identity_sync_enabled (Union[Unset, bool]):
         federated_identity_sync_allowed_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
+        federated_identity_authoritative_isd (Union[Unset, str]):
+        federated_identity_locked_fields (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
         federated_identity_deactivation_policy (Union[Unset, FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum]):
         enable_project_digest (Union[Unset, bool]):
         ssh_key_allowed_types (Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]]):
         ssh_key_min_rsa_key_size (Union[Unset, int]):
         enabled_reporting_screens (Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]]):
+        posix_id_pool_utilization_threshold (Union[Unset, int]):
+        affiliates_enabled (Union[Unset, bool]):
         matrix_enabled (Union[Unset, bool]):
         matrix_homeserver_url (Union[Unset, str]):
         matrix_homeserver_public_url (Union[Unset, str]):
@@ -367,6 +373,7 @@ class ConstanceSettingsRequestForm:
     enable_issues_for_user_ssh_key_changes: Union[Unset, bool] = UNSET
     telemetry_url: Union[Unset, str] = UNSET
     telemetry_version: Union[Unset, int] = UNSET
+    check_for_updates: Union[Unset, bool] = UNSET
     script_run_mode: Union[Unset, SCRIPTRUNMODEEnum] = UNSET
     docker_client: Union[Unset, str] = UNSET
     docker_run_options: Union[Unset, str] = UNSET
@@ -508,6 +515,7 @@ class ConstanceSettingsRequestForm:
     scim_inbound_enabled: Union[Unset, bool] = UNSET
     scim_inbound_source_name: Union[Unset, str] = UNSET
     scim_inbound_allowed_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
+    scim_inbound_ssh_keys_enabled: Union[Unset, bool] = UNSET
     scim_pull_api_url: Union[Unset, str] = UNSET
     scim_pull_api_key: Union[Unset, str] = UNSET
     scim_pull_source_name: Union[Unset, str] = UNSET
@@ -613,11 +621,15 @@ class ConstanceSettingsRequestForm:
     slurm_policy_evaluation_log_retention_days: Union[Unset, int] = UNSET
     federated_identity_sync_enabled: Union[Unset, bool] = UNSET
     federated_identity_sync_allowed_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
+    federated_identity_authoritative_isd: Union[Unset, str] = UNSET
+    federated_identity_locked_fields: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
     federated_identity_deactivation_policy: Union[Unset, FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum] = UNSET
     enable_project_digest: Union[Unset, bool] = UNSET
     ssh_key_allowed_types: Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]] = UNSET
     ssh_key_min_rsa_key_size: Union[Unset, int] = UNSET
     enabled_reporting_screens: Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]] = UNSET
+    posix_id_pool_utilization_threshold: Union[Unset, int] = UNSET
+    affiliates_enabled: Union[Unset, bool] = UNSET
     matrix_enabled: Union[Unset, bool] = UNSET
     matrix_homeserver_url: Union[Unset, str] = UNSET
     matrix_homeserver_public_url: Union[Unset, str] = UNSET
@@ -700,6 +712,8 @@ class ConstanceSettingsRequestForm:
         telemetry_url = self.telemetry_url
 
         telemetry_version = self.telemetry_version
+
+        check_for_updates = self.check_for_updates
 
         script_run_mode: Union[Unset, str] = UNSET
         if not isinstance(self.script_run_mode, Unset):
@@ -1098,6 +1112,8 @@ class ConstanceSettingsRequestForm:
 
                 scim_inbound_allowed_attributes.append(scim_inbound_allowed_attributes_item)
 
+        scim_inbound_ssh_keys_enabled = self.scim_inbound_ssh_keys_enabled
+
         scim_pull_api_url = self.scim_pull_api_url
 
         scim_pull_api_key = self.scim_pull_api_key
@@ -1417,6 +1433,20 @@ class ConstanceSettingsRequestForm:
 
                 federated_identity_sync_allowed_attributes.append(federated_identity_sync_allowed_attributes_item)
 
+        federated_identity_authoritative_isd = self.federated_identity_authoritative_isd
+
+        federated_identity_locked_fields: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.federated_identity_locked_fields, Unset):
+            federated_identity_locked_fields = []
+            for federated_identity_locked_fields_item_data in self.federated_identity_locked_fields:
+                federated_identity_locked_fields_item: str
+                if isinstance(federated_identity_locked_fields_item_data, UserAttributeEnum):
+                    federated_identity_locked_fields_item = federated_identity_locked_fields_item_data.value
+                else:
+                    federated_identity_locked_fields_item = federated_identity_locked_fields_item_data.value
+
+                federated_identity_locked_fields.append(federated_identity_locked_fields_item)
+
         federated_identity_deactivation_policy: Union[Unset, str] = UNSET
         if not isinstance(self.federated_identity_deactivation_policy, Unset):
             federated_identity_deactivation_policy = self.federated_identity_deactivation_policy.value
@@ -1448,6 +1478,10 @@ class ConstanceSettingsRequestForm:
                     enabled_reporting_screens_item = enabled_reporting_screens_item_data.value
 
                 enabled_reporting_screens.append(enabled_reporting_screens_item)
+
+        posix_id_pool_utilization_threshold = self.posix_id_pool_utilization_threshold
+
+        affiliates_enabled = self.affiliates_enabled
 
         matrix_enabled = self.matrix_enabled
 
@@ -1548,6 +1582,8 @@ class ConstanceSettingsRequestForm:
             field_dict["TELEMETRY_URL"] = telemetry_url
         if telemetry_version is not UNSET:
             field_dict["TELEMETRY_VERSION"] = telemetry_version
+        if check_for_updates is not UNSET:
+            field_dict["CHECK_FOR_UPDATES"] = check_for_updates
         if script_run_mode is not UNSET:
             field_dict["SCRIPT_RUN_MODE"] = script_run_mode
         if docker_client is not UNSET:
@@ -1832,6 +1868,8 @@ class ConstanceSettingsRequestForm:
             field_dict["SCIM_INBOUND_SOURCE_NAME"] = scim_inbound_source_name
         if scim_inbound_allowed_attributes is not UNSET:
             field_dict["SCIM_INBOUND_ALLOWED_ATTRIBUTES"] = scim_inbound_allowed_attributes
+        if scim_inbound_ssh_keys_enabled is not UNSET:
+            field_dict["SCIM_INBOUND_SSH_KEYS_ENABLED"] = scim_inbound_ssh_keys_enabled
         if scim_pull_api_url is not UNSET:
             field_dict["SCIM_PULL_API_URL"] = scim_pull_api_url
         if scim_pull_api_key is not UNSET:
@@ -2050,6 +2088,10 @@ class ConstanceSettingsRequestForm:
             field_dict["FEDERATED_IDENTITY_SYNC_ENABLED"] = federated_identity_sync_enabled
         if federated_identity_sync_allowed_attributes is not UNSET:
             field_dict["FEDERATED_IDENTITY_SYNC_ALLOWED_ATTRIBUTES"] = federated_identity_sync_allowed_attributes
+        if federated_identity_authoritative_isd is not UNSET:
+            field_dict["FEDERATED_IDENTITY_AUTHORITATIVE_ISD"] = federated_identity_authoritative_isd
+        if federated_identity_locked_fields is not UNSET:
+            field_dict["FEDERATED_IDENTITY_LOCKED_FIELDS"] = federated_identity_locked_fields
         if federated_identity_deactivation_policy is not UNSET:
             field_dict["FEDERATED_IDENTITY_DEACTIVATION_POLICY"] = federated_identity_deactivation_policy
         if enable_project_digest is not UNSET:
@@ -2060,6 +2102,10 @@ class ConstanceSettingsRequestForm:
             field_dict["SSH_KEY_MIN_RSA_KEY_SIZE"] = ssh_key_min_rsa_key_size
         if enabled_reporting_screens is not UNSET:
             field_dict["ENABLED_REPORTING_SCREENS"] = enabled_reporting_screens
+        if posix_id_pool_utilization_threshold is not UNSET:
+            field_dict["POSIX_ID_POOL_UTILIZATION_THRESHOLD"] = posix_id_pool_utilization_threshold
+        if affiliates_enabled is not UNSET:
+            field_dict["AFFILIATES_ENABLED"] = affiliates_enabled
         if matrix_enabled is not UNSET:
             field_dict["MATRIX_ENABLED"] = matrix_enabled
         if matrix_homeserver_url is not UNSET:
@@ -2182,6 +2228,8 @@ class ConstanceSettingsRequestForm:
         telemetry_url = d.pop("TELEMETRY_URL", UNSET)
 
         telemetry_version = d.pop("TELEMETRY_VERSION", UNSET)
+
+        check_for_updates = d.pop("CHECK_FOR_UPDATES", UNSET)
 
         _script_run_mode = d.pop("SCRIPT_RUN_MODE", UNSET)
         script_run_mode: Union[Unset, SCRIPTRUNMODEEnum]
@@ -2709,6 +2757,8 @@ class ConstanceSettingsRequestForm:
 
             scim_inbound_allowed_attributes.append(scim_inbound_allowed_attributes_item)
 
+        scim_inbound_ssh_keys_enabled = d.pop("SCIM_INBOUND_SSH_KEYS_ENABLED", UNSET)
+
         scim_pull_api_url = d.pop("SCIM_PULL_API_URL", UNSET)
 
         scim_pull_api_key = d.pop("SCIM_PULL_API_KEY", UNSET)
@@ -3148,6 +3198,33 @@ class ConstanceSettingsRequestForm:
 
             federated_identity_sync_allowed_attributes.append(federated_identity_sync_allowed_attributes_item)
 
+        federated_identity_authoritative_isd = d.pop("FEDERATED_IDENTITY_AUTHORITATIVE_ISD", UNSET)
+
+        federated_identity_locked_fields = []
+        _federated_identity_locked_fields = d.pop("FEDERATED_IDENTITY_LOCKED_FIELDS", UNSET)
+        for federated_identity_locked_fields_item_data in _federated_identity_locked_fields or []:
+
+            def _parse_federated_identity_locked_fields_item(data: object) -> Union[BlankEnum, UserAttributeEnum]:
+                try:
+                    if not isinstance(data, str):
+                        raise TypeError()
+                    federated_identity_locked_fields_item_type_0 = UserAttributeEnum(data)
+
+                    return federated_identity_locked_fields_item_type_0
+                except:  # noqa: E722
+                    pass
+                if not isinstance(data, str):
+                    raise TypeError()
+                federated_identity_locked_fields_item_type_1 = BlankEnum(data)
+
+                return federated_identity_locked_fields_item_type_1
+
+            federated_identity_locked_fields_item = _parse_federated_identity_locked_fields_item(
+                federated_identity_locked_fields_item_data
+            )
+
+            federated_identity_locked_fields.append(federated_identity_locked_fields_item)
+
         _federated_identity_deactivation_policy = d.pop("FEDERATED_IDENTITY_DEACTIVATION_POLICY", UNSET)
         federated_identity_deactivation_policy: Union[Unset, FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum]
         if isinstance(_federated_identity_deactivation_policy, Unset):
@@ -3206,6 +3283,10 @@ class ConstanceSettingsRequestForm:
             enabled_reporting_screens_item = _parse_enabled_reporting_screens_item(enabled_reporting_screens_item_data)
 
             enabled_reporting_screens.append(enabled_reporting_screens_item)
+
+        posix_id_pool_utilization_threshold = d.pop("POSIX_ID_POOL_UTILIZATION_THRESHOLD", UNSET)
+
+        affiliates_enabled = d.pop("AFFILIATES_ENABLED", UNSET)
 
         matrix_enabled = d.pop("MATRIX_ENABLED", UNSET)
 
@@ -3275,6 +3356,7 @@ class ConstanceSettingsRequestForm:
             enable_issues_for_user_ssh_key_changes=enable_issues_for_user_ssh_key_changes,
             telemetry_url=telemetry_url,
             telemetry_version=telemetry_version,
+            check_for_updates=check_for_updates,
             script_run_mode=script_run_mode,
             docker_client=docker_client,
             docker_run_options=docker_run_options,
@@ -3416,6 +3498,7 @@ class ConstanceSettingsRequestForm:
             scim_inbound_enabled=scim_inbound_enabled,
             scim_inbound_source_name=scim_inbound_source_name,
             scim_inbound_allowed_attributes=scim_inbound_allowed_attributes,
+            scim_inbound_ssh_keys_enabled=scim_inbound_ssh_keys_enabled,
             scim_pull_api_url=scim_pull_api_url,
             scim_pull_api_key=scim_pull_api_key,
             scim_pull_source_name=scim_pull_source_name,
@@ -3521,11 +3604,15 @@ class ConstanceSettingsRequestForm:
             slurm_policy_evaluation_log_retention_days=slurm_policy_evaluation_log_retention_days,
             federated_identity_sync_enabled=federated_identity_sync_enabled,
             federated_identity_sync_allowed_attributes=federated_identity_sync_allowed_attributes,
+            federated_identity_authoritative_isd=federated_identity_authoritative_isd,
+            federated_identity_locked_fields=federated_identity_locked_fields,
             federated_identity_deactivation_policy=federated_identity_deactivation_policy,
             enable_project_digest=enable_project_digest,
             ssh_key_allowed_types=ssh_key_allowed_types,
             ssh_key_min_rsa_key_size=ssh_key_min_rsa_key_size,
             enabled_reporting_screens=enabled_reporting_screens,
+            posix_id_pool_utilization_threshold=posix_id_pool_utilization_threshold,
+            affiliates_enabled=affiliates_enabled,
             matrix_enabled=matrix_enabled,
             matrix_homeserver_url=matrix_homeserver_url,
             matrix_homeserver_public_url=matrix_homeserver_public_url,

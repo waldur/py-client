@@ -1,7 +1,7 @@
 import datetime
 from collections.abc import Mapping
 from io import BytesIO
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -13,12 +13,6 @@ from ..models.blank_enum import BlankEnum
 from ..models.oecd_fos_2007_code_enum import OecdFos2007CodeEnum
 from ..models.project_kind_enum import ProjectKindEnum
 from ..types import UNSET, File, Unset
-
-if TYPE_CHECKING:
-    from ..models.patched_project_request_user_affiliations import PatchedProjectRequestUserAffiliations
-    from ..models.patched_project_request_user_email_patterns import PatchedProjectRequestUserEmailPatterns
-    from ..models.patched_project_request_user_identity_sources import PatchedProjectRequestUserIdentitySources
-
 
 T = TypeVar("T", bound="PatchedProjectRequest")
 
@@ -45,10 +39,9 @@ class PatchedProjectRequest:
             sanitized)
         grace_period_days (Union[None, Unset, int]): Number of extra days after project end date before resources are
             terminated. Overrides customer-level setting.
-        user_email_patterns (Union[Unset, PatchedProjectRequestUserEmailPatterns]):
-        user_affiliations (Union[Unset, PatchedProjectRequestUserAffiliations]):
-        user_identity_sources (Union[Unset, PatchedProjectRequestUserIdentitySources]): List of allowed identity sources
-            (identity providers).
+        user_email_patterns (Union[Unset, list[str]]):
+        user_affiliations (Union[Unset, list[str]]):
+        user_identity_sources (Union[Unset, list[str]]):
         affiliation_uuid (Union[None, UUID, Unset]):
         science_sub_domain (Union[None, UUID, Unset]):
     """
@@ -67,9 +60,9 @@ class PatchedProjectRequest:
     kind: Union[Unset, ProjectKindEnum] = UNSET
     staff_notes: Union[Unset, str] = UNSET
     grace_period_days: Union[None, Unset, int] = UNSET
-    user_email_patterns: Union[Unset, "PatchedProjectRequestUserEmailPatterns"] = UNSET
-    user_affiliations: Union[Unset, "PatchedProjectRequestUserAffiliations"] = UNSET
-    user_identity_sources: Union[Unset, "PatchedProjectRequestUserIdentitySources"] = UNSET
+    user_email_patterns: Union[Unset, list[str]] = UNSET
+    user_affiliations: Union[Unset, list[str]] = UNSET
+    user_identity_sources: Union[Unset, list[str]] = UNSET
     affiliation_uuid: Union[None, UUID, Unset] = UNSET
     science_sub_domain: Union[None, UUID, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -140,17 +133,17 @@ class PatchedProjectRequest:
         else:
             grace_period_days = self.grace_period_days
 
-        user_email_patterns: Union[Unset, dict[str, Any]] = UNSET
+        user_email_patterns: Union[Unset, list[str]] = UNSET
         if not isinstance(self.user_email_patterns, Unset):
-            user_email_patterns = self.user_email_patterns.to_dict()
+            user_email_patterns = self.user_email_patterns
 
-        user_affiliations: Union[Unset, dict[str, Any]] = UNSET
+        user_affiliations: Union[Unset, list[str]] = UNSET
         if not isinstance(self.user_affiliations, Unset):
-            user_affiliations = self.user_affiliations.to_dict()
+            user_affiliations = self.user_affiliations
 
-        user_identity_sources: Union[Unset, dict[str, Any]] = UNSET
+        user_identity_sources: Union[Unset, list[str]] = UNSET
         if not isinstance(self.user_identity_sources, Unset):
-            user_identity_sources = self.user_identity_sources.to_dict()
+            user_identity_sources = self.user_identity_sources
 
         affiliation_uuid: Union[None, Unset, str]
         if isinstance(self.affiliation_uuid, Unset):
@@ -214,10 +207,6 @@ class PatchedProjectRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.patched_project_request_user_affiliations import PatchedProjectRequestUserAffiliations
-        from ..models.patched_project_request_user_email_patterns import PatchedProjectRequestUserEmailPatterns
-        from ..models.patched_project_request_user_identity_sources import PatchedProjectRequestUserIdentitySources
-
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
@@ -334,26 +323,11 @@ class PatchedProjectRequest:
 
         grace_period_days = _parse_grace_period_days(d.pop("grace_period_days", UNSET))
 
-        _user_email_patterns = d.pop("user_email_patterns", UNSET)
-        user_email_patterns: Union[Unset, PatchedProjectRequestUserEmailPatterns]
-        if isinstance(_user_email_patterns, Unset):
-            user_email_patterns = UNSET
-        else:
-            user_email_patterns = PatchedProjectRequestUserEmailPatterns.from_dict(_user_email_patterns)
+        user_email_patterns = cast(list[str], d.pop("user_email_patterns", UNSET))
 
-        _user_affiliations = d.pop("user_affiliations", UNSET)
-        user_affiliations: Union[Unset, PatchedProjectRequestUserAffiliations]
-        if isinstance(_user_affiliations, Unset):
-            user_affiliations = UNSET
-        else:
-            user_affiliations = PatchedProjectRequestUserAffiliations.from_dict(_user_affiliations)
+        user_affiliations = cast(list[str], d.pop("user_affiliations", UNSET))
 
-        _user_identity_sources = d.pop("user_identity_sources", UNSET)
-        user_identity_sources: Union[Unset, PatchedProjectRequestUserIdentitySources]
-        if isinstance(_user_identity_sources, Unset):
-            user_identity_sources = UNSET
-        else:
-            user_identity_sources = PatchedProjectRequestUserIdentitySources.from_dict(_user_identity_sources)
+        user_identity_sources = cast(list[str], d.pop("user_identity_sources", UNSET))
 
         def _parse_affiliation_uuid(data: object) -> Union[None, UUID, Unset]:
             if data is None:

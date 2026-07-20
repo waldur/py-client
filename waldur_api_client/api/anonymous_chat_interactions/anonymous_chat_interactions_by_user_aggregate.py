@@ -21,6 +21,7 @@ def _get_kwargs(
     o: Union[Unset, list[AnonymousChatInteractionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     session_id: Union[Unset, str] = UNSET,
     severity: Union[Unset, InjectionSeverityEnum] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
@@ -53,6 +54,8 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["query"] = query
 
     params["session_id"] = session_id
 
@@ -113,6 +116,7 @@ def sync_detailed(
     o: Union[Unset, list[AnonymousChatInteractionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     session_id: Union[Unset, str] = UNSET,
     severity: Union[Unset, InjectionSeverityEnum] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
@@ -130,6 +134,7 @@ def sync_detailed(
         o (Union[Unset, list[AnonymousChatInteractionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         session_id (Union[Unset, str]):
         severity (Union[Unset, InjectionSeverityEnum]):
         user_slug (Union[Unset, str]):
@@ -150,6 +155,7 @@ def sync_detailed(
         o=o,
         page=page,
         page_size=page_size,
+        query=query,
         session_id=session_id,
         severity=severity,
         user_slug=user_slug,
@@ -172,6 +178,7 @@ def sync(
     o: Union[Unset, list[AnonymousChatInteractionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     session_id: Union[Unset, str] = UNSET,
     severity: Union[Unset, InjectionSeverityEnum] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
@@ -189,6 +196,7 @@ def sync(
         o (Union[Unset, list[AnonymousChatInteractionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         session_id (Union[Unset, str]):
         severity (Union[Unset, InjectionSeverityEnum]):
         user_slug (Union[Unset, str]):
@@ -210,6 +218,7 @@ def sync(
         o=o,
         page=page,
         page_size=page_size,
+        query=query,
         session_id=session_id,
         severity=severity,
         user_slug=user_slug,
@@ -226,6 +235,7 @@ async def asyncio_detailed(
     o: Union[Unset, list[AnonymousChatInteractionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     session_id: Union[Unset, str] = UNSET,
     severity: Union[Unset, InjectionSeverityEnum] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
@@ -243,6 +253,7 @@ async def asyncio_detailed(
         o (Union[Unset, list[AnonymousChatInteractionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         session_id (Union[Unset, str]):
         severity (Union[Unset, InjectionSeverityEnum]):
         user_slug (Union[Unset, str]):
@@ -263,6 +274,7 @@ async def asyncio_detailed(
         o=o,
         page=page,
         page_size=page_size,
+        query=query,
         session_id=session_id,
         severity=severity,
         user_slug=user_slug,
@@ -283,6 +295,7 @@ async def asyncio(
     o: Union[Unset, list[AnonymousChatInteractionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     session_id: Union[Unset, str] = UNSET,
     severity: Union[Unset, InjectionSeverityEnum] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
@@ -300,6 +313,7 @@ async def asyncio(
         o (Union[Unset, list[AnonymousChatInteractionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         session_id (Union[Unset, str]):
         severity (Union[Unset, InjectionSeverityEnum]):
         user_slug (Union[Unset, str]):
@@ -322,6 +336,7 @@ async def asyncio(
             o=o,
             page=page,
             page_size=page_size,
+            query=query,
             session_id=session_id,
             severity=severity,
             user_slug=user_slug,

@@ -54,10 +54,16 @@ class OfferingUser:
         user_organization_type (Union[Unset, str]): SCHAC URN (e.g., urn:schac:homeOrganizationType:int:university)
         user_organization_registry_code (Union[Unset, str]): Company registration code of the user's organization, if
             known
+        user_organization_vat_code (Union[Unset, str]): VAT code of the user's organization
+        user_organization_address (Union[Unset, str]): Postal address of the user's organization
         user_eduperson_assurance (Union[Unset, list[str]]): REFEDS assurance profile URIs from identity provider
         user_civil_number (Union[None, Unset, str]):
         user_birth_date (Union[None, Unset, datetime.date]):
         user_identity_source (Union[Unset, str]): Indicates what identity provider was used.
+        user_uid_number (Union[None, Unset, int]): POSIX UID from the identity provider; used when an offering's
+            uid_source is 'user_attribute'.
+        user_primary_gid (Union[None, Unset, int]): POSIX primary GID from the identity provider; used when an
+            offering's gid_source is 'user_attribute'.
         user_active_isds (Union[Unset, list[str]]): List of ISDs that have asserted this user exists. User is
             deactivated when this becomes empty.
         created (Union[Unset, datetime.datetime]):
@@ -80,6 +86,10 @@ class OfferingUser:
             and agreement_date
         is_profile_complete (Union[Unset, bool]):
         missing_profile_attributes (Union[Unset, list[str]]):
+        uidnumber (Union[None, Unset, int]):
+        primarygroup (Union[None, Unset, int]):
+        login_shell (Union[None, Unset, str]):
+        home_directory (Union[None, Unset, str]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -109,10 +119,14 @@ class OfferingUser:
     user_organization_country: Union[Unset, str] = UNSET
     user_organization_type: Union[Unset, str] = UNSET
     user_organization_registry_code: Union[Unset, str] = UNSET
+    user_organization_vat_code: Union[Unset, str] = UNSET
+    user_organization_address: Union[Unset, str] = UNSET
     user_eduperson_assurance: Union[Unset, list[str]] = UNSET
     user_civil_number: Union[None, Unset, str] = UNSET
     user_birth_date: Union[None, Unset, datetime.date] = UNSET
     user_identity_source: Union[Unset, str] = UNSET
+    user_uid_number: Union[None, Unset, int] = UNSET
+    user_primary_gid: Union[None, Unset, int] = UNSET
     user_active_isds: Union[Unset, list[str]] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     modified: Union[Unset, datetime.datetime] = UNSET
@@ -130,6 +144,10 @@ class OfferingUser:
     consent_data: Union["OfferingUserConsentDataType0", None, Unset] = UNSET
     is_profile_complete: Union[Unset, bool] = UNSET
     missing_profile_attributes: Union[Unset, list[str]] = UNSET
+    uidnumber: Union[None, Unset, int] = UNSET
+    primarygroup: Union[None, Unset, int] = UNSET
+    login_shell: Union[None, Unset, str] = UNSET
+    home_directory: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -211,6 +229,10 @@ class OfferingUser:
 
         user_organization_registry_code = self.user_organization_registry_code
 
+        user_organization_vat_code = self.user_organization_vat_code
+
+        user_organization_address = self.user_organization_address
+
         user_eduperson_assurance: Union[Unset, list[str]] = UNSET
         if not isinstance(self.user_eduperson_assurance, Unset):
             user_eduperson_assurance = self.user_eduperson_assurance
@@ -230,6 +252,18 @@ class OfferingUser:
             user_birth_date = self.user_birth_date
 
         user_identity_source = self.user_identity_source
+
+        user_uid_number: Union[None, Unset, int]
+        if isinstance(self.user_uid_number, Unset):
+            user_uid_number = UNSET
+        else:
+            user_uid_number = self.user_uid_number
+
+        user_primary_gid: Union[None, Unset, int]
+        if isinstance(self.user_primary_gid, Unset):
+            user_primary_gid = UNSET
+        else:
+            user_primary_gid = self.user_primary_gid
 
         user_active_isds: Union[Unset, list[str]] = UNSET
         if not isinstance(self.user_active_isds, Unset):
@@ -284,6 +318,30 @@ class OfferingUser:
         missing_profile_attributes: Union[Unset, list[str]] = UNSET
         if not isinstance(self.missing_profile_attributes, Unset):
             missing_profile_attributes = self.missing_profile_attributes
+
+        uidnumber: Union[None, Unset, int]
+        if isinstance(self.uidnumber, Unset):
+            uidnumber = UNSET
+        else:
+            uidnumber = self.uidnumber
+
+        primarygroup: Union[None, Unset, int]
+        if isinstance(self.primarygroup, Unset):
+            primarygroup = UNSET
+        else:
+            primarygroup = self.primarygroup
+
+        login_shell: Union[None, Unset, str]
+        if isinstance(self.login_shell, Unset):
+            login_shell = UNSET
+        else:
+            login_shell = self.login_shell
+
+        home_directory: Union[None, Unset, str]
+        if isinstance(self.home_directory, Unset):
+            home_directory = UNSET
+        else:
+            home_directory = self.home_directory
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -342,6 +400,10 @@ class OfferingUser:
             field_dict["user_organization_type"] = user_organization_type
         if user_organization_registry_code is not UNSET:
             field_dict["user_organization_registry_code"] = user_organization_registry_code
+        if user_organization_vat_code is not UNSET:
+            field_dict["user_organization_vat_code"] = user_organization_vat_code
+        if user_organization_address is not UNSET:
+            field_dict["user_organization_address"] = user_organization_address
         if user_eduperson_assurance is not UNSET:
             field_dict["user_eduperson_assurance"] = user_eduperson_assurance
         if user_civil_number is not UNSET:
@@ -350,6 +412,10 @@ class OfferingUser:
             field_dict["user_birth_date"] = user_birth_date
         if user_identity_source is not UNSET:
             field_dict["user_identity_source"] = user_identity_source
+        if user_uid_number is not UNSET:
+            field_dict["user_uid_number"] = user_uid_number
+        if user_primary_gid is not UNSET:
+            field_dict["user_primary_gid"] = user_primary_gid
         if user_active_isds is not UNSET:
             field_dict["user_active_isds"] = user_active_isds
         if created is not UNSET:
@@ -384,6 +450,14 @@ class OfferingUser:
             field_dict["is_profile_complete"] = is_profile_complete
         if missing_profile_attributes is not UNSET:
             field_dict["missing_profile_attributes"] = missing_profile_attributes
+        if uidnumber is not UNSET:
+            field_dict["uidnumber"] = uidnumber
+        if primarygroup is not UNSET:
+            field_dict["primarygroup"] = primarygroup
+        if login_shell is not UNSET:
+            field_dict["login_shell"] = login_shell
+        if home_directory is not UNSET:
+            field_dict["home_directory"] = home_directory
 
         return field_dict
 
@@ -491,6 +565,10 @@ class OfferingUser:
 
         user_organization_registry_code = d.pop("user_organization_registry_code", UNSET)
 
+        user_organization_vat_code = d.pop("user_organization_vat_code", UNSET)
+
+        user_organization_address = d.pop("user_organization_address", UNSET)
+
         user_eduperson_assurance = cast(list[str], d.pop("user_eduperson_assurance", UNSET))
 
         def _parse_user_civil_number(data: object) -> Union[None, Unset, str]:
@@ -520,6 +598,24 @@ class OfferingUser:
         user_birth_date = _parse_user_birth_date(d.pop("user_birth_date", UNSET))
 
         user_identity_source = d.pop("user_identity_source", UNSET)
+
+        def _parse_user_uid_number(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        user_uid_number = _parse_user_uid_number(d.pop("user_uid_number", UNSET))
+
+        def _parse_user_primary_gid(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        user_primary_gid = _parse_user_primary_gid(d.pop("user_primary_gid", UNSET))
 
         user_active_isds = cast(list[str], d.pop("user_active_isds", UNSET))
 
@@ -595,6 +691,42 @@ class OfferingUser:
 
         missing_profile_attributes = cast(list[str], d.pop("missing_profile_attributes", UNSET))
 
+        def _parse_uidnumber(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        uidnumber = _parse_uidnumber(d.pop("uidnumber", UNSET))
+
+        def _parse_primarygroup(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        primarygroup = _parse_primarygroup(d.pop("primarygroup", UNSET))
+
+        def _parse_login_shell(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        login_shell = _parse_login_shell(d.pop("login_shell", UNSET))
+
+        def _parse_home_directory(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        home_directory = _parse_home_directory(d.pop("home_directory", UNSET))
+
         offering_user = cls(
             url=url,
             uuid=uuid,
@@ -623,10 +755,14 @@ class OfferingUser:
             user_organization_country=user_organization_country,
             user_organization_type=user_organization_type,
             user_organization_registry_code=user_organization_registry_code,
+            user_organization_vat_code=user_organization_vat_code,
+            user_organization_address=user_organization_address,
             user_eduperson_assurance=user_eduperson_assurance,
             user_civil_number=user_civil_number,
             user_birth_date=user_birth_date,
             user_identity_source=user_identity_source,
+            user_uid_number=user_uid_number,
+            user_primary_gid=user_primary_gid,
             user_active_isds=user_active_isds,
             created=created,
             modified=modified,
@@ -644,6 +780,10 @@ class OfferingUser:
             consent_data=consent_data,
             is_profile_complete=is_profile_complete,
             missing_profile_attributes=missing_profile_attributes,
+            uidnumber=uidnumber,
+            primarygroup=primarygroup,
+            login_shell=login_shell,
+            home_directory=home_directory,
         )
 
         offering_user.additional_properties = d

@@ -5,7 +5,11 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.account_name_generation_policy_enum import AccountNameGenerationPolicyEnum
+from ..models.action_on_usage_limit_enum import ActionOnUsageLimitEnum
+from ..models.billing_source_enum import BillingSourceEnum
+from ..models.blank_enum import BlankEnum
 from ..models.deployment_mode_enum import DeploymentModeEnum
+from ..models.posix_id_source_enum import PosixIdSourceEnum
 from ..models.storage_mode_enum import StorageModeEnum
 from ..models.username_generation_policy_enum import UsernameGenerationPolicyEnum
 from ..types import UNSET, Unset
@@ -41,6 +45,12 @@ class MergedPluginOptions:
             approval, overriding auto_approve_in_service_provider_projects
         supports_downscaling (Union[Unset, bool]): If set to True, it will be possible to downscale resources
         supports_pausing (Union[Unset, bool]): If set to True, it will be possible to pause resources
+        disable_grace_period (Union[Unset, bool]): If set to True, this offering's resources ignore the project grace
+            period and are terminated on the project end date. Only staff can change this option.
+        action_on_usage_limit (Union[ActionOnUsageLimitEnum, BlankEnum, None, Unset]): If set to 'pause' or 'downscale',
+            resources are automatically paused or downscaled when reported usage in the current period reaches a component's
+            limit_amount, and the restriction is lifted when usage drops below the limit again (e.g. a new billing period or
+            a raised limit).
         minimal_team_count_for_provisioning (Union[Unset, int]): Minimal team count required for provisioning of
             resources
         maximal_resource_count_per_project (Union[Unset, int]): Maximal number of offering resources allowed per project
@@ -48,6 +58,15 @@ class MergedPluginOptions:
             'storage_data_type' ensures only one resource per storage type per project.
         required_team_role_for_provisioning (Union[None, Unset, str]): Required user role in a project for provisioning
             of resources
+        restricted_to_roles (Union[Unset, list[str]]): List of project or organization role names (e.g.
+            'PROJECT.MANAGER') allowed to view and order this offering. When set, the offering is hidden from the catalog
+            for other users and they cannot create orders for it. Whether their orders skip consumer review still depends on
+            the role having the order-approval permission.
+        auto_approve_for_roles (Union[Unset, list[str]]): List of project or organization role names (e.g.
+            'PROJECT.MANAGER') whose orders skip consumer review for this offering. The creator must hold the role on the
+            target project or its organization. Independent of restricted_to_roles (which governs visibility/ordering) and
+            of the ORDER.APPROVE permission. Provider review and purchase-order requirements still apply. Only staff can
+            change this option.
         enable_purchase_order_upload (Union[Unset, bool]): If set to True, users will be able to upload purchase orders.
         require_purchase_order_upload (Union[Unset, bool]): If set to True, users will be required to upload purchase
             orders.
@@ -92,6 +111,7 @@ class MergedPluginOptions:
             tenants from this offering.
         usage_poll_interval_minutes (Union[Unset, int]): Interval in minutes between usage polling for this offering
             (default: 60)
+        billing_source (Union[Unset, BillingSourceEnum]):
         heappe_cluster_id (Union[Unset, str]): HEAppE cluster id
         heappe_local_base_path (Union[Unset, str]): HEAppE local base path
         heappe_url (Union[Unset, str]): HEAppE url
@@ -99,12 +119,8 @@ class MergedPluginOptions:
         homedir_prefix (Union[Unset, str]): GLAuth homedir prefix Default: '/home/'.
         scratch_project_directory (Union[Unset, str]): HEAppE scratch project directory
         project_permanent_directory (Union[Unset, str]): HEAppE project permanent directory
-        initial_primarygroup_number (Union[Unset, int]): GLAuth initial primary group number Default: 5000.
-        initial_uidnumber (Union[Unset, int]): GLAuth initial uidnumber Default: 5000.
-        initial_usergroup_number (Union[Unset, int]): GLAuth initial usergroup number Default: 6000.
-        initial_rolegroup_number (Union[Unset, int]): GLAuth initial gid for role-aware groups (one per
-            (resource|resource-project, role) tuple). Must leave at least 50000 gids of headroom above
-            initial_usergroup_number to avoid collisions. Default: 60000.
+        enable_posix_account (Union[Unset, bool]): Manage a POSIX/LDAP account (UID, GID, home directory, login shell
+            and GLAuth exposure) for this offering's users. Disable for offerings that only need a username. Default: True.
         resource_role_map (Union[Unset, MergedPluginOptionsResourceRoleMap]): Mapping of Waldur role names (on Resource
             scope) to emitted role tokens used in group name rendering. Roles outside the map are skipped. Example: {"PI":
             "admin", "Member": "member"}.
@@ -119,6 +135,13 @@ class MergedPluginOptions:
         username_anonymized_prefix (Union[Unset, str]): GLAuth prefix for anonymized usernames Default: 'waldur_'.
         username_generation_policy (Union[Unset, UsernameGenerationPolicyEnum]):  Default:
             UsernameGenerationPolicyEnum.SERVICE_PROVIDER.
+        login_shell (Union[Unset, str]): Default login shell assigned to GLAuth/LDAP accounts. Default: '/bin/bash'.
+        uid_source (Union[Unset, PosixIdSourceEnum]):  Default: PosixIdSourceEnum.POOL.
+        gid_source (Union[Unset, PosixIdSourceEnum]):  Default: PosixIdSourceEnum.POOL.
+        emit_display_name (Union[Unset, bool]): Emit the user's full name as a GLAuth displayName custom attribute
+            (rendered to LDAP displayName). Default: False.
+        emit_waldur_username (Union[Unset, bool]): Emit the Waldur username as a GLAuth waldurUsername custom attribute,
+            alongside the generated POSIX login name. Default: False.
         enable_issues_for_membership_changes (Union[Unset, bool]): Enable issues for membership changes
         deployment_mode (Union[Unset, DeploymentModeEnum]):
         flavors_regex (Union[Unset, str]): Regular expression to limit flavors list
@@ -182,10 +205,14 @@ class MergedPluginOptions:
     disable_autoapprove: Union[Unset, bool] = UNSET
     supports_downscaling: Union[Unset, bool] = UNSET
     supports_pausing: Union[Unset, bool] = UNSET
+    disable_grace_period: Union[Unset, bool] = UNSET
+    action_on_usage_limit: Union[ActionOnUsageLimitEnum, BlankEnum, None, Unset] = UNSET
     minimal_team_count_for_provisioning: Union[Unset, int] = UNSET
     maximal_resource_count_per_project: Union[Unset, int] = UNSET
     unique_resource_per_attribute: Union[Unset, str] = UNSET
     required_team_role_for_provisioning: Union[None, Unset, str] = UNSET
+    restricted_to_roles: Union[Unset, list[str]] = UNSET
+    auto_approve_for_roles: Union[Unset, list[str]] = UNSET
     enable_purchase_order_upload: Union[Unset, bool] = UNSET
     require_purchase_order_upload: Union[Unset, bool] = UNSET
     conceal_billing_data: Union[Unset, bool] = UNSET
@@ -209,6 +236,7 @@ class MergedPluginOptions:
     snapshot_size_limit_gb: Union[Unset, int] = UNSET
     lbaas_enabled: Union[Unset, bool] = UNSET
     usage_poll_interval_minutes: Union[Unset, int] = UNSET
+    billing_source: Union[Unset, BillingSourceEnum] = UNSET
     heappe_cluster_id: Union[Unset, str] = UNSET
     heappe_local_base_path: Union[Unset, str] = UNSET
     heappe_url: Union[Unset, str] = UNSET
@@ -216,10 +244,7 @@ class MergedPluginOptions:
     homedir_prefix: Union[Unset, str] = "/home/"
     scratch_project_directory: Union[Unset, str] = UNSET
     project_permanent_directory: Union[Unset, str] = UNSET
-    initial_primarygroup_number: Union[Unset, int] = 5000
-    initial_uidnumber: Union[Unset, int] = 5000
-    initial_usergroup_number: Union[Unset, int] = 6000
-    initial_rolegroup_number: Union[Unset, int] = 60000
+    enable_posix_account: Union[Unset, bool] = True
     resource_role_map: Union[Unset, "MergedPluginOptionsResourceRoleMap"] = UNSET
     resource_project_role_map: Union[Unset, "MergedPluginOptionsResourceProjectRoleMap"] = UNSET
     resource_role_group_template: Union[Unset, str] = "${resource_slug}_${role_name}"
@@ -228,6 +253,11 @@ class MergedPluginOptions:
     username_generation_policy: Union[Unset, UsernameGenerationPolicyEnum] = (
         UsernameGenerationPolicyEnum.SERVICE_PROVIDER
     )
+    login_shell: Union[Unset, str] = "/bin/bash"
+    uid_source: Union[Unset, PosixIdSourceEnum] = PosixIdSourceEnum.POOL
+    gid_source: Union[Unset, PosixIdSourceEnum] = PosixIdSourceEnum.POOL
+    emit_display_name: Union[Unset, bool] = False
+    emit_waldur_username: Union[Unset, bool] = False
     enable_issues_for_membership_changes: Union[Unset, bool] = UNSET
     deployment_mode: Union[Unset, DeploymentModeEnum] = UNSET
     flavors_regex: Union[Unset, str] = UNSET
@@ -283,6 +313,18 @@ class MergedPluginOptions:
 
         supports_pausing = self.supports_pausing
 
+        disable_grace_period = self.disable_grace_period
+
+        action_on_usage_limit: Union[None, Unset, str]
+        if isinstance(self.action_on_usage_limit, Unset):
+            action_on_usage_limit = UNSET
+        elif isinstance(self.action_on_usage_limit, ActionOnUsageLimitEnum):
+            action_on_usage_limit = self.action_on_usage_limit.value
+        elif isinstance(self.action_on_usage_limit, BlankEnum):
+            action_on_usage_limit = self.action_on_usage_limit.value
+        else:
+            action_on_usage_limit = self.action_on_usage_limit
+
         minimal_team_count_for_provisioning = self.minimal_team_count_for_provisioning
 
         maximal_resource_count_per_project = self.maximal_resource_count_per_project
@@ -294,6 +336,14 @@ class MergedPluginOptions:
             required_team_role_for_provisioning = UNSET
         else:
             required_team_role_for_provisioning = self.required_team_role_for_provisioning
+
+        restricted_to_roles: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.restricted_to_roles, Unset):
+            restricted_to_roles = self.restricted_to_roles
+
+        auto_approve_for_roles: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.auto_approve_for_roles, Unset):
+            auto_approve_for_roles = self.auto_approve_for_roles
 
         enable_purchase_order_upload = self.enable_purchase_order_upload
 
@@ -355,6 +405,10 @@ class MergedPluginOptions:
 
         usage_poll_interval_minutes = self.usage_poll_interval_minutes
 
+        billing_source: Union[Unset, str] = UNSET
+        if not isinstance(self.billing_source, Unset):
+            billing_source = self.billing_source.value
+
         heappe_cluster_id = self.heappe_cluster_id
 
         heappe_local_base_path = self.heappe_local_base_path
@@ -369,13 +423,7 @@ class MergedPluginOptions:
 
         project_permanent_directory = self.project_permanent_directory
 
-        initial_primarygroup_number = self.initial_primarygroup_number
-
-        initial_uidnumber = self.initial_uidnumber
-
-        initial_usergroup_number = self.initial_usergroup_number
-
-        initial_rolegroup_number = self.initial_rolegroup_number
+        enable_posix_account = self.enable_posix_account
 
         resource_role_map: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.resource_role_map, Unset):
@@ -394,6 +442,20 @@ class MergedPluginOptions:
         username_generation_policy: Union[Unset, str] = UNSET
         if not isinstance(self.username_generation_policy, Unset):
             username_generation_policy = self.username_generation_policy.value
+
+        login_shell = self.login_shell
+
+        uid_source: Union[Unset, str] = UNSET
+        if not isinstance(self.uid_source, Unset):
+            uid_source = self.uid_source.value
+
+        gid_source: Union[Unset, str] = UNSET
+        if not isinstance(self.gid_source, Unset):
+            gid_source = self.gid_source.value
+
+        emit_display_name = self.emit_display_name
+
+        emit_waldur_username = self.emit_waldur_username
 
         enable_issues_for_membership_changes = self.enable_issues_for_membership_changes
 
@@ -492,6 +554,10 @@ class MergedPluginOptions:
             field_dict["supports_downscaling"] = supports_downscaling
         if supports_pausing is not UNSET:
             field_dict["supports_pausing"] = supports_pausing
+        if disable_grace_period is not UNSET:
+            field_dict["disable_grace_period"] = disable_grace_period
+        if action_on_usage_limit is not UNSET:
+            field_dict["action_on_usage_limit"] = action_on_usage_limit
         if minimal_team_count_for_provisioning is not UNSET:
             field_dict["minimal_team_count_for_provisioning"] = minimal_team_count_for_provisioning
         if maximal_resource_count_per_project is not UNSET:
@@ -500,6 +566,10 @@ class MergedPluginOptions:
             field_dict["unique_resource_per_attribute"] = unique_resource_per_attribute
         if required_team_role_for_provisioning is not UNSET:
             field_dict["required_team_role_for_provisioning"] = required_team_role_for_provisioning
+        if restricted_to_roles is not UNSET:
+            field_dict["restricted_to_roles"] = restricted_to_roles
+        if auto_approve_for_roles is not UNSET:
+            field_dict["auto_approve_for_roles"] = auto_approve_for_roles
         if enable_purchase_order_upload is not UNSET:
             field_dict["enable_purchase_order_upload"] = enable_purchase_order_upload
         if require_purchase_order_upload is not UNSET:
@@ -546,6 +616,8 @@ class MergedPluginOptions:
             field_dict["lbaas_enabled"] = lbaas_enabled
         if usage_poll_interval_minutes is not UNSET:
             field_dict["usage_poll_interval_minutes"] = usage_poll_interval_minutes
+        if billing_source is not UNSET:
+            field_dict["billing_source"] = billing_source
         if heappe_cluster_id is not UNSET:
             field_dict["heappe_cluster_id"] = heappe_cluster_id
         if heappe_local_base_path is not UNSET:
@@ -560,14 +632,8 @@ class MergedPluginOptions:
             field_dict["scratch_project_directory"] = scratch_project_directory
         if project_permanent_directory is not UNSET:
             field_dict["project_permanent_directory"] = project_permanent_directory
-        if initial_primarygroup_number is not UNSET:
-            field_dict["initial_primarygroup_number"] = initial_primarygroup_number
-        if initial_uidnumber is not UNSET:
-            field_dict["initial_uidnumber"] = initial_uidnumber
-        if initial_usergroup_number is not UNSET:
-            field_dict["initial_usergroup_number"] = initial_usergroup_number
-        if initial_rolegroup_number is not UNSET:
-            field_dict["initial_rolegroup_number"] = initial_rolegroup_number
+        if enable_posix_account is not UNSET:
+            field_dict["enable_posix_account"] = enable_posix_account
         if resource_role_map is not UNSET:
             field_dict["resource_role_map"] = resource_role_map
         if resource_project_role_map is not UNSET:
@@ -580,6 +646,16 @@ class MergedPluginOptions:
             field_dict["username_anonymized_prefix"] = username_anonymized_prefix
         if username_generation_policy is not UNSET:
             field_dict["username_generation_policy"] = username_generation_policy
+        if login_shell is not UNSET:
+            field_dict["login_shell"] = login_shell
+        if uid_source is not UNSET:
+            field_dict["uid_source"] = uid_source
+        if gid_source is not UNSET:
+            field_dict["gid_source"] = gid_source
+        if emit_display_name is not UNSET:
+            field_dict["emit_display_name"] = emit_display_name
+        if emit_waldur_username is not UNSET:
+            field_dict["emit_waldur_username"] = emit_waldur_username
         if enable_issues_for_membership_changes is not UNSET:
             field_dict["enable_issues_for_membership_changes"] = enable_issues_for_membership_changes
         if deployment_mode is not UNSET:
@@ -683,6 +759,33 @@ class MergedPluginOptions:
 
         supports_pausing = d.pop("supports_pausing", UNSET)
 
+        disable_grace_period = d.pop("disable_grace_period", UNSET)
+
+        def _parse_action_on_usage_limit(data: object) -> Union[ActionOnUsageLimitEnum, BlankEnum, None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                action_on_usage_limit_type_0 = ActionOnUsageLimitEnum(data)
+
+                return action_on_usage_limit_type_0
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                action_on_usage_limit_type_1 = BlankEnum(data)
+
+                return action_on_usage_limit_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union[ActionOnUsageLimitEnum, BlankEnum, None, Unset], data)
+
+        action_on_usage_limit = _parse_action_on_usage_limit(d.pop("action_on_usage_limit", UNSET))
+
         minimal_team_count_for_provisioning = d.pop("minimal_team_count_for_provisioning", UNSET)
 
         maximal_resource_count_per_project = d.pop("maximal_resource_count_per_project", UNSET)
@@ -699,6 +802,10 @@ class MergedPluginOptions:
         required_team_role_for_provisioning = _parse_required_team_role_for_provisioning(
             d.pop("required_team_role_for_provisioning", UNSET)
         )
+
+        restricted_to_roles = cast(list[str], d.pop("restricted_to_roles", UNSET))
+
+        auto_approve_for_roles = cast(list[str], d.pop("auto_approve_for_roles", UNSET))
 
         enable_purchase_order_upload = d.pop("enable_purchase_order_upload", UNSET)
 
@@ -772,6 +879,13 @@ class MergedPluginOptions:
 
         usage_poll_interval_minutes = d.pop("usage_poll_interval_minutes", UNSET)
 
+        _billing_source = d.pop("billing_source", UNSET)
+        billing_source: Union[Unset, BillingSourceEnum]
+        if isinstance(_billing_source, Unset):
+            billing_source = UNSET
+        else:
+            billing_source = BillingSourceEnum(_billing_source)
+
         heappe_cluster_id = d.pop("heappe_cluster_id", UNSET)
 
         heappe_local_base_path = d.pop("heappe_local_base_path", UNSET)
@@ -786,13 +900,7 @@ class MergedPluginOptions:
 
         project_permanent_directory = d.pop("project_permanent_directory", UNSET)
 
-        initial_primarygroup_number = d.pop("initial_primarygroup_number", UNSET)
-
-        initial_uidnumber = d.pop("initial_uidnumber", UNSET)
-
-        initial_usergroup_number = d.pop("initial_usergroup_number", UNSET)
-
-        initial_rolegroup_number = d.pop("initial_rolegroup_number", UNSET)
+        enable_posix_account = d.pop("enable_posix_account", UNSET)
 
         _resource_role_map = d.pop("resource_role_map", UNSET)
         resource_role_map: Union[Unset, MergedPluginOptionsResourceRoleMap]
@@ -820,6 +928,26 @@ class MergedPluginOptions:
             username_generation_policy = UNSET
         else:
             username_generation_policy = UsernameGenerationPolicyEnum(_username_generation_policy)
+
+        login_shell = d.pop("login_shell", UNSET)
+
+        _uid_source = d.pop("uid_source", UNSET)
+        uid_source: Union[Unset, PosixIdSourceEnum]
+        if isinstance(_uid_source, Unset):
+            uid_source = UNSET
+        else:
+            uid_source = PosixIdSourceEnum(_uid_source)
+
+        _gid_source = d.pop("gid_source", UNSET)
+        gid_source: Union[Unset, PosixIdSourceEnum]
+        if isinstance(_gid_source, Unset):
+            gid_source = UNSET
+        else:
+            gid_source = PosixIdSourceEnum(_gid_source)
+
+        emit_display_name = d.pop("emit_display_name", UNSET)
+
+        emit_waldur_username = d.pop("emit_waldur_username", UNSET)
 
         enable_issues_for_membership_changes = d.pop("enable_issues_for_membership_changes", UNSET)
 
@@ -922,10 +1050,14 @@ class MergedPluginOptions:
             disable_autoapprove=disable_autoapprove,
             supports_downscaling=supports_downscaling,
             supports_pausing=supports_pausing,
+            disable_grace_period=disable_grace_period,
+            action_on_usage_limit=action_on_usage_limit,
             minimal_team_count_for_provisioning=minimal_team_count_for_provisioning,
             maximal_resource_count_per_project=maximal_resource_count_per_project,
             unique_resource_per_attribute=unique_resource_per_attribute,
             required_team_role_for_provisioning=required_team_role_for_provisioning,
+            restricted_to_roles=restricted_to_roles,
+            auto_approve_for_roles=auto_approve_for_roles,
             enable_purchase_order_upload=enable_purchase_order_upload,
             require_purchase_order_upload=require_purchase_order_upload,
             conceal_billing_data=conceal_billing_data,
@@ -949,6 +1081,7 @@ class MergedPluginOptions:
             snapshot_size_limit_gb=snapshot_size_limit_gb,
             lbaas_enabled=lbaas_enabled,
             usage_poll_interval_minutes=usage_poll_interval_minutes,
+            billing_source=billing_source,
             heappe_cluster_id=heappe_cluster_id,
             heappe_local_base_path=heappe_local_base_path,
             heappe_url=heappe_url,
@@ -956,16 +1089,18 @@ class MergedPluginOptions:
             homedir_prefix=homedir_prefix,
             scratch_project_directory=scratch_project_directory,
             project_permanent_directory=project_permanent_directory,
-            initial_primarygroup_number=initial_primarygroup_number,
-            initial_uidnumber=initial_uidnumber,
-            initial_usergroup_number=initial_usergroup_number,
-            initial_rolegroup_number=initial_rolegroup_number,
+            enable_posix_account=enable_posix_account,
             resource_role_map=resource_role_map,
             resource_project_role_map=resource_project_role_map,
             resource_role_group_template=resource_role_group_template,
             resource_project_role_group_template=resource_project_role_group_template,
             username_anonymized_prefix=username_anonymized_prefix,
             username_generation_policy=username_generation_policy,
+            login_shell=login_shell,
+            uid_source=uid_source,
+            gid_source=gid_source,
+            emit_display_name=emit_display_name,
+            emit_waldur_username=emit_waldur_username,
             enable_issues_for_membership_changes=enable_issues_for_membership_changes,
             deployment_mode=deployment_mode,
             flavors_regex=flavors_regex,

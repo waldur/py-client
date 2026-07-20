@@ -21,6 +21,7 @@ class ProviderOfferingDetailsFieldEnum(str, Enum):
     CUSTOMER_NAME = "customer_name"
     CUSTOMER_UUID = "customer_uuid"
     DATACITE_DOI = "datacite_doi"
+    DEFAULT_ACCESS_SUBNETS = "default_access_subnets"
     DESCRIPTION = "description"
     DOCUMENTATION_URL = "documentation_url"
     EFFECTIVE_AVAILABLE_LIMITS = "effective_available_limits"

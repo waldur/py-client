@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.allocation_time_enum import AllocationTimeEnum
 from ..models.blank_enum import BlankEnum
 from ..models.responsible_role_enum import ResponsibleRoleEnum
 from ..models.step_enum import StepEnum
@@ -30,19 +31,24 @@ class CallWorkflowStep:
         step (StepEnum):
         call_uuid (UUID):
         call_name (str):
+        is_mandatory (bool):
         checklist_name (Union[None, str]):
         is_enabled (Union[Unset, bool]): Whether this step is enabled. Disabled steps are skipped.
         duration_in_days (Union[None, Unset, int]): Duration in days. Used to calculate deadlines.
         checklist (Union[None, UUID, Unset]):
+        checklist_required (Union[Unset, bool]): When the step has a checklist, block completion until its required
+            questions are answered. Set False to make the checklist advisory.
         blind_review (Union[Unset, bool]): Evaluators cannot see each other's assessments.
         requires_coi_confirmation (Union[Unset, bool]): Evaluator must confirm absence of conflict of interest.
         min_reviewers (Union[None, Unset, int]): Minimum reviews required before step can complete.
-        min_score_threshold (Union[None, Unset, str]): Minimum average score to pass this step.
+        min_score_threshold (Union[None, Unset, str]): Minimum average score required before this step can complete (a
+            completion gate; it does not auto-reject lower scores).
         applicant_visible (Union[Unset, bool]): Whether the applicant can see step details (not just status).
         responsible_role (Union[BlankEnum, None, ResponsibleRoleEnum, Unset]): Role expected to act on this step.
         transition_mode (Union[Unset, TransitionModeEnum]):
         include_award_response (Union[Unset, bool]): Allocation decision: require applicant award response after
             decision.
+        allocation_time (Union[Unset, AllocationTimeEnum]):
         display_order (Union[None, Unset, int]): Optional override of catalog ordering.
         criteria (Union[Unset, list['WorkflowCriterion']]):
     """
@@ -53,10 +59,12 @@ class CallWorkflowStep:
     step: StepEnum
     call_uuid: UUID
     call_name: str
+    is_mandatory: bool
     checklist_name: Union[None, str]
     is_enabled: Union[Unset, bool] = UNSET
     duration_in_days: Union[None, Unset, int] = UNSET
     checklist: Union[None, UUID, Unset] = UNSET
+    checklist_required: Union[Unset, bool] = UNSET
     blind_review: Union[Unset, bool] = UNSET
     requires_coi_confirmation: Union[Unset, bool] = UNSET
     min_reviewers: Union[None, Unset, int] = UNSET
@@ -65,6 +73,7 @@ class CallWorkflowStep:
     responsible_role: Union[BlankEnum, None, ResponsibleRoleEnum, Unset] = UNSET
     transition_mode: Union[Unset, TransitionModeEnum] = UNSET
     include_award_response: Union[Unset, bool] = UNSET
+    allocation_time: Union[Unset, AllocationTimeEnum] = UNSET
     display_order: Union[None, Unset, int] = UNSET
     criteria: Union[Unset, list["WorkflowCriterion"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -81,6 +90,8 @@ class CallWorkflowStep:
         call_uuid = str(self.call_uuid)
 
         call_name = self.call_name
+
+        is_mandatory = self.is_mandatory
 
         checklist_name: Union[None, str]
         checklist_name = self.checklist_name
@@ -100,6 +111,8 @@ class CallWorkflowStep:
             checklist = str(self.checklist)
         else:
             checklist = self.checklist
+
+        checklist_required = self.checklist_required
 
         blind_review = self.blind_review
 
@@ -135,6 +148,10 @@ class CallWorkflowStep:
 
         include_award_response = self.include_award_response
 
+        allocation_time: Union[Unset, str] = UNSET
+        if not isinstance(self.allocation_time, Unset):
+            allocation_time = self.allocation_time.value
+
         display_order: Union[None, Unset, int]
         if isinstance(self.display_order, Unset):
             display_order = UNSET
@@ -158,6 +175,7 @@ class CallWorkflowStep:
                 "step": step,
                 "call_uuid": call_uuid,
                 "call_name": call_name,
+                "is_mandatory": is_mandatory,
                 "checklist_name": checklist_name,
             }
         )
@@ -167,6 +185,8 @@ class CallWorkflowStep:
             field_dict["duration_in_days"] = duration_in_days
         if checklist is not UNSET:
             field_dict["checklist"] = checklist
+        if checklist_required is not UNSET:
+            field_dict["checklist_required"] = checklist_required
         if blind_review is not UNSET:
             field_dict["blind_review"] = blind_review
         if requires_coi_confirmation is not UNSET:
@@ -183,6 +203,8 @@ class CallWorkflowStep:
             field_dict["transition_mode"] = transition_mode
         if include_award_response is not UNSET:
             field_dict["include_award_response"] = include_award_response
+        if allocation_time is not UNSET:
+            field_dict["allocation_time"] = allocation_time
         if display_order is not UNSET:
             field_dict["display_order"] = display_order
         if criteria is not UNSET:
@@ -206,6 +228,8 @@ class CallWorkflowStep:
         call_uuid = UUID(d.pop("call_uuid"))
 
         call_name = d.pop("call_name")
+
+        is_mandatory = d.pop("is_mandatory")
 
         def _parse_checklist_name(data: object) -> Union[None, str]:
             if data is None:
@@ -241,6 +265,8 @@ class CallWorkflowStep:
             return cast(Union[None, UUID, Unset], data)
 
         checklist = _parse_checklist(d.pop("checklist", UNSET))
+
+        checklist_required = d.pop("checklist_required", UNSET)
 
         blind_review = d.pop("blind_review", UNSET)
 
@@ -300,6 +326,13 @@ class CallWorkflowStep:
 
         include_award_response = d.pop("include_award_response", UNSET)
 
+        _allocation_time = d.pop("allocation_time", UNSET)
+        allocation_time: Union[Unset, AllocationTimeEnum]
+        if isinstance(_allocation_time, Unset):
+            allocation_time = UNSET
+        else:
+            allocation_time = AllocationTimeEnum(_allocation_time)
+
         def _parse_display_order(data: object) -> Union[None, Unset, int]:
             if data is None:
                 return data
@@ -323,10 +356,12 @@ class CallWorkflowStep:
             step=step,
             call_uuid=call_uuid,
             call_name=call_name,
+            is_mandatory=is_mandatory,
             checklist_name=checklist_name,
             is_enabled=is_enabled,
             duration_in_days=duration_in_days,
             checklist=checklist,
+            checklist_required=checklist_required,
             blind_review=blind_review,
             requires_coi_confirmation=requires_coi_confirmation,
             min_reviewers=min_reviewers,
@@ -335,6 +370,7 @@ class CallWorkflowStep:
             responsible_role=responsible_role,
             transition_mode=transition_mode,
             include_award_response=include_award_response,
+            allocation_time=allocation_time,
             display_order=display_order,
             criteria=criteria,
         )

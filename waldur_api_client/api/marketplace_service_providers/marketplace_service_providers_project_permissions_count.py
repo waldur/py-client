@@ -16,6 +16,7 @@ def _get_kwargs(
     *,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
@@ -46,6 +47,11 @@ def _get_kwargs(
     if not isinstance(created_before, Unset):
         json_created_before = created_before.isoformat()
     params["created_before"] = json_created_before
+
+    json_customer_uuid: Union[Unset, str] = UNSET
+    if not isinstance(customer_uuid, Unset):
+        json_customer_uuid = str(customer_uuid)
+    params["customer_uuid"] = json_customer_uuid
 
     json_expiration_time: Union[Unset, str] = UNSET
     if not isinstance(expiration_time, Unset):
@@ -148,6 +154,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
@@ -175,6 +182,7 @@ def sync_detailed(
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
+        customer_uuid (Union[Unset, UUID]):
         expiration_time (Union[Unset, datetime.datetime]):
         full_name (Union[Unset, str]):
         is_active (Union[Unset, bool]):
@@ -206,6 +214,7 @@ def sync_detailed(
         service_provider_uuid=service_provider_uuid,
         created=created,
         created_before=created_before,
+        customer_uuid=customer_uuid,
         expiration_time=expiration_time,
         full_name=full_name,
         is_active=is_active,
@@ -239,6 +248,7 @@ def sync(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
@@ -266,6 +276,7 @@ def sync(
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
+        customer_uuid (Union[Unset, UUID]):
         expiration_time (Union[Unset, datetime.datetime]):
         full_name (Union[Unset, str]):
         is_active (Union[Unset, bool]):
@@ -298,6 +309,7 @@ def sync(
         client=client,
         created=created,
         created_before=created_before,
+        customer_uuid=customer_uuid,
         expiration_time=expiration_time,
         full_name=full_name,
         is_active=is_active,
@@ -325,6 +337,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
@@ -352,6 +365,7 @@ async def asyncio_detailed(
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
+        customer_uuid (Union[Unset, UUID]):
         expiration_time (Union[Unset, datetime.datetime]):
         full_name (Union[Unset, str]):
         is_active (Union[Unset, bool]):
@@ -383,6 +397,7 @@ async def asyncio_detailed(
         service_provider_uuid=service_provider_uuid,
         created=created,
         created_before=created_before,
+        customer_uuid=customer_uuid,
         expiration_time=expiration_time,
         full_name=full_name,
         is_active=is_active,
@@ -414,6 +429,7 @@ async def asyncio(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     full_name: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
@@ -441,6 +457,7 @@ async def asyncio(
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
+        customer_uuid (Union[Unset, UUID]):
         expiration_time (Union[Unset, datetime.datetime]):
         full_name (Union[Unset, str]):
         is_active (Union[Unset, bool]):
@@ -474,6 +491,7 @@ async def asyncio(
             client=client,
             created=created,
             created_before=created_before,
+            customer_uuid=customer_uuid,
             expiration_time=expiration_time,
             full_name=full_name,
             is_active=is_active,

@@ -3,6 +3,7 @@ from enum import Enum
 
 class PermissionMetadataResponseRolesAdditionalProperty(str, Enum):
     CALL_MANAGER = "CALL.MANAGER"
+    CALL_PANEL_MEMBER = "CALL.PANEL_MEMBER"
     CALL_REVIEWER = "CALL.REVIEWER"
     CUSTOMER_MANAGER = "CUSTOMER.MANAGER"
     CUSTOMER_OWNER = "CUSTOMER.OWNER"

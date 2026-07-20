@@ -26,6 +26,10 @@ class CreateCustomerCredit:
         minimal_consumption (float):
         allocated_to_projects (float):
         consumption_last_month (float):
+        withdrawable_balance (float): Part of the credit that may leave the platform via payouts or
+            transfers: earnings-typed ledger inflows minus outflows, capped by
+            the current credit value so that staff-granted (promotional) credit
+            is never withdrawable and credit expiry wipes earnings too.
         value (Union[Unset, str]):
         offerings (Union[Unset, list[Union[None, str]]]):
         end_date (Union[None, Unset, datetime.date]):
@@ -44,6 +48,7 @@ class CreateCustomerCredit:
     minimal_consumption: float
     allocated_to_projects: float
     consumption_last_month: float
+    withdrawable_balance: float
     value: Union[Unset, str] = UNSET
     offerings: Union[Unset, list[Union[None, str]]] = UNSET
     end_date: Union[None, Unset, datetime.date] = UNSET
@@ -71,6 +76,8 @@ class CreateCustomerCredit:
         allocated_to_projects = self.allocated_to_projects
 
         consumption_last_month = self.consumption_last_month
+
+        withdrawable_balance = self.withdrawable_balance
 
         value = self.value
 
@@ -113,6 +120,7 @@ class CreateCustomerCredit:
                 "minimal_consumption": minimal_consumption,
                 "allocated_to_projects": allocated_to_projects,
                 "consumption_last_month": consumption_last_month,
+                "withdrawable_balance": withdrawable_balance,
             }
         )
         if value is not UNSET:
@@ -152,6 +160,8 @@ class CreateCustomerCredit:
         allocated_to_projects = d.pop("allocated_to_projects")
 
         consumption_last_month = d.pop("consumption_last_month")
+
+        withdrawable_balance = d.pop("withdrawable_balance")
 
         value = d.pop("value", UNSET)
 
@@ -208,6 +218,7 @@ class CreateCustomerCredit:
             minimal_consumption=minimal_consumption,
             allocated_to_projects=allocated_to_projects,
             consumption_last_month=consumption_last_month,
+            withdrawable_balance=withdrawable_balance,
             value=value,
             offerings=offerings,
             end_date=end_date,
