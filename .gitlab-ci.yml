@@ -17,17 +17,18 @@ stages:
   - release
   - publish
 
+Fetch OpenAPI schema:
+  extends: .fetch-openapi-schema
+
 Build Python SDK:
   stage: test
   image: registry.hpc.ut.ee/mirror/library/python:3.13-bookworm
   rules:
     - if: '$CI_PIPELINE_SOURCE == "pipeline"'
     - if: '$CI_PIPELINE_SOURCE == "trigger"'
-  needs: []
-  before_script:
-    - apt-get update && apt-get install -y curl jq
-    - !reference [.resolve-parent-job-id]
-    - !reference [.download-openapi-schema]
+  needs:
+    - job: Fetch OpenAPI schema
+      artifacts: true
   script:
     - pip install uv
     - uv pip install --system git+https://github.com/waldur/openapi-python-client.git pyyaml
