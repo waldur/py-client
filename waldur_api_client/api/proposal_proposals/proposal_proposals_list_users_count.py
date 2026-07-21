@@ -20,7 +20,7 @@ def _get_kwargs(
     o: Union[Unset, list[UserRoleDetailsOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    role: Union[Unset, UUID] = UNSET,
+    role: Union[Unset, list[str]] = UNSET,
     search_string: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
@@ -55,9 +55,10 @@ def _get_kwargs(
 
     params["page_size"] = page_size
 
-    json_role: Union[Unset, str] = UNSET
+    json_role: Union[Unset, list[str]] = UNSET
     if not isinstance(role, Unset):
-        json_role = str(role)
+        json_role = role
+
     params["role"] = json_role
 
     params["search_string"] = search_string
@@ -120,7 +121,7 @@ def sync_detailed(
     o: Union[Unset, list[UserRoleDetailsOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    role: Union[Unset, UUID] = UNSET,
+    role: Union[Unset, list[str]] = UNSET,
     search_string: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
@@ -139,7 +140,7 @@ def sync_detailed(
         o (Union[Unset, list[UserRoleDetailsOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        role (Union[Unset, UUID]):
+        role (Union[Unset, list[str]]):
         search_string (Union[Unset, str]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
@@ -187,7 +188,7 @@ def sync(
     o: Union[Unset, list[UserRoleDetailsOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    role: Union[Unset, UUID] = UNSET,
+    role: Union[Unset, list[str]] = UNSET,
     search_string: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
@@ -206,7 +207,7 @@ def sync(
         o (Union[Unset, list[UserRoleDetailsOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        role (Union[Unset, UUID]):
+        role (Union[Unset, list[str]]):
         search_string (Union[Unset, str]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
@@ -249,7 +250,7 @@ async def asyncio_detailed(
     o: Union[Unset, list[UserRoleDetailsOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    role: Union[Unset, UUID] = UNSET,
+    role: Union[Unset, list[str]] = UNSET,
     search_string: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
@@ -268,7 +269,7 @@ async def asyncio_detailed(
         o (Union[Unset, list[UserRoleDetailsOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        role (Union[Unset, UUID]):
+        role (Union[Unset, list[str]]):
         search_string (Union[Unset, str]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):
@@ -314,7 +315,7 @@ async def asyncio(
     o: Union[Unset, list[UserRoleDetailsOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    role: Union[Unset, UUID] = UNSET,
+    role: Union[Unset, list[str]] = UNSET,
     search_string: Union[Unset, str] = UNSET,
     user: Union[Unset, UUID] = UNSET,
     user_slug: Union[Unset, str] = UNSET,
@@ -333,7 +334,7 @@ async def asyncio(
         o (Union[Unset, list[UserRoleDetailsOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        role (Union[Unset, UUID]):
+        role (Union[Unset, list[str]]):
         search_string (Union[Unset, str]):
         user (Union[Unset, UUID]):
         user_slug (Union[Unset, str]):

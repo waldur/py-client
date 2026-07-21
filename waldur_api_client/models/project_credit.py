@@ -31,7 +31,7 @@ class ProjectCredit:
         customer_slug (str):
         customer_uuid (UUID):
         customer_credit (str):
-        allocated_customer_credit (float):
+        allocated_customer_credit (Union[None, str]):
         consumption_last_month (float):
         offerings (list['NestedPublicOffering']):
         minimal_consumption (float):
@@ -54,7 +54,7 @@ class ProjectCredit:
     customer_slug: str
     customer_uuid: UUID
     customer_credit: str
-    allocated_customer_credit: float
+    allocated_customer_credit: Union[None, str]
     consumption_last_month: float
     offerings: list["NestedPublicOffering"]
     minimal_consumption: float
@@ -88,6 +88,7 @@ class ProjectCredit:
 
         customer_credit = self.customer_credit
 
+        allocated_customer_credit: Union[None, str]
         allocated_customer_credit = self.allocated_customer_credit
 
         consumption_last_month = self.consumption_last_month
@@ -185,7 +186,12 @@ class ProjectCredit:
 
         customer_credit = d.pop("customer_credit")
 
-        allocated_customer_credit = d.pop("allocated_customer_credit")
+        def _parse_allocated_customer_credit(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        allocated_customer_credit = _parse_allocated_customer_credit(d.pop("allocated_customer_credit"))
 
         consumption_last_month = d.pop("consumption_last_month")
 

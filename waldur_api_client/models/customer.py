@@ -84,8 +84,8 @@ class Customer:
         project_slug_template (Union[None, Unset, str]): Template for project slugs. Supports: {customer_slug},
             {project_name}, {year}, {month}, {counter}, {counter_padded}. Default: slugified project name
         payment_profiles (Union[Unset, list['PaymentProfile']]):
-        customer_credit (Union[None, Unset, float]):
-        customer_unallocated_credit (Union[None, Unset, float]):
+        customer_credit (Union[None, Unset, str]):
+        customer_unallocated_credit (Union[None, Unset, str]):
         has_affiliate_links (Union[Unset, bool]):
         is_service_provider (Union[Unset, bool]):
         service_provider (Union[None, Unset, str]):
@@ -148,8 +148,8 @@ class Customer:
     household: Union[Unset, str] = UNSET
     project_slug_template: Union[None, Unset, str] = UNSET
     payment_profiles: Union[Unset, list["PaymentProfile"]] = UNSET
-    customer_credit: Union[None, Unset, float] = UNSET
-    customer_unallocated_credit: Union[None, Unset, float] = UNSET
+    customer_credit: Union[None, Unset, str] = UNSET
+    customer_unallocated_credit: Union[None, Unset, str] = UNSET
     has_affiliate_links: Union[Unset, bool] = UNSET
     is_service_provider: Union[Unset, bool] = UNSET
     service_provider: Union[None, Unset, str] = UNSET
@@ -334,13 +334,13 @@ class Customer:
                 payment_profiles_item = payment_profiles_item_data.to_dict()
                 payment_profiles.append(payment_profiles_item)
 
-        customer_credit: Union[None, Unset, float]
+        customer_credit: Union[None, Unset, str]
         if isinstance(self.customer_credit, Unset):
             customer_credit = UNSET
         else:
             customer_credit = self.customer_credit
 
-        customer_unallocated_credit: Union[None, Unset, float]
+        customer_unallocated_credit: Union[None, Unset, str]
         if isinstance(self.customer_unallocated_credit, Unset):
             customer_unallocated_credit = UNSET
         else:
@@ -731,21 +731,21 @@ class Customer:
 
             payment_profiles.append(payment_profiles_item)
 
-        def _parse_customer_credit(data: object) -> Union[None, Unset, float]:
+        def _parse_customer_credit(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, float], data)
+            return cast(Union[None, Unset, str], data)
 
         customer_credit = _parse_customer_credit(d.pop("customer_credit", UNSET))
 
-        def _parse_customer_unallocated_credit(data: object) -> Union[None, Unset, float]:
+        def _parse_customer_unallocated_credit(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, float], data)
+            return cast(Union[None, Unset, str], data)
 
         customer_unallocated_credit = _parse_customer_unallocated_credit(d.pop("customer_unallocated_credit", UNSET))
 

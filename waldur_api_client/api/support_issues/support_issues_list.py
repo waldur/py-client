@@ -20,12 +20,16 @@ def _get_kwargs(
     caller_full_name: Union[Unset, str] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    is_escalated: Union[Unset, bool] = UNSET,
+    is_parent: Union[Unset, bool] = UNSET,
+    is_routed: Union[Unset, bool] = UNSET,
     key: Union[Unset, str] = UNSET,
     o: Union[Unset, list[IssueOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     remote_id: Union[Unset, str] = UNSET,
     reporter: Union[Unset, str] = UNSET,
@@ -35,6 +39,7 @@ def _get_kwargs(
     resource_external_ip: Union[Unset, str] = UNSET,
     resource_internal_ip: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    sla_breached: Union[Unset, bool] = UNSET,
     status: Union[Unset, str] = UNSET,
     summary: Union[Unset, str] = UNSET,
     type_: Union[Unset, str] = UNSET,
@@ -55,6 +60,12 @@ def _get_kwargs(
     if not isinstance(customer_uuid, Unset):
         json_customer_uuid = str(customer_uuid)
     params["customer_uuid"] = json_customer_uuid
+
+    params["is_escalated"] = is_escalated
+
+    params["is_parent"] = is_parent
+
+    params["is_routed"] = is_routed
 
     params["key"] = key
 
@@ -78,6 +89,11 @@ def _get_kwargs(
         json_project_uuid = str(project_uuid)
     params["project_uuid"] = json_project_uuid
 
+    json_provider_uuid: Union[Unset, str] = UNSET
+    if not isinstance(provider_uuid, Unset):
+        json_provider_uuid = str(provider_uuid)
+    params["provider_uuid"] = json_provider_uuid
+
     params["query"] = query
 
     params["remote_id"] = remote_id
@@ -98,6 +114,8 @@ def _get_kwargs(
     if not isinstance(resource_uuid, Unset):
         json_resource_uuid = str(resource_uuid)
     params["resource_uuid"] = json_resource_uuid
+
+    params["sla_breached"] = sla_breached
 
     params["status"] = status
 
@@ -149,12 +167,16 @@ def sync_detailed(
     caller_full_name: Union[Unset, str] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    is_escalated: Union[Unset, bool] = UNSET,
+    is_parent: Union[Unset, bool] = UNSET,
+    is_routed: Union[Unset, bool] = UNSET,
     key: Union[Unset, str] = UNSET,
     o: Union[Unset, list[IssueOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     remote_id: Union[Unset, str] = UNSET,
     reporter: Union[Unset, str] = UNSET,
@@ -164,6 +186,7 @@ def sync_detailed(
     resource_external_ip: Union[Unset, str] = UNSET,
     resource_internal_ip: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    sla_breached: Union[Unset, bool] = UNSET,
     status: Union[Unset, str] = UNSET,
     summary: Union[Unset, str] = UNSET,
     type_: Union[Unset, str] = UNSET,
@@ -176,12 +199,16 @@ def sync_detailed(
         caller_full_name (Union[Unset, str]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        is_escalated (Union[Unset, bool]):
+        is_parent (Union[Unset, bool]):
+        is_routed (Union[Unset, bool]):
         key (Union[Unset, str]):
         o (Union[Unset, list[IssueOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         remote_id (Union[Unset, str]):
         reporter (Union[Unset, str]):
@@ -191,6 +218,7 @@ def sync_detailed(
         resource_external_ip (Union[Unset, str]):
         resource_internal_ip (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
+        sla_breached (Union[Unset, bool]):
         status (Union[Unset, str]):
         summary (Union[Unset, str]):
         type_ (Union[Unset, str]):
@@ -210,12 +238,16 @@ def sync_detailed(
         caller_full_name=caller_full_name,
         customer=customer,
         customer_uuid=customer_uuid,
+        is_escalated=is_escalated,
+        is_parent=is_parent,
+        is_routed=is_routed,
         key=key,
         o=o,
         page=page,
         page_size=page_size,
         project=project,
         project_uuid=project_uuid,
+        provider_uuid=provider_uuid,
         query=query,
         remote_id=remote_id,
         reporter=reporter,
@@ -225,6 +257,7 @@ def sync_detailed(
         resource_external_ip=resource_external_ip,
         resource_internal_ip=resource_internal_ip,
         resource_uuid=resource_uuid,
+        sla_breached=sla_breached,
         status=status,
         summary=summary,
         type_=type_,
@@ -246,12 +279,16 @@ def sync(
     caller_full_name: Union[Unset, str] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    is_escalated: Union[Unset, bool] = UNSET,
+    is_parent: Union[Unset, bool] = UNSET,
+    is_routed: Union[Unset, bool] = UNSET,
     key: Union[Unset, str] = UNSET,
     o: Union[Unset, list[IssueOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     remote_id: Union[Unset, str] = UNSET,
     reporter: Union[Unset, str] = UNSET,
@@ -261,6 +298,7 @@ def sync(
     resource_external_ip: Union[Unset, str] = UNSET,
     resource_internal_ip: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    sla_breached: Union[Unset, bool] = UNSET,
     status: Union[Unset, str] = UNSET,
     summary: Union[Unset, str] = UNSET,
     type_: Union[Unset, str] = UNSET,
@@ -273,12 +311,16 @@ def sync(
         caller_full_name (Union[Unset, str]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        is_escalated (Union[Unset, bool]):
+        is_parent (Union[Unset, bool]):
+        is_routed (Union[Unset, bool]):
         key (Union[Unset, str]):
         o (Union[Unset, list[IssueOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         remote_id (Union[Unset, str]):
         reporter (Union[Unset, str]):
@@ -288,6 +330,7 @@ def sync(
         resource_external_ip (Union[Unset, str]):
         resource_internal_ip (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
+        sla_breached (Union[Unset, bool]):
         status (Union[Unset, str]):
         summary (Union[Unset, str]):
         type_ (Union[Unset, str]):
@@ -308,12 +351,16 @@ def sync(
         caller_full_name=caller_full_name,
         customer=customer,
         customer_uuid=customer_uuid,
+        is_escalated=is_escalated,
+        is_parent=is_parent,
+        is_routed=is_routed,
         key=key,
         o=o,
         page=page,
         page_size=page_size,
         project=project,
         project_uuid=project_uuid,
+        provider_uuid=provider_uuid,
         query=query,
         remote_id=remote_id,
         reporter=reporter,
@@ -323,6 +370,7 @@ def sync(
         resource_external_ip=resource_external_ip,
         resource_internal_ip=resource_internal_ip,
         resource_uuid=resource_uuid,
+        sla_breached=sla_breached,
         status=status,
         summary=summary,
         type_=type_,
@@ -338,12 +386,16 @@ async def asyncio_detailed(
     caller_full_name: Union[Unset, str] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    is_escalated: Union[Unset, bool] = UNSET,
+    is_parent: Union[Unset, bool] = UNSET,
+    is_routed: Union[Unset, bool] = UNSET,
     key: Union[Unset, str] = UNSET,
     o: Union[Unset, list[IssueOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     remote_id: Union[Unset, str] = UNSET,
     reporter: Union[Unset, str] = UNSET,
@@ -353,6 +405,7 @@ async def asyncio_detailed(
     resource_external_ip: Union[Unset, str] = UNSET,
     resource_internal_ip: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    sla_breached: Union[Unset, bool] = UNSET,
     status: Union[Unset, str] = UNSET,
     summary: Union[Unset, str] = UNSET,
     type_: Union[Unset, str] = UNSET,
@@ -365,12 +418,16 @@ async def asyncio_detailed(
         caller_full_name (Union[Unset, str]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        is_escalated (Union[Unset, bool]):
+        is_parent (Union[Unset, bool]):
+        is_routed (Union[Unset, bool]):
         key (Union[Unset, str]):
         o (Union[Unset, list[IssueOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         remote_id (Union[Unset, str]):
         reporter (Union[Unset, str]):
@@ -380,6 +437,7 @@ async def asyncio_detailed(
         resource_external_ip (Union[Unset, str]):
         resource_internal_ip (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
+        sla_breached (Union[Unset, bool]):
         status (Union[Unset, str]):
         summary (Union[Unset, str]):
         type_ (Union[Unset, str]):
@@ -399,12 +457,16 @@ async def asyncio_detailed(
         caller_full_name=caller_full_name,
         customer=customer,
         customer_uuid=customer_uuid,
+        is_escalated=is_escalated,
+        is_parent=is_parent,
+        is_routed=is_routed,
         key=key,
         o=o,
         page=page,
         page_size=page_size,
         project=project,
         project_uuid=project_uuid,
+        provider_uuid=provider_uuid,
         query=query,
         remote_id=remote_id,
         reporter=reporter,
@@ -414,6 +476,7 @@ async def asyncio_detailed(
         resource_external_ip=resource_external_ip,
         resource_internal_ip=resource_internal_ip,
         resource_uuid=resource_uuid,
+        sla_breached=sla_breached,
         status=status,
         summary=summary,
         type_=type_,
@@ -433,12 +496,16 @@ async def asyncio(
     caller_full_name: Union[Unset, str] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    is_escalated: Union[Unset, bool] = UNSET,
+    is_parent: Union[Unset, bool] = UNSET,
+    is_routed: Union[Unset, bool] = UNSET,
     key: Union[Unset, str] = UNSET,
     o: Union[Unset, list[IssueOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     remote_id: Union[Unset, str] = UNSET,
     reporter: Union[Unset, str] = UNSET,
@@ -448,6 +515,7 @@ async def asyncio(
     resource_external_ip: Union[Unset, str] = UNSET,
     resource_internal_ip: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    sla_breached: Union[Unset, bool] = UNSET,
     status: Union[Unset, str] = UNSET,
     summary: Union[Unset, str] = UNSET,
     type_: Union[Unset, str] = UNSET,
@@ -460,12 +528,16 @@ async def asyncio(
         caller_full_name (Union[Unset, str]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        is_escalated (Union[Unset, bool]):
+        is_parent (Union[Unset, bool]):
+        is_routed (Union[Unset, bool]):
         key (Union[Unset, str]):
         o (Union[Unset, list[IssueOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         remote_id (Union[Unset, str]):
         reporter (Union[Unset, str]):
@@ -475,6 +547,7 @@ async def asyncio(
         resource_external_ip (Union[Unset, str]):
         resource_internal_ip (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
+        sla_breached (Union[Unset, bool]):
         status (Union[Unset, str]):
         summary (Union[Unset, str]):
         type_ (Union[Unset, str]):
@@ -496,12 +569,16 @@ async def asyncio(
             caller_full_name=caller_full_name,
             customer=customer,
             customer_uuid=customer_uuid,
+            is_escalated=is_escalated,
+            is_parent=is_parent,
+            is_routed=is_routed,
             key=key,
             o=o,
             page=page,
             page_size=page_size,
             project=project,
             project_uuid=project_uuid,
+            provider_uuid=provider_uuid,
             query=query,
             remote_id=remote_id,
             reporter=reporter,
@@ -511,6 +588,7 @@ async def asyncio(
             resource_external_ip=resource_external_ip,
             resource_internal_ip=resource_internal_ip,
             resource_uuid=resource_uuid,
+            sla_breached=sla_breached,
             status=status,
             summary=summary,
             type_=type_,
@@ -527,10 +605,14 @@ def sync_all(
     caller_full_name: Union[Unset, str] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    is_escalated: Union[Unset, bool] = UNSET,
+    is_parent: Union[Unset, bool] = UNSET,
+    is_routed: Union[Unset, bool] = UNSET,
     key: Union[Unset, str] = UNSET,
     o: Union[Unset, list[IssueOEnum]] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     remote_id: Union[Unset, str] = UNSET,
     reporter: Union[Unset, str] = UNSET,
@@ -540,6 +622,7 @@ def sync_all(
     resource_external_ip: Union[Unset, str] = UNSET,
     resource_internal_ip: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    sla_breached: Union[Unset, bool] = UNSET,
     status: Union[Unset, str] = UNSET,
     summary: Union[Unset, str] = UNSET,
     type_: Union[Unset, str] = UNSET,
@@ -558,10 +641,14 @@ def sync_all(
         caller_full_name (Union[Unset, str]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        is_escalated (Union[Unset, bool]):
+        is_parent (Union[Unset, bool]):
+        is_routed (Union[Unset, bool]):
         key (Union[Unset, str]):
         o (Union[Unset, list[IssueOEnum]]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         remote_id (Union[Unset, str]):
         reporter (Union[Unset, str]):
@@ -571,6 +658,7 @@ def sync_all(
         resource_external_ip (Union[Unset, str]):
         resource_internal_ip (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
+        sla_breached (Union[Unset, bool]):
         status (Union[Unset, str]):
         summary (Union[Unset, str]):
         type_ (Union[Unset, str]):
@@ -594,10 +682,14 @@ def sync_all(
         caller_full_name=caller_full_name,
         customer=customer,
         customer_uuid=customer_uuid,
+        is_escalated=is_escalated,
+        is_parent=is_parent,
+        is_routed=is_routed,
         key=key,
         o=o,
         project=project,
         project_uuid=project_uuid,
+        provider_uuid=provider_uuid,
         query=query,
         remote_id=remote_id,
         reporter=reporter,
@@ -607,6 +699,7 @@ def sync_all(
         resource_external_ip=resource_external_ip,
         resource_internal_ip=resource_internal_ip,
         resource_uuid=resource_uuid,
+        sla_breached=sla_breached,
         status=status,
         summary=summary,
         type_=type_,
@@ -663,10 +756,14 @@ async def asyncio_all(
     caller_full_name: Union[Unset, str] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    is_escalated: Union[Unset, bool] = UNSET,
+    is_parent: Union[Unset, bool] = UNSET,
+    is_routed: Union[Unset, bool] = UNSET,
     key: Union[Unset, str] = UNSET,
     o: Union[Unset, list[IssueOEnum]] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     remote_id: Union[Unset, str] = UNSET,
     reporter: Union[Unset, str] = UNSET,
@@ -676,6 +773,7 @@ async def asyncio_all(
     resource_external_ip: Union[Unset, str] = UNSET,
     resource_internal_ip: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
+    sla_breached: Union[Unset, bool] = UNSET,
     status: Union[Unset, str] = UNSET,
     summary: Union[Unset, str] = UNSET,
     type_: Union[Unset, str] = UNSET,
@@ -694,10 +792,14 @@ async def asyncio_all(
         caller_full_name (Union[Unset, str]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        is_escalated (Union[Unset, bool]):
+        is_parent (Union[Unset, bool]):
+        is_routed (Union[Unset, bool]):
         key (Union[Unset, str]):
         o (Union[Unset, list[IssueOEnum]]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         remote_id (Union[Unset, str]):
         reporter (Union[Unset, str]):
@@ -707,6 +809,7 @@ async def asyncio_all(
         resource_external_ip (Union[Unset, str]):
         resource_internal_ip (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
+        sla_breached (Union[Unset, bool]):
         status (Union[Unset, str]):
         summary (Union[Unset, str]):
         type_ (Union[Unset, str]):
@@ -730,10 +833,14 @@ async def asyncio_all(
         caller_full_name=caller_full_name,
         customer=customer,
         customer_uuid=customer_uuid,
+        is_escalated=is_escalated,
+        is_parent=is_parent,
+        is_routed=is_routed,
         key=key,
         o=o,
         project=project,
         project_uuid=project_uuid,
+        provider_uuid=provider_uuid,
         query=query,
         remote_id=remote_id,
         reporter=reporter,
@@ -743,6 +850,7 @@ async def asyncio_all(
         resource_external_ip=resource_external_ip,
         resource_internal_ip=resource_internal_ip,
         resource_uuid=resource_uuid,
+        sla_breached=sla_breached,
         status=status,
         summary=summary,
         type_=type_,

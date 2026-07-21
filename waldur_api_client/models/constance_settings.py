@@ -83,6 +83,8 @@ class ConstanceSettings:
         full_page_title (Union[Unset, str]):
         project_end_date_mandatory (Union[Unset, bool]):
         affiliation_required_at_project_creation (Union[Unset, bool]):
+        project_name_regex (Union[Unset, str]):
+        project_name_regex_error_message (Union[Unset, str]):
         enable_order_start_date (Union[Unset, bool]):
         brand_color (Union[Unset, str]):
         hero_link_label (Union[Unset, str]):
@@ -114,6 +116,12 @@ class ConstanceSettings:
         waldur_support_enabled (Union[Unset, bool]):
         waldur_support_active_backend_type (Union[Unset, WALDURSUPPORTACTIVEBACKENDTYPEEnum]):
         waldur_support_display_request_type (Union[Unset, bool]):
+        waldur_support_provider_routing_enabled (Union[Unset, bool]):
+        waldur_support_auto_assign (Union[Unset, bool]):
+        waldur_support_auto_assign_strategy (Union[Unset, str]):
+        waldur_support_sla_enabled (Union[Unset, bool]):
+        waldur_support_sla_response_hours (Union[Unset, int]):
+        waldur_support_sla_resolution_hours (Union[Unset, int]):
         atlassian_map_waldur_users_to_servicedesk_agents (Union[Unset, bool]):
         atlassian_api_url (Union[Unset, str]):
         atlassian_username (Union[Unset, str]):
@@ -389,6 +397,8 @@ class ConstanceSettings:
     full_page_title: Union[Unset, str] = UNSET
     project_end_date_mandatory: Union[Unset, bool] = UNSET
     affiliation_required_at_project_creation: Union[Unset, bool] = UNSET
+    project_name_regex: Union[Unset, str] = UNSET
+    project_name_regex_error_message: Union[Unset, str] = UNSET
     enable_order_start_date: Union[Unset, bool] = UNSET
     brand_color: Union[Unset, str] = UNSET
     hero_link_label: Union[Unset, str] = UNSET
@@ -420,6 +430,12 @@ class ConstanceSettings:
     waldur_support_enabled: Union[Unset, bool] = UNSET
     waldur_support_active_backend_type: Union[Unset, WALDURSUPPORTACTIVEBACKENDTYPEEnum] = UNSET
     waldur_support_display_request_type: Union[Unset, bool] = UNSET
+    waldur_support_provider_routing_enabled: Union[Unset, bool] = UNSET
+    waldur_support_auto_assign: Union[Unset, bool] = UNSET
+    waldur_support_auto_assign_strategy: Union[Unset, str] = UNSET
+    waldur_support_sla_enabled: Union[Unset, bool] = UNSET
+    waldur_support_sla_response_hours: Union[Unset, int] = UNSET
+    waldur_support_sla_resolution_hours: Union[Unset, int] = UNSET
     atlassian_map_waldur_users_to_servicedesk_agents: Union[Unset, bool] = UNSET
     atlassian_api_url: Union[Unset, str] = UNSET
     atlassian_username: Union[Unset, str] = UNSET
@@ -757,6 +773,10 @@ class ConstanceSettings:
 
         affiliation_required_at_project_creation = self.affiliation_required_at_project_creation
 
+        project_name_regex = self.project_name_regex
+
+        project_name_regex_error_message = self.project_name_regex_error_message
+
         enable_order_start_date = self.enable_order_start_date
 
         brand_color = self.brand_color
@@ -878,6 +898,18 @@ class ConstanceSettings:
             waldur_support_active_backend_type = self.waldur_support_active_backend_type.value
 
         waldur_support_display_request_type = self.waldur_support_display_request_type
+
+        waldur_support_provider_routing_enabled = self.waldur_support_provider_routing_enabled
+
+        waldur_support_auto_assign = self.waldur_support_auto_assign
+
+        waldur_support_auto_assign_strategy = self.waldur_support_auto_assign_strategy
+
+        waldur_support_sla_enabled = self.waldur_support_sla_enabled
+
+        waldur_support_sla_response_hours = self.waldur_support_sla_response_hours
+
+        waldur_support_sla_resolution_hours = self.waldur_support_sla_resolution_hours
 
         atlassian_map_waldur_users_to_servicedesk_agents = self.atlassian_map_waldur_users_to_servicedesk_agents
 
@@ -1582,6 +1614,10 @@ class ConstanceSettings:
             field_dict["PROJECT_END_DATE_MANDATORY"] = project_end_date_mandatory
         if affiliation_required_at_project_creation is not UNSET:
             field_dict["AFFILIATION_REQUIRED_AT_PROJECT_CREATION"] = affiliation_required_at_project_creation
+        if project_name_regex is not UNSET:
+            field_dict["PROJECT_NAME_REGEX"] = project_name_regex
+        if project_name_regex_error_message is not UNSET:
+            field_dict["PROJECT_NAME_REGEX_ERROR_MESSAGE"] = project_name_regex_error_message
         if enable_order_start_date is not UNSET:
             field_dict["ENABLE_ORDER_START_DATE"] = enable_order_start_date
         if brand_color is not UNSET:
@@ -1644,6 +1680,18 @@ class ConstanceSettings:
             field_dict["WALDUR_SUPPORT_ACTIVE_BACKEND_TYPE"] = waldur_support_active_backend_type
         if waldur_support_display_request_type is not UNSET:
             field_dict["WALDUR_SUPPORT_DISPLAY_REQUEST_TYPE"] = waldur_support_display_request_type
+        if waldur_support_provider_routing_enabled is not UNSET:
+            field_dict["WALDUR_SUPPORT_PROVIDER_ROUTING_ENABLED"] = waldur_support_provider_routing_enabled
+        if waldur_support_auto_assign is not UNSET:
+            field_dict["WALDUR_SUPPORT_AUTO_ASSIGN"] = waldur_support_auto_assign
+        if waldur_support_auto_assign_strategy is not UNSET:
+            field_dict["WALDUR_SUPPORT_AUTO_ASSIGN_STRATEGY"] = waldur_support_auto_assign_strategy
+        if waldur_support_sla_enabled is not UNSET:
+            field_dict["WALDUR_SUPPORT_SLA_ENABLED"] = waldur_support_sla_enabled
+        if waldur_support_sla_response_hours is not UNSET:
+            field_dict["WALDUR_SUPPORT_SLA_RESPONSE_HOURS"] = waldur_support_sla_response_hours
+        if waldur_support_sla_resolution_hours is not UNSET:
+            field_dict["WALDUR_SUPPORT_SLA_RESOLUTION_HOURS"] = waldur_support_sla_resolution_hours
         if atlassian_map_waldur_users_to_servicedesk_agents is not UNSET:
             field_dict["ATLASSIAN_MAP_WALDUR_USERS_TO_SERVICEDESK_AGENTS"] = (
                 atlassian_map_waldur_users_to_servicedesk_agents
@@ -2249,6 +2297,10 @@ class ConstanceSettings:
 
         affiliation_required_at_project_creation = d.pop("AFFILIATION_REQUIRED_AT_PROJECT_CREATION", UNSET)
 
+        project_name_regex = d.pop("PROJECT_NAME_REGEX", UNSET)
+
+        project_name_regex_error_message = d.pop("PROJECT_NAME_REGEX_ERROR_MESSAGE", UNSET)
+
         enable_order_start_date = d.pop("ENABLE_ORDER_START_DATE", UNSET)
 
         brand_color = d.pop("BRAND_COLOR", UNSET)
@@ -2412,6 +2464,18 @@ class ConstanceSettings:
             waldur_support_active_backend_type = WALDURSUPPORTACTIVEBACKENDTYPEEnum(_waldur_support_active_backend_type)
 
         waldur_support_display_request_type = d.pop("WALDUR_SUPPORT_DISPLAY_REQUEST_TYPE", UNSET)
+
+        waldur_support_provider_routing_enabled = d.pop("WALDUR_SUPPORT_PROVIDER_ROUTING_ENABLED", UNSET)
+
+        waldur_support_auto_assign = d.pop("WALDUR_SUPPORT_AUTO_ASSIGN", UNSET)
+
+        waldur_support_auto_assign_strategy = d.pop("WALDUR_SUPPORT_AUTO_ASSIGN_STRATEGY", UNSET)
+
+        waldur_support_sla_enabled = d.pop("WALDUR_SUPPORT_SLA_ENABLED", UNSET)
+
+        waldur_support_sla_response_hours = d.pop("WALDUR_SUPPORT_SLA_RESPONSE_HOURS", UNSET)
+
+        waldur_support_sla_resolution_hours = d.pop("WALDUR_SUPPORT_SLA_RESOLUTION_HOURS", UNSET)
 
         atlassian_map_waldur_users_to_servicedesk_agents = d.pop(
             "ATLASSIAN_MAP_WALDUR_USERS_TO_SERVICEDESK_AGENTS", UNSET
@@ -3236,6 +3300,8 @@ class ConstanceSettings:
             full_page_title=full_page_title,
             project_end_date_mandatory=project_end_date_mandatory,
             affiliation_required_at_project_creation=affiliation_required_at_project_creation,
+            project_name_regex=project_name_regex,
+            project_name_regex_error_message=project_name_regex_error_message,
             enable_order_start_date=enable_order_start_date,
             brand_color=brand_color,
             hero_link_label=hero_link_label,
@@ -3267,6 +3333,12 @@ class ConstanceSettings:
             waldur_support_enabled=waldur_support_enabled,
             waldur_support_active_backend_type=waldur_support_active_backend_type,
             waldur_support_display_request_type=waldur_support_display_request_type,
+            waldur_support_provider_routing_enabled=waldur_support_provider_routing_enabled,
+            waldur_support_auto_assign=waldur_support_auto_assign,
+            waldur_support_auto_assign_strategy=waldur_support_auto_assign_strategy,
+            waldur_support_sla_enabled=waldur_support_sla_enabled,
+            waldur_support_sla_response_hours=waldur_support_sla_response_hours,
+            waldur_support_sla_resolution_hours=waldur_support_sla_resolution_hours,
             atlassian_map_waldur_users_to_servicedesk_agents=atlassian_map_waldur_users_to_servicedesk_agents,
             atlassian_api_url=atlassian_api_url,
             atlassian_username=atlassian_username,

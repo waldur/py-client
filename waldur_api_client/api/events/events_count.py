@@ -22,6 +22,7 @@ def _get_kwargs(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    related_user_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
@@ -67,6 +68,11 @@ def _get_kwargs(
     if not isinstance(project_uuid, Unset):
         json_project_uuid = str(project_uuid)
     params["project_uuid"] = json_project_uuid
+
+    json_related_user_uuid: Union[Unset, str] = UNSET
+    if not isinstance(related_user_uuid, Unset):
+        json_related_user_uuid = str(related_user_uuid)
+    params["related_user_uuid"] = json_related_user_uuid
 
     params["scope"] = scope
 
@@ -125,6 +131,7 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    related_user_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
@@ -141,6 +148,7 @@ def sync_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
+        related_user_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -163,6 +171,7 @@ def sync_detailed(
         page=page,
         page_size=page_size,
         project_uuid=project_uuid,
+        related_user_uuid=related_user_uuid,
         scope=scope,
         user_uuid=user_uuid,
     )
@@ -187,6 +196,7 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    related_user_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
@@ -203,6 +213,7 @@ def sync(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
+        related_user_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -226,6 +237,7 @@ def sync(
         page=page,
         page_size=page_size,
         project_uuid=project_uuid,
+        related_user_uuid=related_user_uuid,
         scope=scope,
         user_uuid=user_uuid,
     ).parsed
@@ -244,6 +256,7 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    related_user_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
@@ -260,6 +273,7 @@ async def asyncio_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
+        related_user_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -282,6 +296,7 @@ async def asyncio_detailed(
         page=page,
         page_size=page_size,
         project_uuid=project_uuid,
+        related_user_uuid=related_user_uuid,
         scope=scope,
         user_uuid=user_uuid,
     )
@@ -304,6 +319,7 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    related_user_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
@@ -320,6 +336,7 @@ async def asyncio(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
+        related_user_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -344,6 +361,7 @@ async def asyncio(
             page=page,
             page_size=page_size,
             project_uuid=project_uuid,
+            related_user_uuid=related_user_uuid,
             scope=scope,
             user_uuid=user_uuid,
         )

@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.issue_processing_log import IssueProcessingLog
+    from ..models.issue_provider_ticket_info_type_0 import IssueProviderTicketInfoType0
     from ..models.nested_feedback import NestedFeedback
 
 
@@ -55,6 +56,18 @@ class Issue:
         order_project_uuid (Union[None, str]): Return order's project UUID if the issue's resource is an Order.
         order_customer_uuid (Union[None, str]): Return order's customer UUID if the issue's resource is an Order.
         order_resource_name (Union[None, str]): Return order's resource name if the issue's resource is an Order.
+        first_response_deadline (Union[None, datetime.datetime]): Deadline for first response from support staff.
+        resolution_deadline (Union[None, datetime.datetime]): Deadline for issue resolution.
+        first_response_at (Union[None, datetime.datetime]): Timestamp of first response from support staff.
+        sla_breached (bool): Whether SLA has been breached for this issue.
+        sla_status (str):
+        parent_issue (str):
+        provider_helpdesk (str):
+        is_escalated (bool): Whether this issue has been escalated.
+        escalated_at (Union[None, datetime.datetime]): When the issue was escalated.
+        escalation_reason (str): Reason for escalation.
+        is_routed (bool):
+        provider_ticket_info (Union['IssueProviderTicketInfoType0', None]):
         remote_id (Union[None, Unset, str]):
         link (Union[Unset, str]): Link to issue in support system.
         description (Union[Unset, str]):
@@ -103,6 +116,18 @@ class Issue:
     order_project_uuid: Union[None, str]
     order_customer_uuid: Union[None, str]
     order_resource_name: Union[None, str]
+    first_response_deadline: Union[None, datetime.datetime]
+    resolution_deadline: Union[None, datetime.datetime]
+    first_response_at: Union[None, datetime.datetime]
+    sla_breached: bool
+    sla_status: str
+    parent_issue: str
+    provider_helpdesk: str
+    is_escalated: bool
+    escalated_at: Union[None, datetime.datetime]
+    escalation_reason: str
+    is_routed: bool
+    provider_ticket_info: Union["IssueProviderTicketInfoType0", None]
     remote_id: Union[None, Unset, str] = UNSET
     link: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
@@ -117,6 +142,7 @@ class Issue:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.issue_provider_ticket_info_type_0 import IssueProviderTicketInfoType0
         from ..models.nested_feedback import NestedFeedback
 
         url = self.url
@@ -223,6 +249,50 @@ class Issue:
         order_resource_name: Union[None, str]
         order_resource_name = self.order_resource_name
 
+        first_response_deadline: Union[None, str]
+        if isinstance(self.first_response_deadline, datetime.datetime):
+            first_response_deadline = self.first_response_deadline.isoformat()
+        else:
+            first_response_deadline = self.first_response_deadline
+
+        resolution_deadline: Union[None, str]
+        if isinstance(self.resolution_deadline, datetime.datetime):
+            resolution_deadline = self.resolution_deadline.isoformat()
+        else:
+            resolution_deadline = self.resolution_deadline
+
+        first_response_at: Union[None, str]
+        if isinstance(self.first_response_at, datetime.datetime):
+            first_response_at = self.first_response_at.isoformat()
+        else:
+            first_response_at = self.first_response_at
+
+        sla_breached = self.sla_breached
+
+        sla_status = self.sla_status
+
+        parent_issue = self.parent_issue
+
+        provider_helpdesk = self.provider_helpdesk
+
+        is_escalated = self.is_escalated
+
+        escalated_at: Union[None, str]
+        if isinstance(self.escalated_at, datetime.datetime):
+            escalated_at = self.escalated_at.isoformat()
+        else:
+            escalated_at = self.escalated_at
+
+        escalation_reason = self.escalation_reason
+
+        is_routed = self.is_routed
+
+        provider_ticket_info: Union[None, dict[str, Any]]
+        if isinstance(self.provider_ticket_info, IssueProviderTicketInfoType0):
+            provider_ticket_info = self.provider_ticket_info.to_dict()
+        else:
+            provider_ticket_info = self.provider_ticket_info
+
         remote_id: Union[None, Unset, str]
         if isinstance(self.remote_id, Unset):
             remote_id = UNSET
@@ -309,6 +379,18 @@ class Issue:
                 "order_project_uuid": order_project_uuid,
                 "order_customer_uuid": order_customer_uuid,
                 "order_resource_name": order_resource_name,
+                "first_response_deadline": first_response_deadline,
+                "resolution_deadline": resolution_deadline,
+                "first_response_at": first_response_at,
+                "sla_breached": sla_breached,
+                "sla_status": sla_status,
+                "parent_issue": parent_issue,
+                "provider_helpdesk": provider_helpdesk,
+                "is_escalated": is_escalated,
+                "escalated_at": escalated_at,
+                "escalation_reason": escalation_reason,
+                "is_routed": is_routed,
+                "provider_ticket_info": provider_ticket_info,
             }
         )
         if remote_id is not UNSET:
@@ -339,6 +421,7 @@ class Issue:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.issue_processing_log import IssueProcessingLog
+        from ..models.issue_provider_ticket_info_type_0 import IssueProviderTicketInfoType0
         from ..models.nested_feedback import NestedFeedback
 
         d = dict(src_dict)
@@ -548,6 +631,95 @@ class Issue:
 
         order_resource_name = _parse_order_resource_name(d.pop("order_resource_name"))
 
+        def _parse_first_response_deadline(data: object) -> Union[None, datetime.datetime]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                first_response_deadline_type_0 = isoparse(data)
+
+                return first_response_deadline_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, datetime.datetime], data)
+
+        first_response_deadline = _parse_first_response_deadline(d.pop("first_response_deadline"))
+
+        def _parse_resolution_deadline(data: object) -> Union[None, datetime.datetime]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                resolution_deadline_type_0 = isoparse(data)
+
+                return resolution_deadline_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, datetime.datetime], data)
+
+        resolution_deadline = _parse_resolution_deadline(d.pop("resolution_deadline"))
+
+        def _parse_first_response_at(data: object) -> Union[None, datetime.datetime]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                first_response_at_type_0 = isoparse(data)
+
+                return first_response_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, datetime.datetime], data)
+
+        first_response_at = _parse_first_response_at(d.pop("first_response_at"))
+
+        sla_breached = d.pop("sla_breached")
+
+        sla_status = d.pop("sla_status")
+
+        parent_issue = d.pop("parent_issue")
+
+        provider_helpdesk = d.pop("provider_helpdesk")
+
+        is_escalated = d.pop("is_escalated")
+
+        def _parse_escalated_at(data: object) -> Union[None, datetime.datetime]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                escalated_at_type_0 = isoparse(data)
+
+                return escalated_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, datetime.datetime], data)
+
+        escalated_at = _parse_escalated_at(d.pop("escalated_at"))
+
+        escalation_reason = d.pop("escalation_reason")
+
+        is_routed = d.pop("is_routed")
+
+        def _parse_provider_ticket_info(data: object) -> Union["IssueProviderTicketInfoType0", None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                provider_ticket_info_type_0 = IssueProviderTicketInfoType0.from_dict(data)
+
+                return provider_ticket_info_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["IssueProviderTicketInfoType0", None], data)
+
+        provider_ticket_info = _parse_provider_ticket_info(d.pop("provider_ticket_info"))
+
         def _parse_remote_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -652,6 +824,18 @@ class Issue:
             order_project_uuid=order_project_uuid,
             order_customer_uuid=order_customer_uuid,
             order_resource_name=order_resource_name,
+            first_response_deadline=first_response_deadline,
+            resolution_deadline=resolution_deadline,
+            first_response_at=first_response_at,
+            sla_breached=sla_breached,
+            sla_status=sla_status,
+            parent_issue=parent_issue,
+            provider_helpdesk=provider_helpdesk,
+            is_escalated=is_escalated,
+            escalated_at=escalated_at,
+            escalation_reason=escalation_reason,
+            is_routed=is_routed,
+            provider_ticket_info=provider_ticket_info,
             remote_id=remote_id,
             link=link,
             description=description,

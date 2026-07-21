@@ -813,12 +813,20 @@ Module: `waldur_api_client.api.email_logs`
 - `email_logs_count` HEAD `/api/email-logs/` — Get number of items in the collection matching the request parameters (5 query params)
 - `email_logs_retrieve` GET `/api/email-logs/{uuid}/` (path: uuid)
 
+## event-consumers
+Module: `waldur_api_client.api.event_consumers`
+
+- `event_consumers_list` GET `/api/event-consumers/` (no params)
+- `event_consumers_count` HEAD `/api/event-consumers/` — Get number of items in the collection matching the request parameters (no params)
+- `event_consumers_register` POST `/api/event-consumers/register/` — Register (or refresh) an event-consumer queue for the calling user (request body)
+- `event_consumers_destroy` DELETE `/api/event-consumers/{uuid}/` (path: uuid)
+
 ## event-subscription-queues
 Module: `waldur_api_client.api.event_subscription_queues`
 
 - `event_subscription_queues_list` GET `/api/event-subscription-queues/` (4 query params)
 - `event_subscription_queues_count` HEAD `/api/event-subscription-queues/` — Get number of items in the collection matching the request parameters (4 query params)
-- `event_subscription_queues_retrieve` GET `/api/event-subscription-queues/{uuid}/` (path: uuid)
+- `event_subscription_queues_retrieve` GET `/api/event-subscription-queues/{uuid}/` — DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/) (path: uuid)
 - `event_subscription_queues_destroy` DELETE `/api/event-subscription-queues/{uuid}/` (path: uuid)
 
 ## event-subscriptions
@@ -826,7 +834,7 @@ Module: `waldur_api_client.api.event_subscriptions`
 
 - `event_subscriptions_list` GET `/api/event-subscriptions/` (3 query params)
 - `event_subscriptions_count` HEAD `/api/event-subscriptions/` — Get number of items in the collection matching the request parameters (3 query params)
-- `event_subscriptions_create` POST `/api/event-subscriptions/` (request body)
+- `event_subscriptions_create` POST `/api/event-subscriptions/` — DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/) (request body)
 - `event_subscriptions_retrieve` GET `/api/event-subscriptions/{uuid}/` (path: uuid)
 - `event_subscriptions_destroy` DELETE `/api/event-subscriptions/{uuid}/` (path: uuid)
 - `event_subscriptions_create_queue` POST `/api/event-subscriptions/{uuid}/create_queue/` — Create a RabbitMQ queue for receiving events for a specific offering and object type (path: uuid | request body)
@@ -834,8 +842,8 @@ Module: `waldur_api_client.api.event_subscriptions`
 ## events
 Module: `waldur_api_client.api.events`
 
-- `events_list` GET `/api/events/` (11 query params)
-- `events_count` HEAD `/api/events/` — Get number of items in the collection matching the request parameters (10 query params)
+- `events_list` GET `/api/events/` (12 query params)
+- `events_count` HEAD `/api/events/` — Get number of items in the collection matching the request parameters (11 query params)
 - `events_count_retrieve` GET `/api/events/count/` (no params)
 - `events_count_count` HEAD `/api/events/count/` — Get number of items in the collection matching the request parameters (no params)
 - `events_event_groups_retrieve` GET `/api/events/event_groups/` — Returns a list of groups with event types (no params)
@@ -847,8 +855,8 @@ Module: `waldur_api_client.api.events`
 ## events-stats
 Module: `waldur_api_client.api.events_stats`
 
-- `events_stats_list` GET `/api/events-stats/` (3 query params)
-- `events_stats_count` HEAD `/api/events-stats/` — Get number of items in the collection matching the request parameters (3 query params)
+- `events_stats_list` GET `/api/events-stats/` (4 query params)
+- `events_stats_count` HEAD `/api/events-stats/` — Get number of items in the collection matching the request parameters (4 query params)
 
 ## expertise-categories
 Module: `waldur_api_client.api.expertise_categories`
@@ -900,6 +908,16 @@ Module: `waldur_api_client.api.google_auth`
 - `google_auth_callback_count` HEAD `/api/google-auth/callback/` — Get number of items in the collection matching the request parameters (2 query params)
 - `google_auth_retrieve` GET `/api/google-auth/{uuid}/` (path: uuid | 1 query param)
 - `google_auth_authorize_retrieve` GET `/api/google-auth/{uuid}/authorize/` (path: uuid)
+
+## helpdesk-health
+Module: `waldur_api_client.api.helpdesk_health`
+
+- `helpdesk_health_list` GET `/api/helpdesk-health/` (no params)
+
+## helpdesk-stats
+Module: `waldur_api_client.api.helpdesk_stats`
+
+- `helpdesk_stats_retrieve` GET `/api/helpdesk-stats/` (no params)
 
 ## hooks
 Module: `waldur_api_client.api.hooks`
@@ -2002,7 +2020,8 @@ Module: `waldur_api_client.api.marketplace_site_agent_identities`
 - `marketplace_site_agent_identities_retrieve` GET `/api/marketplace-site-agent-identities/{uuid}/` (path: uuid)
 - `marketplace_site_agent_identities_update` PUT `/api/marketplace-site-agent-identities/{uuid}/` (path: uuid | request body)
 - `marketplace_site_agent_identities_destroy` DELETE `/api/marketplace-site-agent-identities/{uuid}/` (path: uuid)
-- `marketplace_site_agent_identities_register_event_subscription` POST `/api/marketplace-site-agent-identities/{uuid}/register_event_subscription/` — Register an event subscription for the specified agent identity and observable object type (path: uuid | request body)
+- `marketplace_site_agent_identities_register_event_subscription` POST `/api/marketplace-site-agent-identities/{uuid}/register_event_subscription/` — DEPRECATED: use register_queue instead, which creates a single unified consumer queue (path: uuid | request body)
+- `marketplace_site_agent_identities_register_queue` POST `/api/marketplace-site-agent-identities/{uuid}/register_queue/` — Register a unified event-consumer queue for this agent identity (path: uuid | request body)
 - `marketplace_site_agent_identities_register_service` POST `/api/marketplace-site-agent-identities/{uuid}/register_service/` — Register a new processor or get the existing one for the agent service (path: uuid | request body)
 
 ## marketplace-site-agent-logs
@@ -3207,12 +3226,65 @@ Module: `waldur_api_client.api.proposal_reviews`
 - `proposal_reviews_reject` POST `/api/proposal-reviews/{uuid}/reject/` — Reject a review, changing its state to REJECTED (path: uuid)
 - `proposal_reviews_submit` POST `/api/proposal-reviews/{uuid}/submit/` — Submit a review, changing its state to SUBMITTED (path: uuid | request body)
 
+## provider-canned-responses
+Module: `waldur_api_client.api.provider_canned_responses`
+
+- `provider_canned_responses_list` GET `/api/provider-canned-responses/` (3 query params)
+- `provider_canned_responses_count` HEAD `/api/provider-canned-responses/` — Get number of items in the collection matching the request parameters (3 query params)
+- `provider_canned_responses_create` POST `/api/provider-canned-responses/` (request body)
+- `provider_canned_responses_retrieve` GET `/api/provider-canned-responses/{uuid}/` (path: uuid)
+- `provider_canned_responses_update` PUT `/api/provider-canned-responses/{uuid}/` (path: uuid | request body)
+- `provider_canned_responses_partial_update` PATCH `/api/provider-canned-responses/{uuid}/` (path: uuid | request body)
+- `provider_canned_responses_destroy` DELETE `/api/provider-canned-responses/{uuid}/` (path: uuid)
+- `provider_canned_responses_render` POST `/api/provider-canned-responses/{uuid}/render/` (path: uuid | request body)
+
+## provider-helpdesks
+Module: `waldur_api_client.api.provider_helpdesks`
+
+- `provider_helpdesks_list` GET `/api/provider-helpdesks/` (3 query params)
+- `provider_helpdesks_count` HEAD `/api/provider-helpdesks/` — Get number of items in the collection matching the request parameters (3 query params)
+- `provider_helpdesks_create` POST `/api/provider-helpdesks/` (request body)
+- `provider_helpdesks_retrieve` GET `/api/provider-helpdesks/{uuid}/` (path: uuid)
+- `provider_helpdesks_update` PUT `/api/provider-helpdesks/{uuid}/` (path: uuid | request body)
+- `provider_helpdesks_partial_update` PATCH `/api/provider-helpdesks/{uuid}/` (path: uuid | request body)
+- `provider_helpdesks_destroy` DELETE `/api/provider-helpdesks/{uuid}/` (path: uuid)
+- `provider_helpdesks_validate` POST `/api/provider-helpdesks/{uuid}/validate/` — Validate provider helpdesk backend connectivity (path: uuid)
+
 ## provider-invoice-items
 Module: `waldur_api_client.api.provider_invoice_items`
 
 - `provider_invoice_items_list` GET `/api/provider-invoice-items/` (6 query params)
 - `provider_invoice_items_count` HEAD `/api/provider-invoice-items/` — Get number of items in the collection matching the request parameters (6 query params)
 - `provider_invoice_items_retrieve` GET `/api/provider-invoice-items/{id}/` (path: id)
+
+## provider-support-users
+Module: `waldur_api_client.api.provider_support_users`
+
+- `provider_support_users_list` GET `/api/provider-support-users/` (4 query params)
+- `provider_support_users_count` HEAD `/api/provider-support-users/` — Get number of items in the collection matching the request parameters (4 query params)
+- `provider_support_users_create` POST `/api/provider-support-users/` (request body)
+- `provider_support_users_team_workload_list` GET `/api/provider-support-users/team_workload/` — Get workload for all team members (4 query params)
+- `provider_support_users_team_workload_count` HEAD `/api/provider-support-users/team_workload/` — Get workload for all team members (4 query params)
+- `provider_support_users_retrieve` GET `/api/provider-support-users/{uuid}/` (path: uuid)
+- `provider_support_users_update` PUT `/api/provider-support-users/{uuid}/` (path: uuid | request body)
+- `provider_support_users_partial_update` PATCH `/api/provider-support-users/{uuid}/` (path: uuid | request body)
+- `provider_support_users_destroy` DELETE `/api/provider-support-users/{uuid}/` (path: uuid)
+
+## provider-tickets
+Module: `waldur_api_client.api.provider_tickets`
+
+- `provider_tickets_list` GET `/api/provider-tickets/` (7 query params)
+- `provider_tickets_count` HEAD `/api/provider-tickets/` — Get number of items in the collection matching the request parameters (7 query params)
+- `provider_tickets_stats_retrieve` GET `/api/provider-tickets/stats/` — Get statistics for provider tickets (no params)
+- `provider_tickets_stats_count` HEAD `/api/provider-tickets/stats/` — Get statistics for provider tickets (no params)
+- `provider_tickets_retrieve` GET `/api/provider-tickets/{uuid}/` (path: uuid)
+- `provider_tickets_update` PUT `/api/provider-tickets/{uuid}/` (path: uuid | request body)
+- `provider_tickets_partial_update` PATCH `/api/provider-tickets/{uuid}/` (path: uuid | request body)
+- `provider_tickets_assign` POST `/api/provider-tickets/{uuid}/assign/` (path: uuid | request body)
+- `provider_tickets_claim` POST `/api/provider-tickets/{uuid}/claim/` (path: uuid | request body)
+- `provider_tickets_comment` POST `/api/provider-tickets/{uuid}/comment/` (path: uuid | request body)
+- `provider_tickets_customer_context_retrieve` GET `/api/provider-tickets/{uuid}/customer_context/` — Get customer context for this ticket (path: uuid)
+- `provider_tickets_resolve` POST `/api/provider-tickets/{uuid}/resolve/` (path: uuid)
 
 ## public-maintenance-announcements
 Module: `waldur_api_client.api.public_maintenance_announcements`
@@ -3667,6 +3739,18 @@ Module: `waldur_api_client.api.support_attachments`
 - `support_attachments_retrieve` GET `/api/support-attachments/{uuid}/` (path: uuid | 1 query param)
 - `support_attachments_destroy` DELETE `/api/support-attachments/{uuid}/` (path: uuid)
 
+## support-canned-responses
+Module: `waldur_api_client.api.support_canned_responses`
+
+- `support_canned_responses_list` GET `/api/support-canned-responses/` (3 query params)
+- `support_canned_responses_count` HEAD `/api/support-canned-responses/` — Get number of items in the collection matching the request parameters (3 query params)
+- `support_canned_responses_create` POST `/api/support-canned-responses/` (request body)
+- `support_canned_responses_retrieve` GET `/api/support-canned-responses/{uuid}/` (path: uuid)
+- `support_canned_responses_update` PUT `/api/support-canned-responses/{uuid}/` (path: uuid | request body)
+- `support_canned_responses_partial_update` PATCH `/api/support-canned-responses/{uuid}/` (path: uuid | request body)
+- `support_canned_responses_destroy` DELETE `/api/support-canned-responses/{uuid}/` (path: uuid)
+- `support_canned_responses_render` POST `/api/support-canned-responses/{uuid}/render/` — Render a canned response with context variables (path: uuid | request body)
+
 ## support-comments
 Module: `waldur_api_client.api.support_comments`
 
@@ -3695,6 +3779,17 @@ Module: `waldur_api_client.api.support_feedbacks`
 - `support_feedbacks_create` POST `/api/support-feedbacks/` (request body)
 - `support_feedbacks_retrieve` GET `/api/support-feedbacks/{uuid}/` (path: uuid)
 
+## support-issue-links
+Module: `waldur_api_client.api.support_issue_links`
+
+- `support_issue_links_list` GET `/api/support-issue-links/` (3 query params)
+- `support_issue_links_count` HEAD `/api/support-issue-links/` — Get number of items in the collection matching the request parameters (3 query params)
+- `support_issue_links_create` POST `/api/support-issue-links/` (request body)
+- `support_issue_links_retrieve` GET `/api/support-issue-links/{uuid}/` (path: uuid)
+- `support_issue_links_update` PUT `/api/support-issue-links/{uuid}/` (path: uuid | request body)
+- `support_issue_links_partial_update` PATCH `/api/support-issue-links/{uuid}/` (path: uuid | request body)
+- `support_issue_links_destroy` DELETE `/api/support-issue-links/{uuid}/` (path: uuid)
+
 ## support-issue-statuses
 Module: `waldur_api_client.api.support_issue_statuses`
 
@@ -3706,17 +3801,31 @@ Module: `waldur_api_client.api.support_issue_statuses`
 - `support_issue_statuses_partial_update` PATCH `/api/support-issue-statuses/{uuid}/` (path: uuid | request body)
 - `support_issue_statuses_destroy` DELETE `/api/support-issue-statuses/{uuid}/` (path: uuid)
 
+## support-issue-tags
+Module: `waldur_api_client.api.support_issue_tags`
+
+- `support_issue_tags_list` GET `/api/support-issue-tags/` (1 query param)
+- `support_issue_tags_count` HEAD `/api/support-issue-tags/` — Get number of items in the collection matching the request parameters (1 query param)
+- `support_issue_tags_create` POST `/api/support-issue-tags/` (request body)
+- `support_issue_tags_retrieve` GET `/api/support-issue-tags/{uuid}/` (path: uuid)
+- `support_issue_tags_update` PUT `/api/support-issue-tags/{uuid}/` (path: uuid | request body)
+- `support_issue_tags_partial_update` PATCH `/api/support-issue-tags/{uuid}/` (path: uuid | request body)
+- `support_issue_tags_destroy` DELETE `/api/support-issue-tags/{uuid}/` (path: uuid)
+
 ## support-issues
 Module: `waldur_api_client.api.support_issues`
 
-- `support_issues_list` GET `/api/support-issues/` (22 query params)
-- `support_issues_count` HEAD `/api/support-issues/` — Get number of items in the collection matching the request parameters (22 query params)
+- `support_issues_list` GET `/api/support-issues/` (27 query params)
+- `support_issues_count` HEAD `/api/support-issues/` — Get number of items in the collection matching the request parameters (27 query params)
 - `support_issues_create` POST `/api/support-issues/` (request body)
+- `support_issues_bulk_update` POST `/api/support-issues/bulk_update/` — Bulk update multiple issues (request body)
 - `support_issues_retrieve` GET `/api/support-issues/{uuid}/` (path: uuid)
 - `support_issues_update` PUT `/api/support-issues/{uuid}/` (path: uuid | request body)
 - `support_issues_partial_update` PATCH `/api/support-issues/{uuid}/` (path: uuid | request body)
 - `support_issues_destroy` DELETE `/api/support-issues/{uuid}/` (path: uuid)
+- `support_issues_attach_resource` POST `/api/support-issues/{uuid}/attach_resource/` — Attach a marketplace resource to an issue (path: uuid | request body)
 - `support_issues_comment` POST `/api/support-issues/{uuid}/comment/` (path: uuid | request body)
+- `support_issues_escalate` POST `/api/support-issues/{uuid}/escalate/` — Escalate an issue (path: uuid | request body)
 - `support_issues_sync` POST `/api/support-issues/{uuid}/sync/` (path: uuid)
 
 ## support-jira-webhook
@@ -3730,6 +3839,11 @@ Module: `waldur_api_client.api.support_priorities`
 - `support_priorities_list` GET `/api/support-priorities/` (2 query params)
 - `support_priorities_count` HEAD `/api/support-priorities/` — Get number of items in the collection matching the request parameters (2 query params)
 - `support_priorities_retrieve` GET `/api/support-priorities/{uuid}/` (path: uuid)
+
+## support-provider-webhook
+Module: `waldur_api_client.api.support_provider_webhook`
+
+- `support_provider_webhook` POST `/api/support-provider-webhook/{provider_uuid}/{backend_type}/` (path: backend_type, provider_uuid | request body)
 
 ## support-request-types
 Module: `waldur_api_client.api.support_request_types`
@@ -3751,6 +3865,17 @@ Module: `waldur_api_client.api.support_request_types_admin`
 - `support_request_types_admin_destroy` DELETE `/api/support-request-types-admin/{uuid}/` (path: uuid)
 - `support_request_types_admin_activate` POST `/api/support-request-types-admin/{uuid}/activate/` — Activate a request type so it appears in issue creation (path: uuid)
 - `support_request_types_admin_deactivate` POST `/api/support-request-types-admin/{uuid}/deactivate/` — Deactivate a request type so it no longer appears in issue creation (path: uuid)
+
+## support-saved-filters
+Module: `waldur_api_client.api.support_saved_filters`
+
+- `support_saved_filters_list` GET `/api/support-saved-filters/` (2 query params)
+- `support_saved_filters_count` HEAD `/api/support-saved-filters/` — Get number of items in the collection matching the request parameters (2 query params)
+- `support_saved_filters_create` POST `/api/support-saved-filters/` (request body)
+- `support_saved_filters_retrieve` GET `/api/support-saved-filters/{uuid}/` (path: uuid)
+- `support_saved_filters_update` PUT `/api/support-saved-filters/{uuid}/` (path: uuid | request body)
+- `support_saved_filters_partial_update` PATCH `/api/support-saved-filters/{uuid}/` (path: uuid | request body)
+- `support_saved_filters_destroy` DELETE `/api/support-saved-filters/{uuid}/` (path: uuid)
 
 ## support-smax-webhook
 Module: `waldur_api_client.api.support_smax_webhook`

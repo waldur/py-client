@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.16.dev.20260720130811
+# Version: 8.1.0-rc.16.dev.20260721160454
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2633,7 +2633,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -2651,7 +2651,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -4008,7 +4008,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -4026,7 +4026,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -4504,6 +4504,29 @@ Path parameters:
   - uuid
 
 ============================================================
+## event-consumers  (module: waldur_api_client.api.event_consumers)
+============================================================
+
+### event_consumers_list
+GET /api/event-consumers/
+
+### event_consumers_count
+HEAD /api/event-consumers/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+
+### event_consumers_register
+POST /api/event-consumers/register/
+Summary: Register (or refresh) an event-consumer queue for the calling user
+Description: Register (or refresh) an event-consumer queue for the calling user. Pass `scopes` to bind the queue to entities you hold a role on; an EMPTY `scopes` list requests a GLOBAL queue (all events, including all-user PII) and requires staff/support. Idempotent per binding set.
+Request body: yes
+
+### event_consumers_destroy
+DELETE /api/event-consumers/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
 ## event-subscription-queues  (module: waldur_api_client.api.event_subscription_queues)
 ============================================================
 
@@ -4527,6 +4550,8 @@ Query parameters (4):
 
 ### event_subscription_queues_retrieve
 GET /api/event-subscription-queues/{uuid}/
+Summary: DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/)
+Description: DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/). Removal tracked in WAL-10111.
 Path parameters:
   - uuid
 
@@ -4557,6 +4582,8 @@ Query parameters (3):
 
 ### event_subscriptions_create
 POST /api/event-subscriptions/
+Summary: DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/)
+Description: DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/). Removal tracked in WAL-10111.
 Request body: yes
 
 ### event_subscriptions_retrieve
@@ -4583,7 +4610,7 @@ Request body: yes
 
 ### events_list
 GET /api/events/
-Query parameters (11):
+Query parameters (12):
   - created_from
   - created_to
   - customer_uuid — Customer UUID
@@ -4593,6 +4620,7 @@ Query parameters (11):
   - message
   - o — Ordering
   - project_uuid — Project UUID
+  - related_user_uuid — Filter events related to a user: Feed scope, actor (context.user_uuid), or affected user (context.affected_user_uuid). Combined with OR. Staff/support may target any user; others only themselves.
   - scope — Filter by scope URL.
   - user_uuid — User UUID
 
@@ -4600,7 +4628,7 @@ Query parameters (11):
 HEAD /api/events/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (10):
+Query parameters (11):
   - created_from
   - created_to
   - customer_uuid — Customer UUID
@@ -4609,6 +4637,7 @@ Query parameters (10):
   - message
   - o — Ordering
   - project_uuid — Project UUID
+  - related_user_uuid — Filter events related to a user: Feed scope, actor (context.user_uuid), or affected user (context.affected_user_uuid). Combined with OR. Staff/support may target any user; others only themselves.
   - scope — Filter by scope URL.
   - user_uuid — User UUID
 
@@ -4654,18 +4683,20 @@ Query parameters (1):
 
 ### events_stats_list
 GET /api/events-stats/
-Query parameters (3):
+Query parameters (4):
   - event_type — Filter by event type. Can be specified multiple times.
   - feature — Filter by feature (event group). Can be specified multiple times.
+  - related_user_uuid — Filter events related to a user: Feed scope, actor (context.user_uuid), or affected user (context.affected_user_uuid). Combined with OR. Staff/support may target any user; others only themselves.
   - scope — Filter by scope URL.
 
 ### events_stats_count
 HEAD /api/events-stats/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (3):
+Query parameters (4):
   - event_type — Filter by event type. Can be specified multiple times.
   - feature — Filter by feature (event group). Can be specified multiple times.
+  - related_user_uuid — Filter events related to a user: Feed scope, actor (context.user_uuid), or affected user (context.affected_user_uuid). Combined with OR. Staff/support may target any user; others only themselves.
   - scope — Filter by scope URL.
 
 ============================================================
@@ -4913,6 +4944,20 @@ Query parameters (1):
 GET /api/google-auth/{uuid}/authorize/
 Path parameters:
   - uuid
+
+============================================================
+## helpdesk-health  (module: waldur_api_client.api.helpdesk_health)
+============================================================
+
+### helpdesk_health_list
+GET /api/helpdesk-health/
+
+============================================================
+## helpdesk-stats  (module: waldur_api_client.api.helpdesk_stats)
+============================================================
+
+### helpdesk_stats_retrieve
+GET /api/helpdesk-stats/
 
 ============================================================
 ## hooks  (module: waldur_api_client.api.hooks)
@@ -9578,7 +9623,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -9596,7 +9641,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -10013,7 +10058,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -10031,7 +10076,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -10318,7 +10363,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -10336,7 +10381,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -10964,7 +11009,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -10982,7 +11027,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -11273,7 +11318,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -11291,7 +11336,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -12623,7 +12668,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -12641,7 +12686,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -12765,8 +12810,16 @@ Path parameters:
 
 ### marketplace_site_agent_identities_register_event_subscription
 POST /api/marketplace-site-agent-identities/{uuid}/register_event_subscription/
-Summary: Register an event subscription for the specified agent identity and observable object type
-Description: Register an event subscription for the specified agent identity and observable object type. Returns existing subscription if already exists.
+Summary: DEPRECATED: use register_queue instead, which creates a single unified consumer queue
+Description: DEPRECATED: use register_queue instead, which creates a single unified consumer queue. This per-object-type subscription path is kept only for the deprecation window; removal is tracked in WAL-10111. Register an event subscription for the specified agent identity and observable object type. Retur...
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_site_agent_identities_register_queue
+POST /api/marketplace-site-agent-identities/{uuid}/register_queue/
+Summary: Register a unified event-consumer queue for this agent identity
+Description: Register a unified event-consumer queue for this agent identity. Creates a single RabbitMQ queue that receives all event types. Returns the existing queue if already registered.
 Path parameters:
   - uuid
 Request body: yes
@@ -15504,7 +15557,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -15522,7 +15575,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -19199,7 +19252,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -19217,7 +19270,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -19514,7 +19567,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -19532,7 +19585,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -19973,7 +20026,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -19991,7 +20044,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -20524,6 +20577,110 @@ Path parameters:
 Request body: yes
 
 ============================================================
+## provider-canned-responses  (module: waldur_api_client.api.provider_canned_responses)
+============================================================
+
+### provider_canned_responses_list
+GET /api/provider-canned-responses/
+Query parameters (3):
+  - category
+  - name
+  - provider_helpdesk_uuid
+
+### provider_canned_responses_count
+HEAD /api/provider-canned-responses/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - category
+  - name
+  - provider_helpdesk_uuid
+
+### provider_canned_responses_create
+POST /api/provider-canned-responses/
+Request body: yes
+
+### provider_canned_responses_retrieve
+GET /api/provider-canned-responses/{uuid}/
+Path parameters:
+  - uuid
+
+### provider_canned_responses_update
+PUT /api/provider-canned-responses/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_canned_responses_partial_update
+PATCH /api/provider-canned-responses/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_canned_responses_destroy
+DELETE /api/provider-canned-responses/{uuid}/
+Path parameters:
+  - uuid
+
+### provider_canned_responses_render
+POST /api/provider-canned-responses/{uuid}/render/
+Path parameters:
+  - uuid
+Request body: yes
+
+============================================================
+## provider-helpdesks  (module: waldur_api_client.api.provider_helpdesks)
+============================================================
+
+### provider_helpdesks_list
+GET /api/provider-helpdesks/
+Query parameters (3):
+  - backend_type
+  - is_active
+  - service_provider_uuid
+
+### provider_helpdesks_count
+HEAD /api/provider-helpdesks/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - backend_type
+  - is_active
+  - service_provider_uuid
+
+### provider_helpdesks_create
+POST /api/provider-helpdesks/
+Request body: yes
+
+### provider_helpdesks_retrieve
+GET /api/provider-helpdesks/{uuid}/
+Path parameters:
+  - uuid
+
+### provider_helpdesks_update
+PUT /api/provider-helpdesks/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_helpdesks_partial_update
+PATCH /api/provider-helpdesks/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_helpdesks_destroy
+DELETE /api/provider-helpdesks/{uuid}/
+Path parameters:
+  - uuid
+
+### provider_helpdesks_validate
+POST /api/provider-helpdesks/{uuid}/validate/
+Summary: Validate provider helpdesk backend connectivity
+Path parameters:
+  - uuid
+
+============================================================
 ## provider-invoice-items  (module: waldur_api_client.api.provider_invoice_items)
 ============================================================
 
@@ -20553,6 +20710,156 @@ Query parameters (6):
 GET /api/provider-invoice-items/{id}/
 Path parameters:
   - id — A unique integer value identifying this invoice item.
+
+============================================================
+## provider-support-users  (module: waldur_api_client.api.provider_support_users)
+============================================================
+
+### provider_support_users_list
+GET /api/provider-support-users/
+Query parameters (4):
+  - is_active
+  - provider_helpdesk_uuid
+  - role
+  - user_full_name — User full name contains
+
+### provider_support_users_count
+HEAD /api/provider-support-users/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - is_active
+  - provider_helpdesk_uuid
+  - role
+  - user_full_name — User full name contains
+
+### provider_support_users_create
+POST /api/provider-support-users/
+Request body: yes
+
+### provider_support_users_team_workload_list
+GET /api/provider-support-users/team_workload/
+Summary: Get workload for all team members
+Query parameters (4):
+  - is_active
+  - provider_helpdesk_uuid
+  - role
+  - user_full_name — User full name contains
+
+### provider_support_users_team_workload_count
+HEAD /api/provider-support-users/team_workload/
+Summary: Get workload for all team members
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - is_active
+  - provider_helpdesk_uuid
+  - role
+  - user_full_name — User full name contains
+
+### provider_support_users_retrieve
+GET /api/provider-support-users/{uuid}/
+Path parameters:
+  - uuid
+
+### provider_support_users_update
+PUT /api/provider-support-users/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_support_users_partial_update
+PATCH /api/provider-support-users/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_support_users_destroy
+DELETE /api/provider-support-users/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
+## provider-tickets  (module: waldur_api_client.api.provider_tickets)
+============================================================
+
+### provider_tickets_list
+GET /api/provider-tickets/
+Query parameters (7):
+  - is_escalated
+  - o — Ordering
+  - priority
+  - provider_assignee
+  - sla_breached
+  - status
+  - summary
+
+### provider_tickets_count
+HEAD /api/provider-tickets/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (7):
+  - is_escalated
+  - o — Ordering
+  - priority
+  - provider_assignee
+  - sla_breached
+  - status
+  - summary
+
+### provider_tickets_stats_retrieve
+GET /api/provider-tickets/stats/
+Summary: Get statistics for provider tickets
+
+### provider_tickets_stats_count
+HEAD /api/provider-tickets/stats/
+Summary: Get statistics for provider tickets
+Description: Get number of items in the collection matching the request parameters.
+
+### provider_tickets_retrieve
+GET /api/provider-tickets/{uuid}/
+Path parameters:
+  - uuid
+
+### provider_tickets_update
+PUT /api/provider-tickets/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_tickets_partial_update
+PATCH /api/provider-tickets/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_tickets_assign
+POST /api/provider-tickets/{uuid}/assign/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_tickets_claim
+POST /api/provider-tickets/{uuid}/claim/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_tickets_comment
+POST /api/provider-tickets/{uuid}/comment/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_tickets_customer_context_retrieve
+GET /api/provider-tickets/{uuid}/customer_context/
+Summary: Get customer context for this ticket
+Path parameters:
+  - uuid
+
+### provider_tickets_resolve
+POST /api/provider-tickets/{uuid}/resolve/
+Path parameters:
+  - uuid
 
 ============================================================
 ## public-maintenance-announcements  (module: waldur_api_client.api.public_maintenance_announcements)
@@ -22909,6 +23216,59 @@ Path parameters:
   - uuid
 
 ============================================================
+## support-canned-responses  (module: waldur_api_client.api.support_canned_responses)
+============================================================
+
+### support_canned_responses_list
+GET /api/support-canned-responses/
+Query parameters (3):
+  - category
+  - is_active
+  - name
+
+### support_canned_responses_count
+HEAD /api/support-canned-responses/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - category
+  - is_active
+  - name
+
+### support_canned_responses_create
+POST /api/support-canned-responses/
+Request body: yes
+
+### support_canned_responses_retrieve
+GET /api/support-canned-responses/{uuid}/
+Path parameters:
+  - uuid
+
+### support_canned_responses_update
+PUT /api/support-canned-responses/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_canned_responses_partial_update
+PATCH /api/support-canned-responses/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_canned_responses_destroy
+DELETE /api/support-canned-responses/{uuid}/
+Path parameters:
+  - uuid
+
+### support_canned_responses_render
+POST /api/support-canned-responses/{uuid}/render/
+Summary: Render a canned response with context variables
+Path parameters:
+  - uuid
+Request body: yes
+
+============================================================
 ## support-comments  (module: waldur_api_client.api.support_comments)
 ============================================================
 
@@ -23018,6 +23378,52 @@ Path parameters:
   - uuid
 
 ============================================================
+## support-issue-links  (module: waldur_api_client.api.support_issue_links)
+============================================================
+
+### support_issue_links_list
+GET /api/support-issue-links/
+Query parameters (3):
+  - link_type
+  - source_uuid
+  - target_uuid
+
+### support_issue_links_count
+HEAD /api/support-issue-links/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - link_type
+  - source_uuid
+  - target_uuid
+
+### support_issue_links_create
+POST /api/support-issue-links/
+Request body: yes
+
+### support_issue_links_retrieve
+GET /api/support-issue-links/{uuid}/
+Path parameters:
+  - uuid
+
+### support_issue_links_update
+PUT /api/support-issue-links/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_issue_links_partial_update
+PATCH /api/support-issue-links/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_issue_links_destroy
+DELETE /api/support-issue-links/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
 ## support-issue-statuses  (module: waldur_api_client.api.support_issue_statuses)
 ============================================================
 
@@ -23056,22 +23462,68 @@ Path parameters:
   - uuid
 
 ============================================================
+## support-issue-tags  (module: waldur_api_client.api.support_issue_tags)
+============================================================
+
+### support_issue_tags_list
+GET /api/support-issue-tags/
+Query parameters (1):
+  - name
+
+### support_issue_tags_count
+HEAD /api/support-issue-tags/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (1):
+  - name
+
+### support_issue_tags_create
+POST /api/support-issue-tags/
+Request body: yes
+
+### support_issue_tags_retrieve
+GET /api/support-issue-tags/{uuid}/
+Path parameters:
+  - uuid
+
+### support_issue_tags_update
+PUT /api/support-issue-tags/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_issue_tags_partial_update
+PATCH /api/support-issue-tags/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_issue_tags_destroy
+DELETE /api/support-issue-tags/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
 ## support-issues  (module: waldur_api_client.api.support_issues)
 ============================================================
 
 ### support_issues_list
 GET /api/support-issues/
-Query parameters (22):
+Query parameters (27):
   - assignee
   - assignee_name
   - caller
   - caller_full_name — Caller full name contains
   - customer
   - customer_uuid
+  - is_escalated
+  - is_parent — Is a parent issue
+  - is_routed — Has been routed to provider
   - key
   - o — Ordering
   - project
   - project_uuid
+  - provider_uuid
   - query — Summary or key contains
   - remote_id
   - reporter
@@ -23081,6 +23533,7 @@ Query parameters (22):
   - resource_external_ip — Resource external IP
   - resource_internal_ip — Resource internal IP
   - resource_uuid — Resource UUID
+  - sla_breached
   - status
   - summary
   - type
@@ -23089,17 +23542,21 @@ Query parameters (22):
 HEAD /api/support-issues/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (22):
+Query parameters (27):
   - assignee
   - assignee_name
   - caller
   - caller_full_name — Caller full name contains
   - customer
   - customer_uuid
+  - is_escalated
+  - is_parent — Is a parent issue
+  - is_routed — Has been routed to provider
   - key
   - o — Ordering
   - project
   - project_uuid
+  - provider_uuid
   - query — Summary or key contains
   - remote_id
   - reporter
@@ -23109,12 +23566,18 @@ Query parameters (22):
   - resource_external_ip — Resource external IP
   - resource_internal_ip — Resource internal IP
   - resource_uuid — Resource UUID
+  - sla_breached
   - status
   - summary
   - type
 
 ### support_issues_create
 POST /api/support-issues/
+Request body: yes
+
+### support_issues_bulk_update
+POST /api/support-issues/bulk_update/
+Summary: Bulk update multiple issues
 Request body: yes
 
 ### support_issues_retrieve
@@ -23139,8 +23602,22 @@ DELETE /api/support-issues/{uuid}/
 Path parameters:
   - uuid
 
+### support_issues_attach_resource
+POST /api/support-issues/{uuid}/attach_resource/
+Summary: Attach a marketplace resource to an issue
+Path parameters:
+  - uuid
+Request body: yes
+
 ### support_issues_comment
 POST /api/support-issues/{uuid}/comment/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_issues_escalate
+POST /api/support-issues/{uuid}/escalate/
+Summary: Escalate an issue
 Path parameters:
   - uuid
 Request body: yes
@@ -23180,6 +23657,17 @@ Query parameters (2):
 GET /api/support-priorities/{uuid}/
 Path parameters:
   - uuid
+
+============================================================
+## support-provider-webhook  (module: waldur_api_client.api.support_provider_webhook)
+============================================================
+
+### support_provider_webhook
+POST /api/support-provider-webhook/{provider_uuid}/{backend_type}/
+Path parameters:
+  - backend_type
+  - provider_uuid
+Request body: yes
 
 ============================================================
 ## support-request-types  (module: waldur_api_client.api.support_request_types)
@@ -23259,6 +23747,50 @@ Path parameters:
 POST /api/support-request-types-admin/{uuid}/deactivate/
 Summary: Deactivate a request type so it no longer appears in issue creation
 Description: Deactivate a request type so it no longer appears in issue creation.
+Path parameters:
+  - uuid
+
+============================================================
+## support-saved-filters  (module: waldur_api_client.api.support_saved_filters)
+============================================================
+
+### support_saved_filters_list
+GET /api/support-saved-filters/
+Query parameters (2):
+  - is_shared
+  - name
+
+### support_saved_filters_count
+HEAD /api/support-saved-filters/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (2):
+  - is_shared
+  - name
+
+### support_saved_filters_create
+POST /api/support-saved-filters/
+Request body: yes
+
+### support_saved_filters_retrieve
+GET /api/support-saved-filters/{uuid}/
+Path parameters:
+  - uuid
+
+### support_saved_filters_update
+PUT /api/support-saved-filters/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_saved_filters_partial_update
+PATCH /api/support-saved-filters/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_saved_filters_destroy
+DELETE /api/support-saved-filters/{uuid}/
 Path parameters:
   - uuid
 

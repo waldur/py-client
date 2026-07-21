@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.1.0-rc.16.dev.20260720130811).
+> Auto-generated Python SDK for the Waldur API (version 8.1.0-rc.16.dev.20260721160454).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -106,6 +106,7 @@ waldur_api_client/
 - **digitalocean-regions** (3 endpoints)
 - **digitalocean-sizes** (3 endpoints)
 - **email-logs** (3 endpoints)
+- **event-consumers** (4 endpoints)
 - **event-subscription-queues** (4 endpoints)
 - **event-subscriptions** (6 endpoints)
 - **events** (9 endpoints)
@@ -116,6 +117,8 @@ waldur_api_client/
 - **financial-reports** (3 endpoints)
 - **freeipa-profiles** (7 endpoints)
 - **google-auth** (6 endpoints)
+- **helpdesk-health** (1 endpoint)
+- **helpdesk-stats** (1 endpoint)
 - **hooks** (2 endpoints)
 - **hooks-email** (7 endpoints)
 - **hooks-web** (7 endpoints)
@@ -202,7 +205,7 @@ waldur_api_client/
 - **marketplace-sections** (7 endpoints)
 - **marketplace-service-providers** (48 endpoints)
 - **marketplace-site-agent-connection-stats** (1 endpoint)
-- **marketplace-site-agent-identities** (9 endpoints)
+- **marketplace-site-agent-identities** (10 endpoints)
 - **marketplace-site-agent-logs** (3 endpoints)
 - **marketplace-site-agent-processors** (4 endpoints)
 - **marketplace-site-agent-services** (7 endpoints)
@@ -287,7 +290,11 @@ waldur_api_client/
 - **proposal-requested-offerings** (5 endpoints)
 - **proposal-requested-resources** (3 endpoints)
 - **proposal-reviews** (9 endpoints)
+- **provider-canned-responses** (8 endpoints)
+- **provider-helpdesks** (8 endpoints)
 - **provider-invoice-items** (3 endpoints)
+- **provider-support-users** (9 endpoints)
+- **provider-tickets** (12 endpoints)
 - **public-maintenance-announcements** (3 endpoints)
 - **query** (1 endpoint)
 - **rabbitmq-overview** (1 endpoint)
@@ -328,16 +335,21 @@ waldur_api_client/
 - **stats** (5 endpoints)
 - **support** (14 endpoints)
 - **support-attachments** (5 endpoints)
+- **support-canned-responses** (8 endpoints)
 - **support-comments** (6 endpoints)
 - **support-feedback-average-report** (1 endpoint)
 - **support-feedback-report** (1 endpoint)
 - **support-feedbacks** (4 endpoints)
+- **support-issue-links** (7 endpoints)
 - **support-issue-statuses** (7 endpoints)
-- **support-issues** (9 endpoints)
+- **support-issue-tags** (7 endpoints)
+- **support-issues** (12 endpoints)
 - **support-jira-webhook** (1 endpoint)
 - **support-priorities** (3 endpoints)
+- **support-provider-webhook** (1 endpoint)
 - **support-request-types** (3 endpoints)
 - **support-request-types-admin** (10 endpoints)
+- **support-saved-filters** (7 endpoints)
 - **support-smax-webhook** (1 endpoint)
 - **support-statistics** (1 endpoint)
 - **support-templates** (9 endpoints)
