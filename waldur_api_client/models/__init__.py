@@ -2369,6 +2369,7 @@ from .resource_project_recovery_request import ResourceProjectRecoveryRequest
 from .resource_project_request import ResourceProjectRequest
 from .resource_project_request_limits import ResourceProjectRequestLimits
 from .resource_project_termination_metadata import ResourceProjectTerminationMetadata
+from .resource_projects_limit_policy_enum import ResourceProjectsLimitPolicyEnum
 from .resource_provisioning_stats import ResourceProvisioningStats
 from .resource_reallocate_limits_request import ResourceReallocateLimitsRequest
 from .resource_reallocate_limits_request_limits import ResourceReallocateLimitsRequestLimits
@@ -5151,6 +5152,7 @@ __all__ = (
     "ResourceProjectRecoveryRequest",
     "ResourceProjectRequest",
     "ResourceProjectRequestLimits",
+    "ResourceProjectsLimitPolicyEnum",
     "ResourceProjectTerminationMetadata",
     "ResourceProvisioningStats",
     "ResourceReallocateLimitsRequest",

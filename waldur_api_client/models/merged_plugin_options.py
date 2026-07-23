@@ -10,6 +10,7 @@ from ..models.billing_source_enum import BillingSourceEnum
 from ..models.blank_enum import BlankEnum
 from ..models.deployment_mode_enum import DeploymentModeEnum
 from ..models.posix_id_source_enum import PosixIdSourceEnum
+from ..models.resource_projects_limit_policy_enum import ResourceProjectsLimitPolicyEnum
 from ..models.storage_mode_enum import StorageModeEnum
 from ..models.username_generation_policy_enum import UsernameGenerationPolicyEnum
 from ..types import UNSET, Unset
@@ -74,6 +75,16 @@ class MergedPluginOptions:
         create_orders_on_resource_option_change (Union[Unset, bool]): If set to True, create orders when options of
             related resources are changed.
         enable_resource_projects (Union[Unset, bool]): Enable sub-project management within resources.
+        enable_resource_access_subnets (Union[Unset, bool]): If set to True, an Access subnets tab is shown on resource
+            detail pages, letting consumers curate the IPs allowed to reach the backend entity. The list is advisory data
+            for external firewalls.
+        conceal_subnet_restricted_resources (Union[Unset, bool]): If set to True, a resource of this offering that has
+            access subnets is hidden from the consumer API unless the caller's IP is in the resource's allow-list. Staff and
+            support are exempt; resources without any subnet stay visible.
+        resource_projects_limit_policy (Union[BlankEnum, None, ResourceProjectsLimitPolicyEnum, Unset]): How parent
+            resource limits are enforced on child resource projects: 'none' (accepted as-is, default), 'per_project' (each
+            resource project limit must be within the parent resource limit), or 'aggregate' (the sum of all resource
+            project limits must be within the parent limit).
         auto_ok_resource_projects (Union[Unset, bool]): If set to True, newly-created resource projects are immediately
             transitioned from CREATING to OK on save, bypassing the provider/site-agent reconciliation callback. Use for
             offerings that have no external backend to reconcile against.
@@ -218,6 +229,9 @@ class MergedPluginOptions:
     conceal_billing_data: Union[Unset, bool] = UNSET
     create_orders_on_resource_option_change: Union[Unset, bool] = UNSET
     enable_resource_projects: Union[Unset, bool] = UNSET
+    enable_resource_access_subnets: Union[Unset, bool] = UNSET
+    conceal_subnet_restricted_resources: Union[Unset, bool] = UNSET
+    resource_projects_limit_policy: Union[BlankEnum, None, ResourceProjectsLimitPolicyEnum, Unset] = UNSET
     auto_ok_resource_projects: Union[Unset, bool] = UNSET
     resource_projects_limits_required: Union[Unset, bool] = UNSET
     create_orders_on_resource_project_change: Union[Unset, bool] = UNSET
@@ -354,6 +368,20 @@ class MergedPluginOptions:
         create_orders_on_resource_option_change = self.create_orders_on_resource_option_change
 
         enable_resource_projects = self.enable_resource_projects
+
+        enable_resource_access_subnets = self.enable_resource_access_subnets
+
+        conceal_subnet_restricted_resources = self.conceal_subnet_restricted_resources
+
+        resource_projects_limit_policy: Union[None, Unset, str]
+        if isinstance(self.resource_projects_limit_policy, Unset):
+            resource_projects_limit_policy = UNSET
+        elif isinstance(self.resource_projects_limit_policy, ResourceProjectsLimitPolicyEnum):
+            resource_projects_limit_policy = self.resource_projects_limit_policy.value
+        elif isinstance(self.resource_projects_limit_policy, BlankEnum):
+            resource_projects_limit_policy = self.resource_projects_limit_policy.value
+        else:
+            resource_projects_limit_policy = self.resource_projects_limit_policy
 
         auto_ok_resource_projects = self.auto_ok_resource_projects
 
@@ -580,6 +608,12 @@ class MergedPluginOptions:
             field_dict["create_orders_on_resource_option_change"] = create_orders_on_resource_option_change
         if enable_resource_projects is not UNSET:
             field_dict["enable_resource_projects"] = enable_resource_projects
+        if enable_resource_access_subnets is not UNSET:
+            field_dict["enable_resource_access_subnets"] = enable_resource_access_subnets
+        if conceal_subnet_restricted_resources is not UNSET:
+            field_dict["conceal_subnet_restricted_resources"] = conceal_subnet_restricted_resources
+        if resource_projects_limit_policy is not UNSET:
+            field_dict["resource_projects_limit_policy"] = resource_projects_limit_policy
         if auto_ok_resource_projects is not UNSET:
             field_dict["auto_ok_resource_projects"] = auto_ok_resource_projects
         if resource_projects_limits_required is not UNSET:
@@ -816,6 +850,39 @@ class MergedPluginOptions:
         create_orders_on_resource_option_change = d.pop("create_orders_on_resource_option_change", UNSET)
 
         enable_resource_projects = d.pop("enable_resource_projects", UNSET)
+
+        enable_resource_access_subnets = d.pop("enable_resource_access_subnets", UNSET)
+
+        conceal_subnet_restricted_resources = d.pop("conceal_subnet_restricted_resources", UNSET)
+
+        def _parse_resource_projects_limit_policy(
+            data: object,
+        ) -> Union[BlankEnum, None, ResourceProjectsLimitPolicyEnum, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                resource_projects_limit_policy_type_0 = ResourceProjectsLimitPolicyEnum(data)
+
+                return resource_projects_limit_policy_type_0
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                resource_projects_limit_policy_type_1 = BlankEnum(data)
+
+                return resource_projects_limit_policy_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union[BlankEnum, None, ResourceProjectsLimitPolicyEnum, Unset], data)
+
+        resource_projects_limit_policy = _parse_resource_projects_limit_policy(
+            d.pop("resource_projects_limit_policy", UNSET)
+        )
 
         auto_ok_resource_projects = d.pop("auto_ok_resource_projects", UNSET)
 
@@ -1063,6 +1130,9 @@ class MergedPluginOptions:
             conceal_billing_data=conceal_billing_data,
             create_orders_on_resource_option_change=create_orders_on_resource_option_change,
             enable_resource_projects=enable_resource_projects,
+            enable_resource_access_subnets=enable_resource_access_subnets,
+            conceal_subnet_restricted_resources=conceal_subnet_restricted_resources,
+            resource_projects_limit_policy=resource_projects_limit_policy,
             auto_ok_resource_projects=auto_ok_resource_projects,
             resource_projects_limits_required=resource_projects_limits_required,
             create_orders_on_resource_project_change=create_orders_on_resource_project_change,
