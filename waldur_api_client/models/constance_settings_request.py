@@ -260,6 +260,11 @@ class ConstanceSettingsRequest:
         onboarding_bolagsverket_client_id (Union[Unset, str]):
         onboarding_bolagsverket_client_secret (Union[Unset, str]):
         onboarding_breg_api_url (Union[Unset, str]):
+        onboarding_dnb_api_url (Union[Unset, str]):
+        onboarding_dnb_rts_api_url (Union[Unset, str]):
+        onboarding_dnb_token_url (Union[Unset, str]):
+        onboarding_dnb_client_id (Union[Unset, str]):
+        onboarding_dnb_client_secret (Union[Unset, str]):
         ai_assistant_enabled (Union[Unset, bool]):
         ai_assistant_enabled_roles (Union[Unset, AIASSISTANTENABLEDROLESEnum]):
         ai_assistant_backend_type (Union[Unset, str]):
@@ -574,6 +579,11 @@ class ConstanceSettingsRequest:
     onboarding_bolagsverket_client_id: Union[Unset, str] = UNSET
     onboarding_bolagsverket_client_secret: Union[Unset, str] = UNSET
     onboarding_breg_api_url: Union[Unset, str] = UNSET
+    onboarding_dnb_api_url: Union[Unset, str] = UNSET
+    onboarding_dnb_rts_api_url: Union[Unset, str] = UNSET
+    onboarding_dnb_token_url: Union[Unset, str] = UNSET
+    onboarding_dnb_client_id: Union[Unset, str] = UNSET
+    onboarding_dnb_client_secret: Union[Unset, str] = UNSET
     ai_assistant_enabled: Union[Unset, bool] = UNSET
     ai_assistant_enabled_roles: Union[Unset, AIASSISTANTENABLEDROLESEnum] = UNSET
     ai_assistant_backend_type: Union[Unset, str] = UNSET
@@ -1323,6 +1333,16 @@ class ConstanceSettingsRequest:
 
         onboarding_breg_api_url = self.onboarding_breg_api_url
 
+        onboarding_dnb_api_url = self.onboarding_dnb_api_url
+
+        onboarding_dnb_rts_api_url = self.onboarding_dnb_rts_api_url
+
+        onboarding_dnb_token_url = self.onboarding_dnb_token_url
+
+        onboarding_dnb_client_id = self.onboarding_dnb_client_id
+
+        onboarding_dnb_client_secret = self.onboarding_dnb_client_secret
+
         ai_assistant_enabled = self.ai_assistant_enabled
 
         ai_assistant_enabled_roles: Union[Unset, str] = UNSET
@@ -2010,6 +2030,16 @@ class ConstanceSettingsRequest:
             field_dict["ONBOARDING_BOLAGSVERKET_CLIENT_SECRET"] = onboarding_bolagsverket_client_secret
         if onboarding_breg_api_url is not UNSET:
             field_dict["ONBOARDING_BREG_API_URL"] = onboarding_breg_api_url
+        if onboarding_dnb_api_url is not UNSET:
+            field_dict["ONBOARDING_DNB_API_URL"] = onboarding_dnb_api_url
+        if onboarding_dnb_rts_api_url is not UNSET:
+            field_dict["ONBOARDING_DNB_RTS_API_URL"] = onboarding_dnb_rts_api_url
+        if onboarding_dnb_token_url is not UNSET:
+            field_dict["ONBOARDING_DNB_TOKEN_URL"] = onboarding_dnb_token_url
+        if onboarding_dnb_client_id is not UNSET:
+            field_dict["ONBOARDING_DNB_CLIENT_ID"] = onboarding_dnb_client_id
+        if onboarding_dnb_client_secret is not UNSET:
+            field_dict["ONBOARDING_DNB_CLIENT_SECRET"] = onboarding_dnb_client_secret
         if ai_assistant_enabled is not UNSET:
             field_dict["AI_ASSISTANT_ENABLED"] = ai_assistant_enabled
         if ai_assistant_enabled_roles is not UNSET:
@@ -3104,6 +3134,16 @@ class ConstanceSettingsRequest:
 
         onboarding_breg_api_url = d.pop("ONBOARDING_BREG_API_URL", UNSET)
 
+        onboarding_dnb_api_url = d.pop("ONBOARDING_DNB_API_URL", UNSET)
+
+        onboarding_dnb_rts_api_url = d.pop("ONBOARDING_DNB_RTS_API_URL", UNSET)
+
+        onboarding_dnb_token_url = d.pop("ONBOARDING_DNB_TOKEN_URL", UNSET)
+
+        onboarding_dnb_client_id = d.pop("ONBOARDING_DNB_CLIENT_ID", UNSET)
+
+        onboarding_dnb_client_secret = d.pop("ONBOARDING_DNB_CLIENT_SECRET", UNSET)
+
         ai_assistant_enabled = d.pop("AI_ASSISTANT_ENABLED", UNSET)
 
         _ai_assistant_enabled_roles = d.pop("AI_ASSISTANT_ENABLED_ROLES", UNSET)
@@ -3611,6 +3651,11 @@ class ConstanceSettingsRequest:
             onboarding_bolagsverket_client_id=onboarding_bolagsverket_client_id,
             onboarding_bolagsverket_client_secret=onboarding_bolagsverket_client_secret,
             onboarding_breg_api_url=onboarding_breg_api_url,
+            onboarding_dnb_api_url=onboarding_dnb_api_url,
+            onboarding_dnb_rts_api_url=onboarding_dnb_rts_api_url,
+            onboarding_dnb_token_url=onboarding_dnb_token_url,
+            onboarding_dnb_client_id=onboarding_dnb_client_id,
+            onboarding_dnb_client_secret=onboarding_dnb_client_secret,
             ai_assistant_enabled=ai_assistant_enabled,
             ai_assistant_enabled_roles=ai_assistant_enabled_roles,
             ai_assistant_backend_type=ai_assistant_backend_type,
