@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.billing_unit import BillingUnit
+from ..models.blank_enum import BlankEnum
 from ..models.offering_state import OfferingState
 from ..models.resource_state import ResourceState
 from ..models.usage_limit_restriction_enum import UsageLimitRestrictionEnum
@@ -118,7 +119,9 @@ class Resource:
         downscaled (Union[Unset, bool]):
         restrict_member_access (Union[Unset, bool]):
         paused (Union[Unset, bool]):
-        usage_limit_restriction (Union[Unset, UsageLimitRestrictionEnum]):
+        usage_limit_restriction (Union[BlankEnum, Unset, UsageLimitRestrictionEnum]): Which restriction (paused or
+            downscaled) was automatically applied because reported usage reached a component limit. Empty when no such
+            restriction is active. Used so the automatic lift never clears a restriction that was set for another reason.
         endpoints (Union[Unset, list['NestedEndpoint']]):
         error_message (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
@@ -206,7 +209,7 @@ class Resource:
     downscaled: Union[Unset, bool] = UNSET
     restrict_member_access: Union[Unset, bool] = UNSET
     paused: Union[Unset, bool] = UNSET
-    usage_limit_restriction: Union[Unset, UsageLimitRestrictionEnum] = UNSET
+    usage_limit_restriction: Union[BlankEnum, Unset, UsageLimitRestrictionEnum] = UNSET
     endpoints: Union[Unset, list["NestedEndpoint"]] = UNSET
     error_message: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
@@ -478,8 +481,12 @@ class Resource:
 
         paused = self.paused
 
-        usage_limit_restriction: Union[Unset, str] = UNSET
-        if not isinstance(self.usage_limit_restriction, Unset):
+        usage_limit_restriction: Union[Unset, str]
+        if isinstance(self.usage_limit_restriction, Unset):
+            usage_limit_restriction = UNSET
+        elif isinstance(self.usage_limit_restriction, UsageLimitRestrictionEnum):
+            usage_limit_restriction = self.usage_limit_restriction.value
+        else:
             usage_limit_restriction = self.usage_limit_restriction.value
 
         endpoints: Union[Unset, list[dict[str, Any]]] = UNSET
@@ -1138,12 +1145,24 @@ class Resource:
 
         paused = d.pop("paused", UNSET)
 
-        _usage_limit_restriction = d.pop("usage_limit_restriction", UNSET)
-        usage_limit_restriction: Union[Unset, UsageLimitRestrictionEnum]
-        if isinstance(_usage_limit_restriction, Unset):
-            usage_limit_restriction = UNSET
-        else:
-            usage_limit_restriction = UsageLimitRestrictionEnum(_usage_limit_restriction)
+        def _parse_usage_limit_restriction(data: object) -> Union[BlankEnum, Unset, UsageLimitRestrictionEnum]:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                usage_limit_restriction_type_0 = UsageLimitRestrictionEnum(data)
+
+                return usage_limit_restriction_type_0
+            except:  # noqa: E722
+                pass
+            if not isinstance(data, str):
+                raise TypeError()
+            usage_limit_restriction_type_1 = BlankEnum(data)
+
+            return usage_limit_restriction_type_1
+
+        usage_limit_restriction = _parse_usage_limit_restriction(d.pop("usage_limit_restriction", UNSET))
 
         endpoints = []
         _endpoints = d.pop("endpoints", UNSET)
