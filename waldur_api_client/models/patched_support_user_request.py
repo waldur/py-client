@@ -1,28 +1,19 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="SupportUser")
+T = TypeVar("T", bound="PatchedSupportUserRequest")
 
 
 @_attrs_define
-class SupportUser:
+class PatchedSupportUserRequest:
     """
     Attributes:
-        url (str):
-        uuid (UUID):
-        name (str):
-        user_full_name (str):
-        user_email (str):
-        reported_issues_count (int):
-        assigned_issues_count (int):
-        comments_count (int):
-        attachments_count (int):
+        name (Union[Unset, str]):
         backend_id (Union[None, Unset, str]):
         backend_name (Union[None, Unset, str]):
         is_active (Union[Unset, bool]): Designates whether this user should be treated as active. Unselect this instead
@@ -30,15 +21,7 @@ class SupportUser:
         user (Union[None, Unset, str]):
     """
 
-    url: str
-    uuid: UUID
-    name: str
-    user_full_name: str
-    user_email: str
-    reported_issues_count: int
-    assigned_issues_count: int
-    comments_count: int
-    attachments_count: int
+    name: Union[Unset, str] = UNSET
     backend_id: Union[None, Unset, str] = UNSET
     backend_name: Union[None, Unset, str] = UNSET
     is_active: Union[Unset, bool] = UNSET
@@ -46,23 +29,7 @@ class SupportUser:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        url = self.url
-
-        uuid = str(self.uuid)
-
         name = self.name
-
-        user_full_name = self.user_full_name
-
-        user_email = self.user_email
-
-        reported_issues_count = self.reported_issues_count
-
-        assigned_issues_count = self.assigned_issues_count
-
-        comments_count = self.comments_count
-
-        attachments_count = self.attachments_count
 
         backend_id: Union[None, Unset, str]
         if isinstance(self.backend_id, Unset):
@@ -86,19 +53,9 @@ class SupportUser:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "url": url,
-                "uuid": uuid,
-                "name": name,
-                "user_full_name": user_full_name,
-                "user_email": user_email,
-                "reported_issues_count": reported_issues_count,
-                "assigned_issues_count": assigned_issues_count,
-                "comments_count": comments_count,
-                "attachments_count": attachments_count,
-            }
-        )
+        field_dict.update({})
+        if name is not UNSET:
+            field_dict["name"] = name
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
         if backend_name is not UNSET:
@@ -113,23 +70,7 @@ class SupportUser:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        url = d.pop("url")
-
-        uuid = UUID(d.pop("uuid"))
-
-        name = d.pop("name")
-
-        user_full_name = d.pop("user_full_name")
-
-        user_email = d.pop("user_email")
-
-        reported_issues_count = d.pop("reported_issues_count")
-
-        assigned_issues_count = d.pop("assigned_issues_count")
-
-        comments_count = d.pop("comments_count")
-
-        attachments_count = d.pop("attachments_count")
+        name = d.pop("name", UNSET)
 
         def _parse_backend_id(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -160,24 +101,16 @@ class SupportUser:
 
         user = _parse_user(d.pop("user", UNSET))
 
-        support_user = cls(
-            url=url,
-            uuid=uuid,
+        patched_support_user_request = cls(
             name=name,
-            user_full_name=user_full_name,
-            user_email=user_email,
-            reported_issues_count=reported_issues_count,
-            assigned_issues_count=assigned_issues_count,
-            comments_count=comments_count,
-            attachments_count=attachments_count,
             backend_id=backend_id,
             backend_name=backend_name,
             is_active=is_active,
             user=user,
         )
 
-        support_user.additional_properties = d
-        return support_user
+        patched_support_user_request.additional_properties = d
+        return patched_support_user_request
 
     @property
     def additional_keys(self) -> list[str]:

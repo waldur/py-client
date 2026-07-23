@@ -30,6 +30,7 @@ class CustomerFieldEnum(str, Enum):
     DOMAIN = "domain"
     EMAIL = "email"
     GRACE_PERIOD_DAYS = "grace_period_days"
+    HAS_ACTIVE_HELPDESK = "has_active_helpdesk"
     HAS_AFFILIATE_LINKS = "has_affiliate_links"
     HOMEPAGE = "homepage"
     HOUSEHOLD = "household"

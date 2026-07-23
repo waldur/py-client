@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.17
+# Version: 8.1.0-rc.17.dev.20260723122716
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -23622,6 +23622,20 @@ Path parameters:
   - uuid
 Request body: yes
 
+### support_issues_reroute
+POST /api/support-issues/{uuid}/reroute/
+Summary: Re-route an already-routed issue to a different provider helpdesk
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_issues_route_to_provider
+POST /api/support-issues/{uuid}/route_to_provider/
+Summary: Manually route an issue to a provider helpdesk
+Path parameters:
+  - uuid
+Request body: yes
+
 ### support_issues_sync
 POST /api/support-issues/{uuid}/sync/
 Path parameters:
@@ -23867,24 +23881,62 @@ Request body: yes
 
 ### support_users_list
 GET /api/support-users/
-Query parameters (3):
+Query parameters (6):
   - backend_id
+  - backend_name
+  - is_active
   - name
+  - o — Ordering
   - user
 
 ### support_users_count
 HEAD /api/support-users/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (3):
+Query parameters (6):
   - backend_id
+  - backend_name
+  - is_active
   - name
+  - o — Ordering
   - user
+
+### support_users_create
+POST /api/support-users/
+Request body: yes
 
 ### support_users_retrieve
 GET /api/support-users/{uuid}/
 Path parameters:
   - uuid
+
+### support_users_update
+PUT /api/support-users/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_users_partial_update
+PATCH /api/support-users/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_users_destroy
+DELETE /api/support-users/{uuid}/
+Path parameters:
+  - uuid
+
+### support_users_connections_retrieve
+GET /api/support-users/{uuid}/connections/
+Path parameters:
+  - uuid
+
+### support_users_merge
+POST /api/support-users/{uuid}/merge/
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## support-zammad-webhook  (module: waldur_api_client.api.support_zammad_webhook)

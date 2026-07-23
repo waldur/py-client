@@ -1860,6 +1860,7 @@ from .patched_slurm_periodic_usage_policy_request_tres_billing_weights import (
 from .patched_software_catalog_request import PatchedSoftwareCatalogRequest
 from .patched_software_catalog_request_metadata import PatchedSoftwareCatalogRequestMetadata
 from .patched_software_package_request import PatchedSoftwarePackageRequest
+from .patched_support_user_request import PatchedSupportUserRequest
 from .patched_system_prompt_request import PatchedSystemPromptRequest
 from .patched_tag_request import PatchedTagRequest
 from .patched_template_request import PatchedTemplateRequest
@@ -2492,6 +2493,7 @@ from .role_template_o_enum import RoleTemplateOEnum
 from .role_type import RoleType
 from .round_reviewer import RoundReviewer
 from .round_status import RoundStatus
+from .route_to_provider_request import RouteToProviderRequest
 from .rule import Rule
 from .rule_plan_attributes import RulePlanAttributes
 from .rule_plan_limits import RulePlanLimits
@@ -2682,6 +2684,13 @@ from .suggest_alternative_reviewers import SuggestAlternativeReviewers
 from .suggestion_reject_request import SuggestionRejectRequest
 from .support_stats import SupportStats
 from .support_user import SupportUser
+from .support_user_attachment_brief import SupportUserAttachmentBrief
+from .support_user_comment_brief import SupportUserCommentBrief
+from .support_user_connections import SupportUserConnections
+from .support_user_issue_brief import SupportUserIssueBrief
+from .support_user_merge_request import SupportUserMergeRequest
+from .support_user_o_enum import SupportUserOEnum
+from .support_user_request import SupportUserRequest
 from .supported_countries_response import SupportedCountriesResponse
 from .switch_billing_mode_request import SwitchBillingModeRequest
 from .sync_from_arrow_request_request import SyncFromArrowRequestRequest
@@ -4664,6 +4673,7 @@ __all__ = (
     "PatchedSoftwareCatalogRequest",
     "PatchedSoftwareCatalogRequestMetadata",
     "PatchedSoftwarePackageRequest",
+    "PatchedSupportUserRequest",
     "PatchedSystemPromptRequest",
     "PatchedTagRequest",
     "PatchedTemplateRequest",
@@ -5266,6 +5276,7 @@ __all__ = (
     "RoleType",
     "RoundReviewer",
     "RoundStatus",
+    "RouteToProviderRequest",
     "Rule",
     "RulePlanAttributes",
     "RulePlanLimits",
@@ -5455,6 +5466,13 @@ __all__ = (
     "SupportedCountriesResponse",
     "SupportStats",
     "SupportUser",
+    "SupportUserAttachmentBrief",
+    "SupportUserCommentBrief",
+    "SupportUserConnections",
+    "SupportUserIssueBrief",
+    "SupportUserMergeRequest",
+    "SupportUserOEnum",
+    "SupportUserRequest",
     "SwitchBillingModeRequest",
     "SyncFromArrowRequestRequest",
     "SyncPauseRequestRequest",

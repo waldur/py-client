@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.1.0-rc.17).
+> Auto-generated Python SDK for the Waldur API (version 8.1.0-rc.17.dev.20260723122716).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -343,7 +343,7 @@ waldur_api_client/
 - **support-issue-links** (7 endpoints)
 - **support-issue-statuses** (7 endpoints)
 - **support-issue-tags** (7 endpoints)
-- **support-issues** (12 endpoints)
+- **support-issues** (14 endpoints)
 - **support-jira-webhook** (1 endpoint)
 - **support-priorities** (3 endpoints)
 - **support-provider-webhook** (1 endpoint)
@@ -353,7 +353,7 @@ waldur_api_client/
 - **support-smax-webhook** (1 endpoint)
 - **support-statistics** (1 endpoint)
 - **support-templates** (9 endpoints)
-- **support-users** (3 endpoints)
+- **support-users** (9 endpoints)
 - **support-zammad-webhook** (1 endpoint)
 - **sync-issues** (2 endpoints)
 - **system-logs** (7 endpoints)

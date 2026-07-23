@@ -6,6 +6,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.support_user import SupportUser
+from ...models.support_user_o_enum import SupportUserOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -13,7 +14,10 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     backend_id: Union[Unset, str] = UNSET,
+    backend_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[SupportUserOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user: Union[Unset, int] = UNSET,
@@ -22,7 +26,20 @@ def _get_kwargs(
 
     params["backend_id"] = backend_id
 
+    params["backend_name"] = backend_name
+
+    params["is_active"] = is_active
+
     params["name"] = name
+
+    json_o: Union[Unset, list[str]] = UNSET
+    if not isinstance(o, Unset):
+        json_o = []
+        for o_item_data in o:
+            o_item = o_item_data.value
+            json_o.append(o_item)
+
+    params["o"] = json_o
 
     params["page"] = page
 
@@ -71,7 +88,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
+    backend_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[SupportUserOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user: Union[Unset, int] = UNSET,
@@ -79,7 +99,10 @@ def sync_detailed(
     """
     Args:
         backend_id (Union[Unset, str]):
+        backend_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         name (Union[Unset, str]):
+        o (Union[Unset, list[SupportUserOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         user (Union[Unset, int]):
@@ -94,7 +117,10 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         backend_id=backend_id,
+        backend_name=backend_name,
+        is_active=is_active,
         name=name,
+        o=o,
         page=page,
         page_size=page_size,
         user=user,
@@ -111,7 +137,10 @@ def sync(
     *,
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
+    backend_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[SupportUserOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user: Union[Unset, int] = UNSET,
@@ -119,7 +148,10 @@ def sync(
     """
     Args:
         backend_id (Union[Unset, str]):
+        backend_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         name (Union[Unset, str]):
+        o (Union[Unset, list[SupportUserOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         user (Union[Unset, int]):
@@ -135,7 +167,10 @@ def sync(
     return sync_detailed(
         client=client,
         backend_id=backend_id,
+        backend_name=backend_name,
+        is_active=is_active,
         name=name,
+        o=o,
         page=page,
         page_size=page_size,
         user=user,
@@ -146,7 +181,10 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
+    backend_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[SupportUserOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user: Union[Unset, int] = UNSET,
@@ -154,7 +192,10 @@ async def asyncio_detailed(
     """
     Args:
         backend_id (Union[Unset, str]):
+        backend_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         name (Union[Unset, str]):
+        o (Union[Unset, list[SupportUserOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         user (Union[Unset, int]):
@@ -169,7 +210,10 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         backend_id=backend_id,
+        backend_name=backend_name,
+        is_active=is_active,
         name=name,
+        o=o,
         page=page,
         page_size=page_size,
         user=user,
@@ -184,7 +228,10 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
+    backend_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[SupportUserOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     user: Union[Unset, int] = UNSET,
@@ -192,7 +239,10 @@ async def asyncio(
     """
     Args:
         backend_id (Union[Unset, str]):
+        backend_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         name (Union[Unset, str]):
+        o (Union[Unset, list[SupportUserOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         user (Union[Unset, int]):
@@ -209,7 +259,10 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             backend_id=backend_id,
+            backend_name=backend_name,
+            is_active=is_active,
             name=name,
+            o=o,
             page=page,
             page_size=page_size,
             user=user,
@@ -221,7 +274,10 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
+    backend_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[SupportUserOEnum]] = UNSET,
     user: Union[Unset, int] = UNSET,
 ) -> list["SupportUser"]:
     """Get All Pages
@@ -233,7 +289,10 @@ def sync_all(
 
     Args:
         backend_id (Union[Unset, str]):
+        backend_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         name (Union[Unset, str]):
+        o (Union[Unset, list[SupportUserOEnum]]):
         user (Union[Unset, int]):
 
     Raises:
@@ -250,7 +309,10 @@ def sync_all(
     # Get initial request kwargs
     kwargs = _get_kwargs(
         backend_id=backend_id,
+        backend_name=backend_name,
+        is_active=is_active,
         name=name,
+        o=o,
         user=user,
     )
 
@@ -300,7 +362,10 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
+    backend_name: Union[Unset, str] = UNSET,
+    is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[SupportUserOEnum]] = UNSET,
     user: Union[Unset, int] = UNSET,
 ) -> list["SupportUser"]:
     """Get All Pages (Async)
@@ -312,7 +377,10 @@ async def asyncio_all(
 
     Args:
         backend_id (Union[Unset, str]):
+        backend_name (Union[Unset, str]):
+        is_active (Union[Unset, bool]):
         name (Union[Unset, str]):
+        o (Union[Unset, list[SupportUserOEnum]]):
         user (Union[Unset, int]):
 
     Raises:
@@ -329,7 +397,10 @@ async def asyncio_all(
     # Get initial request kwargs
     kwargs = _get_kwargs(
         backend_id=backend_id,
+        backend_name=backend_name,
+        is_active=is_active,
         name=name,
+        o=o,
         user=user,
     )
 

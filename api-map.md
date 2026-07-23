@@ -3826,6 +3826,8 @@ Module: `waldur_api_client.api.support_issues`
 - `support_issues_attach_resource` POST `/api/support-issues/{uuid}/attach_resource/` — Attach a marketplace resource to an issue (path: uuid | request body)
 - `support_issues_comment` POST `/api/support-issues/{uuid}/comment/` (path: uuid | request body)
 - `support_issues_escalate` POST `/api/support-issues/{uuid}/escalate/` — Escalate an issue (path: uuid | request body)
+- `support_issues_reroute` POST `/api/support-issues/{uuid}/reroute/` — Re-route an already-routed issue to a different provider helpdesk (path: uuid | request body)
+- `support_issues_route_to_provider` POST `/api/support-issues/{uuid}/route_to_provider/` — Manually route an issue to a provider helpdesk (path: uuid | request body)
 - `support_issues_sync` POST `/api/support-issues/{uuid}/sync/` (path: uuid)
 
 ## support-jira-webhook
@@ -3903,9 +3905,15 @@ Module: `waldur_api_client.api.support_templates`
 ## support-users
 Module: `waldur_api_client.api.support_users`
 
-- `support_users_list` GET `/api/support-users/` (3 query params)
-- `support_users_count` HEAD `/api/support-users/` — Get number of items in the collection matching the request parameters (3 query params)
+- `support_users_list` GET `/api/support-users/` (6 query params)
+- `support_users_count` HEAD `/api/support-users/` — Get number of items in the collection matching the request parameters (6 query params)
+- `support_users_create` POST `/api/support-users/` (request body)
 - `support_users_retrieve` GET `/api/support-users/{uuid}/` (path: uuid)
+- `support_users_update` PUT `/api/support-users/{uuid}/` (path: uuid | request body)
+- `support_users_partial_update` PATCH `/api/support-users/{uuid}/` (path: uuid | request body)
+- `support_users_destroy` DELETE `/api/support-users/{uuid}/` (path: uuid)
+- `support_users_connections_retrieve` GET `/api/support-users/{uuid}/connections/` (path: uuid)
+- `support_users_merge` POST `/api/support-users/{uuid}/merge/` (path: uuid | request body)
 
 ## support-zammad-webhook
 Module: `waldur_api_client.api.support_zammad_webhook`

@@ -92,6 +92,7 @@ class Customer:
         service_provider_uuid (Union[None, UUID, Unset]):
         call_managing_organization_uuid (Union[None, Unset, str]):
         billing_price_estimate (Union[Unset, NestedPriceEstimate]):
+        has_active_helpdesk (Union[Unset, bool]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -156,6 +157,7 @@ class Customer:
     service_provider_uuid: Union[None, UUID, Unset] = UNSET
     call_managing_organization_uuid: Union[None, Unset, str] = UNSET
     billing_price_estimate: Union[Unset, "NestedPriceEstimate"] = UNSET
+    has_active_helpdesk: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -374,6 +376,8 @@ class Customer:
         if not isinstance(self.billing_price_estimate, Unset):
             billing_price_estimate = self.billing_price_estimate.to_dict()
 
+        has_active_helpdesk = self.has_active_helpdesk
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -501,6 +505,8 @@ class Customer:
             field_dict["call_managing_organization_uuid"] = call_managing_organization_uuid
         if billing_price_estimate is not UNSET:
             field_dict["billing_price_estimate"] = billing_price_estimate
+        if has_active_helpdesk is not UNSET:
+            field_dict["has_active_helpdesk"] = has_active_helpdesk
 
         return field_dict
 
@@ -797,6 +803,8 @@ class Customer:
         else:
             billing_price_estimate = NestedPriceEstimate.from_dict(_billing_price_estimate)
 
+        has_active_helpdesk = d.pop("has_active_helpdesk", UNSET)
+
         customer = cls(
             url=url,
             uuid=uuid,
@@ -860,6 +868,7 @@ class Customer:
             service_provider_uuid=service_provider_uuid,
             call_managing_organization_uuid=call_managing_organization_uuid,
             billing_price_estimate=billing_price_estimate,
+            has_active_helpdesk=has_active_helpdesk,
         )
 
         customer.additional_properties = d
