@@ -1477,6 +1477,7 @@ Module: `waldur_api_client.api.marketplace_openstack_duplicate_offerings`
 
 - `marketplace_openstack_duplicate_offerings_list` GET `/api/marketplace-openstack-duplicate-offerings/` (no params)
 - `marketplace_openstack_duplicate_offerings_count` HEAD `/api/marketplace-openstack-duplicate-offerings/` — Get number of items in the collection matching the request parameters (no params)
+- `marketplace_openstack_duplicate_offerings_remediate` POST `/api/marketplace-openstack-duplicate-offerings/remediate/` — Collapse one duplicate per-tenant offering group onto its keeper (request body)
 
 ## marketplace-orders
 Module: `waldur_api_client.api.marketplace_orders`

@@ -12,7 +12,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.resource_project_current_usages import ResourceProjectCurrentUsages
     from ..models.resource_project_limits import ResourceProjectLimits
-    from ..models.resource_project_termination_metadata import ResourceProjectTerminationMetadata
+    from ..models.resource_project_termination_metadata_type_0 import ResourceProjectTerminationMetadataType0
 
 
 T = TypeVar("T", bound="ResourceProject")
@@ -37,9 +37,8 @@ class ResourceProject:
         is_removed (bool):
         removed_date (Union[None, datetime.datetime]):
         removed_by (Union[None, int]):
-        removed_by_username (str): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_
-            characters
-        termination_metadata (ResourceProjectTerminationMetadata):
+        removed_by_username (Union[None, str]):
+        termination_metadata (Union['ResourceProjectTerminationMetadataType0', None]):
         description (Union[Unset, str]):
         limits (Union[Unset, ResourceProjectLimits]): Dictionary mapping component types to quota values. Same format as
             Resource.limits.
@@ -59,13 +58,15 @@ class ResourceProject:
     is_removed: bool
     removed_date: Union[None, datetime.datetime]
     removed_by: Union[None, int]
-    removed_by_username: str
-    termination_metadata: "ResourceProjectTerminationMetadata"
+    removed_by_username: Union[None, str]
+    termination_metadata: Union["ResourceProjectTerminationMetadataType0", None]
     description: Union[Unset, str] = UNSET
     limits: Union[Unset, "ResourceProjectLimits"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.resource_project_termination_metadata_type_0 import ResourceProjectTerminationMetadataType0
+
         uuid = str(self.uuid)
 
         resource = str(self.resource)
@@ -99,9 +100,14 @@ class ResourceProject:
         removed_by: Union[None, int]
         removed_by = self.removed_by
 
+        removed_by_username: Union[None, str]
         removed_by_username = self.removed_by_username
 
-        termination_metadata = self.termination_metadata.to_dict()
+        termination_metadata: Union[None, dict[str, Any]]
+        if isinstance(self.termination_metadata, ResourceProjectTerminationMetadataType0):
+            termination_metadata = self.termination_metadata.to_dict()
+        else:
+            termination_metadata = self.termination_metadata
 
         description = self.description
 
@@ -142,7 +148,7 @@ class ResourceProject:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.resource_project_current_usages import ResourceProjectCurrentUsages
         from ..models.resource_project_limits import ResourceProjectLimits
-        from ..models.resource_project_termination_metadata import ResourceProjectTerminationMetadata
+        from ..models.resource_project_termination_metadata_type_0 import ResourceProjectTerminationMetadataType0
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -191,9 +197,27 @@ class ResourceProject:
 
         removed_by = _parse_removed_by(d.pop("removed_by"))
 
-        removed_by_username = d.pop("removed_by_username")
+        def _parse_removed_by_username(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
 
-        termination_metadata = ResourceProjectTerminationMetadata.from_dict(d.pop("termination_metadata"))
+        removed_by_username = _parse_removed_by_username(d.pop("removed_by_username"))
+
+        def _parse_termination_metadata(data: object) -> Union["ResourceProjectTerminationMetadataType0", None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                termination_metadata_type_0 = ResourceProjectTerminationMetadataType0.from_dict(data)
+
+                return termination_metadata_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union["ResourceProjectTerminationMetadataType0", None], data)
+
+        termination_metadata = _parse_termination_metadata(d.pop("termination_metadata"))
 
         description = d.pop("description", UNSET)
 

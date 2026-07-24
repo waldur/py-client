@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.18.dev.20260724073821
+# Version: 8.1.0-rc.19
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -8050,6 +8050,12 @@ GET /api/marketplace-openstack-duplicate-offerings/
 HEAD /api/marketplace-openstack-duplicate-offerings/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
+
+### marketplace_openstack_duplicate_offerings_remediate
+POST /api/marketplace-openstack-duplicate-offerings/remediate/
+Summary: Collapse one duplicate per-tenant offering group onto its keeper
+Description: Collapse one duplicate per-tenant offering group onto its keeper. Previews by default; pass dry_run=false to apply. Refuses to run when history (billing periods, usage records) cannot be re-pointed.
+Request body: yes
 
 ============================================================
 ## marketplace-orders  (module: waldur_api_client.api.marketplace_orders)

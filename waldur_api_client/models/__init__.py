@@ -692,6 +692,9 @@ from .dry_run_type_enum import DryRunTypeEnum
 from .duplicate_call_request_request import DuplicateCallRequestRequest
 from .duplicate_offering_candidate import DuplicateOfferingCandidate
 from .duplicate_offering_group import DuplicateOfferingGroup
+from .duplicate_offering_merge_plan import DuplicateOfferingMergePlan
+from .duplicate_offering_remediate_request import DuplicateOfferingRemediateRequest
+from .duplicate_offering_remediation import DuplicateOfferingRemediation
 from .effective_route import EffectiveRoute
 from .effective_route_source_enum import EffectiveRouteSourceEnum
 from .effective_routes_response import EffectiveRoutesResponse
@@ -2368,7 +2371,7 @@ from .resource_project_limits import ResourceProjectLimits
 from .resource_project_recovery_request import ResourceProjectRecoveryRequest
 from .resource_project_request import ResourceProjectRequest
 from .resource_project_request_limits import ResourceProjectRequestLimits
-from .resource_project_termination_metadata import ResourceProjectTerminationMetadata
+from .resource_project_termination_metadata_type_0 import ResourceProjectTerminationMetadataType0
 from .resource_projects_limit_policy_enum import ResourceProjectsLimitPolicyEnum
 from .resource_provisioning_stats import ResourceProvisioningStats
 from .resource_reallocate_limits_request import ResourceReallocateLimitsRequest
@@ -3585,6 +3588,9 @@ __all__ = (
     "DuplicateCallRequestRequest",
     "DuplicateOfferingCandidate",
     "DuplicateOfferingGroup",
+    "DuplicateOfferingMergePlan",
+    "DuplicateOfferingRemediateRequest",
+    "DuplicateOfferingRemediation",
     "EffectiveRoute",
     "EffectiveRouteSourceEnum",
     "EffectiveRoutesResponse",
@@ -5154,7 +5160,7 @@ __all__ = (
     "ResourceProjectRequest",
     "ResourceProjectRequestLimits",
     "ResourceProjectsLimitPolicyEnum",
-    "ResourceProjectTerminationMetadata",
+    "ResourceProjectTerminationMetadataType0",
     "ResourceProvisioningStats",
     "ResourceReallocateLimitsRequest",
     "ResourceReallocateLimitsRequestLimits",
