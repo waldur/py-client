@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.18
+# Version: 8.1.0-rc.18.dev.20260724073821
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -23881,24 +23881,26 @@ Request body: yes
 
 ### support_users_list
 GET /api/support-users/
-Query parameters (6):
+Query parameters (7):
   - backend_id
-  - backend_name
+  - backend_name — Helpdesk
   - is_active
   - name
   - o — Ordering
+  - query — Search by name, backend ID or linked user name/email
   - user
 
 ### support_users_count
 HEAD /api/support-users/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (6):
+Query parameters (7):
   - backend_id
-  - backend_name
+  - backend_name — Helpdesk
   - is_active
   - name
   - o — Ordering
+  - query — Search by name, backend ID or linked user name/email
   - user
 
 ### support_users_create

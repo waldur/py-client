@@ -2686,6 +2686,7 @@ from .suggestion_reject_request import SuggestionRejectRequest
 from .support_stats import SupportStats
 from .support_user import SupportUser
 from .support_user_attachment_brief import SupportUserAttachmentBrief
+from .support_user_backend_name_enum import SupportUserBackendNameEnum
 from .support_user_comment_brief import SupportUserCommentBrief
 from .support_user_connections import SupportUserConnections
 from .support_user_issue_brief import SupportUserIssueBrief
@@ -5469,6 +5470,7 @@ __all__ = (
     "SupportStats",
     "SupportUser",
     "SupportUserAttachmentBrief",
+    "SupportUserBackendNameEnum",
     "SupportUserCommentBrief",
     "SupportUserConnections",
     "SupportUserIssueBrief",

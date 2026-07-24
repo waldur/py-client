@@ -3905,8 +3905,8 @@ Module: `waldur_api_client.api.support_templates`
 ## support-users
 Module: `waldur_api_client.api.support_users`
 
-- `support_users_list` GET `/api/support-users/` (6 query params)
-- `support_users_count` HEAD `/api/support-users/` — Get number of items in the collection matching the request parameters (6 query params)
+- `support_users_list` GET `/api/support-users/` (7 query params)
+- `support_users_count` HEAD `/api/support-users/` — Get number of items in the collection matching the request parameters (7 query params)
 - `support_users_create` POST `/api/support-users/` (request body)
 - `support_users_retrieve` GET `/api/support-users/{uuid}/` (path: uuid)
 - `support_users_update` PUT `/api/support-users/{uuid}/` (path: uuid | request body)

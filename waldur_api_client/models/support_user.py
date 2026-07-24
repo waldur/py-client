@@ -17,8 +17,8 @@ class SupportUser:
         url (str):
         uuid (UUID):
         name (str):
-        user_full_name (str):
-        user_email (str):
+        user_full_name (Union[None, str]):
+        user_email (Union[None, str]):
         reported_issues_count (int):
         assigned_issues_count (int):
         comments_count (int):
@@ -33,8 +33,8 @@ class SupportUser:
     url: str
     uuid: UUID
     name: str
-    user_full_name: str
-    user_email: str
+    user_full_name: Union[None, str]
+    user_email: Union[None, str]
     reported_issues_count: int
     assigned_issues_count: int
     comments_count: int
@@ -52,8 +52,10 @@ class SupportUser:
 
         name = self.name
 
+        user_full_name: Union[None, str]
         user_full_name = self.user_full_name
 
+        user_email: Union[None, str]
         user_email = self.user_email
 
         reported_issues_count = self.reported_issues_count
@@ -119,9 +121,19 @@ class SupportUser:
 
         name = d.pop("name")
 
-        user_full_name = d.pop("user_full_name")
+        def _parse_user_full_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
 
-        user_email = d.pop("user_email")
+        user_full_name = _parse_user_full_name(d.pop("user_full_name"))
+
+        def _parse_user_email(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        user_email = _parse_user_email(d.pop("user_email"))
 
         reported_issues_count = d.pop("reported_issues_count")
 
