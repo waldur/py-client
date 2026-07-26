@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.19
+# Version: 8.1.0-rc.19.dev.20260726180605
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -800,6 +800,21 @@ Summary: All sessions for one pseudonymous user
 Description: Returns interactions sharing a ``user_slug`` (Scrypt of originating IP) — across however many sessions that anon user opened, ordered chronologically.
 Path parameters:
   - user_slug
+Query parameters (9):
+  - created_from
+  - created_to
+  - has_negative_feedback
+  - is_flagged
+  - o — Ordering
+  - query
+  - session_id
+  - severity
+  - user_slug
+
+### anonymous_chat_interactions_conversations_list
+GET /api/anonymous-chat-interactions/conversations/
+Summary: Conversations grouped by session
+Description: One row per anonymous conversation (``session_id``) with aggregate counters, mirroring the authenticated threads table. Honours the same filters as the list endpoint. Read a conversation's transcript via ``by-session/{session_id}``.
 Query parameters (9):
   - created_from
   - created_to
@@ -2965,6 +2980,16 @@ Query parameters (17):
   - total_tokens_max
   - total_tokens_min
   - user
+
+### chat_threads_stats_retrieve
+GET /api/chat-threads/stats/
+Summary: Get statistics for visible chat threads
+Description: Summary statistics for the visible chat threads.
+
+Aggregates over a clean base queryset rather than ``get_queryset`` —
+the per-row token/count annotations there would collide with these
+aggregates. Visibility mirrors the list: staff/support see all, other
+users only their own.
 
 ### chat_threads_retrieve
 GET /api/chat-threads/{uuid}/
@@ -10870,6 +10895,75 @@ Request body: yes
 DELETE /api/marketplace-resource-access-subnets/{uuid}/
 Path parameters:
   - uuid
+
+============================================================
+## marketplace-resource-api-keys  (module: waldur_api_client.api.marketplace_resource_api_keys)
+============================================================
+
+### marketplace_resource_api_keys_list
+GET /api/marketplace-resource-api-keys/
+Query parameters (1):
+  - resource_uuid — Resource UUID
+
+### marketplace_resource_api_keys_count
+HEAD /api/marketplace-resource-api-keys/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (1):
+  - resource_uuid — Resource UUID
+
+### marketplace_resource_api_keys_report_created
+POST /api/marketplace-resource-api-keys/report_created/
+Summary: Report a freshly-applied API key
+Description: Used by the site agent after it generated and applied a key to the backend. Stores the value encrypted and marks the key OK.
+Request body: yes
+
+### marketplace_resource_api_keys_retrieve
+GET /api/marketplace-resource-api-keys/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_resource_api_keys_destroy
+DELETE /api/marketplace-resource-api-keys/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_resource_api_keys_reveal_retrieve
+GET /api/marketplace-resource-api-keys/{uuid}/reveal/
+Summary: Reveal an API key
+Description: Returns the decrypted key value. Available to users with resource access (except minimal-visibility viewers). Audit-logged.
+Path parameters:
+  - uuid
+
+### marketplace_resource_api_keys_revoke
+POST /api/marketplace-resource-api-keys/{uuid}/revoke/
+Summary: Revoke an API key
+Description: Asks the site agent to remove this key from the backend. The other keys keep working.
+Path parameters:
+  - uuid
+
+### marketplace_resource_api_keys_rotate
+POST /api/marketplace-resource-api-keys/{uuid}/rotate/
+Summary: Rotate an API key
+Description: Asks the site agent to replace this key's value at the backend. The other keys are untouched (zero downtime).
+Path parameters:
+  - uuid
+
+### marketplace_resource_api_keys_set_erred
+POST /api/marketplace-resource-api-keys/{uuid}/set_erred/
+Summary: Mark an API key as erred
+Description: Used by the site agent to report that applying the key failed. Stores the error message for the UI.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resource_api_keys_set_key
+POST /api/marketplace-resource-api-keys/{uuid}/set_key/
+Summary: Report a rotated API key value
+Description: Used by the site agent after it applied a rotated key. Replaces the stored value and marks the key OK.
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## marketplace-resource-limit-change-requests  (module: waldur_api_client.api.marketplace_resource_limit_change_requests)

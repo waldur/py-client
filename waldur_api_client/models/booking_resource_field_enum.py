@@ -31,6 +31,7 @@ class BookingResourceFieldEnum(str, Enum):
     END_DATE_UPDATED_AT = "end_date_updated_at"
     ERROR_MESSAGE = "error_message"
     ERROR_TRACEBACK = "error_traceback"
+    HAS_API_KEYS = "has_api_keys"
     IS_LIMIT_BASED = "is_limit_based"
     IS_USAGE_BASED = "is_usage_based"
     LAST_SYNC = "last_sync"

@@ -132,6 +132,7 @@ Module: `waldur_api_client.api.anonymous_chat_interactions`
 - `anonymous_chat_interactions_by_session_list` GET `/api/anonymous-chat-interactions/by-session/{session_id}/` — Full transcript for one anonymous session (path: session_id | 9 query params)
 - `anonymous_chat_interactions_by_user_aggregate` GET `/api/anonymous-chat-interactions/by-user/` — Aggregate user list (no slug) (9 query params)
 - `anonymous_chat_interactions_by_user_list` GET `/api/anonymous-chat-interactions/by-user/{user_slug}/` — All sessions for one pseudonymous user (path: user_slug | 9 query params)
+- `anonymous_chat_interactions_conversations_list` GET `/api/anonymous-chat-interactions/conversations/` — Conversations grouped by session (9 query params)
 - `anonymous_chat_interactions_kpi_retrieve` GET `/api/anonymous-chat-interactions/kpi/` — Aggregate KPI roll-up (no params)
 - `anonymous_chat_interactions_retrieve` GET `/api/anonymous-chat-interactions/{uuid}/` (path: uuid)
 
@@ -541,6 +542,7 @@ Module: `waldur_api_client.api.chat_system_prompts`
 Module: `waldur_api_client.api.chat_threads`
 
 - `chat_threads_list` GET `/api/chat-threads/` (17 query params)
+- `chat_threads_stats_retrieve` GET `/api/chat-threads/stats/` — Get statistics for visible chat threads (no params)
 - `chat_threads_retrieve` GET `/api/chat-threads/{uuid}/` (path: uuid | 1 query param)
 - `chat_threads_archive` POST `/api/chat-threads/{uuid}/archive/` — Archive thread (path: uuid)
 - `chat_threads_cancel` POST `/api/chat-threads/{uuid}/cancel/` — Cancel active stream (path: uuid | request body)
@@ -1814,6 +1816,20 @@ Module: `waldur_api_client.api.marketplace_resource_access_subnets`
 - `marketplace_resource_access_subnets_update` PUT `/api/marketplace-resource-access-subnets/{uuid}/` (path: uuid | request body)
 - `marketplace_resource_access_subnets_partial_update` PATCH `/api/marketplace-resource-access-subnets/{uuid}/` (path: uuid | request body)
 - `marketplace_resource_access_subnets_destroy` DELETE `/api/marketplace-resource-access-subnets/{uuid}/` (path: uuid)
+
+## marketplace-resource-api-keys
+Module: `waldur_api_client.api.marketplace_resource_api_keys`
+
+- `marketplace_resource_api_keys_list` GET `/api/marketplace-resource-api-keys/` (1 query param)
+- `marketplace_resource_api_keys_count` HEAD `/api/marketplace-resource-api-keys/` — Get number of items in the collection matching the request parameters (1 query param)
+- `marketplace_resource_api_keys_report_created` POST `/api/marketplace-resource-api-keys/report_created/` — Report a freshly-applied API key (request body)
+- `marketplace_resource_api_keys_retrieve` GET `/api/marketplace-resource-api-keys/{uuid}/` (path: uuid)
+- `marketplace_resource_api_keys_destroy` DELETE `/api/marketplace-resource-api-keys/{uuid}/` (path: uuid)
+- `marketplace_resource_api_keys_reveal_retrieve` GET `/api/marketplace-resource-api-keys/{uuid}/reveal/` — Reveal an API key (path: uuid)
+- `marketplace_resource_api_keys_revoke` POST `/api/marketplace-resource-api-keys/{uuid}/revoke/` — Revoke an API key (path: uuid)
+- `marketplace_resource_api_keys_rotate` POST `/api/marketplace-resource-api-keys/{uuid}/rotate/` — Rotate an API key (path: uuid)
+- `marketplace_resource_api_keys_set_erred` POST `/api/marketplace-resource-api-keys/{uuid}/set_erred/` — Mark an API key as erred (path: uuid | request body)
+- `marketplace_resource_api_keys_set_key` POST `/api/marketplace-resource-api-keys/{uuid}/set_key/` — Report a rotated API key value (path: uuid | request body)
 
 ## marketplace-resource-limit-change-requests
 Module: `waldur_api_client.api.marketplace_resource_limit_change_requests`

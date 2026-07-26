@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.1.0-rc.19).
+> Auto-generated Python SDK for the Waldur API (version 8.1.0-rc.19.dev.20260726180605).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -41,7 +41,7 @@ waldur_api_client/
 - **admin-announcements** (7 endpoints)
 - **affiliated-organizations** (10 endpoints)
 - **anonymous-chat-feedbacks** (2 endpoints)
-- **anonymous-chat-interactions** (7 endpoints)
+- **anonymous-chat-interactions** (8 endpoints)
 - **api-auth** (15 endpoints)
 - **assignment-batches** (10 endpoints)
 - **assignment-items** (12 endpoints)
@@ -79,7 +79,7 @@ waldur_api_client/
 - **chat-quota** (2 endpoints)
 - **chat-sessions** (3 endpoints)
 - **chat-system-prompts** (9 endpoints)
-- **chat-threads** (5 endpoints)
+- **chat-threads** (6 endpoints)
 - **chat-tools** (1 endpoint)
 - **checklists-admin** (8 endpoints)
 - **checklists-admin-question-dependencies** (7 endpoints)
@@ -192,6 +192,7 @@ waldur_api_client/
 - **marketplace-related-customers** (1 endpoint)
 - **marketplace-remote-synchronisations** (8 endpoints)
 - **marketplace-resource-access-subnets** (7 endpoints)
+- **marketplace-resource-api-keys** (10 endpoints)
 - **marketplace-resource-limit-change-requests** (7 endpoints)
 - **marketplace-resource-offerings** (1 endpoint)
 - **marketplace-resource-projects** (13 endpoints)

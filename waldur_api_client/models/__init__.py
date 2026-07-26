@@ -90,6 +90,7 @@ from .allowed_scope_output import AllowedScopeOutput
 from .amount_range_enum import AmountRangeEnum
 from .anonymous_chat_budget_snapshot import AnonymousChatBudgetSnapshot
 from .anonymous_chat_click_request_request import AnonymousChatClickRequestRequest
+from .anonymous_chat_conversation import AnonymousChatConversation
 from .anonymous_chat_feedback import AnonymousChatFeedback
 from .anonymous_chat_feedback_o_enum import AnonymousChatFeedbackOEnum
 from .anonymous_chat_feedback_request_request import AnonymousChatFeedbackRequestRequest
@@ -411,6 +412,7 @@ from .chat_response import ChatResponse
 from .chat_response_m import ChatResponseM
 from .chat_session import ChatSession
 from .chat_session_field_enum import ChatSessionFieldEnum
+from .chat_thread_stats_response import ChatThreadStatsResponse
 from .chat_tools_execute_response_200 import ChatToolsExecuteResponse200
 from .check_unique_backend_id_request import CheckUniqueBackendIDRequest
 from .check_unique_backend_id_response import CheckUniqueBackendIDResponse
@@ -2322,6 +2324,12 @@ from .reserved_agent_task import ReservedAgentTask
 from .resource import Resource
 from .resource_access_subnet import ResourceAccessSubnet
 from .resource_access_subnet_request import ResourceAccessSubnetRequest
+from .resource_api_key import ResourceApiKey
+from .resource_api_key_report_created_request import ResourceApiKeyReportCreatedRequest
+from .resource_api_key_set_erred_request import ResourceApiKeySetErredRequest
+from .resource_api_key_set_key_request import ResourceApiKeySetKeyRequest
+from .resource_api_key_state import ResourceApiKeyState
+from .resource_api_key_status import ResourceApiKeyStatus
 from .resource_attributes import ResourceAttributes
 from .resource_backend_id_request import ResourceBackendIDRequest
 from .resource_backend_metadata_request import ResourceBackendMetadataRequest
@@ -3006,6 +3014,7 @@ __all__ = (
     "AmountRangeEnum",
     "AnonymousChatBudgetSnapshot",
     "AnonymousChatClickRequestRequest",
+    "AnonymousChatConversation",
     "AnonymousChatFeedback",
     "AnonymousChatFeedbackOEnum",
     "AnonymousChatFeedbackRequestRequest",
@@ -3315,6 +3324,7 @@ __all__ = (
     "ChatResponseM",
     "ChatSession",
     "ChatSessionFieldEnum",
+    "ChatThreadStatsResponse",
     "ChatToolsExecuteResponse200",
     "Checklist",
     "ChecklistCompletion",
@@ -5112,6 +5122,12 @@ __all__ = (
     "Resource",
     "ResourceAccessSubnet",
     "ResourceAccessSubnetRequest",
+    "ResourceApiKey",
+    "ResourceApiKeyReportCreatedRequest",
+    "ResourceApiKeySetErredRequest",
+    "ResourceApiKeySetKeyRequest",
+    "ResourceApiKeyState",
+    "ResourceApiKeyStatus",
     "ResourceAttributes",
     "ResourceBackendIDRequest",
     "ResourceBackendMetadataRequest",

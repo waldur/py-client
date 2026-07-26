@@ -138,6 +138,8 @@ class Resource:
         renewal_date (Union['ResourceRenewalDateType0', None, Unset]):
         offering_state (Union[Unset, OfferingState]):
         offering_components (Union[Unset, list['OfferingComponent']]):
+        has_api_keys (Union[Unset, bool]): Whether the resource owns any API keys, so the portal can offer key
+            management without knowing which backend serves the resource.
     """
 
     offering: Union[Unset, str] = UNSET
@@ -225,6 +227,7 @@ class Resource:
     renewal_date: Union["ResourceRenewalDateType0", None, Unset] = UNSET
     offering_state: Union[Unset, OfferingState] = UNSET
     offering_components: Union[Unset, list["OfferingComponent"]] = UNSET
+    has_api_keys: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -561,6 +564,8 @@ class Resource:
                 offering_components_item = offering_components_item_data.to_dict()
                 offering_components.append(offering_components_item)
 
+        has_api_keys = self.has_api_keys
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -734,6 +739,8 @@ class Resource:
             field_dict["offering_state"] = offering_state
         if offering_components is not UNSET:
             field_dict["offering_components"] = offering_components
+        if has_api_keys is not UNSET:
+            field_dict["has_api_keys"] = has_api_keys
 
         return field_dict
 
@@ -1279,6 +1286,8 @@ class Resource:
 
             offering_components.append(offering_components_item)
 
+        has_api_keys = d.pop("has_api_keys", UNSET)
+
         resource = cls(
             offering=offering,
             offering_name=offering_name,
@@ -1365,6 +1374,7 @@ class Resource:
             renewal_date=renewal_date,
             offering_state=offering_state,
             offering_components=offering_components,
+            has_api_keys=has_api_keys,
         )
 
         resource.additional_properties = d

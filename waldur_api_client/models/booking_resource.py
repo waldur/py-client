@@ -139,6 +139,8 @@ class BookingResource:
         renewal_date (Union['BookingResourceRenewalDateType0', None, Unset]):
         offering_state (Union[Unset, OfferingState]):
         offering_components (Union[Unset, list['OfferingComponent']]):
+        has_api_keys (Union[Unset, bool]): Whether the resource owns any API keys, so the portal can offer key
+            management without knowing which backend serves the resource.
         created_by (Union[Unset, str]):
         created_by_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and
             @/./+/-/_ characters
@@ -235,6 +237,7 @@ class BookingResource:
     renewal_date: Union["BookingResourceRenewalDateType0", None, Unset] = UNSET
     offering_state: Union[Unset, OfferingState] = UNSET
     offering_components: Union[Unset, list["OfferingComponent"]] = UNSET
+    has_api_keys: Union[Unset, bool] = UNSET
     created_by: Union[Unset, str] = UNSET
     created_by_username: Union[Unset, str] = UNSET
     created_by_full_name: Union[Unset, str] = UNSET
@@ -578,6 +581,8 @@ class BookingResource:
                 offering_components_item = offering_components_item_data.to_dict()
                 offering_components.append(offering_components_item)
 
+        has_api_keys = self.has_api_keys
+
         created_by = self.created_by
 
         created_by_username = self.created_by_username
@@ -770,6 +775,8 @@ class BookingResource:
             field_dict["offering_state"] = offering_state
         if offering_components is not UNSET:
             field_dict["offering_components"] = offering_components
+        if has_api_keys is not UNSET:
+            field_dict["has_api_keys"] = has_api_keys
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if created_by_username is not UNSET:
@@ -1330,6 +1337,8 @@ class BookingResource:
 
             offering_components.append(offering_components_item)
 
+        has_api_keys = d.pop("has_api_keys", UNSET)
+
         created_by = d.pop("created_by", UNSET)
 
         created_by_username = d.pop("created_by_username", UNSET)
@@ -1435,6 +1444,7 @@ class BookingResource:
             renewal_date=renewal_date,
             offering_state=offering_state,
             offering_components=offering_components,
+            has_api_keys=has_api_keys,
             created_by=created_by,
             created_by_username=created_by_username,
             created_by_full_name=created_by_full_name,
