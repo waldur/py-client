@@ -355,6 +355,8 @@ class ConstanceSettingsRequest:
         pat_enabled (Union[Unset, bool]):
         pat_max_lifetime_days (Union[Unset, int]):
         pat_max_tokens_per_user (Union[Unset, int]):
+        pat_max_acl_entries (Union[Unset, int]):
+        pat_max_audit_events_per_hour (Union[Unset, int]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -674,6 +676,8 @@ class ConstanceSettingsRequest:
     pat_enabled: Union[Unset, bool] = UNSET
     pat_max_lifetime_days: Union[Unset, int] = UNSET
     pat_max_tokens_per_user: Union[Unset, int] = UNSET
+    pat_max_acl_entries: Union[Unset, int] = UNSET
+    pat_max_audit_events_per_hour: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -1573,6 +1577,10 @@ class ConstanceSettingsRequest:
 
         pat_max_tokens_per_user = self.pat_max_tokens_per_user
 
+        pat_max_acl_entries = self.pat_max_acl_entries
+
+        pat_max_audit_events_per_hour = self.pat_max_audit_events_per_hour
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -2222,6 +2230,10 @@ class ConstanceSettingsRequest:
             field_dict["PAT_MAX_LIFETIME_DAYS"] = pat_max_lifetime_days
         if pat_max_tokens_per_user is not UNSET:
             field_dict["PAT_MAX_TOKENS_PER_USER"] = pat_max_tokens_per_user
+        if pat_max_acl_entries is not UNSET:
+            field_dict["PAT_MAX_ACL_ENTRIES"] = pat_max_acl_entries
+        if pat_max_audit_events_per_hour is not UNSET:
+            field_dict["PAT_MAX_AUDIT_EVENTS_PER_HOUR"] = pat_max_audit_events_per_hour
 
         return field_dict
 
@@ -3428,6 +3440,10 @@ class ConstanceSettingsRequest:
 
         pat_max_tokens_per_user = d.pop("PAT_MAX_TOKENS_PER_USER", UNSET)
 
+        pat_max_acl_entries = d.pop("PAT_MAX_ACL_ENTRIES", UNSET)
+
+        pat_max_audit_events_per_hour = d.pop("PAT_MAX_AUDIT_EVENTS_PER_HOUR", UNSET)
+
         constance_settings_request = cls(
             site_name=site_name,
             site_description=site_description,
@@ -3746,6 +3762,8 @@ class ConstanceSettingsRequest:
             pat_enabled=pat_enabled,
             pat_max_lifetime_days=pat_max_lifetime_days,
             pat_max_tokens_per_user=pat_max_tokens_per_user,
+            pat_max_acl_entries=pat_max_acl_entries,
+            pat_max_audit_events_per_hour=pat_max_audit_events_per_hour,
         )
 
         constance_settings_request.additional_properties = d

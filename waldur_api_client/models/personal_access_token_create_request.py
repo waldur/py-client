@@ -24,12 +24,15 @@ class PersonalAccessTokenCreateRequest:
         expires_at (datetime.datetime):
         allowed_scopes (Union[Unset, list['AllowedScopeInputRequest']]): Optional list of entity bindings restricting
             where this token can act. Empty list = no entity restriction.
+        allowed_networks (Union[Unset, list[str]]): Optional list of CIDR networks the token may be used from. Bare
+            addresses are widened to /32 or /128. Empty list = no network restriction.
     """
 
     name: str
     scopes: list[str]
     expires_at: datetime.datetime
     allowed_scopes: Union[Unset, list["AllowedScopeInputRequest"]] = UNSET
+    allowed_networks: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -46,6 +49,10 @@ class PersonalAccessTokenCreateRequest:
                 allowed_scopes_item = allowed_scopes_item_data.to_dict()
                 allowed_scopes.append(allowed_scopes_item)
 
+        allowed_networks: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.allowed_networks, Unset):
+            allowed_networks = self.allowed_networks
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -57,6 +64,8 @@ class PersonalAccessTokenCreateRequest:
         )
         if allowed_scopes is not UNSET:
             field_dict["allowed_scopes"] = allowed_scopes
+        if allowed_networks is not UNSET:
+            field_dict["allowed_networks"] = allowed_networks
 
         return field_dict
 
@@ -78,11 +87,14 @@ class PersonalAccessTokenCreateRequest:
 
             allowed_scopes.append(allowed_scopes_item)
 
+        allowed_networks = cast(list[str], d.pop("allowed_networks", UNSET))
+
         personal_access_token_create_request = cls(
             name=name,
             scopes=scopes,
             expires_at=expires_at,
             allowed_scopes=allowed_scopes,
+            allowed_networks=allowed_networks,
         )
 
         personal_access_token_create_request.additional_properties = d

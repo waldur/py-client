@@ -844,8 +844,8 @@ Module: `waldur_api_client.api.event_subscriptions`
 ## events
 Module: `waldur_api_client.api.events`
 
-- `events_list` GET `/api/events/` (12 query params)
-- `events_count` HEAD `/api/events/` — Get number of items in the collection matching the request parameters (11 query params)
+- `events_list` GET `/api/events/` (14 query params)
+- `events_count` HEAD `/api/events/` — Get number of items in the collection matching the request parameters (13 query params)
 - `events_count_retrieve` GET `/api/events/count/` (no params)
 - `events_count_count` HEAD `/api/events/count/` — Get number of items in the collection matching the request parameters (no params)
 - `events_event_groups_retrieve` GET `/api/events/event_groups/` — Returns a list of groups with event types (no params)
@@ -1762,11 +1762,13 @@ Module: `waldur_api_client.api.marketplace_provider_resources`
 - `marketplace_provider_resources_set_end_date_by_staff` POST `/api/marketplace-provider-resources/{uuid}/set_end_date_by_staff/` — Set end date of the resource by staff (path: uuid | request body)
 - `marketplace_provider_resources_set_endpoints` POST `/api/marketplace-provider-resources/{uuid}/set_endpoints/` — Set resource access endpoints (path: uuid | request body)
 - `marketplace_provider_resources_set_limits` POST `/api/marketplace-provider-resources/{uuid}/set_limits/` — Set resource limits (path: uuid | request body)
+- `marketplace_provider_resources_set_membership_sync_statuses` POST `/api/marketplace-provider-resources/{uuid}/set_membership_sync_statuses/` — Report per-member sync statuses for a resource (path: uuid | request body)
 - `marketplace_provider_resources_set_paused` POST `/api/marketplace-provider-resources/{uuid}/set_paused/` — Set paused flag for resource (path: uuid | request body)
 - `marketplace_provider_resources_set_restrict_member_access` POST `/api/marketplace-provider-resources/{uuid}/set_restrict_member_access/` — Set restrict member access flag (path: uuid | request body)
 - `marketplace_provider_resources_set_slug` POST `/api/marketplace-provider-resources/{uuid}/set_slug/` — Set resource slug (path: uuid | request body)
 - `marketplace_provider_resources_set_state_ok` POST `/api/marketplace-provider-resources/{uuid}/set_state_ok/` — Set resource state to OK (path: uuid)
 - `marketplace_provider_resources_submit_report` POST `/api/marketplace-provider-resources/{uuid}/submit_report/` — Submit a report for a resource (path: uuid | request body)
+- `marketplace_provider_resources_sync_user_roles` POST `/api/marketplace-provider-resources/{uuid}/sync_user_roles/` — Trigger user role sync for this resource (path: uuid)
 - `marketplace_provider_resources_team_list` GET `/api/marketplace-provider-resources/{uuid}/team/` — Get resource team (path: uuid | 1 query param)
 - `marketplace_provider_resources_terminate` POST `/api/marketplace-provider-resources/{uuid}/terminate/` — Terminate a resource (path: uuid | request body)
 - `marketplace_provider_resources_unlink` POST `/api/marketplace-provider-resources/{uuid}/unlink/` — Unlink a resource (staff only) (path: uuid)
@@ -3009,6 +3011,7 @@ Module: `waldur_api_client.api.personal_access_tokens`
 - `personal_access_tokens_retrieve` GET `/api/personal-access-tokens/{uuid}/` (path: uuid)
 - `personal_access_tokens_destroy` DELETE `/api/personal-access-tokens/{uuid}/` — Revoke a personal access token (path: uuid)
 - `personal_access_tokens_rotate` POST `/api/personal-access-tokens/{uuid}/rotate/` — Rotate a personal access token (path: uuid)
+- `personal_access_tokens_set_network_acl` POST `/api/personal-access-tokens/{uuid}/set_network_acl/` — Replace the network ACL of a personal access token (path: uuid | request body)
 
 ## project-credits
 Module: `waldur_api_client.api.project_credits`

@@ -38,6 +38,7 @@ class ResourceProject:
         removed_date (Union[None, datetime.datetime]):
         removed_by (Union[None, int]):
         removed_by_username (Union[None, str]):
+        created_by_username (Union[None, str]):
         termination_metadata (Union['ResourceProjectTerminationMetadataType0', None]):
         description (Union[Unset, str]):
         limits (Union[Unset, ResourceProjectLimits]): Dictionary mapping component types to quota values. Same format as
@@ -59,6 +60,7 @@ class ResourceProject:
     removed_date: Union[None, datetime.datetime]
     removed_by: Union[None, int]
     removed_by_username: Union[None, str]
+    created_by_username: Union[None, str]
     termination_metadata: Union["ResourceProjectTerminationMetadataType0", None]
     description: Union[Unset, str] = UNSET
     limits: Union[Unset, "ResourceProjectLimits"] = UNSET
@@ -103,6 +105,9 @@ class ResourceProject:
         removed_by_username: Union[None, str]
         removed_by_username = self.removed_by_username
 
+        created_by_username: Union[None, str]
+        created_by_username = self.created_by_username
+
         termination_metadata: Union[None, dict[str, Any]]
         if isinstance(self.termination_metadata, ResourceProjectTerminationMetadataType0):
             termination_metadata = self.termination_metadata.to_dict()
@@ -134,6 +139,7 @@ class ResourceProject:
                 "removed_date": removed_date,
                 "removed_by": removed_by,
                 "removed_by_username": removed_by_username,
+                "created_by_username": created_by_username,
                 "termination_metadata": termination_metadata,
             }
         )
@@ -204,6 +210,13 @@ class ResourceProject:
 
         removed_by_username = _parse_removed_by_username(d.pop("removed_by_username"))
 
+        def _parse_created_by_username(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        created_by_username = _parse_created_by_username(d.pop("created_by_username"))
+
         def _parse_termination_metadata(data: object) -> Union["ResourceProjectTerminationMetadataType0", None]:
             if data is None:
                 return data
@@ -244,6 +257,7 @@ class ResourceProject:
             removed_date=removed_date,
             removed_by=removed_by,
             removed_by_username=removed_by_username,
+            created_by_username=created_by_username,
             termination_metadata=termination_metadata,
             description=description,
             limits=limits,

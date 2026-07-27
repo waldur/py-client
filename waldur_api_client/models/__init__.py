@@ -647,6 +647,7 @@ from .deployment_mode_enum import DeploymentModeEnum
 from .deprecated_network_rbac_policy import DeprecatedNetworkRBACPolicy
 from .deprecated_network_rbac_policy_request import DeprecatedNetworkRBACPolicyRequest
 from .detail import Detail
+from .detail_response import DetailResponse
 from .detail_state import DetailState
 from .detection_method_enum import DetectionMethodEnum
 from .diagnose_check import DiagnoseCheck
@@ -1110,6 +1111,11 @@ from .matrix_room_member import MatrixRoomMember
 from .matrix_room_member_summary import MatrixRoomMemberSummary
 from .matrix_room_state_enum import MatrixRoomStateEnum
 from .me_permission import MePermission
+from .member_sync_status_entry_request import MemberSyncStatusEntryRequest
+from .member_sync_status_entry_scope_type_enum import MemberSyncStatusEntryScopeTypeEnum
+from .member_sync_status_entry_state_enum import MemberSyncStatusEntryStateEnum
+from .member_sync_status_report_request import MemberSyncStatusReportRequest
+from .member_sync_status_report_result import MemberSyncStatusReportResult
 from .membership_state_enum import MembershipStateEnum
 from .merged_plugin_options import MergedPluginOptions
 from .merged_plugin_options_request import MergedPluginOptionsRequest
@@ -1189,6 +1195,7 @@ from .nested_requested_offering_attributes import NestedRequestedOfferingAttribu
 from .nested_requested_offering_request import NestedRequestedOfferingRequest
 from .nested_requested_offering_request_attributes import NestedRequestedOfferingRequestAttributes
 from .nested_resource_project_permission import NestedResourceProjectPermission
+from .nested_resource_role_permission import NestedResourceRolePermission
 from .nested_round import NestedRound
 from .nested_round_request import NestedRoundRequest
 from .nested_screenshot import NestedScreenshot
@@ -1917,6 +1924,7 @@ from .person_identifier_fields_response_person_identifier_fields import (
 from .personal_access_token import PersonalAccessToken
 from .personal_access_token_create_request import PersonalAccessTokenCreateRequest
 from .personal_access_token_created import PersonalAccessTokenCreated
+from .personal_access_token_network_acl_request import PersonalAccessTokenNetworkAclRequest
 from .plan_component import PlanComponent
 from .plan_usage_response import PlanUsageResponse
 from .plugin_component import PluginComponent
@@ -3553,6 +3561,7 @@ __all__ = (
     "DeprecatedNetworkRBACPolicy",
     "DeprecatedNetworkRBACPolicyRequest",
     "Detail",
+    "DetailResponse",
     "DetailState",
     "DetectionMethodEnum",
     "DiagnoseCheck",
@@ -3996,6 +4005,11 @@ __all__ = (
     "MatrixRoomMemberSummary",
     "MatrixRoomStateEnum",
     "MembershipStateEnum",
+    "MemberSyncStatusEntryRequest",
+    "MemberSyncStatusEntryScopeTypeEnum",
+    "MemberSyncStatusEntryStateEnum",
+    "MemberSyncStatusReportRequest",
+    "MemberSyncStatusReportResult",
     "MePermission",
     "MergedPluginOptions",
     "MergedPluginOptionsRequest",
@@ -4075,6 +4089,7 @@ __all__ = (
     "NestedRequestedOfferingRequest",
     "NestedRequestedOfferingRequestAttributes",
     "NestedResourceProjectPermission",
+    "NestedResourceRolePermission",
     "NestedRound",
     "NestedRoundRequest",
     "NestedScreenshot",
@@ -4735,6 +4750,7 @@ __all__ = (
     "PersonalAccessToken",
     "PersonalAccessTokenCreated",
     "PersonalAccessTokenCreateRequest",
+    "PersonalAccessTokenNetworkAclRequest",
     "PersonIdentifierFieldsResponse",
     "PersonIdentifierFieldsResponsePersonIdentifierFields",
     "PlanComponent",

@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.19.dev.20260726180605
+# Version: 8.1.0-rc.19.dev.20260727195926
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -4635,7 +4635,8 @@ Request body: yes
 
 ### events_list
 GET /api/events/
-Query parameters (12):
+Query parameters (14):
+  - auth_method — Authentication method
   - created_from
   - created_to
   - customer_uuid — Customer UUID
@@ -4644,6 +4645,7 @@ Query parameters (12):
   - field
   - message
   - o — Ordering
+  - pat_uuid — Personal access token UUID
   - project_uuid — Project UUID
   - related_user_uuid — Filter events related to a user: Feed scope, actor (context.user_uuid), or affected user (context.affected_user_uuid). Combined with OR. Staff/support may target any user; others only themselves.
   - scope — Filter by scope URL.
@@ -4653,7 +4655,8 @@ Query parameters (12):
 HEAD /api/events/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (11):
+Query parameters (13):
+  - auth_method — Authentication method
   - created_from
   - created_to
   - customer_uuid — Customer UUID
@@ -4661,6 +4664,7 @@ Query parameters (11):
   - feature — Filter by feature (event group). Can be specified multiple times.
   - message
   - o — Ordering
+  - pat_uuid — Personal access token UUID
   - project_uuid — Project UUID
   - related_user_uuid — Filter events related to a user: Feed scope, actor (context.user_uuid), or affected user (context.affected_user_uuid). Combined with OR. Staff/support may target any user; others only themselves.
   - scope — Filter by scope URL.
@@ -10557,6 +10561,14 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_provider_resources_set_membership_sync_statuses
+POST /api/marketplace-provider-resources/{uuid}/set_membership_sync_statuses/
+Summary: Report per-member sync statuses for a resource
+Description: Full-replace report from the site agent: replaces every previously stored member sync status of this resource with the submitted set. Requires the offering to opt in via the enable_membership_sync_status plugin option. Entries whose user cannot be resolved are skipped and echoed back in the respo...
+Path parameters:
+  - uuid
+Request body: yes
+
 ### marketplace_provider_resources_set_paused
 POST /api/marketplace-provider-resources/{uuid}/set_paused/
 Summary: Set paused flag for resource
@@ -10595,6 +10607,13 @@ Description: Allows a service provider to submit a report (e.g., usage or status
 Path parameters:
   - uuid
 Request body: yes
+
+### marketplace_provider_resources_sync_user_roles
+POST /api/marketplace-provider-resources/{uuid}/sync_user_roles/
+Summary: Trigger user role sync for this resource
+Description: Trigger user role sync for this resource. Sends a notification to RabbitMQ that this resource needs user role synchronization; agents without event subscriptions apply the change on their next polling cycle.
+Path parameters:
+  - uuid
 
 ### marketplace_provider_resources_team_list
 GET /api/marketplace-provider-resources/{uuid}/team/
@@ -18946,6 +18965,17 @@ Summary: Rotate a personal access token
 Description: Atomically revoke the old token and create a new one with the same scopes and bindings.
 Path parameters:
   - uuid
+
+### personal_access_tokens_set_network_acl
+POST /api/personal-access-tokens/{uuid}/set_network_acl/
+Summary: Replace the network ACL of a personal access token
+Description: Replace the token's source-network allowlist.
+
+A dedicated action rather than PATCH: update/partial_update stay
+disabled on this viewset, and the change gets its own audit event.
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## project-credits  (module: waldur_api_client.api.project_credits)

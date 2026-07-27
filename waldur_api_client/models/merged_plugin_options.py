@@ -75,6 +75,9 @@ class MergedPluginOptions:
         create_orders_on_resource_option_change (Union[Unset, bool]): If set to True, create orders when options of
             related resources are changed.
         enable_resource_projects (Union[Unset, bool]): Enable sub-project management within resources.
+        enable_membership_sync_status (Union[Unset, bool]): Enable per-member sync status reporting by the site agent:
+            team views show whether each role grant has propagated to the provider backend, and providers can trigger a
+            resync.
         enable_resource_access_subnets (Union[Unset, bool]): If set to True, an Access subnets tab is shown on resource
             detail pages, letting consumers curate the IPs allowed to reach the backend entity. The list is advisory data
             for external firewalls.
@@ -229,6 +232,7 @@ class MergedPluginOptions:
     conceal_billing_data: Union[Unset, bool] = UNSET
     create_orders_on_resource_option_change: Union[Unset, bool] = UNSET
     enable_resource_projects: Union[Unset, bool] = UNSET
+    enable_membership_sync_status: Union[Unset, bool] = UNSET
     enable_resource_access_subnets: Union[Unset, bool] = UNSET
     conceal_subnet_restricted_resources: Union[Unset, bool] = UNSET
     resource_projects_limit_policy: Union[BlankEnum, None, ResourceProjectsLimitPolicyEnum, Unset] = UNSET
@@ -368,6 +372,8 @@ class MergedPluginOptions:
         create_orders_on_resource_option_change = self.create_orders_on_resource_option_change
 
         enable_resource_projects = self.enable_resource_projects
+
+        enable_membership_sync_status = self.enable_membership_sync_status
 
         enable_resource_access_subnets = self.enable_resource_access_subnets
 
@@ -608,6 +614,8 @@ class MergedPluginOptions:
             field_dict["create_orders_on_resource_option_change"] = create_orders_on_resource_option_change
         if enable_resource_projects is not UNSET:
             field_dict["enable_resource_projects"] = enable_resource_projects
+        if enable_membership_sync_status is not UNSET:
+            field_dict["enable_membership_sync_status"] = enable_membership_sync_status
         if enable_resource_access_subnets is not UNSET:
             field_dict["enable_resource_access_subnets"] = enable_resource_access_subnets
         if conceal_subnet_restricted_resources is not UNSET:
@@ -850,6 +858,8 @@ class MergedPluginOptions:
         create_orders_on_resource_option_change = d.pop("create_orders_on_resource_option_change", UNSET)
 
         enable_resource_projects = d.pop("enable_resource_projects", UNSET)
+
+        enable_membership_sync_status = d.pop("enable_membership_sync_status", UNSET)
 
         enable_resource_access_subnets = d.pop("enable_resource_access_subnets", UNSET)
 
@@ -1130,6 +1140,7 @@ class MergedPluginOptions:
             conceal_billing_data=conceal_billing_data,
             create_orders_on_resource_option_change=create_orders_on_resource_option_change,
             enable_resource_projects=enable_resource_projects,
+            enable_membership_sync_status=enable_membership_sync_status,
             enable_resource_access_subnets=enable_resource_access_subnets,
             conceal_subnet_restricted_resources=conceal_subnet_restricted_resources,
             resource_projects_limit_policy=resource_projects_limit_policy,
