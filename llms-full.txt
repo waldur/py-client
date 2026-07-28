@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.19.dev.20260728113111
+# Version: 8.1.0-rc.20
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -8964,6 +8964,22 @@ POST /api/marketplace-provider-offerings/
 Summary: Create a provider offering
 Description: Creates a new provider offering.
 Request body: yes
+
+### marketplace_provider_offerings_aggregated_access_subnets_retrieve
+GET /api/marketplace-provider-offerings/aggregated_access_subnets/
+Summary: Aggregate access subnets across offerings
+Description: Returns the combined access-subnet allow-list of the given offerings: 'expanded' — every resource subnet with its resource, project, customer and offering context; 'defaults' — the provider-default subnets of each offering; 'organization_subnets' — organization-level access subnets of customers o...
+Query parameters (2):
+  - include_organization_subnets — Also merge in the organization-level access subnets of customers owning non-terminated resources of the offerings.
+  - offering_uuid (required) — UUID of an offering to include. May be repeated.
+
+### marketplace_provider_offerings_aggregated_access_subnets_count
+HEAD /api/marketplace-provider-offerings/aggregated_access_subnets/
+Summary: Aggregate access subnets across offerings
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (2):
+  - include_organization_subnets — Also merge in the organization-level access subnets of customers owning non-terminated resources of the offerings.
+  - offering_uuid (required) — UUID of an offering to include. May be repeated.
 
 ### marketplace_provider_offerings_groups_list
 GET /api/marketplace-provider-offerings/groups/
@@ -25210,7 +25226,7 @@ Request body: yes
 ### version_retrieve
 GET /api/version/
 Summary: Get application version
-Description: Retrieves the current installed version of the application and the latest available version from GitHub (if available). Requires staff or support user permissions.
+Description: Retrieves the current installed version of the application. Staff and support users additionally receive the latest available version from GitHub when update checks are enabled.
 
 ============================================================
 ## vmware-clusters  (module: waldur_api_client.api.vmware_clusters)

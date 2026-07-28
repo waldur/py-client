@@ -1624,6 +1624,8 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_list` GET `/api/marketplace-provider-offerings/` — List provider offerings (43 query params)
 - `marketplace_provider_offerings_count` HEAD `/api/marketplace-provider-offerings/` — List provider offerings (42 query params)
 - `marketplace_provider_offerings_create` POST `/api/marketplace-provider-offerings/` — Create a provider offering (request body)
+- `marketplace_provider_offerings_aggregated_access_subnets_retrieve` GET `/api/marketplace-provider-offerings/aggregated_access_subnets/` — Aggregate access subnets across offerings (2 query params)
+- `marketplace_provider_offerings_aggregated_access_subnets_count` HEAD `/api/marketplace-provider-offerings/aggregated_access_subnets/` — Aggregate access subnets across offerings (2 query params)
 - `marketplace_provider_offerings_groups_list` GET `/api/marketplace-provider-offerings/groups/` — List offerings grouped by provider (41 query params)
 - `marketplace_provider_offerings_groups_count` HEAD `/api/marketplace-provider-offerings/groups/` — List offerings grouped by provider (41 query params)
 - `marketplace_provider_offerings_import_offering` POST `/api/marketplace-provider-offerings/import_offering/` — Import offering data (request body)

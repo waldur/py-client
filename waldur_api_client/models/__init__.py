@@ -72,6 +72,7 @@ from .agent_stats_services import AgentStatsServices
 from .agent_stats_services_state import AgentStatsServicesState
 from .agent_task_stats_response import AgentTaskStatsResponse
 from .agent_type_enum import AgentTypeEnum
+from .aggregated_access_subnets import AggregatedAccessSubnets
 from .aggregated_usage_trend import AggregatedUsageTrend
 from .agreement_type_enum import AgreementTypeEnum
 from .aiassistantenabledroles_enum import AIASSISTANTENABLEDROLESEnum
@@ -1278,6 +1279,7 @@ from .offering_create_request_multipart_attributes import OfferingCreateRequestM
 from .offering_create_request_multipart_backend_id_rules import OfferingCreateRequestMultipartBackendIdRules
 from .offering_create_request_multipart_backend_metadata import OfferingCreateRequestMultipartBackendMetadata
 from .offering_create_request_multipart_limits import OfferingCreateRequestMultipartLimits
+from .offering_default_access_subnet_row import OfferingDefaultAccessSubnetRow
 from .offering_description_update_request import OfferingDescriptionUpdateRequest
 from .offering_estimated_cost_policy import OfferingEstimatedCostPolicy
 from .offering_estimated_cost_policy_options import OfferingEstimatedCostPolicyOptions
@@ -1645,6 +1647,7 @@ from .order_update_request import OrderUpdateRequest
 from .order_update_request_attributes import OrderUpdateRequestAttributes
 from .order_update_request_limits import OrderUpdateRequestLimits
 from .order_uuid import OrderUUID
+from .organization_access_subnet_row import OrganizationAccessSubnetRow
 from .organization_group import OrganizationGroup
 from .organization_group_request import OrganizationGroupRequest
 from .organization_groups_request import OrganizationGroupsRequest
@@ -3015,6 +3018,7 @@ __all__ = (
     "AgentStatsServicesState",
     "AgentTaskStatsResponse",
     "AgentTypeEnum",
+    "AggregatedAccessSubnets",
     "AggregatedUsageTrend",
     "AgreementTypeEnum",
     "AIASSISTANTENABLEDROLESEnum",
@@ -4181,6 +4185,7 @@ __all__ = (
     "OfferingCreateRequestMultipartBackendIdRules",
     "OfferingCreateRequestMultipartBackendMetadata",
     "OfferingCreateRequestMultipartLimits",
+    "OfferingDefaultAccessSubnetRow",
     "OfferingDescriptionUpdateRequest",
     "OfferingEstimatedCostPolicy",
     "OfferingEstimatedCostPolicyOptions",
@@ -4508,6 +4513,7 @@ __all__ = (
     "OrderUpdateRequestAttributes",
     "OrderUpdateRequestLimits",
     "OrderUUID",
+    "OrganizationAccessSubnetRow",
     "OrganizationalAccess",
     "OrganizationalUser",
     "OrganizationGroup",

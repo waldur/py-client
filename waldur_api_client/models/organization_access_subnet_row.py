@@ -1,58 +1,70 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="Version")
+T = TypeVar("T", bound="OrganizationAccessSubnetRow")
 
 
 @_attrs_define
-class Version:
+class OrganizationAccessSubnetRow:
     """
     Attributes:
-        version (str): Current installed version of the application
-        latest_version (Union[Unset, str]): Latest available version from GitHub. Only included for staff or support
-            users when update checks are enabled.
+        inet (str):
+        description (str):
+        customer_uuid (str):
+        customer_name (str):
     """
 
-    version: str
-    latest_version: Union[Unset, str] = UNSET
+    inet: str
+    description: str
+    customer_uuid: str
+    customer_name: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        version = self.version
+        inet = self.inet
 
-        latest_version = self.latest_version
+        description = self.description
+
+        customer_uuid = self.customer_uuid
+
+        customer_name = self.customer_name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "version": version,
+                "inet": inet,
+                "description": description,
+                "customer_uuid": customer_uuid,
+                "customer_name": customer_name,
             }
         )
-        if latest_version is not UNSET:
-            field_dict["latest_version"] = latest_version
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        version = d.pop("version")
+        inet = d.pop("inet")
 
-        latest_version = d.pop("latest_version", UNSET)
+        description = d.pop("description")
 
-        version = cls(
-            version=version,
-            latest_version=latest_version,
+        customer_uuid = d.pop("customer_uuid")
+
+        customer_name = d.pop("customer_name")
+
+        organization_access_subnet_row = cls(
+            inet=inet,
+            description=description,
+            customer_uuid=customer_uuid,
+            customer_name=customer_name,
         )
 
-        version.additional_properties = d
-        return version
+        organization_access_subnet_row.additional_properties = d
+        return organization_access_subnet_row
 
     @property
     def additional_keys(self) -> list[str]:

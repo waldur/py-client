@@ -43,8 +43,8 @@ def sync_detailed(
 ) -> Response[Version]:
     """Get application version
 
-     Retrieves the current installed version of the application and the latest available version from
-    GitHub (if available). Requires staff or support user permissions.
+     Retrieves the current installed version of the application. Staff and support users additionally
+    receive the latest available version from GitHub when update checks are enabled.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -69,8 +69,8 @@ def sync(
 ) -> Version:
     """Get application version
 
-     Retrieves the current installed version of the application and the latest available version from
-    GitHub (if available). Requires staff or support user permissions.
+     Retrieves the current installed version of the application. Staff and support users additionally
+    receive the latest available version from GitHub when update checks are enabled.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -91,8 +91,8 @@ async def asyncio_detailed(
 ) -> Response[Version]:
     """Get application version
 
-     Retrieves the current installed version of the application and the latest available version from
-    GitHub (if available). Requires staff or support user permissions.
+     Retrieves the current installed version of the application. Staff and support users additionally
+    receive the latest available version from GitHub when update checks are enabled.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -115,8 +115,8 @@ async def asyncio(
 ) -> Version:
     """Get application version
 
-     Retrieves the current installed version of the application and the latest available version from
-    GitHub (if available). Requires staff or support user permissions.
+     Retrieves the current installed version of the application. Staff and support users additionally
+    receive the latest available version from GitHub when update checks are enabled.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
