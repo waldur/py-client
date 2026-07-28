@@ -56,6 +56,7 @@ class OfferingFieldEnum(str, Enum):
     PROJECT = "project"
     PROJECT_NAME = "project_name"
     PROJECT_UUID = "project_uuid"
+    QOS_PROFILES = "qos_profiles"
     QUOTAS = "quotas"
     RESOURCE_OPTIONS = "resource_options"
     SCOPE = "scope"

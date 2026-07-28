@@ -355,6 +355,7 @@ from .cancel_request_response import CancelRequestResponse
 from .canned_response import CannedResponse
 from .canned_response_render_request import CannedResponseRenderRequest
 from .canned_response_render_request_context import CannedResponseRenderRequestContext
+from .canned_response_render_response import CannedResponseRenderResponse
 from .canned_response_request import CannedResponseRequest
 from .cascade_config import CascadeConfig
 from .cascade_config_request import CascadeConfigRequest
@@ -1179,6 +1180,8 @@ from .nested_offering_file_request import NestedOfferingFileRequest
 from .nested_parent_software import NestedParentSoftware
 from .nested_parent_software_request import NestedParentSoftwareRequest
 from .nested_partition import NestedPartition
+from .nested_partition_qo_s import NestedPartitionQoS
+from .nested_partition_qo_s_request import NestedPartitionQoSRequest
 from .nested_partition_request import NestedPartitionRequest
 from .nested_plan_component import NestedPlanComponent
 from .nested_plan_component_request import NestedPlanComponentRequest
@@ -1188,6 +1191,8 @@ from .nested_project_permission import NestedProjectPermission
 from .nested_provider_offering import NestedProviderOffering
 from .nested_public_offering import NestedPublicOffering
 from .nested_public_offering_request import NestedPublicOfferingRequest
+from .nested_qo_s import NestedQoS
+from .nested_qo_s_request import NestedQoSRequest
 from .nested_remote_local_category import NestedRemoteLocalCategory
 from .nested_remote_local_category_request import NestedRemoteLocalCategoryRequest
 from .nested_requested_offering import NestedRequestedOffering
@@ -1327,6 +1332,8 @@ from .offering_profile_bind_request import OfferingProfileBindRequest
 from .offering_profile_request import OfferingProfileRequest
 from .offering_profile_role import OfferingProfileRole
 from .offering_profile_role_assign_request import OfferingProfileRoleAssignRequest
+from .offering_qo_s import OfferingQoS
+from .offering_qo_s_request import OfferingQoSRequest
 from .offering_reference import OfferingReference
 from .offering_referral import OfferingReferral
 from .offering_referral_o_enum import OfferingReferralOEnum
@@ -1647,6 +1654,7 @@ from .outcome_enum import OutcomeEnum
 from .paid_request import PaidRequest
 from .paid_request_form import PaidRequestForm
 from .paid_request_multipart import PaidRequestMultipart
+from .partition_qo_s_item_request import PartitionQoSItemRequest
 from .partition_summary import PartitionSummary
 from .partition_summary_request import PartitionSummaryRequest
 from .password_change_request import PasswordChangeRequest
@@ -1742,6 +1750,7 @@ from .patched_offering_group_request_form import PatchedOfferingGroupRequestForm
 from .patched_offering_group_request_multipart import PatchedOfferingGroupRequestMultipart
 from .patched_offering_partition_update_request import PatchedOfferingPartitionUpdateRequest
 from .patched_offering_profile_request import PatchedOfferingProfileRequest
+from .patched_offering_qo_s_update_request import PatchedOfferingQoSUpdateRequest
 from .patched_offering_role_request import PatchedOfferingRoleRequest
 from .patched_offering_software_catalog_update_request import PatchedOfferingSoftwareCatalogUpdateRequest
 from .patched_offering_software_catalog_update_request_enabled_cpu_family import (
@@ -2303,6 +2312,7 @@ from .remote_synchronisation import RemoteSynchronisation
 from .remote_synchronisation_request import RemoteSynchronisationRequest
 from .remove_offering_component_request import RemoveOfferingComponentRequest
 from .remove_partition_request import RemovePartitionRequest
+from .remove_qo_s_request import RemoveQoSRequest
 from .remove_software_catalog_request import RemoveSoftwareCatalogRequest
 from .renewal_estimate_component import RenewalEstimateComponent
 from .renewal_estimate_request_request import RenewalEstimateRequestRequest
@@ -2601,6 +2611,7 @@ from .set_external_gateway_request import SetExternalGatewayRequest
 from .set_mtu import SetMtu
 from .set_mtu_request import SetMtuRequest
 from .set_offerings_username_request import SetOfferingsUsernameRequest
+from .set_partition_qo_s_request import SetPartitionQoSRequest
 from .set_token_quota_request import SetTokenQuotaRequest
 from .settings_item import SettingsItem
 from .settings_item_default import SettingsItemDefault
@@ -3275,6 +3286,7 @@ __all__ = (
     "CannedResponse",
     "CannedResponseRenderRequest",
     "CannedResponseRenderRequestContext",
+    "CannedResponseRenderResponse",
     "CannedResponseRequest",
     "CascadeConfig",
     "CascadeConfigRequest",
@@ -4073,6 +4085,8 @@ __all__ = (
     "NestedParentSoftware",
     "NestedParentSoftwareRequest",
     "NestedPartition",
+    "NestedPartitionQoS",
+    "NestedPartitionQoSRequest",
     "NestedPartitionRequest",
     "NestedPlanComponent",
     "NestedPlanComponentRequest",
@@ -4082,6 +4096,8 @@ __all__ = (
     "NestedProviderOffering",
     "NestedPublicOffering",
     "NestedPublicOfferingRequest",
+    "NestedQoS",
+    "NestedQoSRequest",
     "NestedRemoteLocalCategory",
     "NestedRemoteLocalCategoryRequest",
     "NestedRequestedOffering",
@@ -4219,6 +4235,8 @@ __all__ = (
     "OfferingProfileRequest",
     "OfferingProfileRole",
     "OfferingProfileRoleAssignRequest",
+    "OfferingQoS",
+    "OfferingQoSRequest",
     "OfferingReference",
     "OfferingReferral",
     "OfferingReferralOEnum",
@@ -4499,6 +4517,7 @@ __all__ = (
     "PaidRequest",
     "PaidRequestForm",
     "PaidRequestMultipart",
+    "PartitionQoSItemRequest",
     "PartitionSummary",
     "PartitionSummaryRequest",
     "PasswordChangeRequest",
@@ -4590,6 +4609,7 @@ __all__ = (
     "PatchedOfferingGroupRequestMultipart",
     "PatchedOfferingPartitionUpdateRequest",
     "PatchedOfferingProfileRequest",
+    "PatchedOfferingQoSUpdateRequest",
     "PatchedOfferingRoleRequest",
     "PatchedOfferingSoftwareCatalogUpdateRequest",
     "PatchedOfferingSoftwareCatalogUpdateRequestEnabledCpuFamily",
@@ -5109,6 +5129,7 @@ __all__ = (
     "RemoteSynchronisationRequest",
     "RemoveOfferingComponentRequest",
     "RemovePartitionRequest",
+    "RemoveQoSRequest",
     "RemoveSoftwareCatalogRequest",
     "RenewalEstimateComponent",
     "RenewalEstimateRequestRequest",
@@ -5405,6 +5426,7 @@ __all__ = (
     "SetMtu",
     "SetMtuRequest",
     "SetOfferingsUsernameRequest",
+    "SetPartitionQoSRequest",
     "SettingsItem",
     "SettingsItemDefault",
     "SettingsItemOption",

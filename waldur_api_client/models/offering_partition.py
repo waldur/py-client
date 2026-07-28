@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,6 +8,10 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.nested_partition_qo_s import NestedPartitionQoS
+
 
 T = TypeVar("T", bound="OfferingPartition")
 
@@ -22,6 +26,7 @@ class OfferingPartition:
         offering (UUID):
         offering_name (str):
         partition_name (str): Name of the SLURM partition
+        qos_options (list['NestedPartitionQoS']):
         cpu_arch (Union[Unset, str]): CPU architecture of the partition (e.g., x86_64/amd/zen3)
         gpu_arch (Union[Unset, str]): GPU architecture of the partition (e.g., nvidia/cc90, amd/gfx90a)
         cpu_bind (Union[None, Unset, int]): Default task binding policy (SLURM cpu_bind)
@@ -51,6 +56,7 @@ class OfferingPartition:
     offering: UUID
     offering_name: str
     partition_name: str
+    qos_options: list["NestedPartitionQoS"]
     cpu_arch: Union[Unset, str] = UNSET
     gpu_arch: Union[Unset, str] = UNSET
     cpu_bind: Union[None, Unset, int] = UNSET
@@ -86,6 +92,11 @@ class OfferingPartition:
         offering_name = self.offering_name
 
         partition_name = self.partition_name
+
+        qos_options = []
+        for qos_options_item_data in self.qos_options:
+            qos_options_item = qos_options_item_data.to_dict()
+            qos_options.append(qos_options_item)
 
         cpu_arch = self.cpu_arch
 
@@ -199,6 +210,7 @@ class OfferingPartition:
                 "offering": offering,
                 "offering_name": offering_name,
                 "partition_name": partition_name,
+                "qos_options": qos_options,
             }
         )
         if cpu_arch is not UNSET:
@@ -248,6 +260,8 @@ class OfferingPartition:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.nested_partition_qo_s import NestedPartitionQoS
+
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
@@ -260,6 +274,13 @@ class OfferingPartition:
         offering_name = d.pop("offering_name")
 
         partition_name = d.pop("partition_name")
+
+        qos_options = []
+        _qos_options = d.pop("qos_options")
+        for qos_options_item_data in _qos_options:
+            qos_options_item = NestedPartitionQoS.from_dict(qos_options_item_data)
+
+            qos_options.append(qos_options_item)
 
         cpu_arch = d.pop("cpu_arch", UNSET)
 
@@ -415,6 +436,7 @@ class OfferingPartition:
             offering=offering,
             offering_name=offering_name,
             partition_name=partition_name,
+            qos_options=qos_options,
             cpu_arch=cpu_arch,
             gpu_arch=gpu_arch,
             cpu_bind=cpu_bind,

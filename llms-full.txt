@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.19.dev.20260728104930
+# Version: 8.1.0-rc.19.dev.20260728113111
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -9111,6 +9111,14 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_provider_offerings_add_qos
+POST /api/marketplace-provider-offerings/{uuid}/add_qos/
+Summary: Add a QoS profile to an offering
+Description: Adds a new Quality of Service profile to an offering.
+Path parameters:
+  - uuid
+Request body: yes
+
 ### marketplace_provider_offerings_add_software_catalog
 POST /api/marketplace-provider-offerings/{uuid}/add_software_catalog/
 Summary: Add a software catalog to an offering
@@ -9755,6 +9763,14 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_provider_offerings_remove_qos
+POST /api/marketplace-provider-offerings/{uuid}/remove_qos/
+Summary: Remove a QoS profile from an offering
+Description: Removes a Quality of Service profile from an offering.
+Path parameters:
+  - uuid
+Request body: yes
+
 ### marketplace_provider_offerings_remove_software_catalog
 POST /api/marketplace-provider-offerings/{uuid}/remove_software_catalog/
 Summary: Remove a software catalog from an offering
@@ -9775,6 +9791,14 @@ Request body: yes
 POST /api/marketplace-provider-offerings/{uuid}/set_offering_group/
 Summary: Assign or clear the offering group
 Description: Sets the offering's ``offering_group`` FK. Pass ``offering_group: <uuid>`` to assign a group, or ``offering_group: null`` to clear it. The group must belong to the same customer as the offering.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_offerings_set_partition_qos
+POST /api/marketplace-provider-offerings/{uuid}/set_partition_qos/
+Summary: Set the QoS allow-list of a partition
+Description: Replaces the QoS allow-list (SLURM AllowQos gate) of a partition. An empty list permits all of the offering's QoS.
 Path parameters:
   - uuid
 Request body: yes
@@ -9953,6 +9977,14 @@ Request body: yes
 PATCH /api/marketplace-provider-offerings/{uuid}/update_partition/
 Summary: Update a partition of an offering
 Description: Updates the configuration of an existing partition associated with an offering.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_offerings_update_qos_partial_update
+PATCH /api/marketplace-provider-offerings/{uuid}/update_qos/
+Summary: Update a QoS profile of an offering
+Description: Updates an existing Quality of Service profile of an offering.
 Path parameters:
   - uuid
 Request body: yes
@@ -20754,6 +20786,7 @@ Path parameters:
 
 ### provider_canned_responses_render
 POST /api/provider-canned-responses/{uuid}/render/
+Summary: Render a canned response with context variables
 Path parameters:
   - uuid
 Request body: yes

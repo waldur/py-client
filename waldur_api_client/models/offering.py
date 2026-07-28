@@ -21,6 +21,7 @@ if TYPE_CHECKING:
     from ..models.nested_offering_access_subnet import NestedOfferingAccessSubnet
     from ..models.nested_offering_file import NestedOfferingFile
     from ..models.nested_partition import NestedPartition
+    from ..models.nested_qo_s import NestedQoS
     from ..models.nested_screenshot import NestedScreenshot
     from ..models.nested_software_catalog import NestedSoftwareCatalog
     from ..models.nested_tag import NestedTag
@@ -54,6 +55,7 @@ class Offering:
         default_access_subnets (Union[Unset, list['NestedOfferingAccessSubnet']]):
         software_catalogs (Union[Unset, list['NestedSoftwareCatalog']]):
         partitions (Union[Unset, list['NestedPartition']]):
+        qos_profiles (Union[Unset, list['NestedQoS']]):
         customer (Union[None, Unset, str]):
         customer_uuid (Union[None, UUID, Unset]):
         customer_name (Union[None, Unset, str]):
@@ -133,6 +135,7 @@ class Offering:
     default_access_subnets: Union[Unset, list["NestedOfferingAccessSubnet"]] = UNSET
     software_catalogs: Union[Unset, list["NestedSoftwareCatalog"]] = UNSET
     partitions: Union[Unset, list["NestedPartition"]] = UNSET
+    qos_profiles: Union[Unset, list["NestedQoS"]] = UNSET
     customer: Union[None, Unset, str] = UNSET
     customer_uuid: Union[None, UUID, Unset] = UNSET
     customer_name: Union[None, Unset, str] = UNSET
@@ -250,6 +253,13 @@ class Offering:
             for partitions_item_data in self.partitions:
                 partitions_item = partitions_item_data.to_dict()
                 partitions.append(partitions_item)
+
+        qos_profiles: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.qos_profiles, Unset):
+            qos_profiles = []
+            for qos_profiles_item_data in self.qos_profiles:
+                qos_profiles_item = qos_profiles_item_data.to_dict()
+                qos_profiles.append(qos_profiles_item)
 
         customer: Union[None, Unset, str]
         if isinstance(self.customer, Unset):
@@ -583,6 +593,8 @@ class Offering:
             field_dict["software_catalogs"] = software_catalogs
         if partitions is not UNSET:
             field_dict["partitions"] = partitions
+        if qos_profiles is not UNSET:
+            field_dict["qos_profiles"] = qos_profiles
         if customer is not UNSET:
             field_dict["customer"] = customer
         if customer_uuid is not UNSET:
@@ -717,6 +729,7 @@ class Offering:
         from ..models.nested_offering_access_subnet import NestedOfferingAccessSubnet
         from ..models.nested_offering_file import NestedOfferingFile
         from ..models.nested_partition import NestedPartition
+        from ..models.nested_qo_s import NestedQoS
         from ..models.nested_screenshot import NestedScreenshot
         from ..models.nested_software_catalog import NestedSoftwareCatalog
         from ..models.nested_tag import NestedTag
@@ -787,6 +800,13 @@ class Offering:
             partitions_item = NestedPartition.from_dict(partitions_item_data)
 
             partitions.append(partitions_item)
+
+        qos_profiles = []
+        _qos_profiles = d.pop("qos_profiles", UNSET)
+        for qos_profiles_item_data in _qos_profiles or []:
+            qos_profiles_item = NestedQoS.from_dict(qos_profiles_item_data)
+
+            qos_profiles.append(qos_profiles_item)
 
         def _parse_customer(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -1256,6 +1276,7 @@ class Offering:
             default_access_subnets=default_access_subnets,
             software_catalogs=software_catalogs,
             partitions=partitions,
+            qos_profiles=qos_profiles,
             customer=customer,
             customer_uuid=customer_uuid,
             customer_name=customer_name,

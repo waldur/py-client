@@ -6,21 +6,21 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.canned_response_render_request import CannedResponseRenderRequest
-from ...models.canned_response_render_response import CannedResponseRenderResponse
+from ...models.offering_partition import OfferingPartition
+from ...models.set_partition_qo_s_request import SetPartitionQoSRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: CannedResponseRenderRequest,
+    body: SetPartitionQoSRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/support-canned-responses/{uuid}/render/",
+        "url": f"/api/marketplace-provider-offerings/{uuid}/set_partition_qos/",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -31,13 +31,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> CannedResponseRenderResponse:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> OfferingPartition:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = CannedResponseRenderResponse.from_dict(response.json())
+        response_200 = OfferingPartition.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -45,7 +43,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[CannedResponseRenderResponse]:
+) -> Response[OfferingPartition]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -58,20 +56,23 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: CannedResponseRenderRequest,
-) -> Response[CannedResponseRenderResponse]:
-    """Render a canned response with context variables
+    body: SetPartitionQoSRequest,
+) -> Response[OfferingPartition]:
+    """Set the QoS allow-list of a partition
+
+     Replaces the QoS allow-list (SLURM AllowQos gate) of a partition. An empty list permits all of the
+    offering's QoS.
 
     Args:
         uuid (UUID):
-        body (CannedResponseRenderRequest):
+        body (SetPartitionQoSRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CannedResponseRenderResponse]
+        Response[OfferingPartition]
     """
 
     kwargs = _get_kwargs(
@@ -90,20 +91,23 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: CannedResponseRenderRequest,
-) -> CannedResponseRenderResponse:
-    """Render a canned response with context variables
+    body: SetPartitionQoSRequest,
+) -> OfferingPartition:
+    """Set the QoS allow-list of a partition
+
+     Replaces the QoS allow-list (SLURM AllowQos gate) of a partition. An empty list permits all of the
+    offering's QoS.
 
     Args:
         uuid (UUID):
-        body (CannedResponseRenderRequest):
+        body (SetPartitionQoSRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CannedResponseRenderResponse
+        OfferingPartition
     """
 
     return sync_detailed(
@@ -117,20 +121,23 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: CannedResponseRenderRequest,
-) -> Response[CannedResponseRenderResponse]:
-    """Render a canned response with context variables
+    body: SetPartitionQoSRequest,
+) -> Response[OfferingPartition]:
+    """Set the QoS allow-list of a partition
+
+     Replaces the QoS allow-list (SLURM AllowQos gate) of a partition. An empty list permits all of the
+    offering's QoS.
 
     Args:
         uuid (UUID):
-        body (CannedResponseRenderRequest):
+        body (SetPartitionQoSRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CannedResponseRenderResponse]
+        Response[OfferingPartition]
     """
 
     kwargs = _get_kwargs(
@@ -147,20 +154,23 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: CannedResponseRenderRequest,
-) -> CannedResponseRenderResponse:
-    """Render a canned response with context variables
+    body: SetPartitionQoSRequest,
+) -> OfferingPartition:
+    """Set the QoS allow-list of a partition
+
+     Replaces the QoS allow-list (SLURM AllowQos gate) of a partition. An empty list permits all of the
+    offering's QoS.
 
     Args:
         uuid (UUID):
-        body (CannedResponseRenderRequest):
+        body (SetPartitionQoSRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CannedResponseRenderResponse
+        OfferingPartition
     """
 
     return (

@@ -59,6 +59,7 @@ class PublicOfferingDetailsFieldEnum(str, Enum):
     PROJECT_NAME = "project_name"
     PROJECT_UUID = "project_uuid"
     PROMOTION_CAMPAIGNS = "promotion_campaigns"
+    QOS_PROFILES = "qos_profiles"
     QUOTAS = "quotas"
     RESOURCE_OPTIONS = "resource_options"
     SCOPE = "scope"

@@ -6,21 +6,21 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.canned_response_render_request import CannedResponseRenderRequest
-from ...models.canned_response_render_response import CannedResponseRenderResponse
+from ...models.offering_qo_s import OfferingQoS
+from ...models.offering_qo_s_request import OfferingQoSRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: CannedResponseRenderRequest,
+    body: OfferingQoSRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/support-canned-responses/{uuid}/render/",
+        "url": f"/api/marketplace-provider-offerings/{uuid}/add_qos/",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -31,21 +31,17 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> CannedResponseRenderResponse:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> OfferingQoS:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 200:
-        response_200 = CannedResponseRenderResponse.from_dict(response.json())
+    if response.status_code == 201:
+        response_201 = OfferingQoS.from_dict(response.json())
 
-        return response_200
+        return response_201
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[CannedResponseRenderResponse]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[OfferingQoS]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -58,20 +54,22 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: CannedResponseRenderRequest,
-) -> Response[CannedResponseRenderResponse]:
-    """Render a canned response with context variables
+    body: OfferingQoSRequest,
+) -> Response[OfferingQoS]:
+    """Add a QoS profile to an offering
+
+     Adds a new Quality of Service profile to an offering.
 
     Args:
         uuid (UUID):
-        body (CannedResponseRenderRequest):
+        body (OfferingQoSRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CannedResponseRenderResponse]
+        Response[OfferingQoS]
     """
 
     kwargs = _get_kwargs(
@@ -90,20 +88,22 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: CannedResponseRenderRequest,
-) -> CannedResponseRenderResponse:
-    """Render a canned response with context variables
+    body: OfferingQoSRequest,
+) -> OfferingQoS:
+    """Add a QoS profile to an offering
+
+     Adds a new Quality of Service profile to an offering.
 
     Args:
         uuid (UUID):
-        body (CannedResponseRenderRequest):
+        body (OfferingQoSRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CannedResponseRenderResponse
+        OfferingQoS
     """
 
     return sync_detailed(
@@ -117,20 +117,22 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: CannedResponseRenderRequest,
-) -> Response[CannedResponseRenderResponse]:
-    """Render a canned response with context variables
+    body: OfferingQoSRequest,
+) -> Response[OfferingQoS]:
+    """Add a QoS profile to an offering
+
+     Adds a new Quality of Service profile to an offering.
 
     Args:
         uuid (UUID):
-        body (CannedResponseRenderRequest):
+        body (OfferingQoSRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[CannedResponseRenderResponse]
+        Response[OfferingQoS]
     """
 
     kwargs = _get_kwargs(
@@ -147,20 +149,22 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: CannedResponseRenderRequest,
-) -> CannedResponseRenderResponse:
-    """Render a canned response with context variables
+    body: OfferingQoSRequest,
+) -> OfferingQoS:
+    """Add a QoS profile to an offering
+
+     Adds a new Quality of Service profile to an offering.
 
     Args:
         uuid (UUID):
-        body (CannedResponseRenderRequest):
+        body (OfferingQoSRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        CannedResponseRenderResponse
+        OfferingQoS
     """
 
     return (

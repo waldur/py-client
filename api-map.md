@@ -1633,6 +1633,7 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_activate` POST `/api/marketplace-provider-offerings/{uuid}/activate/` — Activate an offering (path: uuid)
 - `marketplace_provider_offerings_add_endpoint` POST `/api/marketplace-provider-offerings/{uuid}/add_endpoint/` — Add an access endpoint to an offering (path: uuid | request body)
 - `marketplace_provider_offerings_add_partition` POST `/api/marketplace-provider-offerings/{uuid}/add_partition/` — Add a partition to an offering (path: uuid | request body)
+- `marketplace_provider_offerings_add_qos` POST `/api/marketplace-provider-offerings/{uuid}/add_qos/` — Add a QoS profile to an offering (path: uuid | request body)
 - `marketplace_provider_offerings_add_software_catalog` POST `/api/marketplace-provider-offerings/{uuid}/add_software_catalog/` — Add a software catalog to an offering (path: uuid | request body)
 - `marketplace_provider_offerings_add_user` POST `/api/marketplace-provider-offerings/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
 - `marketplace_provider_offerings_archive` POST `/api/marketplace-provider-offerings/{uuid}/archive/` — Archive an offering (path: uuid)
@@ -1673,9 +1674,11 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_refresh_offering_usernames` POST `/api/marketplace-provider-offerings/{uuid}/refresh_offering_usernames/` — Refresh offering user usernames (path: uuid)
 - `marketplace_provider_offerings_remove_offering_component` POST `/api/marketplace-provider-offerings/{uuid}/remove_offering_component/` — Remove an offering component (path: uuid | request body)
 - `marketplace_provider_offerings_remove_partition` POST `/api/marketplace-provider-offerings/{uuid}/remove_partition/` — Remove a partition from an offering (path: uuid | request body)
+- `marketplace_provider_offerings_remove_qos` POST `/api/marketplace-provider-offerings/{uuid}/remove_qos/` — Remove a QoS profile from an offering (path: uuid | request body)
 - `marketplace_provider_offerings_remove_software_catalog` POST `/api/marketplace-provider-offerings/{uuid}/remove_software_catalog/` — Remove a software catalog from an offering (path: uuid | request body)
 - `marketplace_provider_offerings_set_backend_metadata` POST `/api/marketplace-provider-offerings/{uuid}/set_backend_metadata/` — Set offering backend metadata (path: uuid | request body)
 - `marketplace_provider_offerings_set_offering_group` POST `/api/marketplace-provider-offerings/{uuid}/set_offering_group/` — Assign or clear the offering group (path: uuid | request body)
+- `marketplace_provider_offerings_set_partition_qos` POST `/api/marketplace-provider-offerings/{uuid}/set_partition_qos/` — Set the QoS allow-list of a partition (path: uuid | request body)
 - `marketplace_provider_offerings_set_profile` POST `/api/marketplace-provider-offerings/{uuid}/set_profile/` — Bind / unbind offering to a service profile (path: uuid | request body)
 - `marketplace_provider_offerings_state_counters_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/state_counters/` — Get offering resource and user state counters (path: uuid)
 - `marketplace_provider_offerings_stats_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/stats/` — Get offering statistics (path: uuid)
@@ -1699,6 +1702,7 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_update_organization_groups` POST `/api/marketplace-provider-offerings/{uuid}/update_organization_groups/` — Update organization groups for offering (path: uuid | request body)
 - `marketplace_provider_offerings_update_overview` POST `/api/marketplace-provider-offerings/{uuid}/update_overview/` — Update offering overview (path: uuid | request body)
 - `marketplace_provider_offerings_update_partition_partial_update` PATCH `/api/marketplace-provider-offerings/{uuid}/update_partition/` — Update a partition of an offering (path: uuid | request body)
+- `marketplace_provider_offerings_update_qos_partial_update` PATCH `/api/marketplace-provider-offerings/{uuid}/update_qos/` — Update a QoS profile of an offering (path: uuid | request body)
 - `marketplace_provider_offerings_update_resource_options` POST `/api/marketplace-provider-offerings/{uuid}/update_resource_options/` — Update offering resource options (path: uuid | request body)
 - `marketplace_provider_offerings_update_software_catalog_partial_update` PATCH `/api/marketplace-provider-offerings/{uuid}/update_software_catalog/` — Update software catalog configuration (path: uuid | request body)
 - `marketplace_provider_offerings_update_tags` POST `/api/marketplace-provider-offerings/{uuid}/update_tags/` — Update tags for offering (path: uuid | request body)
@@ -3256,7 +3260,7 @@ Module: `waldur_api_client.api.provider_canned_responses`
 - `provider_canned_responses_update` PUT `/api/provider-canned-responses/{uuid}/` (path: uuid | request body)
 - `provider_canned_responses_partial_update` PATCH `/api/provider-canned-responses/{uuid}/` (path: uuid | request body)
 - `provider_canned_responses_destroy` DELETE `/api/provider-canned-responses/{uuid}/` (path: uuid)
-- `provider_canned_responses_render` POST `/api/provider-canned-responses/{uuid}/render/` (path: uuid | request body)
+- `provider_canned_responses_render` POST `/api/provider-canned-responses/{uuid}/render/` — Render a canned response with context variables (path: uuid | request body)
 
 ## provider-helpdesks
 Module: `waldur_api_client.api.provider_helpdesks`
