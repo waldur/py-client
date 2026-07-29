@@ -8,7 +8,7 @@ from ..models.observable_object_type_enum import ObservableObjectTypeEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.allowed_scope_input_request import AllowedScopeInputRequest
+    from ..models.event_consumer_scope_input_request import EventConsumerScopeInputRequest
 
 
 T = TypeVar("T", bound="EventConsumerRegistrationRequest")
@@ -20,13 +20,14 @@ class EventConsumerRegistrationRequest:
     Attributes:
         object_types (Union[Unset, list[ObservableObjectTypeEnum]]): Observable object types to receive. An explicit
             empty list means all types; omitting the field leaves an existing consumer's filter unchanged.
-        scopes (Union[Unset, list['AllowedScopeInputRequest']]): Entity bindings this consumer receives events for —
-            e.g. several projects, a customer, an offering. You may only bind to an entity you hold a role on. AN EMPTY LIST
-            MEANS GLOBAL (every event, including all-user PII) and is staff/support only.
+        scopes (Union[Unset, list['EventConsumerScopeInputRequest']]): Entity bindings this consumer receives events for
+            — e.g. several projects, a customer, an offering, or your own user (type 'user', your own UUID) for identity
+            events. You may only bind to an entity you hold a role on, or to yourself. AN EMPTY LIST MEANS GLOBAL (every
+            event, including all-user PII) and is staff/support only.
     """
 
     object_types: Union[Unset, list[ObservableObjectTypeEnum]] = UNSET
-    scopes: Union[Unset, list["AllowedScopeInputRequest"]] = UNSET
+    scopes: Union[Unset, list["EventConsumerScopeInputRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -56,7 +57,7 @@ class EventConsumerRegistrationRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.allowed_scope_input_request import AllowedScopeInputRequest
+        from ..models.event_consumer_scope_input_request import EventConsumerScopeInputRequest
 
         d = dict(src_dict)
         object_types = []
@@ -69,7 +70,7 @@ class EventConsumerRegistrationRequest:
         scopes = []
         _scopes = d.pop("scopes", UNSET)
         for scopes_item_data in _scopes or []:
-            scopes_item = AllowedScopeInputRequest.from_dict(scopes_item_data)
+            scopes_item = EventConsumerScopeInputRequest.from_dict(scopes_item_data)
 
             scopes.append(scopes_item)
 

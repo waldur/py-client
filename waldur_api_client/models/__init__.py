@@ -721,6 +721,7 @@ from .event_consumer import EventConsumer
 from .event_consumer_object_types import EventConsumerObjectTypes
 from .event_consumer_registration_request import EventConsumerRegistrationRequest
 from .event_consumer_registration_response import EventConsumerRegistrationResponse
+from .event_consumer_scope_input_request import EventConsumerScopeInputRequest
 from .event_consumer_scope_output import EventConsumerScopeOutput
 from .event_context import EventContext
 from .event_count import EventCount
@@ -3647,6 +3648,7 @@ __all__ = (
     "EventConsumerObjectTypes",
     "EventConsumerRegistrationRequest",
     "EventConsumerRegistrationResponse",
+    "EventConsumerScopeInputRequest",
     "EventConsumerScopeOutput",
     "EventContext",
     "EventCount",
