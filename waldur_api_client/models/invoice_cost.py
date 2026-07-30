@@ -19,6 +19,7 @@ class InvoiceCost:
     Attributes:
         price (float):
         compensation (float):  Default: 0.0.
+        incurred (float):  Default: 0.0.
         year (int):
         month (int):
         items (Union[Unset, list['InvoiceCostItem']]):
@@ -28,6 +29,7 @@ class InvoiceCost:
     year: int
     month: int
     compensation: float = 0.0
+    incurred: float = 0.0
     items: Union[Unset, list["InvoiceCostItem"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -35,6 +37,8 @@ class InvoiceCost:
         price = self.price
 
         compensation = self.compensation
+
+        incurred = self.incurred
 
         year = self.year
 
@@ -53,6 +57,7 @@ class InvoiceCost:
             {
                 "price": price,
                 "compensation": compensation,
+                "incurred": incurred,
                 "year": year,
                 "month": month,
             }
@@ -71,6 +76,8 @@ class InvoiceCost:
 
         compensation = d.pop("compensation")
 
+        incurred = d.pop("incurred")
+
         year = d.pop("year")
 
         month = d.pop("month")
@@ -85,6 +92,7 @@ class InvoiceCost:
         invoice_cost = cls(
             price=price,
             compensation=compensation,
+            incurred=incurred,
             year=year,
             month=month,
             items=items,
