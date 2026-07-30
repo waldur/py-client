@@ -1828,13 +1828,11 @@ Module: `waldur_api_client.api.marketplace_resource_access_subnets`
 ## marketplace-resource-api-keys
 Module: `waldur_api_client.api.marketplace_resource_api_keys`
 
-- `marketplace_resource_api_keys_list` GET `/api/marketplace-resource-api-keys/` (1 query param)
-- `marketplace_resource_api_keys_count` HEAD `/api/marketplace-resource-api-keys/` — Get number of items in the collection matching the request parameters (1 query param)
+- `marketplace_resource_api_keys_list` GET `/api/marketplace-resource-api-keys/` (4 query params)
+- `marketplace_resource_api_keys_count` HEAD `/api/marketplace-resource-api-keys/` — Get number of items in the collection matching the request parameters (4 query params)
 - `marketplace_resource_api_keys_report_created` POST `/api/marketplace-resource-api-keys/report_created/` — Report a freshly-applied API key (request body)
 - `marketplace_resource_api_keys_retrieve` GET `/api/marketplace-resource-api-keys/{uuid}/` (path: uuid)
-- `marketplace_resource_api_keys_destroy` DELETE `/api/marketplace-resource-api-keys/{uuid}/` (path: uuid)
 - `marketplace_resource_api_keys_reveal_retrieve` GET `/api/marketplace-resource-api-keys/{uuid}/reveal/` — Reveal an API key (path: uuid)
-- `marketplace_resource_api_keys_revoke` POST `/api/marketplace-resource-api-keys/{uuid}/revoke/` — Revoke an API key (path: uuid)
 - `marketplace_resource_api_keys_rotate` POST `/api/marketplace-resource-api-keys/{uuid}/rotate/` — Rotate an API key (path: uuid)
 - `marketplace_resource_api_keys_set_erred` POST `/api/marketplace-resource-api-keys/{uuid}/set_erred/` — Mark an API key as erred (path: uuid | request body)
 - `marketplace_resource_api_keys_set_key` POST `/api/marketplace-resource-api-keys/{uuid}/set_key/` — Report a rotated API key value (path: uuid | request body)

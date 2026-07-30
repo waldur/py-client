@@ -5,7 +5,6 @@ class ResourceApiKeyState(str, Enum):
     CREATING = "Creating"
     ERRED = "Erred"
     OK = "OK"
-    TERMINATING = "Terminating"
     UPDATING = "Updating"
 
     def __str__(self) -> str:

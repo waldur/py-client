@@ -19,6 +19,7 @@ class ResourceApiKeyStatus:
     Attributes:
         uuid (UUID):
         resource_uuid (UUID):
+        resource_backend_id (str):
         modified (datetime.datetime):
         client_id (Union[Unset, str]):
         fingerprint (Union[Unset, str]):
@@ -28,6 +29,7 @@ class ResourceApiKeyStatus:
 
     uuid: UUID
     resource_uuid: UUID
+    resource_backend_id: str
     modified: datetime.datetime
     client_id: Union[Unset, str] = UNSET
     fingerprint: Union[Unset, str] = UNSET
@@ -39,6 +41,8 @@ class ResourceApiKeyStatus:
         uuid = str(self.uuid)
 
         resource_uuid = str(self.resource_uuid)
+
+        resource_backend_id = self.resource_backend_id
 
         modified = self.modified.isoformat()
 
@@ -58,6 +62,7 @@ class ResourceApiKeyStatus:
             {
                 "uuid": uuid,
                 "resource_uuid": resource_uuid,
+                "resource_backend_id": resource_backend_id,
                 "modified": modified,
             }
         )
@@ -79,6 +84,8 @@ class ResourceApiKeyStatus:
 
         resource_uuid = UUID(d.pop("resource_uuid"))
 
+        resource_backend_id = d.pop("resource_backend_id")
+
         modified = isoparse(d.pop("modified"))
 
         client_id = d.pop("client_id", UNSET)
@@ -97,6 +104,7 @@ class ResourceApiKeyStatus:
         resource_api_key_status = cls(
             uuid=uuid,
             resource_uuid=resource_uuid,
+            resource_backend_id=resource_backend_id,
             modified=modified,
             client_id=client_id,
             fingerprint=fingerprint,

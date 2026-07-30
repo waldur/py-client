@@ -19,6 +19,7 @@ class ResourceApiKey:
     Attributes:
         uuid (UUID):
         resource_uuid (UUID):
+        resource_backend_id (str):
         modified (datetime.datetime):
         api_key (str):
         client_id (Union[Unset, str]):
@@ -29,6 +30,7 @@ class ResourceApiKey:
 
     uuid: UUID
     resource_uuid: UUID
+    resource_backend_id: str
     modified: datetime.datetime
     api_key: str
     client_id: Union[Unset, str] = UNSET
@@ -41,6 +43,8 @@ class ResourceApiKey:
         uuid = str(self.uuid)
 
         resource_uuid = str(self.resource_uuid)
+
+        resource_backend_id = self.resource_backend_id
 
         modified = self.modified.isoformat()
 
@@ -62,6 +66,7 @@ class ResourceApiKey:
             {
                 "uuid": uuid,
                 "resource_uuid": resource_uuid,
+                "resource_backend_id": resource_backend_id,
                 "modified": modified,
                 "api_key": api_key,
             }
@@ -84,6 +89,8 @@ class ResourceApiKey:
 
         resource_uuid = UUID(d.pop("resource_uuid"))
 
+        resource_backend_id = d.pop("resource_backend_id")
+
         modified = isoparse(d.pop("modified"))
 
         api_key = d.pop("api_key")
@@ -104,6 +111,7 @@ class ResourceApiKey:
         resource_api_key = cls(
             uuid=uuid,
             resource_uuid=resource_uuid,
+            resource_backend_id=resource_backend_id,
             modified=modified,
             api_key=api_key,
             client_id=client_id,

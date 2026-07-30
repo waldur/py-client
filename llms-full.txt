@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.19.dev.20260730103642
+# Version: 8.1.0-rc.19.dev.20260730123512
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -10969,15 +10969,21 @@ Path parameters:
 
 ### marketplace_resource_api_keys_list
 GET /api/marketplace-resource-api-keys/
-Query parameters (1):
+Query parameters (4):
+  - modified_before — Modified before
+  - offering_uuid — Offering UUID
   - resource_uuid — Resource UUID
+  - state — API key state
 
 ### marketplace_resource_api_keys_count
 HEAD /api/marketplace-resource-api-keys/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (1):
+Query parameters (4):
+  - modified_before — Modified before
+  - offering_uuid — Offering UUID
   - resource_uuid — Resource UUID
+  - state — API key state
 
 ### marketplace_resource_api_keys_report_created
 POST /api/marketplace-resource-api-keys/report_created/
@@ -10990,22 +10996,10 @@ GET /api/marketplace-resource-api-keys/{uuid}/
 Path parameters:
   - uuid
 
-### marketplace_resource_api_keys_destroy
-DELETE /api/marketplace-resource-api-keys/{uuid}/
-Path parameters:
-  - uuid
-
 ### marketplace_resource_api_keys_reveal_retrieve
 GET /api/marketplace-resource-api-keys/{uuid}/reveal/
 Summary: Reveal an API key
 Description: Returns the decrypted key value. Available to users with resource access (except minimal-visibility viewers). Audit-logged.
-Path parameters:
-  - uuid
-
-### marketplace_resource_api_keys_revoke
-POST /api/marketplace-resource-api-keys/{uuid}/revoke/
-Summary: Revoke an API key
-Description: Asks the site agent to remove this key from the backend. The other keys keep working.
 Path parameters:
   - uuid
 
