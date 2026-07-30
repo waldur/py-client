@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.19.dev.20260730123512
+# Version: 8.1.0-rc.19.dev.20260730144046
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -11853,8 +11853,9 @@ Description: Returns a unique, sorted list of runtime states for all resources a
         The runtime state is a backend-specific state of a resource (e.g., 'ACTIVE', 'SHUTOFF' for a VM).
         This endpoint is useful for building dynamic filters in a user interface.
         The...
-Query parameters (2):
+Query parameters (3):
   - category_uuid — Filter runtime states by resources belonging to a specific category.
+  - offering_uuid — Filter runtime states by resources of a specific offering.
   - project_uuid — Filter runtime states by resources within a specific project.
 
 ============================================================

@@ -1,5 +1,6 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -23,6 +24,7 @@ class IssueRequest:
         customer (Union[None, Unset, str]):
         project (Union[None, Unset, str]):
         resource (Union[Unset, str]):
+        offering (Union[None, UUID, Unset]):
         is_reported_manually (Union[Unset, bool]): Set true if issue is created by regular user via portal. Default:
             False.
         template (Union[None, Unset, str]):
@@ -38,6 +40,7 @@ class IssueRequest:
     customer: Union[None, Unset, str] = UNSET
     project: Union[None, Unset, str] = UNSET
     resource: Union[Unset, str] = UNSET
+    offering: Union[None, UUID, Unset] = UNSET
     is_reported_manually: Union[Unset, bool] = False
     template: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -83,6 +86,14 @@ class IssueRequest:
 
         resource = self.resource
 
+        offering: Union[None, Unset, str]
+        if isinstance(self.offering, Unset):
+            offering = UNSET
+        elif isinstance(self.offering, UUID):
+            offering = str(self.offering)
+        else:
+            offering = self.offering
+
         is_reported_manually = self.is_reported_manually
 
         template: Union[None, Unset, str]
@@ -115,6 +126,8 @@ class IssueRequest:
             field_dict["project"] = project
         if resource is not UNSET:
             field_dict["resource"] = resource
+        if offering is not UNSET:
+            field_dict["offering"] = offering
         if is_reported_manually is not UNSET:
             field_dict["is_reported_manually"] = is_reported_manually
         if template is not UNSET:
@@ -180,6 +193,23 @@ class IssueRequest:
 
         resource = d.pop("resource", UNSET)
 
+        def _parse_offering(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                offering_type_0 = UUID(data)
+
+                return offering_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        offering = _parse_offering(d.pop("offering", UNSET))
+
         is_reported_manually = d.pop("is_reported_manually", UNSET)
 
         def _parse_template(data: object) -> Union[None, Unset, str]:
@@ -202,6 +232,7 @@ class IssueRequest:
             customer=customer,
             project=project,
             resource=resource,
+            offering=offering,
             is_reported_manually=is_reported_manually,
             template=template,
         )

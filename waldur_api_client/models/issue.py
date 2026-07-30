@@ -77,6 +77,7 @@ class Issue:
         customer (Union[None, Unset, str]):
         project (Union[None, Unset, str]):
         resource (Union[Unset, str]):
+        offering (Union[None, UUID, Unset]):
         template (Union[None, Unset, str]):
         processing_log (Union[Unset, IssueProcessingLog]): Internal processing log for debugging order lifecycle events.
             Visible only to staff.
@@ -137,6 +138,7 @@ class Issue:
     customer: Union[None, Unset, str] = UNSET
     project: Union[None, Unset, str] = UNSET
     resource: Union[Unset, str] = UNSET
+    offering: Union[None, UUID, Unset] = UNSET
     template: Union[None, Unset, str] = UNSET
     processing_log: Union[Unset, "IssueProcessingLog"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -331,6 +333,14 @@ class Issue:
 
         resource = self.resource
 
+        offering: Union[None, Unset, str]
+        if isinstance(self.offering, Unset):
+            offering = UNSET
+        elif isinstance(self.offering, UUID):
+            offering = str(self.offering)
+        else:
+            offering = self.offering
+
         template: Union[None, Unset, str]
         if isinstance(self.template, Unset):
             template = UNSET
@@ -411,6 +421,8 @@ class Issue:
             field_dict["project"] = project
         if resource is not UNSET:
             field_dict["resource"] = resource
+        if offering is not UNSET:
+            field_dict["offering"] = offering
         if template is not UNSET:
             field_dict["template"] = template
         if processing_log is not UNSET:
@@ -773,6 +785,23 @@ class Issue:
 
         resource = d.pop("resource", UNSET)
 
+        def _parse_offering(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                offering_type_0 = UUID(data)
+
+                return offering_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        offering = _parse_offering(d.pop("offering", UNSET))
+
         def _parse_template(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -845,6 +874,7 @@ class Issue:
             customer=customer,
             project=project,
             resource=resource,
+            offering=offering,
             template=template,
             processing_log=processing_log,
         )

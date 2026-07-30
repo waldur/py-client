@@ -1932,7 +1932,7 @@ Module: `waldur_api_client.api.marketplace_robot_accounts`
 ## marketplace-runtime-states
 Module: `waldur_api_client.api.marketplace_runtime_states`
 
-- `marketplace_runtime_states_list` GET `/api/marketplace-runtime-states/` — List available runtime states for resources (2 query params)
+- `marketplace_runtime_states_list` GET `/api/marketplace-runtime-states/` — List available runtime states for resources (3 query params)
 
 ## marketplace-screenshots
 Module: `waldur_api_client.api.marketplace_screenshots`
