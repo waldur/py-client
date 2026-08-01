@@ -23,7 +23,6 @@ class ResourceApiKey:
         modified (datetime.datetime):
         api_key (str):
         client_id (Union[Unset, str]):
-        fingerprint (Union[Unset, str]):
         state (Union[Unset, ResourceApiKeyState]):
         error_message (Union[Unset, str]):
     """
@@ -34,7 +33,6 @@ class ResourceApiKey:
     modified: datetime.datetime
     api_key: str
     client_id: Union[Unset, str] = UNSET
-    fingerprint: Union[Unset, str] = UNSET
     state: Union[Unset, ResourceApiKeyState] = UNSET
     error_message: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -51,8 +49,6 @@ class ResourceApiKey:
         api_key = self.api_key
 
         client_id = self.client_id
-
-        fingerprint = self.fingerprint
 
         state: Union[Unset, str] = UNSET
         if not isinstance(self.state, Unset):
@@ -73,8 +69,6 @@ class ResourceApiKey:
         )
         if client_id is not UNSET:
             field_dict["client_id"] = client_id
-        if fingerprint is not UNSET:
-            field_dict["fingerprint"] = fingerprint
         if state is not UNSET:
             field_dict["state"] = state
         if error_message is not UNSET:
@@ -97,8 +91,6 @@ class ResourceApiKey:
 
         client_id = d.pop("client_id", UNSET)
 
-        fingerprint = d.pop("fingerprint", UNSET)
-
         _state = d.pop("state", UNSET)
         state: Union[Unset, ResourceApiKeyState]
         if isinstance(_state, Unset):
@@ -115,7 +107,6 @@ class ResourceApiKey:
             modified=modified,
             api_key=api_key,
             client_id=client_id,
-            fingerprint=fingerprint,
             state=state,
             error_message=error_message,
         )
