@@ -41,7 +41,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[UserInfo]:
-    """
+    """Retrieve UserInfo for current user
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -63,7 +64,8 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> UserInfo:
-    """
+    """Retrieve UserInfo for current user
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -81,7 +83,8 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[UserInfo]:
-    """
+    """Retrieve UserInfo for current user
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
@@ -101,7 +104,8 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> UserInfo:
-    """
+    """Retrieve UserInfo for current user
+
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.

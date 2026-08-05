@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.1.0-rc.23.dev.20260804135112).
+> Auto-generated Python SDK for the Waldur API (version 8.1.0-rc.23.dev.20260805170634).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -230,18 +230,22 @@ waldur_api_client/
 - **onboarding-justifications** (11 endpoints)
 - **onboarding-question-metadata** (7 endpoints)
 - **onboarding-verifications** (17 endpoints)
-- **openportal** (4 endpoints)
+- **openportal** (5 endpoints)
 - **openportal-accounting-summary** (3 endpoints)
 - **openportal-allocation-user-usage** (3 endpoints)
 - **openportal-allocations** (12 endpoints)
 - **openportal-associations** (3 endpoints)
-- **openportal-managed-projects** (9 endpoints)
+- **openportal-managed-project-audit** (3 endpoints)
+- **openportal-managed-projects** (10 endpoints)
 - **openportal-project-storage-reports** (3 endpoints)
 - **openportal-project-template** (8 endpoints)
 - **openportal-project-usage-reports** (3 endpoints)
 - **openportal-projectinfo** (9 endpoints)
 - **openportal-remote-allocations** (12 endpoints)
 - **openportal-remote-associations** (3 endpoints)
+- **openportal-remote-project-allocations** (3 endpoints)
+- **openportal-remote-project-audit** (3 endpoints)
+- **openportal-remote-projects** (13 endpoints)
 - **openportal-unmanaged-projects** (21 endpoints)
 - **openportal-userinfo** (10 endpoints)
 - **openstack** (13 endpoints)

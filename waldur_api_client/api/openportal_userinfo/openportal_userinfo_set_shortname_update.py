@@ -55,7 +55,8 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: UserInfoRequest,
 ) -> Response[UserInfo]:
-    """
+    """Set shortname for user
+
     Args:
         user (int):
         body (UserInfoRequest):
@@ -86,7 +87,8 @@ def sync(
     client: AuthenticatedClient,
     body: UserInfoRequest,
 ) -> UserInfo:
-    """
+    """Set shortname for user
+
     Args:
         user (int):
         body (UserInfoRequest):
@@ -112,7 +114,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: UserInfoRequest,
 ) -> Response[UserInfo]:
-    """
+    """Set shortname for user
+
     Args:
         user (int):
         body (UserInfoRequest):
@@ -141,7 +144,8 @@ async def asyncio(
     client: AuthenticatedClient,
     body: UserInfoRequest,
 ) -> UserInfo:
-    """
+    """Set shortname for user
+
     Args:
         user (int):
         body (UserInfoRequest):

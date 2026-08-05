@@ -2405,6 +2405,7 @@ Module: `waldur_api_client.api.openportal`
 
 - `openportal_access_for_email_list` GET `/api/openportal/access_for_email/` (1 query param)
 - `openportal_offering_mapping_retrieve` GET `/api/openportal/offering_mapping/` — Map OpenPortal destination strings to Waldur Offering objects (1 query param)
+- `openportal_project_email_policy_retrieve` GET `/api/openportal/project_email_policy/{project_uuid}/` — Return the allowed_domains list for a project derived from its AwardDetails (path: project_uuid)
 - `openportal_project_mapping_retrieve` GET `/api/openportal/project_mapping/` — Map OpenPortal ProjectIdentifier strings to Waldur Project objects (1 query param)
 - `openportal_user_mapping_retrieve` GET `/api/openportal/user_mapping/` — Map OpenPortal UserIdentifier strings (or email addresses) to Waldur User objects (1 query param)
 
@@ -2434,7 +2435,7 @@ Module: `waldur_api_client.api.openportal_allocations`
 - `openportal_allocations_destroy` DELETE `/api/openportal-allocations/{uuid}/` (path: uuid)
 - `openportal_allocations_pull` POST `/api/openportal-allocations/{uuid}/pull/` — Synchronize resource state (path: uuid)
 - `openportal_allocations_set_erred` POST `/api/openportal-allocations/{uuid}/set_erred/` — Mark resource as ERRED (path: uuid | request body)
-- `openportal_allocations_set_limits` POST `/api/openportal-allocations/{uuid}/set_limits/` (path: uuid | request body)
+- `openportal_allocations_set_limits` POST `/api/openportal-allocations/{uuid}/set_limits/` — Set limits for allocation (path: uuid | request body)
 - `openportal_allocations_set_ok` POST `/api/openportal-allocations/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
 - `openportal_allocations_unlink` POST `/api/openportal-allocations/{uuid}/unlink/` — Unlink resource (path: uuid)
 
@@ -2445,13 +2446,21 @@ Module: `waldur_api_client.api.openportal_associations`
 - `openportal_associations_count` HEAD `/api/openportal-associations/` — Get number of items in the collection matching the request parameters (2 query params)
 - `openportal_associations_retrieve` GET `/api/openportal-associations/{uuid}/` (path: uuid)
 
+## openportal-managed-project-audit
+Module: `waldur_api_client.api.openportal_managed_project_audit`
+
+- `openportal_managed_project_audit_list` GET `/api/openportal-managed-project-audit/` (7 query params)
+- `openportal_managed_project_audit_count` HEAD `/api/openportal-managed-project-audit/` — Get number of items in the collection matching the request parameters (7 query params)
+- `openportal_managed_project_audit_retrieve` GET `/api/openportal-managed-project-audit/{id}/` (path: id)
+
 ## openportal-managed-projects
 Module: `waldur_api_client.api.openportal_managed_projects`
 
-- `openportal_managed_projects_list` GET `/api/openportal-managed-projects/` — List all managed projects (9 query params)
-- `openportal_managed_projects_count` HEAD `/api/openportal-managed-projects/` — Get number of items in the collection matching the request parameters (9 query params)
+- `openportal_managed_projects_list` GET `/api/openportal-managed-projects/` — List all managed projects (10 query params)
+- `openportal_managed_projects_count` HEAD `/api/openportal-managed-projects/` — Get number of items in the collection matching the request parameters (10 query params)
 - `openportal_managed_projects_retrieve_get` GET `/api/openportal-managed-projects/{identifier}/{destination}/` — Retrieve a managed project (path: destination, identifier)
 - `openportal_managed_projects_retrieve_head` HEAD `/api/openportal-managed-projects/{identifier}/{destination}/` — Get number of items in the collection matching the request parameters (path: destination, identifier)
+- `openportal_managed_projects_add_note` POST `/api/openportal-managed-projects/{identifier}/{destination}/add-note/` — Append a note to the managed project (path: destination, identifier | request body)
 - `openportal_managed_projects_approve` POST `/api/openportal-managed-projects/{identifier}/{destination}/approve/` — Approve managed project request (path: destination, identifier | request body)
 - `openportal_managed_projects_attach` POST `/api/openportal-managed-projects/{identifier}/{destination}/attach/` — Attach a project to this managed project (path: destination, identifier | request body)
 - `openportal_managed_projects_delete_destroy` DELETE `/api/openportal-managed-projects/{identifier}/{destination}/delete/` — Delete ManagedProject object (path: destination, identifier)
@@ -2494,8 +2503,8 @@ Module: `waldur_api_client.api.openportal_projectinfo`
 - `openportal_projectinfo_update` PUT `/api/openportal-projectinfo/{project}/` (path: project | request body)
 - `openportal_projectinfo_partial_update` PATCH `/api/openportal-projectinfo/{project}/` (path: project | request body)
 - `openportal_projectinfo_destroy` DELETE `/api/openportal-projectinfo/{project}/` (path: project)
-- `openportal_projectinfo_set_allowed_destinations_update` PUT `/api/openportal-projectinfo/{project}/set_allowed_destinations/` (path: project | request body)
-- `openportal_projectinfo_set_shortname_update` PUT `/api/openportal-projectinfo/{project}/set_shortname/` (path: project | request body)
+- `openportal_projectinfo_set_allowed_destinations_update` PUT `/api/openportal-projectinfo/{project}/set_allowed_destinations/` — Set allowed destinations for project (path: project | request body)
+- `openportal_projectinfo_set_shortname_update` PUT `/api/openportal-projectinfo/{project}/set_shortname/` — Set shortname for project (path: project | request body)
 
 ## openportal-remote-allocations
 Module: `waldur_api_client.api.openportal_remote_allocations`
@@ -2509,7 +2518,7 @@ Module: `waldur_api_client.api.openportal_remote_allocations`
 - `openportal_remote_allocations_destroy` DELETE `/api/openportal-remote-allocations/{uuid}/` (path: uuid)
 - `openportal_remote_allocations_pull` POST `/api/openportal-remote-allocations/{uuid}/pull/` — Synchronize resource state (path: uuid)
 - `openportal_remote_allocations_set_erred` POST `/api/openportal-remote-allocations/{uuid}/set_erred/` — Mark resource as ERRED (path: uuid | request body)
-- `openportal_remote_allocations_set_limits` POST `/api/openportal-remote-allocations/{uuid}/set_limits/` (path: uuid | request body)
+- `openportal_remote_allocations_set_limits` POST `/api/openportal-remote-allocations/{uuid}/set_limits/` — Set limits for allocation (path: uuid | request body)
 - `openportal_remote_allocations_set_ok` POST `/api/openportal-remote-allocations/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
 - `openportal_remote_allocations_unlink` POST `/api/openportal-remote-allocations/{uuid}/unlink/` — Unlink resource (path: uuid)
 
@@ -2519,6 +2528,37 @@ Module: `waldur_api_client.api.openportal_remote_associations`
 - `openportal_remote_associations_list` GET `/api/openportal-remote-associations/` (2 query params)
 - `openportal_remote_associations_count` HEAD `/api/openportal-remote-associations/` — Get number of items in the collection matching the request parameters (2 query params)
 - `openportal_remote_associations_retrieve` GET `/api/openportal-remote-associations/{uuid}/` (path: uuid)
+
+## openportal-remote-project-allocations
+Module: `waldur_api_client.api.openportal_remote_project_allocations`
+
+- `openportal_remote_project_allocations_list` GET `/api/openportal-remote-project-allocations/` (3 query params)
+- `openportal_remote_project_allocations_count` HEAD `/api/openportal-remote-project-allocations/` — Get number of items in the collection matching the request parameters (3 query params)
+- `openportal_remote_project_allocations_retrieve` GET `/api/openportal-remote-project-allocations/{id}/` (path: id)
+
+## openportal-remote-project-audit
+Module: `waldur_api_client.api.openportal_remote_project_audit`
+
+- `openportal_remote_project_audit_list` GET `/api/openportal-remote-project-audit/` (7 query params)
+- `openportal_remote_project_audit_count` HEAD `/api/openportal-remote-project-audit/` — Get number of items in the collection matching the request parameters (7 query params)
+- `openportal_remote_project_audit_retrieve` GET `/api/openportal-remote-project-audit/{id}/` (path: id)
+
+## openportal-remote-projects
+Module: `waldur_api_client.api.openportal_remote_projects`
+
+- `openportal_remote_projects_list` GET `/api/openportal-remote-projects/` (9 query params)
+- `openportal_remote_projects_count` HEAD `/api/openportal-remote-projects/` — Get number of items in the collection matching the request parameters (9 query params)
+- `openportal_remote_projects_retrieve` GET `/api/openportal-remote-projects/{uuid}/` (path: uuid)
+- `openportal_remote_projects_add_note` POST `/api/openportal-remote-projects/{uuid}/add-note/` — Add note to remote project (path: uuid | request body)
+- `openportal_remote_projects_approve_now` POST `/api/openportal-remote-projects/{uuid}/approve-now/` — Approve remote project now (path: uuid)
+- `openportal_remote_projects_hold_indefinitely` POST `/api/openportal-remote-projects/{uuid}/hold-indefinitely/` — Hold remote project indefinitely (path: uuid)
+- `openportal_remote_projects_resend_request` POST `/api/openportal-remote-projects/{uuid}/resend-request/` — Resend remote project request (path: uuid)
+- `openportal_remote_projects_reset_to_pending` POST `/api/openportal-remote-projects/{uuid}/reset-to-pending/` — Reset remote project to pending (path: uuid)
+- `openportal_remote_projects_set_allowed_domains` POST `/api/openportal-remote-projects/{uuid}/set-allowed-domains/` — Set allowed domains for remote project (path: uuid | request body)
+- `openportal_remote_projects_set_earliest_approve` POST `/api/openportal-remote-projects/{uuid}/set-earliest-approve/` — Set earliest approve date for remote project (path: uuid | request body)
+- `openportal_remote_projects_set_links` POST `/api/openportal-remote-projects/{uuid}/set-links/` — Set links for remote project (path: uuid | request body)
+- `openportal_remote_projects_set_membership_control` POST `/api/openportal-remote-projects/{uuid}/set-membership-control/` — Set membership control for remote project (path: uuid | request body)
+- `openportal_remote_projects_total_usage_retrieve` GET `/api/openportal-remote-projects/{uuid}/total-usage/` — Get total usage for remote project (path: uuid)
 
 ## openportal-unmanaged-projects
 Module: `waldur_api_client.api.openportal_unmanaged_projects`
@@ -2551,13 +2591,13 @@ Module: `waldur_api_client.api.openportal_userinfo`
 - `openportal_userinfo_list` GET `/api/openportal-userinfo/` (2 query params)
 - `openportal_userinfo_count` HEAD `/api/openportal-userinfo/` — Get number of items in the collection matching the request parameters (2 query params)
 - `openportal_userinfo_create` POST `/api/openportal-userinfo/` (request body)
-- `openportal_userinfo_me_retrieve` GET `/api/openportal-userinfo/me/` (no params)
+- `openportal_userinfo_me_retrieve` GET `/api/openportal-userinfo/me/` — Retrieve UserInfo for current user (no params)
 - `openportal_userinfo_me_count` HEAD `/api/openportal-userinfo/me/` — Get number of items in the collection matching the request parameters (no params)
 - `openportal_userinfo_retrieve` GET `/api/openportal-userinfo/{user}/` (path: user)
 - `openportal_userinfo_update` PUT `/api/openportal-userinfo/{user}/` (path: user | request body)
 - `openportal_userinfo_partial_update` PATCH `/api/openportal-userinfo/{user}/` (path: user | request body)
 - `openportal_userinfo_destroy` DELETE `/api/openportal-userinfo/{user}/` (path: user)
-- `openportal_userinfo_set_shortname_update` PUT `/api/openportal-userinfo/{user}/set_shortname/` (path: user | request body)
+- `openportal_userinfo_set_shortname_update` PUT `/api/openportal-userinfo/{user}/set_shortname/` — Set shortname for user (path: user | request body)
 
 ## openstack
 Module: `waldur_api_client.api.openstack`

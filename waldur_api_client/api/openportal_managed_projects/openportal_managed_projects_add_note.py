@@ -5,21 +5,22 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.project_info import ProjectInfo
-from ...models.project_info_request import ProjectInfoRequest
+from ...models.add_managed_project_note_request import AddManagedProjectNoteRequest
+from ...models.managed_project import ManagedProject
 from ...types import Response
 
 
 def _get_kwargs(
-    project: int,
+    identifier: str,
+    destination: str,
     *,
-    body: ProjectInfoRequest,
+    body: AddManagedProjectNoteRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
-        "method": "put",
-        "url": f"/api/openportal-projectinfo/{project}/set_shortname/",
+        "method": "post",
+        "url": f"/api/openportal-managed-projects/{identifier}/{destination}/add-note/",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -30,17 +31,19 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ProjectInfo:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ManagedProject:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = ProjectInfo.from_dict(response.json())
+        response_200 = ManagedProject.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[ProjectInfo]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[ManagedProject]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -50,27 +53,30 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 
 def sync_detailed(
-    project: int,
+    identifier: str,
+    destination: str,
     *,
     client: AuthenticatedClient,
-    body: ProjectInfoRequest,
-) -> Response[ProjectInfo]:
-    """Set shortname for project
+    body: AddManagedProjectNoteRequest,
+) -> Response[ManagedProject]:
+    """Append a note to the managed project. Author and timestamp are set automatically.
 
     Args:
-        project (int):
-        body (ProjectInfoRequest):
+        identifier (str):
+        destination (str):
+        body (AddManagedProjectNoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProjectInfo]
+        Response[ManagedProject]
     """
 
     kwargs = _get_kwargs(
-        project=project,
+        identifier=identifier,
+        destination=destination,
         body=body,
     )
 
@@ -82,54 +88,60 @@ def sync_detailed(
 
 
 def sync(
-    project: int,
+    identifier: str,
+    destination: str,
     *,
     client: AuthenticatedClient,
-    body: ProjectInfoRequest,
-) -> ProjectInfo:
-    """Set shortname for project
+    body: AddManagedProjectNoteRequest,
+) -> ManagedProject:
+    """Append a note to the managed project. Author and timestamp are set automatically.
 
     Args:
-        project (int):
-        body (ProjectInfoRequest):
+        identifier (str):
+        destination (str):
+        body (AddManagedProjectNoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProjectInfo
+        ManagedProject
     """
 
     return sync_detailed(
-        project=project,
+        identifier=identifier,
+        destination=destination,
         client=client,
         body=body,
     ).parsed
 
 
 async def asyncio_detailed(
-    project: int,
+    identifier: str,
+    destination: str,
     *,
     client: AuthenticatedClient,
-    body: ProjectInfoRequest,
-) -> Response[ProjectInfo]:
-    """Set shortname for project
+    body: AddManagedProjectNoteRequest,
+) -> Response[ManagedProject]:
+    """Append a note to the managed project. Author and timestamp are set automatically.
 
     Args:
-        project (int):
-        body (ProjectInfoRequest):
+        identifier (str):
+        destination (str):
+        body (AddManagedProjectNoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProjectInfo]
+        Response[ManagedProject]
     """
 
     kwargs = _get_kwargs(
-        project=project,
+        identifier=identifier,
+        destination=destination,
         body=body,
     )
 
@@ -139,28 +151,31 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    project: int,
+    identifier: str,
+    destination: str,
     *,
     client: AuthenticatedClient,
-    body: ProjectInfoRequest,
-) -> ProjectInfo:
-    """Set shortname for project
+    body: AddManagedProjectNoteRequest,
+) -> ManagedProject:
+    """Append a note to the managed project. Author and timestamp are set automatically.
 
     Args:
-        project (int):
-        body (ProjectInfoRequest):
+        identifier (str):
+        destination (str):
+        body (AddManagedProjectNoteRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProjectInfo
+        ManagedProject
     """
 
     return (
         await asyncio_detailed(
-            project=project,
+            identifier=identifier,
+            destination=destination,
             client=client,
             body=body,
         )

@@ -15,6 +15,8 @@ from .action_taken_enum import ActionTakenEnum
 from .active_agent_task import ActiveAgentTask
 from .active_queries_stats import ActiveQueriesStats
 from .active_query import ActiveQuery
+from .add_managed_project_note_request import AddManagedProjectNoteRequest
+from .add_note_request import AddNoteRequest
 from .adjust_resource_dates_request import AdjustResourceDatesRequest
 from .admin_announcement import AdminAnnouncement
 from .admin_announcement_field_enum import AdminAnnouncementFieldEnum
@@ -196,6 +198,9 @@ from .available_external_network_source_enum import AvailableExternalNetworkSour
 from .available_external_network_subnet import AvailableExternalNetworkSubnet
 from .available_project_digest_section import AvailableProjectDigestSection
 from .available_scope import AvailableScope
+from .award_details import AwardDetails
+from .award_details_breakdown import AwardDetailsBreakdown
+from .award_details_members_type_0 import AwardDetailsMembersType0
 from .aws_image import AwsImage
 from .aws_instance import AwsInstance
 from .aws_instance_field_enum import AwsInstanceFieldEnum
@@ -1002,7 +1007,9 @@ from .license_suggestion import LicenseSuggestion
 from .likert_scale_length_enum import LikertScaleLengthEnum
 from .limit_period_enum import LimitPeriodEnum
 from .limit_type_enum import LimitTypeEnum
+from .link import Link
 from .link_openstack_request import LinkOpenstackRequest
+from .link_request import LinkRequest
 from .link_resource_request_request import LinkResourceRequestRequest
 from .link_resource_response import LinkResourceResponse
 from .link_to_invoice_request import LinkToInvoiceRequest
@@ -1041,7 +1048,8 @@ from .maintenance_stats_response_by_type import MaintenanceStatsResponseByType
 from .maintenance_stats_summary import MaintenanceStatsSummary
 from .maintenance_type_enum import MaintenanceTypeEnum
 from .managed_project import ManagedProject
-from .managed_project_details import ManagedProjectDetails
+from .managed_project_audit_entry import ManagedProjectAuditEntry
+from .managed_project_audit_entry_event_type_enum import ManagedProjectAuditEntryEventTypeEnum
 from .managed_rancher_create_node_request import ManagedRancherCreateNodeRequest
 from .mapping import Mapping
 from .mapping_request import MappingRequest
@@ -1119,6 +1127,7 @@ from .member_sync_status_entry_scope_type_enum import MemberSyncStatusEntryScope
 from .member_sync_status_entry_state_enum import MemberSyncStatusEntryStateEnum
 from .member_sync_status_report_request import MemberSyncStatusReportRequest
 from .member_sync_status_report_result import MemberSyncStatusReportResult
+from .membership_control_enum import MembershipControlEnum
 from .membership_state_enum import MembershipStateEnum
 from .merged_plugin_options import MergedPluginOptions
 from .merged_plugin_options_request import MergedPluginOptionsRequest
@@ -1233,6 +1242,7 @@ from .network_rbac_policy import NetworkRBACPolicy
 from .network_rbac_policy_direction_enum import NetworkRBACPolicyDirectionEnum
 from .network_rbac_policy_request import NetworkRBACPolicyRequest
 from .node_disk_driver_enum import NodeDiskDriverEnum
+from .note import Note
 from .notification import Notification
 from .notification_context_schema import NotificationContextSchema
 from .notification_recipient import NotificationRecipient
@@ -1600,6 +1610,10 @@ from .open_stack_volume_metadata import OpenStackVolumeMetadata
 from .open_stack_volume_request import OpenStackVolumeRequest
 from .open_stack_volume_retype_request import OpenStackVolumeRetypeRequest
 from .open_stack_volume_type import OpenStackVolumeType
+from .openportal_remote_projects_total_usage_retrieve_response_200 import (
+    OpenportalRemoteProjectsTotalUsageRetrieveResponse200,
+)
+from .openportalmembershipsyncmode_enum import OPENPORTALMEMBERSHIPSYNCMODEEnum
 from .openstack_flavors_usage_stats_retrieve_response_200 import OpenstackFlavorsUsageStatsRetrieveResponse200
 from .openstack_tenants_set_quotas_body import OpenstackTenantsSetQuotasBody
 from .option_field import OptionField
@@ -1978,6 +1992,7 @@ from .project_digest_config import ProjectDigestConfig
 from .project_digest_config_request import ProjectDigestConfigRequest
 from .project_digest_preview_request import ProjectDigestPreviewRequest
 from .project_digest_preview_response import ProjectDigestPreviewResponse
+from .project_email_policy_response import ProjectEmailPolicyResponse
 from .project_end_date_change_request import ProjectEndDateChangeRequest
 from .project_end_date_change_request_create import ProjectEndDateChangeRequestCreate
 from .project_end_date_change_request_create_request import ProjectEndDateChangeRequestCreateRequest
@@ -2296,7 +2311,6 @@ from .remote_allocation_marketplace_offering_plugin_options_type_0 import (
     RemoteAllocationMarketplaceOfferingPluginOptionsType0,
 )
 from .remote_allocation_request import RemoteAllocationRequest
-from .remote_allocation_set_limits_request import RemoteAllocationSetLimitsRequest
 from .remote_association import RemoteAssociation
 from .remote_credentials_request import RemoteCredentialsRequest
 from .remote_customer import RemoteCustomer
@@ -2305,6 +2319,13 @@ from .remote_eduteams_uuid import RemoteEduteamsUUID
 from .remote_offering import RemoteOffering
 from .remote_offering_create_request import RemoteOfferingCreateRequest
 from .remote_offering_create_response import RemoteOfferingCreateResponse
+from .remote_project import RemoteProject
+from .remote_project_allocation_entry import RemoteProjectAllocationEntry
+from .remote_project_audit_entry import RemoteProjectAuditEntry
+from .remote_project_audit_entry_event_type_enum import RemoteProjectAuditEntryEventTypeEnum
+from .remote_project_audit_entry_remote_response_type_0 import RemoteProjectAuditEntryRemoteResponseType0
+from .remote_project_breakdown import RemoteProjectBreakdown
+from .remote_project_state_enum import RemoteProjectStateEnum
 from .remote_project_update_request import RemoteProjectUpdateRequest
 from .remote_project_update_request_state_enum import RemoteProjectUpdateRequestStateEnum
 from .remote_resource_order import RemoteResourceOrder
@@ -2609,9 +2630,13 @@ from .service_settings_field_enum import ServiceSettingsFieldEnum
 from .service_settings_options import ServiceSettingsOptions
 from .service_settings_state_enum import ServiceSettingsStateEnum
 from .set_allowed_address_pairs_request import SetAllowedAddressPairsRequest
+from .set_allowed_domains_request import SetAllowedDomainsRequest
+from .set_earliest_approve_request import SetEarliestApproveRequest
 from .set_erred_request import SetErredRequest
 from .set_external_gateway_fixed_ip_request import SetExternalGatewayFixedIPRequest
 from .set_external_gateway_request import SetExternalGatewayRequest
+from .set_links_request import SetLinksRequest
+from .set_membership_control_request import SetMembershipControlRequest
 from .set_mtu import SetMtu
 from .set_mtu_request import SetMtuRequest
 from .set_offerings_username_request import SetOfferingsUsernameRequest
@@ -2964,6 +2989,8 @@ __all__ = (
     "ActiveAgentTask",
     "ActiveQueriesStats",
     "ActiveQuery",
+    "AddManagedProjectNoteRequest",
+    "AddNoteRequest",
     "AdjustResourceDatesRequest",
     "AdminAnnouncement",
     "AdminAnnouncementFieldEnum",
@@ -3143,6 +3170,9 @@ __all__ = (
     "AvailableExternalNetworkSubnet",
     "AvailableProjectDigestSection",
     "AvailableScope",
+    "AwardDetails",
+    "AwardDetailsBreakdown",
+    "AwardDetailsMembersType0",
     "AwsImage",
     "AwsInstance",
     "AwsInstanceFieldEnum",
@@ -3923,7 +3953,9 @@ __all__ = (
     "LikertScaleLengthEnum",
     "LimitPeriodEnum",
     "LimitTypeEnum",
+    "Link",
     "LinkOpenstackRequest",
+    "LinkRequest",
     "LinkResourceRequestRequest",
     "LinkResourceResponse",
     "LinkToInvoiceRequest",
@@ -3962,7 +3994,8 @@ __all__ = (
     "MaintenanceStatsSummary",
     "MaintenanceTypeEnum",
     "ManagedProject",
-    "ManagedProjectDetails",
+    "ManagedProjectAuditEntry",
+    "ManagedProjectAuditEntryEventTypeEnum",
     "ManagedRancherCreateNodeRequest",
     "Mapping",
     "MappingRequest",
@@ -4022,6 +4055,7 @@ __all__ = (
     "MatrixRoomMember",
     "MatrixRoomMemberSummary",
     "MatrixRoomStateEnum",
+    "MembershipControlEnum",
     "MembershipStateEnum",
     "MemberSyncStatusEntryRequest",
     "MemberSyncStatusEntryScopeTypeEnum",
@@ -4140,6 +4174,7 @@ __all__ = (
     "NetworkRBACPolicyDirectionEnum",
     "NetworkRBACPolicyRequest",
     "NodeDiskDriverEnum",
+    "Note",
     "Notification",
     "NotificationContextSchema",
     "NotificationRecipient",
@@ -4323,7 +4358,9 @@ __all__ = (
     "OnboardingVerificationValidationMethodEnum",
     "OnboardingVerificationVerifiedCompanyData",
     "OnboardingVerificationVerifiedUserRoles",
+    "OPENPORTALMEMBERSHIPSYNCMODEEnum",
     "OpenPortalQuota",
+    "OpenportalRemoteProjectsTotalUsageRetrieveResponse200",
     "OpenStackAllowedAddressPair",
     "OpenStackAllowedAddressPairRequest",
     "OpenStackBackendInstance",
@@ -4821,6 +4858,7 @@ __all__ = (
     "ProjectDigestConfigRequest",
     "ProjectDigestPreviewRequest",
     "ProjectDigestPreviewResponse",
+    "ProjectEmailPolicyResponse",
     "ProjectEndDateChangeRequest",
     "ProjectEndDateChangeRequestCreate",
     "ProjectEndDateChangeRequestCreateRequest",
@@ -5117,7 +5155,6 @@ __all__ = (
     "RemoteAllocationFieldEnum",
     "RemoteAllocationMarketplaceOfferingPluginOptionsType0",
     "RemoteAllocationRequest",
-    "RemoteAllocationSetLimitsRequest",
     "RemoteAssociation",
     "RemoteCredentialsRequest",
     "RemoteCustomer",
@@ -5126,6 +5163,13 @@ __all__ = (
     "RemoteOffering",
     "RemoteOfferingCreateRequest",
     "RemoteOfferingCreateResponse",
+    "RemoteProject",
+    "RemoteProjectAllocationEntry",
+    "RemoteProjectAuditEntry",
+    "RemoteProjectAuditEntryEventTypeEnum",
+    "RemoteProjectAuditEntryRemoteResponseType0",
+    "RemoteProjectBreakdown",
+    "RemoteProjectStateEnum",
     "RemoteProjectUpdateRequest",
     "RemoteProjectUpdateRequestStateEnum",
     "RemoteResourceOrder",
@@ -5428,9 +5472,13 @@ __all__ = (
     "ServiceSettingsOptions",
     "ServiceSettingsStateEnum",
     "SetAllowedAddressPairsRequest",
+    "SetAllowedDomainsRequest",
+    "SetEarliestApproveRequest",
     "SetErredRequest",
     "SetExternalGatewayFixedIPRequest",
     "SetExternalGatewayRequest",
+    "SetLinksRequest",
+    "SetMembershipControlRequest",
     "SetMtu",
     "SetMtuRequest",
     "SetOfferingsUsernameRequest",

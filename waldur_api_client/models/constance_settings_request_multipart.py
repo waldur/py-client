@@ -19,6 +19,7 @@ from ..models.marketplacelayoutmode_enum import MARKETPLACELAYOUTMODEEnum
 from ..models.notify_system_enum import NotifySystemEnum
 from ..models.offering_type_enum import OfferingTypeEnum
 from ..models.onboarding_validation_enum import OnboardingValidationEnum
+from ..models.openportalmembershipsyncmode_enum import OPENPORTALMEMBERSHIPSYNCMODEEnum
 from ..models.restrictedofferingvisibilitymode_enum import RESTRICTEDOFFERINGVISIBILITYMODEEnum
 from ..models.scriptrunmode_enum import SCRIPTRUNMODEEnum
 from ..models.sidebarstyle_enum import SIDEBARSTYLEEnum
@@ -57,6 +58,7 @@ class ConstanceSettingsRequestMultipart:
         show_offering_cover_image (Union[Unset, bool]):
         anonymous_user_can_view_plans (Union[Unset, bool]):
         restricted_offering_visibility_mode (Union[Unset, RESTRICTEDOFFERINGVISIBILITYMODEEnum]):
+        openportal_membership_sync_mode (Union[Unset, OPENPORTALMEMBERSHIPSYNCMODEEnum]):
         allow_service_provider_offering_management (Union[Unset, bool]):
         notify_staff_about_approvals (Union[Unset, bool]):
         notify_about_resource_change (Union[Unset, bool]):
@@ -378,6 +380,7 @@ class ConstanceSettingsRequestMultipart:
     show_offering_cover_image: Union[Unset, bool] = UNSET
     anonymous_user_can_view_plans: Union[Unset, bool] = UNSET
     restricted_offering_visibility_mode: Union[Unset, RESTRICTEDOFFERINGVISIBILITYMODEEnum] = UNSET
+    openportal_membership_sync_mode: Union[Unset, OPENPORTALMEMBERSHIPSYNCMODEEnum] = UNSET
     allow_service_provider_offering_management: Union[Unset, bool] = UNSET
     notify_staff_about_approvals: Union[Unset, bool] = UNSET
     notify_about_resource_change: Union[Unset, bool] = UNSET
@@ -717,6 +720,10 @@ class ConstanceSettingsRequestMultipart:
         restricted_offering_visibility_mode: Union[Unset, str] = UNSET
         if not isinstance(self.restricted_offering_visibility_mode, Unset):
             restricted_offering_visibility_mode = self.restricted_offering_visibility_mode.value
+
+        openportal_membership_sync_mode: Union[Unset, str] = UNSET
+        if not isinstance(self.openportal_membership_sync_mode, Unset):
+            openportal_membership_sync_mode = self.openportal_membership_sync_mode.value
 
         allow_service_provider_offering_management = self.allow_service_provider_offering_management
 
@@ -1619,6 +1626,8 @@ class ConstanceSettingsRequestMultipart:
             field_dict["ANONYMOUS_USER_CAN_VIEW_PLANS"] = anonymous_user_can_view_plans
         if restricted_offering_visibility_mode is not UNSET:
             field_dict["RESTRICTED_OFFERING_VISIBILITY_MODE"] = restricted_offering_visibility_mode
+        if openportal_membership_sync_mode is not UNSET:
+            field_dict["OPENPORTAL_MEMBERSHIP_SYNC_MODE"] = openportal_membership_sync_mode
         if allow_service_provider_offering_management is not UNSET:
             field_dict["ALLOW_SERVICE_PROVIDER_OFFERING_MANAGEMENT"] = allow_service_provider_offering_management
         if notify_staff_about_approvals is not UNSET:
@@ -2311,6 +2320,14 @@ class ConstanceSettingsRequestMultipart:
                 (
                     "RESTRICTED_OFFERING_VISIBILITY_MODE",
                     (None, str(self.restricted_offering_visibility_mode.value).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.openportal_membership_sync_mode, Unset):
+            files.append(
+                (
+                    "OPENPORTAL_MEMBERSHIP_SYNC_MODE",
+                    (None, str(self.openportal_membership_sync_mode.value).encode(), "text/plain"),
                 )
             )
 
@@ -4167,6 +4184,13 @@ class ConstanceSettingsRequestMultipart:
                 _restricted_offering_visibility_mode
             )
 
+        _openportal_membership_sync_mode = d.pop("OPENPORTAL_MEMBERSHIP_SYNC_MODE", UNSET)
+        openportal_membership_sync_mode: Union[Unset, OPENPORTALMEMBERSHIPSYNCMODEEnum]
+        if isinstance(_openportal_membership_sync_mode, Unset):
+            openportal_membership_sync_mode = UNSET
+        else:
+            openportal_membership_sync_mode = OPENPORTALMEMBERSHIPSYNCMODEEnum(_openportal_membership_sync_mode)
+
         allow_service_provider_offering_management = d.pop("ALLOW_SERVICE_PROVIDER_OFFERING_MANAGEMENT", UNSET)
 
         notify_staff_about_approvals = d.pop("NOTIFY_STAFF_ABOUT_APPROVALS", UNSET)
@@ -5347,6 +5371,7 @@ class ConstanceSettingsRequestMultipart:
             show_offering_cover_image=show_offering_cover_image,
             anonymous_user_can_view_plans=anonymous_user_can_view_plans,
             restricted_offering_visibility_mode=restricted_offering_visibility_mode,
+            openportal_membership_sync_mode=openportal_membership_sync_mode,
             allow_service_provider_offering_management=allow_service_provider_offering_management,
             notify_staff_about_approvals=notify_staff_about_approvals,
             notify_about_resource_change=notify_about_resource_change,

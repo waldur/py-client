@@ -6,32 +6,36 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.remote_project_update_request_state_enum import RemoteProjectUpdateRequestStateEnum
+from ...models.remote_project_state_enum import RemoteProjectStateEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
-    hide_embargoed: Union[Unset, bool] = UNSET,
+    customer: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    destination: Union[Unset, str] = UNSET,
     identifier: Union[Unset, str] = UNSET,
-    local_identifier: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
-    project_template: Union[Unset, str] = UNSET,
-    project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
+    state: Union[Unset, list[RemoteProjectStateEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    params["hide_embargoed"] = hide_embargoed
+    params["customer"] = customer
+
+    json_customer_uuid: Union[Unset, str] = UNSET
+    if not isinstance(customer_uuid, Unset):
+        json_customer_uuid = str(customer_uuid)
+    params["customer_uuid"] = json_customer_uuid
+
+    params["destination"] = destination
 
     params["identifier"] = identifier
-
-    params["local_identifier"] = local_identifier
 
     params["o"] = o
 
@@ -40,13 +44,6 @@ def _get_kwargs(
     params["page_size"] = page_size
 
     params["project"] = project
-
-    params["project_template"] = project_template
-
-    json_project_template_uuid: Union[Unset, str] = UNSET
-    if not isinstance(project_template_uuid, Unset):
-        json_project_template_uuid = str(project_template_uuid)
-    params["project_template_uuid"] = json_project_template_uuid
 
     json_project_uuid: Union[Unset, str] = UNSET
     if not isinstance(project_uuid, Unset):
@@ -68,7 +65,7 @@ def _get_kwargs(
 
     _kwargs: dict[str, Any] = {
         "method": "head",
-        "url": "/api/openportal-managed-projects/",
+        "url": "/api/openportal-remote-projects/",
         "params": params,
     }
 
@@ -104,34 +101,32 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    hide_embargoed: Union[Unset, bool] = UNSET,
+    customer: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    destination: Union[Unset, str] = UNSET,
     identifier: Union[Unset, str] = UNSET,
-    local_identifier: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
-    project_template: Union[Unset, str] = UNSET,
-    project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
+    state: Union[Unset, list[RemoteProjectStateEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        hide_embargoed (Union[Unset, bool]):
+        customer (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        destination (Union[Unset, str]):
         identifier (Union[Unset, str]):
-        local_identifier (Union[Unset, str]):
         o (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
-        project_template (Union[Unset, str]):
-        project_template_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
-        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
+        state (Union[Unset, list[RemoteProjectStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -142,15 +137,14 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        hide_embargoed=hide_embargoed,
+        customer=customer,
+        customer_uuid=customer_uuid,
+        destination=destination,
         identifier=identifier,
-        local_identifier=local_identifier,
         o=o,
         page=page,
         page_size=page_size,
         project=project,
-        project_template=project_template,
-        project_template_uuid=project_template_uuid,
         project_uuid=project_uuid,
         query=query,
         state=state,
@@ -166,34 +160,32 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    hide_embargoed: Union[Unset, bool] = UNSET,
+    customer: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    destination: Union[Unset, str] = UNSET,
     identifier: Union[Unset, str] = UNSET,
-    local_identifier: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
-    project_template: Union[Unset, str] = UNSET,
-    project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
+    state: Union[Unset, list[RemoteProjectStateEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        hide_embargoed (Union[Unset, bool]):
+        customer (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        destination (Union[Unset, str]):
         identifier (Union[Unset, str]):
-        local_identifier (Union[Unset, str]):
         o (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
-        project_template (Union[Unset, str]):
-        project_template_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
-        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
+        state (Union[Unset, list[RemoteProjectStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -205,15 +197,14 @@ def sync(
 
     return sync_detailed(
         client=client,
-        hide_embargoed=hide_embargoed,
+        customer=customer,
+        customer_uuid=customer_uuid,
+        destination=destination,
         identifier=identifier,
-        local_identifier=local_identifier,
         o=o,
         page=page,
         page_size=page_size,
         project=project,
-        project_template=project_template,
-        project_template_uuid=project_template_uuid,
         project_uuid=project_uuid,
         query=query,
         state=state,
@@ -223,34 +214,32 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    hide_embargoed: Union[Unset, bool] = UNSET,
+    customer: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    destination: Union[Unset, str] = UNSET,
     identifier: Union[Unset, str] = UNSET,
-    local_identifier: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
-    project_template: Union[Unset, str] = UNSET,
-    project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
+    state: Union[Unset, list[RemoteProjectStateEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        hide_embargoed (Union[Unset, bool]):
+        customer (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        destination (Union[Unset, str]):
         identifier (Union[Unset, str]):
-        local_identifier (Union[Unset, str]):
         o (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
-        project_template (Union[Unset, str]):
-        project_template_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
-        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
+        state (Union[Unset, list[RemoteProjectStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -261,15 +250,14 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        hide_embargoed=hide_embargoed,
+        customer=customer,
+        customer_uuid=customer_uuid,
+        destination=destination,
         identifier=identifier,
-        local_identifier=local_identifier,
         o=o,
         page=page,
         page_size=page_size,
         project=project,
-        project_template=project_template,
-        project_template_uuid=project_template_uuid,
         project_uuid=project_uuid,
         query=query,
         state=state,
@@ -283,34 +271,32 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    hide_embargoed: Union[Unset, bool] = UNSET,
+    customer: Union[Unset, str] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    destination: Union[Unset, str] = UNSET,
     identifier: Union[Unset, str] = UNSET,
-    local_identifier: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
-    project_template: Union[Unset, str] = UNSET,
-    project_template_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
+    state: Union[Unset, list[RemoteProjectStateEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        hide_embargoed (Union[Unset, bool]):
+        customer (Union[Unset, str]):
+        customer_uuid (Union[Unset, UUID]):
+        destination (Union[Unset, str]):
         identifier (Union[Unset, str]):
-        local_identifier (Union[Unset, str]):
         o (Union[Unset, str]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
-        project_template (Union[Unset, str]):
-        project_template_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
-        state (Union[Unset, list[RemoteProjectUpdateRequestStateEnum]]):
+        state (Union[Unset, list[RemoteProjectStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -323,15 +309,14 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
-            hide_embargoed=hide_embargoed,
+            customer=customer,
+            customer_uuid=customer_uuid,
+            destination=destination,
             identifier=identifier,
-            local_identifier=local_identifier,
             o=o,
             page=page,
             page_size=page_size,
             project=project,
-            project_template=project_template,
-            project_template_uuid=project_template_uuid,
             project_uuid=project_uuid,
             query=query,
             state=state,

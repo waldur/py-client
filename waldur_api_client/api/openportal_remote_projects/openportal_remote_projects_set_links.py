@@ -1,25 +1,26 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.project_info import ProjectInfo
-from ...models.project_info_request import ProjectInfoRequest
+from ...models.remote_project import RemoteProject
+from ...models.set_links_request import SetLinksRequest
 from ...types import Response
 
 
 def _get_kwargs(
-    project: int,
+    uuid: UUID,
     *,
-    body: ProjectInfoRequest,
+    body: SetLinksRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
-        "method": "put",
-        "url": f"/api/openportal-projectinfo/{project}/set_shortname/",
+        "method": "post",
+        "url": f"/api/openportal-remote-projects/{uuid}/set-links/",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -30,17 +31,17 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ProjectInfo:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> RemoteProject:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = ProjectInfo.from_dict(response.json())
+        response_200 = RemoteProject.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[ProjectInfo]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[RemoteProject]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -50,27 +51,27 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 
 def sync_detailed(
-    project: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProjectInfoRequest,
-) -> Response[ProjectInfo]:
-    """Set shortname for project
+    body: SetLinksRequest,
+) -> Response[RemoteProject]:
+    """Set links for remote project
 
     Args:
-        project (int):
-        body (ProjectInfoRequest):
+        uuid (UUID):
+        body (SetLinksRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProjectInfo]
+        Response[RemoteProject]
     """
 
     kwargs = _get_kwargs(
-        project=project,
+        uuid=uuid,
         body=body,
     )
 
@@ -82,54 +83,54 @@ def sync_detailed(
 
 
 def sync(
-    project: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProjectInfoRequest,
-) -> ProjectInfo:
-    """Set shortname for project
+    body: SetLinksRequest,
+) -> RemoteProject:
+    """Set links for remote project
 
     Args:
-        project (int):
-        body (ProjectInfoRequest):
+        uuid (UUID):
+        body (SetLinksRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProjectInfo
+        RemoteProject
     """
 
     return sync_detailed(
-        project=project,
+        uuid=uuid,
         client=client,
         body=body,
     ).parsed
 
 
 async def asyncio_detailed(
-    project: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProjectInfoRequest,
-) -> Response[ProjectInfo]:
-    """Set shortname for project
+    body: SetLinksRequest,
+) -> Response[RemoteProject]:
+    """Set links for remote project
 
     Args:
-        project (int):
-        body (ProjectInfoRequest):
+        uuid (UUID):
+        body (SetLinksRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProjectInfo]
+        Response[RemoteProject]
     """
 
     kwargs = _get_kwargs(
-        project=project,
+        uuid=uuid,
         body=body,
     )
 
@@ -139,28 +140,28 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    project: int,
+    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ProjectInfoRequest,
-) -> ProjectInfo:
-    """Set shortname for project
+    body: SetLinksRequest,
+) -> RemoteProject:
+    """Set links for remote project
 
     Args:
-        project (int):
-        body (ProjectInfoRequest):
+        uuid (UUID):
+        body (SetLinksRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProjectInfo
+        RemoteProject
     """
 
     return (
         await asyncio_detailed(
-            project=project,
+            uuid=uuid,
             client=client,
             body=body,
         )

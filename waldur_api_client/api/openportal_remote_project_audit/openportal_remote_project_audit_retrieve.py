@@ -5,42 +5,34 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.project_info import ProjectInfo
-from ...models.project_info_request import ProjectInfoRequest
+from ...models.remote_project_audit_entry import RemoteProjectAuditEntry
 from ...types import Response
 
 
 def _get_kwargs(
-    project: int,
-    *,
-    body: ProjectInfoRequest,
+    id: int,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
-
     _kwargs: dict[str, Any] = {
-        "method": "put",
-        "url": f"/api/openportal-projectinfo/{project}/set_shortname/",
+        "method": "get",
+        "url": f"/api/openportal-remote-project-audit/{id}/",
     }
 
-    _kwargs["json"] = body.to_dict()
-
-    headers["Content-Type"] = "application/json"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ProjectInfo:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> RemoteProjectAuditEntry:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = ProjectInfo.from_dict(response.json())
+        response_200 = RemoteProjectAuditEntry.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[ProjectInfo]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[RemoteProjectAuditEntry]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -50,28 +42,24 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 
 def sync_detailed(
-    project: int,
+    id: int,
     *,
     client: AuthenticatedClient,
-    body: ProjectInfoRequest,
-) -> Response[ProjectInfo]:
-    """Set shortname for project
-
+) -> Response[RemoteProjectAuditEntry]:
+    """
     Args:
-        project (int):
-        body (ProjectInfoRequest):
+        id (int):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProjectInfo]
+        Response[RemoteProjectAuditEntry]
     """
 
     kwargs = _get_kwargs(
-        project=project,
-        body=body,
+        id=id,
     )
 
     response = client.get_httpx_client().request(
@@ -82,55 +70,47 @@ def sync_detailed(
 
 
 def sync(
-    project: int,
+    id: int,
     *,
     client: AuthenticatedClient,
-    body: ProjectInfoRequest,
-) -> ProjectInfo:
-    """Set shortname for project
-
+) -> RemoteProjectAuditEntry:
+    """
     Args:
-        project (int):
-        body (ProjectInfoRequest):
+        id (int):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProjectInfo
+        RemoteProjectAuditEntry
     """
 
     return sync_detailed(
-        project=project,
+        id=id,
         client=client,
-        body=body,
     ).parsed
 
 
 async def asyncio_detailed(
-    project: int,
+    id: int,
     *,
     client: AuthenticatedClient,
-    body: ProjectInfoRequest,
-) -> Response[ProjectInfo]:
-    """Set shortname for project
-
+) -> Response[RemoteProjectAuditEntry]:
+    """
     Args:
-        project (int):
-        body (ProjectInfoRequest):
+        id (int):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ProjectInfo]
+        Response[RemoteProjectAuditEntry]
     """
 
     kwargs = _get_kwargs(
-        project=project,
-        body=body,
+        id=id,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -139,29 +119,25 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    project: int,
+    id: int,
     *,
     client: AuthenticatedClient,
-    body: ProjectInfoRequest,
-) -> ProjectInfo:
-    """Set shortname for project
-
+) -> RemoteProjectAuditEntry:
+    """
     Args:
-        project (int):
-        body (ProjectInfoRequest):
+        id (int):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ProjectInfo
+        RemoteProjectAuditEntry
     """
 
     return (
         await asyncio_detailed(
-            project=project,
+            id=id,
             client=client,
-            body=body,
         )
     ).parsed

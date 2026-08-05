@@ -6,20 +6,20 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.allocation_set_limits_request import AllocationSetLimitsRequest
+from ...models.set_membership_control_request import SetMembershipControlRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: AllocationSetLimitsRequest,
+    body: SetMembershipControlRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/openportal-remote-allocations/{uuid}/set_limits/",
+        "url": f"/api/openportal-remote-projects/{uuid}/set-membership-control/",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -51,13 +51,13 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: AllocationSetLimitsRequest,
+    body: SetMembershipControlRequest,
 ) -> Response[Any]:
-    """Set limits for allocation
+    """Set membership control for remote project
 
     Args:
         uuid (UUID):
-        body (AllocationSetLimitsRequest):
+        body (SetMembershipControlRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -83,13 +83,13 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: AllocationSetLimitsRequest,
+    body: SetMembershipControlRequest,
 ) -> Response[Any]:
-    """Set limits for allocation
+    """Set membership control for remote project
 
     Args:
         uuid (UUID):
-        body (AllocationSetLimitsRequest):
+        body (SetMembershipControlRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

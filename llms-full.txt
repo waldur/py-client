@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.23.dev.20260804135112
+# Version: 8.1.0-rc.23.dev.20260805170634
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -14944,6 +14944,13 @@ Description: Map OpenPortal destination strings to Waldur Offering objects. Pass
 Query parameters (1):
   - identifier — OpenPortal destination string (repeatable).
 
+### openportal_project_email_policy_retrieve
+GET /api/openportal/project_email_policy/{project_uuid}/
+Summary: Return the allowed_domains list for a project derived from its AwardDetails
+Description: Return the allowed_domains list for a project derived from its AwardDetails. null means no restriction; [] means nothing allowed; a list contains permitted domain globs and/or specific email addresses.
+Path parameters:
+  - project_uuid
+
 ### openportal_project_mapping_retrieve
 GET /api/openportal/project_mapping/
 Summary: Map OpenPortal ProjectIdentifier strings to Waldur Project objects
@@ -15110,6 +15117,7 @@ Request body: yes
 
 ### openportal_allocations_set_limits
 POST /api/openportal-allocations/{uuid}/set_limits/
+Summary: Set limits for allocation
 Path parameters:
   - uuid
 Request body: yes
@@ -15154,13 +15162,47 @@ Path parameters:
   - uuid
 
 ============================================================
+## openportal-managed-project-audit  (module: waldur_api_client.api.openportal_managed_project_audit)
+============================================================
+
+### openportal_managed_project_audit_list
+GET /api/openportal-managed-project-audit/
+Query parameters (7):
+  - event_type
+  - managed_project_destination
+  - managed_project_identifier
+  - o — Which field to use when ordering the results.
+  - q — Search
+  - timestamp_after
+  - timestamp_before
+
+### openportal_managed_project_audit_count
+HEAD /api/openportal-managed-project-audit/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (7):
+  - event_type
+  - managed_project_destination
+  - managed_project_identifier
+  - o — Which field to use when ordering the results.
+  - q — Search
+  - timestamp_after
+  - timestamp_before
+
+### openportal_managed_project_audit_retrieve
+GET /api/openportal-managed-project-audit/{id}/
+Path parameters:
+  - id — A unique integer value identifying this Managed Project Audit Entry.
+
+============================================================
 ## openportal-managed-projects  (module: waldur_api_client.api.openportal_managed_projects)
 ============================================================
 
 ### openportal_managed_projects_list
 GET /api/openportal-managed-projects/
 Summary: List all managed projects
-Query parameters (9):
+Query parameters (10):
+  - hide_embargoed
   - identifier
   - local_identifier
   - o — Which field to use when ordering the results.
@@ -15175,7 +15217,8 @@ Query parameters (9):
 HEAD /api/openportal-managed-projects/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (9):
+Query parameters (10):
+  - hide_embargoed
   - identifier
   - local_identifier
   - o — Which field to use when ordering the results.
@@ -15200,6 +15243,15 @@ Description: Get number of items in the collection matching the request paramete
 Path parameters:
   - destination — The destination of the managed project
   - identifier — The identifier of the managed project
+
+### openportal_managed_projects_add_note
+POST /api/openportal-managed-projects/{identifier}/{destination}/add-note/
+Summary: Append a note to the managed project
+Description: Append a note to the managed project. Author and timestamp are set automatically.
+Path parameters:
+  - destination — The destination of the managed project
+  - identifier — The identifier of the managed project
+Request body: yes
 
 ### openportal_managed_projects_approve
 POST /api/openportal-managed-projects/{identifier}/{destination}/approve/
@@ -15400,12 +15452,14 @@ Path parameters:
 
 ### openportal_projectinfo_set_allowed_destinations_update
 PUT /api/openportal-projectinfo/{project}/set_allowed_destinations/
+Summary: Set allowed destinations for project
 Path parameters:
   - project
 Request body: yes
 
 ### openportal_projectinfo_set_shortname_update
 PUT /api/openportal-projectinfo/{project}/set_shortname/
+Summary: Set shortname for project
 Path parameters:
   - project
 Request body: yes
@@ -15506,6 +15560,7 @@ Request body: yes
 
 ### openportal_remote_allocations_set_limits
 POST /api/openportal-remote-allocations/{uuid}/set_limits/
+Summary: Set limits for allocation
 Path parameters:
   - uuid
 Request body: yes
@@ -15546,6 +15601,166 @@ Query parameters (2):
 
 ### openportal_remote_associations_retrieve
 GET /api/openportal-remote-associations/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
+## openportal-remote-project-allocations  (module: waldur_api_client.api.openportal_remote_project_allocations)
+============================================================
+
+### openportal_remote_project_allocations_list
+GET /api/openportal-remote-project-allocations/
+Query parameters (3):
+  - o — Which field to use when ordering the results.
+  - project_uuid
+  - remote_project_uuid
+
+### openportal_remote_project_allocations_count
+HEAD /api/openportal-remote-project-allocations/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - o — Which field to use when ordering the results.
+  - project_uuid
+  - remote_project_uuid
+
+### openportal_remote_project_allocations_retrieve
+GET /api/openportal-remote-project-allocations/{id}/
+Path parameters:
+  - id — A unique integer value identifying this Remote Project Allocation Entry.
+
+============================================================
+## openportal-remote-project-audit  (module: waldur_api_client.api.openportal_remote_project_audit)
+============================================================
+
+### openportal_remote_project_audit_list
+GET /api/openportal-remote-project-audit/
+Query parameters (7):
+  - event_type
+  - o — Which field to use when ordering the results.
+  - project_uuid
+  - q — Search
+  - remote_project_uuid
+  - timestamp_after
+  - timestamp_before
+
+### openportal_remote_project_audit_count
+HEAD /api/openportal-remote-project-audit/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (7):
+  - event_type
+  - o — Which field to use when ordering the results.
+  - project_uuid
+  - q — Search
+  - remote_project_uuid
+  - timestamp_after
+  - timestamp_before
+
+### openportal_remote_project_audit_retrieve
+GET /api/openportal-remote-project-audit/{id}/
+Path parameters:
+  - id — A unique integer value identifying this Remote Project Audit Entry.
+
+============================================================
+## openportal-remote-projects  (module: waldur_api_client.api.openportal_remote_projects)
+============================================================
+
+### openportal_remote_projects_list
+GET /api/openportal-remote-projects/
+Query parameters (9):
+  - customer
+  - customer_uuid
+  - destination
+  - identifier
+  - o — Which field to use when ordering the results.
+  - project
+  - project_uuid
+  - query
+  - state
+
+### openportal_remote_projects_count
+HEAD /api/openportal-remote-projects/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (9):
+  - customer
+  - customer_uuid
+  - destination
+  - identifier
+  - o — Which field to use when ordering the results.
+  - project
+  - project_uuid
+  - query
+  - state
+
+### openportal_remote_projects_retrieve
+GET /api/openportal-remote-projects/{uuid}/
+Path parameters:
+  - uuid
+
+### openportal_remote_projects_add_note
+POST /api/openportal-remote-projects/{uuid}/add-note/
+Summary: Add note to remote project
+Path parameters:
+  - uuid
+Request body: yes
+
+### openportal_remote_projects_approve_now
+POST /api/openportal-remote-projects/{uuid}/approve-now/
+Summary: Approve remote project now
+Path parameters:
+  - uuid
+
+### openportal_remote_projects_hold_indefinitely
+POST /api/openportal-remote-projects/{uuid}/hold-indefinitely/
+Summary: Hold remote project indefinitely
+Path parameters:
+  - uuid
+
+### openportal_remote_projects_resend_request
+POST /api/openportal-remote-projects/{uuid}/resend-request/
+Summary: Resend remote project request
+Path parameters:
+  - uuid
+
+### openportal_remote_projects_reset_to_pending
+POST /api/openportal-remote-projects/{uuid}/reset-to-pending/
+Summary: Reset remote project to pending
+Path parameters:
+  - uuid
+
+### openportal_remote_projects_set_allowed_domains
+POST /api/openportal-remote-projects/{uuid}/set-allowed-domains/
+Summary: Set allowed domains for remote project
+Path parameters:
+  - uuid
+Request body: yes
+
+### openportal_remote_projects_set_earliest_approve
+POST /api/openportal-remote-projects/{uuid}/set-earliest-approve/
+Summary: Set earliest approve date for remote project
+Path parameters:
+  - uuid
+Request body: yes
+
+### openportal_remote_projects_set_links
+POST /api/openportal-remote-projects/{uuid}/set-links/
+Summary: Set links for remote project
+Path parameters:
+  - uuid
+Request body: yes
+
+### openportal_remote_projects_set_membership_control
+POST /api/openportal-remote-projects/{uuid}/set-membership-control/
+Summary: Set membership control for remote project
+Path parameters:
+  - uuid
+Request body: yes
+
+### openportal_remote_projects_total_usage_retrieve
+GET /api/openportal-remote-projects/{uuid}/total-usage/
+Summary: Get total usage for remote project
 Path parameters:
   - uuid
 
@@ -15817,6 +16032,7 @@ Request body: yes
 
 ### openportal_userinfo_me_retrieve
 GET /api/openportal-userinfo/me/
+Summary: Retrieve UserInfo for current user
 
 ### openportal_userinfo_me_count
 HEAD /api/openportal-userinfo/me/
@@ -15847,6 +16063,7 @@ Path parameters:
 
 ### openportal_userinfo_set_shortname_update
 PUT /api/openportal-userinfo/{user}/set_shortname/
+Summary: Set shortname for user
 Path parameters:
   - user
 Request body: yes
