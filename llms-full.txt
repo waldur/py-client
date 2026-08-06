@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.23.dev.20260806144856
+# Version: 8.1.0-rc.23.dev.20260806183132
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -60,7 +60,7 @@ Request body: yes
 ### access_subnets_resource_impact_retrieve
 GET /api/access-subnets/resource_impact/
 Summary: Show which resources the access subnets reach
-Description: For each of the organization's live resources, the addresses that may reach it, where each came from, and whether the list is enforced or merely advisory. Pass access_subnet_uuid to narrow it to the resources one address reaches.
+Description: For each of the organization's live resources of an offering that supports access subnets, the addresses that may reach it, where each came from, and whether the list is enforced or merely advisory. Resources of offerings without access subnet support are omitted: no allow-list can apply to them....
 Query parameters (2):
   - access_subnet_uuid — Limit to the resources this one address reaches.
   - customer_uuid (required) — Organization whose resources to report on.

@@ -20,7 +20,6 @@ class AccessSubnetImpactResource:
         project_name (str):
         offering_uuid (str):
         offering_name (str):
-        supports_access_subnets (bool):
         concealment_enabled (bool):
         unrestricted (bool):
         addresses (list['AccessSubnetImpactAddress']):
@@ -32,7 +31,6 @@ class AccessSubnetImpactResource:
     project_name: str
     offering_uuid: str
     offering_name: str
-    supports_access_subnets: bool
     concealment_enabled: bool
     unrestricted: bool
     addresses: list["AccessSubnetImpactAddress"]
@@ -49,8 +47,6 @@ class AccessSubnetImpactResource:
         offering_uuid = self.offering_uuid
 
         offering_name = self.offering_name
-
-        supports_access_subnets = self.supports_access_subnets
 
         concealment_enabled = self.concealment_enabled
 
@@ -72,7 +68,6 @@ class AccessSubnetImpactResource:
                 "project_name": project_name,
                 "offering_uuid": offering_uuid,
                 "offering_name": offering_name,
-                "supports_access_subnets": supports_access_subnets,
                 "concealment_enabled": concealment_enabled,
                 "unrestricted": unrestricted,
                 "addresses": addresses,
@@ -97,8 +92,6 @@ class AccessSubnetImpactResource:
 
         offering_name = d.pop("offering_name")
 
-        supports_access_subnets = d.pop("supports_access_subnets")
-
         concealment_enabled = d.pop("concealment_enabled")
 
         unrestricted = d.pop("unrestricted")
@@ -118,7 +111,6 @@ class AccessSubnetImpactResource:
             project_name=project_name,
             offering_uuid=offering_uuid,
             offering_name=offering_name,
-            supports_access_subnets=supports_access_subnets,
             concealment_enabled=concealment_enabled,
             unrestricted=unrestricted,
             addresses=addresses,
