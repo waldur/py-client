@@ -20,12 +20,16 @@ class RequestedOfferingRequest:
         offering (str):
         attributes (Union[Unset, RequestedOfferingRequestAttributes]):
         plan (Union[None, Unset, str]):
+        require_purchase_order (Union[Unset, bool]): Whether a purchase order must accompany a resource request for this
+            offering before the proposal can be submitted. Defaults to the offering's require_purchase_order_upload, and
+            stays under the call manager's control afterwards.
         description (Union[Unset, str]):
     """
 
     offering: str
     attributes: Union[Unset, "RequestedOfferingRequestAttributes"] = UNSET
     plan: Union[None, Unset, str] = UNSET
+    require_purchase_order: Union[Unset, bool] = UNSET
     description: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -42,6 +46,8 @@ class RequestedOfferingRequest:
         else:
             plan = self.plan
 
+        require_purchase_order = self.require_purchase_order
+
         description = self.description
 
         field_dict: dict[str, Any] = {}
@@ -55,6 +61,8 @@ class RequestedOfferingRequest:
             field_dict["attributes"] = attributes
         if plan is not UNSET:
             field_dict["plan"] = plan
+        if require_purchase_order is not UNSET:
+            field_dict["require_purchase_order"] = require_purchase_order
         if description is not UNSET:
             field_dict["description"] = description
 
@@ -83,12 +91,15 @@ class RequestedOfferingRequest:
 
         plan = _parse_plan(d.pop("plan", UNSET))
 
+        require_purchase_order = d.pop("require_purchase_order", UNSET)
+
         description = d.pop("description", UNSET)
 
         requested_offering_request = cls(
             offering=offering,
             attributes=attributes,
             plan=plan,
+            require_purchase_order=require_purchase_order,
             description=description,
         )
 

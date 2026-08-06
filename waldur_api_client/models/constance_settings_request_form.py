@@ -21,6 +21,7 @@ from ..models.onboarding_validation_enum import OnboardingValidationEnum
 from ..models.openportalmembershipsyncmode_enum import OPENPORTALMEMBERSHIPSYNCMODEEnum
 from ..models.restrictedofferingvisibilitymode_enum import RESTRICTEDOFFERINGVISIBILITYMODEEnum
 from ..models.scriptrunmode_enum import SCRIPTRUNMODEEnum
+from ..models.serviceaccessmode_enum import SERVICEACCESSMODEEnum
 from ..models.sidebarstyle_enum import SIDEBARSTYLEEnum
 from ..models.sshkeyallowedtypes_enum import SSHKEYALLOWEDTYPESEnum
 from ..models.user_attribute_enum import UserAttributeEnum
@@ -57,6 +58,7 @@ class ConstanceSettingsRequestForm:
         show_offering_cover_image (Union[Unset, bool]):
         anonymous_user_can_view_plans (Union[Unset, bool]):
         restricted_offering_visibility_mode (Union[Unset, RESTRICTEDOFFERINGVISIBILITYMODEEnum]):
+        service_access_mode (Union[Unset, SERVICEACCESSMODEEnum]):
         openportal_membership_sync_mode (Union[Unset, OPENPORTALMEMBERSHIPSYNCMODEEnum]):
         allow_service_provider_offering_management (Union[Unset, bool]):
         notify_staff_about_approvals (Union[Unset, bool]):
@@ -379,6 +381,7 @@ class ConstanceSettingsRequestForm:
     show_offering_cover_image: Union[Unset, bool] = UNSET
     anonymous_user_can_view_plans: Union[Unset, bool] = UNSET
     restricted_offering_visibility_mode: Union[Unset, RESTRICTEDOFFERINGVISIBILITYMODEEnum] = UNSET
+    service_access_mode: Union[Unset, SERVICEACCESSMODEEnum] = UNSET
     openportal_membership_sync_mode: Union[Unset, OPENPORTALMEMBERSHIPSYNCMODEEnum] = UNSET
     allow_service_provider_offering_management: Union[Unset, bool] = UNSET
     notify_staff_about_approvals: Union[Unset, bool] = UNSET
@@ -719,6 +722,10 @@ class ConstanceSettingsRequestForm:
         restricted_offering_visibility_mode: Union[Unset, str] = UNSET
         if not isinstance(self.restricted_offering_visibility_mode, Unset):
             restricted_offering_visibility_mode = self.restricted_offering_visibility_mode.value
+
+        service_access_mode: Union[Unset, str] = UNSET
+        if not isinstance(self.service_access_mode, Unset):
+            service_access_mode = self.service_access_mode.value
 
         openportal_membership_sync_mode: Union[Unset, str] = UNSET
         if not isinstance(self.openportal_membership_sync_mode, Unset):
@@ -1625,6 +1632,8 @@ class ConstanceSettingsRequestForm:
             field_dict["ANONYMOUS_USER_CAN_VIEW_PLANS"] = anonymous_user_can_view_plans
         if restricted_offering_visibility_mode is not UNSET:
             field_dict["RESTRICTED_OFFERING_VISIBILITY_MODE"] = restricted_offering_visibility_mode
+        if service_access_mode is not UNSET:
+            field_dict["SERVICE_ACCESS_MODE"] = service_access_mode
         if openportal_membership_sync_mode is not UNSET:
             field_dict["OPENPORTAL_MEMBERSHIP_SYNC_MODE"] = openportal_membership_sync_mode
         if allow_service_provider_offering_management is not UNSET:
@@ -2293,6 +2302,13 @@ class ConstanceSettingsRequestForm:
             restricted_offering_visibility_mode = RESTRICTEDOFFERINGVISIBILITYMODEEnum(
                 _restricted_offering_visibility_mode
             )
+
+        _service_access_mode = d.pop("SERVICE_ACCESS_MODE", UNSET)
+        service_access_mode: Union[Unset, SERVICEACCESSMODEEnum]
+        if isinstance(_service_access_mode, Unset):
+            service_access_mode = UNSET
+        else:
+            service_access_mode = SERVICEACCESSMODEEnum(_service_access_mode)
 
         _openportal_membership_sync_mode = d.pop("OPENPORTAL_MEMBERSHIP_SYNC_MODE", UNSET)
         openportal_membership_sync_mode: Union[Unset, OPENPORTALMEMBERSHIPSYNCMODEEnum]
@@ -3481,6 +3497,7 @@ class ConstanceSettingsRequestForm:
             show_offering_cover_image=show_offering_cover_image,
             anonymous_user_can_view_plans=anonymous_user_can_view_plans,
             restricted_offering_visibility_mode=restricted_offering_visibility_mode,
+            service_access_mode=service_access_mode,
             openportal_membership_sync_mode=openportal_membership_sync_mode,
             allow_service_provider_offering_management=allow_service_provider_offering_management,
             notify_staff_about_approvals=notify_staff_about_approvals,

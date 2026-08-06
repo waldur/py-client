@@ -49,11 +49,12 @@ def sync_detailed(
 ) -> Response[OfferingAccessSubnets]:
     """List access subnets for an offering
 
-     Returns the allowed access subnets of all resources of the offering, in two forms: 'expanded' —
-    every subnet with its resource, project and customer context; and 'packed' — the same subnets
-    collapsed into the minimal set of CIDRs (adjacent/overlapping networks merged). Intended for service
-    providers building an external firewall allow-list. Available to staff, support, the offering's
-    service manager and the offering customer owner.
+     Returns the access subnets consumers defined for the offering, in two forms: 'expanded' — every
+    subnet with its customer and offering context; and 'packed' — the same subnets collapsed into the
+    minimal set of CIDRs (adjacent/overlapping networks merged). Consumer subnets are defined per
+    (customer, offering) pair and apply to all of that customer's resources of the offering. Intended
+    for service providers building an external firewall allow-list. Available to staff, support, the
+    offering's service manager and the offering customer owner.
 
     Args:
         uuid (UUID):
@@ -84,11 +85,12 @@ def sync(
 ) -> OfferingAccessSubnets:
     """List access subnets for an offering
 
-     Returns the allowed access subnets of all resources of the offering, in two forms: 'expanded' —
-    every subnet with its resource, project and customer context; and 'packed' — the same subnets
-    collapsed into the minimal set of CIDRs (adjacent/overlapping networks merged). Intended for service
-    providers building an external firewall allow-list. Available to staff, support, the offering's
-    service manager and the offering customer owner.
+     Returns the access subnets consumers defined for the offering, in two forms: 'expanded' — every
+    subnet with its customer and offering context; and 'packed' — the same subnets collapsed into the
+    minimal set of CIDRs (adjacent/overlapping networks merged). Consumer subnets are defined per
+    (customer, offering) pair and apply to all of that customer's resources of the offering. Intended
+    for service providers building an external firewall allow-list. Available to staff, support, the
+    offering's service manager and the offering customer owner.
 
     Args:
         uuid (UUID):
@@ -114,11 +116,12 @@ async def asyncio_detailed(
 ) -> Response[OfferingAccessSubnets]:
     """List access subnets for an offering
 
-     Returns the allowed access subnets of all resources of the offering, in two forms: 'expanded' —
-    every subnet with its resource, project and customer context; and 'packed' — the same subnets
-    collapsed into the minimal set of CIDRs (adjacent/overlapping networks merged). Intended for service
-    providers building an external firewall allow-list. Available to staff, support, the offering's
-    service manager and the offering customer owner.
+     Returns the access subnets consumers defined for the offering, in two forms: 'expanded' — every
+    subnet with its customer and offering context; and 'packed' — the same subnets collapsed into the
+    minimal set of CIDRs (adjacent/overlapping networks merged). Consumer subnets are defined per
+    (customer, offering) pair and apply to all of that customer's resources of the offering. Intended
+    for service providers building an external firewall allow-list. Available to staff, support, the
+    offering's service manager and the offering customer owner.
 
     Args:
         uuid (UUID):
@@ -147,11 +150,12 @@ async def asyncio(
 ) -> OfferingAccessSubnets:
     """List access subnets for an offering
 
-     Returns the allowed access subnets of all resources of the offering, in two forms: 'expanded' —
-    every subnet with its resource, project and customer context; and 'packed' — the same subnets
-    collapsed into the minimal set of CIDRs (adjacent/overlapping networks merged). Intended for service
-    providers building an external firewall allow-list. Available to staff, support, the offering's
-    service manager and the offering customer owner.
+     Returns the access subnets consumers defined for the offering, in two forms: 'expanded' — every
+    subnet with its customer and offering context; and 'packed' — the same subnets collapsed into the
+    minimal set of CIDRs (adjacent/overlapping networks merged). Consumer subnets are defined per
+    (customer, offering) pair and apply to all of that customer's resources of the offering. Intended
+    for service providers building an external firewall allow-list. Available to staff, support, the
+    offering's service manager and the offering customer owner.
 
     Args:
         uuid (UUID):

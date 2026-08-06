@@ -26,6 +26,7 @@ def _get_kwargs(
     can_create_offering_user: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    consumer_customer_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
@@ -42,6 +43,7 @@ def _get_kwargs(
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     offering_group_uuid: Union[Unset, UUID] = UNSET,
+    open_for_proposals: Union[Unset, bool] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -93,6 +95,11 @@ def _get_kwargs(
     if not isinstance(category_uuid, Unset):
         json_category_uuid = str(category_uuid)
     params["category_uuid"] = json_category_uuid
+
+    json_consumer_customer_uuid: Union[Unset, str] = UNSET
+    if not isinstance(consumer_customer_uuid, Unset):
+        json_consumer_customer_uuid = str(consumer_customer_uuid)
+    params["consumer_customer_uuid"] = json_consumer_customer_uuid
 
     json_created: Union[Unset, str] = UNSET
     if not isinstance(created, Unset):
@@ -150,6 +157,8 @@ def _get_kwargs(
     if not isinstance(offering_group_uuid, Unset):
         json_offering_group_uuid = str(offering_group_uuid)
     params["offering_group_uuid"] = json_offering_group_uuid
+
+    params["open_for_proposals"] = open_for_proposals
 
     json_organization_group_uuid: Union[Unset, str] = UNSET
     if not isinstance(organization_group_uuid, Unset):
@@ -287,6 +296,7 @@ def sync_detailed(
     can_create_offering_user: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    consumer_customer_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
@@ -303,6 +313,7 @@ def sync_detailed(
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     offering_group_uuid: Union[Unset, UUID] = UNSET,
+    open_for_proposals: Union[Unset, bool] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -341,6 +352,7 @@ def sync_detailed(
         can_create_offering_user (Union[Unset, bool]):
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
+        consumer_customer_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
@@ -357,6 +369,7 @@ def sync_detailed(
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
         offering_group_uuid (Union[Unset, UUID]):
+        open_for_proposals (Union[Unset, bool]):
         organization_group_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -399,6 +412,7 @@ def sync_detailed(
         can_create_offering_user=can_create_offering_user,
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
+        consumer_customer_uuid=consumer_customer_uuid,
         created=created,
         created_before=created_before,
         customer=customer,
@@ -415,6 +429,7 @@ def sync_detailed(
         name_exact=name_exact,
         o=o,
         offering_group_uuid=offering_group_uuid,
+        open_for_proposals=open_for_proposals,
         organization_group_uuid=organization_group_uuid,
         page=page,
         page_size=page_size,
@@ -459,6 +474,7 @@ def sync(
     can_create_offering_user: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    consumer_customer_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
@@ -475,6 +491,7 @@ def sync(
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     offering_group_uuid: Union[Unset, UUID] = UNSET,
+    open_for_proposals: Union[Unset, bool] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -513,6 +530,7 @@ def sync(
         can_create_offering_user (Union[Unset, bool]):
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
+        consumer_customer_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
@@ -529,6 +547,7 @@ def sync(
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
         offering_group_uuid (Union[Unset, UUID]):
+        open_for_proposals (Union[Unset, bool]):
         organization_group_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -572,6 +591,7 @@ def sync(
         can_create_offering_user=can_create_offering_user,
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
+        consumer_customer_uuid=consumer_customer_uuid,
         created=created,
         created_before=created_before,
         customer=customer,
@@ -588,6 +608,7 @@ def sync(
         name_exact=name_exact,
         o=o,
         offering_group_uuid=offering_group_uuid,
+        open_for_proposals=open_for_proposals,
         organization_group_uuid=organization_group_uuid,
         page=page,
         page_size=page_size,
@@ -626,6 +647,7 @@ async def asyncio_detailed(
     can_create_offering_user: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    consumer_customer_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
@@ -642,6 +664,7 @@ async def asyncio_detailed(
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     offering_group_uuid: Union[Unset, UUID] = UNSET,
+    open_for_proposals: Union[Unset, bool] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -680,6 +703,7 @@ async def asyncio_detailed(
         can_create_offering_user (Union[Unset, bool]):
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
+        consumer_customer_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
@@ -696,6 +720,7 @@ async def asyncio_detailed(
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
         offering_group_uuid (Union[Unset, UUID]):
+        open_for_proposals (Union[Unset, bool]):
         organization_group_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -738,6 +763,7 @@ async def asyncio_detailed(
         can_create_offering_user=can_create_offering_user,
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
+        consumer_customer_uuid=consumer_customer_uuid,
         created=created,
         created_before=created_before,
         customer=customer,
@@ -754,6 +780,7 @@ async def asyncio_detailed(
         name_exact=name_exact,
         o=o,
         offering_group_uuid=offering_group_uuid,
+        open_for_proposals=open_for_proposals,
         organization_group_uuid=organization_group_uuid,
         page=page,
         page_size=page_size,
@@ -796,6 +823,7 @@ async def asyncio(
     can_create_offering_user: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    consumer_customer_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
@@ -812,6 +840,7 @@ async def asyncio(
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     offering_group_uuid: Union[Unset, UUID] = UNSET,
+    open_for_proposals: Union[Unset, bool] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -850,6 +879,7 @@ async def asyncio(
         can_create_offering_user (Union[Unset, bool]):
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
+        consumer_customer_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
@@ -866,6 +896,7 @@ async def asyncio(
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
         offering_group_uuid (Union[Unset, UUID]):
+        open_for_proposals (Union[Unset, bool]):
         organization_group_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -910,6 +941,7 @@ async def asyncio(
             can_create_offering_user=can_create_offering_user,
             category_group_uuid=category_group_uuid,
             category_uuid=category_uuid,
+            consumer_customer_uuid=consumer_customer_uuid,
             created=created,
             created_before=created_before,
             customer=customer,
@@ -926,6 +958,7 @@ async def asyncio(
             name_exact=name_exact,
             o=o,
             offering_group_uuid=offering_group_uuid,
+            open_for_proposals=open_for_proposals,
             organization_group_uuid=organization_group_uuid,
             page=page,
             page_size=page_size,
@@ -965,6 +998,7 @@ def sync_all(
     can_create_offering_user: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    consumer_customer_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
@@ -981,6 +1015,7 @@ def sync_all(
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     offering_group_uuid: Union[Unset, UUID] = UNSET,
+    open_for_proposals: Union[Unset, bool] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     parent_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -1020,6 +1055,7 @@ def sync_all(
         can_create_offering_user (Union[Unset, bool]):
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
+        consumer_customer_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
@@ -1036,6 +1072,7 @@ def sync_all(
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
         offering_group_uuid (Union[Unset, UUID]):
+        open_for_proposals (Union[Unset, bool]):
         organization_group_uuid (Union[Unset, UUID]):
         parent_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
@@ -1080,6 +1117,7 @@ def sync_all(
         can_create_offering_user=can_create_offering_user,
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
+        consumer_customer_uuid=consumer_customer_uuid,
         created=created,
         created_before=created_before,
         customer=customer,
@@ -1096,6 +1134,7 @@ def sync_all(
         name_exact=name_exact,
         o=o,
         offering_group_uuid=offering_group_uuid,
+        open_for_proposals=open_for_proposals,
         organization_group_uuid=organization_group_uuid,
         parent_uuid=parent_uuid,
         project_uuid=project_uuid,
@@ -1173,6 +1212,7 @@ async def asyncio_all(
     can_create_offering_user: Union[Unset, bool] = UNSET,
     category_group_uuid: Union[Unset, UUID] = UNSET,
     category_uuid: Union[Unset, UUID] = UNSET,
+    consumer_customer_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer: Union[Unset, str] = UNSET,
@@ -1189,6 +1229,7 @@ async def asyncio_all(
     name_exact: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProviderOfferingDetailsOEnum]] = UNSET,
     offering_group_uuid: Union[Unset, UUID] = UNSET,
+    open_for_proposals: Union[Unset, bool] = UNSET,
     organization_group_uuid: Union[Unset, UUID] = UNSET,
     parent_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -1228,6 +1269,7 @@ async def asyncio_all(
         can_create_offering_user (Union[Unset, bool]):
         category_group_uuid (Union[Unset, UUID]):
         category_uuid (Union[Unset, UUID]):
+        consumer_customer_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
         customer (Union[Unset, str]):
@@ -1244,6 +1286,7 @@ async def asyncio_all(
         name_exact (Union[Unset, str]):
         o (Union[Unset, list[ProviderOfferingDetailsOEnum]]):
         offering_group_uuid (Union[Unset, UUID]):
+        open_for_proposals (Union[Unset, bool]):
         organization_group_uuid (Union[Unset, UUID]):
         parent_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
@@ -1288,6 +1331,7 @@ async def asyncio_all(
         can_create_offering_user=can_create_offering_user,
         category_group_uuid=category_group_uuid,
         category_uuid=category_uuid,
+        consumer_customer_uuid=consumer_customer_uuid,
         created=created,
         created_before=created_before,
         customer=customer,
@@ -1304,6 +1348,7 @@ async def asyncio_all(
         name_exact=name_exact,
         o=o,
         offering_group_uuid=offering_group_uuid,
+        open_for_proposals=open_for_proposals,
         organization_group_uuid=organization_group_uuid,
         parent_uuid=parent_uuid,
         project_uuid=project_uuid,

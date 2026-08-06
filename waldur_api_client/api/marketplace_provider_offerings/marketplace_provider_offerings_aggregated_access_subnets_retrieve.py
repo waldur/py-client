@@ -66,13 +66,13 @@ def sync_detailed(
 ) -> Response[AggregatedAccessSubnets]:
     """Aggregate access subnets across offerings
 
-     Returns the combined access-subnet allow-list of the given offerings: 'expanded' — every resource
-    subnet with its resource, project, customer and offering context; 'defaults' — the provider-default
-    subnets of each offering; 'organization_subnets' — organization-level access subnets of customers
-    owning non-terminated resources of the offerings (populated only when include_organization_subnets
-    is true); and 'packed' — all of the above collapsed into the minimal set of CIDRs. Intended for
-    service providers building an external firewall allow-list spanning several offerings. The caller
-    must be staff, support, a service manager of every requested offering or an owner of its customer.
+     Returns the combined access-subnet allow-list of the given offerings: 'expanded' — every consumer
+    subnet with its customer and offering context; 'defaults' — the provider-default subnets of each
+    offering; 'organization_subnets' — organization-level access subnets of customers owning non-
+    terminated resources of the offerings (populated only when include_organization_subnets is true);
+    and 'packed' — all of the above collapsed into the minimal set of CIDRs. Intended for service
+    providers building an external firewall allow-list spanning several offerings. The caller must be
+    staff, support, a service manager of every requested offering or an owner of its customer.
 
     Args:
         include_organization_subnets (Union[Unset, bool]):
@@ -106,13 +106,13 @@ def sync(
 ) -> AggregatedAccessSubnets:
     """Aggregate access subnets across offerings
 
-     Returns the combined access-subnet allow-list of the given offerings: 'expanded' — every resource
-    subnet with its resource, project, customer and offering context; 'defaults' — the provider-default
-    subnets of each offering; 'organization_subnets' — organization-level access subnets of customers
-    owning non-terminated resources of the offerings (populated only when include_organization_subnets
-    is true); and 'packed' — all of the above collapsed into the minimal set of CIDRs. Intended for
-    service providers building an external firewall allow-list spanning several offerings. The caller
-    must be staff, support, a service manager of every requested offering or an owner of its customer.
+     Returns the combined access-subnet allow-list of the given offerings: 'expanded' — every consumer
+    subnet with its customer and offering context; 'defaults' — the provider-default subnets of each
+    offering; 'organization_subnets' — organization-level access subnets of customers owning non-
+    terminated resources of the offerings (populated only when include_organization_subnets is true);
+    and 'packed' — all of the above collapsed into the minimal set of CIDRs. Intended for service
+    providers building an external firewall allow-list spanning several offerings. The caller must be
+    staff, support, a service manager of every requested offering or an owner of its customer.
 
     Args:
         include_organization_subnets (Union[Unset, bool]):
@@ -141,13 +141,13 @@ async def asyncio_detailed(
 ) -> Response[AggregatedAccessSubnets]:
     """Aggregate access subnets across offerings
 
-     Returns the combined access-subnet allow-list of the given offerings: 'expanded' — every resource
-    subnet with its resource, project, customer and offering context; 'defaults' — the provider-default
-    subnets of each offering; 'organization_subnets' — organization-level access subnets of customers
-    owning non-terminated resources of the offerings (populated only when include_organization_subnets
-    is true); and 'packed' — all of the above collapsed into the minimal set of CIDRs. Intended for
-    service providers building an external firewall allow-list spanning several offerings. The caller
-    must be staff, support, a service manager of every requested offering or an owner of its customer.
+     Returns the combined access-subnet allow-list of the given offerings: 'expanded' — every consumer
+    subnet with its customer and offering context; 'defaults' — the provider-default subnets of each
+    offering; 'organization_subnets' — organization-level access subnets of customers owning non-
+    terminated resources of the offerings (populated only when include_organization_subnets is true);
+    and 'packed' — all of the above collapsed into the minimal set of CIDRs. Intended for service
+    providers building an external firewall allow-list spanning several offerings. The caller must be
+    staff, support, a service manager of every requested offering or an owner of its customer.
 
     Args:
         include_organization_subnets (Union[Unset, bool]):
@@ -179,13 +179,13 @@ async def asyncio(
 ) -> AggregatedAccessSubnets:
     """Aggregate access subnets across offerings
 
-     Returns the combined access-subnet allow-list of the given offerings: 'expanded' — every resource
-    subnet with its resource, project, customer and offering context; 'defaults' — the provider-default
-    subnets of each offering; 'organization_subnets' — organization-level access subnets of customers
-    owning non-terminated resources of the offerings (populated only when include_organization_subnets
-    is true); and 'packed' — all of the above collapsed into the minimal set of CIDRs. Intended for
-    service providers building an external firewall allow-list spanning several offerings. The caller
-    must be staff, support, a service manager of every requested offering or an owner of its customer.
+     Returns the combined access-subnet allow-list of the given offerings: 'expanded' — every consumer
+    subnet with its customer and offering context; 'defaults' — the provider-default subnets of each
+    offering; 'organization_subnets' — organization-level access subnets of customers owning non-
+    terminated resources of the offerings (populated only when include_organization_subnets is true);
+    and 'packed' — all of the above collapsed into the minimal set of CIDRs. Intended for service
+    providers building an external firewall allow-list spanning several offerings. The caller must be
+    staff, support, a service manager of every requested offering or an owner of its customer.
 
     Args:
         include_organization_subnets (Union[Unset, bool]):

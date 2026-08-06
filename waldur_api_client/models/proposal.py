@@ -11,6 +11,7 @@ from ..models.blank_enum import BlankEnum
 from ..models.gender_enum import GenderEnum
 from ..models.oecd_fos_2007_code_enum import OecdFos2007CodeEnum
 from ..models.proposal_states import ProposalStates
+from ..models.step_enum import StepEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -79,6 +80,7 @@ class Proposal:
         compliance_status (Union['ProposalComplianceStatus', None]):
         can_submit (ProposalCanSubmitResponse):
         awaiting_manual_advance (bool):
+        workflow_step (Union[None, StepEnum]): Current active workflow step for this proposal.
         description (Union[Unset, str]):
         project_summary (Union[Unset, str]):
         project_is_confidential (Union[Unset, bool]):
@@ -140,6 +142,7 @@ class Proposal:
     compliance_status: Union["ProposalComplianceStatus", None]
     can_submit: "ProposalCanSubmitResponse"
     awaiting_manual_advance: bool
+    workflow_step: Union[None, StepEnum]
     description: Union[Unset, str] = UNSET
     project_summary: Union[Unset, str] = UNSET
     project_is_confidential: Union[Unset, bool] = UNSET
@@ -279,6 +282,12 @@ class Proposal:
 
         awaiting_manual_advance = self.awaiting_manual_advance
 
+        workflow_step: Union[None, str]
+        if isinstance(self.workflow_step, StepEnum):
+            workflow_step = self.workflow_step.value
+        else:
+            workflow_step = self.workflow_step
+
         description = self.description
 
         project_summary = self.project_summary
@@ -367,6 +376,7 @@ class Proposal:
                 "compliance_status": compliance_status,
                 "can_submit": can_submit,
                 "awaiting_manual_advance": awaiting_manual_advance,
+                "workflow_step": workflow_step,
             }
         )
         if description is not UNSET:
@@ -580,6 +590,21 @@ class Proposal:
 
         awaiting_manual_advance = d.pop("awaiting_manual_advance")
 
+        def _parse_workflow_step(data: object) -> Union[None, StepEnum]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                workflow_step_type_0 = StepEnum(data)
+
+                return workflow_step_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, StepEnum], data)
+
+        workflow_step = _parse_workflow_step(d.pop("workflow_step"))
+
         description = d.pop("description", UNSET)
 
         project_summary = d.pop("project_summary", UNSET)
@@ -692,6 +717,7 @@ class Proposal:
             compliance_status=compliance_status,
             can_submit=can_submit,
             awaiting_manual_advance=awaiting_manual_advance,
+            workflow_step=workflow_step,
             description=description,
             project_summary=project_summary,
             project_is_confidential=project_is_confidential,

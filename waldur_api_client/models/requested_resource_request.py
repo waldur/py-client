@@ -21,6 +21,7 @@ class RequestedResourceRequest:
     Attributes:
         attributes (Union[Unset, RequestedResourceRequestAttributes]):
         limits (Union[Unset, RequestedResourceRequestLimits]):
+        purchase_order_reference (Union[Unset, str]):
         description (Union[Unset, str]):
         requested_offering_uuid (Union[Unset, UUID]):
         call_resource_template_uuid (Union[Unset, UUID]):
@@ -28,6 +29,7 @@ class RequestedResourceRequest:
 
     attributes: Union[Unset, "RequestedResourceRequestAttributes"] = UNSET
     limits: Union[Unset, "RequestedResourceRequestLimits"] = UNSET
+    purchase_order_reference: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     requested_offering_uuid: Union[Unset, UUID] = UNSET
     call_resource_template_uuid: Union[Unset, UUID] = UNSET
@@ -41,6 +43,8 @@ class RequestedResourceRequest:
         limits: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.limits, Unset):
             limits = self.limits.to_dict()
+
+        purchase_order_reference = self.purchase_order_reference
 
         description = self.description
 
@@ -59,6 +63,8 @@ class RequestedResourceRequest:
             field_dict["attributes"] = attributes
         if limits is not UNSET:
             field_dict["limits"] = limits
+        if purchase_order_reference is not UNSET:
+            field_dict["purchase_order_reference"] = purchase_order_reference
         if description is not UNSET:
             field_dict["description"] = description
         if requested_offering_uuid is not UNSET:
@@ -88,6 +94,8 @@ class RequestedResourceRequest:
         else:
             limits = RequestedResourceRequestLimits.from_dict(_limits)
 
+        purchase_order_reference = d.pop("purchase_order_reference", UNSET)
+
         description = d.pop("description", UNSET)
 
         _requested_offering_uuid = d.pop("requested_offering_uuid", UNSET)
@@ -107,6 +115,7 @@ class RequestedResourceRequest:
         requested_resource_request = cls(
             attributes=attributes,
             limits=limits,
+            purchase_order_reference=purchase_order_reference,
             description=description,
             requested_offering_uuid=requested_offering_uuid,
             call_resource_template_uuid=call_resource_template_uuid,

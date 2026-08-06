@@ -29,6 +29,7 @@ class NestedRequestedOffering:
         offering (Union[Unset, str]):
         offering_name (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
+        offering_type (Union[Unset, str]):
         provider_name (Union[Unset, str]):
         category_uuid (Union[Unset, UUID]):
         category_name (Union[Unset, str]):
@@ -38,6 +39,9 @@ class NestedRequestedOffering:
         plan_details (Union[Unset, BasePublicPlan]):
         options (Union[Unset, OfferingOptions]):
         components (Union[Unset, list['OfferingComponent']]):
+        require_purchase_order (Union[Unset, bool]): Whether a purchase order must accompany a resource request for this
+            offering before the proposal can be submitted. Defaults to the offering's require_purchase_order_upload, and
+            stays under the call manager's control afterwards.
         created (Union[Unset, datetime.datetime]):
     """
 
@@ -46,6 +50,7 @@ class NestedRequestedOffering:
     offering: Union[Unset, str] = UNSET
     offering_name: Union[Unset, str] = UNSET
     offering_uuid: Union[Unset, UUID] = UNSET
+    offering_type: Union[Unset, str] = UNSET
     provider_name: Union[Unset, str] = UNSET
     category_uuid: Union[Unset, UUID] = UNSET
     category_name: Union[Unset, str] = UNSET
@@ -55,6 +60,7 @@ class NestedRequestedOffering:
     plan_details: Union[Unset, "BasePublicPlan"] = UNSET
     options: Union[Unset, "OfferingOptions"] = UNSET
     components: Union[Unset, list["OfferingComponent"]] = UNSET
+    require_purchase_order: Union[Unset, bool] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -74,6 +80,8 @@ class NestedRequestedOffering:
         offering_uuid: Union[Unset, str] = UNSET
         if not isinstance(self.offering_uuid, Unset):
             offering_uuid = str(self.offering_uuid)
+
+        offering_type = self.offering_type
 
         provider_name = self.provider_name
 
@@ -110,6 +118,8 @@ class NestedRequestedOffering:
                 components_item = components_item_data.to_dict()
                 components.append(components_item)
 
+        require_purchase_order = self.require_purchase_order
+
         created: Union[Unset, str] = UNSET
         if not isinstance(self.created, Unset):
             created = self.created.isoformat()
@@ -127,6 +137,8 @@ class NestedRequestedOffering:
             field_dict["offering_name"] = offering_name
         if offering_uuid is not UNSET:
             field_dict["offering_uuid"] = offering_uuid
+        if offering_type is not UNSET:
+            field_dict["offering_type"] = offering_type
         if provider_name is not UNSET:
             field_dict["provider_name"] = provider_name
         if category_uuid is not UNSET:
@@ -145,6 +157,8 @@ class NestedRequestedOffering:
             field_dict["options"] = options
         if components is not UNSET:
             field_dict["components"] = components
+        if require_purchase_order is not UNSET:
+            field_dict["require_purchase_order"] = require_purchase_order
         if created is not UNSET:
             field_dict["created"] = created
 
@@ -182,6 +196,8 @@ class NestedRequestedOffering:
             offering_uuid = UNSET
         else:
             offering_uuid = UUID(_offering_uuid)
+
+        offering_type = d.pop("offering_type", UNSET)
 
         provider_name = d.pop("provider_name", UNSET)
 
@@ -233,6 +249,8 @@ class NestedRequestedOffering:
 
             components.append(components_item)
 
+        require_purchase_order = d.pop("require_purchase_order", UNSET)
+
         _created = d.pop("created", UNSET)
         created: Union[Unset, datetime.datetime]
         if isinstance(_created, Unset):
@@ -246,6 +264,7 @@ class NestedRequestedOffering:
             offering=offering,
             offering_name=offering_name,
             offering_uuid=offering_uuid,
+            offering_type=offering_type,
             provider_name=provider_name,
             category_uuid=category_uuid,
             category_name=category_name,
@@ -255,6 +274,7 @@ class NestedRequestedOffering:
             plan_details=plan_details,
             options=options,
             components=components,
+            require_purchase_order=require_purchase_order,
             created=created,
         )
 

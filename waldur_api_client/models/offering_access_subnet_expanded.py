@@ -13,11 +13,7 @@ class OfferingAccessSubnetExpanded:
     Attributes:
         inet (str):
         description (str):
-        resource_uuid (str):
-        resource_name (str):
-        resource_backend_id (str):
-        project_uuid (str):
-        project_name (str):
+        is_staff_managed (bool):
         customer_uuid (str):
         customer_name (str):
         offering_uuid (str):
@@ -26,11 +22,7 @@ class OfferingAccessSubnetExpanded:
 
     inet: str
     description: str
-    resource_uuid: str
-    resource_name: str
-    resource_backend_id: str
-    project_uuid: str
-    project_name: str
+    is_staff_managed: bool
     customer_uuid: str
     customer_name: str
     offering_uuid: str
@@ -42,15 +34,7 @@ class OfferingAccessSubnetExpanded:
 
         description = self.description
 
-        resource_uuid = self.resource_uuid
-
-        resource_name = self.resource_name
-
-        resource_backend_id = self.resource_backend_id
-
-        project_uuid = self.project_uuid
-
-        project_name = self.project_name
+        is_staff_managed = self.is_staff_managed
 
         customer_uuid = self.customer_uuid
 
@@ -66,11 +50,7 @@ class OfferingAccessSubnetExpanded:
             {
                 "inet": inet,
                 "description": description,
-                "resource_uuid": resource_uuid,
-                "resource_name": resource_name,
-                "resource_backend_id": resource_backend_id,
-                "project_uuid": project_uuid,
-                "project_name": project_name,
+                "is_staff_managed": is_staff_managed,
                 "customer_uuid": customer_uuid,
                 "customer_name": customer_name,
                 "offering_uuid": offering_uuid,
@@ -87,15 +67,7 @@ class OfferingAccessSubnetExpanded:
 
         description = d.pop("description")
 
-        resource_uuid = d.pop("resource_uuid")
-
-        resource_name = d.pop("resource_name")
-
-        resource_backend_id = d.pop("resource_backend_id")
-
-        project_uuid = d.pop("project_uuid")
-
-        project_name = d.pop("project_name")
+        is_staff_managed = d.pop("is_staff_managed")
 
         customer_uuid = d.pop("customer_uuid")
 
@@ -108,11 +80,7 @@ class OfferingAccessSubnetExpanded:
         offering_access_subnet_expanded = cls(
             inet=inet,
             description=description,
-            resource_uuid=resource_uuid,
-            resource_name=resource_name,
-            resource_backend_id=resource_backend_id,
-            project_uuid=project_uuid,
-            project_name=project_name,
+            is_staff_managed=is_staff_managed,
             customer_uuid=customer_uuid,
             customer_name=customer_name,
             offering_uuid=offering_uuid,

@@ -117,6 +117,7 @@ class Offering:
         offering_group_title (Union[None, Unset, str]):
         user_has_consent (Union[Unset, bool]):
         is_accessible (Union[Unset, bool]):
+        open_for_proposals (Union[Unset, bool]):
         googlecalendar (Union[Unset, GoogleCalendar]):
     """
 
@@ -196,6 +197,7 @@ class Offering:
     offering_group_title: Union[None, Unset, str] = UNSET
     user_has_consent: Union[Unset, bool] = UNSET
     is_accessible: Union[Unset, bool] = UNSET
+    open_for_proposals: Union[Unset, bool] = UNSET
     googlecalendar: Union[Unset, "GoogleCalendar"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -556,6 +558,8 @@ class Offering:
 
         is_accessible = self.is_accessible
 
+        open_for_proposals = self.open_for_proposals
+
         googlecalendar: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.googlecalendar, Unset):
             googlecalendar = self.googlecalendar.to_dict()
@@ -715,6 +719,8 @@ class Offering:
             field_dict["user_has_consent"] = user_has_consent
         if is_accessible is not UNSET:
             field_dict["is_accessible"] = is_accessible
+        if open_for_proposals is not UNSET:
+            field_dict["open_for_proposals"] = open_for_proposals
         if googlecalendar is not UNSET:
             field_dict["googlecalendar"] = googlecalendar
 
@@ -1253,6 +1259,8 @@ class Offering:
 
         is_accessible = d.pop("is_accessible", UNSET)
 
+        open_for_proposals = d.pop("open_for_proposals", UNSET)
+
         _googlecalendar = d.pop("googlecalendar", UNSET)
         googlecalendar: Union[Unset, GoogleCalendar]
         if isinstance(_googlecalendar, Unset):
@@ -1337,6 +1345,7 @@ class Offering:
             offering_group_title=offering_group_title,
             user_has_consent=user_has_consent,
             is_accessible=is_accessible,
+            open_for_proposals=open_for_proposals,
             googlecalendar=googlecalendar,
         )
 

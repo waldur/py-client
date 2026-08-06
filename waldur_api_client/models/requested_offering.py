@@ -29,6 +29,7 @@ class RequestedOffering:
         offering (str):
         offering_name (str):
         offering_uuid (UUID):
+        offering_type (str):
         provider_name (str):
         category_uuid (UUID):
         category_name (str):
@@ -44,6 +45,9 @@ class RequestedOffering:
         approved_by_name (str):
         attributes (Union[Unset, RequestedOfferingAttributes]):
         plan (Union[None, Unset, str]):
+        require_purchase_order (Union[Unset, bool]): Whether a purchase order must accompany a resource request for this
+            offering before the proposal can be submitted. Defaults to the offering's require_purchase_order_upload, and
+            stays under the call manager's control afterwards.
         description (Union[Unset, str]):
     """
 
@@ -52,6 +56,7 @@ class RequestedOffering:
     offering: str
     offering_name: str
     offering_uuid: UUID
+    offering_type: str
     provider_name: str
     category_uuid: UUID
     category_name: str
@@ -67,6 +72,7 @@ class RequestedOffering:
     approved_by_name: str
     attributes: Union[Unset, "RequestedOfferingAttributes"] = UNSET
     plan: Union[None, Unset, str] = UNSET
+    require_purchase_order: Union[Unset, bool] = UNSET
     description: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -80,6 +86,8 @@ class RequestedOffering:
         offering_name = self.offering_name
 
         offering_uuid = str(self.offering_uuid)
+
+        offering_type = self.offering_type
 
         provider_name = self.provider_name
 
@@ -122,6 +130,8 @@ class RequestedOffering:
         else:
             plan = self.plan
 
+        require_purchase_order = self.require_purchase_order
+
         description = self.description
 
         field_dict: dict[str, Any] = {}
@@ -133,6 +143,7 @@ class RequestedOffering:
                 "offering": offering,
                 "offering_name": offering_name,
                 "offering_uuid": offering_uuid,
+                "offering_type": offering_type,
                 "provider_name": provider_name,
                 "category_uuid": category_uuid,
                 "category_name": category_name,
@@ -152,6 +163,8 @@ class RequestedOffering:
             field_dict["attributes"] = attributes
         if plan is not UNSET:
             field_dict["plan"] = plan
+        if require_purchase_order is not UNSET:
+            field_dict["require_purchase_order"] = require_purchase_order
         if description is not UNSET:
             field_dict["description"] = description
 
@@ -174,6 +187,8 @@ class RequestedOffering:
         offering_name = d.pop("offering_name")
 
         offering_uuid = UUID(d.pop("offering_uuid"))
+
+        offering_type = d.pop("offering_type")
 
         provider_name = d.pop("provider_name")
 
@@ -232,6 +247,8 @@ class RequestedOffering:
 
         plan = _parse_plan(d.pop("plan", UNSET))
 
+        require_purchase_order = d.pop("require_purchase_order", UNSET)
+
         description = d.pop("description", UNSET)
 
         requested_offering = cls(
@@ -240,6 +257,7 @@ class RequestedOffering:
             offering=offering,
             offering_name=offering_name,
             offering_uuid=offering_uuid,
+            offering_type=offering_type,
             provider_name=provider_name,
             category_uuid=category_uuid,
             category_name=category_name,
@@ -255,6 +273,7 @@ class RequestedOffering:
             approved_by_name=approved_by_name,
             attributes=attributes,
             plan=plan,
+            require_purchase_order=require_purchase_order,
             description=description,
         )
 

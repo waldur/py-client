@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.23.dev.20260805170634
+# Version: 8.1.0-rc.23.dev.20260806144856
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -27,27 +27,51 @@ Path parameters:
 GET /api/access-subnets/
 Summary: List access subnets
 Description: Retrieve a list of access subnets. Staff and support users can see all subnets, while other users can only see subnets associated with customers they have a role in.
-Query parameters (4):
+Query parameters (8):
+  - applies_to_portal — Applies to portal
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - description — Description
   - inet — Inet
+  - is_staff_managed — Is staff managed
+  - o — Which field to use when ordering the results.
+  - offering_uuid — Offering UUID
 
 ### access_subnets_count
 HEAD /api/access-subnets/
 Summary: List access subnets
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (4):
+Query parameters (8):
+  - applies_to_portal — Applies to portal
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - description — Description
   - inet — Inet
+  - is_staff_managed — Is staff managed
+  - o — Which field to use when ordering the results.
+  - offering_uuid — Offering UUID
 
 ### access_subnets_create
 POST /api/access-subnets/
 Summary: Create an access subnet
 Description: Create a new access subnet for a customer.
 Request body: yes
+
+### access_subnets_resource_impact_retrieve
+GET /api/access-subnets/resource_impact/
+Summary: Show which resources the access subnets reach
+Description: For each of the organization's live resources, the addresses that may reach it, where each came from, and whether the list is enforced or merely advisory. Pass access_subnet_uuid to narrow it to the resources one address reaches.
+Query parameters (2):
+  - access_subnet_uuid — Limit to the resources this one address reaches.
+  - customer_uuid (required) — Organization whose resources to report on.
+
+### access_subnets_resource_impact_count
+HEAD /api/access-subnets/resource_impact/
+Summary: Show which resources the access subnets reach
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (2):
+  - access_subnet_uuid — Limit to the resources this one address reaches.
+  - customer_uuid (required) — Organization whose resources to report on.
 
 ### access_subnets_retrieve
 GET /api/access-subnets/{uuid}/
@@ -8866,15 +8890,16 @@ Path parameters:
 GET /api/marketplace-provider-offerings/
 Summary: List provider offerings
 Description: Returns a paginated list of offerings for the provider.
-Query parameters (43):
+Query parameters (45):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -8891,6 +8916,7 @@ Query parameters (43):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -8915,15 +8941,16 @@ Query parameters (43):
 HEAD /api/marketplace-provider-offerings/
 Summary: List provider offerings
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (42):
+Query parameters (44):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -8939,6 +8966,7 @@ Query parameters (42):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -8968,7 +8996,7 @@ Request body: yes
 ### marketplace_provider_offerings_aggregated_access_subnets_retrieve
 GET /api/marketplace-provider-offerings/aggregated_access_subnets/
 Summary: Aggregate access subnets across offerings
-Description: Returns the combined access-subnet allow-list of the given offerings: 'expanded' — every resource subnet with its resource, project, customer and offering context; 'defaults' — the provider-default subnets of each offering; 'organization_subnets' — organization-level access subnets of customers o...
+Description: Returns the combined access-subnet allow-list of the given offerings: 'expanded' — every consumer subnet with its customer and offering context; 'defaults' — the provider-default subnets of each offering; 'organization_subnets' — organization-level access subnets of customers owning non-terminate...
 Query parameters (2):
   - include_organization_subnets — Also merge in the organization-level access subnets of customers owning non-terminated resources of the offerings.
   - offering_uuid (required) — UUID of an offering to include. May be repeated.
@@ -8985,15 +9013,16 @@ Query parameters (2):
 GET /api/marketplace-provider-offerings/groups/
 Summary: List offerings grouped by provider
 Description: Returns a paginated list of active, shared offerings grouped by their service provider.
-Query parameters (41):
+Query parameters (43):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -9008,6 +9037,7 @@ Query parameters (41):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -9032,15 +9062,16 @@ Query parameters (41):
 HEAD /api/marketplace-provider-offerings/groups/
 Summary: List offerings grouped by provider
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (41):
+Query parameters (43):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -9055,6 +9086,7 @@ Query parameters (41):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -9100,7 +9132,7 @@ Path parameters:
 ### marketplace_provider_offerings_access_subnets_retrieve
 GET /api/marketplace-provider-offerings/{uuid}/access_subnets/
 Summary: List access subnets for an offering
-Description: Returns the allowed access subnets of all resources of the offering, in two forms: 'expanded' — every subnet with its resource, project and customer context; and 'packed' — the same subnets collapsed into the minimal set of CIDRs (adjacent/overlapping networks merged). Intended for service provid...
+Description: Returns the access subnets consumers defined for the offering, in two forms: 'expanded' — every subnet with its customer and offering context; and 'packed' — the same subnets collapsed into the minimal set of CIDRs (adjacent/overlapping networks merged). Consumer subnets are defined per (customer...
 Path parameters:
   - uuid
 
@@ -9172,15 +9204,16 @@ Summary: Get statistics for offering components
 Description: Returns monthly usage statistics for the components of an offering within a specified date range.
 Path parameters:
   - uuid
-Query parameters (44):
+Query parameters (46):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -9197,6 +9230,7 @@ Query parameters (44):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -9224,9 +9258,9 @@ Summary: Get costs for an offering
 Description: Returns monthly cost data for an offering within a specified date range.
 Path parameters:
   - uuid
-Query parameters (45):
+Query parameters (47):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - accounting_is_running
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -9234,6 +9268,7 @@ Query parameters (45):
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -9250,6 +9285,7 @@ Query parameters (45):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -9285,15 +9321,16 @@ Summary: Get customers for an offering
 Description: Returns a paginated list of customers who have resources for this offering.
 Path parameters:
   - uuid
-Query parameters (43):
+Query parameters (45):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -9310,6 +9347,7 @@ Query parameters (43):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -9434,15 +9472,16 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (43):
+Query parameters (45):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_after — Filter versions created after this timestamp (ISO 8601)
   - created_before — Filter versions created before this timestamp (ISO 8601)
@@ -9459,6 +9498,7 @@ Query parameters (43):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -9509,15 +9549,16 @@ Summary: List course accounts for an offering
 Description: Returns a paginated list of course accounts for projects that have resources of this offering.
 Path parameters:
   - uuid
-Query parameters (42):
+Query parameters (44):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -9533,6 +9574,7 @@ Query parameters (42):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -9568,15 +9610,16 @@ Summary: List customer service accounts for an offering
 Description: Returns a paginated list of customer-level service accounts for customers who have resources of this offering.
 Path parameters:
   - uuid
-Query parameters (42):
+Query parameters (44):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -9592,6 +9635,7 @@ Query parameters (42):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -9627,15 +9671,16 @@ Summary: List project service accounts for an offering
 Description: Returns a paginated list of project-level service accounts for projects that have resources of this offering.
 Path parameters:
   - uuid
-Query parameters (42):
+Query parameters (44):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -9651,6 +9696,7 @@ Query parameters (42):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -10743,15 +10789,16 @@ Request body: yes
 GET /api/marketplace-public-offerings/
 Summary: List public offerings
 Description: Returns a paginated list of public offerings. The list is filtered to show only offerings that are active or paused and available for ordering by the current user. If anonymous access is enabled, it shows shared offerings available to unauthenticated users.
-Query parameters (42):
+Query parameters (44):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -10767,6 +10814,7 @@ Query parameters (42):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -10791,15 +10839,16 @@ Query parameters (42):
 HEAD /api/marketplace-public-offerings/
 Summary: List public offerings
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (41):
+Query parameters (43):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -10814,6 +10863,7 @@ Query parameters (41):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -10910,56 +10960,6 @@ Path parameters:
 
 ### marketplace_remote_synchronisations_run_synchronisation
 POST /api/marketplace-remote-synchronisations/{uuid}/run_synchronisation/
-Path parameters:
-  - uuid
-
-============================================================
-## marketplace-resource-access-subnets  (module: waldur_api_client.api.marketplace_resource_access_subnets)
-============================================================
-
-### marketplace_resource_access_subnets_list
-GET /api/marketplace-resource-access-subnets/
-Query parameters (5):
-  - description — Description
-  - inet — Inet
-  - offering_uuid — Offering UUID
-  - resource — Resource URL
-  - resource_uuid — Resource UUID
-
-### marketplace_resource_access_subnets_count
-HEAD /api/marketplace-resource-access-subnets/
-Summary: Get number of items in the collection matching the request parameters
-Description: Get number of items in the collection matching the request parameters.
-Query parameters (5):
-  - description — Description
-  - inet — Inet
-  - offering_uuid — Offering UUID
-  - resource — Resource URL
-  - resource_uuid — Resource UUID
-
-### marketplace_resource_access_subnets_create
-POST /api/marketplace-resource-access-subnets/
-Request body: yes
-
-### marketplace_resource_access_subnets_retrieve
-GET /api/marketplace-resource-access-subnets/{uuid}/
-Path parameters:
-  - uuid
-
-### marketplace_resource_access_subnets_update
-PUT /api/marketplace-resource-access-subnets/{uuid}/
-Path parameters:
-  - uuid
-Request body: yes
-
-### marketplace_resource_access_subnets_partial_update
-PATCH /api/marketplace-resource-access-subnets/{uuid}/
-Path parameters:
-  - uuid
-Request body: yes
-
-### marketplace_resource_access_subnets_destroy
-DELETE /api/marketplace-resource-access-subnets/{uuid}/
 Path parameters:
   - uuid
 
@@ -12284,15 +12284,16 @@ Summary: List offerings of a service provider
 Description: Returns a paginated list of all billable, shared offerings provided by the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (42):
+Query parameters (44):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -12308,6 +12309,7 @@ Query parameters (42):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -12334,15 +12336,16 @@ Summary: List offerings of a service provider
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - service_provider_uuid
-Query parameters (41):
+Query parameters (43):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -12357,6 +12360,7 @@ Query parameters (41):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -12382,15 +12386,16 @@ GET /api/marketplace-service-providers/{service_provider_uuid}/offerings/types/
 Summary: List distinct offering types for a service provider
 Path parameters:
   - service_provider_uuid
-Query parameters (41):
+Query parameters (43):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -12405,6 +12410,7 @@ Query parameters (41):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -12431,15 +12437,16 @@ Summary: List distinct offering types for a service provider
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - service_provider_uuid
-Query parameters (41):
+Query parameters (43):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -12454,6 +12461,7 @@ Query parameters (41):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -19808,6 +19816,47 @@ Path parameters:
   - uuid
 
 ============================================================
+## proposal-my-requested-resources  (module: waldur_api_client.api.proposal_my_requested_resources)
+============================================================
+
+### proposal_my_requested_resources_list
+GET /api/proposal-my-requested-resources/
+Query parameters (11):
+  - created
+  - include_closed — Include requests belonging to rejected or canceled proposals. They are omitted by default.
+  - o — Ordering
+  - offering — Offering
+  - offering_uuid
+  - proposal — Proposal
+  - proposal_state — Proposal state
+  - proposal_uuid
+  - query — Search by offering, proposal, call or resource name
+  - resource — Resource
+  - resource_uuid
+
+### proposal_my_requested_resources_count
+HEAD /api/proposal-my-requested-resources/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (11):
+  - created
+  - include_closed — Include requests belonging to rejected or canceled proposals. They are omitted by default.
+  - o — Ordering
+  - offering — Offering
+  - offering_uuid
+  - proposal — Proposal
+  - proposal_state — Proposal state
+  - proposal_uuid
+  - query — Search by offering, proposal, call or resource name
+  - resource — Resource
+  - resource_uuid
+
+### proposal_my_requested_resources_retrieve
+GET /api/proposal-my-requested-resources/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
 ## proposal-proposals  (module: waldur_api_client.api.proposal_proposals)
 ============================================================
 
@@ -20031,6 +20080,23 @@ Path parameters:
   - obj_uuid
   - uuid
 
+### proposal_proposals_resource_purchase_order_set
+POST /api/proposal-proposals/{uuid}/resources/{obj_uuid}/purchase_order/
+Summary: Upload or replace the purchase order of a requested resource
+Description: Upload or replace the purchase order of a requested resource.
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
+### proposal_proposals_resource_purchase_order_delete
+DELETE /api/proposal-proposals/{uuid}/resources/{obj_uuid}/purchase_order/
+Summary: Remove the purchase order of a requested resource
+Description: Remove the purchase order of a requested resource.
+Path parameters:
+  - obj_uuid
+  - uuid
+
 ### proposal_proposals_step_checklist_responses_list
 GET /api/proposal-proposals/{uuid}/step-checklist-responses/
 Summary: List a workflow step's checklist answers grouped by reviewer, for the threaded technical-assessment view
@@ -20125,7 +20191,7 @@ Query parameters (10):
 
 ### proposal_protected_calls_list
 GET /api/proposal-protected-calls/
-Query parameters (11):
+Query parameters (12):
   - customer
   - customer_keyword
   - customer_uuid
@@ -20135,6 +20201,7 @@ Query parameters (11):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -20142,7 +20209,7 @@ Query parameters (11):
 HEAD /api/proposal-protected-calls/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -20151,6 +20218,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -20162,7 +20230,7 @@ Request body: yes
 GET /api/proposal-protected-calls/available_compliance_checklists/
 Summary: Get available compliance checklists for call creation/editing
 Description: Get available compliance checklists for call creation/editing.
-Query parameters (11):
+Query parameters (12):
   - checklist_type — Filter by checklist type (default: proposal_compliance)
   - customer
   - customer_keyword
@@ -20172,6 +20240,7 @@ Query parameters (11):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -20179,7 +20248,7 @@ Query parameters (11):
 HEAD /api/proposal-protected-calls/available_compliance_checklists/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (11):
+Query parameters (12):
   - checklist_type — Filter by checklist type (default: proposal_compliance)
   - customer
   - customer_keyword
@@ -20189,6 +20258,7 @@ Query parameters (11):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -20196,7 +20266,7 @@ Query parameters (11):
 GET /api/proposal-protected-calls/step_checklists/
 Summary: List checklists that can be attached to a workflow step (WORKFLOW_STEP-typed)
 Description: List checklists that can be attached to a workflow step (WORKFLOW_STEP-typed). Available to call managers so the workflow config UI can populate its checklist picker without staff-only access to the checklist admin API.
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -20205,6 +20275,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -20212,7 +20283,7 @@ Query parameters (10):
 HEAD /api/proposal-protected-calls/step_checklists/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -20221,6 +20292,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -20329,7 +20401,7 @@ Summary: List all conflicts of interest detected for this call
 Description: List all conflicts of interest detected for this call.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -20338,6 +20410,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -20506,7 +20579,7 @@ Description: Get detailed compliance answers for a specific proposal (call manag
 Path parameters:
   - proposal_uuid — UUID of the proposal
   - uuid
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -20515,6 +20588,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -20524,7 +20598,7 @@ Summary: Get proposed reviewer-proposal assignments
 Description: Get proposed reviewer-proposal assignments.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -20533,6 +20607,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -20598,7 +20673,7 @@ Summary: Invite reviewers to join the call's reviewer pool
 Description: Invite reviewers to join the call's reviewer pool.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -20607,6 +20682,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 Request body: yes
@@ -20617,7 +20693,7 @@ Summary: Create multiple rounds on a call at a fixed cadence
 Description: Create multiple rounds on a call at a fixed cadence. Spacing is controlled by ``cadence`` (monthly/quarterly/biannual/yearly/custom). Each round's ``cutoff_time`` is derived as ``start_time + submission_window_days``. Fixed-date allocation is not supported in bulk mode.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -20626,6 +20702,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 Request body: yes
@@ -20699,7 +20776,7 @@ Summary: List all reviewer suggestions for this call with affinity scores
 Description: List all reviewer suggestions for this call with affinity scores.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -20708,6 +20785,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -20766,7 +20844,7 @@ Path parameters:
 
 ### proposal_public_calls_list
 GET /api/proposal-public-calls/
-Query parameters (11):
+Query parameters (12):
   - customer
   - customer_keyword
   - customer_uuid
@@ -20776,6 +20854,7 @@ Query parameters (11):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -20783,7 +20862,7 @@ Query parameters (11):
 HEAD /api/proposal-public-calls/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -20792,6 +20871,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -20864,13 +20944,15 @@ Path parameters:
 
 ### proposal_requested_resources_list
 GET /api/proposal-requested-resources/
-Query parameters (8):
+Query parameters (10):
   - created
   - o — Ordering
   - offering — Offering
   - offering_uuid
   - proposal — Proposal
+  - proposal_state — Proposal state
   - proposal_uuid
+  - query — Search by offering, proposal, call or resource name
   - resource — Resource
   - resource_uuid
 
@@ -20878,13 +20960,15 @@ Query parameters (8):
 HEAD /api/proposal-requested-resources/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (8):
+Query parameters (10):
   - created
   - o — Ordering
   - offering — Offering
   - offering_uuid
   - proposal — Proposal
+  - proposal_state — Proposal state
   - proposal_uuid
+  - query — Search by offering, proposal, call or resource name
   - resource — Resource
   - resource_uuid
 

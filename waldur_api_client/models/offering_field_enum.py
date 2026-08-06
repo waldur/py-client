@@ -40,6 +40,7 @@ class OfferingFieldEnum(str, Enum):
     OFFERING_GROUP = "offering_group"
     OFFERING_GROUP_TITLE = "offering_group_title"
     OFFERING_GROUP_UUID = "offering_group_uuid"
+    OPEN_FOR_PROPOSALS = "open_for_proposals"
     OPTIONS = "options"
     ORDER_COUNT = "order_count"
     ORGANIZATION_GROUPS = "organization_groups"

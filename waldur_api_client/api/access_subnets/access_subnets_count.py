@@ -11,14 +11,20 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
+    applies_to_portal: Union[Unset, bool] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     inet: Union[Unset, str] = UNSET,
+    is_staff_managed: Union[Unset, bool] = UNSET,
+    o: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    params["applies_to_portal"] = applies_to_portal
 
     params["customer"] = customer
 
@@ -30,6 +36,15 @@ def _get_kwargs(
     params["description"] = description
 
     params["inet"] = inet
+
+    params["is_staff_managed"] = is_staff_managed
+
+    params["o"] = o
+
+    json_offering_uuid: Union[Unset, str] = UNSET
+    if not isinstance(offering_uuid, Unset):
+        json_offering_uuid = str(offering_uuid)
+    params["offering_uuid"] = json_offering_uuid
 
     params["page"] = page
 
@@ -75,10 +90,14 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    applies_to_portal: Union[Unset, bool] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     inet: Union[Unset, str] = UNSET,
+    is_staff_managed: Union[Unset, bool] = UNSET,
+    o: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
@@ -87,10 +106,14 @@ def sync_detailed(
      Get number of items in the collection matching the request parameters.
 
     Args:
+        applies_to_portal (Union[Unset, bool]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         inet (Union[Unset, str]):
+        is_staff_managed (Union[Unset, bool]):
+        o (Union[Unset, str]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -103,10 +126,14 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        applies_to_portal=applies_to_portal,
         customer=customer,
         customer_uuid=customer_uuid,
         description=description,
         inet=inet,
+        is_staff_managed=is_staff_managed,
+        o=o,
+        offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
     )
@@ -121,10 +148,14 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    applies_to_portal: Union[Unset, bool] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     inet: Union[Unset, str] = UNSET,
+    is_staff_managed: Union[Unset, bool] = UNSET,
+    o: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
@@ -133,10 +164,14 @@ def sync(
      Get number of items in the collection matching the request parameters.
 
     Args:
+        applies_to_portal (Union[Unset, bool]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         inet (Union[Unset, str]):
+        is_staff_managed (Union[Unset, bool]):
+        o (Union[Unset, str]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -150,10 +185,14 @@ def sync(
 
     return sync_detailed(
         client=client,
+        applies_to_portal=applies_to_portal,
         customer=customer,
         customer_uuid=customer_uuid,
         description=description,
         inet=inet,
+        is_staff_managed=is_staff_managed,
+        o=o,
+        offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
     ).parsed
@@ -162,10 +201,14 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    applies_to_portal: Union[Unset, bool] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     inet: Union[Unset, str] = UNSET,
+    is_staff_managed: Union[Unset, bool] = UNSET,
+    o: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
@@ -174,10 +217,14 @@ async def asyncio_detailed(
      Get number of items in the collection matching the request parameters.
 
     Args:
+        applies_to_portal (Union[Unset, bool]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         inet (Union[Unset, str]):
+        is_staff_managed (Union[Unset, bool]):
+        o (Union[Unset, str]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -190,10 +237,14 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        applies_to_portal=applies_to_portal,
         customer=customer,
         customer_uuid=customer_uuid,
         description=description,
         inet=inet,
+        is_staff_managed=is_staff_managed,
+        o=o,
+        offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
     )
@@ -206,10 +257,14 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    applies_to_portal: Union[Unset, bool] = UNSET,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     description: Union[Unset, str] = UNSET,
     inet: Union[Unset, str] = UNSET,
+    is_staff_managed: Union[Unset, bool] = UNSET,
+    o: Union[Unset, str] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
@@ -218,10 +273,14 @@ async def asyncio(
      Get number of items in the collection matching the request parameters.
 
     Args:
+        applies_to_portal (Union[Unset, bool]):
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         description (Union[Unset, str]):
         inet (Union[Unset, str]):
+        is_staff_managed (Union[Unset, bool]):
+        o (Union[Unset, str]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -236,10 +295,14 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            applies_to_portal=applies_to_portal,
             customer=customer,
             customer_uuid=customer_uuid,
             description=description,
             inet=inet,
+            is_staff_managed=is_staff_managed,
+            o=o,
+            offering_uuid=offering_uuid,
             page=page,
             page_size=page_size,
         )

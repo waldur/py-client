@@ -5,6 +5,10 @@ from .access_resource import AccessResource
 from .access_response import AccessResponse
 from .access_response_projects import AccessResponseProjects
 from .access_subnet import AccessSubnet
+from .access_subnet_impact import AccessSubnetImpact
+from .access_subnet_impact_address import AccessSubnetImpactAddress
+from .access_subnet_impact_address_source_enum import AccessSubnetImpactAddressSourceEnum
+from .access_subnet_impact_resource import AccessSubnetImpactResource
 from .access_subnet_request import AccessSubnetRequest
 from .access_type_enum import AccessTypeEnum
 from .accessor_type_enum import AccessorTypeEnum
@@ -1855,7 +1859,6 @@ from .patched_requested_offering_request_attributes import PatchedRequestedOffer
 from .patched_requested_resource_request import PatchedRequestedResourceRequest
 from .patched_requested_resource_request_attributes import PatchedRequestedResourceRequestAttributes
 from .patched_requested_resource_request_limits import PatchedRequestedResourceRequestLimits
-from .patched_resource_access_subnet_request import PatchedResourceAccessSubnetRequest
 from .patched_resource_project_request import PatchedResourceProjectRequest
 from .patched_resource_project_request_limits import PatchedResourceProjectRequestLimits
 from .patched_resource_update_request import PatchedResourceUpdateRequest
@@ -2138,7 +2141,6 @@ from .provider_requested_offering_o_enum import ProviderRequestedOfferingOEnum
 from .provider_requested_resource import ProviderRequestedResource
 from .provider_requested_resource_attributes import ProviderRequestedResourceAttributes
 from .provider_requested_resource_limits import ProviderRequestedResourceLimits
-from .provider_requested_resource_o_enum import ProviderRequestedResourceOEnum
 from .provider_resource_monthly import ProviderResourceMonthly
 from .provider_resource_stats import ProviderResourceStats
 from .provider_resource_stats_by_state import ProviderResourceStatsByState
@@ -2360,13 +2362,15 @@ from .requested_offering_states import RequestedOfferingStates
 from .requested_resource import RequestedResource
 from .requested_resource_attributes import RequestedResourceAttributes
 from .requested_resource_limits import RequestedResourceLimits
+from .requested_resource_purchase_order import RequestedResourcePurchaseOrder
+from .requested_resource_purchase_order_request import RequestedResourcePurchaseOrderRequest
+from .requested_resource_purchase_order_request_form import RequestedResourcePurchaseOrderRequestForm
+from .requested_resource_purchase_order_request_multipart import RequestedResourcePurchaseOrderRequestMultipart
 from .requested_resource_request import RequestedResourceRequest
 from .requested_resource_request_attributes import RequestedResourceRequestAttributes
 from .requested_resource_request_limits import RequestedResourceRequestLimits
 from .reserved_agent_task import ReservedAgentTask
 from .resource import Resource
-from .resource_access_subnet import ResourceAccessSubnet
-from .resource_access_subnet_request import ResourceAccessSubnetRequest
 from .resource_api_key import ResourceApiKey
 from .resource_api_key_report_created_request import ResourceApiKeyReportCreatedRequest
 from .resource_api_key_set_erred_request import ResourceApiKeySetErredRequest
@@ -2582,6 +2586,8 @@ from .science_sub_domain_o_enum import ScienceSubDomainOEnum
 from .science_sub_domain_request import ScienceSubDomainRequest
 from .scim_pull_attributes_response import ScimPullAttributesResponse
 from .scim_sync_all_response import ScimSyncAllResponse
+from .scoped_offering import ScopedOffering
+from .scoped_offering_request import ScopedOfferingRequest
 from .screenshot import Screenshot
 from .screenshot_request import ScreenshotRequest
 from .screenshot_request_form import ScreenshotRequestForm
@@ -2629,6 +2635,7 @@ from .service_settings import ServiceSettings
 from .service_settings_field_enum import ServiceSettingsFieldEnum
 from .service_settings_options import ServiceSettingsOptions
 from .service_settings_state_enum import ServiceSettingsStateEnum
+from .serviceaccessmode_enum import SERVICEACCESSMODEEnum
 from .set_allowed_address_pairs_request import SetAllowedAddressPairsRequest
 from .set_allowed_domains_request import SetAllowedDomainsRequest
 from .set_earliest_approve_request import SetEarliestApproveRequest
@@ -2889,6 +2896,10 @@ from .user_registration_trend import UserRegistrationTrend
 from .user_request import UserRequest
 from .user_request_form import UserRequestForm
 from .user_request_multipart import UserRequestMultipart
+from .user_requested_resource import UserRequestedResource
+from .user_requested_resource_attributes import UserRequestedResourceAttributes
+from .user_requested_resource_limits import UserRequestedResourceLimits
+from .user_requested_resource_o_enum import UserRequestedResourceOEnum
 from .user_residence_country_stats import UserResidenceCountryStats
 from .user_role_create_request import UserRoleCreateRequest
 from .user_role_delete_request import UserRoleDeleteRequest
@@ -2981,6 +2992,10 @@ __all__ = (
     "AccessResponse",
     "AccessResponseProjects",
     "AccessSubnet",
+    "AccessSubnetImpact",
+    "AccessSubnetImpactAddress",
+    "AccessSubnetImpactAddressSourceEnum",
+    "AccessSubnetImpactResource",
     "AccessSubnetRequest",
     "AccessTypeEnum",
     "AccountNameGenerationPolicyEnum",
@@ -4733,7 +4748,6 @@ __all__ = (
     "PatchedRequestedResourceRequestAttributes",
     "PatchedRequestedResourceRequestLimits",
     "PatchedRequestTypeAdminRequest",
-    "PatchedResourceAccessSubnetRequest",
     "PatchedResourceProjectRequest",
     "PatchedResourceProjectRequestLimits",
     "PatchedResourceUpdateRequest",
@@ -4994,7 +5008,6 @@ __all__ = (
     "ProviderRequestedResource",
     "ProviderRequestedResourceAttributes",
     "ProviderRequestedResourceLimits",
-    "ProviderRequestedResourceOEnum",
     "ProviderResourceMonthly",
     "ProviderResourceStats",
     "ProviderResourceStatsByState",
@@ -5198,6 +5211,10 @@ __all__ = (
     "RequestedResource",
     "RequestedResourceAttributes",
     "RequestedResourceLimits",
+    "RequestedResourcePurchaseOrder",
+    "RequestedResourcePurchaseOrderRequest",
+    "RequestedResourcePurchaseOrderRequestForm",
+    "RequestedResourcePurchaseOrderRequestMultipart",
     "RequestedResourceRequest",
     "RequestedResourceRequestAttributes",
     "RequestedResourceRequestLimits",
@@ -5209,8 +5226,6 @@ __all__ = (
     "RequestTypes",
     "ReservedAgentTask",
     "Resource",
-    "ResourceAccessSubnet",
-    "ResourceAccessSubnetRequest",
     "ResourceApiKey",
     "ResourceApiKeyReportCreatedRequest",
     "ResourceApiKeySetErredRequest",
@@ -5424,6 +5439,8 @@ __all__ = (
     "ScienceSubDomainRequest",
     "ScimPullAttributesResponse",
     "ScimSyncAllResponse",
+    "ScopedOffering",
+    "ScopedOfferingRequest",
     "Screenshot",
     "ScreenshotRequest",
     "ScreenshotRequestForm",
@@ -5445,6 +5462,7 @@ __all__ = (
     "SendInvitationsResponse",
     "SendNotificationResponse",
     "ServerInfo",
+    "SERVICEACCESSMODEEnum",
     "ServiceAccountState",
     "ServiceAttributesPreview",
     "ServiceAttributesPreviewPluginOptions",
@@ -5728,6 +5746,10 @@ __all__ = (
     "UserPosixIdentity",
     "UserRegistrationTrend",
     "UserRequest",
+    "UserRequestedResource",
+    "UserRequestedResourceAttributes",
+    "UserRequestedResourceLimits",
+    "UserRequestedResourceOEnum",
     "UserRequestForm",
     "UserRequestMultipart",
     "UserResidenceCountryStats",

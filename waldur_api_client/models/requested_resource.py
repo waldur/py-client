@@ -27,10 +27,18 @@ class RequestedResource:
         resource_name (str):
         call_resource_template (str):
         call_resource_template_name (str):
+        attachment (str):
+        purchase_order_required (bool):
+        has_purchase_order (bool): Either half satisfies the requirement.
+
+            Some providers want the document, others only need the reference from
+            the customer's finance system; demanding both would block the second
+            group for no gain.
         created_by (Union[None, str]):
         created_by_name (str):
         attributes (Union[Unset, RequestedResourceAttributes]):
         limits (Union[Unset, RequestedResourceLimits]):
+        purchase_order_reference (Union[Unset, str]):
         description (Union[Unset, str]):
     """
 
@@ -41,10 +49,14 @@ class RequestedResource:
     resource_name: str
     call_resource_template: str
     call_resource_template_name: str
+    attachment: str
+    purchase_order_required: bool
+    has_purchase_order: bool
     created_by: Union[None, str]
     created_by_name: str
     attributes: Union[Unset, "RequestedResourceAttributes"] = UNSET
     limits: Union[Unset, "RequestedResourceLimits"] = UNSET
+    purchase_order_reference: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -64,6 +76,12 @@ class RequestedResource:
 
         call_resource_template_name = self.call_resource_template_name
 
+        attachment = self.attachment
+
+        purchase_order_required = self.purchase_order_required
+
+        has_purchase_order = self.has_purchase_order
+
         created_by: Union[None, str]
         created_by = self.created_by
 
@@ -76,6 +94,8 @@ class RequestedResource:
         limits: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.limits, Unset):
             limits = self.limits.to_dict()
+
+        purchase_order_reference = self.purchase_order_reference
 
         description = self.description
 
@@ -90,6 +110,9 @@ class RequestedResource:
                 "resource_name": resource_name,
                 "call_resource_template": call_resource_template,
                 "call_resource_template_name": call_resource_template_name,
+                "attachment": attachment,
+                "purchase_order_required": purchase_order_required,
+                "has_purchase_order": has_purchase_order,
                 "created_by": created_by,
                 "created_by_name": created_by_name,
             }
@@ -98,6 +121,8 @@ class RequestedResource:
             field_dict["attributes"] = attributes
         if limits is not UNSET:
             field_dict["limits"] = limits
+        if purchase_order_reference is not UNSET:
+            field_dict["purchase_order_reference"] = purchase_order_reference
         if description is not UNSET:
             field_dict["description"] = description
 
@@ -129,6 +154,12 @@ class RequestedResource:
 
         call_resource_template_name = d.pop("call_resource_template_name")
 
+        attachment = d.pop("attachment")
+
+        purchase_order_required = d.pop("purchase_order_required")
+
+        has_purchase_order = d.pop("has_purchase_order")
+
         def _parse_created_by(data: object) -> Union[None, str]:
             if data is None:
                 return data
@@ -152,6 +183,8 @@ class RequestedResource:
         else:
             limits = RequestedResourceLimits.from_dict(_limits)
 
+        purchase_order_reference = d.pop("purchase_order_reference", UNSET)
+
         description = d.pop("description", UNSET)
 
         requested_resource = cls(
@@ -162,10 +195,14 @@ class RequestedResource:
             resource_name=resource_name,
             call_resource_template=call_resource_template,
             call_resource_template_name=call_resource_template_name,
+            attachment=attachment,
+            purchase_order_required=purchase_order_required,
+            has_purchase_order=has_purchase_order,
             created_by=created_by,
             created_by_name=created_by_name,
             attributes=attributes,
             limits=limits,
+            purchase_order_reference=purchase_order_reference,
             description=description,
         )
 

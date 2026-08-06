@@ -20,11 +20,15 @@ class NestedRequestedOfferingRequest:
         offering (str):
         attributes (Union[Unset, NestedRequestedOfferingRequestAttributes]):
         plan (Union[None, Unset, str]):
+        require_purchase_order (Union[Unset, bool]): Whether a purchase order must accompany a resource request for this
+            offering before the proposal can be submitted. Defaults to the offering's require_purchase_order_upload, and
+            stays under the call manager's control afterwards.
     """
 
     offering: str
     attributes: Union[Unset, "NestedRequestedOfferingRequestAttributes"] = UNSET
     plan: Union[None, Unset, str] = UNSET
+    require_purchase_order: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,6 +44,8 @@ class NestedRequestedOfferingRequest:
         else:
             plan = self.plan
 
+        require_purchase_order = self.require_purchase_order
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -51,6 +57,8 @@ class NestedRequestedOfferingRequest:
             field_dict["attributes"] = attributes
         if plan is not UNSET:
             field_dict["plan"] = plan
+        if require_purchase_order is not UNSET:
+            field_dict["require_purchase_order"] = require_purchase_order
 
         return field_dict
 
@@ -77,10 +85,13 @@ class NestedRequestedOfferingRequest:
 
         plan = _parse_plan(d.pop("plan", UNSET))
 
+        require_purchase_order = d.pop("require_purchase_order", UNSET)
+
         nested_requested_offering_request = cls(
             offering=offering,
             attributes=attributes,
             plan=plan,
+            require_purchase_order=require_purchase_order,
         )
 
         nested_requested_offering_request.additional_properties = d

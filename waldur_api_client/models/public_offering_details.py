@@ -117,6 +117,7 @@ class PublicOfferingDetails:
         offering_group_title (Union[None, Unset, str]):
         user_has_consent (Union[Unset, bool]):
         is_accessible (Union[Unset, bool]):
+        open_for_proposals (Union[Unset, bool]):
         config_drive_default (Union[Unset, bool]):
         google_calendar_is_public (Union[None, Unset, bool]):
         google_calendar_link (Union[None, Unset, str]): Get the Google Calendar link for an offering.
@@ -199,6 +200,7 @@ class PublicOfferingDetails:
     offering_group_title: Union[None, Unset, str] = UNSET
     user_has_consent: Union[Unset, bool] = UNSET
     is_accessible: Union[Unset, bool] = UNSET
+    open_for_proposals: Union[Unset, bool] = UNSET
     config_drive_default: Union[Unset, bool] = UNSET
     google_calendar_is_public: Union[None, Unset, bool] = UNSET
     google_calendar_link: Union[None, Unset, str] = UNSET
@@ -562,6 +564,8 @@ class PublicOfferingDetails:
 
         is_accessible = self.is_accessible
 
+        open_for_proposals = self.open_for_proposals
+
         config_drive_default = self.config_drive_default
 
         google_calendar_is_public: Union[None, Unset, bool]
@@ -738,6 +742,8 @@ class PublicOfferingDetails:
             field_dict["user_has_consent"] = user_has_consent
         if is_accessible is not UNSET:
             field_dict["is_accessible"] = is_accessible
+        if open_for_proposals is not UNSET:
+            field_dict["open_for_proposals"] = open_for_proposals
         if config_drive_default is not UNSET:
             field_dict["config_drive_default"] = config_drive_default
         if google_calendar_is_public is not UNSET:
@@ -1282,6 +1288,8 @@ class PublicOfferingDetails:
 
         is_accessible = d.pop("is_accessible", UNSET)
 
+        open_for_proposals = d.pop("open_for_proposals", UNSET)
+
         config_drive_default = d.pop("config_drive_default", UNSET)
 
         def _parse_google_calendar_is_public(data: object) -> Union[None, Unset, bool]:
@@ -1386,6 +1394,7 @@ class PublicOfferingDetails:
             offering_group_title=offering_group_title,
             user_has_consent=user_has_consent,
             is_accessible=is_accessible,
+            open_for_proposals=open_for_proposals,
             config_drive_default=config_drive_default,
             google_calendar_is_public=google_calendar_is_public,
             google_calendar_link=google_calendar_link,
