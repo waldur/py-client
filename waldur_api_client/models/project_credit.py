@@ -33,13 +33,7 @@ class ProjectCredit:
         customer_credit (str):
         allocated_customer_credit (Union[None, str]):
         consumption_last_month (float):
-        spendable_value (float): Credit this project can actually draw this month.
-
-            `value` is only an allocation: compensation stops as soon as the
-            organization credit is exhausted (see MonthlyCompensation), so a
-            project can show a healthy balance that cannot be spent. Exposing the
-            minimum lets the dashboard say so without revealing organization
-            totals to project members.
+        spendable_value (str):
         is_limited_by_organization_credit (bool): True when the organization balance, not this allocation, is binding.
         offerings (list['NestedPublicOffering']):
         minimal_consumption (float):
@@ -64,7 +58,7 @@ class ProjectCredit:
     customer_credit: str
     allocated_customer_credit: Union[None, str]
     consumption_last_month: float
-    spendable_value: float
+    spendable_value: str
     is_limited_by_organization_credit: bool
     offerings: list["NestedPublicOffering"]
     minimal_consumption: float
