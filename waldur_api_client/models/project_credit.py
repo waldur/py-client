@@ -33,6 +33,14 @@ class ProjectCredit:
         customer_credit (str):
         allocated_customer_credit (Union[None, str]):
         consumption_last_month (float):
+        spendable_value (float): Credit this project can actually draw this month.
+
+            `value` is only an allocation: compensation stops as soon as the
+            organization credit is exhausted (see MonthlyCompensation), so a
+            project can show a healthy balance that cannot be spent. Exposing the
+            minimum lets the dashboard say so without revealing organization
+            totals to project members.
+        is_limited_by_organization_credit (bool): True when the organization balance, not this allocation, is binding.
         offerings (list['NestedPublicOffering']):
         minimal_consumption (float):
         value (Union[Unset, str]):
@@ -56,6 +64,8 @@ class ProjectCredit:
     customer_credit: str
     allocated_customer_credit: Union[None, str]
     consumption_last_month: float
+    spendable_value: float
+    is_limited_by_organization_credit: bool
     offerings: list["NestedPublicOffering"]
     minimal_consumption: float
     value: Union[Unset, str] = UNSET
@@ -92,6 +102,10 @@ class ProjectCredit:
         allocated_customer_credit = self.allocated_customer_credit
 
         consumption_last_month = self.consumption_last_month
+
+        spendable_value = self.spendable_value
+
+        is_limited_by_organization_credit = self.is_limited_by_organization_credit
 
         offerings = []
         for offerings_item_data in self.offerings:
@@ -138,6 +152,8 @@ class ProjectCredit:
                 "customer_credit": customer_credit,
                 "allocated_customer_credit": allocated_customer_credit,
                 "consumption_last_month": consumption_last_month,
+                "spendable_value": spendable_value,
+                "is_limited_by_organization_credit": is_limited_by_organization_credit,
                 "offerings": offerings,
                 "minimal_consumption": minimal_consumption,
             }
@@ -194,6 +210,10 @@ class ProjectCredit:
         allocated_customer_credit = _parse_allocated_customer_credit(d.pop("allocated_customer_credit"))
 
         consumption_last_month = d.pop("consumption_last_month")
+
+        spendable_value = d.pop("spendable_value")
+
+        is_limited_by_organization_credit = d.pop("is_limited_by_organization_credit")
 
         offerings = []
         _offerings = d.pop("offerings")
@@ -253,6 +273,8 @@ class ProjectCredit:
             customer_credit=customer_credit,
             allocated_customer_credit=allocated_customer_credit,
             consumption_last_month=consumption_last_month,
+            spendable_value=spendable_value,
+            is_limited_by_organization_credit=is_limited_by_organization_credit,
             offerings=offerings,
             minimal_consumption=minimal_consumption,
             value=value,

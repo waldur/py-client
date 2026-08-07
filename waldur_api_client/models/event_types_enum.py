@@ -327,6 +327,7 @@ class EventTypesEnum(str, Enum):
     UPDATE_OF_CREDIT_BY_STAFF = "update_of_credit_by_staff"
     UPDATE_OF_PROJECT_CREDIT_BY_STAFF = "update_of_project_credit_by_staff"
     USER_ACTIVATED = "user_activated"
+    USER_BLOCKED = "user_blocked"
     USER_CREATION_SUCCEEDED = "user_creation_succeeded"
     USER_DATA_ACCESSED = "user_data_accessed"
     USER_DEACTIVATED = "user_deactivated"
