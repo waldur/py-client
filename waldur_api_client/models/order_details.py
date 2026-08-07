@@ -118,8 +118,10 @@ class OrderDetails:
         provider_message (Union[Unset, str]):
         provider_message_url (Union[Unset, str]):
         provider_message_attachment (Union[None, Unset, str]):
+        provider_message_updated_at (Union[None, Unset, datetime.datetime]):
         consumer_message (Union[Unset, str]):
         consumer_message_attachment (Union[None, Unset, str]):
+        consumer_message_updated_at (Union[None, Unset, datetime.datetime]):
         consumer_rejection_comment (Union[Unset, str]):
         provider_rejection_comment (Union[Unset, str]):
         auto_approved (Union[Unset, bool]):
@@ -213,8 +215,10 @@ class OrderDetails:
     provider_message: Union[Unset, str] = UNSET
     provider_message_url: Union[Unset, str] = UNSET
     provider_message_attachment: Union[None, Unset, str] = UNSET
+    provider_message_updated_at: Union[None, Unset, datetime.datetime] = UNSET
     consumer_message: Union[Unset, str] = UNSET
     consumer_message_attachment: Union[None, Unset, str] = UNSET
+    consumer_message_updated_at: Union[None, Unset, datetime.datetime] = UNSET
     consumer_rejection_comment: Union[Unset, str] = UNSET
     provider_rejection_comment: Union[Unset, str] = UNSET
     auto_approved: Union[Unset, bool] = UNSET
@@ -594,6 +598,14 @@ class OrderDetails:
         else:
             provider_message_attachment = self.provider_message_attachment
 
+        provider_message_updated_at: Union[None, Unset, str]
+        if isinstance(self.provider_message_updated_at, Unset):
+            provider_message_updated_at = UNSET
+        elif isinstance(self.provider_message_updated_at, datetime.datetime):
+            provider_message_updated_at = self.provider_message_updated_at.isoformat()
+        else:
+            provider_message_updated_at = self.provider_message_updated_at
+
         consumer_message = self.consumer_message
 
         consumer_message_attachment: Union[None, Unset, str]
@@ -601,6 +613,14 @@ class OrderDetails:
             consumer_message_attachment = UNSET
         else:
             consumer_message_attachment = self.consumer_message_attachment
+
+        consumer_message_updated_at: Union[None, Unset, str]
+        if isinstance(self.consumer_message_updated_at, Unset):
+            consumer_message_updated_at = UNSET
+        elif isinstance(self.consumer_message_updated_at, datetime.datetime):
+            consumer_message_updated_at = self.consumer_message_updated_at.isoformat()
+        else:
+            consumer_message_updated_at = self.consumer_message_updated_at
 
         consumer_rejection_comment = self.consumer_rejection_comment
 
@@ -803,10 +823,14 @@ class OrderDetails:
             field_dict["provider_message_url"] = provider_message_url
         if provider_message_attachment is not UNSET:
             field_dict["provider_message_attachment"] = provider_message_attachment
+        if provider_message_updated_at is not UNSET:
+            field_dict["provider_message_updated_at"] = provider_message_updated_at
         if consumer_message is not UNSET:
             field_dict["consumer_message"] = consumer_message
         if consumer_message_attachment is not UNSET:
             field_dict["consumer_message_attachment"] = consumer_message_attachment
+        if consumer_message_updated_at is not UNSET:
+            field_dict["consumer_message_updated_at"] = consumer_message_updated_at
         if consumer_rejection_comment is not UNSET:
             field_dict["consumer_rejection_comment"] = consumer_rejection_comment
         if provider_rejection_comment is not UNSET:
@@ -1433,6 +1457,23 @@ class OrderDetails:
 
         provider_message_attachment = _parse_provider_message_attachment(d.pop("provider_message_attachment", UNSET))
 
+        def _parse_provider_message_updated_at(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                provider_message_updated_at_type_0 = isoparse(data)
+
+                return provider_message_updated_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        provider_message_updated_at = _parse_provider_message_updated_at(d.pop("provider_message_updated_at", UNSET))
+
         consumer_message = d.pop("consumer_message", UNSET)
 
         def _parse_consumer_message_attachment(data: object) -> Union[None, Unset, str]:
@@ -1443,6 +1484,23 @@ class OrderDetails:
             return cast(Union[None, Unset, str], data)
 
         consumer_message_attachment = _parse_consumer_message_attachment(d.pop("consumer_message_attachment", UNSET))
+
+        def _parse_consumer_message_updated_at(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                consumer_message_updated_at_type_0 = isoparse(data)
+
+                return consumer_message_updated_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        consumer_message_updated_at = _parse_consumer_message_updated_at(d.pop("consumer_message_updated_at", UNSET))
 
         consumer_rejection_comment = d.pop("consumer_rejection_comment", UNSET)
 
@@ -1581,8 +1639,10 @@ class OrderDetails:
             provider_message=provider_message,
             provider_message_url=provider_message_url,
             provider_message_attachment=provider_message_attachment,
+            provider_message_updated_at=provider_message_updated_at,
             consumer_message=consumer_message,
             consumer_message_attachment=consumer_message_attachment,
+            consumer_message_updated_at=consumer_message_updated_at,
             consumer_rejection_comment=consumer_rejection_comment,
             provider_rejection_comment=provider_rejection_comment,
             auto_approved=auto_approved,

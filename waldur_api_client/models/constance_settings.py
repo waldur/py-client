@@ -308,6 +308,8 @@ class ConstanceSettings:
         table_growth_monthly_threshold_percent (Union[Unset, int]):
         table_growth_retention_days (Union[Unset, int]):
         table_growth_min_size_bytes (Union[Unset, int]):
+        user_revision_retention_days (Union[Unset, int]):
+        user_revision_keep_minimum (Union[Unset, int]):
         user_actions_enabled (Union[Unset, bool]):
         user_actions_pending_order_hours (Union[Unset, int]):
         user_actions_high_urgency_notification (Union[Unset, bool]):
@@ -631,6 +633,8 @@ class ConstanceSettings:
     table_growth_monthly_threshold_percent: Union[Unset, int] = UNSET
     table_growth_retention_days: Union[Unset, int] = UNSET
     table_growth_min_size_bytes: Union[Unset, int] = UNSET
+    user_revision_retention_days: Union[Unset, int] = UNSET
+    user_revision_keep_minimum: Union[Unset, int] = UNSET
     user_actions_enabled: Union[Unset, bool] = UNSET
     user_actions_pending_order_hours: Union[Unset, int] = UNSET
     user_actions_high_urgency_notification: Union[Unset, bool] = UNSET
@@ -1407,6 +1411,10 @@ class ConstanceSettings:
 
         table_growth_min_size_bytes = self.table_growth_min_size_bytes
 
+        user_revision_retention_days = self.user_revision_retention_days
+
+        user_revision_keep_minimum = self.user_revision_keep_minimum
+
         user_actions_enabled = self.user_actions_enabled
 
         user_actions_pending_order_hours = self.user_actions_pending_order_hours
@@ -2112,6 +2120,10 @@ class ConstanceSettings:
             field_dict["TABLE_GROWTH_RETENTION_DAYS"] = table_growth_retention_days
         if table_growth_min_size_bytes is not UNSET:
             field_dict["TABLE_GROWTH_MIN_SIZE_BYTES"] = table_growth_min_size_bytes
+        if user_revision_retention_days is not UNSET:
+            field_dict["USER_REVISION_RETENTION_DAYS"] = user_revision_retention_days
+        if user_revision_keep_minimum is not UNSET:
+            field_dict["USER_REVISION_KEEP_MINIMUM"] = user_revision_keep_minimum
         if user_actions_enabled is not UNSET:
             field_dict["USER_ACTIONS_ENABLED"] = user_actions_enabled
         if user_actions_pending_order_hours is not UNSET:
@@ -3139,6 +3151,10 @@ class ConstanceSettings:
 
         table_growth_min_size_bytes = d.pop("TABLE_GROWTH_MIN_SIZE_BYTES", UNSET)
 
+        user_revision_retention_days = d.pop("USER_REVISION_RETENTION_DAYS", UNSET)
+
+        user_revision_keep_minimum = d.pop("USER_REVISION_KEEP_MINIMUM", UNSET)
+
         user_actions_enabled = d.pop("USER_ACTIONS_ENABLED", UNSET)
 
         user_actions_pending_order_hours = d.pop("USER_ACTIONS_PENDING_ORDER_HOURS", UNSET)
@@ -3611,6 +3627,8 @@ class ConstanceSettings:
             table_growth_monthly_threshold_percent=table_growth_monthly_threshold_percent,
             table_growth_retention_days=table_growth_retention_days,
             table_growth_min_size_bytes=table_growth_min_size_bytes,
+            user_revision_retention_days=user_revision_retention_days,
+            user_revision_keep_minimum=user_revision_keep_minimum,
             user_actions_enabled=user_actions_enabled,
             user_actions_pending_order_hours=user_actions_pending_order_hours,
             user_actions_high_urgency_notification=user_actions_high_urgency_notification,
