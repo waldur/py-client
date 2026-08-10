@@ -1831,8 +1831,8 @@ Module: `waldur_api_client.api.marketplace_resource_api_keys`
 ## marketplace-resource-end-date-change-requests
 Module: `waldur_api_client.api.marketplace_resource_end_date_change_requests`
 
-- `marketplace_resource_end_date_change_requests_list` GET `/api/marketplace-resource-end-date-change-requests/` (5 query params)
-- `marketplace_resource_end_date_change_requests_count` HEAD `/api/marketplace-resource-end-date-change-requests/` — Get number of items in the collection matching the request parameters (5 query params)
+- `marketplace_resource_end_date_change_requests_list` GET `/api/marketplace-resource-end-date-change-requests/` (6 query params)
+- `marketplace_resource_end_date_change_requests_count` HEAD `/api/marketplace-resource-end-date-change-requests/` — Get number of items in the collection matching the request parameters (6 query params)
 - `marketplace_resource_end_date_change_requests_create` POST `/api/marketplace-resource-end-date-change-requests/` (request body)
 - `marketplace_resource_end_date_change_requests_retrieve` GET `/api/marketplace-resource-end-date-change-requests/{uuid}/` (path: uuid)
 - `marketplace_resource_end_date_change_requests_approve` POST `/api/marketplace-resource-end-date-change-requests/{uuid}/approve/` — Approve resource end date change request and apply the date to the resource (path: uuid | request body)

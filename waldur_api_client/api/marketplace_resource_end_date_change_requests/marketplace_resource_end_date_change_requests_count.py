@@ -14,6 +14,7 @@ def _get_kwargs(
     *,
     created_by_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -31,6 +32,11 @@ def _get_kwargs(
     if not isinstance(customer_uuid, Unset):
         json_customer_uuid = str(customer_uuid)
     params["customer_uuid"] = json_customer_uuid
+
+    json_offering_uuid: Union[Unset, str] = UNSET
+    if not isinstance(offering_uuid, Unset):
+        json_offering_uuid = str(offering_uuid)
+    params["offering_uuid"] = json_offering_uuid
 
     params["page"] = page
 
@@ -97,6 +103,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     created_by_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -108,6 +115,7 @@ def sync_detailed(
     Args:
         created_by_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -125,6 +133,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         created_by_uuid=created_by_uuid,
         customer_uuid=customer_uuid,
+        offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
         project_uuid=project_uuid,
@@ -144,6 +153,7 @@ def sync(
     client: AuthenticatedClient,
     created_by_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -155,6 +165,7 @@ def sync(
     Args:
         created_by_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -173,6 +184,7 @@ def sync(
         client=client,
         created_by_uuid=created_by_uuid,
         customer_uuid=customer_uuid,
+        offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
         project_uuid=project_uuid,
@@ -186,6 +198,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     created_by_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -197,6 +210,7 @@ async def asyncio_detailed(
     Args:
         created_by_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -214,6 +228,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         created_by_uuid=created_by_uuid,
         customer_uuid=customer_uuid,
+        offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
         project_uuid=project_uuid,
@@ -231,6 +246,7 @@ async def asyncio(
     client: AuthenticatedClient,
     created_by_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -242,6 +258,7 @@ async def asyncio(
     Args:
         created_by_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
+        offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
@@ -261,6 +278,7 @@ async def asyncio(
             client=client,
             created_by_uuid=created_by_uuid,
             customer_uuid=customer_uuid,
+            offering_uuid=offering_uuid,
             page=page,
             page_size=page_size,
             project_uuid=project_uuid,

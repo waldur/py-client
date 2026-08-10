@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.23.dev.20260810054419
+# Version: 8.1.0-rc.24
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -11032,9 +11032,10 @@ Request body: yes
 
 ### marketplace_resource_end_date_change_requests_list
 GET /api/marketplace-resource-end-date-change-requests/
-Query parameters (5):
+Query parameters (6):
   - created_by_uuid — Created by UUID
   - customer_uuid — Customer UUID
+  - offering_uuid — Offering UUID
   - project_uuid — Project UUID
   - resource_uuid — Resource UUID
   - state
@@ -11043,9 +11044,10 @@ Query parameters (5):
 HEAD /api/marketplace-resource-end-date-change-requests/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (5):
+Query parameters (6):
   - created_by_uuid — Created by UUID
   - customer_uuid — Customer UUID
+  - offering_uuid — Offering UUID
   - project_uuid — Project UUID
   - resource_uuid — Resource UUID
   - state
