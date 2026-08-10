@@ -2390,6 +2390,11 @@ from .resource_demand_stat_total_requested_limits import ResourceDemandStatTotal
 from .resource_downscaled_request import ResourceDownscaledRequest
 from .resource_effective_id_request import ResourceEffectiveIDRequest
 from .resource_end_date_by_provider_request import ResourceEndDateByProviderRequest
+from .resource_end_date_change_request import ResourceEndDateChangeRequest
+from .resource_end_date_change_request_backend_id_request import ResourceEndDateChangeRequestBackendIDRequest
+from .resource_end_date_change_request_create import ResourceEndDateChangeRequestCreate
+from .resource_end_date_change_request_create_request import ResourceEndDateChangeRequestCreateRequest
+from .resource_end_date_change_request_request import ResourceEndDateChangeRequestRequest
 from .resource_end_date_request import ResourceEndDateRequest
 from .resource_endpoint_request import ResourceEndpointRequest
 from .resource_endpoints_request import ResourceEndpointsRequest
@@ -5245,6 +5250,11 @@ __all__ = (
     "ResourceDownscaledRequest",
     "ResourceEffectiveIDRequest",
     "ResourceEndDateByProviderRequest",
+    "ResourceEndDateChangeRequest",
+    "ResourceEndDateChangeRequestBackendIDRequest",
+    "ResourceEndDateChangeRequestCreate",
+    "ResourceEndDateChangeRequestCreateRequest",
+    "ResourceEndDateChangeRequestRequest",
     "ResourceEndDateRequest",
     "ResourceEndpointRequest",
     "ResourceEndpointsRequest",

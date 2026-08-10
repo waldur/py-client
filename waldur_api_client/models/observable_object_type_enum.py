@@ -9,6 +9,7 @@ class ObservableObjectTypeEnum(str, Enum):
     ORDER = "order"
     RESOURCE = "resource"
     RESOURCE_API_KEY_ROTATION = "resource_api_key_rotation"
+    RESOURCE_END_DATE_CHANGE_REQUEST = "resource_end_date_change_request"
     RESOURCE_PERIODIC_LIMITS = "resource_periodic_limits"
     SERVICE_ACCOUNT = "service_account"
     USER_LIFECYCLE = "user_lifecycle"

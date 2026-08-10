@@ -74,6 +74,10 @@ class MergedPluginOptions:
         conceal_billing_data (Union[Unset, bool]): If set to True, pricing and components tab would be concealed.
         create_orders_on_resource_option_change (Union[Unset, bool]): If set to True, create orders when options of
             related resources are changed.
+        enable_resource_end_date_change_requests (Union[Unset, bool]): If set to True, users without
+            RESOURCE.SET_END_DATE can request an end date change, and holders of that permission approve or reject. Approval
+            writes the date directly; no order is created. Requests are published as events so an external approval system
+            can decide instead. Not applicable to prepaid offerings, which extend through renewal instead.
         enable_resource_projects (Union[Unset, bool]): Enable sub-project management within resources.
         enable_membership_sync_status (Union[Unset, bool]): Enable per-member sync status reporting by the site agent:
             team views show whether each role grant has propagated to the provider backend, and providers can trigger a
@@ -235,6 +239,7 @@ class MergedPluginOptions:
     require_purchase_order_upload: Union[Unset, bool] = UNSET
     conceal_billing_data: Union[Unset, bool] = UNSET
     create_orders_on_resource_option_change: Union[Unset, bool] = UNSET
+    enable_resource_end_date_change_requests: Union[Unset, bool] = UNSET
     enable_resource_projects: Union[Unset, bool] = UNSET
     enable_membership_sync_status: Union[Unset, bool] = UNSET
     enable_resource_access_subnets: Union[Unset, bool] = UNSET
@@ -375,6 +380,8 @@ class MergedPluginOptions:
         conceal_billing_data = self.conceal_billing_data
 
         create_orders_on_resource_option_change = self.create_orders_on_resource_option_change
+
+        enable_resource_end_date_change_requests = self.enable_resource_end_date_change_requests
 
         enable_resource_projects = self.enable_resource_projects
 
@@ -619,6 +626,8 @@ class MergedPluginOptions:
             field_dict["conceal_billing_data"] = conceal_billing_data
         if create_orders_on_resource_option_change is not UNSET:
             field_dict["create_orders_on_resource_option_change"] = create_orders_on_resource_option_change
+        if enable_resource_end_date_change_requests is not UNSET:
+            field_dict["enable_resource_end_date_change_requests"] = enable_resource_end_date_change_requests
         if enable_resource_projects is not UNSET:
             field_dict["enable_resource_projects"] = enable_resource_projects
         if enable_membership_sync_status is not UNSET:
@@ -865,6 +874,8 @@ class MergedPluginOptions:
         conceal_billing_data = d.pop("conceal_billing_data", UNSET)
 
         create_orders_on_resource_option_change = d.pop("create_orders_on_resource_option_change", UNSET)
+
+        enable_resource_end_date_change_requests = d.pop("enable_resource_end_date_change_requests", UNSET)
 
         enable_resource_projects = d.pop("enable_resource_projects", UNSET)
 
@@ -1150,6 +1161,7 @@ class MergedPluginOptions:
             require_purchase_order_upload=require_purchase_order_upload,
             conceal_billing_data=conceal_billing_data,
             create_orders_on_resource_option_change=create_orders_on_resource_option_change,
+            enable_resource_end_date_change_requests=enable_resource_end_date_change_requests,
             enable_resource_projects=enable_resource_projects,
             enable_membership_sync_status=enable_membership_sync_status,
             enable_resource_access_subnets=enable_resource_access_subnets,
