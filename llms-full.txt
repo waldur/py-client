@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.24.dev.20260810142902
+# Version: 8.1.0-rc.24.dev.20260811062039
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -771,9 +771,9 @@ Path parameters:
 ### anonymous_chat_interactions_list
 GET /api/anonymous-chat-interactions/
 Query parameters (9):
-  - created_from
-  - created_to
-  - has_negative_feedback
+  - created_after
+  - created_before
+  - has_feedback
   - is_flagged
   - o — Ordering
   - query
@@ -793,9 +793,9 @@ Description: Returns the ordered list of interactions belonging to the given ``s
 Path parameters:
   - session_id
 Query parameters (9):
-  - created_from
-  - created_to
-  - has_negative_feedback
+  - created_after
+  - created_before
+  - has_feedback
   - is_flagged
   - o — Ordering
   - query
@@ -808,9 +808,9 @@ GET /api/anonymous-chat-interactions/by-user/
 Summary: Aggregate user list (no slug)
 Description: Returns one row per user_slug with aggregate counters. Powers the staff Users page in the admin analytics.
 Query parameters (9):
-  - created_from
-  - created_to
-  - has_negative_feedback
+  - created_after
+  - created_before
+  - has_feedback
   - is_flagged
   - o — Ordering
   - query
@@ -825,9 +825,9 @@ Description: Returns interactions sharing a ``user_slug`` (Scrypt of originating
 Path parameters:
   - user_slug
 Query parameters (9):
-  - created_from
-  - created_to
-  - has_negative_feedback
+  - created_after
+  - created_before
+  - has_feedback
   - is_flagged
   - o — Ordering
   - query
@@ -839,21 +839,49 @@ Query parameters (9):
 GET /api/anonymous-chat-interactions/conversations/
 Summary: Conversations grouped by session
 Description: One row per anonymous conversation (``session_id``) with aggregate counters, mirroring the authenticated threads table. Honours the same filters as the list endpoint. Read a conversation's transcript via ``by-session/{session_id}``.
-Query parameters (9):
-  - created_from
-  - created_to
-  - has_negative_feedback
+Query parameters (18):
+  - created_after
+  - created_before
+  - has_feedback
+  - input_tokens_max — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - input_tokens_min — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
   - is_flagged
+  - is_reviewed — Whether the nightly LLM judge has scored the conversation.
+  - last_active_after — Bound on the conversation's most recent turn. Inclusive of the boundary day.
+  - last_active_before — Bound on the conversation's most recent turn. Inclusive of the boundary day.
   - o — Ordering
+  - output_tokens_max — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - output_tokens_min — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
   - query
   - session_id
   - severity
+  - total_tokens_max — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - total_tokens_min — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
   - user_slug
 
 ### anonymous_chat_interactions_kpi_retrieve
 GET /api/anonymous-chat-interactions/kpi/
 Summary: Aggregate KPI roll-up
 Description: Returns aggregate counters and rates for the anonymous chat flow. Filters are honoured (date range etc.) so the same parameters work as on the list endpoint.
+Query parameters (18):
+  - created_after
+  - created_before
+  - has_feedback
+  - input_tokens_max — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - input_tokens_min — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - is_flagged
+  - is_reviewed — Whether the nightly LLM judge has scored the conversation.
+  - last_active_after — Bound on the conversation's most recent turn. Inclusive of the boundary day.
+  - last_active_before — Bound on the conversation's most recent turn. Inclusive of the boundary day.
+  - o — Ordering
+  - output_tokens_max — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - output_tokens_min — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - query
+  - session_id
+  - severity
+  - total_tokens_max — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - total_tokens_min — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - user_slug
 
 ### anonymous_chat_interactions_retrieve
 GET /api/anonymous-chat-interactions/{uuid}/
@@ -2986,8 +3014,9 @@ Request body: yes
 
 ### chat_threads_list
 GET /api/chat-threads/
-Query parameters (17):
-  - created
+Query parameters (19):
+  - created_after
+  - created_before
   - field
   - has_feedback
   - input_tokens_max
@@ -2995,7 +3024,8 @@ Query parameters (17):
   - is_archived
   - is_flagged
   - max_severity
-  - modified
+  - modified_after
+  - modified_before
   - o — Ordering
   - output_tokens_max
   - output_tokens_min
@@ -3010,10 +3040,29 @@ GET /api/chat-threads/stats/
 Summary: Get statistics for visible chat threads
 Description: Summary statistics for the visible chat threads.
 
-Aggregates over a clean base queryset rather than ``get_queryset`` —
-the per-row token/count annotations there would collide with these
-aggregates. Visibility mirrors the list: staff/support see all, other
-users only their own.
+Filters run against the annotated list queryset, then the matched
+threads are re-read as a plain queryset. Both halves are load-bearing:
+``has_feedback`` and the token ranges resolve against annotations that
+exist only on ``get_queryset``, while t...
+Query parameters (18):
+  - created_after
+  - created_before
+  - has_feedback
+  - input_tokens_max
+  - input_tokens_min
+  - is_archived
+  - is_flagged
+  - max_severity
+  - modified_after
+  - modified_before
+  - o — Ordering
+  - output_tokens_max
+  - output_tokens_min
+  - query
+  - scope
+  - total_tokens_max
+  - total_tokens_min
+  - user
 
 ### chat_threads_retrieve
 GET /api/chat-threads/{uuid}/

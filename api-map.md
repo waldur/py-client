@@ -134,8 +134,8 @@ Module: `waldur_api_client.api.anonymous_chat_interactions`
 - `anonymous_chat_interactions_by_session_list` GET `/api/anonymous-chat-interactions/by-session/{session_id}/` — Full transcript for one anonymous session (path: session_id | 9 query params)
 - `anonymous_chat_interactions_by_user_aggregate` GET `/api/anonymous-chat-interactions/by-user/` — Aggregate user list (no slug) (9 query params)
 - `anonymous_chat_interactions_by_user_list` GET `/api/anonymous-chat-interactions/by-user/{user_slug}/` — All sessions for one pseudonymous user (path: user_slug | 9 query params)
-- `anonymous_chat_interactions_conversations_list` GET `/api/anonymous-chat-interactions/conversations/` — Conversations grouped by session (9 query params)
-- `anonymous_chat_interactions_kpi_retrieve` GET `/api/anonymous-chat-interactions/kpi/` — Aggregate KPI roll-up (no params)
+- `anonymous_chat_interactions_conversations_list` GET `/api/anonymous-chat-interactions/conversations/` — Conversations grouped by session (18 query params)
+- `anonymous_chat_interactions_kpi_retrieve` GET `/api/anonymous-chat-interactions/kpi/` — Aggregate KPI roll-up (18 query params)
 - `anonymous_chat_interactions_retrieve` GET `/api/anonymous-chat-interactions/{uuid}/` (path: uuid)
 
 ## api-auth
@@ -543,8 +543,8 @@ Module: `waldur_api_client.api.chat_system_prompts`
 ## chat-threads
 Module: `waldur_api_client.api.chat_threads`
 
-- `chat_threads_list` GET `/api/chat-threads/` (17 query params)
-- `chat_threads_stats_retrieve` GET `/api/chat-threads/stats/` — Get statistics for visible chat threads (no params)
+- `chat_threads_list` GET `/api/chat-threads/` (19 query params)
+- `chat_threads_stats_retrieve` GET `/api/chat-threads/stats/` — Get statistics for visible chat threads (18 query params)
 - `chat_threads_retrieve` GET `/api/chat-threads/{uuid}/` (path: uuid | 1 query param)
 - `chat_threads_archive` POST `/api/chat-threads/{uuid}/archive/` — Archive thread (path: uuid)
 - `chat_threads_cancel` POST `/api/chat-threads/{uuid}/cancel/` — Cancel active stream (path: uuid | request body)

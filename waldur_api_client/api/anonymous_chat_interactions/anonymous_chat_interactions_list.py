@@ -15,9 +15,9 @@ from ...utils import parse_link_header
 
 def _get_kwargs(
     *,
-    created_from: Union[Unset, datetime.date] = UNSET,
-    created_to: Union[Unset, datetime.date] = UNSET,
-    has_negative_feedback: Union[Unset, bool] = UNSET,
+    created_after: Union[Unset, datetime.date] = UNSET,
+    created_before: Union[Unset, datetime.date] = UNSET,
+    has_feedback: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[AnonymousChatInteractionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -29,17 +29,17 @@ def _get_kwargs(
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_created_from: Union[Unset, str] = UNSET
-    if not isinstance(created_from, Unset):
-        json_created_from = created_from.isoformat()
-    params["created_from"] = json_created_from
+    json_created_after: Union[Unset, str] = UNSET
+    if not isinstance(created_after, Unset):
+        json_created_after = created_after.isoformat()
+    params["created_after"] = json_created_after
 
-    json_created_to: Union[Unset, str] = UNSET
-    if not isinstance(created_to, Unset):
-        json_created_to = created_to.isoformat()
-    params["created_to"] = json_created_to
+    json_created_before: Union[Unset, str] = UNSET
+    if not isinstance(created_before, Unset):
+        json_created_before = created_before.isoformat()
+    params["created_before"] = json_created_before
 
-    params["has_negative_feedback"] = has_negative_feedback
+    params["has_feedback"] = has_feedback
 
     params["is_flagged"] = is_flagged
 
@@ -110,9 +110,9 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    created_from: Union[Unset, datetime.date] = UNSET,
-    created_to: Union[Unset, datetime.date] = UNSET,
-    has_negative_feedback: Union[Unset, bool] = UNSET,
+    created_after: Union[Unset, datetime.date] = UNSET,
+    created_before: Union[Unset, datetime.date] = UNSET,
+    has_feedback: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[AnonymousChatInteractionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -124,9 +124,9 @@ def sync_detailed(
 ) -> Response[list["AnonymousChatInteraction"]]:
     """
     Args:
-        created_from (Union[Unset, datetime.date]):
-        created_to (Union[Unset, datetime.date]):
-        has_negative_feedback (Union[Unset, bool]):
+        created_after (Union[Unset, datetime.date]):
+        created_before (Union[Unset, datetime.date]):
+        has_feedback (Union[Unset, bool]):
         is_flagged (Union[Unset, bool]):
         o (Union[Unset, list[AnonymousChatInteractionOEnum]]):
         page (Union[Unset, int]):
@@ -145,9 +145,9 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        created_from=created_from,
-        created_to=created_to,
-        has_negative_feedback=has_negative_feedback,
+        created_after=created_after,
+        created_before=created_before,
+        has_feedback=has_feedback,
         is_flagged=is_flagged,
         o=o,
         page=page,
@@ -168,9 +168,9 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    created_from: Union[Unset, datetime.date] = UNSET,
-    created_to: Union[Unset, datetime.date] = UNSET,
-    has_negative_feedback: Union[Unset, bool] = UNSET,
+    created_after: Union[Unset, datetime.date] = UNSET,
+    created_before: Union[Unset, datetime.date] = UNSET,
+    has_feedback: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[AnonymousChatInteractionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -182,9 +182,9 @@ def sync(
 ) -> list["AnonymousChatInteraction"]:
     """
     Args:
-        created_from (Union[Unset, datetime.date]):
-        created_to (Union[Unset, datetime.date]):
-        has_negative_feedback (Union[Unset, bool]):
+        created_after (Union[Unset, datetime.date]):
+        created_before (Union[Unset, datetime.date]):
+        has_feedback (Union[Unset, bool]):
         is_flagged (Union[Unset, bool]):
         o (Union[Unset, list[AnonymousChatInteractionOEnum]]):
         page (Union[Unset, int]):
@@ -204,9 +204,9 @@ def sync(
 
     return sync_detailed(
         client=client,
-        created_from=created_from,
-        created_to=created_to,
-        has_negative_feedback=has_negative_feedback,
+        created_after=created_after,
+        created_before=created_before,
+        has_feedback=has_feedback,
         is_flagged=is_flagged,
         o=o,
         page=page,
@@ -221,9 +221,9 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    created_from: Union[Unset, datetime.date] = UNSET,
-    created_to: Union[Unset, datetime.date] = UNSET,
-    has_negative_feedback: Union[Unset, bool] = UNSET,
+    created_after: Union[Unset, datetime.date] = UNSET,
+    created_before: Union[Unset, datetime.date] = UNSET,
+    has_feedback: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[AnonymousChatInteractionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -235,9 +235,9 @@ async def asyncio_detailed(
 ) -> Response[list["AnonymousChatInteraction"]]:
     """
     Args:
-        created_from (Union[Unset, datetime.date]):
-        created_to (Union[Unset, datetime.date]):
-        has_negative_feedback (Union[Unset, bool]):
+        created_after (Union[Unset, datetime.date]):
+        created_before (Union[Unset, datetime.date]):
+        has_feedback (Union[Unset, bool]):
         is_flagged (Union[Unset, bool]):
         o (Union[Unset, list[AnonymousChatInteractionOEnum]]):
         page (Union[Unset, int]):
@@ -256,9 +256,9 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        created_from=created_from,
-        created_to=created_to,
-        has_negative_feedback=has_negative_feedback,
+        created_after=created_after,
+        created_before=created_before,
+        has_feedback=has_feedback,
         is_flagged=is_flagged,
         o=o,
         page=page,
@@ -277,9 +277,9 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    created_from: Union[Unset, datetime.date] = UNSET,
-    created_to: Union[Unset, datetime.date] = UNSET,
-    has_negative_feedback: Union[Unset, bool] = UNSET,
+    created_after: Union[Unset, datetime.date] = UNSET,
+    created_before: Union[Unset, datetime.date] = UNSET,
+    has_feedback: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[AnonymousChatInteractionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
@@ -291,9 +291,9 @@ async def asyncio(
 ) -> list["AnonymousChatInteraction"]:
     """
     Args:
-        created_from (Union[Unset, datetime.date]):
-        created_to (Union[Unset, datetime.date]):
-        has_negative_feedback (Union[Unset, bool]):
+        created_after (Union[Unset, datetime.date]):
+        created_before (Union[Unset, datetime.date]):
+        has_feedback (Union[Unset, bool]):
         is_flagged (Union[Unset, bool]):
         o (Union[Unset, list[AnonymousChatInteractionOEnum]]):
         page (Union[Unset, int]):
@@ -314,9 +314,9 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
-            created_from=created_from,
-            created_to=created_to,
-            has_negative_feedback=has_negative_feedback,
+            created_after=created_after,
+            created_before=created_before,
+            has_feedback=has_feedback,
             is_flagged=is_flagged,
             o=o,
             page=page,
@@ -332,9 +332,9 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    created_from: Union[Unset, datetime.date] = UNSET,
-    created_to: Union[Unset, datetime.date] = UNSET,
-    has_negative_feedback: Union[Unset, bool] = UNSET,
+    created_after: Union[Unset, datetime.date] = UNSET,
+    created_before: Union[Unset, datetime.date] = UNSET,
+    has_feedback: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[AnonymousChatInteractionOEnum]] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -350,9 +350,9 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        created_from (Union[Unset, datetime.date]):
-        created_to (Union[Unset, datetime.date]):
-        has_negative_feedback (Union[Unset, bool]):
+        created_after (Union[Unset, datetime.date]):
+        created_before (Union[Unset, datetime.date]):
+        has_feedback (Union[Unset, bool]):
         is_flagged (Union[Unset, bool]):
         o (Union[Unset, list[AnonymousChatInteractionOEnum]]):
         query (Union[Unset, str]):
@@ -373,9 +373,9 @@ def sync_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
-        created_from=created_from,
-        created_to=created_to,
-        has_negative_feedback=has_negative_feedback,
+        created_after=created_after,
+        created_before=created_before,
+        has_feedback=has_feedback,
         is_flagged=is_flagged,
         o=o,
         query=query,
@@ -429,9 +429,9 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    created_from: Union[Unset, datetime.date] = UNSET,
-    created_to: Union[Unset, datetime.date] = UNSET,
-    has_negative_feedback: Union[Unset, bool] = UNSET,
+    created_after: Union[Unset, datetime.date] = UNSET,
+    created_before: Union[Unset, datetime.date] = UNSET,
+    has_feedback: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[AnonymousChatInteractionOEnum]] = UNSET,
     query: Union[Unset, str] = UNSET,
@@ -447,9 +447,9 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        created_from (Union[Unset, datetime.date]):
-        created_to (Union[Unset, datetime.date]):
-        has_negative_feedback (Union[Unset, bool]):
+        created_after (Union[Unset, datetime.date]):
+        created_before (Union[Unset, datetime.date]):
+        has_feedback (Union[Unset, bool]):
         is_flagged (Union[Unset, bool]):
         o (Union[Unset, list[AnonymousChatInteractionOEnum]]):
         query (Union[Unset, str]):
@@ -470,9 +470,9 @@ async def asyncio_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
-        created_from=created_from,
-        created_to=created_to,
-        has_negative_feedback=has_negative_feedback,
+        created_after=created_after,
+        created_before=created_before,
+        has_feedback=has_feedback,
         is_flagged=is_flagged,
         o=o,
         query=query,
