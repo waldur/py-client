@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.24.dev.20260811062039
+# Version: 8.1.0-rc.24.dev.20260811141240
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -8681,12 +8681,15 @@ Path parameters:
 
 ### marketplace_project_estimated_cost_policies_list
 GET /api/marketplace-project-estimated-cost-policies/
-Query parameters (7):
+Query parameters (10):
   - customer
   - customer_uuid
+  - has_resource
   - project
   - project_uuid
   - query
+  - resource
+  - resource_uuid
   - scope
   - scope_uuid
 
@@ -8694,12 +8697,15 @@ Query parameters (7):
 HEAD /api/marketplace-project-estimated-cost-policies/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (7):
+Query parameters (10):
   - customer
   - customer_uuid
+  - has_resource
   - project
   - project_uuid
   - query
+  - resource
+  - resource_uuid
   - scope
   - scope_uuid
 

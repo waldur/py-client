@@ -858,7 +858,6 @@ from .global_user_data_access_log_o_enum import GlobalUserDataAccessLogOEnum
 from .google_auth_url import GoogleAuthUrl
 from .google_calendar import GoogleCalendar
 from .google_credentials import GoogleCredentials
-from .google_credentials_allowed_domains import GoogleCredentialsAllowedDomains
 from .google_credentials_field_enum import GoogleCredentialsFieldEnum
 from .group_invitation import GroupInvitation
 from .group_invitation_request import GroupInvitationRequest
@@ -1225,18 +1224,10 @@ from .nested_section_request import NestedSectionRequest
 from .nested_security_group_rule import NestedSecurityGroupRule
 from .nested_security_group_rule_request import NestedSecurityGroupRuleRequest
 from .nested_software_catalog import NestedSoftwareCatalog
-from .nested_software_catalog_enabled_cpu_family import NestedSoftwareCatalogEnabledCpuFamily
-from .nested_software_catalog_enabled_cpu_microarchitectures import NestedSoftwareCatalogEnabledCpuMicroarchitectures
 from .nested_software_catalog_request import NestedSoftwareCatalogRequest
-from .nested_software_catalog_request_enabled_cpu_family import NestedSoftwareCatalogRequestEnabledCpuFamily
-from .nested_software_catalog_request_enabled_cpu_microarchitectures import (
-    NestedSoftwareCatalogRequestEnabledCpuMicroarchitectures,
-)
 from .nested_software_target import NestedSoftwareTarget
-from .nested_software_target_gpu_architectures import NestedSoftwareTargetGpuArchitectures
 from .nested_software_target_metadata import NestedSoftwareTargetMetadata
 from .nested_software_target_request import NestedSoftwareTargetRequest
-from .nested_software_target_request_gpu_architectures import NestedSoftwareTargetRequestGpuArchitectures
 from .nested_software_target_request_metadata import NestedSoftwareTargetRequestMetadata
 from .nested_software_version import NestedSoftwareVersion
 from .nested_software_version_request import NestedSoftwareVersionRequest
@@ -1358,15 +1349,7 @@ from .offering_resource_options_update_request import OfferingResourceOptionsUpd
 from .offering_role import OfferingRole
 from .offering_role_request import OfferingRoleRequest
 from .offering_software_catalog import OfferingSoftwareCatalog
-from .offering_software_catalog_enabled_cpu_family import OfferingSoftwareCatalogEnabledCpuFamily
-from .offering_software_catalog_enabled_cpu_microarchitectures import (
-    OfferingSoftwareCatalogEnabledCpuMicroarchitectures,
-)
 from .offering_software_catalog_request import OfferingSoftwareCatalogRequest
-from .offering_software_catalog_request_enabled_cpu_family import OfferingSoftwareCatalogRequestEnabledCpuFamily
-from .offering_software_catalog_request_enabled_cpu_microarchitectures import (
-    OfferingSoftwareCatalogRequestEnabledCpuMicroarchitectures,
-)
 from .offering_state import OfferingState
 from .offering_state_counter import OfferingStateCounter
 from .offering_state_counters import OfferingStateCounters
@@ -1775,12 +1758,6 @@ from .patched_offering_profile_request import PatchedOfferingProfileRequest
 from .patched_offering_qo_s_update_request import PatchedOfferingQoSUpdateRequest
 from .patched_offering_role_request import PatchedOfferingRoleRequest
 from .patched_offering_software_catalog_update_request import PatchedOfferingSoftwareCatalogUpdateRequest
-from .patched_offering_software_catalog_update_request_enabled_cpu_family import (
-    PatchedOfferingSoftwareCatalogUpdateRequestEnabledCpuFamily,
-)
-from .patched_offering_software_catalog_update_request_enabled_cpu_microarchitectures import (
-    PatchedOfferingSoftwareCatalogUpdateRequestEnabledCpuMicroarchitectures,
-)
 from .patched_offering_terms_of_service_request import PatchedOfferingTermsOfServiceRequest
 from .patched_offering_usage_policy_request import PatchedOfferingUsagePolicyRequest
 from .patched_offering_usage_policy_request_options import PatchedOfferingUsagePolicyRequestOptions
@@ -1833,7 +1810,6 @@ from .patched_provider_helpdesk_request import PatchedProviderHelpdeskRequest
 from .patched_provider_helpdesk_request_settings import PatchedProviderHelpdeskRequestSettings
 from .patched_provider_plan_details_request import PatchedProviderPlanDetailsRequest
 from .patched_provider_support_user_request import PatchedProviderSupportUserRequest
-from .patched_provider_support_user_request_skills import PatchedProviderSupportUserRequestSkills
 from .patched_provider_ticket_request import PatchedProviderTicketRequest
 from .patched_question_admin_request import PatchedQuestionAdminRequest
 from .patched_question_admin_request_guidance_answer_value_type_0 import (
@@ -1866,13 +1842,8 @@ from .patched_reviewer_affiliation_request import PatchedReviewerAffiliationRequ
 from .patched_reviewer_bid_request import PatchedReviewerBidRequest
 from .patched_reviewer_expertise_request import PatchedReviewerExpertiseRequest
 from .patched_reviewer_profile_create_request import PatchedReviewerProfileCreateRequest
-from .patched_reviewer_profile_create_request_alternative_names import (
-    PatchedReviewerProfileCreateRequestAlternativeNames,
-)
 from .patched_reviewer_profile_request import PatchedReviewerProfileRequest
-from .patched_reviewer_profile_request_alternative_names import PatchedReviewerProfileRequestAlternativeNames
 from .patched_reviewer_publication_request import PatchedReviewerPublicationRequest
-from .patched_reviewer_publication_request_coauthors import PatchedReviewerPublicationRequestCoauthors
 from .patched_reviewer_publication_request_external_ids import PatchedReviewerPublicationRequestExternalIds
 from .patched_robot_account_request import PatchedRobotAccountRequest
 from .patched_role_details_request import PatchedRoleDetailsRequest
@@ -1886,13 +1857,8 @@ from .patched_science_sub_domain_request import PatchedScienceSubDomainRequest
 from .patched_screenshot_request import PatchedScreenshotRequest
 from .patched_section_request import PatchedSectionRequest
 from .patched_service_provider_request import PatchedServiceProviderRequest
-from .patched_service_provider_request_allowed_domains import PatchedServiceProviderRequestAllowedDomains
 from .patched_service_provider_request_form import PatchedServiceProviderRequestForm
-from .patched_service_provider_request_form_allowed_domains import PatchedServiceProviderRequestFormAllowedDomains
 from .patched_service_provider_request_multipart import PatchedServiceProviderRequestMultipart
-from .patched_service_provider_request_multipart_allowed_domains import (
-    PatchedServiceProviderRequestMultipartAllowedDomains,
-)
 from .patched_slurm_allocation_request import PatchedSlurmAllocationRequest
 from .patched_slurm_periodic_usage_policy_request import PatchedSlurmPeriodicUsagePolicyRequest
 from .patched_slurm_periodic_usage_policy_request_options import PatchedSlurmPeriodicUsagePolicyRequestOptions
@@ -2151,9 +2117,7 @@ from .provider_summary import ProviderSummary
 from .provider_summary_resources import ProviderSummaryResources
 from .provider_support_user import ProviderSupportUser
 from .provider_support_user_request import ProviderSupportUserRequest
-from .provider_support_user_request_skills import ProviderSupportUserRequestSkills
 from .provider_support_user_role_enum import ProviderSupportUserRoleEnum
-from .provider_support_user_skills import ProviderSupportUserSkills
 from .provider_team_user import ProviderTeamUser
 from .provider_ticket import ProviderTicket
 from .provider_ticket_o_enum import ProviderTicketOEnum
@@ -2493,22 +2457,17 @@ from .reviewer_expertise import ReviewerExpertise
 from .reviewer_expertise_request import ReviewerExpertiseRequest
 from .reviewer_invitation_request import ReviewerInvitationRequest
 from .reviewer_profile import ReviewerProfile
-from .reviewer_profile_alternative_names import ReviewerProfileAlternativeNames
 from .reviewer_profile_create_request import ReviewerProfileCreateRequest
-from .reviewer_profile_create_request_alternative_names import ReviewerProfileCreateRequestAlternativeNames
 from .reviewer_profile_o_enum import ReviewerProfileOEnum
 from .reviewer_profile_profile_completeness import ReviewerProfileProfileCompleteness
 from .reviewer_profile_request import ReviewerProfileRequest
-from .reviewer_profile_request_alternative_names import ReviewerProfileRequestAlternativeNames
 from .reviewer_profiles_connect_orcid_retrieve_response_200 import ReviewerProfilesConnectOrcidRetrieveResponse200
 from .reviewer_profiles_import_publications_response_200 import ReviewerProfilesImportPublicationsResponse200
 from .reviewer_profiles_publish_response_200 import ReviewerProfilesPublishResponse200
 from .reviewer_profiles_unpublish_response_200 import ReviewerProfilesUnpublishResponse200
 from .reviewer_publication import ReviewerPublication
-from .reviewer_publication_coauthors import ReviewerPublicationCoauthors
 from .reviewer_publication_external_ids import ReviewerPublicationExternalIds
 from .reviewer_publication_request import ReviewerPublicationRequest
-from .reviewer_publication_request_coauthors import ReviewerPublicationRequestCoauthors
 from .reviewer_publication_request_external_ids import ReviewerPublicationRequestExternalIds
 from .reviewer_stats import ReviewerStats
 from .reviewer_suggestion import ReviewerSuggestion
@@ -2620,7 +2579,6 @@ from .service_attributes_preview_plugin_options import ServiceAttributesPreviewP
 from .service_attributes_preview_service_attributes import ServiceAttributesPreviewServiceAttributes
 from .service_provider import ServiceProvider
 from .service_provider_access import ServiceProviderAccess
-from .service_provider_allowed_domains import ServiceProviderAllowedDomains
 from .service_provider_api_secret_code import ServiceProviderApiSecretCode
 from .service_provider_checklist_summary import ServiceProviderChecklistSummary
 from .service_provider_compliance_overview import ServiceProviderComplianceOverview
@@ -2628,11 +2586,8 @@ from .service_provider_field_enum import ServiceProviderFieldEnum
 from .service_provider_offering_user_compliance import ServiceProviderOfferingUserCompliance
 from .service_provider_offering_user_compliance_state_enum import ServiceProviderOfferingUserComplianceStateEnum
 from .service_provider_request import ServiceProviderRequest
-from .service_provider_request_allowed_domains import ServiceProviderRequestAllowedDomains
 from .service_provider_request_form import ServiceProviderRequestForm
-from .service_provider_request_form_allowed_domains import ServiceProviderRequestFormAllowedDomains
 from .service_provider_request_multipart import ServiceProviderRequestMultipart
-from .service_provider_request_multipart_allowed_domains import ServiceProviderRequestMultipartAllowedDomains
 from .service_provider_revenues import ServiceProviderRevenues
 from .service_provider_signature_request import ServiceProviderSignatureRequest
 from .service_provider_statistics import ServiceProviderStatistics
@@ -2723,7 +2678,6 @@ from .software_package import SoftwarePackage
 from .software_package_o_enum import SoftwarePackageOEnum
 from .software_package_request import SoftwarePackageRequest
 from .software_target import SoftwareTarget
-from .software_target_gpu_architectures import SoftwareTargetGpuArchitectures
 from .software_target_metadata import SoftwareTargetMetadata
 from .software_target_o_enum import SoftwareTargetOEnum
 from .software_toolchain import SoftwareToolchain
@@ -3822,7 +3776,6 @@ __all__ = (
     "GoogleAuthUrl",
     "GoogleCalendar",
     "GoogleCredentials",
-    "GoogleCredentialsAllowedDomains",
     "GoogleCredentialsFieldEnum",
     "GroupInvitation",
     "GroupInvitationRequest",
@@ -4175,16 +4128,10 @@ __all__ = (
     "NestedSecurityGroupRule",
     "NestedSecurityGroupRuleRequest",
     "NestedSoftwareCatalog",
-    "NestedSoftwareCatalogEnabledCpuFamily",
-    "NestedSoftwareCatalogEnabledCpuMicroarchitectures",
     "NestedSoftwareCatalogRequest",
-    "NestedSoftwareCatalogRequestEnabledCpuFamily",
-    "NestedSoftwareCatalogRequestEnabledCpuMicroarchitectures",
     "NestedSoftwareTarget",
-    "NestedSoftwareTargetGpuArchitectures",
     "NestedSoftwareTargetMetadata",
     "NestedSoftwareTargetRequest",
-    "NestedSoftwareTargetRequestGpuArchitectures",
     "NestedSoftwareTargetRequestMetadata",
     "NestedSoftwareVersion",
     "NestedSoftwareVersionRequest",
@@ -4306,11 +4253,7 @@ __all__ = (
     "OfferingRole",
     "OfferingRoleRequest",
     "OfferingSoftwareCatalog",
-    "OfferingSoftwareCatalogEnabledCpuFamily",
-    "OfferingSoftwareCatalogEnabledCpuMicroarchitectures",
     "OfferingSoftwareCatalogRequest",
-    "OfferingSoftwareCatalogRequestEnabledCpuFamily",
-    "OfferingSoftwareCatalogRequestEnabledCpuMicroarchitectures",
     "OfferingState",
     "OfferingStateCounter",
     "OfferingStateCounters",
@@ -4677,8 +4620,6 @@ __all__ = (
     "PatchedOfferingQoSUpdateRequest",
     "PatchedOfferingRoleRequest",
     "PatchedOfferingSoftwareCatalogUpdateRequest",
-    "PatchedOfferingSoftwareCatalogUpdateRequestEnabledCpuFamily",
-    "PatchedOfferingSoftwareCatalogUpdateRequestEnabledCpuMicroarchitectures",
     "PatchedOfferingTermsOfServiceRequest",
     "PatchedOfferingUsagePolicyRequest",
     "PatchedOfferingUsagePolicyRequestOptions",
@@ -4729,7 +4670,6 @@ __all__ = (
     "PatchedProviderHelpdeskRequestSettings",
     "PatchedProviderPlanDetailsRequest",
     "PatchedProviderSupportUserRequest",
-    "PatchedProviderSupportUserRequestSkills",
     "PatchedProviderTicketRequest",
     "PatchedQuestionAdminRequest",
     "PatchedQuestionAdminRequestGuidanceAnswerValueType0",
@@ -4760,11 +4700,8 @@ __all__ = (
     "PatchedReviewerBidRequest",
     "PatchedReviewerExpertiseRequest",
     "PatchedReviewerProfileCreateRequest",
-    "PatchedReviewerProfileCreateRequestAlternativeNames",
     "PatchedReviewerProfileRequest",
-    "PatchedReviewerProfileRequestAlternativeNames",
     "PatchedReviewerPublicationRequest",
-    "PatchedReviewerPublicationRequestCoauthors",
     "PatchedReviewerPublicationRequestExternalIds",
     "PatchedRobotAccountRequest",
     "PatchedRoleDetailsRequest",
@@ -4778,11 +4715,8 @@ __all__ = (
     "PatchedScreenshotRequest",
     "PatchedSectionRequest",
     "PatchedServiceProviderRequest",
-    "PatchedServiceProviderRequestAllowedDomains",
     "PatchedServiceProviderRequestForm",
-    "PatchedServiceProviderRequestFormAllowedDomains",
     "PatchedServiceProviderRequestMultipart",
-    "PatchedServiceProviderRequestMultipartAllowedDomains",
     "PatchedSlurmAllocationRequest",
     "PatchedSlurmPeriodicUsagePolicyRequest",
     "PatchedSlurmPeriodicUsagePolicyRequestOptions",
@@ -5023,9 +4957,7 @@ __all__ = (
     "ProviderSummaryResources",
     "ProviderSupportUser",
     "ProviderSupportUserRequest",
-    "ProviderSupportUserRequestSkills",
     "ProviderSupportUserRoleEnum",
-    "ProviderSupportUserSkills",
     "ProviderTeamUser",
     "ProviderTicket",
     "ProviderTicketOEnum",
@@ -5349,22 +5281,17 @@ __all__ = (
     "ReviewerExpertiseRequest",
     "ReviewerInvitationRequest",
     "ReviewerProfile",
-    "ReviewerProfileAlternativeNames",
     "ReviewerProfileCreateRequest",
-    "ReviewerProfileCreateRequestAlternativeNames",
     "ReviewerProfileOEnum",
     "ReviewerProfileProfileCompleteness",
     "ReviewerProfileRequest",
-    "ReviewerProfileRequestAlternativeNames",
     "ReviewerProfilesConnectOrcidRetrieveResponse200",
     "ReviewerProfilesImportPublicationsResponse200",
     "ReviewerProfilesPublishResponse200",
     "ReviewerProfilesUnpublishResponse200",
     "ReviewerPublication",
-    "ReviewerPublicationCoauthors",
     "ReviewerPublicationExternalIds",
     "ReviewerPublicationRequest",
-    "ReviewerPublicationRequestCoauthors",
     "ReviewerPublicationRequestExternalIds",
     "ReviewerStats",
     "ReviewerSuggestion",
@@ -5479,7 +5406,6 @@ __all__ = (
     "ServiceAttributesPreviewServiceAttributes",
     "ServiceProvider",
     "ServiceProviderAccess",
-    "ServiceProviderAllowedDomains",
     "ServiceProviderApiSecretCode",
     "ServiceProviderChecklistSummary",
     "ServiceProviderComplianceOverview",
@@ -5487,11 +5413,8 @@ __all__ = (
     "ServiceProviderOfferingUserCompliance",
     "ServiceProviderOfferingUserComplianceStateEnum",
     "ServiceProviderRequest",
-    "ServiceProviderRequestAllowedDomains",
     "ServiceProviderRequestForm",
-    "ServiceProviderRequestFormAllowedDomains",
     "ServiceProviderRequestMultipart",
-    "ServiceProviderRequestMultipartAllowedDomains",
     "ServiceProviderRevenues",
     "ServiceProviderSignatureRequest",
     "ServiceProviderStatistics",
@@ -5579,7 +5502,6 @@ __all__ = (
     "SoftwarePackageOEnum",
     "SoftwarePackageRequest",
     "SoftwareTarget",
-    "SoftwareTargetGpuArchitectures",
     "SoftwareTargetMetadata",
     "SoftwareTargetOEnum",
     "SoftwareToolchain",

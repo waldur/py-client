@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -7,10 +7,6 @@ from attrs import field as _attrs_field
 
 from ..models.provider_support_user_role_enum import ProviderSupportUserRoleEnum
 from ..types import UNSET, Unset
-
-if TYPE_CHECKING:
-    from ..models.provider_support_user_request_skills import ProviderSupportUserRequestSkills
-
 
 T = TypeVar("T", bound="ProviderSupportUserRequest")
 
@@ -23,7 +19,7 @@ class ProviderSupportUserRequest:
         provider_helpdesk (UUID):
         role (Union[Unset, ProviderSupportUserRoleEnum]):
         is_active (Union[Unset, bool]):
-        skills (Union[Unset, ProviderSupportUserRequestSkills]): List of skill tags for routing.
+        skills (Union[Unset, list[str]]): List of skill tags for routing.
         max_open_tickets (Union[Unset, int]): Maximum number of open tickets this user can handle.
     """
 
@@ -31,7 +27,7 @@ class ProviderSupportUserRequest:
     provider_helpdesk: UUID
     role: Union[Unset, ProviderSupportUserRoleEnum] = UNSET
     is_active: Union[Unset, bool] = UNSET
-    skills: Union[Unset, "ProviderSupportUserRequestSkills"] = UNSET
+    skills: Union[Unset, list[str]] = UNSET
     max_open_tickets: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -46,9 +42,9 @@ class ProviderSupportUserRequest:
 
         is_active = self.is_active
 
-        skills: Union[Unset, dict[str, Any]] = UNSET
+        skills: Union[Unset, list[str]] = UNSET
         if not isinstance(self.skills, Unset):
-            skills = self.skills.to_dict()
+            skills = self.skills
 
         max_open_tickets = self.max_open_tickets
 
@@ -73,8 +69,6 @@ class ProviderSupportUserRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.provider_support_user_request_skills import ProviderSupportUserRequestSkills
-
         d = dict(src_dict)
         user = d.pop("user")
 
@@ -89,12 +83,7 @@ class ProviderSupportUserRequest:
 
         is_active = d.pop("is_active", UNSET)
 
-        _skills = d.pop("skills", UNSET)
-        skills: Union[Unset, ProviderSupportUserRequestSkills]
-        if isinstance(_skills, Unset):
-            skills = UNSET
-        else:
-            skills = ProviderSupportUserRequestSkills.from_dict(_skills)
+        skills = cast(list[str], d.pop("skills", UNSET))
 
         max_open_tickets = d.pop("max_open_tickets", UNSET)
 
