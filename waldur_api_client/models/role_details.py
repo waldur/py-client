@@ -32,6 +32,7 @@ class RoleDetails:
         description_nb (Union[None, Unset, str]):
         description_ar (Union[None, Unset, str]):
         description_cs (Union[None, Unset, str]):
+        description_km (Union[None, Unset, str]):
         permissions (Union[Unset, list[str]]):
         is_system_role (Union[Unset, bool]):
         is_active (Union[Unset, bool]):
@@ -60,6 +61,7 @@ class RoleDetails:
     description_nb: Union[None, Unset, str] = UNSET
     description_ar: Union[None, Unset, str] = UNSET
     description_cs: Union[None, Unset, str] = UNSET
+    description_km: Union[None, Unset, str] = UNSET
     permissions: Union[Unset, list[str]] = UNSET
     is_system_role: Union[Unset, bool] = UNSET
     is_active: Union[Unset, bool] = UNSET
@@ -164,6 +166,12 @@ class RoleDetails:
         else:
             description_cs = self.description_cs
 
+        description_km: Union[None, Unset, str]
+        if isinstance(self.description_km, Unset):
+            description_km = UNSET
+        else:
+            description_km = self.description_km
+
         permissions: Union[Unset, list[str]] = UNSET
         if not isinstance(self.permissions, Unset):
             permissions = self.permissions
@@ -241,6 +249,8 @@ class RoleDetails:
             field_dict["description_ar"] = description_ar
         if description_cs is not UNSET:
             field_dict["description_cs"] = description_cs
+        if description_km is not UNSET:
+            field_dict["description_km"] = description_km
         if permissions is not UNSET:
             field_dict["permissions"] = permissions
         if is_system_role is not UNSET:
@@ -402,6 +412,15 @@ class RoleDetails:
 
         description_cs = _parse_description_cs(d.pop("description_cs", UNSET))
 
+        def _parse_description_km(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        description_km = _parse_description_km(d.pop("description_km", UNSET))
+
         permissions = cast(list[str], d.pop("permissions", UNSET))
 
         is_system_role = d.pop("is_system_role", UNSET)
@@ -479,6 +498,7 @@ class RoleDetails:
             description_nb=description_nb,
             description_ar=description_ar,
             description_cs=description_cs,
+            description_km=description_km,
             permissions=permissions,
             is_system_role=is_system_role,
             is_active=is_active,

@@ -213,6 +213,8 @@ class MergedPluginOptions:
             of this offering (for offerings whose resources expose an OpenAI-compatible endpoint). Default: False.
         disabled_resource_actions (Union[Unset, list[str]]): List of disabled marketplace resource actions for this
             offering.
+        show_ssh_key_loss_warning (Union[Unset, bool]): Show a warning about unrecoverable loss of the SSH private key
+            on the OpenStack instance order form. Default: False.
     """
 
     auto_approve_remote_orders: Union[Unset, bool] = UNSET
@@ -314,6 +316,7 @@ class MergedPluginOptions:
     require_effective_id_for_highlighted_display: Union[Unset, bool] = False
     expose_inference_playground: Union[Unset, bool] = False
     disabled_resource_actions: Union[Unset, list[str]] = UNSET
+    show_ssh_key_loss_warning: Union[Unset, bool] = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -575,6 +578,8 @@ class MergedPluginOptions:
         if not isinstance(self.disabled_resource_actions, Unset):
             disabled_resource_actions = self.disabled_resource_actions
 
+        show_ssh_key_loss_warning = self.show_ssh_key_loss_warning
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -786,6 +791,8 @@ class MergedPluginOptions:
             field_dict["expose_inference_playground"] = expose_inference_playground
         if disabled_resource_actions is not UNSET:
             field_dict["disabled_resource_actions"] = disabled_resource_actions
+        if show_ssh_key_loss_warning is not UNSET:
+            field_dict["show_ssh_key_loss_warning"] = show_ssh_key_loss_warning
 
         return field_dict
 
@@ -1136,6 +1143,8 @@ class MergedPluginOptions:
 
         disabled_resource_actions = cast(list[str], d.pop("disabled_resource_actions", UNSET))
 
+        show_ssh_key_loss_warning = d.pop("show_ssh_key_loss_warning", UNSET)
+
         merged_plugin_options = cls(
             auto_approve_remote_orders=auto_approve_remote_orders,
             resource_expiration_threshold=resource_expiration_threshold,
@@ -1234,6 +1243,7 @@ class MergedPluginOptions:
             require_effective_id_for_highlighted_display=require_effective_id_for_highlighted_display,
             expose_inference_playground=expose_inference_playground,
             disabled_resource_actions=disabled_resource_actions,
+            show_ssh_key_loss_warning=show_ssh_key_loss_warning,
         )
 
         merged_plugin_options.additional_properties = d
