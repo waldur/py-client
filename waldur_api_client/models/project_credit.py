@@ -32,7 +32,11 @@ class ProjectCredit:
         customer_uuid (UUID):
         customer_credit (str):
         allocated_customer_credit (Union[None, str]):
-        consumption_last_month (float):
+        consumption_last_month (Union[None, float]): Credit drawn by this project in the previous month.
+
+            None when that month has no invoice at all — no billing period is not
+            the same statement as "drew nothing", and callers should be able to
+            tell them apart.
         spendable_value (str):
         is_limited_by_organization_credit (bool): True when the organization balance, not this allocation, is binding.
         offerings (list['NestedPublicOffering']):
@@ -57,7 +61,7 @@ class ProjectCredit:
     customer_uuid: UUID
     customer_credit: str
     allocated_customer_credit: Union[None, str]
-    consumption_last_month: float
+    consumption_last_month: Union[None, float]
     spendable_value: str
     is_limited_by_organization_credit: bool
     offerings: list["NestedPublicOffering"]
@@ -95,6 +99,7 @@ class ProjectCredit:
         allocated_customer_credit: Union[None, str]
         allocated_customer_credit = self.allocated_customer_credit
 
+        consumption_last_month: Union[None, float]
         consumption_last_month = self.consumption_last_month
 
         spendable_value = self.spendable_value
@@ -203,7 +208,12 @@ class ProjectCredit:
 
         allocated_customer_credit = _parse_allocated_customer_credit(d.pop("allocated_customer_credit"))
 
-        consumption_last_month = d.pop("consumption_last_month")
+        def _parse_consumption_last_month(data: object) -> Union[None, float]:
+            if data is None:
+                return data
+            return cast(Union[None, float], data)
+
+        consumption_last_month = _parse_consumption_last_month(d.pop("consumption_last_month"))
 
         spendable_value = d.pop("spendable_value")
 

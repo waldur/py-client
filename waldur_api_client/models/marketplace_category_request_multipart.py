@@ -22,8 +22,6 @@ class MarketplaceCategoryRequestMultipart:
             can have "true" value.
         default_volume_category (Union[Unset, bool]): Set to true if this category is for OpenStack Volume. Only one
             category can have "true" value.
-        default_tenant_category (Union[Unset, bool]): Set to true if this category is for OpenStack Tenant. Only one
-            category can have "true" value.
         group (Union[None, Unset, str]):
     """
 
@@ -32,7 +30,6 @@ class MarketplaceCategoryRequestMultipart:
     icon: Union[File, None, Unset] = UNSET
     default_vm_category: Union[Unset, bool] = UNSET
     default_volume_category: Union[Unset, bool] = UNSET
-    default_tenant_category: Union[Unset, bool] = UNSET
     group: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -53,8 +50,6 @@ class MarketplaceCategoryRequestMultipart:
         default_vm_category = self.default_vm_category
 
         default_volume_category = self.default_volume_category
-
-        default_tenant_category = self.default_tenant_category
 
         group: Union[None, Unset, str]
         if isinstance(self.group, Unset):
@@ -77,8 +72,6 @@ class MarketplaceCategoryRequestMultipart:
             field_dict["default_vm_category"] = default_vm_category
         if default_volume_category is not UNSET:
             field_dict["default_volume_category"] = default_volume_category
-        if default_tenant_category is not UNSET:
-            field_dict["default_tenant_category"] = default_tenant_category
         if group is not UNSET:
             field_dict["group"] = group
 
@@ -103,9 +96,6 @@ class MarketplaceCategoryRequestMultipart:
 
         if not isinstance(self.default_volume_category, Unset):
             files.append(("default_volume_category", (None, str(self.default_volume_category).encode(), "text/plain")))
-
-        if not isinstance(self.default_tenant_category, Unset):
-            files.append(("default_tenant_category", (None, str(self.default_tenant_category).encode(), "text/plain")))
 
         if not isinstance(self.group, Unset):
             if isinstance(self.group, str):
@@ -146,8 +136,6 @@ class MarketplaceCategoryRequestMultipart:
 
         default_volume_category = d.pop("default_volume_category", UNSET)
 
-        default_tenant_category = d.pop("default_tenant_category", UNSET)
-
         def _parse_group(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -163,7 +151,6 @@ class MarketplaceCategoryRequestMultipart:
             icon=icon,
             default_vm_category=default_vm_category,
             default_volume_category=default_volume_category,
-            default_tenant_category=default_tenant_category,
             group=group,
         )
 

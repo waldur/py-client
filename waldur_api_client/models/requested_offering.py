@@ -37,6 +37,9 @@ class RequestedOffering:
         plan_details (BasePublicPlan):
         options (OfferingOptions):
         components (list['OfferingComponent']):
+        require_purchase_order (bool): Whether a purchase order must accompany a resource request for this offering
+            before the proposal can be submitted. Defaults to the offering's require_purchase_order_upload, and stays under
+            the call manager's control afterwards.
         created (datetime.datetime):
         url (str):
         approved_by (Union[None, str]):
@@ -45,9 +48,6 @@ class RequestedOffering:
         approved_by_name (str):
         attributes (Union[Unset, RequestedOfferingAttributes]):
         plan (Union[None, Unset, str]):
-        require_purchase_order (Union[Unset, bool]): Whether a purchase order must accompany a resource request for this
-            offering before the proposal can be submitted. Defaults to the offering's require_purchase_order_upload, and
-            stays under the call manager's control afterwards.
         description (Union[Unset, str]):
     """
 
@@ -64,6 +64,7 @@ class RequestedOffering:
     plan_details: "BasePublicPlan"
     options: "OfferingOptions"
     components: list["OfferingComponent"]
+    require_purchase_order: bool
     created: datetime.datetime
     url: str
     approved_by: Union[None, str]
@@ -72,7 +73,6 @@ class RequestedOffering:
     approved_by_name: str
     attributes: Union[Unset, "RequestedOfferingAttributes"] = UNSET
     plan: Union[None, Unset, str] = UNSET
-    require_purchase_order: Union[Unset, bool] = UNSET
     description: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -106,6 +106,8 @@ class RequestedOffering:
             components_item = components_item_data.to_dict()
             components.append(components_item)
 
+        require_purchase_order = self.require_purchase_order
+
         created = self.created.isoformat()
 
         url = self.url
@@ -130,8 +132,6 @@ class RequestedOffering:
         else:
             plan = self.plan
 
-        require_purchase_order = self.require_purchase_order
-
         description = self.description
 
         field_dict: dict[str, Any] = {}
@@ -151,6 +151,7 @@ class RequestedOffering:
                 "plan_details": plan_details,
                 "options": options,
                 "components": components,
+                "require_purchase_order": require_purchase_order,
                 "created": created,
                 "url": url,
                 "approved_by": approved_by,
@@ -163,8 +164,6 @@ class RequestedOffering:
             field_dict["attributes"] = attributes
         if plan is not UNSET:
             field_dict["plan"] = plan
-        if require_purchase_order is not UNSET:
-            field_dict["require_purchase_order"] = require_purchase_order
         if description is not UNSET:
             field_dict["description"] = description
 
@@ -209,6 +208,8 @@ class RequestedOffering:
 
             components.append(components_item)
 
+        require_purchase_order = d.pop("require_purchase_order")
+
         created = isoparse(d.pop("created"))
 
         url = d.pop("url")
@@ -247,8 +248,6 @@ class RequestedOffering:
 
         plan = _parse_plan(d.pop("plan", UNSET))
 
-        require_purchase_order = d.pop("require_purchase_order", UNSET)
-
         description = d.pop("description", UNSET)
 
         requested_offering = cls(
@@ -265,6 +264,7 @@ class RequestedOffering:
             plan_details=plan_details,
             options=options,
             components=components,
+            require_purchase_order=require_purchase_order,
             created=created,
             url=url,
             approved_by=approved_by,
@@ -273,7 +273,6 @@ class RequestedOffering:
             approved_by_name=approved_by_name,
             attributes=attributes,
             plan=plan,
-            require_purchase_order=require_purchase_order,
             description=description,
         )
 
