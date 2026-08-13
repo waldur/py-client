@@ -15,9 +15,11 @@ class OfferingUserPosixAttributesRequest:
     Attributes:
         login_shell (Union[Unset, str]): Login shell for this account (LDAP loginShell).
         home_directory (Union[Unset, str]): Home directory for this account (LDAP homeDirectory).
-        uidnumber (Union[None, Unset, int]): Override the account's UID. The value must fall within the offering's POSIX
-            ID pool and is rejected if already allocated.
-        primarygroup (Union[None, Unset, int]): Override the account's primary GID (see uidnumber).
+        uidnumber (Union[None, Unset, int]): Override the account's UID. The value must fall within the offering's
+            resolved POSIX ID pool and is rejected with 400 if it is out of range or already held by another active
+            identity.
+        primarygroup (Union[None, Unset, int]): Override the account's primary GID, under the same pool-range and
+            uniqueness rules as uidnumber.
     """
 
     login_shell: Union[Unset, str] = UNSET

@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.25.dev.20260812193726
+# Version: 8.1.0-rc.25.dev.20260813052420
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -8097,7 +8097,7 @@ Request body: yes
 ### marketplace_offering_users_set_posix_attributes
 POST /api/marketplace-offering-users/{uuid}/set_posix_attributes/
 Summary: Set POSIX attributes for an offering user
-Description: Override the login shell, home directory, UID and/or primary GID for a single offering user, taking precedence over the offering-level defaults / the range allocator. UID and primary GID re-point the allocation ledger; values outside every active range are accepted but reported in the response 'w...
+Description: Override the login shell, home directory, UID and/or primary GID for a single offering user, taking precedence over the offering-level defaults / the range allocator. This is the programmatic equivalent of the 'Edit POSIX attributes' dialog. The accepted fields are 'login_shell', 'home_directory'...
 Path parameters:
   - uuid
 Request body: yes

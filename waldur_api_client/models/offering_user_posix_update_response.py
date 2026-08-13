@@ -13,9 +13,10 @@ T = TypeVar("T", bound="OfferingUserPosixUpdateResponse")
 class OfferingUserPosixUpdateResponse:
     """
     Attributes:
-        uidnumber (Union[None, Unset, int]):
-        primarygroup (Union[None, Unset, int]):
-        warnings (Union[Unset, list[str]]):
+        uidnumber (Union[None, Unset, int]): The UID now stored for the account.
+        primarygroup (Union[None, Unset, int]): The primary GID now stored for the account.
+        warnings (Union[Unset, list[str]]): Non-fatal advisories about the accepted values: a reserved POSIX id (65534
+            or 65535) or a value of 2^31 or above. Out-of-range and already-allocated values are rejected with 400 instead.
     """
 
     uidnumber: Union[None, Unset, int] = UNSET
