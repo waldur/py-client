@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.0-rc.14.dev.20260715233343
+# Version: 8.1.0-rc.26
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -27,27 +27,51 @@ Path parameters:
 GET /api/access-subnets/
 Summary: List access subnets
 Description: Retrieve a list of access subnets. Staff and support users can see all subnets, while other users can only see subnets associated with customers they have a role in.
-Query parameters (4):
+Query parameters (8):
+  - applies_to_portal — Applies to portal
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - description — Description
   - inet — Inet
+  - is_staff_managed — Is staff managed
+  - o — Which field to use when ordering the results.
+  - offering_uuid — Offering UUID
 
 ### access_subnets_count
 HEAD /api/access-subnets/
 Summary: List access subnets
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (4):
+Query parameters (8):
+  - applies_to_portal — Applies to portal
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - description — Description
   - inet — Inet
+  - is_staff_managed — Is staff managed
+  - o — Which field to use when ordering the results.
+  - offering_uuid — Offering UUID
 
 ### access_subnets_create
 POST /api/access-subnets/
 Summary: Create an access subnet
 Description: Create a new access subnet for a customer.
 Request body: yes
+
+### access_subnets_resource_impact_retrieve
+GET /api/access-subnets/resource_impact/
+Summary: Show which resources the access subnets reach
+Description: For each of the organization's live resources of an offering that supports access subnets, the addresses that may reach it, where each came from, and whether the list is enforced or merely advisory. Resources of offerings without access subnet support are omitted: no allow-list can apply to them....
+Query parameters (2):
+  - access_subnet_uuid — Limit to the resources this one address reaches.
+  - customer_uuid (required) — Organization whose resources to report on.
+
+### access_subnets_resource_impact_count
+HEAD /api/access-subnets/resource_impact/
+Summary: Show which resources the access subnets reach
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (2):
+  - access_subnet_uuid — Limit to the resources this one address reaches.
+  - customer_uuid (required) — Organization whose resources to report on.
 
 ### access_subnets_retrieve
 GET /api/access-subnets/{uuid}/
@@ -746,12 +770,13 @@ Path parameters:
 
 ### anonymous_chat_interactions_list
 GET /api/anonymous-chat-interactions/
-Query parameters (8):
-  - created_from
-  - created_to
-  - has_negative_feedback
+Query parameters (9):
+  - created_after
+  - created_before
+  - has_feedback
   - is_flagged
   - o — Ordering
+  - query
   - session_id
   - severity
   - user_slug
@@ -767,12 +792,13 @@ Summary: Full transcript for one anonymous session
 Description: Returns the ordered list of interactions belonging to the given ``session_id``. Use this to read a conversation as a transcript.
 Path parameters:
   - session_id
-Query parameters (8):
-  - created_from
-  - created_to
-  - has_negative_feedback
+Query parameters (9):
+  - created_after
+  - created_before
+  - has_feedback
   - is_flagged
   - o — Ordering
+  - query
   - session_id
   - severity
   - user_slug
@@ -781,12 +807,13 @@ Query parameters (8):
 GET /api/anonymous-chat-interactions/by-user/
 Summary: Aggregate user list (no slug)
 Description: Returns one row per user_slug with aggregate counters. Powers the staff Users page in the admin analytics.
-Query parameters (8):
-  - created_from
-  - created_to
-  - has_negative_feedback
+Query parameters (9):
+  - created_after
+  - created_before
+  - has_feedback
   - is_flagged
   - o — Ordering
+  - query
   - session_id
   - severity
   - user_slug
@@ -797,20 +824,64 @@ Summary: All sessions for one pseudonymous user
 Description: Returns interactions sharing a ``user_slug`` (Scrypt of originating IP) — across however many sessions that anon user opened, ordered chronologically.
 Path parameters:
   - user_slug
-Query parameters (8):
-  - created_from
-  - created_to
-  - has_negative_feedback
+Query parameters (9):
+  - created_after
+  - created_before
+  - has_feedback
   - is_flagged
   - o — Ordering
+  - query
   - session_id
   - severity
+  - user_slug
+
+### anonymous_chat_interactions_conversations_list
+GET /api/anonymous-chat-interactions/conversations/
+Summary: Conversations grouped by session
+Description: One row per anonymous conversation (``session_id``) with aggregate counters, mirroring the authenticated threads table. Honours the same filters as the list endpoint. Read a conversation's transcript via ``by-session/{session_id}``.
+Query parameters (18):
+  - created_after
+  - created_before
+  - has_feedback
+  - input_tokens_max — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - input_tokens_min — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - is_flagged
+  - is_reviewed — Whether the nightly LLM judge has scored the conversation.
+  - last_active_after — Bound on the conversation's most recent turn. Inclusive of the boundary day.
+  - last_active_before — Bound on the conversation's most recent turn. Inclusive of the boundary day.
+  - o — Ordering
+  - output_tokens_max — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - output_tokens_min — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - query
+  - session_id
+  - severity
+  - total_tokens_max — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - total_tokens_min — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
   - user_slug
 
 ### anonymous_chat_interactions_kpi_retrieve
 GET /api/anonymous-chat-interactions/kpi/
 Summary: Aggregate KPI roll-up
 Description: Returns aggregate counters and rates for the anonymous chat flow. Filters are honoured (date range etc.) so the same parameters work as on the list endpoint.
+Query parameters (18):
+  - created_after
+  - created_before
+  - has_feedback
+  - input_tokens_max — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - input_tokens_min — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - is_flagged
+  - is_reviewed — Whether the nightly LLM judge has scored the conversation.
+  - last_active_after — Bound on the conversation's most recent turn. Inclusive of the boundary day.
+  - last_active_before — Bound on the conversation's most recent turn. Inclusive of the boundary day.
+  - o — Ordering
+  - output_tokens_max — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - output_tokens_min — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - query
+  - session_id
+  - severity
+  - total_tokens_max — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - total_tokens_min — Conversation-level bound: selects whole conversations by their summed spend, never individual turns.
+  - user_slug
 
 ### anonymous_chat_interactions_retrieve
 GET /api/anonymous-chat-interactions/{uuid}/
@@ -2629,7 +2700,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -2647,7 +2718,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -2943,8 +3014,9 @@ Request body: yes
 
 ### chat_threads_list
 GET /api/chat-threads/
-Query parameters (17):
-  - created
+Query parameters (19):
+  - created_after
+  - created_before
   - field
   - has_feedback
   - input_tokens_max
@@ -2952,7 +3024,37 @@ Query parameters (17):
   - is_archived
   - is_flagged
   - max_severity
-  - modified
+  - modified_after
+  - modified_before
+  - o — Ordering
+  - output_tokens_max
+  - output_tokens_min
+  - query
+  - scope
+  - total_tokens_max
+  - total_tokens_min
+  - user
+
+### chat_threads_stats_retrieve
+GET /api/chat-threads/stats/
+Summary: Get statistics for visible chat threads
+Description: Summary statistics for the visible chat threads.
+
+Filters run against the annotated list queryset, then the matched
+threads are re-read as a plain queryset. Both halves are load-bearing:
+``has_feedback`` and the token ranges resolve against annotations that
+exist only on ``get_queryset``, while t...
+Query parameters (18):
+  - created_after
+  - created_before
+  - has_feedback
+  - input_tokens_max
+  - input_tokens_min
+  - is_archived
+  - is_flagged
+  - max_severity
+  - modified_after
+  - modified_before
   - o — Ordering
   - output_tokens_max
   - output_tokens_min
@@ -3628,6 +3730,38 @@ Query parameters (1):
   - quota_name — Name of the quota
 
 ============================================================
+## customer-role-concealments  (module: waldur_api_client.api.customer_role_concealments)
+============================================================
+
+### customer_role_concealments_list
+GET /api/customer-role-concealments/
+Query parameters (2):
+  - role_uuid — Role UUID
+  - scope_uuid — Customer (scope) UUID
+
+### customer_role_concealments_count
+HEAD /api/customer-role-concealments/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (2):
+  - role_uuid — Role UUID
+  - scope_uuid — Customer (scope) UUID
+
+### customer_role_concealments_create
+POST /api/customer-role-concealments/
+Request body: yes
+
+### customer_role_concealments_retrieve
+GET /api/customer-role-concealments/{uuid}/
+Path parameters:
+  - uuid
+
+### customer_role_concealments_destroy
+DELETE /api/customer-role-concealments/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
 ## customers  (module: waldur_api_client.api.customers)
 ============================================================
 
@@ -3972,7 +4106,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -3990,7 +4124,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -4468,6 +4602,29 @@ Path parameters:
   - uuid
 
 ============================================================
+## event-consumers  (module: waldur_api_client.api.event_consumers)
+============================================================
+
+### event_consumers_list
+GET /api/event-consumers/
+
+### event_consumers_count
+HEAD /api/event-consumers/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+
+### event_consumers_register
+POST /api/event-consumers/register/
+Summary: Register (or refresh) an event-consumer queue for the calling user
+Description: Register (or refresh) an event-consumer queue for the calling user. Pass `scopes` to bind the queue to entities you hold a role on; an EMPTY `scopes` list requests a GLOBAL queue (all events, including all-user PII) and requires staff/support. Idempotent per binding set.
+Request body: yes
+
+### event_consumers_destroy
+DELETE /api/event-consumers/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
 ## event-subscription-queues  (module: waldur_api_client.api.event_subscription_queues)
 ============================================================
 
@@ -4491,6 +4648,8 @@ Query parameters (4):
 
 ### event_subscription_queues_retrieve
 GET /api/event-subscription-queues/{uuid}/
+Summary: DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/)
+Description: DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/). Removal tracked in WAL-10111.
 Path parameters:
   - uuid
 
@@ -4521,6 +4680,8 @@ Query parameters (3):
 
 ### event_subscriptions_create
 POST /api/event-subscriptions/
+Summary: DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/)
+Description: DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/). Removal tracked in WAL-10111.
 Request body: yes
 
 ### event_subscriptions_retrieve
@@ -4547,7 +4708,8 @@ Request body: yes
 
 ### events_list
 GET /api/events/
-Query parameters (11):
+Query parameters (14):
+  - auth_method — Authentication method
   - created_from
   - created_to
   - customer_uuid — Customer UUID
@@ -4556,7 +4718,9 @@ Query parameters (11):
   - field
   - message
   - o — Ordering
+  - pat_uuid — Personal access token UUID
   - project_uuid — Project UUID
+  - related_user_uuid — Filter events related to a user: Feed scope, actor (context.user_uuid), or affected user (context.affected_user_uuid). Combined with OR. Staff/support may target any user; others only themselves.
   - scope — Filter by scope URL.
   - user_uuid — User UUID
 
@@ -4564,7 +4728,8 @@ Query parameters (11):
 HEAD /api/events/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (10):
+Query parameters (13):
+  - auth_method — Authentication method
   - created_from
   - created_to
   - customer_uuid — Customer UUID
@@ -4572,7 +4737,9 @@ Query parameters (10):
   - feature — Filter by feature (event group). Can be specified multiple times.
   - message
   - o — Ordering
+  - pat_uuid — Personal access token UUID
   - project_uuid — Project UUID
+  - related_user_uuid — Filter events related to a user: Feed scope, actor (context.user_uuid), or affected user (context.affected_user_uuid). Combined with OR. Staff/support may target any user; others only themselves.
   - scope — Filter by scope URL.
   - user_uuid — User UUID
 
@@ -4618,18 +4785,20 @@ Query parameters (1):
 
 ### events_stats_list
 GET /api/events-stats/
-Query parameters (3):
+Query parameters (4):
   - event_type — Filter by event type. Can be specified multiple times.
   - feature — Filter by feature (event group). Can be specified multiple times.
+  - related_user_uuid — Filter events related to a user: Feed scope, actor (context.user_uuid), or affected user (context.affected_user_uuid). Combined with OR. Staff/support may target any user; others only themselves.
   - scope — Filter by scope URL.
 
 ### events_stats_count
 HEAD /api/events-stats/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (3):
+Query parameters (4):
   - event_type — Filter by event type. Can be specified multiple times.
   - feature — Filter by feature (event group). Can be specified multiple times.
+  - related_user_uuid — Filter events related to a user: Feed scope, actor (context.user_uuid), or affected user (context.affected_user_uuid). Combined with OR. Staff/support may target any user; others only themselves.
   - scope — Filter by scope URL.
 
 ============================================================
@@ -4877,6 +5046,20 @@ Query parameters (1):
 GET /api/google-auth/{uuid}/authorize/
 Path parameters:
   - uuid
+
+============================================================
+## helpdesk-health  (module: waldur_api_client.api.helpdesk_health)
+============================================================
+
+### helpdesk_health_list
+GET /api/helpdesk-health/
+
+============================================================
+## helpdesk-stats  (module: waldur_api_client.api.helpdesk_stats)
+============================================================
+
+### helpdesk_stats_retrieve
+GET /api/helpdesk-stats/
 
 ============================================================
 ## hooks  (module: waldur_api_client.api.hooks)
@@ -6119,7 +6302,8 @@ Path parameters:
 GET /api/marketplace-categories/
 Summary: List categories
 Description: Returns a paginated list of marketplace categories.
-Query parameters (10):
+Query parameters (11):
+  - accessible — Only categories with offerings the current user can order
   - customer_uuid — Customer UUID
   - customers_offerings_state — Customers offerings state
   - field
@@ -6135,7 +6319,8 @@ Query parameters (10):
 HEAD /api/marketplace-categories/
 Summary: List categories
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (9):
+Query parameters (10):
+  - accessible — Only categories with offerings the current user can order
   - customer_uuid — Customer UUID
   - customers_offerings_state — Customers offerings state
   - group_uuid — Category group UUID
@@ -7003,6 +7188,62 @@ Path parameters:
   - uuid
 
 ============================================================
+## marketplace-offering-access-subnets  (module: waldur_api_client.api.marketplace_offering_access_subnets)
+============================================================
+
+### marketplace_offering_access_subnets_list
+GET /api/marketplace-offering-access-subnets/
+Summary: List resources
+Description: Returns a paginated list of resources accessible to the current user.
+Query parameters (4):
+  - description — Description
+  - inet — Inet
+  - offering — Offering URL
+  - offering_uuid — Offering UUID
+
+### marketplace_offering_access_subnets_count
+HEAD /api/marketplace-offering-access-subnets/
+Summary: List resources
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - description — Description
+  - inet — Inet
+  - offering — Offering URL
+  - offering_uuid — Offering UUID
+
+### marketplace_offering_access_subnets_create
+POST /api/marketplace-offering-access-subnets/
+Request body: yes
+
+### marketplace_offering_access_subnets_retrieve
+GET /api/marketplace-offering-access-subnets/{uuid}/
+Summary: Retrieve a resource
+Description: Returns details of a specific resource.
+Path parameters:
+  - uuid
+
+### marketplace_offering_access_subnets_update
+PUT /api/marketplace-offering-access-subnets/{uuid}/
+Summary: Update a resource
+Description: Updates the name, description, or end date of a resource. Requires appropriate permissions.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_offering_access_subnets_partial_update
+PATCH /api/marketplace-offering-access-subnets/{uuid}/
+Summary: Partially update a resource
+Description: Partially updates the name, description, or end date of a resource. Requires appropriate permissions.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_offering_access_subnets_destroy
+DELETE /api/marketplace-offering-access-subnets/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
 ## marketplace-offering-estimated-cost-policies  (module: waldur_api_client.api.marketplace_offering_estimated_cost_policies)
 ============================================================
 
@@ -7149,10 +7390,11 @@ Path parameters:
 
 ### marketplace_offering_permissions_list
 GET /api/marketplace-offering-permissions/
-Query parameters (19):
+Query parameters (20):
   - created — Created after
   - created_before — Created before
   - customer
+  - customer_uuid — Grants within a customer (uuid): the customer scope plus its projects
   - full_name — User full name contains
   - is_active
   - modified — Modified after
@@ -7174,10 +7416,11 @@ Query parameters (19):
 HEAD /api/marketplace-offering-permissions/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (19):
+Query parameters (20):
   - created — Created after
   - created_before — Created before
   - customer
+  - customer_uuid — Grants within a customer (uuid): the customer scope plus its projects
   - full_name — User full name contains
   - is_active
   - modified — Modified after
@@ -7206,10 +7449,11 @@ Path parameters:
 
 ### marketplace_offering_permissions_log_list
 GET /api/marketplace-offering-permissions-log/
-Query parameters (19):
+Query parameters (20):
   - created — Created after
   - created_before — Created before
   - customer
+  - customer_uuid — Grants within a customer (uuid): the customer scope plus its projects
   - full_name — User full name contains
   - is_active
   - modified — Modified after
@@ -7231,10 +7475,11 @@ Query parameters (19):
 HEAD /api/marketplace-offering-permissions-log/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (19):
+Query parameters (20):
   - created — Created after
   - created_before — Created before
   - customer
+  - customer_uuid — Grants within a customer (uuid): the customer scope plus its projects
   - full_name — User full name contains
   - is_active
   - modified — Modified after
@@ -7852,7 +8097,7 @@ Request body: yes
 ### marketplace_offering_users_set_posix_attributes
 POST /api/marketplace-offering-users/{uuid}/set_posix_attributes/
 Summary: Set POSIX attributes for an offering user
-Description: Override the login shell, home directory, UID and/or primary GID for a single offering user, taking precedence over the offering-level defaults / the range allocator. UID and primary GID re-point the allocation ledger; values outside every active range are accepted but reported in the response 'w...
+Description: Override the login shell, home directory, UID and/or primary GID for a single offering user, taking precedence over the offering-level defaults / the range allocator. This is the programmatic equivalent of the 'Edit POSIX attributes' dialog. The accepted fields are 'login_shell', 'home_directory'...
 Path parameters:
   - uuid
 Request body: yes
@@ -7907,6 +8152,12 @@ GET /api/marketplace-openstack-duplicate-offerings/
 HEAD /api/marketplace-openstack-duplicate-offerings/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
+
+### marketplace_openstack_duplicate_offerings_remediate
+POST /api/marketplace-openstack-duplicate-offerings/remediate/
+Summary: Collapse one duplicate per-tenant offering group onto its keeper
+Description: Collapse one duplicate per-tenant offering group onto its keeper. Previews by default; pass dry_run=false to apply. Refuses to run when history (billing periods, usage records) cannot be re-pointed.
+Request body: yes
 
 ============================================================
 ## marketplace-orders  (module: waldur_api_client.api.marketplace_orders)
@@ -8430,12 +8681,15 @@ Path parameters:
 
 ### marketplace_project_estimated_cost_policies_list
 GET /api/marketplace-project-estimated-cost-policies/
-Query parameters (7):
+Query parameters (10):
   - customer
   - customer_uuid
+  - has_resource
   - project
   - project_uuid
   - query
+  - resource
+  - resource_uuid
   - scope
   - scope_uuid
 
@@ -8443,12 +8697,15 @@ Query parameters (7):
 HEAD /api/marketplace-project-estimated-cost-policies/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (7):
+Query parameters (10):
   - customer
   - customer_uuid
+  - has_resource
   - project
   - project_uuid
   - query
+  - resource
+  - resource_uuid
   - scope
   - scope_uuid
 
@@ -8688,15 +8945,16 @@ Path parameters:
 GET /api/marketplace-provider-offerings/
 Summary: List provider offerings
 Description: Returns a paginated list of offerings for the provider.
-Query parameters (43):
+Query parameters (45):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -8713,6 +8971,7 @@ Query parameters (43):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -8737,15 +8996,16 @@ Query parameters (43):
 HEAD /api/marketplace-provider-offerings/
 Summary: List provider offerings
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (42):
+Query parameters (44):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -8761,6 +9021,7 @@ Query parameters (42):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -8787,19 +9048,36 @@ Summary: Create a provider offering
 Description: Creates a new provider offering.
 Request body: yes
 
+### marketplace_provider_offerings_aggregated_access_subnets_retrieve
+GET /api/marketplace-provider-offerings/aggregated_access_subnets/
+Summary: Aggregate access subnets across offerings
+Description: Returns the combined access-subnet allow-list of the given offerings: 'expanded' — every consumer subnet with its customer and offering context; 'defaults' — the provider-default subnets of each offering; 'organization_subnets' — organization-level access subnets of customers owning non-terminate...
+Query parameters (2):
+  - include_organization_subnets — Also merge in the organization-level access subnets of customers owning non-terminated resources of the offerings.
+  - offering_uuid (required) — UUID of an offering to include. May be repeated.
+
+### marketplace_provider_offerings_aggregated_access_subnets_count
+HEAD /api/marketplace-provider-offerings/aggregated_access_subnets/
+Summary: Aggregate access subnets across offerings
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (2):
+  - include_organization_subnets — Also merge in the organization-level access subnets of customers owning non-terminated resources of the offerings.
+  - offering_uuid (required) — UUID of an offering to include. May be repeated.
+
 ### marketplace_provider_offerings_groups_list
 GET /api/marketplace-provider-offerings/groups/
 Summary: List offerings grouped by provider
 Description: Returns a paginated list of active, shared offerings grouped by their service provider.
-Query parameters (41):
+Query parameters (43):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -8814,6 +9092,7 @@ Query parameters (41):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -8838,15 +9117,16 @@ Query parameters (41):
 HEAD /api/marketplace-provider-offerings/groups/
 Summary: List offerings grouped by provider
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (41):
+Query parameters (43):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -8861,6 +9141,7 @@ Query parameters (41):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -8903,6 +9184,13 @@ Description: Deletes a provider offering. Only possible for offerings in a Draft
 Path parameters:
   - uuid
 
+### marketplace_provider_offerings_access_subnets_retrieve
+GET /api/marketplace-provider-offerings/{uuid}/access_subnets/
+Summary: List access subnets for an offering
+Description: Returns the access subnets consumers defined for the offering, in two forms: 'expanded' — every subnet with its customer and offering context; and 'packed' — the same subnets collapsed into the minimal set of CIDRs (adjacent/overlapping networks merged). Consumer subnets are defined per (customer...
+Path parameters:
+  - uuid
+
 ### marketplace_provider_offerings_activate
 POST /api/marketplace-provider-offerings/{uuid}/activate/
 Summary: Activate an offering
@@ -8922,6 +9210,14 @@ Request body: yes
 POST /api/marketplace-provider-offerings/{uuid}/add_partition/
 Summary: Add a partition to an offering
 Description: Adds a new partition configuration to an offering.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_offerings_add_qos
+POST /api/marketplace-provider-offerings/{uuid}/add_qos/
+Summary: Add a QoS profile to an offering
+Description: Adds a new Quality of Service profile to an offering.
 Path parameters:
   - uuid
 Request body: yes
@@ -8963,15 +9259,16 @@ Summary: Get statistics for offering components
 Description: Returns monthly usage statistics for the components of an offering within a specified date range.
 Path parameters:
   - uuid
-Query parameters (44):
+Query parameters (46):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -8988,6 +9285,7 @@ Query parameters (44):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -9015,9 +9313,9 @@ Summary: Get costs for an offering
 Description: Returns monthly cost data for an offering within a specified date range.
 Path parameters:
   - uuid
-Query parameters (45):
+Query parameters (47):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - accounting_is_running
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
@@ -9025,6 +9323,7 @@ Query parameters (45):
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -9041,6 +9340,7 @@ Query parameters (45):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -9076,15 +9376,16 @@ Summary: Get customers for an offering
 Description: Returns a paginated list of customers who have resources for this offering.
 Path parameters:
   - uuid
-Query parameters (43):
+Query parameters (45):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -9101,6 +9402,7 @@ Query parameters (43):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -9225,15 +9527,16 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (43):
+Query parameters (45):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_after — Filter versions created after this timestamp (ISO 8601)
   - created_before — Filter versions created before this timestamp (ISO 8601)
@@ -9250,6 +9553,7 @@ Query parameters (43):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -9300,15 +9604,16 @@ Summary: List course accounts for an offering
 Description: Returns a paginated list of course accounts for projects that have resources of this offering.
 Path parameters:
   - uuid
-Query parameters (42):
+Query parameters (44):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -9324,6 +9629,7 @@ Query parameters (42):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -9359,15 +9665,16 @@ Summary: List customer service accounts for an offering
 Description: Returns a paginated list of customer-level service accounts for customers who have resources of this offering.
 Path parameters:
   - uuid
-Query parameters (42):
+Query parameters (44):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -9383,6 +9690,7 @@ Query parameters (42):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -9418,15 +9726,16 @@ Summary: List project service accounts for an offering
 Description: Returns a paginated list of project-level service accounts for projects that have resources of this offering.
 Path parameters:
   - uuid
-Query parameters (42):
+Query parameters (44):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -9442,6 +9751,7 @@ Query parameters (42):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -9473,7 +9783,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -9491,7 +9801,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -9570,6 +9880,14 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_provider_offerings_remove_qos
+POST /api/marketplace-provider-offerings/{uuid}/remove_qos/
+Summary: Remove a QoS profile from an offering
+Description: Removes a Quality of Service profile from an offering.
+Path parameters:
+  - uuid
+Request body: yes
+
 ### marketplace_provider_offerings_remove_software_catalog
 POST /api/marketplace-provider-offerings/{uuid}/remove_software_catalog/
 Summary: Remove a software catalog from an offering
@@ -9590,6 +9908,14 @@ Request body: yes
 POST /api/marketplace-provider-offerings/{uuid}/set_offering_group/
 Summary: Assign or clear the offering group
 Description: Sets the offering's ``offering_group`` FK. Pass ``offering_group: <uuid>`` to assign a group, or ``offering_group: null`` to clear it. The group must belong to the same customer as the offering.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_offerings_set_partition_qos
+POST /api/marketplace-provider-offerings/{uuid}/set_partition_qos/
+Summary: Set the QoS allow-list of a partition
+Description: Replaces the QoS allow-list (SLURM AllowQos gate) of a partition. An empty list permits all of the offering's QoS.
 Path parameters:
   - uuid
 Request body: yes
@@ -9772,6 +10098,14 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_provider_offerings_update_qos_partial_update
+PATCH /api/marketplace-provider-offerings/{uuid}/update_qos/
+Summary: Update a QoS profile of an offering
+Description: Updates an existing Quality of Service profile of an offering.
+Path parameters:
+  - uuid
+Request body: yes
+
 ### marketplace_provider_offerings_update_resource_options
 POST /api/marketplace-provider-offerings/{uuid}/update_resource_options/
 Summary: Update offering resource options
@@ -9908,7 +10242,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -9926,7 +10260,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -10213,7 +10547,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -10231,7 +10565,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -10376,6 +10710,14 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_provider_resources_set_membership_sync_statuses
+POST /api/marketplace-provider-resources/{uuid}/set_membership_sync_statuses/
+Summary: Report per-member sync statuses for a resource
+Description: Full-replace report from the site agent: replaces every previously stored member sync status of this resource with the submitted set. Requires the offering to opt in via the enable_membership_sync_status plugin option. Entries whose user cannot be resolved are skipped and echoed back in the respo...
+Path parameters:
+  - uuid
+Request body: yes
+
 ### marketplace_provider_resources_set_paused
 POST /api/marketplace-provider-resources/{uuid}/set_paused/
 Summary: Set paused flag for resource
@@ -10414,6 +10756,13 @@ Description: Allows a service provider to submit a report (e.g., usage or status
 Path parameters:
   - uuid
 Request body: yes
+
+### marketplace_provider_resources_sync_user_roles
+POST /api/marketplace-provider-resources/{uuid}/sync_user_roles/
+Summary: Trigger user role sync for this resource
+Description: Trigger user role sync for this resource. Sends a notification to RabbitMQ that this resource needs user role synchronization; agents without event subscriptions apply the change on their next polling cycle.
+Path parameters:
+  - uuid
 
 ### marketplace_provider_resources_team_list
 GET /api/marketplace-provider-resources/{uuid}/team/
@@ -10495,15 +10844,16 @@ Request body: yes
 GET /api/marketplace-public-offerings/
 Summary: List public offerings
 Description: Returns a paginated list of public offerings. The list is filtered to show only offerings that are active or paused and available for ordering by the current user. If anonymous access is enabled, it shows shared offerings available to unauthenticated users.
-Query parameters (42):
+Query parameters (44):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -10519,6 +10869,7 @@ Query parameters (42):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -10543,15 +10894,16 @@ Query parameters (42):
 HEAD /api/marketplace-public-offerings/
 Summary: List public offerings
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (41):
+Query parameters (43):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -10566,6 +10918,7 @@ Query parameters (41):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -10664,6 +11017,136 @@ Path parameters:
 POST /api/marketplace-remote-synchronisations/{uuid}/run_synchronisation/
 Path parameters:
   - uuid
+
+============================================================
+## marketplace-resource-api-keys  (module: waldur_api_client.api.marketplace_resource_api_keys)
+============================================================
+
+### marketplace_resource_api_keys_list
+GET /api/marketplace-resource-api-keys/
+Query parameters (4):
+  - modified_before — Modified before
+  - offering_uuid — Offering UUID
+  - resource_uuid — Resource UUID
+  - state — API key state
+
+### marketplace_resource_api_keys_count
+HEAD /api/marketplace-resource-api-keys/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - modified_before — Modified before
+  - offering_uuid — Offering UUID
+  - resource_uuid — Resource UUID
+  - state — API key state
+
+### marketplace_resource_api_keys_report_created
+POST /api/marketplace-resource-api-keys/report_created/
+Summary: Report a freshly-applied API key
+Description: Used by the site agent after it generated and applied a key to the backend. Stores the value encrypted and marks the key OK.
+Request body: yes
+
+### marketplace_resource_api_keys_retrieve
+GET /api/marketplace-resource-api-keys/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_resource_api_keys_reveal_retrieve
+GET /api/marketplace-resource-api-keys/{uuid}/reveal/
+Summary: Reveal an API key
+Description: Returns the decrypted key value. Available to users with resource access (except minimal-visibility viewers). Audit-logged.
+Path parameters:
+  - uuid
+
+### marketplace_resource_api_keys_rotate
+POST /api/marketplace-resource-api-keys/{uuid}/rotate/
+Summary: Rotate an API key
+Description: Asks the site agent to replace this key's value at the backend. The other keys are untouched (zero downtime).
+Path parameters:
+  - uuid
+
+### marketplace_resource_api_keys_set_erred
+POST /api/marketplace-resource-api-keys/{uuid}/set_erred/
+Summary: Mark an API key as erred
+Description: Used by the site agent to report that applying the key failed. Stores the error message for the UI.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resource_api_keys_set_key
+POST /api/marketplace-resource-api-keys/{uuid}/set_key/
+Summary: Report a rotated API key value
+Description: Used by the site agent after it applied a rotated key. Replaces the stored value and marks the key OK.
+Path parameters:
+  - uuid
+Request body: yes
+
+============================================================
+## marketplace-resource-end-date-change-requests  (module: waldur_api_client.api.marketplace_resource_end_date_change_requests)
+============================================================
+
+### marketplace_resource_end_date_change_requests_list
+GET /api/marketplace-resource-end-date-change-requests/
+Query parameters (6):
+  - created_by_uuid — Created by UUID
+  - customer_uuid — Customer UUID
+  - offering_uuid — Offering UUID
+  - project_uuid — Project UUID
+  - resource_uuid — Resource UUID
+  - state
+
+### marketplace_resource_end_date_change_requests_count
+HEAD /api/marketplace-resource-end-date-change-requests/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (6):
+  - created_by_uuid — Created by UUID
+  - customer_uuid — Customer UUID
+  - offering_uuid — Offering UUID
+  - project_uuid — Project UUID
+  - resource_uuid — Resource UUID
+  - state
+
+### marketplace_resource_end_date_change_requests_create
+POST /api/marketplace-resource-end-date-change-requests/
+Request body: yes
+
+### marketplace_resource_end_date_change_requests_retrieve
+GET /api/marketplace-resource-end-date-change-requests/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_resource_end_date_change_requests_approve
+POST /api/marketplace-resource-end-date-change-requests/{uuid}/approve/
+Summary: Approve resource end date change request and apply the date to the resource
+Description: Approve resource end date change request and apply the date to the resource.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resource_end_date_change_requests_cancel
+POST /api/marketplace-resource-end-date-change-requests/{uuid}/cancel/
+Summary: Cancel resource end date change request
+Description: Cancel resource end date change request. Only the creator can cancel.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resource_end_date_change_requests_reject
+POST /api/marketplace-resource-end-date-change-requests/{uuid}/reject/
+Summary: Reject resource end date change request
+Description: Reject resource end date change request.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resource_end_date_change_requests_set_backend_id
+POST /api/marketplace-resource-end-date-change-requests/{uuid}/set_backend_id/
+Summary: Set end date change request backend ID
+Description: Records the identifier this request has in an external approval system, so that system can correlate its own record with the Waldur request when reporting a verdict.
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## marketplace-resource-limit-change-requests  (module: waldur_api_client.api.marketplace_resource_limit_change_requests)
@@ -10809,7 +11292,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -10827,7 +11310,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -11118,7 +11601,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -11136,7 +11619,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -11492,8 +11975,9 @@ Description: Returns a unique, sorted list of runtime states for all resources a
         The runtime state is a backend-specific state of a resource (e.g., 'ACTIVE', 'SHUTOFF' for a VM).
         This endpoint is useful for building dynamic filters in a user interface.
         The...
-Query parameters (2):
+Query parameters (3):
   - category_uuid — Filter runtime states by resources belonging to a specific category.
+  - offering_uuid — Filter runtime states by resources of a specific offering.
   - project_uuid — Filter runtime states by resources within a specific project.
 
 ============================================================
@@ -11922,15 +12406,16 @@ Summary: List offerings of a service provider
 Description: Returns a paginated list of all billable, shared offerings provided by the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (42):
+Query parameters (44):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -11946,6 +12431,7 @@ Query parameters (42):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -11972,15 +12458,16 @@ Summary: List offerings of a service provider
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - service_provider_uuid
-Query parameters (41):
+Query parameters (43):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -11995,6 +12482,7 @@ Query parameters (41):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -12020,15 +12508,16 @@ GET /api/marketplace-service-providers/{service_provider_uuid}/offerings/types/
 Summary: List distinct offering types for a service provider
 Path parameters:
   - service_provider_uuid
-Query parameters (41):
+Query parameters (43):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -12043,6 +12532,7 @@ Query parameters (41):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -12069,15 +12559,16 @@ Summary: List distinct offering types for a service provider
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - service_provider_uuid
-Query parameters (41):
+Query parameters (43):
   - accessible — Only offerings the current user can order
-  - accessible_via_calls — Accessible via calls
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
   - allowed_customer_uuid — Allowed customer UUID
   - attributes — Offering attributes (JSON)
   - billable — Billable
   - can_create_offering_user
   - category_group_uuid — Category group UUID
   - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
   - created — Created after
   - created_before — Created before
   - customer — Customer URL
@@ -12092,6 +12583,7 @@ Query parameters (41):
   - name_exact — Name (exact)
   - o — Ordering
   - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
   - organization_group_uuid — Organization group UUID
   - parent_uuid — Parent offering UUID
   - project_uuid — Project UUID
@@ -12118,9 +12610,10 @@ Summary: List project permissions of a service provider
 Description: Returns a paginated list of project permissions for all projects that have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (19):
+Query parameters (20):
   - created — Created after
   - created_before — Created before
+  - customer_uuid — Grants within a customer (uuid): the customer scope plus its projects
   - expiration_time
   - field
   - full_name — User full name contains
@@ -12145,9 +12638,10 @@ Summary: List project permissions of a service provider
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - service_provider_uuid
-Query parameters (18):
+Query parameters (19):
   - created — Created after
   - created_before — Created before
+  - customer_uuid — Grants within a customer (uuid): the customer scope plus its projects
   - expiration_time
   - full_name — User full name contains
   - is_active
@@ -12466,7 +12960,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -12484,7 +12978,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -12608,8 +13102,16 @@ Path parameters:
 
 ### marketplace_site_agent_identities_register_event_subscription
 POST /api/marketplace-site-agent-identities/{uuid}/register_event_subscription/
-Summary: Register an event subscription for the specified agent identity and observable object type
-Description: Register an event subscription for the specified agent identity and observable object type. Returns existing subscription if already exists.
+Summary: DEPRECATED: use register_queue instead, which creates a single unified consumer queue
+Description: DEPRECATED: use register_queue instead, which creates a single unified consumer queue. This per-object-type subscription path is kept only for the deprecation window; removal is tracked in WAL-10111. Register an event subscription for the specified agent identity and observable object type. Retur...
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_site_agent_identities_register_queue
+POST /api/marketplace-site-agent-identities/{uuid}/register_queue/
+Summary: Register a unified event-consumer queue for this agent identity
+Description: Register a unified event-consumer queue for this agent identity. Creates a single RabbitMQ queue that receives all event types. Returns the existing queue if already registered.
 Path parameters:
   - uuid
 Request body: yes
@@ -14572,6 +15074,13 @@ Description: Map OpenPortal destination strings to Waldur Offering objects. Pass
 Query parameters (1):
   - identifier — OpenPortal destination string (repeatable).
 
+### openportal_project_email_policy_retrieve
+GET /api/openportal/project_email_policy/{project_uuid}/
+Summary: Return the allowed_domains list for a project derived from its AwardDetails
+Description: Return the allowed_domains list for a project derived from its AwardDetails. null means no restriction; [] means nothing allowed; a list contains permitted domain globs and/or specific email addresses.
+Path parameters:
+  - project_uuid
+
 ### openportal_project_mapping_retrieve
 GET /api/openportal/project_mapping/
 Summary: Map OpenPortal ProjectIdentifier strings to Waldur Project objects
@@ -14738,6 +15247,7 @@ Request body: yes
 
 ### openportal_allocations_set_limits
 POST /api/openportal-allocations/{uuid}/set_limits/
+Summary: Set limits for allocation
 Path parameters:
   - uuid
 Request body: yes
@@ -14782,13 +15292,47 @@ Path parameters:
   - uuid
 
 ============================================================
+## openportal-managed-project-audit  (module: waldur_api_client.api.openportal_managed_project_audit)
+============================================================
+
+### openportal_managed_project_audit_list
+GET /api/openportal-managed-project-audit/
+Query parameters (7):
+  - event_type
+  - managed_project_destination
+  - managed_project_identifier
+  - o — Which field to use when ordering the results.
+  - q — Search
+  - timestamp_after
+  - timestamp_before
+
+### openportal_managed_project_audit_count
+HEAD /api/openportal-managed-project-audit/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (7):
+  - event_type
+  - managed_project_destination
+  - managed_project_identifier
+  - o — Which field to use when ordering the results.
+  - q — Search
+  - timestamp_after
+  - timestamp_before
+
+### openportal_managed_project_audit_retrieve
+GET /api/openportal-managed-project-audit/{id}/
+Path parameters:
+  - id — A unique integer value identifying this Managed Project Audit Entry.
+
+============================================================
 ## openportal-managed-projects  (module: waldur_api_client.api.openportal_managed_projects)
 ============================================================
 
 ### openportal_managed_projects_list
 GET /api/openportal-managed-projects/
 Summary: List all managed projects
-Query parameters (9):
+Query parameters (10):
+  - hide_embargoed
   - identifier
   - local_identifier
   - o — Which field to use when ordering the results.
@@ -14803,7 +15347,8 @@ Query parameters (9):
 HEAD /api/openportal-managed-projects/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (9):
+Query parameters (10):
+  - hide_embargoed
   - identifier
   - local_identifier
   - o — Which field to use when ordering the results.
@@ -14828,6 +15373,15 @@ Description: Get number of items in the collection matching the request paramete
 Path parameters:
   - destination — The destination of the managed project
   - identifier — The identifier of the managed project
+
+### openportal_managed_projects_add_note
+POST /api/openportal-managed-projects/{identifier}/{destination}/add-note/
+Summary: Append a note to the managed project
+Description: Append a note to the managed project. Author and timestamp are set automatically.
+Path parameters:
+  - destination — The destination of the managed project
+  - identifier — The identifier of the managed project
+Request body: yes
 
 ### openportal_managed_projects_approve
 POST /api/openportal-managed-projects/{identifier}/{destination}/approve/
@@ -15028,12 +15582,14 @@ Path parameters:
 
 ### openportal_projectinfo_set_allowed_destinations_update
 PUT /api/openportal-projectinfo/{project}/set_allowed_destinations/
+Summary: Set allowed destinations for project
 Path parameters:
   - project
 Request body: yes
 
 ### openportal_projectinfo_set_shortname_update
 PUT /api/openportal-projectinfo/{project}/set_shortname/
+Summary: Set shortname for project
 Path parameters:
   - project
 Request body: yes
@@ -15134,6 +15690,7 @@ Request body: yes
 
 ### openportal_remote_allocations_set_limits
 POST /api/openportal-remote-allocations/{uuid}/set_limits/
+Summary: Set limits for allocation
 Path parameters:
   - uuid
 Request body: yes
@@ -15174,6 +15731,166 @@ Query parameters (2):
 
 ### openportal_remote_associations_retrieve
 GET /api/openportal-remote-associations/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
+## openportal-remote-project-allocations  (module: waldur_api_client.api.openportal_remote_project_allocations)
+============================================================
+
+### openportal_remote_project_allocations_list
+GET /api/openportal-remote-project-allocations/
+Query parameters (3):
+  - o — Which field to use when ordering the results.
+  - project_uuid
+  - remote_project_uuid
+
+### openportal_remote_project_allocations_count
+HEAD /api/openportal-remote-project-allocations/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - o — Which field to use when ordering the results.
+  - project_uuid
+  - remote_project_uuid
+
+### openportal_remote_project_allocations_retrieve
+GET /api/openportal-remote-project-allocations/{id}/
+Path parameters:
+  - id — A unique integer value identifying this Remote Project Allocation Entry.
+
+============================================================
+## openportal-remote-project-audit  (module: waldur_api_client.api.openportal_remote_project_audit)
+============================================================
+
+### openportal_remote_project_audit_list
+GET /api/openportal-remote-project-audit/
+Query parameters (7):
+  - event_type
+  - o — Which field to use when ordering the results.
+  - project_uuid
+  - q — Search
+  - remote_project_uuid
+  - timestamp_after
+  - timestamp_before
+
+### openportal_remote_project_audit_count
+HEAD /api/openportal-remote-project-audit/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (7):
+  - event_type
+  - o — Which field to use when ordering the results.
+  - project_uuid
+  - q — Search
+  - remote_project_uuid
+  - timestamp_after
+  - timestamp_before
+
+### openportal_remote_project_audit_retrieve
+GET /api/openportal-remote-project-audit/{id}/
+Path parameters:
+  - id — A unique integer value identifying this Remote Project Audit Entry.
+
+============================================================
+## openportal-remote-projects  (module: waldur_api_client.api.openportal_remote_projects)
+============================================================
+
+### openportal_remote_projects_list
+GET /api/openportal-remote-projects/
+Query parameters (9):
+  - customer
+  - customer_uuid
+  - destination
+  - identifier
+  - o — Which field to use when ordering the results.
+  - project
+  - project_uuid
+  - query
+  - state
+
+### openportal_remote_projects_count
+HEAD /api/openportal-remote-projects/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (9):
+  - customer
+  - customer_uuid
+  - destination
+  - identifier
+  - o — Which field to use when ordering the results.
+  - project
+  - project_uuid
+  - query
+  - state
+
+### openportal_remote_projects_retrieve
+GET /api/openportal-remote-projects/{uuid}/
+Path parameters:
+  - uuid
+
+### openportal_remote_projects_add_note
+POST /api/openportal-remote-projects/{uuid}/add-note/
+Summary: Add note to remote project
+Path parameters:
+  - uuid
+Request body: yes
+
+### openportal_remote_projects_approve_now
+POST /api/openportal-remote-projects/{uuid}/approve-now/
+Summary: Approve remote project now
+Path parameters:
+  - uuid
+
+### openportal_remote_projects_hold_indefinitely
+POST /api/openportal-remote-projects/{uuid}/hold-indefinitely/
+Summary: Hold remote project indefinitely
+Path parameters:
+  - uuid
+
+### openportal_remote_projects_resend_request
+POST /api/openportal-remote-projects/{uuid}/resend-request/
+Summary: Resend remote project request
+Path parameters:
+  - uuid
+
+### openportal_remote_projects_reset_to_pending
+POST /api/openportal-remote-projects/{uuid}/reset-to-pending/
+Summary: Reset remote project to pending
+Path parameters:
+  - uuid
+
+### openportal_remote_projects_set_allowed_domains
+POST /api/openportal-remote-projects/{uuid}/set-allowed-domains/
+Summary: Set allowed domains for remote project
+Path parameters:
+  - uuid
+Request body: yes
+
+### openportal_remote_projects_set_earliest_approve
+POST /api/openportal-remote-projects/{uuid}/set-earliest-approve/
+Summary: Set earliest approve date for remote project
+Path parameters:
+  - uuid
+Request body: yes
+
+### openportal_remote_projects_set_links
+POST /api/openportal-remote-projects/{uuid}/set-links/
+Summary: Set links for remote project
+Path parameters:
+  - uuid
+Request body: yes
+
+### openportal_remote_projects_set_membership_control
+POST /api/openportal-remote-projects/{uuid}/set-membership-control/
+Summary: Set membership control for remote project
+Path parameters:
+  - uuid
+Request body: yes
+
+### openportal_remote_projects_total_usage_retrieve
+GET /api/openportal-remote-projects/{uuid}/total-usage/
+Summary: Get total usage for remote project
 Path parameters:
   - uuid
 
@@ -15347,7 +16064,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -15365,7 +16082,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -15445,6 +16162,7 @@ Request body: yes
 
 ### openportal_userinfo_me_retrieve
 GET /api/openportal-userinfo/me/
+Summary: Retrieve UserInfo for current user
 
 ### openportal_userinfo_me_count
 HEAD /api/openportal-userinfo/me/
@@ -15475,6 +16193,7 @@ Path parameters:
 
 ### openportal_userinfo_set_shortname_update
 PUT /api/openportal-userinfo/{user}/set_shortname/
+Summary: Set shortname for user
 Path parameters:
   - user
 Request body: yes
@@ -18637,6 +19356,17 @@ Description: Atomically revoke the old token and create a new one with the same 
 Path parameters:
   - uuid
 
+### personal_access_tokens_set_network_acl
+POST /api/personal-access-tokens/{uuid}/set_network_acl/
+Summary: Replace the network ACL of a personal access token
+Description: Replace the token's source-network allowlist.
+
+A dedicated action rather than PATCH: update/partial_update stay
+disabled on this viewset, and the change gets its own audit event.
+Path parameters:
+  - uuid
+Request body: yes
+
 ============================================================
 ## project-credits  (module: waldur_api_client.api.project_credits)
 ============================================================
@@ -19042,7 +19772,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -19060,7 +19790,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -19204,6 +19934,47 @@ Query parameters (1):
 POST /api/promotions-campaigns/{uuid}/terminate/
 Summary: Terminate campaign
 Description: Terminate campaign.
+Path parameters:
+  - uuid
+
+============================================================
+## proposal-my-requested-resources  (module: waldur_api_client.api.proposal_my_requested_resources)
+============================================================
+
+### proposal_my_requested_resources_list
+GET /api/proposal-my-requested-resources/
+Query parameters (11):
+  - created
+  - include_closed — Include requests belonging to rejected or canceled proposals. They are omitted by default.
+  - o — Ordering
+  - offering — Offering
+  - offering_uuid
+  - proposal — Proposal
+  - proposal_state — Proposal state
+  - proposal_uuid
+  - query — Search by offering, proposal, call or resource name
+  - resource — Resource
+  - resource_uuid
+
+### proposal_my_requested_resources_count
+HEAD /api/proposal-my-requested-resources/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (11):
+  - created
+  - include_closed — Include requests belonging to rejected or canceled proposals. They are omitted by default.
+  - o — Ordering
+  - offering — Offering
+  - offering_uuid
+  - proposal — Proposal
+  - proposal_state — Proposal state
+  - proposal_uuid
+  - query — Search by offering, proposal, call or resource name
+  - resource — Resource
+  - resource_uuid
+
+### proposal_my_requested_resources_retrieve
+GET /api/proposal-my-requested-resources/{uuid}/
 Path parameters:
   - uuid
 
@@ -19357,7 +20128,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -19375,7 +20146,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -19427,6 +20198,23 @@ Request body: yes
 
 ### proposal_proposals_resources_destroy
 DELETE /api/proposal-proposals/{uuid}/resources/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+
+### proposal_proposals_resource_purchase_order_set
+POST /api/proposal-proposals/{uuid}/resources/{obj_uuid}/purchase_order/
+Summary: Upload or replace the purchase order of a requested resource
+Description: Upload or replace the purchase order of a requested resource.
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
+### proposal_proposals_resource_purchase_order_delete
+DELETE /api/proposal-proposals/{uuid}/resources/{obj_uuid}/purchase_order/
+Summary: Remove the purchase order of a requested resource
+Description: Remove the purchase order of a requested resource.
 Path parameters:
   - obj_uuid
   - uuid
@@ -19525,7 +20313,7 @@ Query parameters (10):
 
 ### proposal_protected_calls_list
 GET /api/proposal-protected-calls/
-Query parameters (11):
+Query parameters (12):
   - customer
   - customer_keyword
   - customer_uuid
@@ -19535,6 +20323,7 @@ Query parameters (11):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -19542,7 +20331,7 @@ Query parameters (11):
 HEAD /api/proposal-protected-calls/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -19551,6 +20340,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -19562,7 +20352,7 @@ Request body: yes
 GET /api/proposal-protected-calls/available_compliance_checklists/
 Summary: Get available compliance checklists for call creation/editing
 Description: Get available compliance checklists for call creation/editing.
-Query parameters (11):
+Query parameters (12):
   - checklist_type — Filter by checklist type (default: proposal_compliance)
   - customer
   - customer_keyword
@@ -19572,6 +20362,7 @@ Query parameters (11):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -19579,7 +20370,7 @@ Query parameters (11):
 HEAD /api/proposal-protected-calls/available_compliance_checklists/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (11):
+Query parameters (12):
   - checklist_type — Filter by checklist type (default: proposal_compliance)
   - customer
   - customer_keyword
@@ -19589,6 +20380,7 @@ Query parameters (11):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -19596,7 +20388,7 @@ Query parameters (11):
 GET /api/proposal-protected-calls/step_checklists/
 Summary: List checklists that can be attached to a workflow step (WORKFLOW_STEP-typed)
 Description: List checklists that can be attached to a workflow step (WORKFLOW_STEP-typed). Available to call managers so the workflow config UI can populate its checklist picker without staff-only access to the checklist admin API.
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -19605,6 +20397,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -19612,7 +20405,7 @@ Query parameters (10):
 HEAD /api/proposal-protected-calls/step_checklists/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -19621,6 +20414,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -19729,7 +20523,7 @@ Summary: List all conflicts of interest detected for this call
 Description: List all conflicts of interest detected for this call.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -19738,6 +20532,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -19816,7 +20611,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -19834,7 +20629,7 @@ Query parameters (10):
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
-  - role — Role UUID or name
+  - role — Role UUID or name. Repeat to filter by several roles.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -19906,7 +20701,7 @@ Description: Get detailed compliance answers for a specific proposal (call manag
 Path parameters:
   - proposal_uuid — UUID of the proposal
   - uuid
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -19915,6 +20710,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -19924,7 +20720,7 @@ Summary: Get proposed reviewer-proposal assignments
 Description: Get proposed reviewer-proposal assignments.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -19933,6 +20729,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -19998,7 +20795,7 @@ Summary: Invite reviewers to join the call's reviewer pool
 Description: Invite reviewers to join the call's reviewer pool.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -20007,6 +20804,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 Request body: yes
@@ -20017,7 +20815,7 @@ Summary: Create multiple rounds on a call at a fixed cadence
 Description: Create multiple rounds on a call at a fixed cadence. Spacing is controlled by ``cadence`` (monthly/quarterly/biannual/yearly/custom). Each round's ``cutoff_time`` is derived as ``start_time + submission_window_days``. Fixed-date allocation is not supported in bulk mode.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -20026,6 +20824,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 Request body: yes
@@ -20099,7 +20898,7 @@ Summary: List all reviewer suggestions for this call with affinity scores
 Description: List all reviewer suggestions for this call with affinity scores.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -20108,6 +20907,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -20166,7 +20966,7 @@ Path parameters:
 
 ### proposal_public_calls_list
 GET /api/proposal-public-calls/
-Query parameters (11):
+Query parameters (12):
   - customer
   - customer_keyword
   - customer_uuid
@@ -20176,6 +20976,7 @@ Query parameters (11):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -20183,7 +20984,7 @@ Query parameters (11):
 HEAD /api/proposal-public-calls/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_keyword
   - customer_uuid
@@ -20192,6 +20993,7 @@ Query parameters (10):
   - o — Ordering
   - offering_uuid
   - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
 
@@ -20264,13 +21066,15 @@ Path parameters:
 
 ### proposal_requested_resources_list
 GET /api/proposal-requested-resources/
-Query parameters (8):
+Query parameters (10):
   - created
   - o — Ordering
   - offering — Offering
   - offering_uuid
   - proposal — Proposal
+  - proposal_state — Proposal state
   - proposal_uuid
+  - query — Search by offering, proposal, call or resource name
   - resource — Resource
   - resource_uuid
 
@@ -20278,13 +21082,15 @@ Query parameters (8):
 HEAD /api/proposal-requested-resources/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (8):
+Query parameters (10):
   - created
   - o — Ordering
   - offering — Offering
   - offering_uuid
   - proposal — Proposal
+  - proposal_state — Proposal state
   - proposal_uuid
+  - query — Search by offering, proposal, call or resource name
   - resource — Resource
   - resource_uuid
 
@@ -20367,6 +21173,111 @@ Path parameters:
 Request body: yes
 
 ============================================================
+## provider-canned-responses  (module: waldur_api_client.api.provider_canned_responses)
+============================================================
+
+### provider_canned_responses_list
+GET /api/provider-canned-responses/
+Query parameters (3):
+  - category
+  - name
+  - provider_helpdesk_uuid
+
+### provider_canned_responses_count
+HEAD /api/provider-canned-responses/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - category
+  - name
+  - provider_helpdesk_uuid
+
+### provider_canned_responses_create
+POST /api/provider-canned-responses/
+Request body: yes
+
+### provider_canned_responses_retrieve
+GET /api/provider-canned-responses/{uuid}/
+Path parameters:
+  - uuid
+
+### provider_canned_responses_update
+PUT /api/provider-canned-responses/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_canned_responses_partial_update
+PATCH /api/provider-canned-responses/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_canned_responses_destroy
+DELETE /api/provider-canned-responses/{uuid}/
+Path parameters:
+  - uuid
+
+### provider_canned_responses_render
+POST /api/provider-canned-responses/{uuid}/render/
+Summary: Render a canned response with context variables
+Path parameters:
+  - uuid
+Request body: yes
+
+============================================================
+## provider-helpdesks  (module: waldur_api_client.api.provider_helpdesks)
+============================================================
+
+### provider_helpdesks_list
+GET /api/provider-helpdesks/
+Query parameters (3):
+  - backend_type
+  - is_active
+  - service_provider_uuid
+
+### provider_helpdesks_count
+HEAD /api/provider-helpdesks/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - backend_type
+  - is_active
+  - service_provider_uuid
+
+### provider_helpdesks_create
+POST /api/provider-helpdesks/
+Request body: yes
+
+### provider_helpdesks_retrieve
+GET /api/provider-helpdesks/{uuid}/
+Path parameters:
+  - uuid
+
+### provider_helpdesks_update
+PUT /api/provider-helpdesks/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_helpdesks_partial_update
+PATCH /api/provider-helpdesks/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_helpdesks_destroy
+DELETE /api/provider-helpdesks/{uuid}/
+Path parameters:
+  - uuid
+
+### provider_helpdesks_validate
+POST /api/provider-helpdesks/{uuid}/validate/
+Summary: Validate provider helpdesk backend connectivity
+Path parameters:
+  - uuid
+
+============================================================
 ## provider-invoice-items  (module: waldur_api_client.api.provider_invoice_items)
 ============================================================
 
@@ -20396,6 +21307,156 @@ Query parameters (6):
 GET /api/provider-invoice-items/{id}/
 Path parameters:
   - id — A unique integer value identifying this invoice item.
+
+============================================================
+## provider-support-users  (module: waldur_api_client.api.provider_support_users)
+============================================================
+
+### provider_support_users_list
+GET /api/provider-support-users/
+Query parameters (4):
+  - is_active
+  - provider_helpdesk_uuid
+  - role
+  - user_full_name — User full name contains
+
+### provider_support_users_count
+HEAD /api/provider-support-users/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - is_active
+  - provider_helpdesk_uuid
+  - role
+  - user_full_name — User full name contains
+
+### provider_support_users_create
+POST /api/provider-support-users/
+Request body: yes
+
+### provider_support_users_team_workload_list
+GET /api/provider-support-users/team_workload/
+Summary: Get workload for all team members
+Query parameters (4):
+  - is_active
+  - provider_helpdesk_uuid
+  - role
+  - user_full_name — User full name contains
+
+### provider_support_users_team_workload_count
+HEAD /api/provider-support-users/team_workload/
+Summary: Get workload for all team members
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - is_active
+  - provider_helpdesk_uuid
+  - role
+  - user_full_name — User full name contains
+
+### provider_support_users_retrieve
+GET /api/provider-support-users/{uuid}/
+Path parameters:
+  - uuid
+
+### provider_support_users_update
+PUT /api/provider-support-users/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_support_users_partial_update
+PATCH /api/provider-support-users/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_support_users_destroy
+DELETE /api/provider-support-users/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
+## provider-tickets  (module: waldur_api_client.api.provider_tickets)
+============================================================
+
+### provider_tickets_list
+GET /api/provider-tickets/
+Query parameters (7):
+  - is_escalated
+  - o — Ordering
+  - priority
+  - provider_assignee
+  - sla_breached
+  - status
+  - summary
+
+### provider_tickets_count
+HEAD /api/provider-tickets/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (7):
+  - is_escalated
+  - o — Ordering
+  - priority
+  - provider_assignee
+  - sla_breached
+  - status
+  - summary
+
+### provider_tickets_stats_retrieve
+GET /api/provider-tickets/stats/
+Summary: Get statistics for provider tickets
+
+### provider_tickets_stats_count
+HEAD /api/provider-tickets/stats/
+Summary: Get statistics for provider tickets
+Description: Get number of items in the collection matching the request parameters.
+
+### provider_tickets_retrieve
+GET /api/provider-tickets/{uuid}/
+Path parameters:
+  - uuid
+
+### provider_tickets_update
+PUT /api/provider-tickets/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_tickets_partial_update
+PATCH /api/provider-tickets/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_tickets_assign
+POST /api/provider-tickets/{uuid}/assign/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_tickets_claim
+POST /api/provider-tickets/{uuid}/claim/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_tickets_comment
+POST /api/provider-tickets/{uuid}/comment/
+Path parameters:
+  - uuid
+Request body: yes
+
+### provider_tickets_customer_context_retrieve
+GET /api/provider-tickets/{uuid}/customer_context/
+Summary: Get customer context for this ticket
+Path parameters:
+  - uuid
+
+### provider_tickets_resolve
+POST /api/provider-tickets/{uuid}/resolve/
+Path parameters:
+  - uuid
 
 ============================================================
 ## public-maintenance-announcements  (module: waldur_api_client.api.public_maintenance_announcements)
@@ -22099,20 +23160,32 @@ Path parameters:
 GET /api/roles/
 Summary: List roles
 Description: Get a list of all available roles.
-Query parameters (4):
+Query parameters (10):
+  - available_for_customer — Roles usable within a customer (uuid): system roles + org-private, minus concealed
+  - content_type — Comma-separated scope types (e.g. 'customer,project') to keep.
   - description
   - field
+  - include_concealed — Keep roles concealed for the customer in the available_for_customer result (staff management view).
   - is_active
+  - is_system_role
   - name
+  - o — Ordering
+  - query — Search by role name or description.
 
 ### roles_count
 HEAD /api/roles/
 Summary: List roles
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (3):
+Query parameters (9):
+  - available_for_customer — Roles usable within a customer (uuid): system roles + org-private, minus concealed
+  - content_type — Comma-separated scope types (e.g. 'customer,project') to keep.
   - description
+  - include_concealed — Keep roles concealed for the customer in the available_for_customer result (staff management view).
   - is_active
+  - is_system_role
   - name
+  - o — Ordering
+  - query — Search by role name or description.
 
 ### roles_create
 POST /api/roles/
@@ -22149,6 +23222,14 @@ Summary: Delete a role
 Description: Allows staff users to delete a custom role. System roles and roles that are currently in use cannot be deleted.
 Path parameters:
   - uuid
+
+### roles_clone_to_customer
+POST /api/roles/{uuid}/clone_to_customer/
+Summary: Clone a role into an organization
+Description: Staff-only. Creates an organization-private copy of this role (customer or project scope), bound to the given customer and usable only within that organization and its projects. Cloning the same template into the same organization twice is rejected.
+Path parameters:
+  - uuid
+Request body: yes
 
 ### roles_disable
 POST /api/roles/{uuid}/disable/
@@ -22732,6 +23813,59 @@ Path parameters:
   - uuid
 
 ============================================================
+## support-canned-responses  (module: waldur_api_client.api.support_canned_responses)
+============================================================
+
+### support_canned_responses_list
+GET /api/support-canned-responses/
+Query parameters (3):
+  - category
+  - is_active
+  - name
+
+### support_canned_responses_count
+HEAD /api/support-canned-responses/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - category
+  - is_active
+  - name
+
+### support_canned_responses_create
+POST /api/support-canned-responses/
+Request body: yes
+
+### support_canned_responses_retrieve
+GET /api/support-canned-responses/{uuid}/
+Path parameters:
+  - uuid
+
+### support_canned_responses_update
+PUT /api/support-canned-responses/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_canned_responses_partial_update
+PATCH /api/support-canned-responses/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_canned_responses_destroy
+DELETE /api/support-canned-responses/{uuid}/
+Path parameters:
+  - uuid
+
+### support_canned_responses_render
+POST /api/support-canned-responses/{uuid}/render/
+Summary: Render a canned response with context variables
+Path parameters:
+  - uuid
+Request body: yes
+
+============================================================
 ## support-comments  (module: waldur_api_client.api.support_comments)
 ============================================================
 
@@ -22841,6 +23975,52 @@ Path parameters:
   - uuid
 
 ============================================================
+## support-issue-links  (module: waldur_api_client.api.support_issue_links)
+============================================================
+
+### support_issue_links_list
+GET /api/support-issue-links/
+Query parameters (3):
+  - link_type
+  - source_uuid
+  - target_uuid
+
+### support_issue_links_count
+HEAD /api/support-issue-links/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - link_type
+  - source_uuid
+  - target_uuid
+
+### support_issue_links_create
+POST /api/support-issue-links/
+Request body: yes
+
+### support_issue_links_retrieve
+GET /api/support-issue-links/{uuid}/
+Path parameters:
+  - uuid
+
+### support_issue_links_update
+PUT /api/support-issue-links/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_issue_links_partial_update
+PATCH /api/support-issue-links/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_issue_links_destroy
+DELETE /api/support-issue-links/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
 ## support-issue-statuses  (module: waldur_api_client.api.support_issue_statuses)
 ============================================================
 
@@ -22879,22 +24059,68 @@ Path parameters:
   - uuid
 
 ============================================================
+## support-issue-tags  (module: waldur_api_client.api.support_issue_tags)
+============================================================
+
+### support_issue_tags_list
+GET /api/support-issue-tags/
+Query parameters (1):
+  - name
+
+### support_issue_tags_count
+HEAD /api/support-issue-tags/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (1):
+  - name
+
+### support_issue_tags_create
+POST /api/support-issue-tags/
+Request body: yes
+
+### support_issue_tags_retrieve
+GET /api/support-issue-tags/{uuid}/
+Path parameters:
+  - uuid
+
+### support_issue_tags_update
+PUT /api/support-issue-tags/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_issue_tags_partial_update
+PATCH /api/support-issue-tags/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_issue_tags_destroy
+DELETE /api/support-issue-tags/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
 ## support-issues  (module: waldur_api_client.api.support_issues)
 ============================================================
 
 ### support_issues_list
 GET /api/support-issues/
-Query parameters (22):
+Query parameters (27):
   - assignee
   - assignee_name
   - caller
   - caller_full_name — Caller full name contains
   - customer
   - customer_uuid
+  - is_escalated
+  - is_parent — Is a parent issue
+  - is_routed — Has been routed to provider
   - key
   - o — Ordering
   - project
   - project_uuid
+  - provider_uuid
   - query — Summary or key contains
   - remote_id
   - reporter
@@ -22904,6 +24130,7 @@ Query parameters (22):
   - resource_external_ip — Resource external IP
   - resource_internal_ip — Resource internal IP
   - resource_uuid — Resource UUID
+  - sla_breached
   - status
   - summary
   - type
@@ -22912,17 +24139,21 @@ Query parameters (22):
 HEAD /api/support-issues/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (22):
+Query parameters (27):
   - assignee
   - assignee_name
   - caller
   - caller_full_name — Caller full name contains
   - customer
   - customer_uuid
+  - is_escalated
+  - is_parent — Is a parent issue
+  - is_routed — Has been routed to provider
   - key
   - o — Ordering
   - project
   - project_uuid
+  - provider_uuid
   - query — Summary or key contains
   - remote_id
   - reporter
@@ -22932,12 +24163,18 @@ Query parameters (22):
   - resource_external_ip — Resource external IP
   - resource_internal_ip — Resource internal IP
   - resource_uuid — Resource UUID
+  - sla_breached
   - status
   - summary
   - type
 
 ### support_issues_create
 POST /api/support-issues/
+Request body: yes
+
+### support_issues_bulk_update
+POST /api/support-issues/bulk_update/
+Summary: Bulk update multiple issues
 Request body: yes
 
 ### support_issues_retrieve
@@ -22962,8 +24199,36 @@ DELETE /api/support-issues/{uuid}/
 Path parameters:
   - uuid
 
+### support_issues_attach_resource
+POST /api/support-issues/{uuid}/attach_resource/
+Summary: Attach a marketplace resource to an issue
+Path parameters:
+  - uuid
+Request body: yes
+
 ### support_issues_comment
 POST /api/support-issues/{uuid}/comment/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_issues_escalate
+POST /api/support-issues/{uuid}/escalate/
+Summary: Escalate an issue
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_issues_reroute
+POST /api/support-issues/{uuid}/reroute/
+Summary: Re-route an already-routed issue to a different provider helpdesk
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_issues_route_to_provider
+POST /api/support-issues/{uuid}/route_to_provider/
+Summary: Manually route an issue to a provider helpdesk
 Path parameters:
   - uuid
 Request body: yes
@@ -23003,6 +24268,17 @@ Query parameters (2):
 GET /api/support-priorities/{uuid}/
 Path parameters:
   - uuid
+
+============================================================
+## support-provider-webhook  (module: waldur_api_client.api.support_provider_webhook)
+============================================================
+
+### support_provider_webhook
+POST /api/support-provider-webhook/{provider_uuid}/{backend_type}/
+Path parameters:
+  - backend_type
+  - provider_uuid
+Request body: yes
 
 ============================================================
 ## support-request-types  (module: waldur_api_client.api.support_request_types)
@@ -23086,6 +24362,50 @@ Path parameters:
   - uuid
 
 ============================================================
+## support-saved-filters  (module: waldur_api_client.api.support_saved_filters)
+============================================================
+
+### support_saved_filters_list
+GET /api/support-saved-filters/
+Query parameters (2):
+  - is_shared
+  - name
+
+### support_saved_filters_count
+HEAD /api/support-saved-filters/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (2):
+  - is_shared
+  - name
+
+### support_saved_filters_create
+POST /api/support-saved-filters/
+Request body: yes
+
+### support_saved_filters_retrieve
+GET /api/support-saved-filters/{uuid}/
+Path parameters:
+  - uuid
+
+### support_saved_filters_update
+PUT /api/support-saved-filters/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_saved_filters_partial_update
+PATCH /api/support-saved-filters/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_saved_filters_destroy
+DELETE /api/support-saved-filters/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
 ## support-smax-webhook  (module: waldur_api_client.api.support_smax_webhook)
 ============================================================
 
@@ -23158,24 +24478,64 @@ Request body: yes
 
 ### support_users_list
 GET /api/support-users/
-Query parameters (3):
+Query parameters (7):
   - backend_id
+  - backend_name — Helpdesk
+  - is_active
   - name
+  - o — Ordering
+  - query — Search by name, backend ID or linked user name/email
   - user
 
 ### support_users_count
 HEAD /api/support-users/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (3):
+Query parameters (7):
   - backend_id
+  - backend_name — Helpdesk
+  - is_active
   - name
+  - o — Ordering
+  - query — Search by name, backend ID or linked user name/email
   - user
+
+### support_users_create
+POST /api/support-users/
+Request body: yes
 
 ### support_users_retrieve
 GET /api/support-users/{uuid}/
 Path parameters:
   - uuid
+
+### support_users_update
+PUT /api/support-users/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_users_partial_update
+PATCH /api/support-users/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### support_users_destroy
+DELETE /api/support-users/{uuid}/
+Path parameters:
+  - uuid
+
+### support_users_connections_retrieve
+GET /api/support-users/{uuid}/connections/
+Path parameters:
+  - uuid
+
+### support_users_merge
+POST /api/support-users/{uuid}/merge/
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## support-zammad-webhook  (module: waldur_api_client.api.support_zammad_webhook)
@@ -23740,9 +25100,10 @@ Request body: yes
 GET /api/user-permissions/
 Summary: List user permissions
 Description: Get a list of all permissions for the current user. Staff and support users can view all user permissions. The list can be filtered by user, scope, role, etc. By default only active grants are returned; staff and support can pass show_inactive=true to include revoked grants (the full history).
-Query parameters (19):
+Query parameters (20):
   - created — Created after
   - created_before — Created before
+  - customer_uuid — Grants within a customer (uuid): the customer scope plus its projects
   - expiration_time
   - full_name — User full name contains
   - is_active
@@ -23765,9 +25126,10 @@ Query parameters (19):
 HEAD /api/user-permissions/
 Summary: List user permissions
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (19):
+Query parameters (20):
   - created — Created after
   - created_before — Created before
+  - customer_uuid — Grants within a customer (uuid): the customer scope plus its projects
   - expiration_time
   - full_name — User full name contains
   - is_active
@@ -24282,7 +25644,7 @@ Request body: yes
 ### version_retrieve
 GET /api/version/
 Summary: Get application version
-Description: Retrieves the current installed version of the application and the latest available version from GitHub (if available). Requires staff or support user permissions.
+Description: Retrieves the current installed version of the application. Staff and support users additionally receive the latest available version from GitHub when update checks are enabled.
 
 ============================================================
 ## vmware-clusters  (module: waldur_api_client.api.vmware_clusters)
