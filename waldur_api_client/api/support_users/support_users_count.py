@@ -5,15 +5,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.support_user_backend_name_enum import SupportUserBackendNameEnum
 from ...models.support_user_o_enum import SupportUserOEnum
+from ...models.waldursupportactivebackendtype_enum import WALDURSUPPORTACTIVEBACKENDTYPEEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     backend_id: Union[Unset, str] = UNSET,
-    backend_name: Union[Unset, SupportUserBackendNameEnum] = UNSET,
+    backend_name: Union[Unset, WALDURSUPPORTACTIVEBACKENDTYPEEnum] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[SupportUserOEnum]] = UNSET,
@@ -94,7 +94,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
-    backend_name: Union[Unset, SupportUserBackendNameEnum] = UNSET,
+    backend_name: Union[Unset, WALDURSUPPORTACTIVEBACKENDTYPEEnum] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[SupportUserOEnum]] = UNSET,
@@ -107,7 +107,7 @@ def sync_detailed(
 
     Args:
         backend_id (Union[Unset, str]):
-        backend_name (Union[Unset, SupportUserBackendNameEnum]):
+        backend_name (Union[Unset, WALDURSUPPORTACTIVEBACKENDTYPEEnum]):
         is_active (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[SupportUserOEnum]]):
@@ -147,7 +147,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
-    backend_name: Union[Unset, SupportUserBackendNameEnum] = UNSET,
+    backend_name: Union[Unset, WALDURSUPPORTACTIVEBACKENDTYPEEnum] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[SupportUserOEnum]] = UNSET,
@@ -160,7 +160,7 @@ def sync(
 
     Args:
         backend_id (Union[Unset, str]):
-        backend_name (Union[Unset, SupportUserBackendNameEnum]):
+        backend_name (Union[Unset, WALDURSUPPORTACTIVEBACKENDTYPEEnum]):
         is_active (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[SupportUserOEnum]]):
@@ -195,7 +195,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
-    backend_name: Union[Unset, SupportUserBackendNameEnum] = UNSET,
+    backend_name: Union[Unset, WALDURSUPPORTACTIVEBACKENDTYPEEnum] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[SupportUserOEnum]] = UNSET,
@@ -208,7 +208,7 @@ async def asyncio_detailed(
 
     Args:
         backend_id (Union[Unset, str]):
-        backend_name (Union[Unset, SupportUserBackendNameEnum]):
+        backend_name (Union[Unset, WALDURSUPPORTACTIVEBACKENDTYPEEnum]):
         is_active (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[SupportUserOEnum]]):
@@ -246,7 +246,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     backend_id: Union[Unset, str] = UNSET,
-    backend_name: Union[Unset, SupportUserBackendNameEnum] = UNSET,
+    backend_name: Union[Unset, WALDURSUPPORTACTIVEBACKENDTYPEEnum] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[SupportUserOEnum]] = UNSET,
@@ -259,7 +259,7 @@ async def asyncio(
 
     Args:
         backend_id (Union[Unset, str]):
-        backend_name (Union[Unset, SupportUserBackendNameEnum]):
+        backend_name (Union[Unset, WALDURSUPPORTACTIVEBACKENDTYPEEnum]):
         is_active (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[SupportUserOEnum]]):
