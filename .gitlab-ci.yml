@@ -40,6 +40,8 @@ Build Python SDK:
     - cp gen-client/llms.txt llms.txt
     - cp gen-client/llms-full.txt llms-full.txt
     - cp gen-client/api-map.md api-map.md
+    # The packaged copies are the ones shipped to PyPI via pyproject.toml `include`.
+    - cp gen-client/llms.txt gen-client/llms-full.txt gen-client/api-map.md waldur_api_client/
     - rm -rf gen-client
     - echo "Compiling generated Python module..."
     - python -m py_compile $(find waldur_api_client -name "*.py")
