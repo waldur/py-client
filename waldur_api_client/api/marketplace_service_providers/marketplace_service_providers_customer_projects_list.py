@@ -25,7 +25,6 @@ def _get_kwargs(
     conceal_finished_projects: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     customer: Union[Unset, list[UUID]] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
     customer_name: Union[Unset, str] = UNSET,
@@ -78,12 +77,6 @@ def _get_kwargs(
     if not isinstance(created_before, Unset):
         json_created_before = created_before.isoformat()
     params["created_before"] = json_created_before
-
-    json_current_user_has_role: Union[Unset, list[str]] = UNSET
-    if not isinstance(current_user_has_role, Unset):
-        json_current_user_has_role = current_user_has_role
-
-    params["current_user_has_role"] = json_current_user_has_role
 
     json_customer: Union[Unset, list[str]] = UNSET
     if not isinstance(customer, Unset):
@@ -215,7 +208,6 @@ def sync_detailed(
     conceal_finished_projects: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     customer: Union[Unset, list[UUID]] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
     customer_name: Union[Unset, str] = UNSET,
@@ -253,7 +245,6 @@ def sync_detailed(
         conceal_finished_projects (Union[Unset, bool]):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
-        current_user_has_role (Union[Unset, list[str]]):
         customer (Union[Unset, list[UUID]]):
         customer_abbreviation (Union[Unset, str]):
         customer_name (Union[Unset, str]):
@@ -294,7 +285,6 @@ def sync_detailed(
         conceal_finished_projects=conceal_finished_projects,
         created=created,
         created_before=created_before,
-        current_user_has_role=current_user_has_role,
         customer=customer,
         customer_abbreviation=customer_abbreviation,
         customer_name=customer_name,
@@ -337,7 +327,6 @@ def sync(
     conceal_finished_projects: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     customer: Union[Unset, list[UUID]] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
     customer_name: Union[Unset, str] = UNSET,
@@ -375,7 +364,6 @@ def sync(
         conceal_finished_projects (Union[Unset, bool]):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
-        current_user_has_role (Union[Unset, list[str]]):
         customer (Union[Unset, list[UUID]]):
         customer_abbreviation (Union[Unset, str]):
         customer_name (Union[Unset, str]):
@@ -417,7 +405,6 @@ def sync(
         conceal_finished_projects=conceal_finished_projects,
         created=created,
         created_before=created_before,
-        current_user_has_role=current_user_has_role,
         customer=customer,
         customer_abbreviation=customer_abbreviation,
         customer_name=customer_name,
@@ -454,7 +441,6 @@ async def asyncio_detailed(
     conceal_finished_projects: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     customer: Union[Unset, list[UUID]] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
     customer_name: Union[Unset, str] = UNSET,
@@ -492,7 +478,6 @@ async def asyncio_detailed(
         conceal_finished_projects (Union[Unset, bool]):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
-        current_user_has_role (Union[Unset, list[str]]):
         customer (Union[Unset, list[UUID]]):
         customer_abbreviation (Union[Unset, str]):
         customer_name (Union[Unset, str]):
@@ -533,7 +518,6 @@ async def asyncio_detailed(
         conceal_finished_projects=conceal_finished_projects,
         created=created,
         created_before=created_before,
-        current_user_has_role=current_user_has_role,
         customer=customer,
         customer_abbreviation=customer_abbreviation,
         customer_name=customer_name,
@@ -574,7 +558,6 @@ async def asyncio(
     conceal_finished_projects: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     customer: Union[Unset, list[UUID]] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
     customer_name: Union[Unset, str] = UNSET,
@@ -612,7 +595,6 @@ async def asyncio(
         conceal_finished_projects (Union[Unset, bool]):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
-        current_user_has_role (Union[Unset, list[str]]):
         customer (Union[Unset, list[UUID]]):
         customer_abbreviation (Union[Unset, str]):
         customer_name (Union[Unset, str]):
@@ -655,7 +637,6 @@ async def asyncio(
             conceal_finished_projects=conceal_finished_projects,
             created=created,
             created_before=created_before,
-            current_user_has_role=current_user_has_role,
             customer=customer,
             customer_abbreviation=customer_abbreviation,
             customer_name=customer_name,
@@ -693,7 +674,6 @@ def sync_all(
     conceal_finished_projects: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     customer: Union[Unset, list[UUID]] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
     customer_name: Union[Unset, str] = UNSET,
@@ -731,7 +711,6 @@ def sync_all(
         conceal_finished_projects (Union[Unset, bool]):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
-        current_user_has_role (Union[Unset, list[str]]):
         customer (Union[Unset, list[UUID]]):
         customer_abbreviation (Union[Unset, str]):
         customer_name (Union[Unset, str]):
@@ -774,7 +753,6 @@ def sync_all(
         conceal_finished_projects=conceal_finished_projects,
         created=created,
         created_before=created_before,
-        current_user_has_role=current_user_has_role,
         customer=customer,
         customer_abbreviation=customer_abbreviation,
         customer_name=customer_name,
@@ -850,7 +828,6 @@ async def asyncio_all(
     conceal_finished_projects: Union[Unset, bool] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
-    current_user_has_role: Union[Unset, list[str]] = UNSET,
     customer: Union[Unset, list[UUID]] = UNSET,
     customer_abbreviation: Union[Unset, str] = UNSET,
     customer_name: Union[Unset, str] = UNSET,
@@ -888,7 +865,6 @@ async def asyncio_all(
         conceal_finished_projects (Union[Unset, bool]):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
-        current_user_has_role (Union[Unset, list[str]]):
         customer (Union[Unset, list[UUID]]):
         customer_abbreviation (Union[Unset, str]):
         customer_name (Union[Unset, str]):
@@ -931,7 +907,6 @@ async def asyncio_all(
         conceal_finished_projects=conceal_finished_projects,
         created=created,
         created_before=created_before,
-        current_user_has_role=current_user_has_role,
         customer=customer,
         customer_abbreviation=customer_abbreviation,
         customer_name=customer_name,

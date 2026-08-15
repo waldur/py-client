@@ -18,8 +18,7 @@ from ...utils import parse_link_header
 
 def _get_kwargs(
     *,
-    created_after: Union[Unset, datetime.date] = UNSET,
-    created_before: Union[Unset, datetime.date] = UNSET,
+    created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     has_feedback: Union[Unset, bool] = UNSET,
     input_tokens_max: Union[Unset, float] = UNSET,
@@ -27,8 +26,7 @@ def _get_kwargs(
     is_archived: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
     max_severity: Union[Unset, InjectionSeverityEnum] = UNSET,
-    modified_after: Union[Unset, datetime.date] = UNSET,
-    modified_before: Union[Unset, datetime.date] = UNSET,
+    modified: Union[Unset, datetime.date] = UNSET,
     o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     output_tokens_max: Union[Unset, float] = UNSET,
     output_tokens_min: Union[Unset, float] = UNSET,
@@ -42,15 +40,10 @@ def _get_kwargs(
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_created_after: Union[Unset, str] = UNSET
-    if not isinstance(created_after, Unset):
-        json_created_after = created_after.isoformat()
-    params["created_after"] = json_created_after
-
-    json_created_before: Union[Unset, str] = UNSET
-    if not isinstance(created_before, Unset):
-        json_created_before = created_before.isoformat()
-    params["created_before"] = json_created_before
+    json_created: Union[Unset, str] = UNSET
+    if not isinstance(created, Unset):
+        json_created = created.isoformat()
+    params["created"] = json_created
 
     json_field: Union[Unset, list[str]] = UNSET
     if not isinstance(field, Unset):
@@ -77,15 +70,10 @@ def _get_kwargs(
 
     params["max_severity"] = json_max_severity
 
-    json_modified_after: Union[Unset, str] = UNSET
-    if not isinstance(modified_after, Unset):
-        json_modified_after = modified_after.isoformat()
-    params["modified_after"] = json_modified_after
-
-    json_modified_before: Union[Unset, str] = UNSET
-    if not isinstance(modified_before, Unset):
-        json_modified_before = modified_before.isoformat()
-    params["modified_before"] = json_modified_before
+    json_modified: Union[Unset, str] = UNSET
+    if not isinstance(modified, Unset):
+        json_modified = modified.isoformat()
+    params["modified"] = json_modified
 
     json_o: Union[Unset, list[str]] = UNSET
     if not isinstance(o, Unset):
@@ -161,8 +149,7 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    created_after: Union[Unset, datetime.date] = UNSET,
-    created_before: Union[Unset, datetime.date] = UNSET,
+    created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     has_feedback: Union[Unset, bool] = UNSET,
     input_tokens_max: Union[Unset, float] = UNSET,
@@ -170,8 +157,7 @@ def sync_detailed(
     is_archived: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
     max_severity: Union[Unset, InjectionSeverityEnum] = UNSET,
-    modified_after: Union[Unset, datetime.date] = UNSET,
-    modified_before: Union[Unset, datetime.date] = UNSET,
+    modified: Union[Unset, datetime.date] = UNSET,
     o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     output_tokens_max: Union[Unset, float] = UNSET,
     output_tokens_min: Union[Unset, float] = UNSET,
@@ -185,8 +171,7 @@ def sync_detailed(
 ) -> Response[list["ThreadSession"]]:
     """
     Args:
-        created_after (Union[Unset, datetime.date]):
-        created_before (Union[Unset, datetime.date]):
+        created (Union[Unset, datetime.date]):
         field (Union[Unset, list[ThreadSessionFieldEnum]]):
         has_feedback (Union[Unset, bool]):
         input_tokens_max (Union[Unset, float]):
@@ -194,8 +179,7 @@ def sync_detailed(
         is_archived (Union[Unset, bool]):
         is_flagged (Union[Unset, bool]):
         max_severity (Union[Unset, InjectionSeverityEnum]):
-        modified_after (Union[Unset, datetime.date]):
-        modified_before (Union[Unset, datetime.date]):
+        modified (Union[Unset, datetime.date]):
         o (Union[Unset, list[ThreadSessionOEnum]]):
         output_tokens_max (Union[Unset, float]):
         output_tokens_min (Union[Unset, float]):
@@ -216,8 +200,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        created_after=created_after,
-        created_before=created_before,
+        created=created,
         field=field,
         has_feedback=has_feedback,
         input_tokens_max=input_tokens_max,
@@ -225,8 +208,7 @@ def sync_detailed(
         is_archived=is_archived,
         is_flagged=is_flagged,
         max_severity=max_severity,
-        modified_after=modified_after,
-        modified_before=modified_before,
+        modified=modified,
         o=o,
         output_tokens_max=output_tokens_max,
         output_tokens_min=output_tokens_min,
@@ -249,8 +231,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    created_after: Union[Unset, datetime.date] = UNSET,
-    created_before: Union[Unset, datetime.date] = UNSET,
+    created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     has_feedback: Union[Unset, bool] = UNSET,
     input_tokens_max: Union[Unset, float] = UNSET,
@@ -258,8 +239,7 @@ def sync(
     is_archived: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
     max_severity: Union[Unset, InjectionSeverityEnum] = UNSET,
-    modified_after: Union[Unset, datetime.date] = UNSET,
-    modified_before: Union[Unset, datetime.date] = UNSET,
+    modified: Union[Unset, datetime.date] = UNSET,
     o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     output_tokens_max: Union[Unset, float] = UNSET,
     output_tokens_min: Union[Unset, float] = UNSET,
@@ -273,8 +253,7 @@ def sync(
 ) -> list["ThreadSession"]:
     """
     Args:
-        created_after (Union[Unset, datetime.date]):
-        created_before (Union[Unset, datetime.date]):
+        created (Union[Unset, datetime.date]):
         field (Union[Unset, list[ThreadSessionFieldEnum]]):
         has_feedback (Union[Unset, bool]):
         input_tokens_max (Union[Unset, float]):
@@ -282,8 +261,7 @@ def sync(
         is_archived (Union[Unset, bool]):
         is_flagged (Union[Unset, bool]):
         max_severity (Union[Unset, InjectionSeverityEnum]):
-        modified_after (Union[Unset, datetime.date]):
-        modified_before (Union[Unset, datetime.date]):
+        modified (Union[Unset, datetime.date]):
         o (Union[Unset, list[ThreadSessionOEnum]]):
         output_tokens_max (Union[Unset, float]):
         output_tokens_min (Union[Unset, float]):
@@ -305,8 +283,7 @@ def sync(
 
     return sync_detailed(
         client=client,
-        created_after=created_after,
-        created_before=created_before,
+        created=created,
         field=field,
         has_feedback=has_feedback,
         input_tokens_max=input_tokens_max,
@@ -314,8 +291,7 @@ def sync(
         is_archived=is_archived,
         is_flagged=is_flagged,
         max_severity=max_severity,
-        modified_after=modified_after,
-        modified_before=modified_before,
+        modified=modified,
         o=o,
         output_tokens_max=output_tokens_max,
         output_tokens_min=output_tokens_min,
@@ -332,8 +308,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    created_after: Union[Unset, datetime.date] = UNSET,
-    created_before: Union[Unset, datetime.date] = UNSET,
+    created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     has_feedback: Union[Unset, bool] = UNSET,
     input_tokens_max: Union[Unset, float] = UNSET,
@@ -341,8 +316,7 @@ async def asyncio_detailed(
     is_archived: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
     max_severity: Union[Unset, InjectionSeverityEnum] = UNSET,
-    modified_after: Union[Unset, datetime.date] = UNSET,
-    modified_before: Union[Unset, datetime.date] = UNSET,
+    modified: Union[Unset, datetime.date] = UNSET,
     o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     output_tokens_max: Union[Unset, float] = UNSET,
     output_tokens_min: Union[Unset, float] = UNSET,
@@ -356,8 +330,7 @@ async def asyncio_detailed(
 ) -> Response[list["ThreadSession"]]:
     """
     Args:
-        created_after (Union[Unset, datetime.date]):
-        created_before (Union[Unset, datetime.date]):
+        created (Union[Unset, datetime.date]):
         field (Union[Unset, list[ThreadSessionFieldEnum]]):
         has_feedback (Union[Unset, bool]):
         input_tokens_max (Union[Unset, float]):
@@ -365,8 +338,7 @@ async def asyncio_detailed(
         is_archived (Union[Unset, bool]):
         is_flagged (Union[Unset, bool]):
         max_severity (Union[Unset, InjectionSeverityEnum]):
-        modified_after (Union[Unset, datetime.date]):
-        modified_before (Union[Unset, datetime.date]):
+        modified (Union[Unset, datetime.date]):
         o (Union[Unset, list[ThreadSessionOEnum]]):
         output_tokens_max (Union[Unset, float]):
         output_tokens_min (Union[Unset, float]):
@@ -387,8 +359,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        created_after=created_after,
-        created_before=created_before,
+        created=created,
         field=field,
         has_feedback=has_feedback,
         input_tokens_max=input_tokens_max,
@@ -396,8 +367,7 @@ async def asyncio_detailed(
         is_archived=is_archived,
         is_flagged=is_flagged,
         max_severity=max_severity,
-        modified_after=modified_after,
-        modified_before=modified_before,
+        modified=modified,
         o=o,
         output_tokens_max=output_tokens_max,
         output_tokens_min=output_tokens_min,
@@ -418,8 +388,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    created_after: Union[Unset, datetime.date] = UNSET,
-    created_before: Union[Unset, datetime.date] = UNSET,
+    created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     has_feedback: Union[Unset, bool] = UNSET,
     input_tokens_max: Union[Unset, float] = UNSET,
@@ -427,8 +396,7 @@ async def asyncio(
     is_archived: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
     max_severity: Union[Unset, InjectionSeverityEnum] = UNSET,
-    modified_after: Union[Unset, datetime.date] = UNSET,
-    modified_before: Union[Unset, datetime.date] = UNSET,
+    modified: Union[Unset, datetime.date] = UNSET,
     o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     output_tokens_max: Union[Unset, float] = UNSET,
     output_tokens_min: Union[Unset, float] = UNSET,
@@ -442,8 +410,7 @@ async def asyncio(
 ) -> list["ThreadSession"]:
     """
     Args:
-        created_after (Union[Unset, datetime.date]):
-        created_before (Union[Unset, datetime.date]):
+        created (Union[Unset, datetime.date]):
         field (Union[Unset, list[ThreadSessionFieldEnum]]):
         has_feedback (Union[Unset, bool]):
         input_tokens_max (Union[Unset, float]):
@@ -451,8 +418,7 @@ async def asyncio(
         is_archived (Union[Unset, bool]):
         is_flagged (Union[Unset, bool]):
         max_severity (Union[Unset, InjectionSeverityEnum]):
-        modified_after (Union[Unset, datetime.date]):
-        modified_before (Union[Unset, datetime.date]):
+        modified (Union[Unset, datetime.date]):
         o (Union[Unset, list[ThreadSessionOEnum]]):
         output_tokens_max (Union[Unset, float]):
         output_tokens_min (Union[Unset, float]):
@@ -475,8 +441,7 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
-            created_after=created_after,
-            created_before=created_before,
+            created=created,
             field=field,
             has_feedback=has_feedback,
             input_tokens_max=input_tokens_max,
@@ -484,8 +449,7 @@ async def asyncio(
             is_archived=is_archived,
             is_flagged=is_flagged,
             max_severity=max_severity,
-            modified_after=modified_after,
-            modified_before=modified_before,
+            modified=modified,
             o=o,
             output_tokens_max=output_tokens_max,
             output_tokens_min=output_tokens_min,
@@ -503,8 +467,7 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    created_after: Union[Unset, datetime.date] = UNSET,
-    created_before: Union[Unset, datetime.date] = UNSET,
+    created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     has_feedback: Union[Unset, bool] = UNSET,
     input_tokens_max: Union[Unset, float] = UNSET,
@@ -512,8 +475,7 @@ def sync_all(
     is_archived: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
     max_severity: Union[Unset, InjectionSeverityEnum] = UNSET,
-    modified_after: Union[Unset, datetime.date] = UNSET,
-    modified_before: Union[Unset, datetime.date] = UNSET,
+    modified: Union[Unset, datetime.date] = UNSET,
     o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     output_tokens_max: Union[Unset, float] = UNSET,
     output_tokens_min: Union[Unset, float] = UNSET,
@@ -531,8 +493,7 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        created_after (Union[Unset, datetime.date]):
-        created_before (Union[Unset, datetime.date]):
+        created (Union[Unset, datetime.date]):
         field (Union[Unset, list[ThreadSessionFieldEnum]]):
         has_feedback (Union[Unset, bool]):
         input_tokens_max (Union[Unset, float]):
@@ -540,8 +501,7 @@ def sync_all(
         is_archived (Union[Unset, bool]):
         is_flagged (Union[Unset, bool]):
         max_severity (Union[Unset, InjectionSeverityEnum]):
-        modified_after (Union[Unset, datetime.date]):
-        modified_before (Union[Unset, datetime.date]):
+        modified (Union[Unset, datetime.date]):
         o (Union[Unset, list[ThreadSessionOEnum]]):
         output_tokens_max (Union[Unset, float]):
         output_tokens_min (Union[Unset, float]):
@@ -564,8 +524,7 @@ def sync_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
-        created_after=created_after,
-        created_before=created_before,
+        created=created,
         field=field,
         has_feedback=has_feedback,
         input_tokens_max=input_tokens_max,
@@ -573,8 +532,7 @@ def sync_all(
         is_archived=is_archived,
         is_flagged=is_flagged,
         max_severity=max_severity,
-        modified_after=modified_after,
-        modified_before=modified_before,
+        modified=modified,
         o=o,
         output_tokens_max=output_tokens_max,
         output_tokens_min=output_tokens_min,
@@ -630,8 +588,7 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    created_after: Union[Unset, datetime.date] = UNSET,
-    created_before: Union[Unset, datetime.date] = UNSET,
+    created: Union[Unset, datetime.date] = UNSET,
     field: Union[Unset, list[ThreadSessionFieldEnum]] = UNSET,
     has_feedback: Union[Unset, bool] = UNSET,
     input_tokens_max: Union[Unset, float] = UNSET,
@@ -639,8 +596,7 @@ async def asyncio_all(
     is_archived: Union[Unset, bool] = UNSET,
     is_flagged: Union[Unset, bool] = UNSET,
     max_severity: Union[Unset, InjectionSeverityEnum] = UNSET,
-    modified_after: Union[Unset, datetime.date] = UNSET,
-    modified_before: Union[Unset, datetime.date] = UNSET,
+    modified: Union[Unset, datetime.date] = UNSET,
     o: Union[Unset, list[ThreadSessionOEnum]] = UNSET,
     output_tokens_max: Union[Unset, float] = UNSET,
     output_tokens_min: Union[Unset, float] = UNSET,
@@ -658,8 +614,7 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        created_after (Union[Unset, datetime.date]):
-        created_before (Union[Unset, datetime.date]):
+        created (Union[Unset, datetime.date]):
         field (Union[Unset, list[ThreadSessionFieldEnum]]):
         has_feedback (Union[Unset, bool]):
         input_tokens_max (Union[Unset, float]):
@@ -667,8 +622,7 @@ async def asyncio_all(
         is_archived (Union[Unset, bool]):
         is_flagged (Union[Unset, bool]):
         max_severity (Union[Unset, InjectionSeverityEnum]):
-        modified_after (Union[Unset, datetime.date]):
-        modified_before (Union[Unset, datetime.date]):
+        modified (Union[Unset, datetime.date]):
         o (Union[Unset, list[ThreadSessionOEnum]]):
         output_tokens_max (Union[Unset, float]):
         output_tokens_min (Union[Unset, float]):
@@ -691,8 +645,7 @@ async def asyncio_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
-        created_after=created_after,
-        created_before=created_before,
+        created=created,
         field=field,
         has_feedback=has_feedback,
         input_tokens_max=input_tokens_max,
@@ -700,8 +653,7 @@ async def asyncio_all(
         is_archived=is_archived,
         is_flagged=is_flagged,
         max_severity=max_severity,
-        modified_after=modified_after,
-        modified_before=modified_before,
+        modified=modified,
         o=o,
         output_tokens_max=output_tokens_max,
         output_tokens_min=output_tokens_min,

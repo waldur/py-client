@@ -11,6 +11,7 @@ from ..models.venue_type_enum import VenueTypeEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.reviewer_publication_coauthors import ReviewerPublicationCoauthors
     from ..models.reviewer_publication_external_ids import ReviewerPublicationExternalIds
 
 
@@ -29,7 +30,7 @@ class ReviewerPublication:
         doi (Union[None, Unset, str]): Digital Object Identifier
         venue_type (Union[Unset, VenueTypeEnum]):
         abstract (Union[Unset, str]):
-        coauthors (Union[Unset, list[Any]]): List of co-author names and identifiers
+        coauthors (Union[Unset, ReviewerPublicationCoauthors]): List of co-author names and identifiers
         external_ids (Union[Unset, ReviewerPublicationExternalIds]): External identifiers: {"semantic_scholar": "...",
             "pubmed": "..."}
         is_excluded_from_matching (Union[Unset, bool]): User can exclude old papers from expertise matching
@@ -43,7 +44,7 @@ class ReviewerPublication:
     doi: Union[None, Unset, str] = UNSET
     venue_type: Union[Unset, VenueTypeEnum] = UNSET
     abstract: Union[Unset, str] = UNSET
-    coauthors: Union[Unset, list[Any]] = UNSET
+    coauthors: Union[Unset, "ReviewerPublicationCoauthors"] = UNSET
     external_ids: Union[Unset, "ReviewerPublicationExternalIds"] = UNSET
     is_excluded_from_matching: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -71,9 +72,9 @@ class ReviewerPublication:
 
         abstract = self.abstract
 
-        coauthors: Union[Unset, list[Any]] = UNSET
+        coauthors: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.coauthors, Unset):
-            coauthors = self.coauthors
+            coauthors = self.coauthors.to_dict()
 
         external_ids: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.external_ids, Unset):
@@ -109,6 +110,7 @@ class ReviewerPublication:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.reviewer_publication_coauthors import ReviewerPublicationCoauthors
         from ..models.reviewer_publication_external_ids import ReviewerPublicationExternalIds
 
         d = dict(src_dict)
@@ -140,7 +142,12 @@ class ReviewerPublication:
 
         abstract = d.pop("abstract", UNSET)
 
-        coauthors = cast(list[Any], d.pop("coauthors", UNSET))
+        _coauthors = d.pop("coauthors", UNSET)
+        coauthors: Union[Unset, ReviewerPublicationCoauthors]
+        if isinstance(_coauthors, Unset):
+            coauthors = UNSET
+        else:
+            coauthors = ReviewerPublicationCoauthors.from_dict(_coauthors)
 
         _external_ids = d.pop("external_ids", UNSET)
         external_ids: Union[Unset, ReviewerPublicationExternalIds]

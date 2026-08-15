@@ -23,7 +23,6 @@ class PersonalAccessToken:
         token_prefix (str):
         scopes (list[str]):
         allowed_scopes (list['AllowedScopeOutput']):
-        allowed_networks (list[str]):
         expires_at (datetime.datetime):
         is_active (bool):
         last_used_at (datetime.datetime):
@@ -37,7 +36,6 @@ class PersonalAccessToken:
     token_prefix: str
     scopes: list[str]
     allowed_scopes: list["AllowedScopeOutput"]
-    allowed_networks: list[str]
     expires_at: datetime.datetime
     is_active: bool
     last_used_at: datetime.datetime
@@ -59,8 +57,6 @@ class PersonalAccessToken:
         for allowed_scopes_item_data in self.allowed_scopes:
             allowed_scopes_item = allowed_scopes_item_data.to_dict()
             allowed_scopes.append(allowed_scopes_item)
-
-        allowed_networks = self.allowed_networks
 
         expires_at = self.expires_at.isoformat()
 
@@ -84,7 +80,6 @@ class PersonalAccessToken:
                 "token_prefix": token_prefix,
                 "scopes": scopes,
                 "allowed_scopes": allowed_scopes,
-                "allowed_networks": allowed_networks,
                 "expires_at": expires_at,
                 "is_active": is_active,
                 "last_used_at": last_used_at,
@@ -116,8 +111,6 @@ class PersonalAccessToken:
 
             allowed_scopes.append(allowed_scopes_item)
 
-        allowed_networks = cast(list[str], d.pop("allowed_networks"))
-
         expires_at = isoparse(d.pop("expires_at"))
 
         is_active = d.pop("is_active")
@@ -139,7 +132,6 @@ class PersonalAccessToken:
             token_prefix=token_prefix,
             scopes=scopes,
             allowed_scopes=allowed_scopes,
-            allowed_networks=allowed_networks,
             expires_at=expires_at,
             is_active=is_active,
             last_used_at=last_used_at,

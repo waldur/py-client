@@ -10,8 +10,8 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.award_details import AwardDetails
     from ..models.basic_project import BasicProject
+    from ..models.managed_project_details import ManagedProjectDetails
     from ..models.project_template import ProjectTemplate
 
 
@@ -29,7 +29,7 @@ class ManagedProject:
         reviewed_by_uuid (UUID):
         identifier (str):
         destination (str): The destination used to send instructions from the remote portal.
-        details (AwardDetails):
+        details (ManagedProjectDetails):
         project (str):
         project_data (BasicProject):
         project_template (str):
@@ -45,7 +45,7 @@ class ManagedProject:
     reviewed_by_uuid: UUID
     identifier: str
     destination: str
-    details: "AwardDetails"
+    details: "ManagedProjectDetails"
     project: str
     project_data: "BasicProject"
     project_template: str
@@ -122,8 +122,8 @@ class ManagedProject:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.award_details import AwardDetails
         from ..models.basic_project import BasicProject
+        from ..models.managed_project_details import ManagedProjectDetails
         from ..models.project_template import ProjectTemplate
 
         d = dict(src_dict)
@@ -154,7 +154,7 @@ class ManagedProject:
 
         destination = d.pop("destination")
 
-        details = AwardDetails.from_dict(d.pop("details"))
+        details = ManagedProjectDetails.from_dict(d.pop("details"))
 
         project = d.pop("project")
 

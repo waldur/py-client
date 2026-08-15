@@ -19,11 +19,9 @@ def _get_kwargs(
     *,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -52,11 +50,6 @@ def _get_kwargs(
         json_created_before = created_before.isoformat()
     params["created_before"] = json_created_before
 
-    json_customer_uuid: Union[Unset, str] = UNSET
-    if not isinstance(customer_uuid, Unset):
-        json_customer_uuid = str(customer_uuid)
-    params["customer_uuid"] = json_customer_uuid
-
     json_expiration_time: Union[Unset, str] = UNSET
     if not isinstance(expiration_time, Unset):
         json_expiration_time = expiration_time.isoformat()
@@ -72,8 +65,6 @@ def _get_kwargs(
     params["field"] = json_field
 
     params["full_name"] = full_name
-
-    params["is_active"] = is_active
 
     json_modified: Union[Unset, str] = UNSET
     if not isinstance(modified, Unset):
@@ -169,11 +160,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -199,11 +188,9 @@ def sync_detailed(
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
-        customer_uuid (Union[Unset, UUID]):
         expiration_time (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[ProjectPermissionLogFieldEnum]]):
         full_name (Union[Unset, str]):
-        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -232,11 +219,9 @@ def sync_detailed(
         service_provider_uuid=service_provider_uuid,
         created=created,
         created_before=created_before,
-        customer_uuid=customer_uuid,
         expiration_time=expiration_time,
         field=field,
         full_name=full_name,
-        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,
@@ -267,11 +252,9 @@ def sync(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -297,11 +280,9 @@ def sync(
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
-        customer_uuid (Union[Unset, UUID]):
         expiration_time (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[ProjectPermissionLogFieldEnum]]):
         full_name (Union[Unset, str]):
-        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -331,11 +312,9 @@ def sync(
         client=client,
         created=created,
         created_before=created_before,
-        customer_uuid=customer_uuid,
         expiration_time=expiration_time,
         field=field,
         full_name=full_name,
-        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,
@@ -360,11 +339,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -390,11 +367,9 @@ async def asyncio_detailed(
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
-        customer_uuid (Union[Unset, UUID]):
         expiration_time (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[ProjectPermissionLogFieldEnum]]):
         full_name (Union[Unset, str]):
-        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -423,11 +398,9 @@ async def asyncio_detailed(
         service_provider_uuid=service_provider_uuid,
         created=created,
         created_before=created_before,
-        customer_uuid=customer_uuid,
         expiration_time=expiration_time,
         field=field,
         full_name=full_name,
-        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,
@@ -456,11 +429,9 @@ async def asyncio(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -486,11 +457,9 @@ async def asyncio(
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
-        customer_uuid (Union[Unset, UUID]):
         expiration_time (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[ProjectPermissionLogFieldEnum]]):
         full_name (Union[Unset, str]):
-        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -521,11 +490,9 @@ async def asyncio(
             client=client,
             created=created,
             created_before=created_before,
-            customer_uuid=customer_uuid,
             expiration_time=expiration_time,
             field=field,
             full_name=full_name,
-            is_active=is_active,
             modified=modified,
             modified_before=modified_before,
             native_name=native_name,
@@ -551,11 +518,9 @@ def sync_all(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -581,11 +546,9 @@ def sync_all(
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
-        customer_uuid (Union[Unset, UUID]):
         expiration_time (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[ProjectPermissionLogFieldEnum]]):
         full_name (Union[Unset, str]):
-        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -616,11 +579,9 @@ def sync_all(
         service_provider_uuid=service_provider_uuid,
         created=created,
         created_before=created_before,
-        customer_uuid=customer_uuid,
         expiration_time=expiration_time,
         field=field,
         full_name=full_name,
-        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,
@@ -684,11 +645,9 @@ async def asyncio_all(
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
-    customer_uuid: Union[Unset, UUID] = UNSET,
     expiration_time: Union[Unset, datetime.datetime] = UNSET,
     field: Union[Unset, list[ProjectPermissionLogFieldEnum]] = UNSET,
     full_name: Union[Unset, str] = UNSET,
-    is_active: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     native_name: Union[Unset, str] = UNSET,
@@ -714,11 +673,9 @@ async def asyncio_all(
         service_provider_uuid (UUID):
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
-        customer_uuid (Union[Unset, UUID]):
         expiration_time (Union[Unset, datetime.datetime]):
         field (Union[Unset, list[ProjectPermissionLogFieldEnum]]):
         full_name (Union[Unset, str]):
-        is_active (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         native_name (Union[Unset, str]):
@@ -749,11 +706,9 @@ async def asyncio_all(
         service_provider_uuid=service_provider_uuid,
         created=created,
         created_before=created_before,
-        customer_uuid=customer_uuid,
         expiration_time=expiration_time,
         field=field,
         full_name=full_name,
-        is_active=is_active,
         modified=modified,
         modified_before=modified_before,
         native_name=native_name,

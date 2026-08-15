@@ -4,7 +4,6 @@ from typing import Any, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.role_type import RoleType
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="SubmitRequestResponse")
@@ -18,7 +17,6 @@ class SubmitRequestResponse:
         scope_name (str): Name of the invitation scope
         scope_uuid (str): UUID of the invitation scope
         auto_approved (bool): Whether the request was automatically approved
-        scope_type (Union[None, RoleType, Unset]): Type of the invitation scope (e.g., 'customer', 'project')
         project_uuid (Union[None, Unset, str]): UUID of the project the user was added to. Present when the invitation
             has auto_approve and auto_create_project enabled. Null otherwise.
         project_created (Union[None, Unset, bool]): True if a new project was created for the user; false if an existing
@@ -29,7 +27,6 @@ class SubmitRequestResponse:
     scope_name: str
     scope_uuid: str
     auto_approved: bool
-    scope_type: Union[None, RoleType, Unset] = UNSET
     project_uuid: Union[None, Unset, str] = UNSET
     project_created: Union[None, Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -42,14 +39,6 @@ class SubmitRequestResponse:
         scope_uuid = self.scope_uuid
 
         auto_approved = self.auto_approved
-
-        scope_type: Union[None, Unset, str]
-        if isinstance(self.scope_type, Unset):
-            scope_type = UNSET
-        elif isinstance(self.scope_type, RoleType):
-            scope_type = self.scope_type.value
-        else:
-            scope_type = self.scope_type
 
         project_uuid: Union[None, Unset, str]
         if isinstance(self.project_uuid, Unset):
@@ -73,8 +62,6 @@ class SubmitRequestResponse:
                 "auto_approved": auto_approved,
             }
         )
-        if scope_type is not UNSET:
-            field_dict["scope_type"] = scope_type
         if project_uuid is not UNSET:
             field_dict["project_uuid"] = project_uuid
         if project_created is not UNSET:
@@ -92,23 +79,6 @@ class SubmitRequestResponse:
         scope_uuid = d.pop("scope_uuid")
 
         auto_approved = d.pop("auto_approved")
-
-        def _parse_scope_type(data: object) -> Union[None, RoleType, Unset]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                scope_type_type_0 = RoleType(data)
-
-                return scope_type_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, RoleType, Unset], data)
-
-        scope_type = _parse_scope_type(d.pop("scope_type", UNSET))
 
         def _parse_project_uuid(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -133,7 +103,6 @@ class SubmitRequestResponse:
             scope_name=scope_name,
             scope_uuid=scope_uuid,
             auto_approved=auto_approved,
-            scope_type=scope_type,
             project_uuid=project_uuid,
             project_created=project_created,
         )

@@ -29,7 +29,6 @@ class ProviderRequestedOffering:
         offering (str):
         offering_name (str):
         offering_uuid (UUID):
-        offering_type (str):
         provider_name (str):
         category_uuid (UUID):
         category_name (str):
@@ -46,9 +45,6 @@ class ProviderRequestedOffering:
         created_by_name (str):
         created_by_email (str):
         attributes (Union[Unset, ProviderRequestedOfferingAttributes]):
-        require_purchase_order (Union[Unset, bool]): Whether a purchase order must accompany a resource request for this
-            offering before the proposal can be submitted. Defaults to the offering's require_purchase_order_upload, and
-            stays under the call manager's control afterwards.
     """
 
     uuid: UUID
@@ -56,7 +52,6 @@ class ProviderRequestedOffering:
     offering: str
     offering_name: str
     offering_uuid: UUID
-    offering_type: str
     provider_name: str
     category_uuid: UUID
     category_name: str
@@ -73,7 +68,6 @@ class ProviderRequestedOffering:
     created_by_name: str
     created_by_email: str
     attributes: Union[Unset, "ProviderRequestedOfferingAttributes"] = UNSET
-    require_purchase_order: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -86,8 +80,6 @@ class ProviderRequestedOffering:
         offering_name = self.offering_name
 
         offering_uuid = str(self.offering_uuid)
-
-        offering_type = self.offering_type
 
         provider_name = self.provider_name
 
@@ -127,8 +119,6 @@ class ProviderRequestedOffering:
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
-        require_purchase_order = self.require_purchase_order
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -138,7 +128,6 @@ class ProviderRequestedOffering:
                 "offering": offering,
                 "offering_name": offering_name,
                 "offering_uuid": offering_uuid,
-                "offering_type": offering_type,
                 "provider_name": provider_name,
                 "category_uuid": category_uuid,
                 "category_name": category_name,
@@ -158,8 +147,6 @@ class ProviderRequestedOffering:
         )
         if attributes is not UNSET:
             field_dict["attributes"] = attributes
-        if require_purchase_order is not UNSET:
-            field_dict["require_purchase_order"] = require_purchase_order
 
         return field_dict
 
@@ -180,8 +167,6 @@ class ProviderRequestedOffering:
         offering_name = d.pop("offering_name")
 
         offering_uuid = UUID(d.pop("offering_uuid"))
-
-        offering_type = d.pop("offering_type")
 
         provider_name = d.pop("provider_name")
 
@@ -230,15 +215,12 @@ class ProviderRequestedOffering:
         else:
             attributes = ProviderRequestedOfferingAttributes.from_dict(_attributes)
 
-        require_purchase_order = d.pop("require_purchase_order", UNSET)
-
         provider_requested_offering = cls(
             uuid=uuid,
             state=state,
             offering=offering,
             offering_name=offering_name,
             offering_uuid=offering_uuid,
-            offering_type=offering_type,
             provider_name=provider_name,
             category_uuid=category_uuid,
             category_name=category_name,
@@ -255,7 +237,6 @@ class ProviderRequestedOffering:
             created_by_name=created_by_name,
             created_by_email=created_by_email,
             attributes=attributes,
-            require_purchase_order=require_purchase_order,
         )
 
         provider_requested_offering.additional_properties = d

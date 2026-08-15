@@ -4,7 +4,6 @@ from typing import Any, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.discount_aggregation_enum import DiscountAggregationEnum
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="NestedPlanComponentRequest")
@@ -17,17 +16,15 @@ class NestedPlanComponentRequest:
         amount (Union[Unset, int]):
         price (Union[Unset, str]):
         future_price (Union[None, Unset, str]):
-        discount_formula (Union[Unset, str]): Volume discount formula evaluated with the billed quantity bound to
-            `usage`; returns a discount percentage (clamped to 0-100). Empty means no discount. Example: '10 if usage >= 100
-            else 0'.
-        discount_aggregation (Union[Unset, DiscountAggregationEnum]):
+        discount_threshold (Union[None, Unset, int]): Minimum amount to be eligible for discount.
+        discount_rate (Union[None, Unset, int]): Discount rate in percentage.
     """
 
     amount: Union[Unset, int] = UNSET
     price: Union[Unset, str] = UNSET
     future_price: Union[None, Unset, str] = UNSET
-    discount_formula: Union[Unset, str] = UNSET
-    discount_aggregation: Union[Unset, DiscountAggregationEnum] = UNSET
+    discount_threshold: Union[None, Unset, int] = UNSET
+    discount_rate: Union[None, Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -41,11 +38,17 @@ class NestedPlanComponentRequest:
         else:
             future_price = self.future_price
 
-        discount_formula = self.discount_formula
+        discount_threshold: Union[None, Unset, int]
+        if isinstance(self.discount_threshold, Unset):
+            discount_threshold = UNSET
+        else:
+            discount_threshold = self.discount_threshold
 
-        discount_aggregation: Union[Unset, str] = UNSET
-        if not isinstance(self.discount_aggregation, Unset):
-            discount_aggregation = self.discount_aggregation.value
+        discount_rate: Union[None, Unset, int]
+        if isinstance(self.discount_rate, Unset):
+            discount_rate = UNSET
+        else:
+            discount_rate = self.discount_rate
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -56,10 +59,10 @@ class NestedPlanComponentRequest:
             field_dict["price"] = price
         if future_price is not UNSET:
             field_dict["future_price"] = future_price
-        if discount_formula is not UNSET:
-            field_dict["discount_formula"] = discount_formula
-        if discount_aggregation is not UNSET:
-            field_dict["discount_aggregation"] = discount_aggregation
+        if discount_threshold is not UNSET:
+            field_dict["discount_threshold"] = discount_threshold
+        if discount_rate is not UNSET:
+            field_dict["discount_rate"] = discount_rate
 
         return field_dict
 
@@ -79,21 +82,30 @@ class NestedPlanComponentRequest:
 
         future_price = _parse_future_price(d.pop("future_price", UNSET))
 
-        discount_formula = d.pop("discount_formula", UNSET)
+        def _parse_discount_threshold(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
 
-        _discount_aggregation = d.pop("discount_aggregation", UNSET)
-        discount_aggregation: Union[Unset, DiscountAggregationEnum]
-        if isinstance(_discount_aggregation, Unset):
-            discount_aggregation = UNSET
-        else:
-            discount_aggregation = DiscountAggregationEnum(_discount_aggregation)
+        discount_threshold = _parse_discount_threshold(d.pop("discount_threshold", UNSET))
+
+        def _parse_discount_rate(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        discount_rate = _parse_discount_rate(d.pop("discount_rate", UNSET))
 
         nested_plan_component_request = cls(
             amount=amount,
             price=price,
             future_price=future_price,
-            discount_formula=discount_formula,
-            discount_aggregation=discount_aggregation,
+            discount_threshold=discount_threshold,
+            discount_rate=discount_rate,
         )
 
         nested_plan_component_request.additional_properties = d

@@ -28,7 +28,6 @@ class RoleDescriptionRequest:
         description_nb (Union[None, Unset, str]):
         description_ar (Union[None, Unset, str]):
         description_cs (Union[None, Unset, str]):
-        description_km (Union[None, Unset, str]):
     """
 
     description: Union[Unset, str] = UNSET
@@ -46,7 +45,6 @@ class RoleDescriptionRequest:
     description_nb: Union[None, Unset, str] = UNSET
     description_ar: Union[None, Unset, str] = UNSET
     description_cs: Union[None, Unset, str] = UNSET
-    description_km: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -136,12 +134,6 @@ class RoleDescriptionRequest:
         else:
             description_cs = self.description_cs
 
-        description_km: Union[None, Unset, str]
-        if isinstance(self.description_km, Unset):
-            description_km = UNSET
-        else:
-            description_km = self.description_km
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -175,8 +167,6 @@ class RoleDescriptionRequest:
             field_dict["description_ar"] = description_ar
         if description_cs is not UNSET:
             field_dict["description_cs"] = description_cs
-        if description_km is not UNSET:
-            field_dict["description_km"] = description_km
 
         return field_dict
 
@@ -311,15 +301,6 @@ class RoleDescriptionRequest:
 
         description_cs = _parse_description_cs(d.pop("description_cs", UNSET))
 
-        def _parse_description_km(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        description_km = _parse_description_km(d.pop("description_km", UNSET))
-
         role_description_request = cls(
             description=description,
             description_en=description_en,
@@ -336,7 +317,6 @@ class RoleDescriptionRequest:
             description_nb=description_nb,
             description_ar=description_ar,
             description_cs=description_cs,
-            description_km=description_km,
         )
 
         role_description_request.additional_properties = d

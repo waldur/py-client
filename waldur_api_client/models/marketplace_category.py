@@ -30,6 +30,8 @@ class MarketplaceCategory:
             can have "true" value.
         default_volume_category (Union[Unset, bool]): Set to true if this category is for OpenStack Volume. Only one
             category can have "true" value.
+        default_tenant_category (Union[Unset, bool]): Set to true if this category is for OpenStack Tenant. Only one
+            category can have "true" value.
         offering_count (Union[Unset, int]):
         available_offerings_count (Union[Unset, int]):
         sections (Union[Unset, list['NestedSection']]):
@@ -46,6 +48,7 @@ class MarketplaceCategory:
     icon: Union[None, Unset, str] = UNSET
     default_vm_category: Union[Unset, bool] = UNSET
     default_volume_category: Union[Unset, bool] = UNSET
+    default_tenant_category: Union[Unset, bool] = UNSET
     offering_count: Union[Unset, int] = UNSET
     available_offerings_count: Union[Unset, int] = UNSET
     sections: Union[Unset, list["NestedSection"]] = UNSET
@@ -75,6 +78,8 @@ class MarketplaceCategory:
         default_vm_category = self.default_vm_category
 
         default_volume_category = self.default_volume_category
+
+        default_tenant_category = self.default_tenant_category
 
         offering_count = self.offering_count
 
@@ -131,6 +136,8 @@ class MarketplaceCategory:
             field_dict["default_vm_category"] = default_vm_category
         if default_volume_category is not UNSET:
             field_dict["default_volume_category"] = default_volume_category
+        if default_tenant_category is not UNSET:
+            field_dict["default_tenant_category"] = default_tenant_category
         if offering_count is not UNSET:
             field_dict["offering_count"] = offering_count
         if available_offerings_count is not UNSET:
@@ -182,6 +189,8 @@ class MarketplaceCategory:
 
         default_volume_category = d.pop("default_volume_category", UNSET)
 
+        default_tenant_category = d.pop("default_tenant_category", UNSET)
+
         offering_count = d.pop("offering_count", UNSET)
 
         available_offerings_count = d.pop("available_offerings_count", UNSET)
@@ -231,6 +240,7 @@ class MarketplaceCategory:
             icon=icon,
             default_vm_category=default_vm_category,
             default_volume_category=default_volume_category,
+            default_tenant_category=default_tenant_category,
             offering_count=offering_count,
             available_offerings_count=available_offerings_count,
             sections=sections,

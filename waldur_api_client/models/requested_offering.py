@@ -29,7 +29,6 @@ class RequestedOffering:
         offering (str):
         offering_name (str):
         offering_uuid (UUID):
-        offering_type (str):
         provider_name (str):
         category_uuid (UUID):
         category_name (str):
@@ -37,9 +36,6 @@ class RequestedOffering:
         plan_details (BasePublicPlan):
         options (OfferingOptions):
         components (list['OfferingComponent']):
-        require_purchase_order (bool): Whether a purchase order must accompany a resource request for this offering
-            before the proposal can be submitted. Defaults to the offering's require_purchase_order_upload, and stays under
-            the call manager's control afterwards.
         created (datetime.datetime):
         url (str):
         approved_by (Union[None, str]):
@@ -56,7 +52,6 @@ class RequestedOffering:
     offering: str
     offering_name: str
     offering_uuid: UUID
-    offering_type: str
     provider_name: str
     category_uuid: UUID
     category_name: str
@@ -64,7 +59,6 @@ class RequestedOffering:
     plan_details: "BasePublicPlan"
     options: "OfferingOptions"
     components: list["OfferingComponent"]
-    require_purchase_order: bool
     created: datetime.datetime
     url: str
     approved_by: Union[None, str]
@@ -87,8 +81,6 @@ class RequestedOffering:
 
         offering_uuid = str(self.offering_uuid)
 
-        offering_type = self.offering_type
-
         provider_name = self.provider_name
 
         category_uuid = str(self.category_uuid)
@@ -105,8 +97,6 @@ class RequestedOffering:
         for components_item_data in self.components:
             components_item = components_item_data.to_dict()
             components.append(components_item)
-
-        require_purchase_order = self.require_purchase_order
 
         created = self.created.isoformat()
 
@@ -143,7 +133,6 @@ class RequestedOffering:
                 "offering": offering,
                 "offering_name": offering_name,
                 "offering_uuid": offering_uuid,
-                "offering_type": offering_type,
                 "provider_name": provider_name,
                 "category_uuid": category_uuid,
                 "category_name": category_name,
@@ -151,7 +140,6 @@ class RequestedOffering:
                 "plan_details": plan_details,
                 "options": options,
                 "components": components,
-                "require_purchase_order": require_purchase_order,
                 "created": created,
                 "url": url,
                 "approved_by": approved_by,
@@ -187,8 +175,6 @@ class RequestedOffering:
 
         offering_uuid = UUID(d.pop("offering_uuid"))
 
-        offering_type = d.pop("offering_type")
-
         provider_name = d.pop("provider_name")
 
         category_uuid = UUID(d.pop("category_uuid"))
@@ -207,8 +193,6 @@ class RequestedOffering:
             components_item = OfferingComponent.from_dict(components_item_data)
 
             components.append(components_item)
-
-        require_purchase_order = d.pop("require_purchase_order")
 
         created = isoparse(d.pop("created"))
 
@@ -256,7 +240,6 @@ class RequestedOffering:
             offering=offering,
             offering_name=offering_name,
             offering_uuid=offering_uuid,
-            offering_type=offering_type,
             provider_name=provider_name,
             category_uuid=category_uuid,
             category_name=category_name,
@@ -264,7 +247,6 @@ class RequestedOffering:
             plan_details=plan_details,
             options=options,
             components=components,
-            require_purchase_order=require_purchase_order,
             created=created,
             url=url,
             approved_by=approved_by,

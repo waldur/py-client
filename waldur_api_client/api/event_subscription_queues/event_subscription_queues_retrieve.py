@@ -47,9 +47,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[EventSubscriptionQueue]:
-    """DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/).
-    Removal tracked in WAL-10111.
-
+    """
     Args:
         uuid (UUID):
 
@@ -77,9 +75,7 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> EventSubscriptionQueue:
-    """DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/).
-    Removal tracked in WAL-10111.
-
+    """
     Args:
         uuid (UUID):
 
@@ -102,9 +98,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[EventSubscriptionQueue]:
-    """DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/).
-    Removal tracked in WAL-10111.
-
+    """
     Args:
         uuid (UUID):
 
@@ -130,9 +124,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> EventSubscriptionQueue:
-    """DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/).
-    Removal tracked in WAL-10111.
-
+    """
     Args:
         uuid (UUID):
 

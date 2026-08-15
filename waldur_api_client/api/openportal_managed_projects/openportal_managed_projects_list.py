@@ -14,7 +14,6 @@ from ...utils import parse_link_header
 
 def _get_kwargs(
     *,
-    hide_embargoed: Union[Unset, bool] = UNSET,
     identifier: Union[Unset, str] = UNSET,
     local_identifier: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -28,8 +27,6 @@ def _get_kwargs(
     state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
-
-    params["hide_embargoed"] = hide_embargoed
 
     params["identifier"] = identifier
 
@@ -106,7 +103,6 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    hide_embargoed: Union[Unset, bool] = UNSET,
     identifier: Union[Unset, str] = UNSET,
     local_identifier: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -122,7 +118,6 @@ def sync_detailed(
     """List all managed projects
 
     Args:
-        hide_embargoed (Union[Unset, bool]):
         identifier (Union[Unset, str]):
         local_identifier (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -144,7 +139,6 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        hide_embargoed=hide_embargoed,
         identifier=identifier,
         local_identifier=local_identifier,
         o=o,
@@ -168,7 +162,6 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    hide_embargoed: Union[Unset, bool] = UNSET,
     identifier: Union[Unset, str] = UNSET,
     local_identifier: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -184,7 +177,6 @@ def sync(
     """List all managed projects
 
     Args:
-        hide_embargoed (Union[Unset, bool]):
         identifier (Union[Unset, str]):
         local_identifier (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -207,7 +199,6 @@ def sync(
 
     return sync_detailed(
         client=client,
-        hide_embargoed=hide_embargoed,
         identifier=identifier,
         local_identifier=local_identifier,
         o=o,
@@ -225,7 +216,6 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    hide_embargoed: Union[Unset, bool] = UNSET,
     identifier: Union[Unset, str] = UNSET,
     local_identifier: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -241,7 +231,6 @@ async def asyncio_detailed(
     """List all managed projects
 
     Args:
-        hide_embargoed (Union[Unset, bool]):
         identifier (Union[Unset, str]):
         local_identifier (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -263,7 +252,6 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        hide_embargoed=hide_embargoed,
         identifier=identifier,
         local_identifier=local_identifier,
         o=o,
@@ -285,7 +273,6 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    hide_embargoed: Union[Unset, bool] = UNSET,
     identifier: Union[Unset, str] = UNSET,
     local_identifier: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -301,7 +288,6 @@ async def asyncio(
     """List all managed projects
 
     Args:
-        hide_embargoed (Union[Unset, bool]):
         identifier (Union[Unset, str]):
         local_identifier (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -325,7 +311,6 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
-            hide_embargoed=hide_embargoed,
             identifier=identifier,
             local_identifier=local_identifier,
             o=o,
@@ -344,7 +329,6 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    hide_embargoed: Union[Unset, bool] = UNSET,
     identifier: Union[Unset, str] = UNSET,
     local_identifier: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -363,7 +347,6 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        hide_embargoed (Union[Unset, bool]):
         identifier (Union[Unset, str]):
         local_identifier (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -387,7 +370,6 @@ def sync_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
-        hide_embargoed=hide_embargoed,
         identifier=identifier,
         local_identifier=local_identifier,
         o=o,
@@ -444,7 +426,6 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    hide_embargoed: Union[Unset, bool] = UNSET,
     identifier: Union[Unset, str] = UNSET,
     local_identifier: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -463,7 +444,6 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        hide_embargoed (Union[Unset, bool]):
         identifier (Union[Unset, str]):
         local_identifier (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -487,7 +467,6 @@ async def asyncio_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
-        hide_embargoed=hide_embargoed,
         identifier=identifier,
         local_identifier=local_identifier,
         o=o,

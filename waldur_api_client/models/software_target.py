@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, cast
+from typing import TYPE_CHECKING, Any, TypeVar
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 if TYPE_CHECKING:
+    from ..models.software_target_gpu_architectures import SoftwareTargetGpuArchitectures
     from ..models.software_target_metadata import SoftwareTargetMetadata
 
 
@@ -27,8 +28,8 @@ class SoftwareTarget:
         target_subtype (str): Target subtype (microarchitecture, distribution, etc.)
         location (str): Target location (CVMFS path, download URL, etc.)
         metadata (SoftwareTargetMetadata): Target-specific metadata (build options, system requirements, etc.)
-        gpu_architectures (list[str]): List of GPU architectures this target supports (e.g., ['nvidia/cc70',
-            'nvidia/cc90'])
+        gpu_architectures (SoftwareTargetGpuArchitectures): List of GPU architectures this target supports (e.g.,
+            ['nvidia/cc70', 'nvidia/cc90'])
     """
 
     url: str
@@ -40,7 +41,7 @@ class SoftwareTarget:
     target_subtype: str
     location: str
     metadata: "SoftwareTargetMetadata"
-    gpu_architectures: list[str]
+    gpu_architectures: "SoftwareTargetGpuArchitectures"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -62,7 +63,7 @@ class SoftwareTarget:
 
         metadata = self.metadata.to_dict()
 
-        gpu_architectures = self.gpu_architectures
+        gpu_architectures = self.gpu_architectures.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -85,6 +86,7 @@ class SoftwareTarget:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.software_target_gpu_architectures import SoftwareTargetGpuArchitectures
         from ..models.software_target_metadata import SoftwareTargetMetadata
 
         d = dict(src_dict)
@@ -106,7 +108,7 @@ class SoftwareTarget:
 
         metadata = SoftwareTargetMetadata.from_dict(d.pop("metadata"))
 
-        gpu_architectures = cast(list[str], d.pop("gpu_architectures"))
+        gpu_architectures = SoftwareTargetGpuArchitectures.from_dict(d.pop("gpu_architectures"))
 
         software_target = cls(
             url=url,

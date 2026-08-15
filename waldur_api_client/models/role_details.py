@@ -32,16 +32,11 @@ class RoleDetails:
         description_nb (Union[None, Unset, str]):
         description_ar (Union[None, Unset, str]):
         description_cs (Union[None, Unset, str]):
-        description_km (Union[None, Unset, str]):
         permissions (Union[Unset, list[str]]):
         is_system_role (Union[Unset, bool]):
         is_active (Union[Unset, bool]):
         users_count (Union[Unset, int]):
         content_type (Union[Unset, RoleType]):
-        template_uuid (Union[None, Unset, str]):
-        template_name (Union[None, Unset, str]):
-        customer_uuid (Union[None, UUID, Unset]):
-        customer_name (Union[None, Unset, str]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
@@ -61,16 +56,11 @@ class RoleDetails:
     description_nb: Union[None, Unset, str] = UNSET
     description_ar: Union[None, Unset, str] = UNSET
     description_cs: Union[None, Unset, str] = UNSET
-    description_km: Union[None, Unset, str] = UNSET
     permissions: Union[Unset, list[str]] = UNSET
     is_system_role: Union[Unset, bool] = UNSET
     is_active: Union[Unset, bool] = UNSET
     users_count: Union[Unset, int] = UNSET
     content_type: Union[Unset, RoleType] = UNSET
-    template_uuid: Union[None, Unset, str] = UNSET
-    template_name: Union[None, Unset, str] = UNSET
-    customer_uuid: Union[None, UUID, Unset] = UNSET
-    customer_name: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -166,12 +156,6 @@ class RoleDetails:
         else:
             description_cs = self.description_cs
 
-        description_km: Union[None, Unset, str]
-        if isinstance(self.description_km, Unset):
-            description_km = UNSET
-        else:
-            description_km = self.description_km
-
         permissions: Union[Unset, list[str]] = UNSET
         if not isinstance(self.permissions, Unset):
             permissions = self.permissions
@@ -185,32 +169,6 @@ class RoleDetails:
         content_type: Union[Unset, str] = UNSET
         if not isinstance(self.content_type, Unset):
             content_type = self.content_type.value
-
-        template_uuid: Union[None, Unset, str]
-        if isinstance(self.template_uuid, Unset):
-            template_uuid = UNSET
-        else:
-            template_uuid = self.template_uuid
-
-        template_name: Union[None, Unset, str]
-        if isinstance(self.template_name, Unset):
-            template_name = UNSET
-        else:
-            template_name = self.template_name
-
-        customer_uuid: Union[None, Unset, str]
-        if isinstance(self.customer_uuid, Unset):
-            customer_uuid = UNSET
-        elif isinstance(self.customer_uuid, UUID):
-            customer_uuid = str(self.customer_uuid)
-        else:
-            customer_uuid = self.customer_uuid
-
-        customer_name: Union[None, Unset, str]
-        if isinstance(self.customer_name, Unset):
-            customer_name = UNSET
-        else:
-            customer_name = self.customer_name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -249,8 +207,6 @@ class RoleDetails:
             field_dict["description_ar"] = description_ar
         if description_cs is not UNSET:
             field_dict["description_cs"] = description_cs
-        if description_km is not UNSET:
-            field_dict["description_km"] = description_km
         if permissions is not UNSET:
             field_dict["permissions"] = permissions
         if is_system_role is not UNSET:
@@ -261,14 +217,6 @@ class RoleDetails:
             field_dict["users_count"] = users_count
         if content_type is not UNSET:
             field_dict["content_type"] = content_type
-        if template_uuid is not UNSET:
-            field_dict["template_uuid"] = template_uuid
-        if template_name is not UNSET:
-            field_dict["template_name"] = template_name
-        if customer_uuid is not UNSET:
-            field_dict["customer_uuid"] = customer_uuid
-        if customer_name is not UNSET:
-            field_dict["customer_name"] = customer_name
 
         return field_dict
 
@@ -412,15 +360,6 @@ class RoleDetails:
 
         description_cs = _parse_description_cs(d.pop("description_cs", UNSET))
 
-        def _parse_description_km(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        description_km = _parse_description_km(d.pop("description_km", UNSET))
-
         permissions = cast(list[str], d.pop("permissions", UNSET))
 
         is_system_role = d.pop("is_system_role", UNSET)
@@ -435,50 +374,6 @@ class RoleDetails:
             content_type = UNSET
         else:
             content_type = RoleType(_content_type)
-
-        def _parse_template_uuid(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        template_uuid = _parse_template_uuid(d.pop("template_uuid", UNSET))
-
-        def _parse_template_name(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        template_name = _parse_template_name(d.pop("template_name", UNSET))
-
-        def _parse_customer_uuid(data: object) -> Union[None, UUID, Unset]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                customer_uuid_type_0 = UUID(data)
-
-                return customer_uuid_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, UUID, Unset], data)
-
-        customer_uuid = _parse_customer_uuid(d.pop("customer_uuid", UNSET))
-
-        def _parse_customer_name(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        customer_name = _parse_customer_name(d.pop("customer_name", UNSET))
 
         role_details = cls(
             uuid=uuid,
@@ -498,16 +393,11 @@ class RoleDetails:
             description_nb=description_nb,
             description_ar=description_ar,
             description_cs=description_cs,
-            description_km=description_km,
             permissions=permissions,
             is_system_role=is_system_role,
             is_active=is_active,
             users_count=users_count,
             content_type=content_type,
-            template_uuid=template_uuid,
-            template_name=template_name,
-            customer_uuid=customer_uuid,
-            customer_name=customer_name,
         )
 
         role_details.additional_properties = d

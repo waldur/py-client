@@ -11,7 +11,6 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.nested_resource_project_permission import NestedResourceProjectPermission
-    from ..models.nested_resource_role_permission import NestedResourceRolePermission
 
 
 T = TypeVar("T", bound="ResourceTeamMember")
@@ -30,7 +29,6 @@ class ResourceTeamMember:
         image (Union[None, Unset, str]):
         role_name (Union[None, Unset, str]):
         role_uuid (Union[None, Unset, str]):
-        roles (Union[Unset, list['NestedResourceRolePermission']]):
         expiration_time (Union[None, Unset, datetime.datetime]):
         resource_projects (Union[Unset, list['NestedResourceProjectPermission']]):
     """
@@ -43,7 +41,6 @@ class ResourceTeamMember:
     image: Union[None, Unset, str] = UNSET
     role_name: Union[None, Unset, str] = UNSET
     role_uuid: Union[None, Unset, str] = UNSET
-    roles: Union[Unset, list["NestedResourceRolePermission"]] = UNSET
     expiration_time: Union[None, Unset, datetime.datetime] = UNSET
     resource_projects: Union[Unset, list["NestedResourceProjectPermission"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -79,13 +76,6 @@ class ResourceTeamMember:
         else:
             role_uuid = self.role_uuid
 
-        roles: Union[Unset, list[dict[str, Any]]] = UNSET
-        if not isinstance(self.roles, Unset):
-            roles = []
-            for roles_item_data in self.roles:
-                roles_item = roles_item_data.to_dict()
-                roles.append(roles_item)
-
         expiration_time: Union[None, Unset, str]
         if isinstance(self.expiration_time, Unset):
             expiration_time = UNSET
@@ -120,8 +110,6 @@ class ResourceTeamMember:
             field_dict["role_name"] = role_name
         if role_uuid is not UNSET:
             field_dict["role_uuid"] = role_uuid
-        if roles is not UNSET:
-            field_dict["roles"] = roles
         if expiration_time is not UNSET:
             field_dict["expiration_time"] = expiration_time
         if resource_projects is not UNSET:
@@ -132,7 +120,6 @@ class ResourceTeamMember:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_resource_project_permission import NestedResourceProjectPermission
-        from ..models.nested_resource_role_permission import NestedResourceRolePermission
 
         d = dict(src_dict)
         url = d.pop("url", UNSET)
@@ -177,13 +164,6 @@ class ResourceTeamMember:
 
         role_uuid = _parse_role_uuid(d.pop("role_uuid", UNSET))
 
-        roles = []
-        _roles = d.pop("roles", UNSET)
-        for roles_item_data in _roles or []:
-            roles_item = NestedResourceRolePermission.from_dict(roles_item_data)
-
-            roles.append(roles_item)
-
         def _parse_expiration_time(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
                 return data
@@ -217,7 +197,6 @@ class ResourceTeamMember:
             image=image,
             role_name=role_name,
             role_uuid=role_uuid,
-            roles=roles,
             expiration_time=expiration_time,
             resource_projects=resource_projects,
         )

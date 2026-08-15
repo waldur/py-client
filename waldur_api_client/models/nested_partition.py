@@ -1,15 +1,11 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
-
-if TYPE_CHECKING:
-    from ..models.nested_partition_qo_s import NestedPartitionQoS
-
 
 T = TypeVar("T", bound="NestedPartition")
 
@@ -40,7 +36,6 @@ class NestedPartition:
         exclusive_user (Union[Unset, bool]): Exclusive user access required
         priority_tier (Union[None, Unset, int]): Priority tier for scheduling and preemption
         qos (Union[Unset, str]): Quality of Service (QOS) name
-        qos_options (Union[Unset, list['NestedPartitionQoS']]):
         req_resv (Union[Unset, bool]): Require reservation for job allocation
     """
 
@@ -66,7 +61,6 @@ class NestedPartition:
     exclusive_user: Union[Unset, bool] = UNSET
     priority_tier: Union[None, Unset, int] = UNSET
     qos: Union[Unset, str] = UNSET
-    qos_options: Union[Unset, list["NestedPartitionQoS"]] = UNSET
     req_resv: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -177,13 +171,6 @@ class NestedPartition:
 
         qos = self.qos
 
-        qos_options: Union[Unset, list[dict[str, Any]]] = UNSET
-        if not isinstance(self.qos_options, Unset):
-            qos_options = []
-            for qos_options_item_data in self.qos_options:
-                qos_options_item = qos_options_item_data.to_dict()
-                qos_options.append(qos_options_item)
-
         req_resv = self.req_resv
 
         field_dict: dict[str, Any] = {}
@@ -233,8 +220,6 @@ class NestedPartition:
             field_dict["priority_tier"] = priority_tier
         if qos is not UNSET:
             field_dict["qos"] = qos
-        if qos_options is not UNSET:
-            field_dict["qos_options"] = qos_options
         if req_resv is not UNSET:
             field_dict["req_resv"] = req_resv
 
@@ -242,8 +227,6 @@ class NestedPartition:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.nested_partition_qo_s import NestedPartitionQoS
-
         d = dict(src_dict)
         _uuid = d.pop("uuid", UNSET)
         uuid: Union[Unset, UUID]
@@ -399,13 +382,6 @@ class NestedPartition:
 
         qos = d.pop("qos", UNSET)
 
-        qos_options = []
-        _qos_options = d.pop("qos_options", UNSET)
-        for qos_options_item_data in _qos_options or []:
-            qos_options_item = NestedPartitionQoS.from_dict(qos_options_item_data)
-
-            qos_options.append(qos_options_item)
-
         req_resv = d.pop("req_resv", UNSET)
 
         nested_partition = cls(
@@ -431,7 +407,6 @@ class NestedPartition:
             exclusive_user=exclusive_user,
             priority_tier=priority_tier,
             qos=qos,
-            qos_options=qos_options,
             req_resv=req_resv,
         )
 

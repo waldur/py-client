@@ -18,10 +18,8 @@ from ..models.marketplacelayoutmode_enum import MARKETPLACELAYOUTMODEEnum
 from ..models.notify_system_enum import NotifySystemEnum
 from ..models.offering_type_enum import OfferingTypeEnum
 from ..models.onboarding_validation_enum import OnboardingValidationEnum
-from ..models.openportalmembershipsyncmode_enum import OPENPORTALMEMBERSHIPSYNCMODEEnum
 from ..models.restrictedofferingvisibilitymode_enum import RESTRICTEDOFFERINGVISIBILITYMODEEnum
 from ..models.scriptrunmode_enum import SCRIPTRUNMODEEnum
-from ..models.serviceaccessmode_enum import SERVICEACCESSMODEEnum
 from ..models.sidebarstyle_enum import SIDEBARSTYLEEnum
 from ..models.sshkeyallowedtypes_enum import SSHKEYALLOWEDTYPESEnum
 from ..models.user_attribute_enum import UserAttributeEnum
@@ -58,8 +56,6 @@ class ConstanceSettingsRequestForm:
         show_offering_cover_image (Union[Unset, bool]):
         anonymous_user_can_view_plans (Union[Unset, bool]):
         restricted_offering_visibility_mode (Union[Unset, RESTRICTEDOFFERINGVISIBILITYMODEEnum]):
-        service_access_mode (Union[Unset, SERVICEACCESSMODEEnum]):
-        openportal_membership_sync_mode (Union[Unset, OPENPORTALMEMBERSHIPSYNCMODEEnum]):
         allow_service_provider_offering_management (Union[Unset, bool]):
         notify_staff_about_approvals (Union[Unset, bool]):
         notify_about_resource_change (Union[Unset, bool]):
@@ -71,7 +67,6 @@ class ConstanceSettingsRequestForm:
         enable_issues_for_user_ssh_key_changes (Union[Unset, bool]):
         telemetry_url (Union[Unset, str]):
         telemetry_version (Union[Unset, int]):
-        check_for_updates (Union[Unset, bool]):
         script_run_mode (Union[Unset, SCRIPTRUNMODEEnum]):
         docker_client (Union[Unset, str]):
         docker_run_options (Union[Unset, str]):
@@ -91,8 +86,6 @@ class ConstanceSettingsRequestForm:
         full_page_title (Union[Unset, str]):
         project_end_date_mandatory (Union[Unset, bool]):
         affiliation_required_at_project_creation (Union[Unset, bool]):
-        project_name_regex (Union[Unset, str]):
-        project_name_regex_error_message (Union[Unset, str]):
         enable_order_start_date (Union[Unset, bool]):
         brand_color (Union[Unset, str]):
         hero_link_label (Union[Unset, str]):
@@ -124,12 +117,6 @@ class ConstanceSettingsRequestForm:
         waldur_support_enabled (Union[Unset, bool]):
         waldur_support_active_backend_type (Union[Unset, WALDURSUPPORTACTIVEBACKENDTYPEEnum]):
         waldur_support_display_request_type (Union[Unset, bool]):
-        waldur_support_provider_routing_enabled (Union[Unset, bool]):
-        waldur_support_auto_assign (Union[Unset, bool]):
-        waldur_support_auto_assign_strategy (Union[Unset, str]):
-        waldur_support_sla_enabled (Union[Unset, bool]):
-        waldur_support_sla_response_hours (Union[Unset, int]):
-        waldur_support_sla_resolution_hours (Union[Unset, int]):
         atlassian_map_waldur_users_to_servicedesk_agents (Union[Unset, bool]):
         atlassian_api_url (Union[Unset, str]):
         atlassian_username (Union[Unset, str]):
@@ -221,7 +208,6 @@ class ConstanceSettingsRequestForm:
         scim_inbound_enabled (Union[Unset, bool]):
         scim_inbound_source_name (Union[Unset, str]):
         scim_inbound_allowed_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
-        scim_inbound_ssh_keys_enabled (Union[Unset, bool]):
         scim_pull_api_url (Union[Unset, str]):
         scim_pull_api_key (Union[Unset, str]):
         scim_pull_source_name (Union[Unset, str]):
@@ -236,8 +222,6 @@ class ConstanceSettingsRequestForm:
         oidc_access_token_enabled (Union[Unset, bool]):
         oidc_block_creation_of_uninvited_users (Union[Unset, bool]):
         oidc_block_creation_of_uninvited_users_response_message (Union[Unset, str]):
-        oidc_blocked_login_response_message (Union[Unset, str]):
-        oidc_allowed_user_email_patterns (Union[Unset, list[str]]):
         oidc_matchmaking_by_email (Union[Unset, bool]):
         oidc_default_logout_url (Union[Unset, str]):
         deactivate_user_if_no_roles (Union[Unset, bool]):
@@ -268,11 +252,6 @@ class ConstanceSettingsRequestForm:
         onboarding_bolagsverket_client_id (Union[Unset, str]):
         onboarding_bolagsverket_client_secret (Union[Unset, str]):
         onboarding_breg_api_url (Union[Unset, str]):
-        onboarding_dnb_api_url (Union[Unset, str]):
-        onboarding_dnb_rts_api_url (Union[Unset, str]):
-        onboarding_dnb_token_url (Union[Unset, str]):
-        onboarding_dnb_client_id (Union[Unset, str]):
-        onboarding_dnb_client_secret (Union[Unset, str]):
         ai_assistant_enabled (Union[Unset, bool]):
         ai_assistant_enabled_roles (Union[Unset, AIASSISTANTENABLEDROLESEnum]):
         ai_assistant_backend_type (Union[Unset, str]):
@@ -314,8 +293,6 @@ class ConstanceSettingsRequestForm:
         table_growth_monthly_threshold_percent (Union[Unset, int]):
         table_growth_retention_days (Union[Unset, int]):
         table_growth_min_size_bytes (Union[Unset, int]):
-        user_revision_retention_days (Union[Unset, int]):
-        user_revision_keep_minimum (Union[Unset, int]):
         user_actions_enabled (Union[Unset, bool]):
         user_actions_pending_order_hours (Union[Unset, int]):
         user_actions_high_urgency_notification (Union[Unset, bool]):
@@ -336,15 +313,11 @@ class ConstanceSettingsRequestForm:
         slurm_policy_evaluation_log_retention_days (Union[Unset, int]):
         federated_identity_sync_enabled (Union[Unset, bool]):
         federated_identity_sync_allowed_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
-        federated_identity_authoritative_isd (Union[Unset, str]):
-        federated_identity_locked_fields (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
         federated_identity_deactivation_policy (Union[Unset, FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum]):
         enable_project_digest (Union[Unset, bool]):
         ssh_key_allowed_types (Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]]):
         ssh_key_min_rsa_key_size (Union[Unset, int]):
         enabled_reporting_screens (Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]]):
-        posix_id_pool_utilization_threshold (Union[Unset, int]):
-        affiliates_enabled (Union[Unset, bool]):
         matrix_enabled (Union[Unset, bool]):
         matrix_homeserver_url (Union[Unset, str]):
         matrix_homeserver_public_url (Union[Unset, str]):
@@ -365,8 +338,6 @@ class ConstanceSettingsRequestForm:
         pat_enabled (Union[Unset, bool]):
         pat_max_lifetime_days (Union[Unset, int]):
         pat_max_tokens_per_user (Union[Unset, int]):
-        pat_max_acl_entries (Union[Unset, int]):
-        pat_max_audit_events_per_hour (Union[Unset, int]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -385,8 +356,6 @@ class ConstanceSettingsRequestForm:
     show_offering_cover_image: Union[Unset, bool] = UNSET
     anonymous_user_can_view_plans: Union[Unset, bool] = UNSET
     restricted_offering_visibility_mode: Union[Unset, RESTRICTEDOFFERINGVISIBILITYMODEEnum] = UNSET
-    service_access_mode: Union[Unset, SERVICEACCESSMODEEnum] = UNSET
-    openportal_membership_sync_mode: Union[Unset, OPENPORTALMEMBERSHIPSYNCMODEEnum] = UNSET
     allow_service_provider_offering_management: Union[Unset, bool] = UNSET
     notify_staff_about_approvals: Union[Unset, bool] = UNSET
     notify_about_resource_change: Union[Unset, bool] = UNSET
@@ -398,7 +367,6 @@ class ConstanceSettingsRequestForm:
     enable_issues_for_user_ssh_key_changes: Union[Unset, bool] = UNSET
     telemetry_url: Union[Unset, str] = UNSET
     telemetry_version: Union[Unset, int] = UNSET
-    check_for_updates: Union[Unset, bool] = UNSET
     script_run_mode: Union[Unset, SCRIPTRUNMODEEnum] = UNSET
     docker_client: Union[Unset, str] = UNSET
     docker_run_options: Union[Unset, str] = UNSET
@@ -418,8 +386,6 @@ class ConstanceSettingsRequestForm:
     full_page_title: Union[Unset, str] = UNSET
     project_end_date_mandatory: Union[Unset, bool] = UNSET
     affiliation_required_at_project_creation: Union[Unset, bool] = UNSET
-    project_name_regex: Union[Unset, str] = UNSET
-    project_name_regex_error_message: Union[Unset, str] = UNSET
     enable_order_start_date: Union[Unset, bool] = UNSET
     brand_color: Union[Unset, str] = UNSET
     hero_link_label: Union[Unset, str] = UNSET
@@ -451,12 +417,6 @@ class ConstanceSettingsRequestForm:
     waldur_support_enabled: Union[Unset, bool] = UNSET
     waldur_support_active_backend_type: Union[Unset, WALDURSUPPORTACTIVEBACKENDTYPEEnum] = UNSET
     waldur_support_display_request_type: Union[Unset, bool] = UNSET
-    waldur_support_provider_routing_enabled: Union[Unset, bool] = UNSET
-    waldur_support_auto_assign: Union[Unset, bool] = UNSET
-    waldur_support_auto_assign_strategy: Union[Unset, str] = UNSET
-    waldur_support_sla_enabled: Union[Unset, bool] = UNSET
-    waldur_support_sla_response_hours: Union[Unset, int] = UNSET
-    waldur_support_sla_resolution_hours: Union[Unset, int] = UNSET
     atlassian_map_waldur_users_to_servicedesk_agents: Union[Unset, bool] = UNSET
     atlassian_api_url: Union[Unset, str] = UNSET
     atlassian_username: Union[Unset, str] = UNSET
@@ -548,7 +508,6 @@ class ConstanceSettingsRequestForm:
     scim_inbound_enabled: Union[Unset, bool] = UNSET
     scim_inbound_source_name: Union[Unset, str] = UNSET
     scim_inbound_allowed_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
-    scim_inbound_ssh_keys_enabled: Union[Unset, bool] = UNSET
     scim_pull_api_url: Union[Unset, str] = UNSET
     scim_pull_api_key: Union[Unset, str] = UNSET
     scim_pull_source_name: Union[Unset, str] = UNSET
@@ -563,8 +522,6 @@ class ConstanceSettingsRequestForm:
     oidc_access_token_enabled: Union[Unset, bool] = UNSET
     oidc_block_creation_of_uninvited_users: Union[Unset, bool] = UNSET
     oidc_block_creation_of_uninvited_users_response_message: Union[Unset, str] = UNSET
-    oidc_blocked_login_response_message: Union[Unset, str] = UNSET
-    oidc_allowed_user_email_patterns: Union[Unset, list[str]] = UNSET
     oidc_matchmaking_by_email: Union[Unset, bool] = UNSET
     oidc_default_logout_url: Union[Unset, str] = UNSET
     deactivate_user_if_no_roles: Union[Unset, bool] = UNSET
@@ -595,11 +552,6 @@ class ConstanceSettingsRequestForm:
     onboarding_bolagsverket_client_id: Union[Unset, str] = UNSET
     onboarding_bolagsverket_client_secret: Union[Unset, str] = UNSET
     onboarding_breg_api_url: Union[Unset, str] = UNSET
-    onboarding_dnb_api_url: Union[Unset, str] = UNSET
-    onboarding_dnb_rts_api_url: Union[Unset, str] = UNSET
-    onboarding_dnb_token_url: Union[Unset, str] = UNSET
-    onboarding_dnb_client_id: Union[Unset, str] = UNSET
-    onboarding_dnb_client_secret: Union[Unset, str] = UNSET
     ai_assistant_enabled: Union[Unset, bool] = UNSET
     ai_assistant_enabled_roles: Union[Unset, AIASSISTANTENABLEDROLESEnum] = UNSET
     ai_assistant_backend_type: Union[Unset, str] = UNSET
@@ -641,8 +593,6 @@ class ConstanceSettingsRequestForm:
     table_growth_monthly_threshold_percent: Union[Unset, int] = UNSET
     table_growth_retention_days: Union[Unset, int] = UNSET
     table_growth_min_size_bytes: Union[Unset, int] = UNSET
-    user_revision_retention_days: Union[Unset, int] = UNSET
-    user_revision_keep_minimum: Union[Unset, int] = UNSET
     user_actions_enabled: Union[Unset, bool] = UNSET
     user_actions_pending_order_hours: Union[Unset, int] = UNSET
     user_actions_high_urgency_notification: Union[Unset, bool] = UNSET
@@ -663,15 +613,11 @@ class ConstanceSettingsRequestForm:
     slurm_policy_evaluation_log_retention_days: Union[Unset, int] = UNSET
     federated_identity_sync_enabled: Union[Unset, bool] = UNSET
     federated_identity_sync_allowed_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
-    federated_identity_authoritative_isd: Union[Unset, str] = UNSET
-    federated_identity_locked_fields: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
     federated_identity_deactivation_policy: Union[Unset, FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum] = UNSET
     enable_project_digest: Union[Unset, bool] = UNSET
     ssh_key_allowed_types: Union[Unset, list[Union[BlankEnum, SSHKEYALLOWEDTYPESEnum]]] = UNSET
     ssh_key_min_rsa_key_size: Union[Unset, int] = UNSET
     enabled_reporting_screens: Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]] = UNSET
-    posix_id_pool_utilization_threshold: Union[Unset, int] = UNSET
-    affiliates_enabled: Union[Unset, bool] = UNSET
     matrix_enabled: Union[Unset, bool] = UNSET
     matrix_homeserver_url: Union[Unset, str] = UNSET
     matrix_homeserver_public_url: Union[Unset, str] = UNSET
@@ -692,8 +638,6 @@ class ConstanceSettingsRequestForm:
     pat_enabled: Union[Unset, bool] = UNSET
     pat_max_lifetime_days: Union[Unset, int] = UNSET
     pat_max_tokens_per_user: Union[Unset, int] = UNSET
-    pat_max_acl_entries: Union[Unset, int] = UNSET
-    pat_max_audit_events_per_hour: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -731,14 +675,6 @@ class ConstanceSettingsRequestForm:
         if not isinstance(self.restricted_offering_visibility_mode, Unset):
             restricted_offering_visibility_mode = self.restricted_offering_visibility_mode.value
 
-        service_access_mode: Union[Unset, str] = UNSET
-        if not isinstance(self.service_access_mode, Unset):
-            service_access_mode = self.service_access_mode.value
-
-        openportal_membership_sync_mode: Union[Unset, str] = UNSET
-        if not isinstance(self.openportal_membership_sync_mode, Unset):
-            openportal_membership_sync_mode = self.openportal_membership_sync_mode.value
-
         allow_service_provider_offering_management = self.allow_service_provider_offering_management
 
         notify_staff_about_approvals = self.notify_staff_about_approvals
@@ -764,8 +700,6 @@ class ConstanceSettingsRequestForm:
         telemetry_url = self.telemetry_url
 
         telemetry_version = self.telemetry_version
-
-        check_for_updates = self.check_for_updates
 
         script_run_mode: Union[Unset, str] = UNSET
         if not isinstance(self.script_run_mode, Unset):
@@ -812,10 +746,6 @@ class ConstanceSettingsRequestForm:
         project_end_date_mandatory = self.project_end_date_mandatory
 
         affiliation_required_at_project_creation = self.affiliation_required_at_project_creation
-
-        project_name_regex = self.project_name_regex
-
-        project_name_regex_error_message = self.project_name_regex_error_message
 
         enable_order_start_date = self.enable_order_start_date
 
@@ -971,18 +901,6 @@ class ConstanceSettingsRequestForm:
             waldur_support_active_backend_type = self.waldur_support_active_backend_type.value
 
         waldur_support_display_request_type = self.waldur_support_display_request_type
-
-        waldur_support_provider_routing_enabled = self.waldur_support_provider_routing_enabled
-
-        waldur_support_auto_assign = self.waldur_support_auto_assign
-
-        waldur_support_auto_assign_strategy = self.waldur_support_auto_assign_strategy
-
-        waldur_support_sla_enabled = self.waldur_support_sla_enabled
-
-        waldur_support_sla_response_hours = self.waldur_support_sla_response_hours
-
-        waldur_support_sla_resolution_hours = self.waldur_support_sla_resolution_hours
 
         atlassian_map_waldur_users_to_servicedesk_agents = self.atlassian_map_waldur_users_to_servicedesk_agents
 
@@ -1180,8 +1098,6 @@ class ConstanceSettingsRequestForm:
 
                 scim_inbound_allowed_attributes.append(scim_inbound_allowed_attributes_item)
 
-        scim_inbound_ssh_keys_enabled = self.scim_inbound_ssh_keys_enabled
-
         scim_pull_api_url = self.scim_pull_api_url
 
         scim_pull_api_key = self.scim_pull_api_key
@@ -1220,12 +1136,6 @@ class ConstanceSettingsRequestForm:
         oidc_block_creation_of_uninvited_users_response_message = (
             self.oidc_block_creation_of_uninvited_users_response_message
         )
-
-        oidc_blocked_login_response_message = self.oidc_blocked_login_response_message
-
-        oidc_allowed_user_email_patterns: Union[Unset, list[str]] = UNSET
-        if not isinstance(self.oidc_allowed_user_email_patterns, Unset):
-            oidc_allowed_user_email_patterns = self.oidc_allowed_user_email_patterns
 
         oidc_matchmaking_by_email = self.oidc_matchmaking_by_email
 
@@ -1367,16 +1277,6 @@ class ConstanceSettingsRequestForm:
 
         onboarding_breg_api_url = self.onboarding_breg_api_url
 
-        onboarding_dnb_api_url = self.onboarding_dnb_api_url
-
-        onboarding_dnb_rts_api_url = self.onboarding_dnb_rts_api_url
-
-        onboarding_dnb_token_url = self.onboarding_dnb_token_url
-
-        onboarding_dnb_client_id = self.onboarding_dnb_client_id
-
-        onboarding_dnb_client_secret = self.onboarding_dnb_client_secret
-
         ai_assistant_enabled = self.ai_assistant_enabled
 
         ai_assistant_enabled_roles: Union[Unset, str] = UNSET
@@ -1461,10 +1361,6 @@ class ConstanceSettingsRequestForm:
 
         table_growth_min_size_bytes = self.table_growth_min_size_bytes
 
-        user_revision_retention_days = self.user_revision_retention_days
-
-        user_revision_keep_minimum = self.user_revision_keep_minimum
-
         user_actions_enabled = self.user_actions_enabled
 
         user_actions_pending_order_hours = self.user_actions_pending_order_hours
@@ -1521,20 +1417,6 @@ class ConstanceSettingsRequestForm:
 
                 federated_identity_sync_allowed_attributes.append(federated_identity_sync_allowed_attributes_item)
 
-        federated_identity_authoritative_isd = self.federated_identity_authoritative_isd
-
-        federated_identity_locked_fields: Union[Unset, list[str]] = UNSET
-        if not isinstance(self.federated_identity_locked_fields, Unset):
-            federated_identity_locked_fields = []
-            for federated_identity_locked_fields_item_data in self.federated_identity_locked_fields:
-                federated_identity_locked_fields_item: str
-                if isinstance(federated_identity_locked_fields_item_data, UserAttributeEnum):
-                    federated_identity_locked_fields_item = federated_identity_locked_fields_item_data.value
-                else:
-                    federated_identity_locked_fields_item = federated_identity_locked_fields_item_data.value
-
-                federated_identity_locked_fields.append(federated_identity_locked_fields_item)
-
         federated_identity_deactivation_policy: Union[Unset, str] = UNSET
         if not isinstance(self.federated_identity_deactivation_policy, Unset):
             federated_identity_deactivation_policy = self.federated_identity_deactivation_policy.value
@@ -1566,10 +1448,6 @@ class ConstanceSettingsRequestForm:
                     enabled_reporting_screens_item = enabled_reporting_screens_item_data.value
 
                 enabled_reporting_screens.append(enabled_reporting_screens_item)
-
-        posix_id_pool_utilization_threshold = self.posix_id_pool_utilization_threshold
-
-        affiliates_enabled = self.affiliates_enabled
 
         matrix_enabled = self.matrix_enabled
 
@@ -1611,10 +1489,6 @@ class ConstanceSettingsRequestForm:
 
         pat_max_tokens_per_user = self.pat_max_tokens_per_user
 
-        pat_max_acl_entries = self.pat_max_acl_entries
-
-        pat_max_audit_events_per_hour = self.pat_max_audit_events_per_hour
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -1650,10 +1524,6 @@ class ConstanceSettingsRequestForm:
             field_dict["ANONYMOUS_USER_CAN_VIEW_PLANS"] = anonymous_user_can_view_plans
         if restricted_offering_visibility_mode is not UNSET:
             field_dict["RESTRICTED_OFFERING_VISIBILITY_MODE"] = restricted_offering_visibility_mode
-        if service_access_mode is not UNSET:
-            field_dict["SERVICE_ACCESS_MODE"] = service_access_mode
-        if openportal_membership_sync_mode is not UNSET:
-            field_dict["OPENPORTAL_MEMBERSHIP_SYNC_MODE"] = openportal_membership_sync_mode
         if allow_service_provider_offering_management is not UNSET:
             field_dict["ALLOW_SERVICE_PROVIDER_OFFERING_MANAGEMENT"] = allow_service_provider_offering_management
         if notify_staff_about_approvals is not UNSET:
@@ -1678,8 +1548,6 @@ class ConstanceSettingsRequestForm:
             field_dict["TELEMETRY_URL"] = telemetry_url
         if telemetry_version is not UNSET:
             field_dict["TELEMETRY_VERSION"] = telemetry_version
-        if check_for_updates is not UNSET:
-            field_dict["CHECK_FOR_UPDATES"] = check_for_updates
         if script_run_mode is not UNSET:
             field_dict["SCRIPT_RUN_MODE"] = script_run_mode
         if docker_client is not UNSET:
@@ -1718,10 +1586,6 @@ class ConstanceSettingsRequestForm:
             field_dict["PROJECT_END_DATE_MANDATORY"] = project_end_date_mandatory
         if affiliation_required_at_project_creation is not UNSET:
             field_dict["AFFILIATION_REQUIRED_AT_PROJECT_CREATION"] = affiliation_required_at_project_creation
-        if project_name_regex is not UNSET:
-            field_dict["PROJECT_NAME_REGEX"] = project_name_regex
-        if project_name_regex_error_message is not UNSET:
-            field_dict["PROJECT_NAME_REGEX_ERROR_MESSAGE"] = project_name_regex_error_message
         if enable_order_start_date is not UNSET:
             field_dict["ENABLE_ORDER_START_DATE"] = enable_order_start_date
         if brand_color is not UNSET:
@@ -1784,18 +1648,6 @@ class ConstanceSettingsRequestForm:
             field_dict["WALDUR_SUPPORT_ACTIVE_BACKEND_TYPE"] = waldur_support_active_backend_type
         if waldur_support_display_request_type is not UNSET:
             field_dict["WALDUR_SUPPORT_DISPLAY_REQUEST_TYPE"] = waldur_support_display_request_type
-        if waldur_support_provider_routing_enabled is not UNSET:
-            field_dict["WALDUR_SUPPORT_PROVIDER_ROUTING_ENABLED"] = waldur_support_provider_routing_enabled
-        if waldur_support_auto_assign is not UNSET:
-            field_dict["WALDUR_SUPPORT_AUTO_ASSIGN"] = waldur_support_auto_assign
-        if waldur_support_auto_assign_strategy is not UNSET:
-            field_dict["WALDUR_SUPPORT_AUTO_ASSIGN_STRATEGY"] = waldur_support_auto_assign_strategy
-        if waldur_support_sla_enabled is not UNSET:
-            field_dict["WALDUR_SUPPORT_SLA_ENABLED"] = waldur_support_sla_enabled
-        if waldur_support_sla_response_hours is not UNSET:
-            field_dict["WALDUR_SUPPORT_SLA_RESPONSE_HOURS"] = waldur_support_sla_response_hours
-        if waldur_support_sla_resolution_hours is not UNSET:
-            field_dict["WALDUR_SUPPORT_SLA_RESOLUTION_HOURS"] = waldur_support_sla_resolution_hours
         if atlassian_map_waldur_users_to_servicedesk_agents is not UNSET:
             field_dict["ATLASSIAN_MAP_WALDUR_USERS_TO_SERVICEDESK_AGENTS"] = (
                 atlassian_map_waldur_users_to_servicedesk_agents
@@ -1980,8 +1832,6 @@ class ConstanceSettingsRequestForm:
             field_dict["SCIM_INBOUND_SOURCE_NAME"] = scim_inbound_source_name
         if scim_inbound_allowed_attributes is not UNSET:
             field_dict["SCIM_INBOUND_ALLOWED_ATTRIBUTES"] = scim_inbound_allowed_attributes
-        if scim_inbound_ssh_keys_enabled is not UNSET:
-            field_dict["SCIM_INBOUND_SSH_KEYS_ENABLED"] = scim_inbound_ssh_keys_enabled
         if scim_pull_api_url is not UNSET:
             field_dict["SCIM_PULL_API_URL"] = scim_pull_api_url
         if scim_pull_api_key is not UNSET:
@@ -2012,10 +1862,6 @@ class ConstanceSettingsRequestForm:
             field_dict["OIDC_BLOCK_CREATION_OF_UNINVITED_USERS_RESPONSE_MESSAGE"] = (
                 oidc_block_creation_of_uninvited_users_response_message
             )
-        if oidc_blocked_login_response_message is not UNSET:
-            field_dict["OIDC_BLOCKED_LOGIN_RESPONSE_MESSAGE"] = oidc_blocked_login_response_message
-        if oidc_allowed_user_email_patterns is not UNSET:
-            field_dict["OIDC_ALLOWED_USER_EMAIL_PATTERNS"] = oidc_allowed_user_email_patterns
         if oidc_matchmaking_by_email is not UNSET:
             field_dict["OIDC_MATCHMAKING_BY_EMAIL"] = oidc_matchmaking_by_email
         if oidc_default_logout_url is not UNSET:
@@ -2080,16 +1926,6 @@ class ConstanceSettingsRequestForm:
             field_dict["ONBOARDING_BOLAGSVERKET_CLIENT_SECRET"] = onboarding_bolagsverket_client_secret
         if onboarding_breg_api_url is not UNSET:
             field_dict["ONBOARDING_BREG_API_URL"] = onboarding_breg_api_url
-        if onboarding_dnb_api_url is not UNSET:
-            field_dict["ONBOARDING_DNB_API_URL"] = onboarding_dnb_api_url
-        if onboarding_dnb_rts_api_url is not UNSET:
-            field_dict["ONBOARDING_DNB_RTS_API_URL"] = onboarding_dnb_rts_api_url
-        if onboarding_dnb_token_url is not UNSET:
-            field_dict["ONBOARDING_DNB_TOKEN_URL"] = onboarding_dnb_token_url
-        if onboarding_dnb_client_id is not UNSET:
-            field_dict["ONBOARDING_DNB_CLIENT_ID"] = onboarding_dnb_client_id
-        if onboarding_dnb_client_secret is not UNSET:
-            field_dict["ONBOARDING_DNB_CLIENT_SECRET"] = onboarding_dnb_client_secret
         if ai_assistant_enabled is not UNSET:
             field_dict["AI_ASSISTANT_ENABLED"] = ai_assistant_enabled
         if ai_assistant_enabled_roles is not UNSET:
@@ -2174,10 +2010,6 @@ class ConstanceSettingsRequestForm:
             field_dict["TABLE_GROWTH_RETENTION_DAYS"] = table_growth_retention_days
         if table_growth_min_size_bytes is not UNSET:
             field_dict["TABLE_GROWTH_MIN_SIZE_BYTES"] = table_growth_min_size_bytes
-        if user_revision_retention_days is not UNSET:
-            field_dict["USER_REVISION_RETENTION_DAYS"] = user_revision_retention_days
-        if user_revision_keep_minimum is not UNSET:
-            field_dict["USER_REVISION_KEEP_MINIMUM"] = user_revision_keep_minimum
         if user_actions_enabled is not UNSET:
             field_dict["USER_ACTIONS_ENABLED"] = user_actions_enabled
         if user_actions_pending_order_hours is not UNSET:
@@ -2218,10 +2050,6 @@ class ConstanceSettingsRequestForm:
             field_dict["FEDERATED_IDENTITY_SYNC_ENABLED"] = federated_identity_sync_enabled
         if federated_identity_sync_allowed_attributes is not UNSET:
             field_dict["FEDERATED_IDENTITY_SYNC_ALLOWED_ATTRIBUTES"] = federated_identity_sync_allowed_attributes
-        if federated_identity_authoritative_isd is not UNSET:
-            field_dict["FEDERATED_IDENTITY_AUTHORITATIVE_ISD"] = federated_identity_authoritative_isd
-        if federated_identity_locked_fields is not UNSET:
-            field_dict["FEDERATED_IDENTITY_LOCKED_FIELDS"] = federated_identity_locked_fields
         if federated_identity_deactivation_policy is not UNSET:
             field_dict["FEDERATED_IDENTITY_DEACTIVATION_POLICY"] = federated_identity_deactivation_policy
         if enable_project_digest is not UNSET:
@@ -2232,10 +2060,6 @@ class ConstanceSettingsRequestForm:
             field_dict["SSH_KEY_MIN_RSA_KEY_SIZE"] = ssh_key_min_rsa_key_size
         if enabled_reporting_screens is not UNSET:
             field_dict["ENABLED_REPORTING_SCREENS"] = enabled_reporting_screens
-        if posix_id_pool_utilization_threshold is not UNSET:
-            field_dict["POSIX_ID_POOL_UTILIZATION_THRESHOLD"] = posix_id_pool_utilization_threshold
-        if affiliates_enabled is not UNSET:
-            field_dict["AFFILIATES_ENABLED"] = affiliates_enabled
         if matrix_enabled is not UNSET:
             field_dict["MATRIX_ENABLED"] = matrix_enabled
         if matrix_homeserver_url is not UNSET:
@@ -2276,10 +2100,6 @@ class ConstanceSettingsRequestForm:
             field_dict["PAT_MAX_LIFETIME_DAYS"] = pat_max_lifetime_days
         if pat_max_tokens_per_user is not UNSET:
             field_dict["PAT_MAX_TOKENS_PER_USER"] = pat_max_tokens_per_user
-        if pat_max_acl_entries is not UNSET:
-            field_dict["PAT_MAX_ACL_ENTRIES"] = pat_max_acl_entries
-        if pat_max_audit_events_per_hour is not UNSET:
-            field_dict["PAT_MAX_AUDIT_EVENTS_PER_HOUR"] = pat_max_audit_events_per_hour
 
         return field_dict
 
@@ -2329,20 +2149,6 @@ class ConstanceSettingsRequestForm:
                 _restricted_offering_visibility_mode
             )
 
-        _service_access_mode = d.pop("SERVICE_ACCESS_MODE", UNSET)
-        service_access_mode: Union[Unset, SERVICEACCESSMODEEnum]
-        if isinstance(_service_access_mode, Unset):
-            service_access_mode = UNSET
-        else:
-            service_access_mode = SERVICEACCESSMODEEnum(_service_access_mode)
-
-        _openportal_membership_sync_mode = d.pop("OPENPORTAL_MEMBERSHIP_SYNC_MODE", UNSET)
-        openportal_membership_sync_mode: Union[Unset, OPENPORTALMEMBERSHIPSYNCMODEEnum]
-        if isinstance(_openportal_membership_sync_mode, Unset):
-            openportal_membership_sync_mode = UNSET
-        else:
-            openportal_membership_sync_mode = OPENPORTALMEMBERSHIPSYNCMODEEnum(_openportal_membership_sync_mode)
-
         allow_service_provider_offering_management = d.pop("ALLOW_SERVICE_PROVIDER_OFFERING_MANAGEMENT", UNSET)
 
         notify_staff_about_approvals = d.pop("NOTIFY_STAFF_ABOUT_APPROVALS", UNSET)
@@ -2376,8 +2182,6 @@ class ConstanceSettingsRequestForm:
         telemetry_url = d.pop("TELEMETRY_URL", UNSET)
 
         telemetry_version = d.pop("TELEMETRY_VERSION", UNSET)
-
-        check_for_updates = d.pop("CHECK_FOR_UPDATES", UNSET)
 
         _script_run_mode = d.pop("SCRIPT_RUN_MODE", UNSET)
         script_run_mode: Union[Unset, SCRIPTRUNMODEEnum]
@@ -2438,10 +2242,6 @@ class ConstanceSettingsRequestForm:
         project_end_date_mandatory = d.pop("PROJECT_END_DATE_MANDATORY", UNSET)
 
         affiliation_required_at_project_creation = d.pop("AFFILIATION_REQUIRED_AT_PROJECT_CREATION", UNSET)
-
-        project_name_regex = d.pop("PROJECT_NAME_REGEX", UNSET)
-
-        project_name_regex_error_message = d.pop("PROJECT_NAME_REGEX_ERROR_MESSAGE", UNSET)
 
         enable_order_start_date = d.pop("ENABLE_ORDER_START_DATE", UNSET)
 
@@ -2697,18 +2497,6 @@ class ConstanceSettingsRequestForm:
 
         waldur_support_display_request_type = d.pop("WALDUR_SUPPORT_DISPLAY_REQUEST_TYPE", UNSET)
 
-        waldur_support_provider_routing_enabled = d.pop("WALDUR_SUPPORT_PROVIDER_ROUTING_ENABLED", UNSET)
-
-        waldur_support_auto_assign = d.pop("WALDUR_SUPPORT_AUTO_ASSIGN", UNSET)
-
-        waldur_support_auto_assign_strategy = d.pop("WALDUR_SUPPORT_AUTO_ASSIGN_STRATEGY", UNSET)
-
-        waldur_support_sla_enabled = d.pop("WALDUR_SUPPORT_SLA_ENABLED", UNSET)
-
-        waldur_support_sla_response_hours = d.pop("WALDUR_SUPPORT_SLA_RESPONSE_HOURS", UNSET)
-
-        waldur_support_sla_resolution_hours = d.pop("WALDUR_SUPPORT_SLA_RESOLUTION_HOURS", UNSET)
-
         atlassian_map_waldur_users_to_servicedesk_agents = d.pop(
             "ATLASSIAN_MAP_WALDUR_USERS_TO_SERVICEDESK_AGENTS", UNSET
         )
@@ -2921,8 +2709,6 @@ class ConstanceSettingsRequestForm:
 
             scim_inbound_allowed_attributes.append(scim_inbound_allowed_attributes_item)
 
-        scim_inbound_ssh_keys_enabled = d.pop("SCIM_INBOUND_SSH_KEYS_ENABLED", UNSET)
-
         scim_pull_api_url = d.pop("SCIM_PULL_API_URL", UNSET)
 
         scim_pull_api_key = d.pop("SCIM_PULL_API_KEY", UNSET)
@@ -2967,10 +2753,6 @@ class ConstanceSettingsRequestForm:
         oidc_block_creation_of_uninvited_users_response_message = d.pop(
             "OIDC_BLOCK_CREATION_OF_UNINVITED_USERS_RESPONSE_MESSAGE", UNSET
         )
-
-        oidc_blocked_login_response_message = d.pop("OIDC_BLOCKED_LOGIN_RESPONSE_MESSAGE", UNSET)
-
-        oidc_allowed_user_email_patterns = cast(list[str], d.pop("OIDC_ALLOWED_USER_EMAIL_PATTERNS", UNSET))
 
         oidc_matchmaking_by_email = d.pop("OIDC_MATCHMAKING_BY_EMAIL", UNSET)
 
@@ -3212,16 +2994,6 @@ class ConstanceSettingsRequestForm:
 
         onboarding_breg_api_url = d.pop("ONBOARDING_BREG_API_URL", UNSET)
 
-        onboarding_dnb_api_url = d.pop("ONBOARDING_DNB_API_URL", UNSET)
-
-        onboarding_dnb_rts_api_url = d.pop("ONBOARDING_DNB_RTS_API_URL", UNSET)
-
-        onboarding_dnb_token_url = d.pop("ONBOARDING_DNB_TOKEN_URL", UNSET)
-
-        onboarding_dnb_client_id = d.pop("ONBOARDING_DNB_CLIENT_ID", UNSET)
-
-        onboarding_dnb_client_secret = d.pop("ONBOARDING_DNB_CLIENT_SECRET", UNSET)
-
         ai_assistant_enabled = d.pop("AI_ASSISTANT_ENABLED", UNSET)
 
         _ai_assistant_enabled_roles = d.pop("AI_ASSISTANT_ENABLED_ROLES", UNSET)
@@ -3309,10 +3081,6 @@ class ConstanceSettingsRequestForm:
 
         table_growth_min_size_bytes = d.pop("TABLE_GROWTH_MIN_SIZE_BYTES", UNSET)
 
-        user_revision_retention_days = d.pop("USER_REVISION_RETENTION_DAYS", UNSET)
-
-        user_revision_keep_minimum = d.pop("USER_REVISION_KEEP_MINIMUM", UNSET)
-
         user_actions_enabled = d.pop("USER_ACTIONS_ENABLED", UNSET)
 
         user_actions_pending_order_hours = d.pop("USER_ACTIONS_PENDING_ORDER_HOURS", UNSET)
@@ -3380,33 +3148,6 @@ class ConstanceSettingsRequestForm:
 
             federated_identity_sync_allowed_attributes.append(federated_identity_sync_allowed_attributes_item)
 
-        federated_identity_authoritative_isd = d.pop("FEDERATED_IDENTITY_AUTHORITATIVE_ISD", UNSET)
-
-        federated_identity_locked_fields = []
-        _federated_identity_locked_fields = d.pop("FEDERATED_IDENTITY_LOCKED_FIELDS", UNSET)
-        for federated_identity_locked_fields_item_data in _federated_identity_locked_fields or []:
-
-            def _parse_federated_identity_locked_fields_item(data: object) -> Union[BlankEnum, UserAttributeEnum]:
-                try:
-                    if not isinstance(data, str):
-                        raise TypeError()
-                    federated_identity_locked_fields_item_type_0 = UserAttributeEnum(data)
-
-                    return federated_identity_locked_fields_item_type_0
-                except:  # noqa: E722
-                    pass
-                if not isinstance(data, str):
-                    raise TypeError()
-                federated_identity_locked_fields_item_type_1 = BlankEnum(data)
-
-                return federated_identity_locked_fields_item_type_1
-
-            federated_identity_locked_fields_item = _parse_federated_identity_locked_fields_item(
-                federated_identity_locked_fields_item_data
-            )
-
-            federated_identity_locked_fields.append(federated_identity_locked_fields_item)
-
         _federated_identity_deactivation_policy = d.pop("FEDERATED_IDENTITY_DEACTIVATION_POLICY", UNSET)
         federated_identity_deactivation_policy: Union[Unset, FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum]
         if isinstance(_federated_identity_deactivation_policy, Unset):
@@ -3466,10 +3207,6 @@ class ConstanceSettingsRequestForm:
 
             enabled_reporting_screens.append(enabled_reporting_screens_item)
 
-        posix_id_pool_utilization_threshold = d.pop("POSIX_ID_POOL_UTILIZATION_THRESHOLD", UNSET)
-
-        affiliates_enabled = d.pop("AFFILIATES_ENABLED", UNSET)
-
         matrix_enabled = d.pop("MATRIX_ENABLED", UNSET)
 
         matrix_homeserver_url = d.pop("MATRIX_HOMESERVER_URL", UNSET)
@@ -3510,10 +3247,6 @@ class ConstanceSettingsRequestForm:
 
         pat_max_tokens_per_user = d.pop("PAT_MAX_TOKENS_PER_USER", UNSET)
 
-        pat_max_acl_entries = d.pop("PAT_MAX_ACL_ENTRIES", UNSET)
-
-        pat_max_audit_events_per_hour = d.pop("PAT_MAX_AUDIT_EVENTS_PER_HOUR", UNSET)
-
         constance_settings_request_form = cls(
             site_name=site_name,
             site_description=site_description,
@@ -3531,8 +3264,6 @@ class ConstanceSettingsRequestForm:
             show_offering_cover_image=show_offering_cover_image,
             anonymous_user_can_view_plans=anonymous_user_can_view_plans,
             restricted_offering_visibility_mode=restricted_offering_visibility_mode,
-            service_access_mode=service_access_mode,
-            openportal_membership_sync_mode=openportal_membership_sync_mode,
             allow_service_provider_offering_management=allow_service_provider_offering_management,
             notify_staff_about_approvals=notify_staff_about_approvals,
             notify_about_resource_change=notify_about_resource_change,
@@ -3544,7 +3275,6 @@ class ConstanceSettingsRequestForm:
             enable_issues_for_user_ssh_key_changes=enable_issues_for_user_ssh_key_changes,
             telemetry_url=telemetry_url,
             telemetry_version=telemetry_version,
-            check_for_updates=check_for_updates,
             script_run_mode=script_run_mode,
             docker_client=docker_client,
             docker_run_options=docker_run_options,
@@ -3564,8 +3294,6 @@ class ConstanceSettingsRequestForm:
             full_page_title=full_page_title,
             project_end_date_mandatory=project_end_date_mandatory,
             affiliation_required_at_project_creation=affiliation_required_at_project_creation,
-            project_name_regex=project_name_regex,
-            project_name_regex_error_message=project_name_regex_error_message,
             enable_order_start_date=enable_order_start_date,
             brand_color=brand_color,
             hero_link_label=hero_link_label,
@@ -3597,12 +3325,6 @@ class ConstanceSettingsRequestForm:
             waldur_support_enabled=waldur_support_enabled,
             waldur_support_active_backend_type=waldur_support_active_backend_type,
             waldur_support_display_request_type=waldur_support_display_request_type,
-            waldur_support_provider_routing_enabled=waldur_support_provider_routing_enabled,
-            waldur_support_auto_assign=waldur_support_auto_assign,
-            waldur_support_auto_assign_strategy=waldur_support_auto_assign_strategy,
-            waldur_support_sla_enabled=waldur_support_sla_enabled,
-            waldur_support_sla_response_hours=waldur_support_sla_response_hours,
-            waldur_support_sla_resolution_hours=waldur_support_sla_resolution_hours,
             atlassian_map_waldur_users_to_servicedesk_agents=atlassian_map_waldur_users_to_servicedesk_agents,
             atlassian_api_url=atlassian_api_url,
             atlassian_username=atlassian_username,
@@ -3694,7 +3416,6 @@ class ConstanceSettingsRequestForm:
             scim_inbound_enabled=scim_inbound_enabled,
             scim_inbound_source_name=scim_inbound_source_name,
             scim_inbound_allowed_attributes=scim_inbound_allowed_attributes,
-            scim_inbound_ssh_keys_enabled=scim_inbound_ssh_keys_enabled,
             scim_pull_api_url=scim_pull_api_url,
             scim_pull_api_key=scim_pull_api_key,
             scim_pull_source_name=scim_pull_source_name,
@@ -3709,8 +3430,6 @@ class ConstanceSettingsRequestForm:
             oidc_access_token_enabled=oidc_access_token_enabled,
             oidc_block_creation_of_uninvited_users=oidc_block_creation_of_uninvited_users,
             oidc_block_creation_of_uninvited_users_response_message=oidc_block_creation_of_uninvited_users_response_message,
-            oidc_blocked_login_response_message=oidc_blocked_login_response_message,
-            oidc_allowed_user_email_patterns=oidc_allowed_user_email_patterns,
             oidc_matchmaking_by_email=oidc_matchmaking_by_email,
             oidc_default_logout_url=oidc_default_logout_url,
             deactivate_user_if_no_roles=deactivate_user_if_no_roles,
@@ -3741,11 +3460,6 @@ class ConstanceSettingsRequestForm:
             onboarding_bolagsverket_client_id=onboarding_bolagsverket_client_id,
             onboarding_bolagsverket_client_secret=onboarding_bolagsverket_client_secret,
             onboarding_breg_api_url=onboarding_breg_api_url,
-            onboarding_dnb_api_url=onboarding_dnb_api_url,
-            onboarding_dnb_rts_api_url=onboarding_dnb_rts_api_url,
-            onboarding_dnb_token_url=onboarding_dnb_token_url,
-            onboarding_dnb_client_id=onboarding_dnb_client_id,
-            onboarding_dnb_client_secret=onboarding_dnb_client_secret,
             ai_assistant_enabled=ai_assistant_enabled,
             ai_assistant_enabled_roles=ai_assistant_enabled_roles,
             ai_assistant_backend_type=ai_assistant_backend_type,
@@ -3787,8 +3501,6 @@ class ConstanceSettingsRequestForm:
             table_growth_monthly_threshold_percent=table_growth_monthly_threshold_percent,
             table_growth_retention_days=table_growth_retention_days,
             table_growth_min_size_bytes=table_growth_min_size_bytes,
-            user_revision_retention_days=user_revision_retention_days,
-            user_revision_keep_minimum=user_revision_keep_minimum,
             user_actions_enabled=user_actions_enabled,
             user_actions_pending_order_hours=user_actions_pending_order_hours,
             user_actions_high_urgency_notification=user_actions_high_urgency_notification,
@@ -3809,15 +3521,11 @@ class ConstanceSettingsRequestForm:
             slurm_policy_evaluation_log_retention_days=slurm_policy_evaluation_log_retention_days,
             federated_identity_sync_enabled=federated_identity_sync_enabled,
             federated_identity_sync_allowed_attributes=federated_identity_sync_allowed_attributes,
-            federated_identity_authoritative_isd=federated_identity_authoritative_isd,
-            federated_identity_locked_fields=federated_identity_locked_fields,
             federated_identity_deactivation_policy=federated_identity_deactivation_policy,
             enable_project_digest=enable_project_digest,
             ssh_key_allowed_types=ssh_key_allowed_types,
             ssh_key_min_rsa_key_size=ssh_key_min_rsa_key_size,
             enabled_reporting_screens=enabled_reporting_screens,
-            posix_id_pool_utilization_threshold=posix_id_pool_utilization_threshold,
-            affiliates_enabled=affiliates_enabled,
             matrix_enabled=matrix_enabled,
             matrix_homeserver_url=matrix_homeserver_url,
             matrix_homeserver_public_url=matrix_homeserver_public_url,
@@ -3838,8 +3546,6 @@ class ConstanceSettingsRequestForm:
             pat_enabled=pat_enabled,
             pat_max_lifetime_days=pat_max_lifetime_days,
             pat_max_tokens_per_user=pat_max_tokens_per_user,
-            pat_max_acl_entries=pat_max_acl_entries,
-            pat_max_audit_events_per_hour=pat_max_audit_events_per_hour,
         )
 
         constance_settings_request_form.additional_properties = d

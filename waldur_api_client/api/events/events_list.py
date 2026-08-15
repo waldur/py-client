@@ -15,7 +15,6 @@ from ...utils import parse_link_header
 
 def _get_kwargs(
     *,
-    auth_method: Union[Unset, str] = UNSET,
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
@@ -26,15 +25,11 @@ def _get_kwargs(
     o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    pat_uuid: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    related_user_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
-
-    params["auth_method"] = auth_method
 
     params["created_from"] = created_from
 
@@ -81,17 +76,10 @@ def _get_kwargs(
 
     params["page_size"] = page_size
 
-    params["pat_uuid"] = pat_uuid
-
     json_project_uuid: Union[Unset, str] = UNSET
     if not isinstance(project_uuid, Unset):
         json_project_uuid = str(project_uuid)
     params["project_uuid"] = json_project_uuid
-
-    json_related_user_uuid: Union[Unset, str] = UNSET
-    if not isinstance(related_user_uuid, Unset):
-        json_related_user_uuid = str(related_user_uuid)
-    params["related_user_uuid"] = json_related_user_uuid
 
     params["scope"] = scope
 
@@ -138,7 +126,6 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    auth_method: Union[Unset, str] = UNSET,
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
@@ -149,15 +136,12 @@ def sync_detailed(
     o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    pat_uuid: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    related_user_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["Event"]]:
     """
     Args:
-        auth_method (Union[Unset, str]):
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         customer_uuid (Union[Unset, UUID]):
@@ -168,9 +152,7 @@ def sync_detailed(
         o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        pat_uuid (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
-        related_user_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -183,7 +165,6 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        auth_method=auth_method,
         created_from=created_from,
         created_to=created_to,
         customer_uuid=customer_uuid,
@@ -194,9 +175,7 @@ def sync_detailed(
         o=o,
         page=page,
         page_size=page_size,
-        pat_uuid=pat_uuid,
         project_uuid=project_uuid,
-        related_user_uuid=related_user_uuid,
         scope=scope,
         user_uuid=user_uuid,
     )
@@ -211,7 +190,6 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    auth_method: Union[Unset, str] = UNSET,
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
@@ -222,15 +200,12 @@ def sync(
     o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    pat_uuid: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    related_user_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Event"]:
     """
     Args:
-        auth_method (Union[Unset, str]):
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         customer_uuid (Union[Unset, UUID]):
@@ -241,9 +216,7 @@ def sync(
         o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        pat_uuid (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
-        related_user_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -257,7 +230,6 @@ def sync(
 
     return sync_detailed(
         client=client,
-        auth_method=auth_method,
         created_from=created_from,
         created_to=created_to,
         customer_uuid=customer_uuid,
@@ -268,9 +240,7 @@ def sync(
         o=o,
         page=page,
         page_size=page_size,
-        pat_uuid=pat_uuid,
         project_uuid=project_uuid,
-        related_user_uuid=related_user_uuid,
         scope=scope,
         user_uuid=user_uuid,
     ).parsed
@@ -279,7 +249,6 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    auth_method: Union[Unset, str] = UNSET,
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
@@ -290,15 +259,12 @@ async def asyncio_detailed(
     o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    pat_uuid: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    related_user_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["Event"]]:
     """
     Args:
-        auth_method (Union[Unset, str]):
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         customer_uuid (Union[Unset, UUID]):
@@ -309,9 +275,7 @@ async def asyncio_detailed(
         o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        pat_uuid (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
-        related_user_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -324,7 +288,6 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        auth_method=auth_method,
         created_from=created_from,
         created_to=created_to,
         customer_uuid=customer_uuid,
@@ -335,9 +298,7 @@ async def asyncio_detailed(
         o=o,
         page=page,
         page_size=page_size,
-        pat_uuid=pat_uuid,
         project_uuid=project_uuid,
-        related_user_uuid=related_user_uuid,
         scope=scope,
         user_uuid=user_uuid,
     )
@@ -350,7 +311,6 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    auth_method: Union[Unset, str] = UNSET,
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
@@ -361,15 +321,12 @@ async def asyncio(
     o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    pat_uuid: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    related_user_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Event"]:
     """
     Args:
-        auth_method (Union[Unset, str]):
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         customer_uuid (Union[Unset, UUID]):
@@ -380,9 +337,7 @@ async def asyncio(
         o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        pat_uuid (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
-        related_user_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -397,7 +352,6 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
-            auth_method=auth_method,
             created_from=created_from,
             created_to=created_to,
             customer_uuid=customer_uuid,
@@ -408,9 +362,7 @@ async def asyncio(
             o=o,
             page=page,
             page_size=page_size,
-            pat_uuid=pat_uuid,
             project_uuid=project_uuid,
-            related_user_uuid=related_user_uuid,
             scope=scope,
             user_uuid=user_uuid,
         )
@@ -420,7 +372,6 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    auth_method: Union[Unset, str] = UNSET,
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
@@ -429,9 +380,7 @@ def sync_all(
     field: Union[Unset, list[EventFieldEnum]] = UNSET,
     message: Union[Unset, str] = UNSET,
     o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
-    pat_uuid: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    related_user_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Event"]:
@@ -443,7 +392,6 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        auth_method (Union[Unset, str]):
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         customer_uuid (Union[Unset, UUID]):
@@ -452,9 +400,7 @@ def sync_all(
         field (Union[Unset, list[EventFieldEnum]]):
         message (Union[Unset, str]):
         o (Union[Unset, list[BackendResourceReqOEnum]]):
-        pat_uuid (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
-        related_user_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -471,7 +417,6 @@ def sync_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
-        auth_method=auth_method,
         created_from=created_from,
         created_to=created_to,
         customer_uuid=customer_uuid,
@@ -480,9 +425,7 @@ def sync_all(
         field=field,
         message=message,
         o=o,
-        pat_uuid=pat_uuid,
         project_uuid=project_uuid,
-        related_user_uuid=related_user_uuid,
         scope=scope,
         user_uuid=user_uuid,
     )
@@ -532,7 +475,6 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    auth_method: Union[Unset, str] = UNSET,
     created_from: Union[Unset, float] = UNSET,
     created_to: Union[Unset, float] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
@@ -541,9 +483,7 @@ async def asyncio_all(
     field: Union[Unset, list[EventFieldEnum]] = UNSET,
     message: Union[Unset, str] = UNSET,
     o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
-    pat_uuid: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
-    related_user_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Event"]:
@@ -555,7 +495,6 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        auth_method (Union[Unset, str]):
         created_from (Union[Unset, float]):
         created_to (Union[Unset, float]):
         customer_uuid (Union[Unset, UUID]):
@@ -564,9 +503,7 @@ async def asyncio_all(
         field (Union[Unset, list[EventFieldEnum]]):
         message (Union[Unset, str]):
         o (Union[Unset, list[BackendResourceReqOEnum]]):
-        pat_uuid (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
-        related_user_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
 
@@ -583,7 +520,6 @@ async def asyncio_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
-        auth_method=auth_method,
         created_from=created_from,
         created_to=created_to,
         customer_uuid=customer_uuid,
@@ -592,9 +528,7 @@ async def asyncio_all(
         field=field,
         message=message,
         o=o,
-        pat_uuid=pat_uuid,
         project_uuid=project_uuid,
-        related_user_uuid=related_user_uuid,
         scope=scope,
         user_uuid=user_uuid,
     )

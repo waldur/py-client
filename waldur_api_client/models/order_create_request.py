@@ -6,6 +6,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.request_types import RequestTypes
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -47,6 +48,7 @@ class OrderCreateRequest:
         accepting_terms_of_service (Union[Unset, bool]):
         callback_url (Union[None, Unset, str]):
         request_comment (Union[None, Unset, str]):
+        type_ (Union[Unset, RequestTypes]):  Default: RequestTypes.CREATE.
         start_date (Union[None, Unset, datetime.date]): Enables delayed processing of resource provisioning order.
         slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
     """
@@ -71,6 +73,7 @@ class OrderCreateRequest:
     accepting_terms_of_service: Union[Unset, bool] = UNSET
     callback_url: Union[None, Unset, str] = UNSET
     request_comment: Union[None, Unset, str] = UNSET
+    type_: Union[Unset, RequestTypes] = RequestTypes.CREATE
     start_date: Union[None, Unset, datetime.date] = UNSET
     slug: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -138,6 +141,10 @@ class OrderCreateRequest:
         else:
             request_comment = self.request_comment
 
+        type_: Union[Unset, str] = UNSET
+        if not isinstance(self.type_, Unset):
+            type_ = self.type_.value
+
         start_date: Union[None, Unset, str]
         if isinstance(self.start_date, Unset):
             start_date = UNSET
@@ -168,6 +175,8 @@ class OrderCreateRequest:
             field_dict["callback_url"] = callback_url
         if request_comment is not UNSET:
             field_dict["request_comment"] = request_comment
+        if type_ is not UNSET:
+            field_dict["type"] = type_
         if start_date is not UNSET:
             field_dict["start_date"] = start_date
         if slug is not UNSET:
@@ -324,6 +333,13 @@ class OrderCreateRequest:
 
         request_comment = _parse_request_comment(d.pop("request_comment", UNSET))
 
+        _type_ = d.pop("type", UNSET)
+        type_: Union[Unset, RequestTypes]
+        if isinstance(_type_, Unset):
+            type_ = UNSET
+        else:
+            type_ = RequestTypes(_type_)
+
         def _parse_start_date(data: object) -> Union[None, Unset, datetime.date]:
             if data is None:
                 return data
@@ -352,6 +368,7 @@ class OrderCreateRequest:
             accepting_terms_of_service=accepting_terms_of_service,
             callback_url=callback_url,
             request_comment=request_comment,
+            type_=type_,
             start_date=start_date,
             slug=slug,
         )

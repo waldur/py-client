@@ -17,32 +17,17 @@ class SupportUser:
         url (str):
         uuid (UUID):
         name (str):
-        user_full_name (Union[None, str]):
-        user_email (Union[None, str]):
-        reported_issues_count (int):
-        assigned_issues_count (int):
-        comments_count (int):
-        attachments_count (int):
         backend_id (Union[None, Unset, str]):
-        backend_name (Union[None, Unset, str]):
-        is_active (Union[Unset, bool]): Designates whether this user should be treated as active. Unselect this instead
-            of deleting accounts.
         user (Union[None, Unset, str]):
+        backend_name (Union[None, Unset, str]):
     """
 
     url: str
     uuid: UUID
     name: str
-    user_full_name: Union[None, str]
-    user_email: Union[None, str]
-    reported_issues_count: int
-    assigned_issues_count: int
-    comments_count: int
-    attachments_count: int
     backend_id: Union[None, Unset, str] = UNSET
-    backend_name: Union[None, Unset, str] = UNSET
-    is_active: Union[Unset, bool] = UNSET
     user: Union[None, Unset, str] = UNSET
+    backend_name: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,39 +37,23 @@ class SupportUser:
 
         name = self.name
 
-        user_full_name: Union[None, str]
-        user_full_name = self.user_full_name
-
-        user_email: Union[None, str]
-        user_email = self.user_email
-
-        reported_issues_count = self.reported_issues_count
-
-        assigned_issues_count = self.assigned_issues_count
-
-        comments_count = self.comments_count
-
-        attachments_count = self.attachments_count
-
         backend_id: Union[None, Unset, str]
         if isinstance(self.backend_id, Unset):
             backend_id = UNSET
         else:
             backend_id = self.backend_id
 
-        backend_name: Union[None, Unset, str]
-        if isinstance(self.backend_name, Unset):
-            backend_name = UNSET
-        else:
-            backend_name = self.backend_name
-
-        is_active = self.is_active
-
         user: Union[None, Unset, str]
         if isinstance(self.user, Unset):
             user = UNSET
         else:
             user = self.user
+
+        backend_name: Union[None, Unset, str]
+        if isinstance(self.backend_name, Unset):
+            backend_name = UNSET
+        else:
+            backend_name = self.backend_name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -93,22 +62,14 @@ class SupportUser:
                 "url": url,
                 "uuid": uuid,
                 "name": name,
-                "user_full_name": user_full_name,
-                "user_email": user_email,
-                "reported_issues_count": reported_issues_count,
-                "assigned_issues_count": assigned_issues_count,
-                "comments_count": comments_count,
-                "attachments_count": attachments_count,
             }
         )
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
-        if backend_name is not UNSET:
-            field_dict["backend_name"] = backend_name
-        if is_active is not UNSET:
-            field_dict["is_active"] = is_active
         if user is not UNSET:
             field_dict["user"] = user
+        if backend_name is not UNSET:
+            field_dict["backend_name"] = backend_name
 
         return field_dict
 
@@ -121,28 +82,6 @@ class SupportUser:
 
         name = d.pop("name")
 
-        def _parse_user_full_name(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        user_full_name = _parse_user_full_name(d.pop("user_full_name"))
-
-        def _parse_user_email(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        user_email = _parse_user_email(d.pop("user_email"))
-
-        reported_issues_count = d.pop("reported_issues_count")
-
-        assigned_issues_count = d.pop("assigned_issues_count")
-
-        comments_count = d.pop("comments_count")
-
-        attachments_count = d.pop("attachments_count")
-
         def _parse_backend_id(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -151,17 +90,6 @@ class SupportUser:
             return cast(Union[None, Unset, str], data)
 
         backend_id = _parse_backend_id(d.pop("backend_id", UNSET))
-
-        def _parse_backend_name(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        backend_name = _parse_backend_name(d.pop("backend_name", UNSET))
-
-        is_active = d.pop("is_active", UNSET)
 
         def _parse_user(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -172,20 +100,22 @@ class SupportUser:
 
         user = _parse_user(d.pop("user", UNSET))
 
+        def _parse_backend_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        backend_name = _parse_backend_name(d.pop("backend_name", UNSET))
+
         support_user = cls(
             url=url,
             uuid=uuid,
             name=name,
-            user_full_name=user_full_name,
-            user_email=user_email,
-            reported_issues_count=reported_issues_count,
-            assigned_issues_count=assigned_issues_count,
-            comments_count=comments_count,
-            attachments_count=attachments_count,
             backend_id=backend_id,
-            backend_name=backend_name,
-            is_active=is_active,
             user=user,
+            backend_name=backend_name,
         )
 
         support_user.additional_properties = d

@@ -12,7 +12,6 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    accessible: Union[Unset, bool] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
@@ -26,8 +25,6 @@ def _get_kwargs(
     title: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
-
-    params["accessible"] = accessible
 
     json_customer_uuid: Union[Unset, str] = UNSET
     if not isinstance(customer_uuid, Unset):
@@ -110,7 +107,6 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    accessible: Union[Unset, bool] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
@@ -128,7 +124,6 @@ def sync_detailed(
      Get number of items in the collection matching the request parameters.
 
     Args:
-        accessible (Union[Unset, bool]):
         customer_uuid (Union[Unset, UUID]):
         customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
         group_uuid (Union[Unset, UUID]):
@@ -150,7 +145,6 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        accessible=accessible,
         customer_uuid=customer_uuid,
         customers_offerings_state=customers_offerings_state,
         group_uuid=group_uuid,
@@ -174,7 +168,6 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    accessible: Union[Unset, bool] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
@@ -192,7 +185,6 @@ def sync(
      Get number of items in the collection matching the request parameters.
 
     Args:
-        accessible (Union[Unset, bool]):
         customer_uuid (Union[Unset, UUID]):
         customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
         group_uuid (Union[Unset, UUID]):
@@ -215,7 +207,6 @@ def sync(
 
     return sync_detailed(
         client=client,
-        accessible=accessible,
         customer_uuid=customer_uuid,
         customers_offerings_state=customers_offerings_state,
         group_uuid=group_uuid,
@@ -233,7 +224,6 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    accessible: Union[Unset, bool] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
@@ -251,7 +241,6 @@ async def asyncio_detailed(
      Get number of items in the collection matching the request parameters.
 
     Args:
-        accessible (Union[Unset, bool]):
         customer_uuid (Union[Unset, UUID]):
         customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
         group_uuid (Union[Unset, UUID]):
@@ -273,7 +262,6 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        accessible=accessible,
         customer_uuid=customer_uuid,
         customers_offerings_state=customers_offerings_state,
         group_uuid=group_uuid,
@@ -295,7 +283,6 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    accessible: Union[Unset, bool] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
     group_uuid: Union[Unset, UUID] = UNSET,
@@ -313,7 +300,6 @@ async def asyncio(
      Get number of items in the collection matching the request parameters.
 
     Args:
-        accessible (Union[Unset, bool]):
         customer_uuid (Union[Unset, UUID]):
         customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
         group_uuid (Union[Unset, UUID]):
@@ -337,7 +323,6 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
-            accessible=accessible,
             customer_uuid=customer_uuid,
             customers_offerings_state=customers_offerings_state,
             group_uuid=group_uuid,

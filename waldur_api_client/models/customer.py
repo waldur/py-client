@@ -13,6 +13,9 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.affiliated_organization import AffiliatedOrganization
+    from ..models.customer_user_affiliations import CustomerUserAffiliations
+    from ..models.customer_user_email_patterns import CustomerUserEmailPatterns
+    from ..models.customer_user_identity_sources import CustomerUserIdentitySources
     from ..models.nested_price_estimate import NestedPriceEstimate
     from ..models.organization_group import OrganizationGroup
     from ..models.payment_profile import PaymentProfile
@@ -46,9 +49,10 @@ class Customer:
             this organization
         grace_period_days (Union[None, Unset, int]): Number of extra days after project end date before resources are
             terminated
-        user_email_patterns (Union[Unset, list[str]]):
-        user_affiliations (Union[Unset, list[str]]):
-        user_identity_sources (Union[Unset, list[str]]):
+        user_email_patterns (Union[Unset, CustomerUserEmailPatterns]):
+        user_affiliations (Union[Unset, CustomerUserAffiliations]):
+        user_identity_sources (Union[Unset, CustomerUserIdentitySources]): List of allowed identity sources (identity
+            providers).
         default_affiliations (Union[Unset, list['AffiliatedOrganization']]): Affiliations offered to project creators of
             this organization.
         name (Union[Unset, str]):
@@ -84,15 +88,13 @@ class Customer:
         project_slug_template (Union[None, Unset, str]): Template for project slugs. Supports: {customer_slug},
             {project_name}, {year}, {month}, {counter}, {counter_padded}. Default: slugified project name
         payment_profiles (Union[Unset, list['PaymentProfile']]):
-        customer_credit (Union[None, Unset, str]):
-        customer_unallocated_credit (Union[None, Unset, str]):
-        has_affiliate_links (Union[Unset, bool]):
+        customer_credit (Union[None, Unset, float]):
+        customer_unallocated_credit (Union[None, Unset, float]):
         is_service_provider (Union[Unset, bool]):
         service_provider (Union[None, Unset, str]):
         service_provider_uuid (Union[None, UUID, Unset]):
         call_managing_organization_uuid (Union[None, Unset, str]):
         billing_price_estimate (Union[Unset, NestedPriceEstimate]):
-        has_active_helpdesk (Union[Unset, bool]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -114,9 +116,9 @@ class Customer:
     max_service_accounts: Union[None, Unset, int] = UNSET
     project_metadata_checklist: Union[None, UUID, Unset] = UNSET
     grace_period_days: Union[None, Unset, int] = UNSET
-    user_email_patterns: Union[Unset, list[str]] = UNSET
-    user_affiliations: Union[Unset, list[str]] = UNSET
-    user_identity_sources: Union[Unset, list[str]] = UNSET
+    user_email_patterns: Union[Unset, "CustomerUserEmailPatterns"] = UNSET
+    user_affiliations: Union[Unset, "CustomerUserAffiliations"] = UNSET
+    user_identity_sources: Union[Unset, "CustomerUserIdentitySources"] = UNSET
     default_affiliations: Union[Unset, list["AffiliatedOrganization"]] = UNSET
     name: Union[Unset, str] = UNSET
     slug: Union[Unset, str] = UNSET
@@ -149,15 +151,13 @@ class Customer:
     household: Union[Unset, str] = UNSET
     project_slug_template: Union[None, Unset, str] = UNSET
     payment_profiles: Union[Unset, list["PaymentProfile"]] = UNSET
-    customer_credit: Union[None, Unset, str] = UNSET
-    customer_unallocated_credit: Union[None, Unset, str] = UNSET
-    has_affiliate_links: Union[Unset, bool] = UNSET
+    customer_credit: Union[None, Unset, float] = UNSET
+    customer_unallocated_credit: Union[None, Unset, float] = UNSET
     is_service_provider: Union[Unset, bool] = UNSET
     service_provider: Union[None, Unset, str] = UNSET
     service_provider_uuid: Union[None, UUID, Unset] = UNSET
     call_managing_organization_uuid: Union[None, Unset, str] = UNSET
     billing_price_estimate: Union[Unset, "NestedPriceEstimate"] = UNSET
-    has_active_helpdesk: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -232,17 +232,17 @@ class Customer:
         else:
             grace_period_days = self.grace_period_days
 
-        user_email_patterns: Union[Unset, list[str]] = UNSET
+        user_email_patterns: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.user_email_patterns, Unset):
-            user_email_patterns = self.user_email_patterns
+            user_email_patterns = self.user_email_patterns.to_dict()
 
-        user_affiliations: Union[Unset, list[str]] = UNSET
+        user_affiliations: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.user_affiliations, Unset):
-            user_affiliations = self.user_affiliations
+            user_affiliations = self.user_affiliations.to_dict()
 
-        user_identity_sources: Union[Unset, list[str]] = UNSET
+        user_identity_sources: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.user_identity_sources, Unset):
-            user_identity_sources = self.user_identity_sources
+            user_identity_sources = self.user_identity_sources.to_dict()
 
         default_affiliations: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.default_affiliations, Unset):
@@ -336,19 +336,17 @@ class Customer:
                 payment_profiles_item = payment_profiles_item_data.to_dict()
                 payment_profiles.append(payment_profiles_item)
 
-        customer_credit: Union[None, Unset, str]
+        customer_credit: Union[None, Unset, float]
         if isinstance(self.customer_credit, Unset):
             customer_credit = UNSET
         else:
             customer_credit = self.customer_credit
 
-        customer_unallocated_credit: Union[None, Unset, str]
+        customer_unallocated_credit: Union[None, Unset, float]
         if isinstance(self.customer_unallocated_credit, Unset):
             customer_unallocated_credit = UNSET
         else:
             customer_unallocated_credit = self.customer_unallocated_credit
-
-        has_affiliate_links = self.has_affiliate_links
 
         is_service_provider = self.is_service_provider
 
@@ -375,8 +373,6 @@ class Customer:
         billing_price_estimate: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.billing_price_estimate, Unset):
             billing_price_estimate = self.billing_price_estimate.to_dict()
-
-        has_active_helpdesk = self.has_active_helpdesk
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -493,8 +489,6 @@ class Customer:
             field_dict["customer_credit"] = customer_credit
         if customer_unallocated_credit is not UNSET:
             field_dict["customer_unallocated_credit"] = customer_unallocated_credit
-        if has_affiliate_links is not UNSET:
-            field_dict["has_affiliate_links"] = has_affiliate_links
         if is_service_provider is not UNSET:
             field_dict["is_service_provider"] = is_service_provider
         if service_provider is not UNSET:
@@ -505,14 +499,15 @@ class Customer:
             field_dict["call_managing_organization_uuid"] = call_managing_organization_uuid
         if billing_price_estimate is not UNSET:
             field_dict["billing_price_estimate"] = billing_price_estimate
-        if has_active_helpdesk is not UNSET:
-            field_dict["has_active_helpdesk"] = has_active_helpdesk
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.affiliated_organization import AffiliatedOrganization
+        from ..models.customer_user_affiliations import CustomerUserAffiliations
+        from ..models.customer_user_email_patterns import CustomerUserEmailPatterns
+        from ..models.customer_user_identity_sources import CustomerUserIdentitySources
         from ..models.nested_price_estimate import NestedPriceEstimate
         from ..models.organization_group import OrganizationGroup
         from ..models.payment_profile import PaymentProfile
@@ -619,11 +614,26 @@ class Customer:
 
         grace_period_days = _parse_grace_period_days(d.pop("grace_period_days", UNSET))
 
-        user_email_patterns = cast(list[str], d.pop("user_email_patterns", UNSET))
+        _user_email_patterns = d.pop("user_email_patterns", UNSET)
+        user_email_patterns: Union[Unset, CustomerUserEmailPatterns]
+        if isinstance(_user_email_patterns, Unset):
+            user_email_patterns = UNSET
+        else:
+            user_email_patterns = CustomerUserEmailPatterns.from_dict(_user_email_patterns)
 
-        user_affiliations = cast(list[str], d.pop("user_affiliations", UNSET))
+        _user_affiliations = d.pop("user_affiliations", UNSET)
+        user_affiliations: Union[Unset, CustomerUserAffiliations]
+        if isinstance(_user_affiliations, Unset):
+            user_affiliations = UNSET
+        else:
+            user_affiliations = CustomerUserAffiliations.from_dict(_user_affiliations)
 
-        user_identity_sources = cast(list[str], d.pop("user_identity_sources", UNSET))
+        _user_identity_sources = d.pop("user_identity_sources", UNSET)
+        user_identity_sources: Union[Unset, CustomerUserIdentitySources]
+        if isinstance(_user_identity_sources, Unset):
+            user_identity_sources = UNSET
+        else:
+            user_identity_sources = CustomerUserIdentitySources.from_dict(_user_identity_sources)
 
         default_affiliations = []
         _default_affiliations = d.pop("default_affiliations", UNSET)
@@ -737,25 +747,23 @@ class Customer:
 
             payment_profiles.append(payment_profiles_item)
 
-        def _parse_customer_credit(data: object) -> Union[None, Unset, str]:
+        def _parse_customer_credit(data: object) -> Union[None, Unset, float]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(Union[None, Unset, float], data)
 
         customer_credit = _parse_customer_credit(d.pop("customer_credit", UNSET))
 
-        def _parse_customer_unallocated_credit(data: object) -> Union[None, Unset, str]:
+        def _parse_customer_unallocated_credit(data: object) -> Union[None, Unset, float]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
-            return cast(Union[None, Unset, str], data)
+            return cast(Union[None, Unset, float], data)
 
         customer_unallocated_credit = _parse_customer_unallocated_credit(d.pop("customer_unallocated_credit", UNSET))
-
-        has_affiliate_links = d.pop("has_affiliate_links", UNSET)
 
         is_service_provider = d.pop("is_service_provider", UNSET)
 
@@ -802,8 +810,6 @@ class Customer:
             billing_price_estimate = UNSET
         else:
             billing_price_estimate = NestedPriceEstimate.from_dict(_billing_price_estimate)
-
-        has_active_helpdesk = d.pop("has_active_helpdesk", UNSET)
 
         customer = cls(
             url=url,
@@ -862,13 +868,11 @@ class Customer:
             payment_profiles=payment_profiles,
             customer_credit=customer_credit,
             customer_unallocated_credit=customer_unallocated_credit,
-            has_affiliate_links=has_affiliate_links,
             is_service_provider=is_service_provider,
             service_provider=service_provider,
             service_provider_uuid=service_provider_uuid,
             call_managing_organization_uuid=call_managing_organization_uuid,
             billing_price_estimate=billing_price_estimate,
-            has_active_helpdesk=has_active_helpdesk,
         )
 
         customer.additional_properties = d

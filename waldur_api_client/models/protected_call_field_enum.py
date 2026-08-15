@@ -16,7 +16,6 @@ class ProtectedCallFieldEnum(str, Enum):
     EXTERNAL_URL = "external_url"
     FIXED_DURATION_IN_DAYS = "fixed_duration_in_days"
     HAS_ELIGIBILITY_RESTRICTIONS = "has_eligibility_restrictions"
-    HAS_PROPOSALS = "has_proposals"
     MANAGER = "manager"
     MANAGER_UUID = "manager_uuid"
     NAME = "name"

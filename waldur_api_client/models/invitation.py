@@ -28,7 +28,7 @@ class Invitation:
         role_description (str): Description of the role being granted
         created_by_full_name (str): Full name of the user who created this invitation
         created_by_username (str): Username of the user who created this invitation
-        created_by_image (Union[None, str]): Profile image of the user who created this invitation
+        created_by_image (str): Profile image of the user who created this invitation
         url (str):
         uuid (UUID):
         role (UUID): UUID of the role to grant to the invited user
@@ -59,7 +59,7 @@ class Invitation:
     role_description: str
     created_by_full_name: str
     created_by_username: str
-    created_by_image: Union[None, str]
+    created_by_image: str
     url: str
     uuid: UUID
     role: UUID
@@ -100,7 +100,6 @@ class Invitation:
 
         created_by_username = self.created_by_username
 
-        created_by_image: Union[None, str]
         created_by_image = self.created_by_image
 
         url = self.url
@@ -206,12 +205,7 @@ class Invitation:
 
         created_by_username = d.pop("created_by_username")
 
-        def _parse_created_by_image(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        created_by_image = _parse_created_by_image(d.pop("created_by_image"))
+        created_by_image = d.pop("created_by_image")
 
         url = d.pop("url")
 

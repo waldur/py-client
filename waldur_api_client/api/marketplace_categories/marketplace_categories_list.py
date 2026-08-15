@@ -15,7 +15,6 @@ from ...utils import parse_link_header
 
 def _get_kwargs(
     *,
-    accessible: Union[Unset, bool] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
     field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
@@ -30,8 +29,6 @@ def _get_kwargs(
     title: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
-
-    params["accessible"] = accessible
 
     json_customer_uuid: Union[Unset, str] = UNSET
     if not isinstance(customer_uuid, Unset):
@@ -125,7 +122,6 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    accessible: Union[Unset, bool] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
     field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
@@ -144,7 +140,6 @@ def sync_detailed(
      Returns a paginated list of marketplace categories.
 
     Args:
-        accessible (Union[Unset, bool]):
         customer_uuid (Union[Unset, UUID]):
         customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
         field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
@@ -167,7 +162,6 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        accessible=accessible,
         customer_uuid=customer_uuid,
         customers_offerings_state=customers_offerings_state,
         field=field,
@@ -192,7 +186,6 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    accessible: Union[Unset, bool] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
     field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
@@ -211,7 +204,6 @@ def sync(
      Returns a paginated list of marketplace categories.
 
     Args:
-        accessible (Union[Unset, bool]):
         customer_uuid (Union[Unset, UUID]):
         customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
         field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
@@ -235,7 +227,6 @@ def sync(
 
     return sync_detailed(
         client=client,
-        accessible=accessible,
         customer_uuid=customer_uuid,
         customers_offerings_state=customers_offerings_state,
         field=field,
@@ -254,7 +245,6 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    accessible: Union[Unset, bool] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
     field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
@@ -273,7 +263,6 @@ async def asyncio_detailed(
      Returns a paginated list of marketplace categories.
 
     Args:
-        accessible (Union[Unset, bool]):
         customer_uuid (Union[Unset, UUID]):
         customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
         field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
@@ -296,7 +285,6 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        accessible=accessible,
         customer_uuid=customer_uuid,
         customers_offerings_state=customers_offerings_state,
         field=field,
@@ -319,7 +307,6 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    accessible: Union[Unset, bool] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
     field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
@@ -338,7 +325,6 @@ async def asyncio(
      Returns a paginated list of marketplace categories.
 
     Args:
-        accessible (Union[Unset, bool]):
         customer_uuid (Union[Unset, UUID]):
         customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
         field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
@@ -363,7 +349,6 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
-            accessible=accessible,
             customer_uuid=customer_uuid,
             customers_offerings_state=customers_offerings_state,
             field=field,
@@ -383,7 +368,6 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    accessible: Union[Unset, bool] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
     field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
@@ -403,7 +387,6 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        accessible (Union[Unset, bool]):
         customer_uuid (Union[Unset, UUID]):
         customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
         field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
@@ -428,7 +411,6 @@ def sync_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
-        accessible=accessible,
         customer_uuid=customer_uuid,
         customers_offerings_state=customers_offerings_state,
         field=field,
@@ -486,7 +468,6 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    accessible: Union[Unset, bool] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
     customers_offerings_state: Union[Unset, list[MaintenanceTypeEnum]] = UNSET,
     field: Union[Unset, list[MarketplaceCategoryFieldEnum]] = UNSET,
@@ -506,7 +487,6 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        accessible (Union[Unset, bool]):
         customer_uuid (Union[Unset, UUID]):
         customers_offerings_state (Union[Unset, list[MaintenanceTypeEnum]]):
         field (Union[Unset, list[MarketplaceCategoryFieldEnum]]):
@@ -531,7 +511,6 @@ async def asyncio_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
-        accessible=accessible,
         customer_uuid=customer_uuid,
         customers_offerings_state=customers_offerings_state,
         field=field,

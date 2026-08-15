@@ -9,9 +9,8 @@ T = TypeVar("T", bound="ResourceLimitUsage")
 
 @_attrs_define
 class ResourceLimitUsage:
-    """Dictionary mapping limit-based component types to their consumed usage. Sums the ComponentUsage rows of the
-    component's current period (the monthly billing period unless the component defines a longer limit_period), i.e. the
-    period's high-watermark rather than the instantaneous current_usages value.
+    """Dictionary mapping limit-based component types to their consumed usage. For monthly periods, maps from
+    current_usages; for longer periods, aggregates historical usage.
 
     """
 

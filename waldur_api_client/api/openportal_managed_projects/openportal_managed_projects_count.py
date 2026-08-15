@@ -12,7 +12,6 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
-    hide_embargoed: Union[Unset, bool] = UNSET,
     identifier: Union[Unset, str] = UNSET,
     local_identifier: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -26,8 +25,6 @@ def _get_kwargs(
     state: Union[Unset, list[RemoteProjectUpdateRequestStateEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
-
-    params["hide_embargoed"] = hide_embargoed
 
     params["identifier"] = identifier
 
@@ -104,7 +101,6 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    hide_embargoed: Union[Unset, bool] = UNSET,
     identifier: Union[Unset, str] = UNSET,
     local_identifier: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -120,7 +116,6 @@ def sync_detailed(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        hide_embargoed (Union[Unset, bool]):
         identifier (Union[Unset, str]):
         local_identifier (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -142,7 +137,6 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        hide_embargoed=hide_embargoed,
         identifier=identifier,
         local_identifier=local_identifier,
         o=o,
@@ -166,7 +160,6 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    hide_embargoed: Union[Unset, bool] = UNSET,
     identifier: Union[Unset, str] = UNSET,
     local_identifier: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -182,7 +175,6 @@ def sync(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        hide_embargoed (Union[Unset, bool]):
         identifier (Union[Unset, str]):
         local_identifier (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -205,7 +197,6 @@ def sync(
 
     return sync_detailed(
         client=client,
-        hide_embargoed=hide_embargoed,
         identifier=identifier,
         local_identifier=local_identifier,
         o=o,
@@ -223,7 +214,6 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    hide_embargoed: Union[Unset, bool] = UNSET,
     identifier: Union[Unset, str] = UNSET,
     local_identifier: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -239,7 +229,6 @@ async def asyncio_detailed(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        hide_embargoed (Union[Unset, bool]):
         identifier (Union[Unset, str]):
         local_identifier (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -261,7 +250,6 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        hide_embargoed=hide_embargoed,
         identifier=identifier,
         local_identifier=local_identifier,
         o=o,
@@ -283,7 +271,6 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    hide_embargoed: Union[Unset, bool] = UNSET,
     identifier: Union[Unset, str] = UNSET,
     local_identifier: Union[Unset, str] = UNSET,
     o: Union[Unset, str] = UNSET,
@@ -299,7 +286,6 @@ async def asyncio(
     """Get number of items in the collection matching the request parameters.
 
     Args:
-        hide_embargoed (Union[Unset, bool]):
         identifier (Union[Unset, str]):
         local_identifier (Union[Unset, str]):
         o (Union[Unset, str]):
@@ -323,7 +309,6 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
-            hide_embargoed=hide_embargoed,
             identifier=identifier,
             local_identifier=local_identifier,
             o=o,

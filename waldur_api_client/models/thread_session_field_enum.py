@@ -11,7 +11,6 @@ class ThreadSessionFieldEnum(str, Enum):
     IS_FLAGGED = "is_flagged"
     MAX_SEVERITY = "max_severity"
     MESSAGE_COUNT = "message_count"
-    MODELS_USED = "models_used"
     MODIFIED = "modified"
     NAME = "name"
     OUTPUT_TOKENS = "output_tokens"

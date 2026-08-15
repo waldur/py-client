@@ -1,13 +1,12 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.coi_type_enum import CoiTypeEnum
 from ..models.invitation_proposal_disclosure_enum import InvitationProposalDisclosureEnum
 from ..types import UNSET, Unset
 
@@ -29,9 +28,9 @@ class CallCOIConfiguration:
         institutional_lookback_years (Union[Unset, int]): Years to look back for former institution detection
         include_same_department (Union[Unset, bool]): Detect same-department as COI
         include_same_institution (Union[Unset, bool]): Detect same-institution as COI
-        recusal_required_types (Union[Unset, list[CoiTypeEnum]]): COI types requiring automatic recusal
-        management_allowed_types (Union[Unset, list[CoiTypeEnum]]): COI types allowing management plan
-        disclosure_only_types (Union[Unset, list[CoiTypeEnum]]): COI types requiring disclosure only
+        recusal_required_types (Union[Unset, list[str]]): COI types requiring automatic recusal
+        management_allowed_types (Union[Unset, list[str]]): COI types allowing management plan
+        disclosure_only_types (Union[Unset, list[str]]): COI types requiring disclosure only
         auto_detect_coauthorship (Union[Unset, bool]): Enable automated co-authorship detection
         auto_detect_institutional (Union[Unset, bool]): Enable automated institutional affiliation detection
         auto_detect_named_personnel (Union[Unset, bool]): Enable detection of reviewer named in proposals
@@ -49,9 +48,9 @@ class CallCOIConfiguration:
     institutional_lookback_years: Union[Unset, int] = UNSET
     include_same_department: Union[Unset, bool] = UNSET
     include_same_institution: Union[Unset, bool] = UNSET
-    recusal_required_types: Union[Unset, list[CoiTypeEnum]] = UNSET
-    management_allowed_types: Union[Unset, list[CoiTypeEnum]] = UNSET
-    disclosure_only_types: Union[Unset, list[CoiTypeEnum]] = UNSET
+    recusal_required_types: Union[Unset, list[str]] = UNSET
+    management_allowed_types: Union[Unset, list[str]] = UNSET
+    disclosure_only_types: Union[Unset, list[str]] = UNSET
     auto_detect_coauthorship: Union[Unset, bool] = UNSET
     auto_detect_institutional: Union[Unset, bool] = UNSET
     auto_detect_named_personnel: Union[Unset, bool] = UNSET
@@ -83,24 +82,15 @@ class CallCOIConfiguration:
 
         recusal_required_types: Union[Unset, list[str]] = UNSET
         if not isinstance(self.recusal_required_types, Unset):
-            recusal_required_types = []
-            for recusal_required_types_item_data in self.recusal_required_types:
-                recusal_required_types_item = recusal_required_types_item_data.value
-                recusal_required_types.append(recusal_required_types_item)
+            recusal_required_types = self.recusal_required_types
 
         management_allowed_types: Union[Unset, list[str]] = UNSET
         if not isinstance(self.management_allowed_types, Unset):
-            management_allowed_types = []
-            for management_allowed_types_item_data in self.management_allowed_types:
-                management_allowed_types_item = management_allowed_types_item_data.value
-                management_allowed_types.append(management_allowed_types_item)
+            management_allowed_types = self.management_allowed_types
 
         disclosure_only_types: Union[Unset, list[str]] = UNSET
         if not isinstance(self.disclosure_only_types, Unset):
-            disclosure_only_types = []
-            for disclosure_only_types_item_data in self.disclosure_only_types:
-                disclosure_only_types_item = disclosure_only_types_item_data.value
-                disclosure_only_types.append(disclosure_only_types_item)
+            disclosure_only_types = self.disclosure_only_types
 
         auto_detect_coauthorship = self.auto_detect_coauthorship
 
@@ -176,26 +166,11 @@ class CallCOIConfiguration:
 
         include_same_institution = d.pop("include_same_institution", UNSET)
 
-        recusal_required_types = []
-        _recusal_required_types = d.pop("recusal_required_types", UNSET)
-        for recusal_required_types_item_data in _recusal_required_types or []:
-            recusal_required_types_item = CoiTypeEnum(recusal_required_types_item_data)
+        recusal_required_types = cast(list[str], d.pop("recusal_required_types", UNSET))
 
-            recusal_required_types.append(recusal_required_types_item)
+        management_allowed_types = cast(list[str], d.pop("management_allowed_types", UNSET))
 
-        management_allowed_types = []
-        _management_allowed_types = d.pop("management_allowed_types", UNSET)
-        for management_allowed_types_item_data in _management_allowed_types or []:
-            management_allowed_types_item = CoiTypeEnum(management_allowed_types_item_data)
-
-            management_allowed_types.append(management_allowed_types_item)
-
-        disclosure_only_types = []
-        _disclosure_only_types = d.pop("disclosure_only_types", UNSET)
-        for disclosure_only_types_item_data in _disclosure_only_types or []:
-            disclosure_only_types_item = CoiTypeEnum(disclosure_only_types_item_data)
-
-            disclosure_only_types.append(disclosure_only_types_item)
+        disclosure_only_types = cast(list[str], d.pop("disclosure_only_types", UNSET))
 
         auto_detect_coauthorship = d.pop("auto_detect_coauthorship", UNSET)
 

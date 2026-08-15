@@ -14,7 +14,6 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     category_uuid: Union[Unset, UUID] = UNSET,
-    offering_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -23,11 +22,6 @@ def _get_kwargs(
     if not isinstance(category_uuid, Unset):
         json_category_uuid = str(category_uuid)
     params["category_uuid"] = json_category_uuid
-
-    json_offering_uuid: Union[Unset, str] = UNSET
-    if not isinstance(offering_uuid, Unset):
-        json_offering_uuid = str(offering_uuid)
-    params["offering_uuid"] = json_offering_uuid
 
     json_project_uuid: Union[Unset, str] = UNSET
     if not isinstance(project_uuid, Unset):
@@ -75,7 +69,6 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     category_uuid: Union[Unset, UUID] = UNSET,
-    offering_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["RuntimeStates"]]:
     """List available runtime states for resources
@@ -91,7 +84,6 @@ def sync_detailed(
 
     Args:
         category_uuid (Union[Unset, UUID]):
-        offering_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -104,7 +96,6 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         category_uuid=category_uuid,
-        offering_uuid=offering_uuid,
         project_uuid=project_uuid,
     )
 
@@ -119,7 +110,6 @@ def sync(
     *,
     client: AuthenticatedClient,
     category_uuid: Union[Unset, UUID] = UNSET,
-    offering_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["RuntimeStates"]:
     """List available runtime states for resources
@@ -135,7 +125,6 @@ def sync(
 
     Args:
         category_uuid (Union[Unset, UUID]):
-        offering_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -149,7 +138,6 @@ def sync(
     return sync_detailed(
         client=client,
         category_uuid=category_uuid,
-        offering_uuid=offering_uuid,
         project_uuid=project_uuid,
     ).parsed
 
@@ -158,7 +146,6 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     category_uuid: Union[Unset, UUID] = UNSET,
-    offering_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["RuntimeStates"]]:
     """List available runtime states for resources
@@ -174,7 +161,6 @@ async def asyncio_detailed(
 
     Args:
         category_uuid (Union[Unset, UUID]):
-        offering_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -187,7 +173,6 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         category_uuid=category_uuid,
-        offering_uuid=offering_uuid,
         project_uuid=project_uuid,
     )
 
@@ -200,7 +185,6 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     category_uuid: Union[Unset, UUID] = UNSET,
-    offering_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["RuntimeStates"]:
     """List available runtime states for resources
@@ -216,7 +200,6 @@ async def asyncio(
 
     Args:
         category_uuid (Union[Unset, UUID]):
-        offering_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -231,7 +214,6 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             category_uuid=category_uuid,
-            offering_uuid=offering_uuid,
             project_uuid=project_uuid,
         )
     ).parsed
@@ -241,7 +223,6 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     category_uuid: Union[Unset, UUID] = UNSET,
-    offering_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["RuntimeStates"]:
     """Get All Pages
@@ -253,7 +234,6 @@ def sync_all(
 
     Args:
         category_uuid (Union[Unset, UUID]):
-        offering_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -270,7 +250,6 @@ def sync_all(
     # Get initial request kwargs
     kwargs = _get_kwargs(
         category_uuid=category_uuid,
-        offering_uuid=offering_uuid,
         project_uuid=project_uuid,
     )
 
@@ -320,7 +299,6 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     category_uuid: Union[Unset, UUID] = UNSET,
-    offering_uuid: Union[Unset, UUID] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["RuntimeStates"]:
     """Get All Pages (Async)
@@ -332,7 +310,6 @@ async def asyncio_all(
 
     Args:
         category_uuid (Union[Unset, UUID]):
-        offering_uuid (Union[Unset, UUID]):
         project_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -349,7 +326,6 @@ async def asyncio_all(
     # Get initial request kwargs
     kwargs = _get_kwargs(
         category_uuid=category_uuid,
-        offering_uuid=offering_uuid,
         project_uuid=project_uuid,
     )
 

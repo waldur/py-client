@@ -1,6 +1,5 @@
 from http import HTTPStatus
 from typing import Any, Union
-from uuid import UUID
 
 import httpx
 
@@ -15,7 +14,6 @@ def _get_kwargs(
     feature: Union[Unset, list[str]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    related_user_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -35,11 +33,6 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
-
-    json_related_user_uuid: Union[Unset, str] = UNSET
-    if not isinstance(related_user_uuid, Unset):
-        json_related_user_uuid = str(related_user_uuid)
-    params["related_user_uuid"] = json_related_user_uuid
 
     params["scope"] = scope
 
@@ -87,7 +80,6 @@ def sync_detailed(
     feature: Union[Unset, list[str]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    related_user_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
@@ -97,7 +89,6 @@ def sync_detailed(
         feature (Union[Unset, list[str]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        related_user_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
 
     Raises:
@@ -113,7 +104,6 @@ def sync_detailed(
         feature=feature,
         page=page,
         page_size=page_size,
-        related_user_uuid=related_user_uuid,
         scope=scope,
     )
 
@@ -131,7 +121,6 @@ def sync(
     feature: Union[Unset, list[str]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    related_user_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
@@ -141,7 +130,6 @@ def sync(
         feature (Union[Unset, list[str]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        related_user_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
 
     Raises:
@@ -158,7 +146,6 @@ def sync(
         feature=feature,
         page=page,
         page_size=page_size,
-        related_user_uuid=related_user_uuid,
         scope=scope,
     ).parsed
 
@@ -170,7 +157,6 @@ async def asyncio_detailed(
     feature: Union[Unset, list[str]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    related_user_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
@@ -180,7 +166,6 @@ async def asyncio_detailed(
         feature (Union[Unset, list[str]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        related_user_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
 
     Raises:
@@ -196,7 +181,6 @@ async def asyncio_detailed(
         feature=feature,
         page=page,
         page_size=page_size,
-        related_user_uuid=related_user_uuid,
         scope=scope,
     )
 
@@ -212,7 +196,6 @@ async def asyncio(
     feature: Union[Unset, list[str]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    related_user_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
@@ -222,7 +205,6 @@ async def asyncio(
         feature (Union[Unset, list[str]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        related_user_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
 
     Raises:
@@ -240,7 +222,6 @@ async def asyncio(
             feature=feature,
             page=page,
             page_size=page_size,
-            related_user_uuid=related_user_uuid,
             scope=scope,
         )
     ).parsed

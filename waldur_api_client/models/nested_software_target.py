@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.nested_software_target_gpu_architectures import NestedSoftwareTargetGpuArchitectures
     from ..models.nested_software_target_metadata import NestedSoftwareTargetMetadata
 
 
@@ -25,8 +26,8 @@ class NestedSoftwareTarget:
         location (Union[Unset, str]): Target location (CVMFS path, download URL, etc.)
         metadata (Union[Unset, NestedSoftwareTargetMetadata]): Target-specific metadata (build options, system
             requirements, etc.)
-        gpu_architectures (Union[Unset, list[str]]): List of GPU architectures this target supports (e.g.,
-            ['nvidia/cc70', 'nvidia/cc90'])
+        gpu_architectures (Union[Unset, NestedSoftwareTargetGpuArchitectures]): List of GPU architectures this target
+            supports (e.g., ['nvidia/cc70', 'nvidia/cc90'])
     """
 
     uuid: UUID
@@ -35,7 +36,7 @@ class NestedSoftwareTarget:
     target_subtype: Union[Unset, str] = UNSET
     location: Union[Unset, str] = UNSET
     metadata: Union[Unset, "NestedSoftwareTargetMetadata"] = UNSET
-    gpu_architectures: Union[Unset, list[str]] = UNSET
+    gpu_architectures: Union[Unset, "NestedSoftwareTargetGpuArchitectures"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -53,9 +54,9 @@ class NestedSoftwareTarget:
         if not isinstance(self.metadata, Unset):
             metadata = self.metadata.to_dict()
 
-        gpu_architectures: Union[Unset, list[str]] = UNSET
+        gpu_architectures: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.gpu_architectures, Unset):
-            gpu_architectures = self.gpu_architectures
+            gpu_architectures = self.gpu_architectures.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -81,6 +82,7 @@ class NestedSoftwareTarget:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.nested_software_target_gpu_architectures import NestedSoftwareTargetGpuArchitectures
         from ..models.nested_software_target_metadata import NestedSoftwareTargetMetadata
 
         d = dict(src_dict)
@@ -101,7 +103,12 @@ class NestedSoftwareTarget:
         else:
             metadata = NestedSoftwareTargetMetadata.from_dict(_metadata)
 
-        gpu_architectures = cast(list[str], d.pop("gpu_architectures", UNSET))
+        _gpu_architectures = d.pop("gpu_architectures", UNSET)
+        gpu_architectures: Union[Unset, NestedSoftwareTargetGpuArchitectures]
+        if isinstance(_gpu_architectures, Unset):
+            gpu_architectures = UNSET
+        else:
+            gpu_architectures = NestedSoftwareTargetGpuArchitectures.from_dict(_gpu_architectures)
 
         nested_software_target = cls(
             uuid=uuid,

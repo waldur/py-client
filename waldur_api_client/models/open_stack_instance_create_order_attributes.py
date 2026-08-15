@@ -35,11 +35,7 @@ class OpenStackInstanceCreateOrderAttributes:
         data_volume_size (Union[Unset, int]): Size of the data volume in MiB. Minimum size is 1024 MiB (1 GiB)
         data_volume_type (Union[None, Unset, str]): Volume type for the data volume
         ssh_public_key (Union[Unset, str]):
-        user_data (Union[Unset, str]): Cloud-init user data passed to the instance on provisioning. SECURITY: this value
-            is stored and transmitted in plain text — it is kept unencrypted in Waldur's database, forwarded to OpenStack
-            where any process on the instance can read it via the metadata service, and it may appear in logs. Do NOT put
-            unencrypted secrets (passwords, private keys, API tokens) here; reference a secrets manager or inject them
-            through an encrypted channel instead.
+        user_data (Union[Unset, str]): Additional data that will be added to instance on provisioning
         availability_zone (Union[None, Unset, str]): Availability zone where this instance is located
         connect_directly_to_external_network (Union[Unset, bool]): If True, instance will be connected directly to
             external network

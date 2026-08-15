@@ -1,10 +1,14 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.project_metadata_answer_answer import ProjectMetadataAnswerAnswer
+
 
 T = TypeVar("T", bound="ProjectMetadataAnswer")
 
@@ -16,13 +20,14 @@ class ProjectMetadataAnswer:
         question_uuid (Union[Unset, str]):
         question (Union[Unset, str]): Question description.
         question_type (Union[Unset, str]):
-        answer (Union[Unset, Any]): Human-readable answer value; select-type option UUIDs are resolved to their labels.
+        answer (Union[Unset, ProjectMetadataAnswerAnswer]): Human-readable answer value; select-type option UUIDs are
+            resolved to their labels.
     """
 
     question_uuid: Union[Unset, str] = UNSET
     question: Union[Unset, str] = UNSET
     question_type: Union[Unset, str] = UNSET
-    answer: Union[Unset, Any] = UNSET
+    answer: Union[Unset, "ProjectMetadataAnswerAnswer"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -32,7 +37,9 @@ class ProjectMetadataAnswer:
 
         question_type = self.question_type
 
-        answer = self.answer
+        answer: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.answer, Unset):
+            answer = self.answer.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -50,6 +57,8 @@ class ProjectMetadataAnswer:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.project_metadata_answer_answer import ProjectMetadataAnswerAnswer
+
         d = dict(src_dict)
         question_uuid = d.pop("question_uuid", UNSET)
 
@@ -57,7 +66,12 @@ class ProjectMetadataAnswer:
 
         question_type = d.pop("question_type", UNSET)
 
-        answer = d.pop("answer", UNSET)
+        _answer = d.pop("answer", UNSET)
+        answer: Union[Unset, ProjectMetadataAnswerAnswer]
+        if isinstance(_answer, Unset):
+            answer = UNSET
+        else:
+            answer = ProjectMetadataAnswerAnswer.from_dict(_answer)
 
         project_metadata_answer = cls(
             question_uuid=question_uuid,

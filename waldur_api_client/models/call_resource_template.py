@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ..models.base_public_plan import BasePublicPlan
     from ..models.call_resource_template_attributes import CallResourceTemplateAttributes
     from ..models.call_resource_template_limits import CallResourceTemplateLimits
-    from ..models.offering_component import OfferingComponent
 
 
 T = TypeVar("T", bound="CallResourceTemplate")
@@ -34,8 +33,6 @@ class CallResourceTemplate:
         requested_offering_name (Union[Unset, str]):
         requested_offering_uuid (Union[Unset, UUID]):
         requested_offering_plan (Union[Unset, BasePublicPlan]):
-        requested_offering_type (Union[Unset, str]):
-        requested_offering_components (Union[Unset, list['OfferingComponent']]):
         created_by (Union[None, Unset, str]):
         created_by_name (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
@@ -52,8 +49,6 @@ class CallResourceTemplate:
     requested_offering_name: Union[Unset, str] = UNSET
     requested_offering_uuid: Union[Unset, UUID] = UNSET
     requested_offering_plan: Union[Unset, "BasePublicPlan"] = UNSET
-    requested_offering_type: Union[Unset, str] = UNSET
-    requested_offering_components: Union[Unset, list["OfferingComponent"]] = UNSET
     created_by: Union[None, Unset, str] = UNSET
     created_by_name: Union[Unset, str] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
@@ -92,15 +87,6 @@ class CallResourceTemplate:
         if not isinstance(self.requested_offering_plan, Unset):
             requested_offering_plan = self.requested_offering_plan.to_dict()
 
-        requested_offering_type = self.requested_offering_type
-
-        requested_offering_components: Union[Unset, list[dict[str, Any]]] = UNSET
-        if not isinstance(self.requested_offering_components, Unset):
-            requested_offering_components = []
-            for requested_offering_components_item_data in self.requested_offering_components:
-                requested_offering_components_item = requested_offering_components_item_data.to_dict()
-                requested_offering_components.append(requested_offering_components_item)
-
         created_by: Union[None, Unset, str]
         if isinstance(self.created_by, Unset):
             created_by = UNSET
@@ -138,10 +124,6 @@ class CallResourceTemplate:
             field_dict["requested_offering_uuid"] = requested_offering_uuid
         if requested_offering_plan is not UNSET:
             field_dict["requested_offering_plan"] = requested_offering_plan
-        if requested_offering_type is not UNSET:
-            field_dict["requested_offering_type"] = requested_offering_type
-        if requested_offering_components is not UNSET:
-            field_dict["requested_offering_components"] = requested_offering_components
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if created_by_name is not UNSET:
@@ -156,7 +138,6 @@ class CallResourceTemplate:
         from ..models.base_public_plan import BasePublicPlan
         from ..models.call_resource_template_attributes import CallResourceTemplateAttributes
         from ..models.call_resource_template_limits import CallResourceTemplateLimits
-        from ..models.offering_component import OfferingComponent
 
         d = dict(src_dict)
         _uuid = d.pop("uuid", UNSET)
@@ -206,15 +187,6 @@ class CallResourceTemplate:
         else:
             requested_offering_plan = BasePublicPlan.from_dict(_requested_offering_plan)
 
-        requested_offering_type = d.pop("requested_offering_type", UNSET)
-
-        requested_offering_components = []
-        _requested_offering_components = d.pop("requested_offering_components", UNSET)
-        for requested_offering_components_item_data in _requested_offering_components or []:
-            requested_offering_components_item = OfferingComponent.from_dict(requested_offering_components_item_data)
-
-            requested_offering_components.append(requested_offering_components_item)
-
         def _parse_created_by(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -245,8 +217,6 @@ class CallResourceTemplate:
             requested_offering_name=requested_offering_name,
             requested_offering_uuid=requested_offering_uuid,
             requested_offering_plan=requested_offering_plan,
-            requested_offering_type=requested_offering_type,
-            requested_offering_components=requested_offering_components,
             created_by=created_by,
             created_by_name=created_by_name,
             created=created,

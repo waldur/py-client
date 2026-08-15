@@ -30,14 +30,6 @@ class AnonymousChatKpiResponse:
         satisfaction_rate (float): positive / (positive + negative); null when no human feedback.
         clicks_total (int):
         click_through_rate (float): clicks / interactions; null when no interactions.
-        input_tokens_total (int): Prompt tokens summed over the filtered turns. Turns recorded before per-interaction
-            token capture contribute nothing, so this understates spend on historical data.
-        output_tokens_total (int): Completion tokens summed over the filtered turns.
-        reviewed_total (int): Threads carrying a judge verdict. Always present, unlike the review rates below — zero
-            here is the signal that the nightly pass is off or stalled, so consumers can keep showing the row.
-        review_input_tokens_total (int): Prompt tokens spent by the LLM judge. Tracked apart from ``input_tokens_total``
-            because review runs on its own budget.
-        review_output_tokens_total (int): Completion tokens spent by the LLM judge.
         avg_llm_resolution_score (Union[None, Unset, float]): Mean of llm_resolution_score across reviewed sessions
             (1-5).
         llm_intent_distribution (Union[Unset, AnonymousChatKpiResponseLlmIntentDistribution]): Counts keyed by
@@ -58,11 +50,6 @@ class AnonymousChatKpiResponse:
     satisfaction_rate: float
     clicks_total: int
     click_through_rate: float
-    input_tokens_total: int
-    output_tokens_total: int
-    reviewed_total: int
-    review_input_tokens_total: int
-    review_output_tokens_total: int
     avg_llm_resolution_score: Union[None, Unset, float] = UNSET
     llm_intent_distribution: Union[Unset, "AnonymousChatKpiResponseLlmIntentDistribution"] = UNSET
     hallucination_rate: Union[None, Unset, float] = UNSET
@@ -89,16 +76,6 @@ class AnonymousChatKpiResponse:
         clicks_total = self.clicks_total
 
         click_through_rate = self.click_through_rate
-
-        input_tokens_total = self.input_tokens_total
-
-        output_tokens_total = self.output_tokens_total
-
-        reviewed_total = self.reviewed_total
-
-        review_input_tokens_total = self.review_input_tokens_total
-
-        review_output_tokens_total = self.review_output_tokens_total
 
         avg_llm_resolution_score: Union[None, Unset, float]
         if isinstance(self.avg_llm_resolution_score, Unset):
@@ -146,11 +123,6 @@ class AnonymousChatKpiResponse:
                 "satisfaction_rate": satisfaction_rate,
                 "clicks_total": clicks_total,
                 "click_through_rate": click_through_rate,
-                "input_tokens_total": input_tokens_total,
-                "output_tokens_total": output_tokens_total,
-                "reviewed_total": reviewed_total,
-                "review_input_tokens_total": review_input_tokens_total,
-                "review_output_tokens_total": review_output_tokens_total,
             }
         )
         if avg_llm_resolution_score is not UNSET:
@@ -194,16 +166,6 @@ class AnonymousChatKpiResponse:
         clicks_total = d.pop("clicks_total")
 
         click_through_rate = d.pop("click_through_rate")
-
-        input_tokens_total = d.pop("input_tokens_total")
-
-        output_tokens_total = d.pop("output_tokens_total")
-
-        reviewed_total = d.pop("reviewed_total")
-
-        review_input_tokens_total = d.pop("review_input_tokens_total")
-
-        review_output_tokens_total = d.pop("review_output_tokens_total")
 
         def _parse_avg_llm_resolution_score(data: object) -> Union[None, Unset, float]:
             if data is None:
@@ -263,11 +225,6 @@ class AnonymousChatKpiResponse:
             satisfaction_rate=satisfaction_rate,
             clicks_total=clicks_total,
             click_through_rate=click_through_rate,
-            input_tokens_total=input_tokens_total,
-            output_tokens_total=output_tokens_total,
-            reviewed_total=reviewed_total,
-            review_input_tokens_total=review_input_tokens_total,
-            review_output_tokens_total=review_output_tokens_total,
             avg_llm_resolution_score=avg_llm_resolution_score,
             llm_intent_distribution=llm_intent_distribution,
             hallucination_rate=hallucination_rate,

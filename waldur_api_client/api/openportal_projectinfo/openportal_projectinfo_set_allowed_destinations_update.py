@@ -55,8 +55,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ProjectInfoRequest,
 ) -> Response[ProjectInfo]:
-    """Set allowed destinations for project
-
+    """
     Args:
         project (int):
         body (ProjectInfoRequest):
@@ -87,8 +86,7 @@ def sync(
     client: AuthenticatedClient,
     body: ProjectInfoRequest,
 ) -> ProjectInfo:
-    """Set allowed destinations for project
-
+    """
     Args:
         project (int):
         body (ProjectInfoRequest):
@@ -114,8 +112,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ProjectInfoRequest,
 ) -> Response[ProjectInfo]:
-    """Set allowed destinations for project
-
+    """
     Args:
         project (int):
         body (ProjectInfoRequest):
@@ -144,8 +141,7 @@ async def asyncio(
     client: AuthenticatedClient,
     body: ProjectInfoRequest,
 ) -> ProjectInfo:
-    """Set allowed destinations for project
-
+    """
     Args:
         project (int):
         body (ProjectInfoRequest):

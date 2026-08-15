@@ -18,10 +18,8 @@ if TYPE_CHECKING:
     from ..models.google_calendar import GoogleCalendar
     from ..models.merged_plugin_options import MergedPluginOptions
     from ..models.nested_endpoint import NestedEndpoint
-    from ..models.nested_offering_access_subnet import NestedOfferingAccessSubnet
     from ..models.nested_offering_file import NestedOfferingFile
     from ..models.nested_partition import NestedPartition
-    from ..models.nested_qo_s import NestedQoS
     from ..models.nested_screenshot import NestedScreenshot
     from ..models.nested_software_catalog import NestedSoftwareCatalog
     from ..models.nested_tag import NestedTag
@@ -52,10 +50,8 @@ class Offering:
         documentation_url (Union[Unset, str]):
         access_url (Union[Unset, str]): Publicly accessible offering access URL
         endpoints (Union[Unset, list['NestedEndpoint']]):
-        default_access_subnets (Union[Unset, list['NestedOfferingAccessSubnet']]):
         software_catalogs (Union[Unset, list['NestedSoftwareCatalog']]):
         partitions (Union[Unset, list['NestedPartition']]):
-        qos_profiles (Union[Unset, list['NestedQoS']]):
         customer (Union[None, Unset, str]):
         customer_uuid (Union[None, UUID, Unset]):
         customer_name (Union[None, Unset, str]):
@@ -117,7 +113,6 @@ class Offering:
         offering_group_title (Union[None, Unset, str]):
         user_has_consent (Union[Unset, bool]):
         is_accessible (Union[Unset, bool]):
-        open_for_proposals (Union[Unset, bool]):
         googlecalendar (Union[Unset, GoogleCalendar]):
     """
 
@@ -133,10 +128,8 @@ class Offering:
     documentation_url: Union[Unset, str] = UNSET
     access_url: Union[Unset, str] = UNSET
     endpoints: Union[Unset, list["NestedEndpoint"]] = UNSET
-    default_access_subnets: Union[Unset, list["NestedOfferingAccessSubnet"]] = UNSET
     software_catalogs: Union[Unset, list["NestedSoftwareCatalog"]] = UNSET
     partitions: Union[Unset, list["NestedPartition"]] = UNSET
-    qos_profiles: Union[Unset, list["NestedQoS"]] = UNSET
     customer: Union[None, Unset, str] = UNSET
     customer_uuid: Union[None, UUID, Unset] = UNSET
     customer_name: Union[None, Unset, str] = UNSET
@@ -197,7 +190,6 @@ class Offering:
     offering_group_title: Union[None, Unset, str] = UNSET
     user_has_consent: Union[Unset, bool] = UNSET
     is_accessible: Union[Unset, bool] = UNSET
-    open_for_proposals: Union[Unset, bool] = UNSET
     googlecalendar: Union[Unset, "GoogleCalendar"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -235,13 +227,6 @@ class Offering:
                 endpoints_item = endpoints_item_data.to_dict()
                 endpoints.append(endpoints_item)
 
-        default_access_subnets: Union[Unset, list[dict[str, Any]]] = UNSET
-        if not isinstance(self.default_access_subnets, Unset):
-            default_access_subnets = []
-            for default_access_subnets_item_data in self.default_access_subnets:
-                default_access_subnets_item = default_access_subnets_item_data.to_dict()
-                default_access_subnets.append(default_access_subnets_item)
-
         software_catalogs: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.software_catalogs, Unset):
             software_catalogs = []
@@ -255,13 +240,6 @@ class Offering:
             for partitions_item_data in self.partitions:
                 partitions_item = partitions_item_data.to_dict()
                 partitions.append(partitions_item)
-
-        qos_profiles: Union[Unset, list[dict[str, Any]]] = UNSET
-        if not isinstance(self.qos_profiles, Unset):
-            qos_profiles = []
-            for qos_profiles_item_data in self.qos_profiles:
-                qos_profiles_item = qos_profiles_item_data.to_dict()
-                qos_profiles.append(qos_profiles_item)
 
         customer: Union[None, Unset, str]
         if isinstance(self.customer, Unset):
@@ -558,8 +536,6 @@ class Offering:
 
         is_accessible = self.is_accessible
 
-        open_for_proposals = self.open_for_proposals
-
         googlecalendar: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.googlecalendar, Unset):
             googlecalendar = self.googlecalendar.to_dict()
@@ -591,14 +567,10 @@ class Offering:
             field_dict["access_url"] = access_url
         if endpoints is not UNSET:
             field_dict["endpoints"] = endpoints
-        if default_access_subnets is not UNSET:
-            field_dict["default_access_subnets"] = default_access_subnets
         if software_catalogs is not UNSET:
             field_dict["software_catalogs"] = software_catalogs
         if partitions is not UNSET:
             field_dict["partitions"] = partitions
-        if qos_profiles is not UNSET:
-            field_dict["qos_profiles"] = qos_profiles
         if customer is not UNSET:
             field_dict["customer"] = customer
         if customer_uuid is not UNSET:
@@ -719,8 +691,6 @@ class Offering:
             field_dict["user_has_consent"] = user_has_consent
         if is_accessible is not UNSET:
             field_dict["is_accessible"] = is_accessible
-        if open_for_proposals is not UNSET:
-            field_dict["open_for_proposals"] = open_for_proposals
         if googlecalendar is not UNSET:
             field_dict["googlecalendar"] = googlecalendar
 
@@ -732,10 +702,8 @@ class Offering:
         from ..models.google_calendar import GoogleCalendar
         from ..models.merged_plugin_options import MergedPluginOptions
         from ..models.nested_endpoint import NestedEndpoint
-        from ..models.nested_offering_access_subnet import NestedOfferingAccessSubnet
         from ..models.nested_offering_file import NestedOfferingFile
         from ..models.nested_partition import NestedPartition
-        from ..models.nested_qo_s import NestedQoS
         from ..models.nested_screenshot import NestedScreenshot
         from ..models.nested_software_catalog import NestedSoftwareCatalog
         from ..models.nested_tag import NestedTag
@@ -786,13 +754,6 @@ class Offering:
 
             endpoints.append(endpoints_item)
 
-        default_access_subnets = []
-        _default_access_subnets = d.pop("default_access_subnets", UNSET)
-        for default_access_subnets_item_data in _default_access_subnets or []:
-            default_access_subnets_item = NestedOfferingAccessSubnet.from_dict(default_access_subnets_item_data)
-
-            default_access_subnets.append(default_access_subnets_item)
-
         software_catalogs = []
         _software_catalogs = d.pop("software_catalogs", UNSET)
         for software_catalogs_item_data in _software_catalogs or []:
@@ -806,13 +767,6 @@ class Offering:
             partitions_item = NestedPartition.from_dict(partitions_item_data)
 
             partitions.append(partitions_item)
-
-        qos_profiles = []
-        _qos_profiles = d.pop("qos_profiles", UNSET)
-        for qos_profiles_item_data in _qos_profiles or []:
-            qos_profiles_item = NestedQoS.from_dict(qos_profiles_item_data)
-
-            qos_profiles.append(qos_profiles_item)
 
         def _parse_customer(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -1259,8 +1213,6 @@ class Offering:
 
         is_accessible = d.pop("is_accessible", UNSET)
 
-        open_for_proposals = d.pop("open_for_proposals", UNSET)
-
         _googlecalendar = d.pop("googlecalendar", UNSET)
         googlecalendar: Union[Unset, GoogleCalendar]
         if isinstance(_googlecalendar, Unset):
@@ -1281,10 +1233,8 @@ class Offering:
             documentation_url=documentation_url,
             access_url=access_url,
             endpoints=endpoints,
-            default_access_subnets=default_access_subnets,
             software_catalogs=software_catalogs,
             partitions=partitions,
-            qos_profiles=qos_profiles,
             customer=customer,
             customer_uuid=customer_uuid,
             customer_name=customer_name,
@@ -1345,7 +1295,6 @@ class Offering:
             offering_group_title=offering_group_title,
             user_has_consent=user_has_consent,
             is_accessible=is_accessible,
-            open_for_proposals=open_for_proposals,
             googlecalendar=googlecalendar,
         )
 

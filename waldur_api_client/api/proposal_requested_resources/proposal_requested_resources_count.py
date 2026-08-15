@@ -7,23 +7,20 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.proposal_states import ProposalStates
-from ...models.user_requested_resource_o_enum import UserRequestedResourceOEnum
+from ...models.provider_requested_resource_o_enum import ProviderRequestedResourceOEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     created: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[UserRequestedResourceOEnum]] = UNSET,
+    o: Union[Unset, list[ProviderRequestedResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal: Union[Unset, str] = UNSET,
-    proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
-    query: Union[Unset, str] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
@@ -56,21 +53,10 @@ def _get_kwargs(
 
     params["proposal"] = proposal
 
-    json_proposal_state: Union[Unset, list[str]] = UNSET
-    if not isinstance(proposal_state, Unset):
-        json_proposal_state = []
-        for proposal_state_item_data in proposal_state:
-            proposal_state_item = proposal_state_item_data.value
-            json_proposal_state.append(proposal_state_item)
-
-    params["proposal_state"] = json_proposal_state
-
     json_proposal_uuid: Union[Unset, str] = UNSET
     if not isinstance(proposal_uuid, Unset):
         json_proposal_uuid = str(proposal_uuid)
     params["proposal_uuid"] = json_proposal_uuid
-
-    params["query"] = query
 
     params["resource"] = resource
 
@@ -120,15 +106,13 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[UserRequestedResourceOEnum]] = UNSET,
+    o: Union[Unset, list[ProviderRequestedResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal: Union[Unset, str] = UNSET,
-    proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
-    query: Union[Unset, str] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
@@ -136,15 +120,13 @@ def sync_detailed(
 
     Args:
         created (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[UserRequestedResourceOEnum]]):
+        o (Union[Unset, list[ProviderRequestedResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal (Union[Unset, str]):
-        proposal_state (Union[Unset, list[ProposalStates]]):
         proposal_uuid (Union[Unset, UUID]):
-        query (Union[Unset, str]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
 
@@ -164,9 +146,7 @@ def sync_detailed(
         page=page,
         page_size=page_size,
         proposal=proposal,
-        proposal_state=proposal_state,
         proposal_uuid=proposal_uuid,
-        query=query,
         resource=resource,
         resource_uuid=resource_uuid,
     )
@@ -182,15 +162,13 @@ def sync(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[UserRequestedResourceOEnum]] = UNSET,
+    o: Union[Unset, list[ProviderRequestedResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal: Union[Unset, str] = UNSET,
-    proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
-    query: Union[Unset, str] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
@@ -198,15 +176,13 @@ def sync(
 
     Args:
         created (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[UserRequestedResourceOEnum]]):
+        o (Union[Unset, list[ProviderRequestedResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal (Union[Unset, str]):
-        proposal_state (Union[Unset, list[ProposalStates]]):
         proposal_uuid (Union[Unset, UUID]):
-        query (Union[Unset, str]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
 
@@ -227,9 +203,7 @@ def sync(
         page=page,
         page_size=page_size,
         proposal=proposal,
-        proposal_state=proposal_state,
         proposal_uuid=proposal_uuid,
-        query=query,
         resource=resource,
         resource_uuid=resource_uuid,
     ).parsed
@@ -239,15 +213,13 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[UserRequestedResourceOEnum]] = UNSET,
+    o: Union[Unset, list[ProviderRequestedResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal: Union[Unset, str] = UNSET,
-    proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
-    query: Union[Unset, str] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
@@ -255,15 +227,13 @@ async def asyncio_detailed(
 
     Args:
         created (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[UserRequestedResourceOEnum]]):
+        o (Union[Unset, list[ProviderRequestedResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal (Union[Unset, str]):
-        proposal_state (Union[Unset, list[ProposalStates]]):
         proposal_uuid (Union[Unset, UUID]):
-        query (Union[Unset, str]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
 
@@ -283,9 +253,7 @@ async def asyncio_detailed(
         page=page,
         page_size=page_size,
         proposal=proposal,
-        proposal_state=proposal_state,
         proposal_uuid=proposal_uuid,
-        query=query,
         resource=resource,
         resource_uuid=resource_uuid,
     )
@@ -299,15 +267,13 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     created: Union[Unset, datetime.datetime] = UNSET,
-    o: Union[Unset, list[UserRequestedResourceOEnum]] = UNSET,
+    o: Union[Unset, list[ProviderRequestedResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     proposal: Union[Unset, str] = UNSET,
-    proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
-    query: Union[Unset, str] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
@@ -315,15 +281,13 @@ async def asyncio(
 
     Args:
         created (Union[Unset, datetime.datetime]):
-        o (Union[Unset, list[UserRequestedResourceOEnum]]):
+        o (Union[Unset, list[ProviderRequestedResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         proposal (Union[Unset, str]):
-        proposal_state (Union[Unset, list[ProposalStates]]):
         proposal_uuid (Union[Unset, UUID]):
-        query (Union[Unset, str]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
 
@@ -345,9 +309,7 @@ async def asyncio(
             page=page,
             page_size=page_size,
             proposal=proposal,
-            proposal_state=proposal_state,
             proposal_uuid=proposal_uuid,
-            query=query,
             resource=resource,
             resource_uuid=resource_uuid,
         )
