@@ -24,8 +24,8 @@ class PermissionRequest:
         created_by_full_name (str):
         created_by_username (str):
         created_by_email (str):
-        reviewed_by_full_name (str):
-        reviewed_by_username (str):
+        reviewed_by_full_name (Union[None, str]):
+        reviewed_by_username (Union[None, str]):
         reviewed_at (Union[None, datetime.datetime]): Timestamp when the review was completed
         scope_uuid (UUID):
         scope_name (str):
@@ -48,8 +48,8 @@ class PermissionRequest:
     created_by_full_name: str
     created_by_username: str
     created_by_email: str
-    reviewed_by_full_name: str
-    reviewed_by_username: str
+    reviewed_by_full_name: Union[None, str]
+    reviewed_by_username: Union[None, str]
     reviewed_at: Union[None, datetime.datetime]
     scope_uuid: UUID
     scope_name: str
@@ -80,8 +80,10 @@ class PermissionRequest:
 
         created_by_email = self.created_by_email
 
+        reviewed_by_full_name: Union[None, str]
         reviewed_by_full_name = self.reviewed_by_full_name
 
+        reviewed_by_username: Union[None, str]
         reviewed_by_username = self.reviewed_by_username
 
         reviewed_at: Union[None, str]
@@ -166,9 +168,19 @@ class PermissionRequest:
 
         created_by_email = d.pop("created_by_email")
 
-        reviewed_by_full_name = d.pop("reviewed_by_full_name")
+        def _parse_reviewed_by_full_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
 
-        reviewed_by_username = d.pop("reviewed_by_username")
+        reviewed_by_full_name = _parse_reviewed_by_full_name(d.pop("reviewed_by_full_name"))
+
+        def _parse_reviewed_by_username(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        reviewed_by_username = _parse_reviewed_by_username(d.pop("reviewed_by_username"))
 
         def _parse_reviewed_at(data: object) -> Union[None, datetime.datetime]:
             if data is None:

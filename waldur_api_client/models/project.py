@@ -18,9 +18,6 @@ if TYPE_CHECKING:
     from ..models.project_marketplace_resource_count import ProjectMarketplaceResourceCount
     from ..models.project_metadata_answer import ProjectMetadataAnswer
     from ..models.project_termination_metadata_type_0 import ProjectTerminationMetadataType0
-    from ..models.project_user_affiliations import ProjectUserAffiliations
-    from ..models.project_user_email_patterns import ProjectUserEmailPatterns
-    from ..models.project_user_identity_sources import ProjectUserIdentitySources
 
 
 T = TypeVar("T", bound="Project")
@@ -75,10 +72,9 @@ class Project:
             date, project resources will be terminated.
         is_in_grace_period (Union[Unset, bool]): True if the project is past its end date but still within the grace
             period.
-        user_email_patterns (Union[Unset, ProjectUserEmailPatterns]):
-        user_affiliations (Union[Unset, ProjectUserAffiliations]):
-        user_identity_sources (Union[Unset, ProjectUserIdentitySources]): List of allowed identity sources (identity
-            providers).
+        user_email_patterns (Union[Unset, list[str]]):
+        user_affiliations (Union[Unset, list[str]]):
+        user_identity_sources (Union[Unset, list[str]]):
         affiliation (Union['AffiliatedOrganization', None, Unset]):
         affiliation_uuid (Union[None, UUID, Unset]):
         affiliation_name (Union[Unset, str]):
@@ -131,9 +127,9 @@ class Project:
     customer_grace_period_days: Union[None, Unset, int] = UNSET
     effective_end_date: Union[None, Unset, datetime.date] = UNSET
     is_in_grace_period: Union[Unset, bool] = UNSET
-    user_email_patterns: Union[Unset, "ProjectUserEmailPatterns"] = UNSET
-    user_affiliations: Union[Unset, "ProjectUserAffiliations"] = UNSET
-    user_identity_sources: Union[Unset, "ProjectUserIdentitySources"] = UNSET
+    user_email_patterns: Union[Unset, list[str]] = UNSET
+    user_affiliations: Union[Unset, list[str]] = UNSET
+    user_identity_sources: Union[Unset, list[str]] = UNSET
     affiliation: Union["AffiliatedOrganization", None, Unset] = UNSET
     affiliation_uuid: Union[None, UUID, Unset] = UNSET
     affiliation_name: Union[Unset, str] = UNSET
@@ -310,17 +306,17 @@ class Project:
 
         is_in_grace_period = self.is_in_grace_period
 
-        user_email_patterns: Union[Unset, dict[str, Any]] = UNSET
+        user_email_patterns: Union[Unset, list[str]] = UNSET
         if not isinstance(self.user_email_patterns, Unset):
-            user_email_patterns = self.user_email_patterns.to_dict()
+            user_email_patterns = self.user_email_patterns
 
-        user_affiliations: Union[Unset, dict[str, Any]] = UNSET
+        user_affiliations: Union[Unset, list[str]] = UNSET
         if not isinstance(self.user_affiliations, Unset):
-            user_affiliations = self.user_affiliations.to_dict()
+            user_affiliations = self.user_affiliations
 
-        user_identity_sources: Union[Unset, dict[str, Any]] = UNSET
+        user_identity_sources: Union[Unset, list[str]] = UNSET
         if not isinstance(self.user_identity_sources, Unset):
-            user_identity_sources = self.user_identity_sources.to_dict()
+            user_identity_sources = self.user_identity_sources
 
         affiliation: Union[None, Unset, dict[str, Any]]
         if isinstance(self.affiliation, Unset):
@@ -493,9 +489,6 @@ class Project:
         from ..models.project_marketplace_resource_count import ProjectMarketplaceResourceCount
         from ..models.project_metadata_answer import ProjectMetadataAnswer
         from ..models.project_termination_metadata_type_0 import ProjectTerminationMetadataType0
-        from ..models.project_user_affiliations import ProjectUserAffiliations
-        from ..models.project_user_email_patterns import ProjectUserEmailPatterns
-        from ..models.project_user_identity_sources import ProjectUserIdentitySources
 
         d = dict(src_dict)
         url = d.pop("url", UNSET)
@@ -757,26 +750,11 @@ class Project:
 
         is_in_grace_period = d.pop("is_in_grace_period", UNSET)
 
-        _user_email_patterns = d.pop("user_email_patterns", UNSET)
-        user_email_patterns: Union[Unset, ProjectUserEmailPatterns]
-        if isinstance(_user_email_patterns, Unset):
-            user_email_patterns = UNSET
-        else:
-            user_email_patterns = ProjectUserEmailPatterns.from_dict(_user_email_patterns)
+        user_email_patterns = cast(list[str], d.pop("user_email_patterns", UNSET))
 
-        _user_affiliations = d.pop("user_affiliations", UNSET)
-        user_affiliations: Union[Unset, ProjectUserAffiliations]
-        if isinstance(_user_affiliations, Unset):
-            user_affiliations = UNSET
-        else:
-            user_affiliations = ProjectUserAffiliations.from_dict(_user_affiliations)
+        user_affiliations = cast(list[str], d.pop("user_affiliations", UNSET))
 
-        _user_identity_sources = d.pop("user_identity_sources", UNSET)
-        user_identity_sources: Union[Unset, ProjectUserIdentitySources]
-        if isinstance(_user_identity_sources, Unset):
-            user_identity_sources = UNSET
-        else:
-            user_identity_sources = ProjectUserIdentitySources.from_dict(_user_identity_sources)
+        user_identity_sources = cast(list[str], d.pop("user_identity_sources", UNSET))
 
         def _parse_affiliation(data: object) -> Union["AffiliatedOrganization", None, Unset]:
             if data is None:

@@ -61,7 +61,11 @@ class OpenStackInstance:
         disk (Union[Unset, int]): Disk size in MiB
         min_ram (Union[Unset, int]): Minimum memory size in MiB
         min_disk (Union[Unset, int]): Minimum disk size in MiB
-        user_data (Union[Unset, str]): Additional data that will be added to instance on provisioning
+        user_data (Union[Unset, str]): Cloud-init user data passed to the instance on provisioning. SECURITY: this value
+            is stored and transmitted in plain text — it is kept unencrypted in Waldur's database, forwarded to OpenStack
+            where any process on the instance can read it via the metadata service, and it may appear in logs. Do NOT put
+            unencrypted secrets (passwords, private keys, API tokens) here; reference a secrets manager or inject them
+            through an encrypted channel instead.
         external_ips (Union[Unset, list[str]]):
         internal_ips (Union[Unset, list[str]]):
         latitude (Union[None, Unset, float]):

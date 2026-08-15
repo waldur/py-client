@@ -26,6 +26,10 @@ class AnonymousChatInteraction:
         user_slug (str):
         user_input (str):
         assistant_blocks (AnonymousChatInteractionAssistantBlocks):
+        click_count (int): Offering click-throughs on this interaction. Populated by the by-session transcript, which
+            annotates it; 0 elsewhere.
+        input_tokens (Union[None, int]):
+        output_tokens (Union[None, int]):
         offering_uuids (AnonymousChatInteractionOfferingUuids):
         result_count (int):
         is_flagged (bool):
@@ -45,6 +49,9 @@ class AnonymousChatInteraction:
     user_slug: str
     user_input: str
     assistant_blocks: "AnonymousChatInteractionAssistantBlocks"
+    click_count: int
+    input_tokens: Union[None, int]
+    output_tokens: Union[None, int]
     offering_uuids: "AnonymousChatInteractionOfferingUuids"
     result_count: int
     is_flagged: bool
@@ -68,6 +75,14 @@ class AnonymousChatInteraction:
         user_input = self.user_input
 
         assistant_blocks = self.assistant_blocks.to_dict()
+
+        click_count = self.click_count
+
+        input_tokens: Union[None, int]
+        input_tokens = self.input_tokens
+
+        output_tokens: Union[None, int]
+        output_tokens = self.output_tokens
 
         offering_uuids = self.offering_uuids.to_dict()
 
@@ -108,6 +123,9 @@ class AnonymousChatInteraction:
                 "user_slug": user_slug,
                 "user_input": user_input,
                 "assistant_blocks": assistant_blocks,
+                "click_count": click_count,
+                "input_tokens": input_tokens,
+                "output_tokens": output_tokens,
                 "offering_uuids": offering_uuids,
                 "result_count": result_count,
                 "is_flagged": is_flagged,
@@ -142,6 +160,22 @@ class AnonymousChatInteraction:
         user_input = d.pop("user_input")
 
         assistant_blocks = AnonymousChatInteractionAssistantBlocks.from_dict(d.pop("assistant_blocks"))
+
+        click_count = d.pop("click_count")
+
+        def _parse_input_tokens(data: object) -> Union[None, int]:
+            if data is None:
+                return data
+            return cast(Union[None, int], data)
+
+        input_tokens = _parse_input_tokens(d.pop("input_tokens"))
+
+        def _parse_output_tokens(data: object) -> Union[None, int]:
+            if data is None:
+                return data
+            return cast(Union[None, int], data)
+
+        output_tokens = _parse_output_tokens(d.pop("output_tokens"))
 
         offering_uuids = AnonymousChatInteractionOfferingUuids.from_dict(d.pop("offering_uuids"))
 
@@ -192,6 +226,9 @@ class AnonymousChatInteraction:
             user_slug=user_slug,
             user_input=user_input,
             assistant_blocks=assistant_blocks,
+            click_count=click_count,
+            input_tokens=input_tokens,
+            output_tokens=output_tokens,
             offering_uuids=offering_uuids,
             result_count=result_count,
             is_flagged=is_flagged,

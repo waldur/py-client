@@ -1,20 +1,11 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
-
-if TYPE_CHECKING:
-    from ..models.offering_software_catalog_request_enabled_cpu_family import (
-        OfferingSoftwareCatalogRequestEnabledCpuFamily,
-    )
-    from ..models.offering_software_catalog_request_enabled_cpu_microarchitectures import (
-        OfferingSoftwareCatalogRequestEnabledCpuMicroarchitectures,
-    )
-
 
 T = TypeVar("T", bound="OfferingSoftwareCatalogRequest")
 
@@ -25,17 +16,16 @@ class OfferingSoftwareCatalogRequest:
     Attributes:
         offering (UUID):
         catalog (UUID):
-        enabled_cpu_family (Union[Unset, OfferingSoftwareCatalogRequestEnabledCpuFamily]): List of enabled CPU families:
-            ['x86_64', 'aarch64']
-        enabled_cpu_microarchitectures (Union[Unset, OfferingSoftwareCatalogRequestEnabledCpuMicroarchitectures]): List
-            of enabled CPU microarchitectures: ['generic', 'zen3']
+        enabled_cpu_family (Union[Unset, list[str]]): List of enabled CPU families: ['x86_64', 'aarch64']
+        enabled_cpu_microarchitectures (Union[Unset, list[str]]): List of enabled CPU microarchitectures: ['generic',
+            'zen3']
         partition (Union[None, UUID, Unset]):
     """
 
     offering: UUID
     catalog: UUID
-    enabled_cpu_family: Union[Unset, "OfferingSoftwareCatalogRequestEnabledCpuFamily"] = UNSET
-    enabled_cpu_microarchitectures: Union[Unset, "OfferingSoftwareCatalogRequestEnabledCpuMicroarchitectures"] = UNSET
+    enabled_cpu_family: Union[Unset, list[str]] = UNSET
+    enabled_cpu_microarchitectures: Union[Unset, list[str]] = UNSET
     partition: Union[None, UUID, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -44,13 +34,13 @@ class OfferingSoftwareCatalogRequest:
 
         catalog = str(self.catalog)
 
-        enabled_cpu_family: Union[Unset, dict[str, Any]] = UNSET
+        enabled_cpu_family: Union[Unset, list[str]] = UNSET
         if not isinstance(self.enabled_cpu_family, Unset):
-            enabled_cpu_family = self.enabled_cpu_family.to_dict()
+            enabled_cpu_family = self.enabled_cpu_family
 
-        enabled_cpu_microarchitectures: Union[Unset, dict[str, Any]] = UNSET
+        enabled_cpu_microarchitectures: Union[Unset, list[str]] = UNSET
         if not isinstance(self.enabled_cpu_microarchitectures, Unset):
-            enabled_cpu_microarchitectures = self.enabled_cpu_microarchitectures.to_dict()
+            enabled_cpu_microarchitectures = self.enabled_cpu_microarchitectures
 
         partition: Union[None, Unset, str]
         if isinstance(self.partition, Unset):
@@ -79,33 +69,14 @@ class OfferingSoftwareCatalogRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.offering_software_catalog_request_enabled_cpu_family import (
-            OfferingSoftwareCatalogRequestEnabledCpuFamily,
-        )
-        from ..models.offering_software_catalog_request_enabled_cpu_microarchitectures import (
-            OfferingSoftwareCatalogRequestEnabledCpuMicroarchitectures,
-        )
-
         d = dict(src_dict)
         offering = UUID(d.pop("offering"))
 
         catalog = UUID(d.pop("catalog"))
 
-        _enabled_cpu_family = d.pop("enabled_cpu_family", UNSET)
-        enabled_cpu_family: Union[Unset, OfferingSoftwareCatalogRequestEnabledCpuFamily]
-        if isinstance(_enabled_cpu_family, Unset):
-            enabled_cpu_family = UNSET
-        else:
-            enabled_cpu_family = OfferingSoftwareCatalogRequestEnabledCpuFamily.from_dict(_enabled_cpu_family)
+        enabled_cpu_family = cast(list[str], d.pop("enabled_cpu_family", UNSET))
 
-        _enabled_cpu_microarchitectures = d.pop("enabled_cpu_microarchitectures", UNSET)
-        enabled_cpu_microarchitectures: Union[Unset, OfferingSoftwareCatalogRequestEnabledCpuMicroarchitectures]
-        if isinstance(_enabled_cpu_microarchitectures, Unset):
-            enabled_cpu_microarchitectures = UNSET
-        else:
-            enabled_cpu_microarchitectures = OfferingSoftwareCatalogRequestEnabledCpuMicroarchitectures.from_dict(
-                _enabled_cpu_microarchitectures
-            )
+        enabled_cpu_microarchitectures = cast(list[str], d.pop("enabled_cpu_microarchitectures", UNSET))
 
         def _parse_partition(data: object) -> Union[None, UUID, Unset]:
             if data is None:

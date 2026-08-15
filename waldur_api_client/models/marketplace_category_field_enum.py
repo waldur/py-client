@@ -6,7 +6,6 @@ class MarketplaceCategoryFieldEnum(str, Enum):
     AVAILABLE_OFFERINGS_COUNT = "available_offerings_count"
     COLUMNS = "columns"
     COMPONENTS = "components"
-    DEFAULT_TENANT_CATEGORY = "default_tenant_category"
     DEFAULT_VM_CATEGORY = "default_vm_category"
     DEFAULT_VOLUME_CATEGORY = "default_volume_category"
     DESCRIPTION = "description"

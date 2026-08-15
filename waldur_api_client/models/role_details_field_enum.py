@@ -3,6 +3,8 @@ from enum import Enum
 
 class RoleDetailsFieldEnum(str, Enum):
     CONTENT_TYPE = "content_type"
+    CUSTOMER_NAME = "customer_name"
+    CUSTOMER_UUID = "customer_uuid"
     DESCRIPTION = "description"
     DESCRIPTION_AR = "description_ar"
     DESCRIPTION_CS = "description_cs"
@@ -13,6 +15,7 @@ class RoleDetailsFieldEnum(str, Enum):
     DESCRIPTION_ET = "description_et"
     DESCRIPTION_FR = "description_fr"
     DESCRIPTION_IT = "description_it"
+    DESCRIPTION_KM = "description_km"
     DESCRIPTION_LT = "description_lt"
     DESCRIPTION_LV = "description_lv"
     DESCRIPTION_NB = "description_nb"
@@ -22,6 +25,8 @@ class RoleDetailsFieldEnum(str, Enum):
     IS_SYSTEM_ROLE = "is_system_role"
     NAME = "name"
     PERMISSIONS = "permissions"
+    TEMPLATE_NAME = "template_name"
+    TEMPLATE_UUID = "template_uuid"
     USERS_COUNT = "users_count"
     UUID = "uuid"
 

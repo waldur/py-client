@@ -15,12 +15,12 @@ class PaymentProfileAttributes:
     Attributes:
         end_date (Union[Unset, str]):
         agreement_number (Union[Unset, str]):
-        contract_sum (Union[Unset, int]):
+        contract_sum (Union[Unset, str]):
     """
 
     end_date: Union[Unset, str] = UNSET
     agreement_number: Union[Unset, str] = UNSET
-    contract_sum: Union[Unset, int] = UNSET
+    contract_sum: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:

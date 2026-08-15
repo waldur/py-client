@@ -1,5 +1,6 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -16,6 +17,7 @@ class PatchedIssueRequest:
         summary (Union[Unset, str]):
         description (Union[Unset, str]):
         assignee (Union[None, Unset, str]):
+        offering (Union[None, UUID, Unset]):
         is_reported_manually (Union[Unset, bool]): Set true if issue is created by regular user via portal. Default:
             False.
     """
@@ -23,6 +25,7 @@ class PatchedIssueRequest:
     summary: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     assignee: Union[None, Unset, str] = UNSET
+    offering: Union[None, UUID, Unset] = UNSET
     is_reported_manually: Union[Unset, bool] = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -37,6 +40,14 @@ class PatchedIssueRequest:
         else:
             assignee = self.assignee
 
+        offering: Union[None, Unset, str]
+        if isinstance(self.offering, Unset):
+            offering = UNSET
+        elif isinstance(self.offering, UUID):
+            offering = str(self.offering)
+        else:
+            offering = self.offering
+
         is_reported_manually = self.is_reported_manually
 
         field_dict: dict[str, Any] = {}
@@ -48,6 +59,8 @@ class PatchedIssueRequest:
             field_dict["description"] = description
         if assignee is not UNSET:
             field_dict["assignee"] = assignee
+        if offering is not UNSET:
+            field_dict["offering"] = offering
         if is_reported_manually is not UNSET:
             field_dict["is_reported_manually"] = is_reported_manually
 
@@ -69,12 +82,30 @@ class PatchedIssueRequest:
 
         assignee = _parse_assignee(d.pop("assignee", UNSET))
 
+        def _parse_offering(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                offering_type_0 = UUID(data)
+
+                return offering_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        offering = _parse_offering(d.pop("offering", UNSET))
+
         is_reported_manually = d.pop("is_reported_manually", UNSET)
 
         patched_issue_request = cls(
             summary=summary,
             description=description,
             assignee=assignee,
+            offering=offering,
             is_reported_manually=is_reported_manually,
         )
 

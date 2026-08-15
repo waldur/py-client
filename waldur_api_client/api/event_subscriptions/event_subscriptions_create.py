@@ -55,7 +55,9 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: EventSubscriptionRequest,
 ) -> Response[EventSubscription]:
-    """
+    """DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/).
+    Removal tracked in WAL-10111.
+
     Args:
         body (EventSubscriptionRequest):
 
@@ -83,7 +85,9 @@ def sync(
     client: AuthenticatedClient,
     body: EventSubscriptionRequest,
 ) -> EventSubscription:
-    """
+    """DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/).
+    Removal tracked in WAL-10111.
+
     Args:
         body (EventSubscriptionRequest):
 
@@ -106,7 +110,9 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: EventSubscriptionRequest,
 ) -> Response[EventSubscription]:
-    """
+    """DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/).
+    Removal tracked in WAL-10111.
+
     Args:
         body (EventSubscriptionRequest):
 
@@ -132,7 +138,9 @@ async def asyncio(
     client: AuthenticatedClient,
     body: EventSubscriptionRequest,
 ) -> EventSubscription:
-    """
+    """DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/).
+    Removal tracked in WAL-10111.
+
     Args:
         body (EventSubscriptionRequest):
 

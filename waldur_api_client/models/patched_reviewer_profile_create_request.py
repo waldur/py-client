@@ -1,16 +1,10 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..types import UNSET, Unset
-
-if TYPE_CHECKING:
-    from ..models.patched_reviewer_profile_create_request_alternative_names import (
-        PatchedReviewerProfileCreateRequestAlternativeNames,
-    )
-
 
 T = TypeVar("T", bound="PatchedReviewerProfileCreateRequest")
 
@@ -21,14 +15,13 @@ class PatchedReviewerProfileCreateRequest:
     Attributes:
         orcid_id (Union[None, Unset, str]): ORCID identifier (format: 0000-0000-0000-0000)
         biography (Union[Unset, str]): Professional biography / summary
-        alternative_names (Union[Unset, PatchedReviewerProfileCreateRequestAlternativeNames]): List of name variants
-            used in publications
+        alternative_names (Union[Unset, list[str]]): List of name variants used in publications
         available_for_reviews (Union[Unset, bool]): Whether reviewer is currently accepting review requests
     """
 
     orcid_id: Union[None, Unset, str] = UNSET
     biography: Union[Unset, str] = UNSET
-    alternative_names: Union[Unset, "PatchedReviewerProfileCreateRequestAlternativeNames"] = UNSET
+    alternative_names: Union[Unset, list[str]] = UNSET
     available_for_reviews: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -41,9 +34,9 @@ class PatchedReviewerProfileCreateRequest:
 
         biography = self.biography
 
-        alternative_names: Union[Unset, dict[str, Any]] = UNSET
+        alternative_names: Union[Unset, list[str]] = UNSET
         if not isinstance(self.alternative_names, Unset):
-            alternative_names = self.alternative_names.to_dict()
+            alternative_names = self.alternative_names
 
         available_for_reviews = self.available_for_reviews
 
@@ -63,10 +56,6 @@ class PatchedReviewerProfileCreateRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.patched_reviewer_profile_create_request_alternative_names import (
-            PatchedReviewerProfileCreateRequestAlternativeNames,
-        )
-
         d = dict(src_dict)
 
         def _parse_orcid_id(data: object) -> Union[None, Unset, str]:
@@ -80,12 +69,7 @@ class PatchedReviewerProfileCreateRequest:
 
         biography = d.pop("biography", UNSET)
 
-        _alternative_names = d.pop("alternative_names", UNSET)
-        alternative_names: Union[Unset, PatchedReviewerProfileCreateRequestAlternativeNames]
-        if isinstance(_alternative_names, Unset):
-            alternative_names = UNSET
-        else:
-            alternative_names = PatchedReviewerProfileCreateRequestAlternativeNames.from_dict(_alternative_names)
+        alternative_names = cast(list[str], d.pop("alternative_names", UNSET))
 
         available_for_reviews = d.pop("available_for_reviews", UNSET)
 

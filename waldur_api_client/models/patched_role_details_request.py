@@ -29,6 +29,7 @@ class PatchedRoleDetailsRequest:
         description_nb (Union[None, Unset, str]):
         description_ar (Union[None, Unset, str]):
         description_cs (Union[None, Unset, str]):
+        description_km (Union[None, Unset, str]):
         is_active (Union[Unset, bool]):
     """
 
@@ -48,6 +49,7 @@ class PatchedRoleDetailsRequest:
     description_nb: Union[None, Unset, str] = UNSET
     description_ar: Union[None, Unset, str] = UNSET
     description_cs: Union[None, Unset, str] = UNSET
+    description_km: Union[None, Unset, str] = UNSET
     is_active: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -140,6 +142,12 @@ class PatchedRoleDetailsRequest:
         else:
             description_cs = self.description_cs
 
+        description_km: Union[None, Unset, str]
+        if isinstance(self.description_km, Unset):
+            description_km = UNSET
+        else:
+            description_km = self.description_km
+
         is_active = self.is_active
 
         field_dict: dict[str, Any] = {}
@@ -177,6 +185,8 @@ class PatchedRoleDetailsRequest:
             field_dict["description_ar"] = description_ar
         if description_cs is not UNSET:
             field_dict["description_cs"] = description_cs
+        if description_km is not UNSET:
+            field_dict["description_km"] = description_km
         if is_active is not UNSET:
             field_dict["is_active"] = is_active
 
@@ -315,6 +325,15 @@ class PatchedRoleDetailsRequest:
 
         description_cs = _parse_description_cs(d.pop("description_cs", UNSET))
 
+        def _parse_description_km(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        description_km = _parse_description_km(d.pop("description_km", UNSET))
+
         is_active = d.pop("is_active", UNSET)
 
         patched_role_details_request = cls(
@@ -334,6 +353,7 @@ class PatchedRoleDetailsRequest:
             description_nb=description_nb,
             description_ar=description_ar,
             description_cs=description_cs,
+            description_km=description_km,
             is_active=is_active,
         )
 

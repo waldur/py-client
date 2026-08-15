@@ -6,15 +6,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.remote_allocation_set_limits_request import RemoteAllocationSetLimitsRequest
-from ...models.status import Status
+from ...models.allocation_set_limits_request import AllocationSetLimitsRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: RemoteAllocationSetLimitsRequest,
+    body: AllocationSetLimitsRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,17 +30,15 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Status:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 202:
-        response_202 = Status.from_dict(response.json())
-
-        return response_202
+        return None
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Status]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -54,19 +51,20 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: RemoteAllocationSetLimitsRequest,
-) -> Response[Status]:
-    """
+    body: AllocationSetLimitsRequest,
+) -> Response[Any]:
+    """Set limits for allocation
+
     Args:
         uuid (UUID):
-        body (RemoteAllocationSetLimitsRequest):
+        body (AllocationSetLimitsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Status]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -81,49 +79,24 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-def sync(
-    uuid: UUID,
-    *,
-    client: AuthenticatedClient,
-    body: RemoteAllocationSetLimitsRequest,
-) -> Status:
-    """
-    Args:
-        uuid (UUID):
-        body (RemoteAllocationSetLimitsRequest):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        Status
-    """
-
-    return sync_detailed(
-        uuid=uuid,
-        client=client,
-        body=body,
-    ).parsed
-
-
 async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: RemoteAllocationSetLimitsRequest,
-) -> Response[Status]:
-    """
+    body: AllocationSetLimitsRequest,
+) -> Response[Any]:
+    """Set limits for allocation
+
     Args:
         uuid (UUID):
-        body (RemoteAllocationSetLimitsRequest):
+        body (AllocationSetLimitsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Status]
+        Response[Any]
     """
 
     kwargs = _get_kwargs(
@@ -134,31 +107,3 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
-
-
-async def asyncio(
-    uuid: UUID,
-    *,
-    client: AuthenticatedClient,
-    body: RemoteAllocationSetLimitsRequest,
-) -> Status:
-    """
-    Args:
-        uuid (UUID):
-        body (RemoteAllocationSetLimitsRequest):
-
-    Raises:
-        errors.UnexpectedStatus: If the server returns an undocumented status code.
-        httpx.TimeoutException: If the request takes longer than Client.timeout.
-
-    Returns:
-        Status
-    """
-
-    return (
-        await asyncio_detailed(
-            uuid=uuid,
-            client=client,
-            body=body,
-        )
-    ).parsed

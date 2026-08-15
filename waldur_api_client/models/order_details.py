@@ -91,8 +91,11 @@ class OrderDetails:
         created_by_civil_number (Union[None, Unset, str]):
         created_by_email (Union[None, Unset, str]):
         created_by_organization (Union[None, Unset, str]):
+        created_by_organization_country (Union[None, Unset, str]):
         created_by_organization_registry_code (Union[None, Unset, str]): Company registration code of the user's
             organization, if known
+        created_by_organization_vat_code (Union[None, Unset, str]): VAT code of the user's organization
+        created_by_organization_address (Union[None, Unset, str]): Postal address of the user's organization
         customer_name (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         customer_slug (Union[Unset, str]):
@@ -115,8 +118,10 @@ class OrderDetails:
         provider_message (Union[Unset, str]):
         provider_message_url (Union[Unset, str]):
         provider_message_attachment (Union[None, Unset, str]):
+        provider_message_updated_at (Union[None, Unset, datetime.datetime]):
         consumer_message (Union[Unset, str]):
         consumer_message_attachment (Union[None, Unset, str]):
+        consumer_message_updated_at (Union[None, Unset, datetime.datetime]):
         consumer_rejection_comment (Union[Unset, str]):
         provider_rejection_comment (Union[Unset, str]):
         auto_approved (Union[Unset, bool]):
@@ -184,7 +189,10 @@ class OrderDetails:
     created_by_civil_number: Union[None, Unset, str] = UNSET
     created_by_email: Union[None, Unset, str] = UNSET
     created_by_organization: Union[None, Unset, str] = UNSET
+    created_by_organization_country: Union[None, Unset, str] = UNSET
     created_by_organization_registry_code: Union[None, Unset, str] = UNSET
+    created_by_organization_vat_code: Union[None, Unset, str] = UNSET
+    created_by_organization_address: Union[None, Unset, str] = UNSET
     customer_name: Union[Unset, str] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
     customer_slug: Union[Unset, str] = UNSET
@@ -207,8 +215,10 @@ class OrderDetails:
     provider_message: Union[Unset, str] = UNSET
     provider_message_url: Union[Unset, str] = UNSET
     provider_message_attachment: Union[None, Unset, str] = UNSET
+    provider_message_updated_at: Union[None, Unset, datetime.datetime] = UNSET
     consumer_message: Union[Unset, str] = UNSET
     consumer_message_attachment: Union[None, Unset, str] = UNSET
+    consumer_message_updated_at: Union[None, Unset, datetime.datetime] = UNSET
     consumer_rejection_comment: Union[Unset, str] = UNSET
     provider_rejection_comment: Union[Unset, str] = UNSET
     auto_approved: Union[Unset, bool] = UNSET
@@ -480,11 +490,29 @@ class OrderDetails:
         else:
             created_by_organization = self.created_by_organization
 
+        created_by_organization_country: Union[None, Unset, str]
+        if isinstance(self.created_by_organization_country, Unset):
+            created_by_organization_country = UNSET
+        else:
+            created_by_organization_country = self.created_by_organization_country
+
         created_by_organization_registry_code: Union[None, Unset, str]
         if isinstance(self.created_by_organization_registry_code, Unset):
             created_by_organization_registry_code = UNSET
         else:
             created_by_organization_registry_code = self.created_by_organization_registry_code
+
+        created_by_organization_vat_code: Union[None, Unset, str]
+        if isinstance(self.created_by_organization_vat_code, Unset):
+            created_by_organization_vat_code = UNSET
+        else:
+            created_by_organization_vat_code = self.created_by_organization_vat_code
+
+        created_by_organization_address: Union[None, Unset, str]
+        if isinstance(self.created_by_organization_address, Unset):
+            created_by_organization_address = UNSET
+        else:
+            created_by_organization_address = self.created_by_organization_address
 
         customer_name = self.customer_name
 
@@ -570,6 +598,14 @@ class OrderDetails:
         else:
             provider_message_attachment = self.provider_message_attachment
 
+        provider_message_updated_at: Union[None, Unset, str]
+        if isinstance(self.provider_message_updated_at, Unset):
+            provider_message_updated_at = UNSET
+        elif isinstance(self.provider_message_updated_at, datetime.datetime):
+            provider_message_updated_at = self.provider_message_updated_at.isoformat()
+        else:
+            provider_message_updated_at = self.provider_message_updated_at
+
         consumer_message = self.consumer_message
 
         consumer_message_attachment: Union[None, Unset, str]
@@ -577,6 +613,14 @@ class OrderDetails:
             consumer_message_attachment = UNSET
         else:
             consumer_message_attachment = self.consumer_message_attachment
+
+        consumer_message_updated_at: Union[None, Unset, str]
+        if isinstance(self.consumer_message_updated_at, Unset):
+            consumer_message_updated_at = UNSET
+        elif isinstance(self.consumer_message_updated_at, datetime.datetime):
+            consumer_message_updated_at = self.consumer_message_updated_at.isoformat()
+        else:
+            consumer_message_updated_at = self.consumer_message_updated_at
 
         consumer_rejection_comment = self.consumer_rejection_comment
 
@@ -727,8 +771,14 @@ class OrderDetails:
             field_dict["created_by_email"] = created_by_email
         if created_by_organization is not UNSET:
             field_dict["created_by_organization"] = created_by_organization
+        if created_by_organization_country is not UNSET:
+            field_dict["created_by_organization_country"] = created_by_organization_country
         if created_by_organization_registry_code is not UNSET:
             field_dict["created_by_organization_registry_code"] = created_by_organization_registry_code
+        if created_by_organization_vat_code is not UNSET:
+            field_dict["created_by_organization_vat_code"] = created_by_organization_vat_code
+        if created_by_organization_address is not UNSET:
+            field_dict["created_by_organization_address"] = created_by_organization_address
         if customer_name is not UNSET:
             field_dict["customer_name"] = customer_name
         if customer_uuid is not UNSET:
@@ -773,10 +823,14 @@ class OrderDetails:
             field_dict["provider_message_url"] = provider_message_url
         if provider_message_attachment is not UNSET:
             field_dict["provider_message_attachment"] = provider_message_attachment
+        if provider_message_updated_at is not UNSET:
+            field_dict["provider_message_updated_at"] = provider_message_updated_at
         if consumer_message is not UNSET:
             field_dict["consumer_message"] = consumer_message
         if consumer_message_attachment is not UNSET:
             field_dict["consumer_message_attachment"] = consumer_message_attachment
+        if consumer_message_updated_at is not UNSET:
+            field_dict["consumer_message_updated_at"] = consumer_message_updated_at
         if consumer_rejection_comment is not UNSET:
             field_dict["consumer_rejection_comment"] = consumer_rejection_comment
         if provider_rejection_comment is not UNSET:
@@ -1233,6 +1287,17 @@ class OrderDetails:
 
         created_by_organization = _parse_created_by_organization(d.pop("created_by_organization", UNSET))
 
+        def _parse_created_by_organization_country(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        created_by_organization_country = _parse_created_by_organization_country(
+            d.pop("created_by_organization_country", UNSET)
+        )
+
         def _parse_created_by_organization_registry_code(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -1242,6 +1307,28 @@ class OrderDetails:
 
         created_by_organization_registry_code = _parse_created_by_organization_registry_code(
             d.pop("created_by_organization_registry_code", UNSET)
+        )
+
+        def _parse_created_by_organization_vat_code(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        created_by_organization_vat_code = _parse_created_by_organization_vat_code(
+            d.pop("created_by_organization_vat_code", UNSET)
+        )
+
+        def _parse_created_by_organization_address(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        created_by_organization_address = _parse_created_by_organization_address(
+            d.pop("created_by_organization_address", UNSET)
         )
 
         customer_name = d.pop("customer_name", UNSET)
@@ -1370,6 +1457,23 @@ class OrderDetails:
 
         provider_message_attachment = _parse_provider_message_attachment(d.pop("provider_message_attachment", UNSET))
 
+        def _parse_provider_message_updated_at(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                provider_message_updated_at_type_0 = isoparse(data)
+
+                return provider_message_updated_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        provider_message_updated_at = _parse_provider_message_updated_at(d.pop("provider_message_updated_at", UNSET))
+
         consumer_message = d.pop("consumer_message", UNSET)
 
         def _parse_consumer_message_attachment(data: object) -> Union[None, Unset, str]:
@@ -1380,6 +1484,23 @@ class OrderDetails:
             return cast(Union[None, Unset, str], data)
 
         consumer_message_attachment = _parse_consumer_message_attachment(d.pop("consumer_message_attachment", UNSET))
+
+        def _parse_consumer_message_updated_at(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                consumer_message_updated_at_type_0 = isoparse(data)
+
+                return consumer_message_updated_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        consumer_message_updated_at = _parse_consumer_message_updated_at(d.pop("consumer_message_updated_at", UNSET))
 
         consumer_rejection_comment = d.pop("consumer_rejection_comment", UNSET)
 
@@ -1492,7 +1613,10 @@ class OrderDetails:
             created_by_civil_number=created_by_civil_number,
             created_by_email=created_by_email,
             created_by_organization=created_by_organization,
+            created_by_organization_country=created_by_organization_country,
             created_by_organization_registry_code=created_by_organization_registry_code,
+            created_by_organization_vat_code=created_by_organization_vat_code,
+            created_by_organization_address=created_by_organization_address,
             customer_name=customer_name,
             customer_uuid=customer_uuid,
             customer_slug=customer_slug,
@@ -1515,8 +1639,10 @@ class OrderDetails:
             provider_message=provider_message,
             provider_message_url=provider_message_url,
             provider_message_attachment=provider_message_attachment,
+            provider_message_updated_at=provider_message_updated_at,
             consumer_message=consumer_message,
             consumer_message_attachment=consumer_message_attachment,
+            consumer_message_updated_at=consumer_message_updated_at,
             consumer_rejection_comment=consumer_rejection_comment,
             provider_rejection_comment=provider_rejection_comment,
             auto_approved=auto_approved,

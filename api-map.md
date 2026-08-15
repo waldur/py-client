@@ -13,9 +13,11 @@ Module: `waldur_api_client.api._matrix`
 ## access-subnets
 Module: `waldur_api_client.api.access_subnets`
 
-- `access_subnets_list` GET `/api/access-subnets/` — List access subnets (4 query params)
-- `access_subnets_count` HEAD `/api/access-subnets/` — List access subnets (4 query params)
+- `access_subnets_list` GET `/api/access-subnets/` — List access subnets (8 query params)
+- `access_subnets_count` HEAD `/api/access-subnets/` — List access subnets (8 query params)
 - `access_subnets_create` POST `/api/access-subnets/` — Create an access subnet (request body)
+- `access_subnets_resource_impact_retrieve` GET `/api/access-subnets/resource_impact/` — Show which resources the access subnets reach (2 query params)
+- `access_subnets_resource_impact_count` HEAD `/api/access-subnets/resource_impact/` — Show which resources the access subnets reach (2 query params)
 - `access_subnets_retrieve` GET `/api/access-subnets/{uuid}/` — Retrieve access subnet (path: uuid)
 - `access_subnets_update` PUT `/api/access-subnets/{uuid}/` — Update an access subnet (path: uuid | request body)
 - `access_subnets_partial_update` PATCH `/api/access-subnets/{uuid}/` — Partially update an access subnet (path: uuid | request body)
@@ -127,12 +129,13 @@ Module: `waldur_api_client.api.anonymous_chat_feedbacks`
 ## anonymous-chat-interactions
 Module: `waldur_api_client.api.anonymous_chat_interactions`
 
-- `anonymous_chat_interactions_list` GET `/api/anonymous-chat-interactions/` (8 query params)
+- `anonymous_chat_interactions_list` GET `/api/anonymous-chat-interactions/` (9 query params)
 - `anonymous_chat_interactions_budget_retrieve` GET `/api/anonymous-chat-interactions/budget/` — Today's global tenant budget snapshot (no params)
-- `anonymous_chat_interactions_by_session_list` GET `/api/anonymous-chat-interactions/by-session/{session_id}/` — Full transcript for one anonymous session (path: session_id | 8 query params)
-- `anonymous_chat_interactions_by_user_aggregate` GET `/api/anonymous-chat-interactions/by-user/` — Aggregate user list (no slug) (8 query params)
-- `anonymous_chat_interactions_by_user_list` GET `/api/anonymous-chat-interactions/by-user/{user_slug}/` — All sessions for one pseudonymous user (path: user_slug | 8 query params)
-- `anonymous_chat_interactions_kpi_retrieve` GET `/api/anonymous-chat-interactions/kpi/` — Aggregate KPI roll-up (no params)
+- `anonymous_chat_interactions_by_session_list` GET `/api/anonymous-chat-interactions/by-session/{session_id}/` — Full transcript for one anonymous session (path: session_id | 9 query params)
+- `anonymous_chat_interactions_by_user_aggregate` GET `/api/anonymous-chat-interactions/by-user/` — Aggregate user list (no slug) (9 query params)
+- `anonymous_chat_interactions_by_user_list` GET `/api/anonymous-chat-interactions/by-user/{user_slug}/` — All sessions for one pseudonymous user (path: user_slug | 9 query params)
+- `anonymous_chat_interactions_conversations_list` GET `/api/anonymous-chat-interactions/conversations/` — Conversations grouped by session (18 query params)
+- `anonymous_chat_interactions_kpi_retrieve` GET `/api/anonymous-chat-interactions/kpi/` — Aggregate KPI roll-up (18 query params)
 - `anonymous_chat_interactions_retrieve` GET `/api/anonymous-chat-interactions/{uuid}/` (path: uuid)
 
 ## api-auth
@@ -461,6 +464,7 @@ Module: `waldur_api_client.api.call_managing_organisations`
 - `call_managing_organisations_add_user` POST `/api/call-managing-organisations/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
 - `call_managing_organisations_delete_user` POST `/api/call-managing-organisations/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `call_managing_organisations_list_users_list` GET `/api/call-managing-organisations/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
+- `call_managing_organisations_list_users_count` HEAD `/api/call-managing-organisations/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `call_managing_organisations_stats_retrieve` GET `/api/call-managing-organisations/{uuid}/stats/` — Return statistics for call managing organisation (path: uuid)
 - `call_managing_organisations_update_user` POST `/api/call-managing-organisations/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 
@@ -539,7 +543,8 @@ Module: `waldur_api_client.api.chat_system_prompts`
 ## chat-threads
 Module: `waldur_api_client.api.chat_threads`
 
-- `chat_threads_list` GET `/api/chat-threads/` (17 query params)
+- `chat_threads_list` GET `/api/chat-threads/` (19 query params)
+- `chat_threads_stats_retrieve` GET `/api/chat-threads/stats/` — Get statistics for visible chat threads (18 query params)
 - `chat_threads_retrieve` GET `/api/chat-threads/{uuid}/` (path: uuid | 1 query param)
 - `chat_threads_archive` POST `/api/chat-threads/{uuid}/archive/` — Archive thread (path: uuid)
 - `chat_threads_cancel` POST `/api/chat-threads/{uuid}/cancel/` — Cancel active stream (path: uuid | request body)
@@ -638,6 +643,26 @@ Module: `waldur_api_client.api.conflicts_of_interest`
 - `conflicts_of_interest_recuse` POST `/api/conflicts-of-interest/{uuid}/recuse/` — Recuse reviewer from the proposal (path: uuid | request body)
 - `conflicts_of_interest_waive` POST `/api/conflicts-of-interest/{uuid}/waive/` — Waive a conflict with a management plan (path: uuid | request body)
 
+## credit-transactions
+Module: `waldur_api_client.api.credit_transactions`
+
+- `credit_transactions_list` GET `/api/credit-transactions/` (4 query params)
+- `credit_transactions_count` HEAD `/api/credit-transactions/` — Get number of items in the collection matching the request parameters (4 query params)
+- `credit_transactions_retrieve` GET `/api/credit-transactions/{uuid}/` (path: uuid)
+
+## customer-affiliates
+Module: `waldur_api_client.api.customer_affiliates`
+
+- `customer_affiliates_list` GET `/api/customer-affiliates/` (6 query params)
+- `customer_affiliates_count` HEAD `/api/customer-affiliates/` — Get number of items in the collection matching the request parameters (6 query params)
+- `customer_affiliates_create` POST `/api/customer-affiliates/` (request body)
+- `customer_affiliates_retrieve` GET `/api/customer-affiliates/{uuid}/` (path: uuid)
+- `customer_affiliates_update` PUT `/api/customer-affiliates/{uuid}/` (path: uuid | request body)
+- `customer_affiliates_partial_update` PATCH `/api/customer-affiliates/{uuid}/` (path: uuid | request body)
+- `customer_affiliates_destroy` DELETE `/api/customer-affiliates/{uuid}/` (path: uuid)
+- `customer_affiliates_accruals_list` GET `/api/customer-affiliates/{uuid}/accruals/` — List fees accrued from this affiliate link (path: uuid | 6 query params)
+- `customer_affiliates_earnings_retrieve` GET `/api/customer-affiliates/{uuid}/earnings/` — Earnings summary of this affiliate link: lifetime total, per-month series and the affiliate organization's withdrawable credit balance (path: uuid)
+
 ## customer-credits
 Module: `waldur_api_client.api.customer_credits`
 
@@ -648,6 +673,7 @@ Module: `waldur_api_client.api.customer_credits`
 - `customer_credits_update` PUT `/api/customer-credits/{uuid}/` (path: uuid | request body)
 - `customer_credits_partial_update` PATCH `/api/customer-credits/{uuid}/` (path: uuid | request body)
 - `customer_credits_destroy` DELETE `/api/customer-credits/{uuid}/` (path: uuid)
+- `customer_credits_adjust_withdrawable` POST `/api/customer-credits/{uuid}/adjust_withdrawable/` — Staff adjustment of the withdrawable part of the credit (path: uuid | request body)
 - `customer_credits_apply_compensations` POST `/api/customer-credits/{uuid}/apply_compensations/` (path: uuid)
 - `customer_credits_clear_compensations` POST `/api/customer-credits/{uuid}/clear_compensations/` (path: uuid)
 - `customer_credits_consumptions_list` GET `/api/customer-credits/{uuid}/consumptions/` — Get credit consumption history grouped by month (path: uuid | 5 query params)
@@ -666,19 +692,33 @@ Module: `waldur_api_client.api.customer_quotas`
 - `customer_quotas_list` GET `/api/customer-quotas/` — List customer quotas (1 query param)
 - `customer_quotas_count` HEAD `/api/customer-quotas/` — Get number of items in the collection matching the request parameters (1 query param)
 
+## customer-role-concealments
+Module: `waldur_api_client.api.customer_role_concealments`
+
+- `customer_role_concealments_list` GET `/api/customer-role-concealments/` (2 query params)
+- `customer_role_concealments_count` HEAD `/api/customer-role-concealments/` — Get number of items in the collection matching the request parameters (2 query params)
+- `customer_role_concealments_create` POST `/api/customer-role-concealments/` (request body)
+- `customer_role_concealments_retrieve` GET `/api/customer-role-concealments/{uuid}/` (path: uuid)
+- `customer_role_concealments_destroy` DELETE `/api/customer-role-concealments/{uuid}/` (path: uuid)
+
 ## customers
 Module: `waldur_api_client.api.customers`
 
-- `customers_list` GET `/api/customers/` — List customers (23 query params)
-- `customers_count` HEAD `/api/customers/` — List customers (22 query params)
+- `customers_list` GET `/api/customers/` — List customers (24 query params)
+- `customers_count` HEAD `/api/customers/` — List customers (23 query params)
 - `customers_create` POST `/api/customers/` — Create a new customer (request body)
-- `customers_countries_list` GET `/api/customers/countries/` — Get list of available countries (22 query params)
-- `customers_countries_count` HEAD `/api/customers/countries/` — Get list of available countries (22 query params)
+- `customers_countries_list` GET `/api/customers/countries/` — Get list of available countries (23 query params)
+- `customers_countries_count` HEAD `/api/customers/countries/` — Get list of available countries (23 query params)
 - `customers_project_metadata_compliance_details_list` GET `/api/customers/{customer_uuid}/project-metadata-compliance-details/` — Get detailed project metadata compliance (path: customer_uuid)
+- `customers_project_metadata_compliance_details_count` HEAD `/api/customers/{customer_uuid}/project-metadata-compliance-details/` — Get detailed project metadata compliance (path: customer_uuid)
 - `customers_project_metadata_compliance_overview_list` GET `/api/customers/{customer_uuid}/project-metadata-compliance-overview/` — Get project metadata compliance overview (path: customer_uuid)
+- `customers_project_metadata_compliance_overview_count` HEAD `/api/customers/{customer_uuid}/project-metadata-compliance-overview/` — Get project metadata compliance overview (path: customer_uuid)
 - `customers_project_metadata_compliance_projects_list` GET `/api/customers/{customer_uuid}/project-metadata-compliance-projects/` — List projects with compliance data (path: customer_uuid)
+- `customers_project_metadata_compliance_projects_count` HEAD `/api/customers/{customer_uuid}/project-metadata-compliance-projects/` — List projects with compliance data (path: customer_uuid)
 - `customers_project_metadata_question_answers_list` GET `/api/customers/{customer_uuid}/project-metadata-question-answers/` — List questions with project answers (path: customer_uuid)
+- `customers_project_metadata_question_answers_count` HEAD `/api/customers/{customer_uuid}/project-metadata-question-answers/` — List questions with project answers (path: customer_uuid)
 - `customers_users_list` GET `/api/customers/{customer_uuid}/users/` — List users of a customer (path: customer_uuid | 19 query params)
+- `customers_users_count` HEAD `/api/customers/{customer_uuid}/users/` — List users of a customer (path: customer_uuid | 18 query params)
 - `customers_retrieve` GET `/api/customers/{uuid}/` — Retrieve customer details (path: uuid | 1 query param)
 - `customers_update` PUT `/api/customers/{uuid}/` — Update a customer (path: uuid | request body)
 - `customers_partial_update` PATCH `/api/customers/{uuid}/` — Partially update a customer (path: uuid | request body)
@@ -686,9 +726,10 @@ Module: `waldur_api_client.api.customers`
 - `customers_add_user` POST `/api/customers/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
 - `customers_contact` POST `/api/customers/{uuid}/contact/` — Update customer contact details (path: uuid | request body)
 - `customers_delete_user` POST `/api/customers/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
-- `customers_history_list` GET `/api/customers/{uuid}/history/` — Get version history (path: uuid | 24 query params)
+- `customers_history_list` GET `/api/customers/{uuid}/history/` — Get version history (path: uuid | 25 query params)
 - `customers_history_at_retrieve` GET `/api/customers/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 - `customers_list_users_list` GET `/api/customers/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
+- `customers_list_users_count` HEAD `/api/customers/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `customers_project_digest_config_retrieve` GET `/api/customers/{uuid}/project-digest-config/` — Get project digest configuration (path: uuid)
 - `customers_project_digest_config_preview` POST `/api/customers/{uuid}/project-digest-config/preview/` — Preview digest for a project (path: uuid | request body)
 - `customers_project_digest_config_send_test` POST `/api/customers/{uuid}/project-digest-config/send-test/` — Send a test digest email (path: uuid)
@@ -776,12 +817,20 @@ Module: `waldur_api_client.api.email_logs`
 - `email_logs_count` HEAD `/api/email-logs/` — Get number of items in the collection matching the request parameters (5 query params)
 - `email_logs_retrieve` GET `/api/email-logs/{uuid}/` (path: uuid)
 
+## event-consumers
+Module: `waldur_api_client.api.event_consumers`
+
+- `event_consumers_list` GET `/api/event-consumers/` (no params)
+- `event_consumers_count` HEAD `/api/event-consumers/` — Get number of items in the collection matching the request parameters (no params)
+- `event_consumers_register` POST `/api/event-consumers/register/` — Register (or refresh) an event-consumer queue for the calling user (request body)
+- `event_consumers_destroy` DELETE `/api/event-consumers/{uuid}/` (path: uuid)
+
 ## event-subscription-queues
 Module: `waldur_api_client.api.event_subscription_queues`
 
 - `event_subscription_queues_list` GET `/api/event-subscription-queues/` (4 query params)
 - `event_subscription_queues_count` HEAD `/api/event-subscription-queues/` — Get number of items in the collection matching the request parameters (4 query params)
-- `event_subscription_queues_retrieve` GET `/api/event-subscription-queues/{uuid}/` (path: uuid)
+- `event_subscription_queues_retrieve` GET `/api/event-subscription-queues/{uuid}/` — DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/) (path: uuid)
 - `event_subscription_queues_destroy` DELETE `/api/event-subscription-queues/{uuid}/` (path: uuid)
 
 ## event-subscriptions
@@ -789,7 +838,7 @@ Module: `waldur_api_client.api.event_subscriptions`
 
 - `event_subscriptions_list` GET `/api/event-subscriptions/` (3 query params)
 - `event_subscriptions_count` HEAD `/api/event-subscriptions/` — Get number of items in the collection matching the request parameters (3 query params)
-- `event_subscriptions_create` POST `/api/event-subscriptions/` (request body)
+- `event_subscriptions_create` POST `/api/event-subscriptions/` — DEPRECATED: superseded by the unified EventConsumer path (POST /api/event-consumers/register/) (request body)
 - `event_subscriptions_retrieve` GET `/api/event-subscriptions/{uuid}/` (path: uuid)
 - `event_subscriptions_destroy` DELETE `/api/event-subscriptions/{uuid}/` (path: uuid)
 - `event_subscriptions_create_queue` POST `/api/event-subscriptions/{uuid}/create_queue/` — Create a RabbitMQ queue for receiving events for a specific offering and object type (path: uuid | request body)
@@ -797,8 +846,8 @@ Module: `waldur_api_client.api.event_subscriptions`
 ## events
 Module: `waldur_api_client.api.events`
 
-- `events_list` GET `/api/events/` (11 query params)
-- `events_count` HEAD `/api/events/` — Get number of items in the collection matching the request parameters (10 query params)
+- `events_list` GET `/api/events/` (14 query params)
+- `events_count` HEAD `/api/events/` — Get number of items in the collection matching the request parameters (13 query params)
 - `events_count_retrieve` GET `/api/events/count/` (no params)
 - `events_count_count` HEAD `/api/events/count/` — Get number of items in the collection matching the request parameters (no params)
 - `events_event_groups_retrieve` GET `/api/events/event_groups/` — Returns a list of groups with event types (no params)
@@ -810,8 +859,8 @@ Module: `waldur_api_client.api.events`
 ## events-stats
 Module: `waldur_api_client.api.events_stats`
 
-- `events_stats_list` GET `/api/events-stats/` (3 query params)
-- `events_stats_count` HEAD `/api/events-stats/` — Get number of items in the collection matching the request parameters (3 query params)
+- `events_stats_list` GET `/api/events-stats/` (4 query params)
+- `events_stats_count` HEAD `/api/events-stats/` — Get number of items in the collection matching the request parameters (4 query params)
 
 ## expertise-categories
 Module: `waldur_api_client.api.expertise_categories`
@@ -839,8 +888,8 @@ Module: `waldur_api_client.api.feature_values`
 ## financial-reports
 Module: `waldur_api_client.api.financial_reports`
 
-- `financial_reports_list` GET `/api/financial-reports/` (20 query params)
-- `financial_reports_count` HEAD `/api/financial-reports/` — Get number of items in the collection matching the request parameters (20 query params)
+- `financial_reports_list` GET `/api/financial-reports/` (21 query params)
+- `financial_reports_count` HEAD `/api/financial-reports/` — Get number of items in the collection matching the request parameters (21 query params)
 - `financial_reports_retrieve` GET `/api/financial-reports/{uuid}/` (path: uuid)
 
 ## freeipa-profiles
@@ -863,6 +912,16 @@ Module: `waldur_api_client.api.google_auth`
 - `google_auth_callback_count` HEAD `/api/google-auth/callback/` — Get number of items in the collection matching the request parameters (2 query params)
 - `google_auth_retrieve` GET `/api/google-auth/{uuid}/` (path: uuid | 1 query param)
 - `google_auth_authorize_retrieve` GET `/api/google-auth/{uuid}/authorize/` (path: uuid)
+
+## helpdesk-health
+Module: `waldur_api_client.api.helpdesk_health`
+
+- `helpdesk_health_list` GET `/api/helpdesk-health/` (no params)
+
+## helpdesk-stats
+Module: `waldur_api_client.api.helpdesk_stats`
+
+- `helpdesk_stats_retrieve` GET `/api/helpdesk-stats/` (no params)
 
 ## hooks
 Module: `waldur_api_client.api.hooks`
@@ -927,8 +986,8 @@ Module: `waldur_api_client.api.invoice_items`
 - `invoice_items_costs_count` HEAD `/api/invoice-items/costs/` — Get number of items in the collection matching the request parameters (1 query param)
 - `invoice_items_customer_costs_for_period_retrieve` GET `/api/invoice-items/customer_costs_for_period/` (2 query params)
 - `invoice_items_customer_costs_for_period_count` HEAD `/api/invoice-items/customer_costs_for_period/` — Get number of items in the collection matching the request parameters (2 query params)
-- `invoice_items_project_costs_for_period_retrieve` GET `/api/invoice-items/project_costs_for_period/` — Get resource cost breakdown for a project over a specified period (2 query params)
-- `invoice_items_project_costs_for_period_count` HEAD `/api/invoice-items/project_costs_for_period/` — Get number of items in the collection matching the request parameters (2 query params)
+- `invoice_items_project_costs_for_period_retrieve` GET `/api/invoice-items/project_costs_for_period/` — Get resource cost breakdown for a project over a specified period (3 query params)
+- `invoice_items_project_costs_for_period_count` HEAD `/api/invoice-items/project_costs_for_period/` — Get number of items in the collection matching the request parameters (3 query params)
 - `invoice_items_total_price_retrieve` GET `/api/invoice-items/total_price/` — Calculate total price for filtered invoice items (9 query params)
 - `invoice_items_total_price_count` HEAD `/api/invoice-items/total_price/` — Get number of items in the collection matching the request parameters (9 query params)
 - `invoice_items_retrieve` GET `/api/invoice-items/{uuid}/` (path: uuid)
@@ -1023,8 +1082,8 @@ Module: `waldur_api_client.api.maintenance_announcement_template_offerings`
 ## maintenance-announcements
 Module: `waldur_api_client.api.maintenance_announcements`
 
-- `maintenance_announcements_list` GET `/api/maintenance-announcements/` — List maintenance announcements (8 query params)
-- `maintenance_announcements_count` HEAD `/api/maintenance-announcements/` — List maintenance announcements (8 query params)
+- `maintenance_announcements_list` GET `/api/maintenance-announcements/` — List maintenance announcements (9 query params)
+- `maintenance_announcements_count` HEAD `/api/maintenance-announcements/` — List maintenance announcements (9 query params)
 - `maintenance_announcements_create` POST `/api/maintenance-announcements/` — Create a maintenance announcement (request body)
 - `maintenance_announcements_maintenance_stats_retrieve` GET `/api/maintenance-announcements/maintenance_stats/` — Get maintenance announcement statistics (3 query params)
 - `maintenance_announcements_maintenance_stats_count` HEAD `/api/maintenance-announcements/maintenance_stats/` — Get maintenance announcement statistics (3 query params)
@@ -1093,8 +1152,8 @@ Module: `waldur_api_client.api.marketplace_bookings`
 ## marketplace-categories
 Module: `waldur_api_client.api.marketplace_categories`
 
-- `marketplace_categories_list` GET `/api/marketplace-categories/` — List categories (10 query params)
-- `marketplace_categories_count` HEAD `/api/marketplace-categories/` — List categories (9 query params)
+- `marketplace_categories_list` GET `/api/marketplace-categories/` — List categories (11 query params)
+- `marketplace_categories_count` HEAD `/api/marketplace-categories/` — List categories (10 query params)
 - `marketplace_categories_create` POST `/api/marketplace-categories/` — Create a category (request body)
 - `marketplace_categories_retrieve` GET `/api/marketplace-categories/{uuid}/` — Retrieve a category (path: uuid | 1 query param)
 - `marketplace_categories_update` PUT `/api/marketplace-categories/{uuid}/` — Update a category (path: uuid | request body)
@@ -1259,6 +1318,17 @@ Module: `waldur_api_client.api.marketplace_integration_statuses`
 - `marketplace_integration_statuses_count` HEAD `/api/marketplace-integration-statuses/` — List integration statuses (8 query params)
 - `marketplace_integration_statuses_retrieve` GET `/api/marketplace-integration-statuses/{uuid}/` — Retrieve an integration status (path: uuid)
 
+## marketplace-offering-access-subnets
+Module: `waldur_api_client.api.marketplace_offering_access_subnets`
+
+- `marketplace_offering_access_subnets_list` GET `/api/marketplace-offering-access-subnets/` — List resources (4 query params)
+- `marketplace_offering_access_subnets_count` HEAD `/api/marketplace-offering-access-subnets/` — List resources (4 query params)
+- `marketplace_offering_access_subnets_create` POST `/api/marketplace-offering-access-subnets/` (request body)
+- `marketplace_offering_access_subnets_retrieve` GET `/api/marketplace-offering-access-subnets/{uuid}/` — Retrieve a resource (path: uuid)
+- `marketplace_offering_access_subnets_update` PUT `/api/marketplace-offering-access-subnets/{uuid}/` — Update a resource (path: uuid | request body)
+- `marketplace_offering_access_subnets_partial_update` PATCH `/api/marketplace-offering-access-subnets/{uuid}/` — Partially update a resource (path: uuid | request body)
+- `marketplace_offering_access_subnets_destroy` DELETE `/api/marketplace-offering-access-subnets/{uuid}/` (path: uuid)
+
 ## marketplace-offering-estimated-cost-policies
 Module: `waldur_api_client.api.marketplace_offering_estimated_cost_policies`
 
@@ -1295,15 +1365,15 @@ Module: `waldur_api_client.api.marketplace_offering_groups`
 ## marketplace-offering-permissions
 Module: `waldur_api_client.api.marketplace_offering_permissions`
 
-- `marketplace_offering_permissions_list` GET `/api/marketplace-offering-permissions/` (18 query params)
-- `marketplace_offering_permissions_count` HEAD `/api/marketplace-offering-permissions/` — Get number of items in the collection matching the request parameters (18 query params)
+- `marketplace_offering_permissions_list` GET `/api/marketplace-offering-permissions/` (20 query params)
+- `marketplace_offering_permissions_count` HEAD `/api/marketplace-offering-permissions/` — Get number of items in the collection matching the request parameters (20 query params)
 - `marketplace_offering_permissions_retrieve` GET `/api/marketplace-offering-permissions/{id}/` (path: id)
 
 ## marketplace-offering-permissions-log
 Module: `waldur_api_client.api.marketplace_offering_permissions_log`
 
-- `marketplace_offering_permissions_log_list` GET `/api/marketplace-offering-permissions-log/` (18 query params)
-- `marketplace_offering_permissions_log_count` HEAD `/api/marketplace-offering-permissions-log/` — Get number of items in the collection matching the request parameters (18 query params)
+- `marketplace_offering_permissions_log_list` GET `/api/marketplace-offering-permissions-log/` (20 query params)
+- `marketplace_offering_permissions_log_count` HEAD `/api/marketplace-offering-permissions-log/` — Get number of items in the collection matching the request parameters (20 query params)
 - `marketplace_offering_permissions_log_retrieve` GET `/api/marketplace-offering-permissions-log/{id}/` (path: id)
 
 ## marketplace-offering-profiles
@@ -1376,6 +1446,8 @@ Module: `waldur_api_client.api.marketplace_offering_users`
 - `marketplace_offering_users_create` POST `/api/marketplace-offering-users/` — Create an offering user (request body)
 - `marketplace_offering_users_checklist_template_retrieve` GET `/api/marketplace-offering-users/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `marketplace_offering_users_checklist_template_count` HEAD `/api/marketplace-offering-users/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
+- `marketplace_offering_users_posix_identities_list` GET `/api/marketplace-offering-users/posix_identities/` — List a user's POSIX identities across all their offerings (19 query params)
+- `marketplace_offering_users_posix_identities_count` HEAD `/api/marketplace-offering-users/posix_identities/` — List a user's POSIX identities across all their offerings (19 query params)
 - `marketplace_offering_users_profile_field_warnings_retrieve` GET `/api/marketplace-offering-users/profile_field_warnings/` — Get profile field warnings (no params)
 - `marketplace_offering_users_profile_field_warnings_count` HEAD `/api/marketplace-offering-users/profile_field_warnings/` — Get profile field warnings (no params)
 - `marketplace_offering_users_retrieve` GET `/api/marketplace-offering-users/{uuid}/` — Retrieve an offering user (path: uuid | 1 query param)
@@ -1387,6 +1459,8 @@ Module: `waldur_api_client.api.marketplace_offering_users`
 - `marketplace_offering_users_checklist_review_retrieve` GET `/api/marketplace-offering-users/{uuid}/checklist_review/` — Get checklist with questions and existing answers including review logic (reviewers only) (path: uuid)
 - `marketplace_offering_users_completion_review_status_retrieve` GET `/api/marketplace-offering-users/{uuid}/completion_review_status/` — Get checklist completion status with review triggers (reviewers only) (path: uuid)
 - `marketplace_offering_users_completion_status_retrieve` GET `/api/marketplace-offering-users/{uuid}/completion_status/` — Get checklist completion status (path: uuid)
+- `marketplace_offering_users_posix_allocations_list` GET `/api/marketplace-offering-users/{uuid}/posix_allocations/` — List POSIX UID/GID allocations of an offering user (path: uuid | 19 query params)
+- `marketplace_offering_users_posix_groups_list` GET `/api/marketplace-offering-users/{uuid}/posix_groups/` — List project group GIDs an offering user belongs to (path: uuid | 19 query params)
 - `marketplace_offering_users_request_deletion` POST `/api/marketplace-offering-users/{uuid}/request_deletion/` — Request deletion of an offering user (path: uuid)
 - `marketplace_offering_users_set_deleted` POST `/api/marketplace-offering-users/{uuid}/set_deleted/` — Set state to Deleted (path: uuid)
 - `marketplace_offering_users_set_deleting` POST `/api/marketplace-offering-users/{uuid}/set_deleting/` — Begin deletion process (path: uuid)
@@ -1395,11 +1469,19 @@ Module: `waldur_api_client.api.marketplace_offering_users`
 - `marketplace_offering_users_set_ok` POST `/api/marketplace-offering-users/{uuid}/set_ok/` — Set state to OK (path: uuid)
 - `marketplace_offering_users_set_pending_account_linking` POST `/api/marketplace-offering-users/{uuid}/set_pending_account_linking/` — Set state to Pending Account Linking (path: uuid | request body)
 - `marketplace_offering_users_set_pending_additional_validation` POST `/api/marketplace-offering-users/{uuid}/set_pending_additional_validation/` — Set state to Pending Additional Validation (path: uuid | request body)
+- `marketplace_offering_users_set_posix_attributes` POST `/api/marketplace-offering-users/{uuid}/set_posix_attributes/` — Set POSIX attributes for an offering user (path: uuid | request body)
 - `marketplace_offering_users_set_validation_complete` POST `/api/marketplace-offering-users/{uuid}/set_validation_complete/` — Set state to Validation Complete (path: uuid)
 - `marketplace_offering_users_submit_answers` POST `/api/marketplace-offering-users/{uuid}/submit_answers/` — Submit checklist answers (path: uuid | request body)
 - `marketplace_offering_users_update_comments_partial_update` PATCH `/api/marketplace-offering-users/{uuid}/update_comments/` — Update service provider comments (path: uuid | request body)
 - `marketplace_offering_users_update_restricted` POST `/api/marketplace-offering-users/{uuid}/update_restricted/` — Update restriction status (path: uuid | request body)
 - `marketplace_offering_users_update_runtime_state` POST `/api/marketplace-offering-users/{uuid}/update_runtime_state/` — Update runtime state (path: uuid | request body)
+
+## marketplace-openstack-duplicate-offerings
+Module: `waldur_api_client.api.marketplace_openstack_duplicate_offerings`
+
+- `marketplace_openstack_duplicate_offerings_list` GET `/api/marketplace-openstack-duplicate-offerings/` (no params)
+- `marketplace_openstack_duplicate_offerings_count` HEAD `/api/marketplace-openstack-duplicate-offerings/` — Get number of items in the collection matching the request parameters (no params)
+- `marketplace_openstack_duplicate_offerings_remediate` POST `/api/marketplace-openstack-duplicate-offerings/remediate/` — Collapse one duplicate per-tenant offering group onto its keeper (request body)
 
 ## marketplace-orders
 Module: `waldur_api_client.api.marketplace_orders`
@@ -1462,11 +1544,30 @@ Module: `waldur_api_client.api.marketplace_plugins`
 
 - `marketplace_plugins_list` GET `/api/marketplace-plugins/` — List available marketplace plugins and their components (no params)
 
+## marketplace-posix-id-pools
+Module: `waldur_api_client.api.marketplace_posix_id_pools`
+
+- `marketplace_posix_id_pools_list` GET `/api/marketplace-posix-id-pools/` (4 query params)
+- `marketplace_posix_id_pools_count` HEAD `/api/marketplace-posix-id-pools/` — Get number of items in the collection matching the request parameters (3 query params)
+- `marketplace_posix_id_pools_create` POST `/api/marketplace-posix-id-pools/` (request body)
+- `marketplace_posix_id_pools_retrieve` GET `/api/marketplace-posix-id-pools/{uuid}/` (path: uuid | 1 query param)
+- `marketplace_posix_id_pools_update` PUT `/api/marketplace-posix-id-pools/{uuid}/` (path: uuid | request body)
+- `marketplace_posix_id_pools_partial_update` PATCH `/api/marketplace-posix-id-pools/{uuid}/` (path: uuid | request body)
+- `marketplace_posix_id_pools_destroy` DELETE `/api/marketplace-posix-id-pools/{uuid}/` (path: uuid)
+- `marketplace_posix_id_pools_stats_retrieve` GET `/api/marketplace-posix-id-pools/{uuid}/stats/` — Pool utilization statistics (path: uuid)
+
+## marketplace-posix-identities
+Module: `waldur_api_client.api.marketplace_posix_identities`
+
+- `marketplace_posix_identities_list` GET `/api/marketplace-posix-identities/` (3 query params)
+- `marketplace_posix_identities_count` HEAD `/api/marketplace-posix-identities/` — Get number of items in the collection matching the request parameters (3 query params)
+- `marketplace_posix_identities_retrieve` GET `/api/marketplace-posix-identities/{uuid}/` (path: uuid)
+
 ## marketplace-project-estimated-cost-policies
 Module: `waldur_api_client.api.marketplace_project_estimated_cost_policies`
 
-- `marketplace_project_estimated_cost_policies_list` GET `/api/marketplace-project-estimated-cost-policies/` (7 query params)
-- `marketplace_project_estimated_cost_policies_count` HEAD `/api/marketplace-project-estimated-cost-policies/` — Get number of items in the collection matching the request parameters (7 query params)
+- `marketplace_project_estimated_cost_policies_list` GET `/api/marketplace-project-estimated-cost-policies/` (10 query params)
+- `marketplace_project_estimated_cost_policies_count` HEAD `/api/marketplace-project-estimated-cost-policies/` — Get number of items in the collection matching the request parameters (10 query params)
 - `marketplace_project_estimated_cost_policies_create` POST `/api/marketplace-project-estimated-cost-policies/` (request body)
 - `marketplace_project_estimated_cost_policies_actions_retrieve` GET `/api/marketplace-project-estimated-cost-policies/actions/` (no params)
 - `marketplace_project_estimated_cost_policies_actions_count` HEAD `/api/marketplace-project-estimated-cost-policies/actions/` — Get number of items in the collection matching the request parameters (no params)
@@ -1485,6 +1586,12 @@ Module: `waldur_api_client.api.marketplace_project_order_auto_approvals`
 - `marketplace_project_order_auto_approvals_update` PUT `/api/marketplace-project-order-auto-approvals/{uuid}/` (path: uuid | request body)
 - `marketplace_project_order_auto_approvals_partial_update` PATCH `/api/marketplace-project-order-auto-approvals/{uuid}/` (path: uuid | request body)
 - `marketplace_project_order_auto_approvals_destroy` DELETE `/api/marketplace-project-order-auto-approvals/{uuid}/` (path: uuid)
+
+## marketplace-project-posix-groups
+Module: `waldur_api_client.api.marketplace_project_posix_groups`
+
+- `marketplace_project_posix_groups_list` GET `/api/marketplace-project-posix-groups/` — List POSIX group GIDs assigned to a project (1 query param)
+- `marketplace_project_posix_groups_count` HEAD `/api/marketplace-project-posix-groups/` — List POSIX group GIDs assigned to a project (1 query param)
 
 ## marketplace-project-service-accounts
 Module: `waldur_api_client.api.marketplace_project_service_accounts`
@@ -1516,25 +1623,29 @@ Module: `waldur_api_client.api.marketplace_project_usage`
 ## marketplace-provider-offerings
 Module: `waldur_api_client.api.marketplace_provider_offerings`
 
-- `marketplace_provider_offerings_list` GET `/api/marketplace-provider-offerings/` — List provider offerings (42 query params)
-- `marketplace_provider_offerings_count` HEAD `/api/marketplace-provider-offerings/` — List provider offerings (41 query params)
+- `marketplace_provider_offerings_list` GET `/api/marketplace-provider-offerings/` — List provider offerings (45 query params)
+- `marketplace_provider_offerings_count` HEAD `/api/marketplace-provider-offerings/` — List provider offerings (44 query params)
 - `marketplace_provider_offerings_create` POST `/api/marketplace-provider-offerings/` — Create a provider offering (request body)
-- `marketplace_provider_offerings_groups_list` GET `/api/marketplace-provider-offerings/groups/` — List offerings grouped by provider (40 query params)
-- `marketplace_provider_offerings_groups_count` HEAD `/api/marketplace-provider-offerings/groups/` — List offerings grouped by provider (40 query params)
+- `marketplace_provider_offerings_aggregated_access_subnets_retrieve` GET `/api/marketplace-provider-offerings/aggregated_access_subnets/` — Aggregate access subnets across offerings (2 query params)
+- `marketplace_provider_offerings_aggregated_access_subnets_count` HEAD `/api/marketplace-provider-offerings/aggregated_access_subnets/` — Aggregate access subnets across offerings (2 query params)
+- `marketplace_provider_offerings_groups_list` GET `/api/marketplace-provider-offerings/groups/` — List offerings grouped by provider (43 query params)
+- `marketplace_provider_offerings_groups_count` HEAD `/api/marketplace-provider-offerings/groups/` — List offerings grouped by provider (43 query params)
 - `marketplace_provider_offerings_import_offering` POST `/api/marketplace-provider-offerings/import_offering/` — Import offering data (request body)
 - `marketplace_provider_offerings_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/` — Retrieve a provider offering (path: uuid | 1 query param)
 - `marketplace_provider_offerings_destroy` DELETE `/api/marketplace-provider-offerings/{uuid}/` — Delete a provider offering (path: uuid)
+- `marketplace_provider_offerings_access_subnets_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/access_subnets/` — List access subnets for an offering (path: uuid)
 - `marketplace_provider_offerings_activate` POST `/api/marketplace-provider-offerings/{uuid}/activate/` — Activate an offering (path: uuid)
 - `marketplace_provider_offerings_add_endpoint` POST `/api/marketplace-provider-offerings/{uuid}/add_endpoint/` — Add an access endpoint to an offering (path: uuid | request body)
 - `marketplace_provider_offerings_add_partition` POST `/api/marketplace-provider-offerings/{uuid}/add_partition/` — Add a partition to an offering (path: uuid | request body)
+- `marketplace_provider_offerings_add_qos` POST `/api/marketplace-provider-offerings/{uuid}/add_qos/` — Add a QoS profile to an offering (path: uuid | request body)
 - `marketplace_provider_offerings_add_software_catalog` POST `/api/marketplace-provider-offerings/{uuid}/add_software_catalog/` — Add a software catalog to an offering (path: uuid | request body)
 - `marketplace_provider_offerings_add_user` POST `/api/marketplace-provider-offerings/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
 - `marketplace_provider_offerings_archive` POST `/api/marketplace-provider-offerings/{uuid}/archive/` — Archive an offering (path: uuid)
 - `marketplace_provider_offerings_check_unique_backend_id` POST `/api/marketplace-provider-offerings/{uuid}/check_unique_backend_id/` — Check if backend_id is unique (path: uuid | request body)
-- `marketplace_provider_offerings_component_stats_list` GET `/api/marketplace-provider-offerings/{uuid}/component_stats/` — Get statistics for offering components (path: uuid | 43 query params)
-- `marketplace_provider_offerings_costs_list` GET `/api/marketplace-provider-offerings/{uuid}/costs/` — Get costs for an offering (path: uuid | 44 query params)
+- `marketplace_provider_offerings_component_stats_list` GET `/api/marketplace-provider-offerings/{uuid}/component_stats/` — Get statistics for offering components (path: uuid | 46 query params)
+- `marketplace_provider_offerings_costs_list` GET `/api/marketplace-provider-offerings/{uuid}/costs/` — Get costs for an offering (path: uuid | 47 query params)
 - `marketplace_provider_offerings_create_offering_component` POST `/api/marketplace-provider-offerings/{uuid}/create_offering_component/` — Create an offering component (path: uuid | request body)
-- `marketplace_provider_offerings_customers_list` GET `/api/marketplace-provider-offerings/{uuid}/customers/` — Get customers for an offering (path: uuid | 42 query params)
+- `marketplace_provider_offerings_customers_list` GET `/api/marketplace-provider-offerings/{uuid}/customers/` — Get customers for an offering (path: uuid | 45 query params)
 - `marketplace_provider_offerings_delete_user_attribute_config_destroy` DELETE `/api/marketplace-provider-offerings/{uuid}/delete-user-attribute-config/` — Delete user attribute config (path: uuid)
 - `marketplace_provider_offerings_delete_endpoint` POST `/api/marketplace-provider-offerings/{uuid}/delete_endpoint/` — Delete an access endpoint from an offering (path: uuid | request body)
 - `marketplace_provider_offerings_delete_image` POST `/api/marketplace-provider-offerings/{uuid}/delete_image/` — Delete offering image (path: uuid)
@@ -1543,19 +1654,21 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_delete_thumbnail` POST `/api/marketplace-provider-offerings/{uuid}/delete_thumbnail/` — Delete offering thumbnail (path: uuid)
 - `marketplace_provider_offerings_delete_user` POST `/api/marketplace-provider-offerings/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `marketplace_provider_offerings_draft` POST `/api/marketplace-provider-offerings/{uuid}/draft/` — Move an offering to draft (path: uuid)
+- `marketplace_provider_offerings_effective_posix_id_pool_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/effective_posix_id_pool/` — Effective POSIX ID pool (path: uuid | 1 query param)
 - `marketplace_provider_offerings_export_offering` POST `/api/marketplace-provider-offerings/{uuid}/export_offering/` — Export offering data (path: uuid | request body)
 - `marketplace_provider_offerings_glauth_tree_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/glauth_tree/` — Get structured GLauth tree for an offering (path: uuid)
 - `marketplace_provider_offerings_glauth_users_config_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/glauth_users_config/` — Get GLauth user configuration (path: uuid)
-- `marketplace_provider_offerings_history_list` GET `/api/marketplace-provider-offerings/{uuid}/history/` — Get version history (path: uuid | 42 query params)
+- `marketplace_provider_offerings_history_list` GET `/api/marketplace-provider-offerings/{uuid}/history/` — Get version history (path: uuid | 45 query params)
 - `marketplace_provider_offerings_history_at_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 - `marketplace_provider_offerings_import_resource` POST `/api/marketplace-provider-offerings/{uuid}/import_resource/` — Import a resource (path: uuid | request body)
 - `marketplace_provider_offerings_importable_resources_list` GET `/api/marketplace-provider-offerings/{uuid}/importable_resources/` — List importable resources (path: uuid)
-- `marketplace_provider_offerings_list_course_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_course_accounts/` — List course accounts for an offering (path: uuid | 41 query params)
+- `marketplace_provider_offerings_list_course_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_course_accounts/` — List course accounts for an offering (path: uuid | 44 query params)
 - `marketplace_provider_offerings_list_customer_projects_list` GET `/api/marketplace-provider-offerings/{uuid}/list_customer_projects/` — List customer projects for an offering (path: uuid | 1 query param)
-- `marketplace_provider_offerings_list_customer_service_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_customer_service_accounts/` — List customer service accounts for an offering (path: uuid | 41 query params)
+- `marketplace_provider_offerings_list_customer_service_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_customer_service_accounts/` — List customer service accounts for an offering (path: uuid | 44 query params)
 - `marketplace_provider_offerings_list_customer_users_list` GET `/api/marketplace-provider-offerings/{uuid}/list_customer_users/` — List customer users for an offering (path: uuid | 1 query param)
-- `marketplace_provider_offerings_list_project_service_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_project_service_accounts/` — List project service accounts for an offering (path: uuid | 41 query params)
+- `marketplace_provider_offerings_list_project_service_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_project_service_accounts/` — List project service accounts for an offering (path: uuid | 44 query params)
 - `marketplace_provider_offerings_list_users_list` GET `/api/marketplace-provider-offerings/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
+- `marketplace_provider_offerings_list_users_count` HEAD `/api/marketplace-provider-offerings/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `marketplace_provider_offerings_make_available` POST `/api/marketplace-provider-offerings/{uuid}/make_available/` — Mark an offering as available (path: uuid)
 - `marketplace_provider_offerings_make_unavailable` POST `/api/marketplace-provider-offerings/{uuid}/make_unavailable/` — Mark an offering as unavailable (path: uuid)
 - `marketplace_provider_offerings_move_offering` POST `/api/marketplace-provider-offerings/{uuid}/move_offering/` — Move an offering (path: uuid | request body)
@@ -1565,9 +1678,11 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_refresh_offering_usernames` POST `/api/marketplace-provider-offerings/{uuid}/refresh_offering_usernames/` — Refresh offering user usernames (path: uuid)
 - `marketplace_provider_offerings_remove_offering_component` POST `/api/marketplace-provider-offerings/{uuid}/remove_offering_component/` — Remove an offering component (path: uuid | request body)
 - `marketplace_provider_offerings_remove_partition` POST `/api/marketplace-provider-offerings/{uuid}/remove_partition/` — Remove a partition from an offering (path: uuid | request body)
+- `marketplace_provider_offerings_remove_qos` POST `/api/marketplace-provider-offerings/{uuid}/remove_qos/` — Remove a QoS profile from an offering (path: uuid | request body)
 - `marketplace_provider_offerings_remove_software_catalog` POST `/api/marketplace-provider-offerings/{uuid}/remove_software_catalog/` — Remove a software catalog from an offering (path: uuid | request body)
 - `marketplace_provider_offerings_set_backend_metadata` POST `/api/marketplace-provider-offerings/{uuid}/set_backend_metadata/` — Set offering backend metadata (path: uuid | request body)
 - `marketplace_provider_offerings_set_offering_group` POST `/api/marketplace-provider-offerings/{uuid}/set_offering_group/` — Assign or clear the offering group (path: uuid | request body)
+- `marketplace_provider_offerings_set_partition_qos` POST `/api/marketplace-provider-offerings/{uuid}/set_partition_qos/` — Set the QoS allow-list of a partition (path: uuid | request body)
 - `marketplace_provider_offerings_set_profile` POST `/api/marketplace-provider-offerings/{uuid}/set_profile/` — Bind / unbind offering to a service profile (path: uuid | request body)
 - `marketplace_provider_offerings_state_counters_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/state_counters/` — Get offering resource and user state counters (path: uuid)
 - `marketplace_provider_offerings_stats_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/stats/` — Get offering statistics (path: uuid)
@@ -1591,6 +1706,7 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_update_organization_groups` POST `/api/marketplace-provider-offerings/{uuid}/update_organization_groups/` — Update organization groups for offering (path: uuid | request body)
 - `marketplace_provider_offerings_update_overview` POST `/api/marketplace-provider-offerings/{uuid}/update_overview/` — Update offering overview (path: uuid | request body)
 - `marketplace_provider_offerings_update_partition_partial_update` PATCH `/api/marketplace-provider-offerings/{uuid}/update_partition/` — Update a partition of an offering (path: uuid | request body)
+- `marketplace_provider_offerings_update_qos_partial_update` PATCH `/api/marketplace-provider-offerings/{uuid}/update_qos/` — Update a QoS profile of an offering (path: uuid | request body)
 - `marketplace_provider_offerings_update_resource_options` POST `/api/marketplace-provider-offerings/{uuid}/update_resource_options/` — Update offering resource options (path: uuid | request body)
 - `marketplace_provider_offerings_update_software_catalog_partial_update` PATCH `/api/marketplace-provider-offerings/{uuid}/update_software_catalog/` — Update software catalog configuration (path: uuid | request body)
 - `marketplace_provider_offerings_update_tags` POST `/api/marketplace-provider-offerings/{uuid}/update_tags/` — Update tags for offering (path: uuid | request body)
@@ -1612,6 +1728,7 @@ Module: `waldur_api_client.api.marketplace_provider_resource_projects`
 - `marketplace_provider_resource_projects_add_user` POST `/api/marketplace-provider-resource-projects/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
 - `marketplace_provider_resource_projects_delete_user` POST `/api/marketplace-provider-resource-projects/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `marketplace_provider_resource_projects_list_users_list` GET `/api/marketplace-provider-resource-projects/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
+- `marketplace_provider_resource_projects_list_users_count` HEAD `/api/marketplace-provider-resource-projects/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `marketplace_provider_resource_projects_set_backend_id` POST `/api/marketplace-provider-resource-projects/{uuid}/set_backend_id/` (path: uuid | request body)
 - `marketplace_provider_resource_projects_set_state_erred` POST `/api/marketplace-provider-resource-projects/{uuid}/set_state_erred/` (path: uuid | request body)
 - `marketplace_provider_resource_projects_set_state_ok` POST `/api/marketplace-provider-resource-projects/{uuid}/set_state_ok/` (path: uuid)
@@ -1634,6 +1751,7 @@ Module: `waldur_api_client.api.marketplace_provider_resources`
 - `marketplace_provider_resources_history_list` GET `/api/marketplace-provider-resources/{uuid}/history/` — Get version history (path: uuid | 47 query params)
 - `marketplace_provider_resources_history_at_retrieve` GET `/api/marketplace-provider-resources/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 - `marketplace_provider_resources_list_users_list` GET `/api/marketplace-provider-resources/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
+- `marketplace_provider_resources_list_users_count` HEAD `/api/marketplace-provider-resources/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `marketplace_provider_resources_move_resource` POST `/api/marketplace-provider-resources/{uuid}/move_resource/` — Move a resource to another project (path: uuid | request body)
 - `marketplace_provider_resources_offering_retrieve` GET `/api/marketplace-provider-resources/{uuid}/offering/` — Get offering details (path: uuid | 1 query param)
 - `marketplace_provider_resources_offering_for_subresources_list` GET `/api/marketplace-provider-resources/{uuid}/offering_for_subresources/` — List offerings for sub-resources (path: uuid)
@@ -1652,11 +1770,13 @@ Module: `waldur_api_client.api.marketplace_provider_resources`
 - `marketplace_provider_resources_set_end_date_by_staff` POST `/api/marketplace-provider-resources/{uuid}/set_end_date_by_staff/` — Set end date of the resource by staff (path: uuid | request body)
 - `marketplace_provider_resources_set_endpoints` POST `/api/marketplace-provider-resources/{uuid}/set_endpoints/` — Set resource access endpoints (path: uuid | request body)
 - `marketplace_provider_resources_set_limits` POST `/api/marketplace-provider-resources/{uuid}/set_limits/` — Set resource limits (path: uuid | request body)
+- `marketplace_provider_resources_set_membership_sync_statuses` POST `/api/marketplace-provider-resources/{uuid}/set_membership_sync_statuses/` — Report per-member sync statuses for a resource (path: uuid | request body)
 - `marketplace_provider_resources_set_paused` POST `/api/marketplace-provider-resources/{uuid}/set_paused/` — Set paused flag for resource (path: uuid | request body)
 - `marketplace_provider_resources_set_restrict_member_access` POST `/api/marketplace-provider-resources/{uuid}/set_restrict_member_access/` — Set restrict member access flag (path: uuid | request body)
 - `marketplace_provider_resources_set_slug` POST `/api/marketplace-provider-resources/{uuid}/set_slug/` — Set resource slug (path: uuid | request body)
 - `marketplace_provider_resources_set_state_ok` POST `/api/marketplace-provider-resources/{uuid}/set_state_ok/` — Set resource state to OK (path: uuid)
 - `marketplace_provider_resources_submit_report` POST `/api/marketplace-provider-resources/{uuid}/submit_report/` — Submit a report for a resource (path: uuid | request body)
+- `marketplace_provider_resources_sync_user_roles` POST `/api/marketplace-provider-resources/{uuid}/sync_user_roles/` — Trigger user role sync for this resource (path: uuid)
 - `marketplace_provider_resources_team_list` GET `/api/marketplace-provider-resources/{uuid}/team/` — Get resource team (path: uuid | 1 query param)
 - `marketplace_provider_resources_terminate` POST `/api/marketplace-provider-resources/{uuid}/terminate/` — Terminate a resource (path: uuid | request body)
 - `marketplace_provider_resources_unlink` POST `/api/marketplace-provider-resources/{uuid}/unlink/` — Unlink a resource (staff only) (path: uuid)
@@ -1673,8 +1793,8 @@ Module: `waldur_api_client.api.marketplace_public_api`
 ## marketplace-public-offerings
 Module: `waldur_api_client.api.marketplace_public_offerings`
 
-- `marketplace_public_offerings_list` GET `/api/marketplace-public-offerings/` — List public offerings (41 query params)
-- `marketplace_public_offerings_count` HEAD `/api/marketplace-public-offerings/` — List public offerings (40 query params)
+- `marketplace_public_offerings_list` GET `/api/marketplace-public-offerings/` — List public offerings (44 query params)
+- `marketplace_public_offerings_count` HEAD `/api/marketplace-public-offerings/` — List public offerings (43 query params)
 - `marketplace_public_offerings_retrieve` GET `/api/marketplace-public-offerings/{uuid}/` — Retrieve a public offering (path: uuid | 1 query param)
 - `marketplace_public_offerings_plans_list` GET `/api/marketplace-public-offerings/{uuid}/plans/` — List plans for an offering (path: uuid)
 - `marketplace_public_offerings_plans_retrieve` GET `/api/marketplace-public-offerings/{uuid}/plans/{plan_uuid}/` — Retrieve a specific plan for an offering (path: plan_uuid, uuid)
@@ -1695,6 +1815,30 @@ Module: `waldur_api_client.api.marketplace_remote_synchronisations`
 - `marketplace_remote_synchronisations_partial_update` PATCH `/api/marketplace-remote-synchronisations/{uuid}/` (path: uuid | request body)
 - `marketplace_remote_synchronisations_destroy` DELETE `/api/marketplace-remote-synchronisations/{uuid}/` (path: uuid)
 - `marketplace_remote_synchronisations_run_synchronisation` POST `/api/marketplace-remote-synchronisations/{uuid}/run_synchronisation/` (path: uuid)
+
+## marketplace-resource-api-keys
+Module: `waldur_api_client.api.marketplace_resource_api_keys`
+
+- `marketplace_resource_api_keys_list` GET `/api/marketplace-resource-api-keys/` (4 query params)
+- `marketplace_resource_api_keys_count` HEAD `/api/marketplace-resource-api-keys/` — Get number of items in the collection matching the request parameters (4 query params)
+- `marketplace_resource_api_keys_report_created` POST `/api/marketplace-resource-api-keys/report_created/` — Report a freshly-applied API key (request body)
+- `marketplace_resource_api_keys_retrieve` GET `/api/marketplace-resource-api-keys/{uuid}/` (path: uuid)
+- `marketplace_resource_api_keys_reveal_retrieve` GET `/api/marketplace-resource-api-keys/{uuid}/reveal/` — Reveal an API key (path: uuid)
+- `marketplace_resource_api_keys_rotate` POST `/api/marketplace-resource-api-keys/{uuid}/rotate/` — Rotate an API key (path: uuid)
+- `marketplace_resource_api_keys_set_erred` POST `/api/marketplace-resource-api-keys/{uuid}/set_erred/` — Mark an API key as erred (path: uuid | request body)
+- `marketplace_resource_api_keys_set_key` POST `/api/marketplace-resource-api-keys/{uuid}/set_key/` — Report a rotated API key value (path: uuid | request body)
+
+## marketplace-resource-end-date-change-requests
+Module: `waldur_api_client.api.marketplace_resource_end_date_change_requests`
+
+- `marketplace_resource_end_date_change_requests_list` GET `/api/marketplace-resource-end-date-change-requests/` (6 query params)
+- `marketplace_resource_end_date_change_requests_count` HEAD `/api/marketplace-resource-end-date-change-requests/` — Get number of items in the collection matching the request parameters (6 query params)
+- `marketplace_resource_end_date_change_requests_create` POST `/api/marketplace-resource-end-date-change-requests/` (request body)
+- `marketplace_resource_end_date_change_requests_retrieve` GET `/api/marketplace-resource-end-date-change-requests/{uuid}/` (path: uuid)
+- `marketplace_resource_end_date_change_requests_approve` POST `/api/marketplace-resource-end-date-change-requests/{uuid}/approve/` — Approve resource end date change request and apply the date to the resource (path: uuid | request body)
+- `marketplace_resource_end_date_change_requests_cancel` POST `/api/marketplace-resource-end-date-change-requests/{uuid}/cancel/` — Cancel resource end date change request (path: uuid | request body)
+- `marketplace_resource_end_date_change_requests_reject` POST `/api/marketplace-resource-end-date-change-requests/{uuid}/reject/` — Reject resource end date change request (path: uuid | request body)
+- `marketplace_resource_end_date_change_requests_set_backend_id` POST `/api/marketplace-resource-end-date-change-requests/{uuid}/set_backend_id/` — Set end date change request backend ID (path: uuid | request body)
 
 ## marketplace-resource-limit-change-requests
 Module: `waldur_api_client.api.marketplace_resource_limit_change_requests`
@@ -1725,6 +1869,7 @@ Module: `waldur_api_client.api.marketplace_resource_projects`
 - `marketplace_resource_projects_add_user` POST `/api/marketplace-resource-projects/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
 - `marketplace_resource_projects_delete_user` POST `/api/marketplace-resource-projects/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `marketplace_resource_projects_list_users_list` GET `/api/marketplace-resource-projects/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
+- `marketplace_resource_projects_list_users_count` HEAD `/api/marketplace-resource-projects/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `marketplace_resource_projects_recover` POST `/api/marketplace-resource-projects/{uuid}/recover/` — Recover a soft-deleted resource project (path: uuid | request body)
 - `marketplace_resource_projects_update_user` POST `/api/marketplace-resource-projects/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 
@@ -1747,6 +1892,7 @@ Module: `waldur_api_client.api.marketplace_resources`
 - `marketplace_resources_history_list` GET `/api/marketplace-resources/{uuid}/history/` — Get version history (path: uuid | 47 query params)
 - `marketplace_resources_history_at_retrieve` GET `/api/marketplace-resources/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 - `marketplace_resources_list_users_list` GET `/api/marketplace-resources/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
+- `marketplace_resources_list_users_count` HEAD `/api/marketplace-resources/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `marketplace_resources_move_resource` POST `/api/marketplace-resources/{uuid}/move_resource/` — Move a resource to another project (path: uuid | request body)
 - `marketplace_resources_offering_retrieve` GET `/api/marketplace-resources/{uuid}/offering/` — Get offering details (path: uuid | 1 query param)
 - `marketplace_resources_offering_for_subresources_list` GET `/api/marketplace-resources/{uuid}/offering_for_subresources/` — List offerings for sub-resources (path: uuid)
@@ -1789,7 +1935,7 @@ Module: `waldur_api_client.api.marketplace_robot_accounts`
 ## marketplace-runtime-states
 Module: `waldur_api_client.api.marketplace_runtime_states`
 
-- `marketplace_runtime_states_list` GET `/api/marketplace-runtime-states/` — List available runtime states for resources (2 query params)
+- `marketplace_runtime_states_list` GET `/api/marketplace-runtime-states/` — List available runtime states for resources (3 query params)
 
 ## marketplace-screenshots
 Module: `waldur_api_client.api.marketplace_screenshots`
@@ -1840,19 +1986,33 @@ Module: `waldur_api_client.api.marketplace_service_providers`
 - `marketplace_service_providers_count` HEAD `/api/marketplace-service-providers/` — List service providers (4 query params)
 - `marketplace_service_providers_create` POST `/api/marketplace-service-providers/` — Create a service provider (request body)
 - `service_provider_checklists_summary` GET `/api/marketplace-service-providers/{service_provider_uuid}/compliance/checklists_summary/` — Get summary of compliance checklists (path: service_provider_uuid)
+- `marketplace_service_providers_compliance_checklists_summary_count` HEAD `/api/marketplace-service-providers/{service_provider_uuid}/compliance/checklists_summary/` — Get number of items in the collection matching the request parameters (path: service_provider_uuid)
 - `service_provider_compliance_overview` GET `/api/marketplace-service-providers/{service_provider_uuid}/compliance/compliance_overview/` — Get compliance overview for a service provider (path: service_provider_uuid)
+- `marketplace_service_providers_compliance_compliance_overview_count` HEAD `/api/marketplace-service-providers/{service_provider_uuid}/compliance/compliance_overview/` — Get number of items in the collection matching the request parameters (path: service_provider_uuid)
 - `service_provider_offering_users_compliance` GET `/api/marketplace-service-providers/{service_provider_uuid}/compliance/offering_users/` — List offering users' compliance status (path: service_provider_uuid | 2 query params)
+- `marketplace_service_providers_compliance_offering_users_count` HEAD `/api/marketplace-service-providers/{service_provider_uuid}/compliance/offering_users/` — Get number of items in the collection matching the request parameters (path: service_provider_uuid)
 - `marketplace_service_providers_course_accounts_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/course_accounts/` — List course project accounts for a service provider (path: service_provider_uuid | 9 query params)
-- `marketplace_service_providers_customer_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customer_projects/` — List customer projects of a service provider (path: service_provider_uuid | 27 query params)
-- `marketplace_service_providers_customers_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customers/` — List customers of a service provider (path: service_provider_uuid | 16 query params)
+- `marketplace_service_providers_course_accounts_count` HEAD `/api/marketplace-service-providers/{service_provider_uuid}/course_accounts/` — List course project accounts for a service provider (path: service_provider_uuid | 9 query params)
+- `marketplace_service_providers_customer_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customer_projects/` — List customer projects of a service provider (path: service_provider_uuid | 28 query params)
+- `marketplace_service_providers_customer_projects_count` HEAD `/api/marketplace-service-providers/{service_provider_uuid}/customer_projects/` — List customer projects of a service provider (path: service_provider_uuid | 27 query params)
+- `marketplace_service_providers_customers_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/customers/` — List customers of a service provider (path: service_provider_uuid | 17 query params)
+- `marketplace_service_providers_customers_count` HEAD `/api/marketplace-service-providers/{service_provider_uuid}/customers/` — List customers of a service provider (path: service_provider_uuid | 16 query params)
 - `marketplace_service_providers_keys_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/keys/` — List SSH keys of a service provider (path: service_provider_uuid | 13 query params)
-- `marketplace_service_providers_offerings_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/offerings/` — List offerings of a service provider (path: service_provider_uuid | 41 query params)
-- `marketplace_service_providers_offerings_types_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/offerings/types/` — List distinct offering types for a service provider (path: service_provider_uuid | 40 query params)
-- `marketplace_service_providers_project_permissions_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_permissions/` — List project permissions of a service provider (path: service_provider_uuid | 18 query params)
+- `marketplace_service_providers_keys_count` HEAD `/api/marketplace-service-providers/{service_provider_uuid}/keys/` — List SSH keys of a service provider (path: service_provider_uuid | 12 query params)
+- `marketplace_service_providers_offerings_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/offerings/` — List offerings of a service provider (path: service_provider_uuid | 44 query params)
+- `marketplace_service_providers_offerings_count` HEAD `/api/marketplace-service-providers/{service_provider_uuid}/offerings/` — List offerings of a service provider (path: service_provider_uuid | 43 query params)
+- `marketplace_service_providers_offerings_types_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/offerings/types/` — List distinct offering types for a service provider (path: service_provider_uuid | 43 query params)
+- `marketplace_service_providers_offerings_types_count` HEAD `/api/marketplace-service-providers/{service_provider_uuid}/offerings/types/` — List distinct offering types for a service provider (path: service_provider_uuid | 43 query params)
+- `marketplace_service_providers_project_permissions_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_permissions/` — List project permissions of a service provider (path: service_provider_uuid | 20 query params)
+- `marketplace_service_providers_project_permissions_count` HEAD `/api/marketplace-service-providers/{service_provider_uuid}/project_permissions/` — List project permissions of a service provider (path: service_provider_uuid | 19 query params)
 - `marketplace_service_providers_project_service_accounts_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/project_service_accounts/` — List project service accounts for a service provider (path: service_provider_uuid | 5 query params)
-- `marketplace_service_providers_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/projects/` — List projects of a service provider (path: service_provider_uuid | 26 query params)
-- `marketplace_service_providers_user_customers_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/user_customers/` — List customers of a specific user within a service provider's scope (path: service_provider_uuid | 17 query params)
+- `marketplace_service_providers_project_service_accounts_count` HEAD `/api/marketplace-service-providers/{service_provider_uuid}/project_service_accounts/` — List project service accounts for a service provider (path: service_provider_uuid | 5 query params)
+- `marketplace_service_providers_projects_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/projects/` — List projects of a service provider (path: service_provider_uuid | 27 query params)
+- `marketplace_service_providers_projects_count` HEAD `/api/marketplace-service-providers/{service_provider_uuid}/projects/` — List projects of a service provider (path: service_provider_uuid | 26 query params)
+- `marketplace_service_providers_user_customers_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/user_customers/` — List customers of a specific user within a service provider's scope (path: service_provider_uuid | 18 query params)
+- `marketplace_service_providers_user_customers_count` HEAD `/api/marketplace-service-providers/{service_provider_uuid}/user_customers/` — List customers of a specific user within a service provider's scope (path: service_provider_uuid | 17 query params)
 - `marketplace_service_providers_users_list` GET `/api/marketplace-service-providers/{service_provider_uuid}/users/` — List users of a service provider (path: service_provider_uuid | 25 query params)
+- `marketplace_service_providers_users_count` HEAD `/api/marketplace-service-providers/{service_provider_uuid}/users/` — List users of a service provider (path: service_provider_uuid | 24 query params)
 - `marketplace_service_providers_retrieve` GET `/api/marketplace-service-providers/{uuid}/` — Retrieve a service provider (path: uuid | 1 query param)
 - `marketplace_service_providers_update` PUT `/api/marketplace-service-providers/{uuid}/` — Update a service provider (path: uuid | request body)
 - `marketplace_service_providers_partial_update` PATCH `/api/marketplace-service-providers/{uuid}/` — Partially update a service provider (path: uuid | request body)
@@ -1863,6 +2023,7 @@ Module: `waldur_api_client.api.marketplace_service_providers`
 - `marketplace_service_providers_delete_user` POST `/api/marketplace-service-providers/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `marketplace_service_providers_generate_site_agent_config` POST `/api/marketplace-service-providers/{uuid}/generate_site_agent_config/` — Generate site agent configuration (path: uuid | request body)
 - `marketplace_service_providers_list_users_list` GET `/api/marketplace-service-providers/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
+- `marketplace_service_providers_list_users_count` HEAD `/api/marketplace-service-providers/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `marketplace_service_providers_revenue_list` GET `/api/marketplace-service-providers/{uuid}/revenue/` — Get service provider revenue (path: uuid)
 - `marketplace_service_providers_robot_account_customers_list` GET `/api/marketplace-service-providers/{uuid}/robot_account_customers/` — List customers with robot accounts (path: uuid | 1 query param)
 - `marketplace_service_providers_robot_account_projects_list` GET `/api/marketplace-service-providers/{uuid}/robot_account_projects/` — List projects with robot accounts (path: uuid | 1 query param)
@@ -1885,7 +2046,8 @@ Module: `waldur_api_client.api.marketplace_site_agent_identities`
 - `marketplace_site_agent_identities_retrieve` GET `/api/marketplace-site-agent-identities/{uuid}/` (path: uuid)
 - `marketplace_site_agent_identities_update` PUT `/api/marketplace-site-agent-identities/{uuid}/` (path: uuid | request body)
 - `marketplace_site_agent_identities_destroy` DELETE `/api/marketplace-site-agent-identities/{uuid}/` (path: uuid)
-- `marketplace_site_agent_identities_register_event_subscription` POST `/api/marketplace-site-agent-identities/{uuid}/register_event_subscription/` — Register an event subscription for the specified agent identity and observable object type (path: uuid | request body)
+- `marketplace_site_agent_identities_register_event_subscription` POST `/api/marketplace-site-agent-identities/{uuid}/register_event_subscription/` — DEPRECATED: use register_queue instead, which creates a single unified consumer queue (path: uuid | request body)
+- `marketplace_site_agent_identities_register_queue` POST `/api/marketplace-site-agent-identities/{uuid}/register_queue/` — Register a unified event-consumer queue for this agent identity (path: uuid | request body)
 - `marketplace_site_agent_identities_register_service` POST `/api/marketplace-site-agent-identities/{uuid}/register_service/` — Register a new processor or get the existing one for the agent service (path: uuid | request body)
 
 ## marketplace-site-agent-logs
@@ -2246,6 +2408,7 @@ Module: `waldur_api_client.api.openportal`
 
 - `openportal_access_for_email_list` GET `/api/openportal/access_for_email/` (1 query param)
 - `openportal_offering_mapping_retrieve` GET `/api/openportal/offering_mapping/` — Map OpenPortal destination strings to Waldur Offering objects (1 query param)
+- `openportal_project_email_policy_retrieve` GET `/api/openportal/project_email_policy/{project_uuid}/` — Return the allowed_domains list for a project derived from its AwardDetails (path: project_uuid)
 - `openportal_project_mapping_retrieve` GET `/api/openportal/project_mapping/` — Map OpenPortal ProjectIdentifier strings to Waldur Project objects (1 query param)
 - `openportal_user_mapping_retrieve` GET `/api/openportal/user_mapping/` — Map OpenPortal UserIdentifier strings (or email addresses) to Waldur User objects (1 query param)
 
@@ -2275,7 +2438,7 @@ Module: `waldur_api_client.api.openportal_allocations`
 - `openportal_allocations_destroy` DELETE `/api/openportal-allocations/{uuid}/` (path: uuid)
 - `openportal_allocations_pull` POST `/api/openportal-allocations/{uuid}/pull/` — Synchronize resource state (path: uuid)
 - `openportal_allocations_set_erred` POST `/api/openportal-allocations/{uuid}/set_erred/` — Mark resource as ERRED (path: uuid | request body)
-- `openportal_allocations_set_limits` POST `/api/openportal-allocations/{uuid}/set_limits/` (path: uuid | request body)
+- `openportal_allocations_set_limits` POST `/api/openportal-allocations/{uuid}/set_limits/` — Set limits for allocation (path: uuid | request body)
 - `openportal_allocations_set_ok` POST `/api/openportal-allocations/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
 - `openportal_allocations_unlink` POST `/api/openportal-allocations/{uuid}/unlink/` — Unlink resource (path: uuid)
 
@@ -2286,13 +2449,21 @@ Module: `waldur_api_client.api.openportal_associations`
 - `openportal_associations_count` HEAD `/api/openportal-associations/` — Get number of items in the collection matching the request parameters (2 query params)
 - `openportal_associations_retrieve` GET `/api/openportal-associations/{uuid}/` (path: uuid)
 
+## openportal-managed-project-audit
+Module: `waldur_api_client.api.openportal_managed_project_audit`
+
+- `openportal_managed_project_audit_list` GET `/api/openportal-managed-project-audit/` (7 query params)
+- `openportal_managed_project_audit_count` HEAD `/api/openportal-managed-project-audit/` — Get number of items in the collection matching the request parameters (7 query params)
+- `openportal_managed_project_audit_retrieve` GET `/api/openportal-managed-project-audit/{id}/` (path: id)
+
 ## openportal-managed-projects
 Module: `waldur_api_client.api.openportal_managed_projects`
 
-- `openportal_managed_projects_list` GET `/api/openportal-managed-projects/` — List all managed projects (9 query params)
-- `openportal_managed_projects_count` HEAD `/api/openportal-managed-projects/` — Get number of items in the collection matching the request parameters (9 query params)
+- `openportal_managed_projects_list` GET `/api/openportal-managed-projects/` — List all managed projects (10 query params)
+- `openportal_managed_projects_count` HEAD `/api/openportal-managed-projects/` — Get number of items in the collection matching the request parameters (10 query params)
 - `openportal_managed_projects_retrieve_get` GET `/api/openportal-managed-projects/{identifier}/{destination}/` — Retrieve a managed project (path: destination, identifier)
 - `openportal_managed_projects_retrieve_head` HEAD `/api/openportal-managed-projects/{identifier}/{destination}/` — Get number of items in the collection matching the request parameters (path: destination, identifier)
+- `openportal_managed_projects_add_note` POST `/api/openportal-managed-projects/{identifier}/{destination}/add-note/` — Append a note to the managed project (path: destination, identifier | request body)
 - `openportal_managed_projects_approve` POST `/api/openportal-managed-projects/{identifier}/{destination}/approve/` — Approve managed project request (path: destination, identifier | request body)
 - `openportal_managed_projects_attach` POST `/api/openportal-managed-projects/{identifier}/{destination}/attach/` — Attach a project to this managed project (path: destination, identifier | request body)
 - `openportal_managed_projects_delete_destroy` DELETE `/api/openportal-managed-projects/{identifier}/{destination}/delete/` — Delete ManagedProject object (path: destination, identifier)
@@ -2335,8 +2506,8 @@ Module: `waldur_api_client.api.openportal_projectinfo`
 - `openportal_projectinfo_update` PUT `/api/openportal-projectinfo/{project}/` (path: project | request body)
 - `openportal_projectinfo_partial_update` PATCH `/api/openportal-projectinfo/{project}/` (path: project | request body)
 - `openportal_projectinfo_destroy` DELETE `/api/openportal-projectinfo/{project}/` (path: project)
-- `openportal_projectinfo_set_allowed_destinations_update` PUT `/api/openportal-projectinfo/{project}/set_allowed_destinations/` (path: project | request body)
-- `openportal_projectinfo_set_shortname_update` PUT `/api/openportal-projectinfo/{project}/set_shortname/` (path: project | request body)
+- `openportal_projectinfo_set_allowed_destinations_update` PUT `/api/openportal-projectinfo/{project}/set_allowed_destinations/` — Set allowed destinations for project (path: project | request body)
+- `openportal_projectinfo_set_shortname_update` PUT `/api/openportal-projectinfo/{project}/set_shortname/` — Set shortname for project (path: project | request body)
 
 ## openportal-remote-allocations
 Module: `waldur_api_client.api.openportal_remote_allocations`
@@ -2350,7 +2521,7 @@ Module: `waldur_api_client.api.openportal_remote_allocations`
 - `openportal_remote_allocations_destroy` DELETE `/api/openportal-remote-allocations/{uuid}/` (path: uuid)
 - `openportal_remote_allocations_pull` POST `/api/openportal-remote-allocations/{uuid}/pull/` — Synchronize resource state (path: uuid)
 - `openportal_remote_allocations_set_erred` POST `/api/openportal-remote-allocations/{uuid}/set_erred/` — Mark resource as ERRED (path: uuid | request body)
-- `openportal_remote_allocations_set_limits` POST `/api/openportal-remote-allocations/{uuid}/set_limits/` (path: uuid | request body)
+- `openportal_remote_allocations_set_limits` POST `/api/openportal-remote-allocations/{uuid}/set_limits/` — Set limits for allocation (path: uuid | request body)
 - `openportal_remote_allocations_set_ok` POST `/api/openportal-remote-allocations/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
 - `openportal_remote_allocations_unlink` POST `/api/openportal-remote-allocations/{uuid}/unlink/` — Unlink resource (path: uuid)
 
@@ -2361,11 +2532,42 @@ Module: `waldur_api_client.api.openportal_remote_associations`
 - `openportal_remote_associations_count` HEAD `/api/openportal-remote-associations/` — Get number of items in the collection matching the request parameters (2 query params)
 - `openportal_remote_associations_retrieve` GET `/api/openportal-remote-associations/{uuid}/` (path: uuid)
 
+## openportal-remote-project-allocations
+Module: `waldur_api_client.api.openportal_remote_project_allocations`
+
+- `openportal_remote_project_allocations_list` GET `/api/openportal-remote-project-allocations/` (3 query params)
+- `openportal_remote_project_allocations_count` HEAD `/api/openportal-remote-project-allocations/` — Get number of items in the collection matching the request parameters (3 query params)
+- `openportal_remote_project_allocations_retrieve` GET `/api/openportal-remote-project-allocations/{id}/` (path: id)
+
+## openportal-remote-project-audit
+Module: `waldur_api_client.api.openportal_remote_project_audit`
+
+- `openportal_remote_project_audit_list` GET `/api/openportal-remote-project-audit/` (7 query params)
+- `openportal_remote_project_audit_count` HEAD `/api/openportal-remote-project-audit/` — Get number of items in the collection matching the request parameters (7 query params)
+- `openportal_remote_project_audit_retrieve` GET `/api/openportal-remote-project-audit/{id}/` (path: id)
+
+## openportal-remote-projects
+Module: `waldur_api_client.api.openportal_remote_projects`
+
+- `openportal_remote_projects_list` GET `/api/openportal-remote-projects/` (9 query params)
+- `openportal_remote_projects_count` HEAD `/api/openportal-remote-projects/` — Get number of items in the collection matching the request parameters (9 query params)
+- `openportal_remote_projects_retrieve` GET `/api/openportal-remote-projects/{uuid}/` (path: uuid)
+- `openportal_remote_projects_add_note` POST `/api/openportal-remote-projects/{uuid}/add-note/` — Add note to remote project (path: uuid | request body)
+- `openportal_remote_projects_approve_now` POST `/api/openportal-remote-projects/{uuid}/approve-now/` — Approve remote project now (path: uuid)
+- `openportal_remote_projects_hold_indefinitely` POST `/api/openportal-remote-projects/{uuid}/hold-indefinitely/` — Hold remote project indefinitely (path: uuid)
+- `openportal_remote_projects_resend_request` POST `/api/openportal-remote-projects/{uuid}/resend-request/` — Resend remote project request (path: uuid)
+- `openportal_remote_projects_reset_to_pending` POST `/api/openportal-remote-projects/{uuid}/reset-to-pending/` — Reset remote project to pending (path: uuid)
+- `openportal_remote_projects_set_allowed_domains` POST `/api/openportal-remote-projects/{uuid}/set-allowed-domains/` — Set allowed domains for remote project (path: uuid | request body)
+- `openportal_remote_projects_set_earliest_approve` POST `/api/openportal-remote-projects/{uuid}/set-earliest-approve/` — Set earliest approve date for remote project (path: uuid | request body)
+- `openportal_remote_projects_set_links` POST `/api/openportal-remote-projects/{uuid}/set-links/` — Set links for remote project (path: uuid | request body)
+- `openportal_remote_projects_set_membership_control` POST `/api/openportal-remote-projects/{uuid}/set-membership-control/` — Set membership control for remote project (path: uuid | request body)
+- `openportal_remote_projects_total_usage_retrieve` GET `/api/openportal-remote-projects/{uuid}/total-usage/` — Get total usage for remote project (path: uuid)
+
 ## openportal-unmanaged-projects
 Module: `waldur_api_client.api.openportal_unmanaged_projects`
 
-- `openportal_unmanaged_projects_list` GET `/api/openportal-unmanaged-projects/` — List projects (29 query params)
-- `openportal_unmanaged_projects_count` HEAD `/api/openportal-unmanaged-projects/` — List projects (28 query params)
+- `openportal_unmanaged_projects_list` GET `/api/openportal-unmanaged-projects/` — List projects (30 query params)
+- `openportal_unmanaged_projects_count` HEAD `/api/openportal-unmanaged-projects/` — List projects (29 query params)
 - `openportal_unmanaged_projects_create` POST `/api/openportal-unmanaged-projects/` — Create a new project (request body)
 - `openportal_unmanaged_projects_checklist_template_retrieve` GET `/api/openportal-unmanaged-projects/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `openportal_unmanaged_projects_checklist_template_count` HEAD `/api/openportal-unmanaged-projects/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
@@ -2378,6 +2580,7 @@ Module: `waldur_api_client.api.openportal_unmanaged_projects`
 - `openportal_unmanaged_projects_completion_status_retrieve` GET `/api/openportal-unmanaged-projects/{uuid}/completion_status/` — Get checklist completion status (path: uuid)
 - `openportal_unmanaged_projects_delete_user` POST `/api/openportal-unmanaged-projects/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `openportal_unmanaged_projects_list_users_list` GET `/api/openportal-unmanaged-projects/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
+- `openportal_unmanaged_projects_list_users_count` HEAD `/api/openportal-unmanaged-projects/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `openportal_unmanaged_projects_move_project` POST `/api/openportal-unmanaged-projects/{uuid}/move_project/` — Move project to another customer (path: uuid | request body)
 - `openportal_unmanaged_projects_recover` POST `/api/openportal-unmanaged-projects/{uuid}/recover/` — Recover a soft-deleted project (path: uuid | request body)
 - `openportal_unmanaged_projects_stats_retrieve` GET `/api/openportal-unmanaged-projects/{uuid}/stats/` — Get project resource usage statistics (path: uuid | 1 query param)
@@ -2391,13 +2594,13 @@ Module: `waldur_api_client.api.openportal_userinfo`
 - `openportal_userinfo_list` GET `/api/openportal-userinfo/` (2 query params)
 - `openportal_userinfo_count` HEAD `/api/openportal-userinfo/` — Get number of items in the collection matching the request parameters (2 query params)
 - `openportal_userinfo_create` POST `/api/openportal-userinfo/` (request body)
-- `openportal_userinfo_me_retrieve` GET `/api/openportal-userinfo/me/` (no params)
+- `openportal_userinfo_me_retrieve` GET `/api/openportal-userinfo/me/` — Retrieve UserInfo for current user (no params)
 - `openportal_userinfo_me_count` HEAD `/api/openportal-userinfo/me/` — Get number of items in the collection matching the request parameters (no params)
 - `openportal_userinfo_retrieve` GET `/api/openportal-userinfo/{user}/` (path: user)
 - `openportal_userinfo_update` PUT `/api/openportal-userinfo/{user}/` (path: user | request body)
 - `openportal_userinfo_partial_update` PATCH `/api/openportal-userinfo/{user}/` (path: user | request body)
 - `openportal_userinfo_destroy` DELETE `/api/openportal-userinfo/{user}/` (path: user)
-- `openportal_userinfo_set_shortname_update` PUT `/api/openportal-userinfo/{user}/set_shortname/` (path: user | request body)
+- `openportal_userinfo_set_shortname_update` PUT `/api/openportal-userinfo/{user}/set_shortname/` — Set shortname for user (path: user | request body)
 
 ## openstack
 Module: `waldur_api_client.api.openstack`
@@ -2855,6 +3058,7 @@ Module: `waldur_api_client.api.personal_access_tokens`
 - `personal_access_tokens_retrieve` GET `/api/personal-access-tokens/{uuid}/` (path: uuid)
 - `personal_access_tokens_destroy` DELETE `/api/personal-access-tokens/{uuid}/` — Revoke a personal access token (path: uuid)
 - `personal_access_tokens_rotate` POST `/api/personal-access-tokens/{uuid}/rotate/` — Rotate a personal access token (path: uuid)
+- `personal_access_tokens_set_network_acl` POST `/api/personal-access-tokens/{uuid}/set_network_acl/` — Replace the network ACL of a personal access token (path: uuid | request body)
 
 ## project-credits
 Module: `waldur_api_client.api.project_credits`
@@ -2902,12 +3106,13 @@ Module: `waldur_api_client.api.project_types`
 ## projects
 Module: `waldur_api_client.api.projects`
 
-- `projects_list` GET `/api/projects/` — List projects (29 query params)
-- `projects_count` HEAD `/api/projects/` — List projects (28 query params)
+- `projects_list` GET `/api/projects/` — List projects (30 query params)
+- `projects_count` HEAD `/api/projects/` — List projects (29 query params)
 - `projects_create` POST `/api/projects/` — Create a new project (request body)
 - `projects_checklist_template_retrieve` GET `/api/projects/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `projects_checklist_template_count` HEAD `/api/projects/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
 - `projects_other_users_list` GET `/api/projects/{project_uuid}/other_users/` — A list of users which can be added to the current project from other projects of the same customer (path: project_uuid | 16 query params)
+- `projects_other_users_count` HEAD `/api/projects/{project_uuid}/other_users/` — Get number of items in the collection matching the request parameters (path: project_uuid | 16 query params)
 - `projects_retrieve` GET `/api/projects/{uuid}/` — Retrieve project details (path: uuid | 1 query param)
 - `projects_update` PUT `/api/projects/{uuid}/` — Update project details (path: uuid | request body)
 - `projects_partial_update` PATCH `/api/projects/{uuid}/` — Partially update project details (path: uuid | request body)
@@ -2917,6 +3122,7 @@ Module: `waldur_api_client.api.projects`
 - `projects_completion_status_retrieve` GET `/api/projects/{uuid}/completion_status/` — Get checklist completion status (path: uuid)
 - `projects_delete_user` POST `/api/projects/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `projects_list_users_list` GET `/api/projects/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
+- `projects_list_users_count` HEAD `/api/projects/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `projects_move_project` POST `/api/projects/{uuid}/move_project/` — Move project to another customer (path: uuid | request body)
 - `projects_recover` POST `/api/projects/{uuid}/recover/` — Recover a soft-deleted project (path: uuid | request body)
 - `projects_stats_retrieve` GET `/api/projects/{uuid}/stats/` — Get project resource usage statistics (path: uuid | 1 query param)
@@ -2939,6 +3145,13 @@ Module: `waldur_api_client.api.promotions_campaigns`
 - `promotions_campaigns_resources_list` GET `/api/promotions-campaigns/{uuid}/resources/` — Return a list of resources for which the campaign is applied (path: uuid | 1 query param)
 - `promotions_campaigns_terminate` POST `/api/promotions-campaigns/{uuid}/terminate/` — Terminate campaign (path: uuid)
 
+## proposal-my-requested-resources
+Module: `waldur_api_client.api.proposal_my_requested_resources`
+
+- `proposal_my_requested_resources_list` GET `/api/proposal-my-requested-resources/` (11 query params)
+- `proposal_my_requested_resources_count` HEAD `/api/proposal-my-requested-resources/` — Get number of items in the collection matching the request parameters (11 query params)
+- `proposal_my_requested_resources_retrieve` GET `/api/proposal-my-requested-resources/{uuid}/` (path: uuid)
+
 ## proposal-proposals
 Module: `waldur_api_client.api.proposal_proposals`
 
@@ -2951,7 +3164,6 @@ Module: `waldur_api_client.api.proposal_proposals`
 - `proposal_proposals_destroy` DELETE `/api/proposal-proposals/{uuid}/` (path: uuid)
 - `proposal_proposals_add_user` POST `/api/proposal-proposals/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
 - `proposal_proposals_advance_workflow_step` POST `/api/proposal-proposals/{uuid}/advance_workflow_step/` — Manually advance a workflow that is awaiting call-manager confirmation (path: uuid)
-- `proposal_proposals_approve` POST `/api/proposal-proposals/{uuid}/approve/` — Approve a proposal (path: uuid | request body)
 - `proposal_proposals_attach_document` POST `/api/proposal-proposals/{uuid}/attach_document/` — Attach document to proposal (path: uuid | request body)
 - `proposal_proposals_checklist_retrieve` GET `/api/proposal-proposals/{uuid}/checklist/` — Get checklist with questions and existing answers (path: uuid | 1 query param)
 - `proposal_proposals_checklist_review_retrieve` GET `/api/proposal-proposals/{uuid}/checklist_review/` — Get checklist with questions and existing answers including review logic (reviewers only) (path: uuid)
@@ -2961,7 +3173,7 @@ Module: `waldur_api_client.api.proposal_proposals`
 - `proposal_proposals_delete_user` POST `/api/proposal-proposals/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `proposal_proposals_detach_documents` POST `/api/proposal-proposals/{uuid}/detach_documents/` — Detach documents from proposal (path: uuid | request body)
 - `proposal_proposals_list_users_list` GET `/api/proposal-proposals/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
-- `proposal_proposals_reject` POST `/api/proposal-proposals/{uuid}/reject/` — Reject a proposal (path: uuid | request body)
+- `proposal_proposals_list_users_count` HEAD `/api/proposal-proposals/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `proposal_proposals_reject_workflow_step` POST `/api/proposal-proposals/{uuid}/reject_workflow_step/` — Reject the proposal at the current workflow step (path: uuid | request body)
 - `proposal_proposals_resources_list` GET `/api/proposal-proposals/{uuid}/resources/` — List resources for a proposal (path: uuid)
 - `proposal_proposals_resources_set` POST `/api/proposal-proposals/{uuid}/resources/` — Create resource for a proposal (path: uuid | request body)
@@ -2969,6 +3181,11 @@ Module: `waldur_api_client.api.proposal_proposals`
 - `proposal_proposals_resources_update` PUT `/api/proposal-proposals/{uuid}/resources/{obj_uuid}/` (path: obj_uuid, uuid | request body)
 - `proposal_proposals_resources_partial_update` PATCH `/api/proposal-proposals/{uuid}/resources/{obj_uuid}/` (path: obj_uuid, uuid | request body)
 - `proposal_proposals_resources_destroy` DELETE `/api/proposal-proposals/{uuid}/resources/{obj_uuid}/` (path: obj_uuid, uuid)
+- `proposal_proposals_resource_purchase_order_set` POST `/api/proposal-proposals/{uuid}/resources/{obj_uuid}/purchase_order/` — Upload or replace the purchase order of a requested resource (path: obj_uuid, uuid | request body)
+- `proposal_proposals_resource_purchase_order_delete` DELETE `/api/proposal-proposals/{uuid}/resources/{obj_uuid}/purchase_order/` — Remove the purchase order of a requested resource (path: obj_uuid, uuid)
+- `proposal_proposals_step_checklist_responses_list` GET `/api/proposal-proposals/{uuid}/step-checklist-responses/` — List a workflow step's checklist answers grouped by reviewer, for the threaded technical-assessment view (path: uuid | 11 query params)
+- `proposal_proposals_step_checklist_retrieve` GET `/api/proposal-proposals/{uuid}/step-checklist/` — Get a workflow step's checklist with questions and answers (path: uuid | 2 query params)
+- `proposal_proposals_submit_step_checklist_answers` POST `/api/proposal-proposals/{uuid}/submit-step-checklist-answers/` — Submit answers to a workflow step's checklist (path: uuid | 1 query param | request body)
 - `proposal_proposals_submit` POST `/api/proposal-proposals/{uuid}/submit/` — Submit a proposal (path: uuid)
 - `proposal_proposals_submit_answers` POST `/api/proposal-proposals/{uuid}/submit_answers/` — Submit checklist answers (path: uuid | request body)
 - `proposal_proposals_update_project_details` POST `/api/proposal-proposals/{uuid}/update_project_details/` — Update project details of a proposal (path: uuid | request body)
@@ -2978,11 +3195,13 @@ Module: `waldur_api_client.api.proposal_proposals`
 ## proposal-protected-calls
 Module: `waldur_api_client.api.proposal_protected_calls`
 
-- `proposal_protected_calls_list` GET `/api/proposal-protected-calls/` (11 query params)
-- `proposal_protected_calls_count` HEAD `/api/proposal-protected-calls/` — Get number of items in the collection matching the request parameters (10 query params)
+- `proposal_protected_calls_list` GET `/api/proposal-protected-calls/` (12 query params)
+- `proposal_protected_calls_count` HEAD `/api/proposal-protected-calls/` — Get number of items in the collection matching the request parameters (11 query params)
 - `proposal_protected_calls_create` POST `/api/proposal-protected-calls/` (request body)
-- `proposal_protected_calls_available_compliance_checklists_list` GET `/api/proposal-protected-calls/available_compliance_checklists/` — Get available compliance checklists for call creation/editing (11 query params)
-- `proposal_protected_calls_available_compliance_checklists_count` HEAD `/api/proposal-protected-calls/available_compliance_checklists/` — Get number of items in the collection matching the request parameters (11 query params)
+- `proposal_protected_calls_available_compliance_checklists_list` GET `/api/proposal-protected-calls/available_compliance_checklists/` — Get available compliance checklists for call creation/editing (12 query params)
+- `proposal_protected_calls_available_compliance_checklists_count` HEAD `/api/proposal-protected-calls/available_compliance_checklists/` — Get number of items in the collection matching the request parameters (12 query params)
+- `proposal_protected_calls_step_checklists_list` GET `/api/proposal-protected-calls/step_checklists/` — List checklists that can be attached to a workflow step (WORKFLOW_STEP-typed) (11 query params)
+- `proposal_protected_calls_step_checklists_count` HEAD `/api/proposal-protected-calls/step_checklists/` — Get number of items in the collection matching the request parameters (11 query params)
 - `proposal_protected_calls_retrieve` GET `/api/proposal-protected-calls/{uuid}/` (path: uuid | 1 query param)
 - `proposal_protected_calls_update` PUT `/api/proposal-protected-calls/{uuid}/` (path: uuid | request body)
 - `proposal_protected_calls_partial_update` PATCH `/api/proposal-protected-calls/{uuid}/` (path: uuid | request body)
@@ -2997,7 +3216,7 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_compliance_overview_retrieve` GET `/api/proposal-protected-calls/{uuid}/compliance_overview/` — Get compliance overview for call manager showing all proposals and their compliance status (path: uuid)
 - `proposal_protected_calls_compute_affinities` POST `/api/proposal-protected-calls/{uuid}/compute-affinities/` — Compute affinity scores for all reviewer-proposal pairs (path: uuid)
 - `proposal_protected_calls_conflict_summary_retrieve` GET `/api/proposal-protected-calls/{uuid}/conflict-summary/` — Get summary statistics of conflicts for this call (path: uuid)
-- `proposal_protected_calls_conflicts_list` GET `/api/proposal-protected-calls/{uuid}/conflicts/` — List all conflicts of interest detected for this call (path: uuid | 10 query params)
+- `proposal_protected_calls_conflicts_list` GET `/api/proposal-protected-calls/{uuid}/conflicts/` — List all conflicts of interest detected for this call (path: uuid | 11 query params)
 - `proposal_protected_calls_create_manual_assignment` POST `/api/proposal-protected-calls/{uuid}/create-manual-assignment/` — Create a manual assignment batch for a specific reviewer (path: uuid | request body)
 - `proposal_protected_calls_delete_user` POST `/api/proposal-protected-calls/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `proposal_protected_calls_detach_documents` POST `/api/proposal-protected-calls/{uuid}/detach_documents/` — Detach documents from call (path: uuid | request body)
@@ -3007,6 +3226,7 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_generate_suggestions` POST `/api/proposal-protected-calls/{uuid}/generate-suggestions/` — Generate reviewer suggestions with configurable matching source (path: uuid | request body)
 - `proposal_protected_calls_invite_by_email` POST `/api/proposal-protected-calls/{uuid}/invite-by-email/` — Invite a reviewer by email address (path: uuid | request body)
 - `proposal_protected_calls_list_users_list` GET `/api/proposal-protected-calls/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
+- `proposal_protected_calls_list_users_count` HEAD `/api/proposal-protected-calls/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `proposal_protected_calls_matching_configuration_retrieve` GET `/api/proposal-protected-calls/{uuid}/matching-configuration/` — Get or update matching configuration for this call (path: uuid)
 - `proposal_protected_calls_matching_configuration_partial_update` PATCH `/api/proposal-protected-calls/{uuid}/matching-configuration/` — Get or update matching configuration for this call (path: uuid | request body)
 - `proposal_protected_calls_offerings_list` GET `/api/proposal-protected-calls/{uuid}/offerings/` — List offerings for a call (path: uuid | 1 query param)
@@ -3015,8 +3235,8 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_offerings_update` PUT `/api/proposal-protected-calls/{uuid}/offerings/{obj_uuid}/` (path: obj_uuid, uuid | request body)
 - `proposal_protected_calls_offerings_partial_update` PATCH `/api/proposal-protected-calls/{uuid}/offerings/{obj_uuid}/` (path: obj_uuid, uuid | request body)
 - `proposal_protected_calls_offerings_destroy` DELETE `/api/proposal-protected-calls/{uuid}/offerings/{obj_uuid}/` (path: obj_uuid, uuid)
-- `proposal_protected_calls_proposals_compliance_answers_list` GET `/api/proposal-protected-calls/{uuid}/proposals/{proposal_uuid}/compliance-answers/` — Get detailed compliance answers for a specific proposal (call managers only) (path: proposal_uuid, uuid | 10 query params)
-- `proposal_protected_calls_proposed_assignments_list` GET `/api/proposal-protected-calls/{uuid}/proposed-assignments/` — Get proposed reviewer-proposal assignments (path: uuid | 10 query params)
+- `proposal_protected_calls_proposals_compliance_answers_list` GET `/api/proposal-protected-calls/{uuid}/proposals/{proposal_uuid}/compliance-answers/` — Get detailed compliance answers for a specific proposal (call managers only) (path: proposal_uuid, uuid | 11 query params)
+- `proposal_protected_calls_proposed_assignments_list` GET `/api/proposal-protected-calls/{uuid}/proposed-assignments/` — Get proposed reviewer-proposal assignments (path: uuid | 11 query params)
 - `proposal_protected_calls_resource_templates_list` GET `/api/proposal-protected-calls/{uuid}/resource_templates/` — List resource templates for a call (path: uuid)
 - `proposal_protected_calls_resource_templates_set` POST `/api/proposal-protected-calls/{uuid}/resource_templates/` — Create resource template for a call (path: uuid | request body)
 - `proposal_protected_calls_resource_templates_retrieve` GET `/api/proposal-protected-calls/{uuid}/resource_templates/{obj_uuid}/` (path: obj_uuid, uuid)
@@ -3025,8 +3245,8 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_resource_templates_destroy` DELETE `/api/proposal-protected-calls/{uuid}/resource_templates/{obj_uuid}/` (path: obj_uuid, uuid)
 - `proposal_protected_calls_review_proposal_compliance` POST `/api/proposal-protected-calls/{uuid}/review_proposal_compliance/` — Mark proposal compliance as reviewed by call manager (path: uuid | request body)
 - `proposal_protected_calls_reviewer_pool_list` GET `/api/proposal-protected-calls/{uuid}/reviewer-pool/` — List reviewer pool members for a call (path: uuid)
-- `proposal_protected_calls_invite_reviewers` POST `/api/proposal-protected-calls/{uuid}/reviewer-pool/` — Invite reviewers to join the call's reviewer pool (path: uuid | 10 query params | request body)
-- `proposal_protected_calls_rounds_bulk_set` POST `/api/proposal-protected-calls/{uuid}/rounds-bulk-set/` — Create multiple rounds on a call at a fixed cadence (path: uuid | 10 query params | request body)
+- `proposal_protected_calls_invite_reviewers` POST `/api/proposal-protected-calls/{uuid}/reviewer-pool/` — Invite reviewers to join the call's reviewer pool (path: uuid | 11 query params | request body)
+- `proposal_protected_calls_rounds_bulk_set` POST `/api/proposal-protected-calls/{uuid}/rounds-bulk-set/` — Create multiple rounds on a call at a fixed cadence (path: uuid | 11 query params | request body)
 - `proposal_protected_calls_rounds_list` GET `/api/proposal-protected-calls/{uuid}/rounds/` — List rounds for a call (path: uuid)
 - `proposal_protected_calls_rounds_set` POST `/api/proposal-protected-calls/{uuid}/rounds/` — Create a round for a call (path: uuid | request body)
 - `proposal_protected_calls_rounds_retrieve` GET `/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/` (path: obj_uuid, uuid)
@@ -3036,7 +3256,7 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_rounds_close` POST `/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/close/` (path: obj_uuid, uuid | request body)
 - `proposal_protected_calls_send_all_assignments` POST `/api/proposal-protected-calls/{uuid}/send-all-assignments/` — Send all draft assignment batches for this call (path: uuid | request body)
 - `proposal_protected_calls_send_invitations` POST `/api/proposal-protected-calls/{uuid}/send-invitations/` — Send invitations to all confirmed suggestions (path: uuid)
-- `proposal_protected_calls_suggestions_list` GET `/api/proposal-protected-calls/{uuid}/suggestions/` — List all reviewer suggestions for this call with affinity scores (path: uuid | 10 query params)
+- `proposal_protected_calls_suggestions_list` GET `/api/proposal-protected-calls/{uuid}/suggestions/` — List all reviewer suggestions for this call with affinity scores (path: uuid | 11 query params)
 - `proposal_protected_calls_update_user` POST `/api/proposal-protected-calls/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 - `proposal_protected_calls_workflow_steps_list` GET `/api/proposal-protected-calls/{uuid}/workflow_steps/` — List workflow steps for a call (path: uuid)
 - `proposal_protected_calls_workflow_steps_set` POST `/api/proposal-protected-calls/{uuid}/workflow_steps/` — Create or update a workflow step for a call (path: uuid | request body)
@@ -3048,8 +3268,8 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 ## proposal-public-calls
 Module: `waldur_api_client.api.proposal_public_calls`
 
-- `proposal_public_calls_list` GET `/api/proposal-public-calls/` (11 query params)
-- `proposal_public_calls_count` HEAD `/api/proposal-public-calls/` — Get number of items in the collection matching the request parameters (10 query params)
+- `proposal_public_calls_list` GET `/api/proposal-public-calls/` (12 query params)
+- `proposal_public_calls_count` HEAD `/api/proposal-public-calls/` — Get number of items in the collection matching the request parameters (11 query params)
 - `proposal_public_calls_retrieve` GET `/api/proposal-public-calls/{uuid}/` (path: uuid | 1 query param)
 - `proposal_public_calls_check_eligibility_retrieve` GET `/api/proposal-public-calls/{uuid}/check_eligibility/` — Check if the current user is eligible to submit proposals to this call (path: uuid)
 
@@ -3065,8 +3285,8 @@ Module: `waldur_api_client.api.proposal_requested_offerings`
 ## proposal-requested-resources
 Module: `waldur_api_client.api.proposal_requested_resources`
 
-- `proposal_requested_resources_list` GET `/api/proposal-requested-resources/` (8 query params)
-- `proposal_requested_resources_count` HEAD `/api/proposal-requested-resources/` — Get number of items in the collection matching the request parameters (8 query params)
+- `proposal_requested_resources_list` GET `/api/proposal-requested-resources/` (10 query params)
+- `proposal_requested_resources_count` HEAD `/api/proposal-requested-resources/` — Get number of items in the collection matching the request parameters (10 query params)
 - `proposal_requested_resources_retrieve` GET `/api/proposal-requested-resources/{uuid}/` (path: uuid)
 
 ## proposal-reviews
@@ -3082,6 +3302,30 @@ Module: `waldur_api_client.api.proposal_reviews`
 - `proposal_reviews_reject` POST `/api/proposal-reviews/{uuid}/reject/` — Reject a review, changing its state to REJECTED (path: uuid)
 - `proposal_reviews_submit` POST `/api/proposal-reviews/{uuid}/submit/` — Submit a review, changing its state to SUBMITTED (path: uuid | request body)
 
+## provider-canned-responses
+Module: `waldur_api_client.api.provider_canned_responses`
+
+- `provider_canned_responses_list` GET `/api/provider-canned-responses/` (3 query params)
+- `provider_canned_responses_count` HEAD `/api/provider-canned-responses/` — Get number of items in the collection matching the request parameters (3 query params)
+- `provider_canned_responses_create` POST `/api/provider-canned-responses/` (request body)
+- `provider_canned_responses_retrieve` GET `/api/provider-canned-responses/{uuid}/` (path: uuid)
+- `provider_canned_responses_update` PUT `/api/provider-canned-responses/{uuid}/` (path: uuid | request body)
+- `provider_canned_responses_partial_update` PATCH `/api/provider-canned-responses/{uuid}/` (path: uuid | request body)
+- `provider_canned_responses_destroy` DELETE `/api/provider-canned-responses/{uuid}/` (path: uuid)
+- `provider_canned_responses_render` POST `/api/provider-canned-responses/{uuid}/render/` — Render a canned response with context variables (path: uuid | request body)
+
+## provider-helpdesks
+Module: `waldur_api_client.api.provider_helpdesks`
+
+- `provider_helpdesks_list` GET `/api/provider-helpdesks/` (3 query params)
+- `provider_helpdesks_count` HEAD `/api/provider-helpdesks/` — Get number of items in the collection matching the request parameters (3 query params)
+- `provider_helpdesks_create` POST `/api/provider-helpdesks/` (request body)
+- `provider_helpdesks_retrieve` GET `/api/provider-helpdesks/{uuid}/` (path: uuid)
+- `provider_helpdesks_update` PUT `/api/provider-helpdesks/{uuid}/` (path: uuid | request body)
+- `provider_helpdesks_partial_update` PATCH `/api/provider-helpdesks/{uuid}/` (path: uuid | request body)
+- `provider_helpdesks_destroy` DELETE `/api/provider-helpdesks/{uuid}/` (path: uuid)
+- `provider_helpdesks_validate` POST `/api/provider-helpdesks/{uuid}/validate/` — Validate provider helpdesk backend connectivity (path: uuid)
+
 ## provider-invoice-items
 Module: `waldur_api_client.api.provider_invoice_items`
 
@@ -3089,11 +3333,40 @@ Module: `waldur_api_client.api.provider_invoice_items`
 - `provider_invoice_items_count` HEAD `/api/provider-invoice-items/` — Get number of items in the collection matching the request parameters (6 query params)
 - `provider_invoice_items_retrieve` GET `/api/provider-invoice-items/{id}/` (path: id)
 
+## provider-support-users
+Module: `waldur_api_client.api.provider_support_users`
+
+- `provider_support_users_list` GET `/api/provider-support-users/` (4 query params)
+- `provider_support_users_count` HEAD `/api/provider-support-users/` — Get number of items in the collection matching the request parameters (4 query params)
+- `provider_support_users_create` POST `/api/provider-support-users/` (request body)
+- `provider_support_users_team_workload_list` GET `/api/provider-support-users/team_workload/` — Get workload for all team members (4 query params)
+- `provider_support_users_team_workload_count` HEAD `/api/provider-support-users/team_workload/` — Get workload for all team members (4 query params)
+- `provider_support_users_retrieve` GET `/api/provider-support-users/{uuid}/` (path: uuid)
+- `provider_support_users_update` PUT `/api/provider-support-users/{uuid}/` (path: uuid | request body)
+- `provider_support_users_partial_update` PATCH `/api/provider-support-users/{uuid}/` (path: uuid | request body)
+- `provider_support_users_destroy` DELETE `/api/provider-support-users/{uuid}/` (path: uuid)
+
+## provider-tickets
+Module: `waldur_api_client.api.provider_tickets`
+
+- `provider_tickets_list` GET `/api/provider-tickets/` (7 query params)
+- `provider_tickets_count` HEAD `/api/provider-tickets/` — Get number of items in the collection matching the request parameters (7 query params)
+- `provider_tickets_stats_retrieve` GET `/api/provider-tickets/stats/` — Get statistics for provider tickets (no params)
+- `provider_tickets_stats_count` HEAD `/api/provider-tickets/stats/` — Get statistics for provider tickets (no params)
+- `provider_tickets_retrieve` GET `/api/provider-tickets/{uuid}/` (path: uuid)
+- `provider_tickets_update` PUT `/api/provider-tickets/{uuid}/` (path: uuid | request body)
+- `provider_tickets_partial_update` PATCH `/api/provider-tickets/{uuid}/` (path: uuid | request body)
+- `provider_tickets_assign` POST `/api/provider-tickets/{uuid}/assign/` (path: uuid | request body)
+- `provider_tickets_claim` POST `/api/provider-tickets/{uuid}/claim/` (path: uuid | request body)
+- `provider_tickets_comment` POST `/api/provider-tickets/{uuid}/comment/` (path: uuid | request body)
+- `provider_tickets_customer_context_retrieve` GET `/api/provider-tickets/{uuid}/customer_context/` — Get customer context for this ticket (path: uuid)
+- `provider_tickets_resolve` POST `/api/provider-tickets/{uuid}/resolve/` (path: uuid)
+
 ## public-maintenance-announcements
 Module: `waldur_api_client.api.public_maintenance_announcements`
 
-- `public_maintenance_announcements_list` GET `/api/public-maintenance-announcements/` — List public maintenance announcements (8 query params)
-- `public_maintenance_announcements_count` HEAD `/api/public-maintenance-announcements/` — List public maintenance announcements (8 query params)
+- `public_maintenance_announcements_list` GET `/api/public-maintenance-announcements/` — List public maintenance announcements (9 query params)
+- `public_maintenance_announcements_count` HEAD `/api/public-maintenance-announcements/` — List public maintenance announcements (9 query params)
 - `public_maintenance_announcements_retrieve` GET `/api/public-maintenance-announcements/{uuid}/` — Retrieve a public maintenance announcement (path: uuid)
 
 ## query
@@ -3366,18 +3639,21 @@ Module: `waldur_api_client.api.reviewer_profiles`
 - `reviewer_profiles_publish` POST `/api/reviewer-profiles/publish/` — Publish reviewer profile for discovery by call managers (request body)
 - `reviewer_profiles_unpublish` POST `/api/reviewer-profiles/unpublish/` — Unpublish reviewer profile to remove it from discovery (request body)
 - `nested_reviewer_profile_affiliations_list` GET `/api/reviewer-profiles/{reviewer_profile_uuid}/affiliations/` (path: reviewer_profile_uuid)
+- `nested_reviewer_profile_affiliations_count` HEAD `/api/reviewer-profiles/{reviewer_profile_uuid}/affiliations/` — Get number of items in the collection matching the request parameters (path: reviewer_profile_uuid)
 - `nested_reviewer_profile_affiliations_create` POST `/api/reviewer-profiles/{reviewer_profile_uuid}/affiliations/` (path: reviewer_profile_uuid | request body)
 - `nested_reviewer_profile_affiliations_retrieve` GET `/api/reviewer-profiles/{reviewer_profile_uuid}/affiliations/{uuid}/` (path: reviewer_profile_uuid, uuid)
 - `nested_reviewer_profile_affiliations_update` PUT `/api/reviewer-profiles/{reviewer_profile_uuid}/affiliations/{uuid}/` (path: reviewer_profile_uuid, uuid | request body)
 - `nested_reviewer_profile_affiliations_partial_update` PATCH `/api/reviewer-profiles/{reviewer_profile_uuid}/affiliations/{uuid}/` (path: reviewer_profile_uuid, uuid | request body)
 - `nested_reviewer_profile_affiliations_destroy` DELETE `/api/reviewer-profiles/{reviewer_profile_uuid}/affiliations/{uuid}/` (path: reviewer_profile_uuid, uuid)
 - `nested_reviewer_profile_expertise_list` GET `/api/reviewer-profiles/{reviewer_profile_uuid}/expertise/` (path: reviewer_profile_uuid)
+- `nested_reviewer_profile_expertise_count` HEAD `/api/reviewer-profiles/{reviewer_profile_uuid}/expertise/` — Get number of items in the collection matching the request parameters (path: reviewer_profile_uuid)
 - `nested_reviewer_profile_expertise_create` POST `/api/reviewer-profiles/{reviewer_profile_uuid}/expertise/` (path: reviewer_profile_uuid | request body)
 - `nested_reviewer_profile_expertise_retrieve` GET `/api/reviewer-profiles/{reviewer_profile_uuid}/expertise/{uuid}/` (path: reviewer_profile_uuid, uuid)
 - `nested_reviewer_profile_expertise_update` PUT `/api/reviewer-profiles/{reviewer_profile_uuid}/expertise/{uuid}/` (path: reviewer_profile_uuid, uuid | request body)
 - `nested_reviewer_profile_expertise_partial_update` PATCH `/api/reviewer-profiles/{reviewer_profile_uuid}/expertise/{uuid}/` (path: reviewer_profile_uuid, uuid | request body)
 - `nested_reviewer_profile_expertise_destroy` DELETE `/api/reviewer-profiles/{reviewer_profile_uuid}/expertise/{uuid}/` (path: reviewer_profile_uuid, uuid)
 - `nested_reviewer_profile_publications_list` GET `/api/reviewer-profiles/{reviewer_profile_uuid}/publications/` (path: reviewer_profile_uuid)
+- `nested_reviewer_profile_publications_count` HEAD `/api/reviewer-profiles/{reviewer_profile_uuid}/publications/` — Get number of items in the collection matching the request parameters (path: reviewer_profile_uuid)
 - `nested_reviewer_profile_publications_create` POST `/api/reviewer-profiles/{reviewer_profile_uuid}/publications/` (path: reviewer_profile_uuid | request body)
 - `nested_reviewer_profile_publications_retrieve` GET `/api/reviewer-profiles/{reviewer_profile_uuid}/publications/{uuid}/` (path: reviewer_profile_uuid, uuid)
 - `nested_reviewer_profile_publications_update` PUT `/api/reviewer-profiles/{reviewer_profile_uuid}/publications/{uuid}/` (path: reviewer_profile_uuid, uuid | request body)
@@ -3414,13 +3690,14 @@ Module: `waldur_api_client.api.role_availabilities`
 ## roles
 Module: `waldur_api_client.api.roles`
 
-- `roles_list` GET `/api/roles/` — List roles (4 query params)
-- `roles_count` HEAD `/api/roles/` — List roles (3 query params)
+- `roles_list` GET `/api/roles/` — List roles (10 query params)
+- `roles_count` HEAD `/api/roles/` — List roles (9 query params)
 - `roles_create` POST `/api/roles/` — Create a new role (request body)
 - `roles_retrieve` GET `/api/roles/{uuid}/` — Get role details (path: uuid | 1 query param)
 - `roles_update` PUT `/api/roles/{uuid}/` — Update a role (path: uuid | request body)
 - `roles_partial_update` PATCH `/api/roles/{uuid}/` (path: uuid | request body)
 - `roles_destroy` DELETE `/api/roles/{uuid}/` — Delete a role (path: uuid)
+- `roles_clone_to_customer` POST `/api/roles/{uuid}/clone_to_customer/` — Clone a role into an organization (path: uuid | request body)
 - `roles_disable` POST `/api/roles/{uuid}/disable/` — Disable a role (path: uuid)
 - `roles_enable` POST `/api/roles/{uuid}/enable/` — Enable a role (path: uuid)
 - `roles_update_descriptions_update` PUT `/api/roles/{uuid}/update_descriptions/` — Update role descriptions (path: uuid | request body)
@@ -3538,6 +3815,18 @@ Module: `waldur_api_client.api.support_attachments`
 - `support_attachments_retrieve` GET `/api/support-attachments/{uuid}/` (path: uuid | 1 query param)
 - `support_attachments_destroy` DELETE `/api/support-attachments/{uuid}/` (path: uuid)
 
+## support-canned-responses
+Module: `waldur_api_client.api.support_canned_responses`
+
+- `support_canned_responses_list` GET `/api/support-canned-responses/` (3 query params)
+- `support_canned_responses_count` HEAD `/api/support-canned-responses/` — Get number of items in the collection matching the request parameters (3 query params)
+- `support_canned_responses_create` POST `/api/support-canned-responses/` (request body)
+- `support_canned_responses_retrieve` GET `/api/support-canned-responses/{uuid}/` (path: uuid)
+- `support_canned_responses_update` PUT `/api/support-canned-responses/{uuid}/` (path: uuid | request body)
+- `support_canned_responses_partial_update` PATCH `/api/support-canned-responses/{uuid}/` (path: uuid | request body)
+- `support_canned_responses_destroy` DELETE `/api/support-canned-responses/{uuid}/` (path: uuid)
+- `support_canned_responses_render` POST `/api/support-canned-responses/{uuid}/render/` — Render a canned response with context variables (path: uuid | request body)
+
 ## support-comments
 Module: `waldur_api_client.api.support_comments`
 
@@ -3566,6 +3855,17 @@ Module: `waldur_api_client.api.support_feedbacks`
 - `support_feedbacks_create` POST `/api/support-feedbacks/` (request body)
 - `support_feedbacks_retrieve` GET `/api/support-feedbacks/{uuid}/` (path: uuid)
 
+## support-issue-links
+Module: `waldur_api_client.api.support_issue_links`
+
+- `support_issue_links_list` GET `/api/support-issue-links/` (3 query params)
+- `support_issue_links_count` HEAD `/api/support-issue-links/` — Get number of items in the collection matching the request parameters (3 query params)
+- `support_issue_links_create` POST `/api/support-issue-links/` (request body)
+- `support_issue_links_retrieve` GET `/api/support-issue-links/{uuid}/` (path: uuid)
+- `support_issue_links_update` PUT `/api/support-issue-links/{uuid}/` (path: uuid | request body)
+- `support_issue_links_partial_update` PATCH `/api/support-issue-links/{uuid}/` (path: uuid | request body)
+- `support_issue_links_destroy` DELETE `/api/support-issue-links/{uuid}/` (path: uuid)
+
 ## support-issue-statuses
 Module: `waldur_api_client.api.support_issue_statuses`
 
@@ -3577,17 +3877,33 @@ Module: `waldur_api_client.api.support_issue_statuses`
 - `support_issue_statuses_partial_update` PATCH `/api/support-issue-statuses/{uuid}/` (path: uuid | request body)
 - `support_issue_statuses_destroy` DELETE `/api/support-issue-statuses/{uuid}/` (path: uuid)
 
+## support-issue-tags
+Module: `waldur_api_client.api.support_issue_tags`
+
+- `support_issue_tags_list` GET `/api/support-issue-tags/` (1 query param)
+- `support_issue_tags_count` HEAD `/api/support-issue-tags/` — Get number of items in the collection matching the request parameters (1 query param)
+- `support_issue_tags_create` POST `/api/support-issue-tags/` (request body)
+- `support_issue_tags_retrieve` GET `/api/support-issue-tags/{uuid}/` (path: uuid)
+- `support_issue_tags_update` PUT `/api/support-issue-tags/{uuid}/` (path: uuid | request body)
+- `support_issue_tags_partial_update` PATCH `/api/support-issue-tags/{uuid}/` (path: uuid | request body)
+- `support_issue_tags_destroy` DELETE `/api/support-issue-tags/{uuid}/` (path: uuid)
+
 ## support-issues
 Module: `waldur_api_client.api.support_issues`
 
-- `support_issues_list` GET `/api/support-issues/` (22 query params)
-- `support_issues_count` HEAD `/api/support-issues/` — Get number of items in the collection matching the request parameters (22 query params)
+- `support_issues_list` GET `/api/support-issues/` (27 query params)
+- `support_issues_count` HEAD `/api/support-issues/` — Get number of items in the collection matching the request parameters (27 query params)
 - `support_issues_create` POST `/api/support-issues/` (request body)
+- `support_issues_bulk_update` POST `/api/support-issues/bulk_update/` — Bulk update multiple issues (request body)
 - `support_issues_retrieve` GET `/api/support-issues/{uuid}/` (path: uuid)
 - `support_issues_update` PUT `/api/support-issues/{uuid}/` (path: uuid | request body)
 - `support_issues_partial_update` PATCH `/api/support-issues/{uuid}/` (path: uuid | request body)
 - `support_issues_destroy` DELETE `/api/support-issues/{uuid}/` (path: uuid)
+- `support_issues_attach_resource` POST `/api/support-issues/{uuid}/attach_resource/` — Attach a marketplace resource to an issue (path: uuid | request body)
 - `support_issues_comment` POST `/api/support-issues/{uuid}/comment/` (path: uuid | request body)
+- `support_issues_escalate` POST `/api/support-issues/{uuid}/escalate/` — Escalate an issue (path: uuid | request body)
+- `support_issues_reroute` POST `/api/support-issues/{uuid}/reroute/` — Re-route an already-routed issue to a different provider helpdesk (path: uuid | request body)
+- `support_issues_route_to_provider` POST `/api/support-issues/{uuid}/route_to_provider/` — Manually route an issue to a provider helpdesk (path: uuid | request body)
 - `support_issues_sync` POST `/api/support-issues/{uuid}/sync/` (path: uuid)
 
 ## support-jira-webhook
@@ -3601,6 +3917,11 @@ Module: `waldur_api_client.api.support_priorities`
 - `support_priorities_list` GET `/api/support-priorities/` (2 query params)
 - `support_priorities_count` HEAD `/api/support-priorities/` — Get number of items in the collection matching the request parameters (2 query params)
 - `support_priorities_retrieve` GET `/api/support-priorities/{uuid}/` (path: uuid)
+
+## support-provider-webhook
+Module: `waldur_api_client.api.support_provider_webhook`
+
+- `support_provider_webhook` POST `/api/support-provider-webhook/{provider_uuid}/{backend_type}/` (path: backend_type, provider_uuid | request body)
 
 ## support-request-types
 Module: `waldur_api_client.api.support_request_types`
@@ -3622,6 +3943,17 @@ Module: `waldur_api_client.api.support_request_types_admin`
 - `support_request_types_admin_destroy` DELETE `/api/support-request-types-admin/{uuid}/` (path: uuid)
 - `support_request_types_admin_activate` POST `/api/support-request-types-admin/{uuid}/activate/` — Activate a request type so it appears in issue creation (path: uuid)
 - `support_request_types_admin_deactivate` POST `/api/support-request-types-admin/{uuid}/deactivate/` — Deactivate a request type so it no longer appears in issue creation (path: uuid)
+
+## support-saved-filters
+Module: `waldur_api_client.api.support_saved_filters`
+
+- `support_saved_filters_list` GET `/api/support-saved-filters/` (2 query params)
+- `support_saved_filters_count` HEAD `/api/support-saved-filters/` — Get number of items in the collection matching the request parameters (2 query params)
+- `support_saved_filters_create` POST `/api/support-saved-filters/` (request body)
+- `support_saved_filters_retrieve` GET `/api/support-saved-filters/{uuid}/` (path: uuid)
+- `support_saved_filters_update` PUT `/api/support-saved-filters/{uuid}/` (path: uuid | request body)
+- `support_saved_filters_partial_update` PATCH `/api/support-saved-filters/{uuid}/` (path: uuid | request body)
+- `support_saved_filters_destroy` DELETE `/api/support-saved-filters/{uuid}/` (path: uuid)
 
 ## support-smax-webhook
 Module: `waldur_api_client.api.support_smax_webhook`
@@ -3649,9 +3981,15 @@ Module: `waldur_api_client.api.support_templates`
 ## support-users
 Module: `waldur_api_client.api.support_users`
 
-- `support_users_list` GET `/api/support-users/` (3 query params)
-- `support_users_count` HEAD `/api/support-users/` — Get number of items in the collection matching the request parameters (3 query params)
+- `support_users_list` GET `/api/support-users/` (7 query params)
+- `support_users_count` HEAD `/api/support-users/` — Get number of items in the collection matching the request parameters (7 query params)
+- `support_users_create` POST `/api/support-users/` (request body)
 - `support_users_retrieve` GET `/api/support-users/{uuid}/` (path: uuid)
+- `support_users_update` PUT `/api/support-users/{uuid}/` (path: uuid | request body)
+- `support_users_partial_update` PATCH `/api/support-users/{uuid}/` (path: uuid | request body)
+- `support_users_destroy` DELETE `/api/support-users/{uuid}/` (path: uuid)
+- `support_users_connections_retrieve` GET `/api/support-users/{uuid}/connections/` (path: uuid)
+- `support_users_merge` POST `/api/support-users/{uuid}/merge/` (path: uuid | request body)
 
 ## support-zammad-webhook
 Module: `waldur_api_client.api.support_zammad_webhook`
@@ -3762,9 +4100,11 @@ Module: `waldur_api_client.api.user_permission_requests`
 ## user-permissions
 Module: `waldur_api_client.api.user_permissions`
 
-- `user_permissions_list` GET `/api/user-permissions/` — List user permissions (17 query params)
-- `user_permissions_count` HEAD `/api/user-permissions/` — List user permissions (17 query params)
+- `user_permissions_list` GET `/api/user-permissions/` — List user permissions (20 query params)
+- `user_permissions_count` HEAD `/api/user-permissions/` — List user permissions (20 query params)
 - `user_permissions_retrieve` GET `/api/user-permissions/{uuid}/` — Get permission details (path: uuid)
+- `user_permissions_restore` POST `/api/user-permissions/{uuid}/restore/` — Restore a revoked user role (path: uuid | request body)
+- `user_permissions_revoke` POST `/api/user-permissions/{uuid}/revoke/` — Revoke a user role (path: uuid | request body)
 
 ## users
 Module: `waldur_api_client.api.users`

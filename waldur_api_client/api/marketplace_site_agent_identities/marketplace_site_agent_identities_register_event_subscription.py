@@ -62,8 +62,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: AgentEventSubscriptionCreateRequest,
 ) -> Response[EventSubscription]:
-    """Register an event subscription for the specified agent identity and observable object type. Returns
-    existing subscription if already exists.
+    """DEPRECATED: use register_queue instead, which creates a single unified consumer queue. This per-
+    object-type subscription path is kept only for the deprecation window; removal is tracked in
+    WAL-10111. Register an event subscription for the specified agent identity and observable object
+    type. Returns existing subscription if already exists.
 
     Args:
         uuid (UUID):
@@ -95,8 +97,10 @@ def sync(
     client: AuthenticatedClient,
     body: AgentEventSubscriptionCreateRequest,
 ) -> EventSubscription:
-    """Register an event subscription for the specified agent identity and observable object type. Returns
-    existing subscription if already exists.
+    """DEPRECATED: use register_queue instead, which creates a single unified consumer queue. This per-
+    object-type subscription path is kept only for the deprecation window; removal is tracked in
+    WAL-10111. Register an event subscription for the specified agent identity and observable object
+    type. Returns existing subscription if already exists.
 
     Args:
         uuid (UUID):
@@ -123,8 +127,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: AgentEventSubscriptionCreateRequest,
 ) -> Response[EventSubscription]:
-    """Register an event subscription for the specified agent identity and observable object type. Returns
-    existing subscription if already exists.
+    """DEPRECATED: use register_queue instead, which creates a single unified consumer queue. This per-
+    object-type subscription path is kept only for the deprecation window; removal is tracked in
+    WAL-10111. Register an event subscription for the specified agent identity and observable object
+    type. Returns existing subscription if already exists.
 
     Args:
         uuid (UUID):
@@ -154,8 +160,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: AgentEventSubscriptionCreateRequest,
 ) -> EventSubscription:
-    """Register an event subscription for the specified agent identity and observable object type. Returns
-    existing subscription if already exists.
+    """DEPRECATED: use register_queue instead, which creates a single unified consumer queue. This per-
+    object-type subscription path is kept only for the deprecation window; removal is tracked in
+    WAL-10111. Register an event subscription for the specified agent identity and observable object
+    type. Returns existing subscription if already exists.
 
     Args:
         uuid (UUID):

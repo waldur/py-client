@@ -10,7 +10,6 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.google_credentials_allowed_domains import GoogleCredentialsAllowedDomains
     from ..models.organization_group import OrganizationGroup
 
 
@@ -37,8 +36,8 @@ class GoogleCredentials:
         image (Union[None, Unset, str]):
         organization_groups (Union[Unset, list['OrganizationGroup']]):
         offering_count (Union[Unset, int]):
-        allowed_domains (Union[Unset, GoogleCredentialsAllowedDomains]): List of allowed domains for offering endpoints.
-            Only staff can modify this field.
+        allowed_domains (Union[Unset, list[str]]): List of allowed domains for offering endpoints. Only staff can modify
+            this field.
         calendar_token (Union[Unset, str]):
         calendar_refresh_token (Union[Unset, str]):
         google_auth_url (Union[Unset, str]):
@@ -60,7 +59,7 @@ class GoogleCredentials:
     image: Union[None, Unset, str] = UNSET
     organization_groups: Union[Unset, list["OrganizationGroup"]] = UNSET
     offering_count: Union[Unset, int] = UNSET
-    allowed_domains: Union[Unset, "GoogleCredentialsAllowedDomains"] = UNSET
+    allowed_domains: Union[Unset, list[str]] = UNSET
     calendar_token: Union[Unset, str] = UNSET
     calendar_refresh_token: Union[Unset, str] = UNSET
     google_auth_url: Union[Unset, str] = UNSET
@@ -114,9 +113,9 @@ class GoogleCredentials:
 
         offering_count = self.offering_count
 
-        allowed_domains: Union[Unset, dict[str, Any]] = UNSET
+        allowed_domains: Union[Unset, list[str]] = UNSET
         if not isinstance(self.allowed_domains, Unset):
-            allowed_domains = self.allowed_domains.to_dict()
+            allowed_domains = self.allowed_domains
 
         calendar_token = self.calendar_token
 
@@ -172,7 +171,6 @@ class GoogleCredentials:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.google_credentials_allowed_domains import GoogleCredentialsAllowedDomains
         from ..models.organization_group import OrganizationGroup
 
         d = dict(src_dict)
@@ -235,12 +233,7 @@ class GoogleCredentials:
 
         offering_count = d.pop("offering_count", UNSET)
 
-        _allowed_domains = d.pop("allowed_domains", UNSET)
-        allowed_domains: Union[Unset, GoogleCredentialsAllowedDomains]
-        if isinstance(_allowed_domains, Unset):
-            allowed_domains = UNSET
-        else:
-            allowed_domains = GoogleCredentialsAllowedDomains.from_dict(_allowed_domains)
+        allowed_domains = cast(list[str], d.pop("allowed_domains", UNSET))
 
         calendar_token = d.pop("calendar_token", UNSET)
 

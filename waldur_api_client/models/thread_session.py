@@ -32,6 +32,8 @@ class ThreadSession:
         total_tokens (Union[None, Unset, int]):
         title_gen_input_tokens (Union[None, Unset, int]):
         title_gen_output_tokens (Union[None, Unset, int]):
+        models_used (Union[Unset, str]): Comma-separated distinct LLM models across the thread's messages. More than one
+            when an admin switched AI_ASSISTANT_MODEL mid-thread; blank for threads written before model tracking existed.
         is_flagged (Union[Unset, bool]):
         max_severity (Union[Unset, InjectionSeverityEnum]):
         has_feedback (Union[Unset, bool]):
@@ -52,6 +54,7 @@ class ThreadSession:
     total_tokens: Union[None, Unset, int] = UNSET
     title_gen_input_tokens: Union[None, Unset, int] = UNSET
     title_gen_output_tokens: Union[None, Unset, int] = UNSET
+    models_used: Union[Unset, str] = UNSET
     is_flagged: Union[Unset, bool] = UNSET
     max_severity: Union[Unset, InjectionSeverityEnum] = UNSET
     has_feedback: Union[Unset, bool] = UNSET
@@ -110,6 +113,8 @@ class ThreadSession:
         else:
             title_gen_output_tokens = self.title_gen_output_tokens
 
+        models_used = self.models_used
+
         is_flagged = self.is_flagged
 
         max_severity: Union[Unset, str] = UNSET
@@ -155,6 +160,8 @@ class ThreadSession:
             field_dict["title_gen_input_tokens"] = title_gen_input_tokens
         if title_gen_output_tokens is not UNSET:
             field_dict["title_gen_output_tokens"] = title_gen_output_tokens
+        if models_used is not UNSET:
+            field_dict["models_used"] = models_used
         if is_flagged is not UNSET:
             field_dict["is_flagged"] = is_flagged
         if max_severity is not UNSET:
@@ -249,6 +256,8 @@ class ThreadSession:
 
         title_gen_output_tokens = _parse_title_gen_output_tokens(d.pop("title_gen_output_tokens", UNSET))
 
+        models_used = d.pop("models_used", UNSET)
+
         is_flagged = d.pop("is_flagged", UNSET)
 
         _max_severity = d.pop("max_severity", UNSET)
@@ -290,6 +299,7 @@ class ThreadSession:
             total_tokens=total_tokens,
             title_gen_input_tokens=title_gen_input_tokens,
             title_gen_output_tokens=title_gen_output_tokens,
+            models_used=models_used,
             is_flagged=is_flagged,
             max_severity=max_severity,
             has_feedback=has_feedback,

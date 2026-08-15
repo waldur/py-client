@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
@@ -7,20 +8,34 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.role_details import RoleDetails
 from ...models.role_details_field_enum import RoleDetailsFieldEnum
+from ...models.role_details_o_enum import RoleDetailsOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
+    available_for_customer: Union[Unset, UUID] = UNSET,
+    content_type: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
+    include_concealed: Union[Unset, bool] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
+    is_system_role: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[RoleDetailsOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    json_available_for_customer: Union[Unset, str] = UNSET
+    if not isinstance(available_for_customer, Unset):
+        json_available_for_customer = str(available_for_customer)
+    params["available_for_customer"] = json_available_for_customer
+
+    params["content_type"] = content_type
 
     params["description"] = description
 
@@ -33,13 +48,28 @@ def _get_kwargs(
 
     params["field"] = json_field
 
+    params["include_concealed"] = include_concealed
+
     params["is_active"] = is_active
 
+    params["is_system_role"] = is_system_role
+
     params["name"] = name
+
+    json_o: Union[Unset, list[str]] = UNSET
+    if not isinstance(o, Unset):
+        json_o = []
+        for o_item_data in o:
+            o_item = o_item_data.value
+            json_o.append(o_item)
+
+    params["o"] = json_o
 
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["query"] = query
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -81,24 +111,36 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    available_for_customer: Union[Unset, UUID] = UNSET,
+    content_type: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
+    include_concealed: Union[Unset, bool] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
+    is_system_role: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[RoleDetailsOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> Response[list["RoleDetails"]]:
     """List roles
 
      Get a list of all available roles.
 
     Args:
+        available_for_customer (Union[Unset, UUID]):
+        content_type (Union[Unset, str]):
         description (Union[Unset, str]):
         field (Union[Unset, list[RoleDetailsFieldEnum]]):
+        include_concealed (Union[Unset, bool]):
         is_active (Union[Unset, bool]):
+        is_system_role (Union[Unset, bool]):
         name (Union[Unset, str]):
+        o (Union[Unset, list[RoleDetailsOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -109,12 +151,18 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        available_for_customer=available_for_customer,
+        content_type=content_type,
         description=description,
         field=field,
+        include_concealed=include_concealed,
         is_active=is_active,
+        is_system_role=is_system_role,
         name=name,
+        o=o,
         page=page,
         page_size=page_size,
+        query=query,
     )
 
     response = client.get_httpx_client().request(
@@ -127,24 +175,36 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    available_for_customer: Union[Unset, UUID] = UNSET,
+    content_type: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
+    include_concealed: Union[Unset, bool] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
+    is_system_role: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[RoleDetailsOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> list["RoleDetails"]:
     """List roles
 
      Get a list of all available roles.
 
     Args:
+        available_for_customer (Union[Unset, UUID]):
+        content_type (Union[Unset, str]):
         description (Union[Unset, str]):
         field (Union[Unset, list[RoleDetailsFieldEnum]]):
+        include_concealed (Union[Unset, bool]):
         is_active (Union[Unset, bool]):
+        is_system_role (Union[Unset, bool]):
         name (Union[Unset, str]):
+        o (Union[Unset, list[RoleDetailsOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -156,36 +216,54 @@ def sync(
 
     return sync_detailed(
         client=client,
+        available_for_customer=available_for_customer,
+        content_type=content_type,
         description=description,
         field=field,
+        include_concealed=include_concealed,
         is_active=is_active,
+        is_system_role=is_system_role,
         name=name,
+        o=o,
         page=page,
         page_size=page_size,
+        query=query,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    available_for_customer: Union[Unset, UUID] = UNSET,
+    content_type: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
+    include_concealed: Union[Unset, bool] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
+    is_system_role: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[RoleDetailsOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> Response[list["RoleDetails"]]:
     """List roles
 
      Get a list of all available roles.
 
     Args:
+        available_for_customer (Union[Unset, UUID]):
+        content_type (Union[Unset, str]):
         description (Union[Unset, str]):
         field (Union[Unset, list[RoleDetailsFieldEnum]]):
+        include_concealed (Union[Unset, bool]):
         is_active (Union[Unset, bool]):
+        is_system_role (Union[Unset, bool]):
         name (Union[Unset, str]):
+        o (Union[Unset, list[RoleDetailsOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -196,12 +274,18 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        available_for_customer=available_for_customer,
+        content_type=content_type,
         description=description,
         field=field,
+        include_concealed=include_concealed,
         is_active=is_active,
+        is_system_role=is_system_role,
         name=name,
+        o=o,
         page=page,
         page_size=page_size,
+        query=query,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -212,24 +296,36 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    available_for_customer: Union[Unset, UUID] = UNSET,
+    content_type: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
+    include_concealed: Union[Unset, bool] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
+    is_system_role: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[RoleDetailsOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> list["RoleDetails"]:
     """List roles
 
      Get a list of all available roles.
 
     Args:
+        available_for_customer (Union[Unset, UUID]):
+        content_type (Union[Unset, str]):
         description (Union[Unset, str]):
         field (Union[Unset, list[RoleDetailsFieldEnum]]):
+        include_concealed (Union[Unset, bool]):
         is_active (Union[Unset, bool]):
+        is_system_role (Union[Unset, bool]):
         name (Union[Unset, str]):
+        o (Union[Unset, list[RoleDetailsOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -242,12 +338,18 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            available_for_customer=available_for_customer,
+            content_type=content_type,
             description=description,
             field=field,
+            include_concealed=include_concealed,
             is_active=is_active,
+            is_system_role=is_system_role,
             name=name,
+            o=o,
             page=page,
             page_size=page_size,
+            query=query,
         )
     ).parsed
 
@@ -255,10 +357,16 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
+    available_for_customer: Union[Unset, UUID] = UNSET,
+    content_type: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
+    include_concealed: Union[Unset, bool] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
+    is_system_role: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[RoleDetailsOEnum]] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> list["RoleDetails"]:
     """Get All Pages
 
@@ -268,10 +376,16 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
+        available_for_customer (Union[Unset, UUID]):
+        content_type (Union[Unset, str]):
         description (Union[Unset, str]):
         field (Union[Unset, list[RoleDetailsFieldEnum]]):
+        include_concealed (Union[Unset, bool]):
         is_active (Union[Unset, bool]):
+        is_system_role (Union[Unset, bool]):
         name (Union[Unset, str]):
+        o (Union[Unset, list[RoleDetailsOEnum]]):
+        query (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -286,10 +400,16 @@ def sync_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
+        available_for_customer=available_for_customer,
+        content_type=content_type,
         description=description,
         field=field,
+        include_concealed=include_concealed,
         is_active=is_active,
+        is_system_role=is_system_role,
         name=name,
+        o=o,
+        query=query,
     )
 
     # Set page_size to maximum
@@ -337,10 +457,16 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
+    available_for_customer: Union[Unset, UUID] = UNSET,
+    content_type: Union[Unset, str] = UNSET,
     description: Union[Unset, str] = UNSET,
     field: Union[Unset, list[RoleDetailsFieldEnum]] = UNSET,
+    include_concealed: Union[Unset, bool] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
+    is_system_role: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[RoleDetailsOEnum]] = UNSET,
+    query: Union[Unset, str] = UNSET,
 ) -> list["RoleDetails"]:
     """Get All Pages (Async)
 
@@ -350,10 +476,16 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
+        available_for_customer (Union[Unset, UUID]):
+        content_type (Union[Unset, str]):
         description (Union[Unset, str]):
         field (Union[Unset, list[RoleDetailsFieldEnum]]):
+        include_concealed (Union[Unset, bool]):
         is_active (Union[Unset, bool]):
+        is_system_role (Union[Unset, bool]):
         name (Union[Unset, str]):
+        o (Union[Unset, list[RoleDetailsOEnum]]):
+        query (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -368,10 +500,16 @@ async def asyncio_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
+        available_for_customer=available_for_customer,
+        content_type=content_type,
         description=description,
         field=field,
+        include_concealed=include_concealed,
         is_active=is_active,
+        is_system_role=is_system_role,
         name=name,
+        o=o,
+        query=query,
     )
 
     # Set page_size to maximum

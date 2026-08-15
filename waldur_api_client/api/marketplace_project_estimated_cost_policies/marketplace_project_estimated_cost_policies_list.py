@@ -15,11 +15,14 @@ def _get_kwargs(
     *,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    has_resource: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    resource: Union[Unset, str] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
@@ -31,6 +34,8 @@ def _get_kwargs(
     if not isinstance(customer_uuid, Unset):
         json_customer_uuid = str(customer_uuid)
     params["customer_uuid"] = json_customer_uuid
+
+    params["has_resource"] = has_resource
 
     params["page"] = page
 
@@ -44,6 +49,13 @@ def _get_kwargs(
     params["project_uuid"] = json_project_uuid
 
     params["query"] = query
+
+    params["resource"] = resource
+
+    json_resource_uuid: Union[Unset, str] = UNSET
+    if not isinstance(resource_uuid, Unset):
+        json_resource_uuid = str(resource_uuid)
+    params["resource_uuid"] = json_resource_uuid
 
     params["scope"] = scope
 
@@ -96,11 +108,14 @@ def sync_detailed(
     client: AuthenticatedClient,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    has_resource: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    resource: Union[Unset, str] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["ProjectEstimatedCostPolicy"]]:
@@ -108,11 +123,14 @@ def sync_detailed(
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        has_resource (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        resource (Union[Unset, str]):
+        resource_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         scope_uuid (Union[Unset, UUID]):
 
@@ -127,11 +145,14 @@ def sync_detailed(
     kwargs = _get_kwargs(
         customer=customer,
         customer_uuid=customer_uuid,
+        has_resource=has_resource,
         page=page,
         page_size=page_size,
         project=project,
         project_uuid=project_uuid,
         query=query,
+        resource=resource,
+        resource_uuid=resource_uuid,
         scope=scope,
         scope_uuid=scope_uuid,
     )
@@ -148,11 +169,14 @@ def sync(
     client: AuthenticatedClient,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    has_resource: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    resource: Union[Unset, str] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ProjectEstimatedCostPolicy"]:
@@ -160,11 +184,14 @@ def sync(
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        has_resource (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        resource (Union[Unset, str]):
+        resource_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         scope_uuid (Union[Unset, UUID]):
 
@@ -180,11 +207,14 @@ def sync(
         client=client,
         customer=customer,
         customer_uuid=customer_uuid,
+        has_resource=has_resource,
         page=page,
         page_size=page_size,
         project=project,
         project_uuid=project_uuid,
         query=query,
+        resource=resource,
+        resource_uuid=resource_uuid,
         scope=scope,
         scope_uuid=scope_uuid,
     ).parsed
@@ -195,11 +225,14 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    has_resource: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    resource: Union[Unset, str] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["ProjectEstimatedCostPolicy"]]:
@@ -207,11 +240,14 @@ async def asyncio_detailed(
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        has_resource (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        resource (Union[Unset, str]):
+        resource_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         scope_uuid (Union[Unset, UUID]):
 
@@ -226,11 +262,14 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         customer=customer,
         customer_uuid=customer_uuid,
+        has_resource=has_resource,
         page=page,
         page_size=page_size,
         project=project,
         project_uuid=project_uuid,
         query=query,
+        resource=resource,
+        resource_uuid=resource_uuid,
         scope=scope,
         scope_uuid=scope_uuid,
     )
@@ -245,11 +284,14 @@ async def asyncio(
     client: AuthenticatedClient,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    has_resource: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    resource: Union[Unset, str] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ProjectEstimatedCostPolicy"]:
@@ -257,11 +299,14 @@ async def asyncio(
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        has_resource (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        resource (Union[Unset, str]):
+        resource_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         scope_uuid (Union[Unset, UUID]):
 
@@ -278,11 +323,14 @@ async def asyncio(
             client=client,
             customer=customer,
             customer_uuid=customer_uuid,
+            has_resource=has_resource,
             page=page,
             page_size=page_size,
             project=project,
             project_uuid=project_uuid,
             query=query,
+            resource=resource,
+            resource_uuid=resource_uuid,
             scope=scope,
             scope_uuid=scope_uuid,
         )
@@ -294,9 +342,12 @@ def sync_all(
     client: AuthenticatedClient,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    has_resource: Union[Unset, bool] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    resource: Union[Unset, str] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ProjectEstimatedCostPolicy"]:
@@ -310,9 +361,12 @@ def sync_all(
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        has_resource (Union[Unset, bool]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        resource (Union[Unset, str]):
+        resource_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         scope_uuid (Union[Unset, UUID]):
 
@@ -331,9 +385,12 @@ def sync_all(
     kwargs = _get_kwargs(
         customer=customer,
         customer_uuid=customer_uuid,
+        has_resource=has_resource,
         project=project,
         project_uuid=project_uuid,
         query=query,
+        resource=resource,
+        resource_uuid=resource_uuid,
         scope=scope,
         scope_uuid=scope_uuid,
     )
@@ -385,9 +442,12 @@ async def asyncio_all(
     client: AuthenticatedClient,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    has_resource: Union[Unset, bool] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
+    resource: Union[Unset, str] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
     scope: Union[Unset, str] = UNSET,
     scope_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["ProjectEstimatedCostPolicy"]:
@@ -401,9 +461,12 @@ async def asyncio_all(
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
+        has_resource (Union[Unset, bool]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
+        resource (Union[Unset, str]):
+        resource_uuid (Union[Unset, UUID]):
         scope (Union[Unset, str]):
         scope_uuid (Union[Unset, UUID]):
 
@@ -422,9 +485,12 @@ async def asyncio_all(
     kwargs = _get_kwargs(
         customer=customer,
         customer_uuid=customer_uuid,
+        has_resource=has_resource,
         project=project,
         project_uuid=project_uuid,
         query=query,
+        resource=resource,
+        resource_uuid=resource_uuid,
         scope=scope,
         scope_uuid=scope_uuid,
     )

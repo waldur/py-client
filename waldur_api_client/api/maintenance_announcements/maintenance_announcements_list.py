@@ -26,6 +26,7 @@ def _get_kwargs(
     scheduled_start_before: Union[Unset, datetime.datetime] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MaintenanceAnnouncementStateEnum]] = UNSET,
+    timing_bucket: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -77,6 +78,8 @@ def _get_kwargs(
             json_state.append(state_item)
 
     params["state"] = json_state
+
+    params["timing_bucket"] = timing_bucket
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -130,6 +133,7 @@ def sync_detailed(
     scheduled_start_before: Union[Unset, datetime.datetime] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MaintenanceAnnouncementStateEnum]] = UNSET,
+    timing_bucket: Union[Unset, str] = UNSET,
 ) -> Response[list["MaintenanceAnnouncement"]]:
     """List maintenance announcements
 
@@ -146,6 +150,7 @@ def sync_detailed(
         scheduled_start_before (Union[Unset, datetime.datetime]):
         service_provider_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MaintenanceAnnouncementStateEnum]]):
+        timing_bucket (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -166,6 +171,7 @@ def sync_detailed(
         scheduled_start_before=scheduled_start_before,
         service_provider_uuid=service_provider_uuid,
         state=state,
+        timing_bucket=timing_bucket,
     )
 
     response = client.get_httpx_client().request(
@@ -188,6 +194,7 @@ def sync(
     scheduled_start_before: Union[Unset, datetime.datetime] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MaintenanceAnnouncementStateEnum]] = UNSET,
+    timing_bucket: Union[Unset, str] = UNSET,
 ) -> list["MaintenanceAnnouncement"]:
     """List maintenance announcements
 
@@ -204,6 +211,7 @@ def sync(
         scheduled_start_before (Union[Unset, datetime.datetime]):
         service_provider_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MaintenanceAnnouncementStateEnum]]):
+        timing_bucket (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -225,6 +233,7 @@ def sync(
         scheduled_start_before=scheduled_start_before,
         service_provider_uuid=service_provider_uuid,
         state=state,
+        timing_bucket=timing_bucket,
     ).parsed
 
 
@@ -241,6 +250,7 @@ async def asyncio_detailed(
     scheduled_start_before: Union[Unset, datetime.datetime] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MaintenanceAnnouncementStateEnum]] = UNSET,
+    timing_bucket: Union[Unset, str] = UNSET,
 ) -> Response[list["MaintenanceAnnouncement"]]:
     """List maintenance announcements
 
@@ -257,6 +267,7 @@ async def asyncio_detailed(
         scheduled_start_before (Union[Unset, datetime.datetime]):
         service_provider_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MaintenanceAnnouncementStateEnum]]):
+        timing_bucket (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -277,6 +288,7 @@ async def asyncio_detailed(
         scheduled_start_before=scheduled_start_before,
         service_provider_uuid=service_provider_uuid,
         state=state,
+        timing_bucket=timing_bucket,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -297,6 +309,7 @@ async def asyncio(
     scheduled_start_before: Union[Unset, datetime.datetime] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MaintenanceAnnouncementStateEnum]] = UNSET,
+    timing_bucket: Union[Unset, str] = UNSET,
 ) -> list["MaintenanceAnnouncement"]:
     """List maintenance announcements
 
@@ -313,6 +326,7 @@ async def asyncio(
         scheduled_start_before (Union[Unset, datetime.datetime]):
         service_provider_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MaintenanceAnnouncementStateEnum]]):
+        timing_bucket (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -335,6 +349,7 @@ async def asyncio(
             scheduled_start_before=scheduled_start_before,
             service_provider_uuid=service_provider_uuid,
             state=state,
+            timing_bucket=timing_bucket,
         )
     ).parsed
 
@@ -350,6 +365,7 @@ def sync_all(
     scheduled_start_before: Union[Unset, datetime.datetime] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MaintenanceAnnouncementStateEnum]] = UNSET,
+    timing_bucket: Union[Unset, str] = UNSET,
 ) -> list["MaintenanceAnnouncement"]:
     """Get All Pages
 
@@ -367,6 +383,7 @@ def sync_all(
         scheduled_start_before (Union[Unset, datetime.datetime]):
         service_provider_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MaintenanceAnnouncementStateEnum]]):
+        timing_bucket (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -389,6 +406,7 @@ def sync_all(
         scheduled_start_before=scheduled_start_before,
         service_provider_uuid=service_provider_uuid,
         state=state,
+        timing_bucket=timing_bucket,
     )
 
     # Set page_size to maximum
@@ -444,6 +462,7 @@ async def asyncio_all(
     scheduled_start_before: Union[Unset, datetime.datetime] = UNSET,
     service_provider_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[MaintenanceAnnouncementStateEnum]] = UNSET,
+    timing_bucket: Union[Unset, str] = UNSET,
 ) -> list["MaintenanceAnnouncement"]:
     """Get All Pages (Async)
 
@@ -461,6 +480,7 @@ async def asyncio_all(
         scheduled_start_before (Union[Unset, datetime.datetime]):
         service_provider_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[MaintenanceAnnouncementStateEnum]]):
+        timing_bucket (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -483,6 +503,7 @@ async def asyncio_all(
         scheduled_start_before=scheduled_start_before,
         service_provider_uuid=service_provider_uuid,
         state=state,
+        timing_bucket=timing_bucket,
     )
 
     # Set page_size to maximum

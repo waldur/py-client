@@ -23,6 +23,7 @@ class PersonalAccessTokenCreated:
         token (str): Plaintext token — shown only once.
         scopes (list[str]):
         allowed_scopes (list['AllowedScopeOutput']):
+        allowed_networks (list[str]):
         expires_at (datetime.datetime):
         created (datetime.datetime):
     """
@@ -32,6 +33,7 @@ class PersonalAccessTokenCreated:
     token: str
     scopes: list[str]
     allowed_scopes: list["AllowedScopeOutput"]
+    allowed_networks: list[str]
     expires_at: datetime.datetime
     created: datetime.datetime
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -50,6 +52,8 @@ class PersonalAccessTokenCreated:
             allowed_scopes_item = allowed_scopes_item_data.to_dict()
             allowed_scopes.append(allowed_scopes_item)
 
+        allowed_networks = self.allowed_networks
+
         expires_at = self.expires_at.isoformat()
 
         created = self.created.isoformat()
@@ -63,6 +67,7 @@ class PersonalAccessTokenCreated:
                 "token": token,
                 "scopes": scopes,
                 "allowed_scopes": allowed_scopes,
+                "allowed_networks": allowed_networks,
                 "expires_at": expires_at,
                 "created": created,
             }
@@ -90,6 +95,8 @@ class PersonalAccessTokenCreated:
 
             allowed_scopes.append(allowed_scopes_item)
 
+        allowed_networks = cast(list[str], d.pop("allowed_networks"))
+
         expires_at = isoparse(d.pop("expires_at"))
 
         created = isoparse(d.pop("created"))
@@ -100,6 +107,7 @@ class PersonalAccessTokenCreated:
             token=token,
             scopes=scopes,
             allowed_scopes=allowed_scopes,
+            allowed_networks=allowed_networks,
             expires_at=expires_at,
             created=created,
         )

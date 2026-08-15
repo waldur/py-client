@@ -25,6 +25,7 @@ def _get_kwargs(
     o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
+    open_for_offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     slug: Union[Unset, str] = UNSET,
@@ -72,6 +73,11 @@ def _get_kwargs(
     if not isinstance(offerings_provider_uuid, Unset):
         json_offerings_provider_uuid = str(offerings_provider_uuid)
     params["offerings_provider_uuid"] = json_offerings_provider_uuid
+
+    json_open_for_offering_uuid: Union[Unset, str] = UNSET
+    if not isinstance(open_for_offering_uuid, Unset):
+        json_open_for_offering_uuid = str(open_for_offering_uuid)
+    params["open_for_offering_uuid"] = json_open_for_offering_uuid
 
     params["page"] = page
 
@@ -137,6 +143,7 @@ def sync_detailed(
     o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
+    open_for_offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     slug: Union[Unset, str] = UNSET,
@@ -153,6 +160,7 @@ def sync_detailed(
         o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
+        open_for_offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         slug (Union[Unset, str]):
@@ -176,6 +184,7 @@ def sync_detailed(
         o=o,
         offering_uuid=offering_uuid,
         offerings_provider_uuid=offerings_provider_uuid,
+        open_for_offering_uuid=open_for_offering_uuid,
         page=page,
         page_size=page_size,
         slug=slug,
@@ -201,6 +210,7 @@ def sync(
     o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
+    open_for_offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     slug: Union[Unset, str] = UNSET,
@@ -217,6 +227,7 @@ def sync(
         o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
+        open_for_offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         slug (Union[Unset, str]):
@@ -241,6 +252,7 @@ def sync(
         o=o,
         offering_uuid=offering_uuid,
         offerings_provider_uuid=offerings_provider_uuid,
+        open_for_offering_uuid=open_for_offering_uuid,
         page=page,
         page_size=page_size,
         slug=slug,
@@ -260,6 +272,7 @@ async def asyncio_detailed(
     o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
+    open_for_offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     slug: Union[Unset, str] = UNSET,
@@ -276,6 +289,7 @@ async def asyncio_detailed(
         o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
+        open_for_offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         slug (Union[Unset, str]):
@@ -299,6 +313,7 @@ async def asyncio_detailed(
         o=o,
         offering_uuid=offering_uuid,
         offerings_provider_uuid=offerings_provider_uuid,
+        open_for_offering_uuid=open_for_offering_uuid,
         page=page,
         page_size=page_size,
         slug=slug,
@@ -322,6 +337,7 @@ async def asyncio(
     o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
+    open_for_offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     slug: Union[Unset, str] = UNSET,
@@ -338,6 +354,7 @@ async def asyncio(
         o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
+        open_for_offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         slug (Union[Unset, str]):
@@ -363,6 +380,7 @@ async def asyncio(
             o=o,
             offering_uuid=offering_uuid,
             offerings_provider_uuid=offerings_provider_uuid,
+            open_for_offering_uuid=open_for_offering_uuid,
             page=page,
             page_size=page_size,
             slug=slug,
@@ -383,6 +401,7 @@ def sync_all(
     o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
+    open_for_offering_uuid: Union[Unset, UUID] = UNSET,
     slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[CallStates]] = UNSET,
 ) -> list["PublicCall"]:
@@ -403,6 +422,7 @@ def sync_all(
         o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
+        open_for_offering_uuid (Union[Unset, UUID]):
         slug (Union[Unset, str]):
         state (Union[Unset, list[CallStates]]):
 
@@ -428,6 +448,7 @@ def sync_all(
         o=o,
         offering_uuid=offering_uuid,
         offerings_provider_uuid=offerings_provider_uuid,
+        open_for_offering_uuid=open_for_offering_uuid,
         slug=slug,
         state=state,
     )
@@ -486,6 +507,7 @@ async def asyncio_all(
     o: Union[Unset, list[ProtectedCallOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
+    open_for_offering_uuid: Union[Unset, UUID] = UNSET,
     slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[CallStates]] = UNSET,
 ) -> list["PublicCall"]:
@@ -506,6 +528,7 @@ async def asyncio_all(
         o (Union[Unset, list[ProtectedCallOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         offerings_provider_uuid (Union[Unset, UUID]):
+        open_for_offering_uuid (Union[Unset, UUID]):
         slug (Union[Unset, str]):
         state (Union[Unset, list[CallStates]]):
 
@@ -531,6 +554,7 @@ async def asyncio_all(
         o=o,
         offering_uuid=offering_uuid,
         offerings_provider_uuid=offerings_provider_uuid,
+        open_for_offering_uuid=open_for_offering_uuid,
         slug=slug,
         state=state,
     )
