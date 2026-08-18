@@ -1268,12 +1268,12 @@ Module: `waldur_api_client.api.marketplace_customer_component_usage_policies`
 ## marketplace-customer-estimated-cost-policies
 Module: `waldur_api_client.api.marketplace_customer_estimated_cost_policies`
 
-- `marketplace_customer_estimated_cost_policies_list` GET `/api/marketplace-customer-estimated-cost-policies/` (4 query params)
+- `marketplace_customer_estimated_cost_policies_list` GET `/api/marketplace-customer-estimated-cost-policies/` (5 query params)
 - `marketplace_customer_estimated_cost_policies_count` HEAD `/api/marketplace-customer-estimated-cost-policies/` — Get number of items in the collection matching the request parameters (4 query params)
 - `marketplace_customer_estimated_cost_policies_create` POST `/api/marketplace-customer-estimated-cost-policies/` (request body)
 - `marketplace_customer_estimated_cost_policies_actions_retrieve` GET `/api/marketplace-customer-estimated-cost-policies/actions/` (no params)
 - `marketplace_customer_estimated_cost_policies_actions_count` HEAD `/api/marketplace-customer-estimated-cost-policies/actions/` — Get number of items in the collection matching the request parameters (no params)
-- `marketplace_customer_estimated_cost_policies_retrieve` GET `/api/marketplace-customer-estimated-cost-policies/{uuid}/` (path: uuid)
+- `marketplace_customer_estimated_cost_policies_retrieve` GET `/api/marketplace-customer-estimated-cost-policies/{uuid}/` (path: uuid | 1 query param)
 - `marketplace_customer_estimated_cost_policies_update` PUT `/api/marketplace-customer-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_customer_estimated_cost_policies_partial_update` PATCH `/api/marketplace-customer-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_customer_estimated_cost_policies_destroy` DELETE `/api/marketplace-customer-estimated-cost-policies/{uuid}/` (path: uuid)
@@ -1332,12 +1332,12 @@ Module: `waldur_api_client.api.marketplace_offering_access_subnets`
 ## marketplace-offering-estimated-cost-policies
 Module: `waldur_api_client.api.marketplace_offering_estimated_cost_policies`
 
-- `marketplace_offering_estimated_cost_policies_list` GET `/api/marketplace-offering-estimated-cost-policies/` (2 query params)
+- `marketplace_offering_estimated_cost_policies_list` GET `/api/marketplace-offering-estimated-cost-policies/` (3 query params)
 - `marketplace_offering_estimated_cost_policies_count` HEAD `/api/marketplace-offering-estimated-cost-policies/` — Get number of items in the collection matching the request parameters (2 query params)
 - `marketplace_offering_estimated_cost_policies_create` POST `/api/marketplace-offering-estimated-cost-policies/` (request body)
 - `marketplace_offering_estimated_cost_policies_actions_retrieve` GET `/api/marketplace-offering-estimated-cost-policies/actions/` — List available actions for OfferingEstimatedCostPolicy (no params)
 - `marketplace_offering_estimated_cost_policies_actions_count` HEAD `/api/marketplace-offering-estimated-cost-policies/actions/` — Get number of items in the collection matching the request parameters (no params)
-- `marketplace_offering_estimated_cost_policies_retrieve` GET `/api/marketplace-offering-estimated-cost-policies/{uuid}/` (path: uuid)
+- `marketplace_offering_estimated_cost_policies_retrieve` GET `/api/marketplace-offering-estimated-cost-policies/{uuid}/` (path: uuid | 1 query param)
 - `marketplace_offering_estimated_cost_policies_update` PUT `/api/marketplace-offering-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_offering_estimated_cost_policies_partial_update` PATCH `/api/marketplace-offering-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_offering_estimated_cost_policies_destroy` DELETE `/api/marketplace-offering-estimated-cost-policies/{uuid}/` (path: uuid)
@@ -1566,12 +1566,12 @@ Module: `waldur_api_client.api.marketplace_posix_identities`
 ## marketplace-project-estimated-cost-policies
 Module: `waldur_api_client.api.marketplace_project_estimated_cost_policies`
 
-- `marketplace_project_estimated_cost_policies_list` GET `/api/marketplace-project-estimated-cost-policies/` (10 query params)
+- `marketplace_project_estimated_cost_policies_list` GET `/api/marketplace-project-estimated-cost-policies/` (11 query params)
 - `marketplace_project_estimated_cost_policies_count` HEAD `/api/marketplace-project-estimated-cost-policies/` — Get number of items in the collection matching the request parameters (10 query params)
 - `marketplace_project_estimated_cost_policies_create` POST `/api/marketplace-project-estimated-cost-policies/` (request body)
 - `marketplace_project_estimated_cost_policies_actions_retrieve` GET `/api/marketplace-project-estimated-cost-policies/actions/` (no params)
 - `marketplace_project_estimated_cost_policies_actions_count` HEAD `/api/marketplace-project-estimated-cost-policies/actions/` — Get number of items in the collection matching the request parameters (no params)
-- `marketplace_project_estimated_cost_policies_retrieve` GET `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid)
+- `marketplace_project_estimated_cost_policies_retrieve` GET `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid | 1 query param)
 - `marketplace_project_estimated_cost_policies_update` PUT `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_project_estimated_cost_policies_partial_update` PATCH `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_project_estimated_cost_policies_destroy` DELETE `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid)

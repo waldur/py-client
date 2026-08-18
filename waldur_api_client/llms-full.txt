@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.1.dev.20260817200735
+# Version: 8.1.3-rc.1.dev.20260818074340
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -6948,9 +6948,10 @@ Path parameters:
 
 ### marketplace_customer_estimated_cost_policies_list
 GET /api/marketplace-customer-estimated-cost-policies/
-Query parameters (4):
+Query parameters (5):
   - customer
   - customer_uuid
+  - field
   - scope
   - scope_uuid
 
@@ -6980,6 +6981,8 @@ Description: Get number of items in the collection matching the request paramete
 GET /api/marketplace-customer-estimated-cost-policies/{uuid}/
 Path parameters:
   - uuid
+Query parameters (1):
+  - field
 
 ### marketplace_customer_estimated_cost_policies_update
 PUT /api/marketplace-customer-estimated-cost-policies/{uuid}/
@@ -7249,7 +7252,8 @@ Path parameters:
 
 ### marketplace_offering_estimated_cost_policies_list
 GET /api/marketplace-offering-estimated-cost-policies/
-Query parameters (2):
+Query parameters (3):
+  - field
   - scope
   - scope_uuid
 
@@ -7278,6 +7282,8 @@ Description: Get number of items in the collection matching the request paramete
 GET /api/marketplace-offering-estimated-cost-policies/{uuid}/
 Path parameters:
   - uuid
+Query parameters (1):
+  - field
 
 ### marketplace_offering_estimated_cost_policies_update
 PUT /api/marketplace-offering-estimated-cost-policies/{uuid}/
@@ -8681,9 +8687,10 @@ Path parameters:
 
 ### marketplace_project_estimated_cost_policies_list
 GET /api/marketplace-project-estimated-cost-policies/
-Query parameters (10):
+Query parameters (11):
   - customer
   - customer_uuid
+  - field
   - has_resource
   - project
   - project_uuid
@@ -8725,6 +8732,8 @@ Description: Get number of items in the collection matching the request paramete
 GET /api/marketplace-project-estimated-cost-policies/{uuid}/
 Path parameters:
   - uuid
+Query parameters (1):
+  - field
 
 ### marketplace_project_estimated_cost_policies_update
 PUT /api/marketplace-project-estimated-cost-policies/{uuid}/
