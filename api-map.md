@@ -3734,36 +3734,6 @@ Module: `waldur_api_client.api.service_settings`
 - `service_settings_count` HEAD `/api/service-settings/` — Get number of items in the collection matching the request parameters (10 query params)
 - `service_settings_retrieve` GET `/api/service-settings/{uuid}/` (path: uuid | 1 query param)
 
-## slurm-allocation-user-usage
-Module: `waldur_api_client.api.slurm_allocation_user_usage`
-
-- `slurm_allocation_user_usage_list` GET `/api/slurm-allocation-user-usage/` (6 query params)
-- `slurm_allocation_user_usage_count` HEAD `/api/slurm-allocation-user-usage/` — Get number of items in the collection matching the request parameters (6 query params)
-- `slurm_allocation_user_usage_retrieve` GET `/api/slurm-allocation-user-usage/{id}/` (path: id)
-
-## slurm-allocations
-Module: `waldur_api_client.api.slurm_allocations`
-
-- `slurm_allocations_list` GET `/api/slurm-allocations/` (19 query params)
-- `slurm_allocations_count` HEAD `/api/slurm-allocations/` — Get number of items in the collection matching the request parameters (18 query params)
-- `slurm_allocations_create` POST `/api/slurm-allocations/` (request body)
-- `slurm_allocations_retrieve` GET `/api/slurm-allocations/{uuid}/` (path: uuid | 1 query param)
-- `slurm_allocations_update` PUT `/api/slurm-allocations/{uuid}/` (path: uuid | request body)
-- `slurm_allocations_partial_update` PATCH `/api/slurm-allocations/{uuid}/` (path: uuid | request body)
-- `slurm_allocations_destroy` DELETE `/api/slurm-allocations/{uuid}/` (path: uuid)
-- `slurm_allocations_pull` POST `/api/slurm-allocations/{uuid}/pull/` — Synchronize resource state (path: uuid)
-- `slurm_allocations_set_erred` POST `/api/slurm-allocations/{uuid}/set_erred/` — Mark resource as ERRED (path: uuid | request body)
-- `slurm_allocations_set_limits` POST `/api/slurm-allocations/{uuid}/set_limits/` (path: uuid | request body)
-- `slurm_allocations_set_ok` POST `/api/slurm-allocations/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
-- `slurm_allocations_unlink` POST `/api/slurm-allocations/{uuid}/unlink/` — Unlink resource (path: uuid)
-
-## slurm-associations
-Module: `waldur_api_client.api.slurm_associations`
-
-- `slurm_associations_list` GET `/api/slurm-associations/` (2 query params)
-- `slurm_associations_count` HEAD `/api/slurm-associations/` — Get number of items in the collection matching the request parameters (2 query params)
-- `slurm_associations_retrieve` GET `/api/slurm-associations/{uuid}/` (path: uuid)
-
 ## slurm-jobs
 Module: `waldur_api_client.api.slurm_jobs`
 

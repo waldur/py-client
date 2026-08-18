@@ -1861,7 +1861,6 @@ from .patched_section_request import PatchedSectionRequest
 from .patched_service_provider_request import PatchedServiceProviderRequest
 from .patched_service_provider_request_form import PatchedServiceProviderRequestForm
 from .patched_service_provider_request_multipart import PatchedServiceProviderRequestMultipart
-from .patched_slurm_allocation_request import PatchedSlurmAllocationRequest
 from .patched_slurm_periodic_usage_policy_request import PatchedSlurmPeriodicUsagePolicyRequest
 from .patched_slurm_periodic_usage_policy_request_options import PatchedSlurmPeriodicUsagePolicyRequestOptions
 from .patched_slurm_periodic_usage_policy_request_tres_billing_weights import (
@@ -2626,22 +2625,12 @@ from .site_agent_config_generation_request import SiteAgentConfigGenerationReque
 from .site_agent_log import SiteAgentLog
 from .site_agent_log_create_request import SiteAgentLogCreateRequest
 from .skipped_proposal import SkippedProposal
-from .slurm_allocation import SlurmAllocation
-from .slurm_allocation_field_enum import SlurmAllocationFieldEnum
-from .slurm_allocation_marketplace_offering_plugin_options_type_0 import (
-    SlurmAllocationMarketplaceOfferingPluginOptionsType0,
-)
-from .slurm_allocation_request import SlurmAllocationRequest
-from .slurm_allocation_set_limits_request import SlurmAllocationSetLimitsRequest
-from .slurm_allocation_user_usage import SlurmAllocationUserUsage
-from .slurm_association import SlurmAssociation
 from .slurm_command import SlurmCommand
 from .slurm_command_history import SlurmCommandHistory
 from .slurm_command_history_parameters import SlurmCommandHistoryParameters
 from .slurm_command_parameters import SlurmCommandParameters
 from .slurm_command_result_mode_enum import SlurmCommandResultModeEnum
 from .slurm_command_result_request import SlurmCommandResultRequest
-from .slurm_invoices_slurm_package_create_order_attributes import SlurmInvoicesSlurmPackageCreateOrderAttributes
 from .slurm_periodic_usage_policy import SlurmPeriodicUsagePolicy
 from .slurm_periodic_usage_policy_options import SlurmPeriodicUsagePolicyOptions
 from .slurm_periodic_usage_policy_request import SlurmPeriodicUsagePolicyRequest
@@ -4721,7 +4710,6 @@ __all__ = (
     "PatchedServiceProviderRequest",
     "PatchedServiceProviderRequestForm",
     "PatchedServiceProviderRequestMultipart",
-    "PatchedSlurmAllocationRequest",
     "PatchedSlurmPeriodicUsagePolicyRequest",
     "PatchedSlurmPeriodicUsagePolicyRequestOptions",
     "PatchedSlurmPeriodicUsagePolicyRequestTresBillingWeights",
@@ -5454,20 +5442,12 @@ __all__ = (
     "SiteAgentLog",
     "SiteAgentLogCreateRequest",
     "SkippedProposal",
-    "SlurmAllocation",
-    "SlurmAllocationFieldEnum",
-    "SlurmAllocationMarketplaceOfferingPluginOptionsType0",
-    "SlurmAllocationRequest",
-    "SlurmAllocationSetLimitsRequest",
-    "SlurmAllocationUserUsage",
-    "SlurmAssociation",
     "SlurmCommand",
     "SlurmCommandHistory",
     "SlurmCommandHistoryParameters",
     "SlurmCommandParameters",
     "SlurmCommandResultModeEnum",
     "SlurmCommandResultRequest",
-    "SlurmInvoicesSlurmPackageCreateOrderAttributes",
     "SlurmPeriodicUsagePolicy",
     "SlurmPeriodicUsagePolicyOptions",
     "SlurmPeriodicUsagePolicyRequest",
