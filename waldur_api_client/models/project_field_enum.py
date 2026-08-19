@@ -18,6 +18,7 @@ class ProjectFieldEnum(str, Enum):
     CUSTOMER_SLUG = "customer_slug"
     CUSTOMER_UUID = "customer_uuid"
     DESCRIPTION = "description"
+    DISPLAY_CREDIT_REPORTS = "display_credit_reports"
     EFFECTIVE_END_DATE = "effective_end_date"
     END_DATE = "end_date"
     END_DATE_REQUESTED_BY = "end_date_requested_by"
