@@ -1158,6 +1158,7 @@ from .migration_create_request import MigrationCreateRequest
 from .migration_details import MigrationDetails
 from .migration_details_request import MigrationDetailsRequest
 from .minimal_consumption_logic_enum import MinimalConsumptionLogicEnum
+from .missing_usage_policy_enum import MissingUsagePolicyEnum
 from .move_offering_request import MoveOfferingRequest
 from .move_project_request import MoveProjectRequest
 from .move_resource_request import MoveResourceRequest
@@ -4053,6 +4054,7 @@ __all__ = (
     "MigrationDetails",
     "MigrationDetailsRequest",
     "MinimalConsumptionLogicEnum",
+    "MissingUsagePolicyEnum",
     "MoveOfferingRequest",
     "MoveProjectRequest",
     "MoveResourceRequest",
