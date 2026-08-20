@@ -646,8 +646,8 @@ Module: `waldur_api_client.api.conflicts_of_interest`
 ## credit-transactions
 Module: `waldur_api_client.api.credit_transactions`
 
-- `credit_transactions_list` GET `/api/credit-transactions/` (4 query params)
-- `credit_transactions_count` HEAD `/api/credit-transactions/` — Get number of items in the collection matching the request parameters (4 query params)
+- `credit_transactions_list` GET `/api/credit-transactions/` (9 query params)
+- `credit_transactions_count` HEAD `/api/credit-transactions/` — Get number of items in the collection matching the request parameters (9 query params)
 - `credit_transactions_retrieve` GET `/api/credit-transactions/{uuid}/` (path: uuid)
 
 ## customer-affiliates
@@ -1227,8 +1227,8 @@ Module: `waldur_api_client.api.marketplace_component_usage_monthly`
 ## marketplace-component-usages
 Module: `waldur_api_client.api.marketplace_component_usages`
 
-- `marketplace_component_usages_list` GET `/api/marketplace-component-usages/` — List component usage records (13 query params)
-- `marketplace_component_usages_count` HEAD `/api/marketplace-component-usages/` — List component usage records (12 query params)
+- `marketplace_component_usages_list` GET `/api/marketplace-component-usages/` — List component usage records (14 query params)
+- `marketplace_component_usages_count` HEAD `/api/marketplace-component-usages/` — List component usage records (13 query params)
 - `marketplace_component_usages_set_usage` POST `/api/marketplace-component-usages/set_usage/` — Set component usage for a resource (request body)
 - `marketplace_component_usages_retrieve` GET `/api/marketplace-component-usages/{uuid}/` — Retrieve a component usage record (path: uuid | 1 query param)
 - `marketplace_component_usages_set_user_usage` POST `/api/marketplace-component-usages/{uuid}/set_user_usage/` — Set user-specific component usage (path: uuid | request body)

@@ -568,6 +568,7 @@ from .create_router import CreateRouter
 from .create_router_request import CreateRouterRequest
 from .credentials_validation_response import CredentialsValidationResponse
 from .credit_transaction import CreditTransaction
+from .credit_transaction_o_enum import CreditTransactionOEnum
 from .current_qos_status_enum import CurrentQosStatusEnum
 from .customer import Customer
 from .customer_affiliate import CustomerAffiliate
@@ -3486,6 +3487,7 @@ __all__ = (
     "CreateRouterRequest",
     "CredentialsValidationResponse",
     "CreditTransaction",
+    "CreditTransactionOEnum",
     "CurrentQosStatusEnum",
     "Customer",
     "CustomerAffiliate",
