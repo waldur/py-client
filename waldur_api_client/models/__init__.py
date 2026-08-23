@@ -1933,11 +1933,18 @@ from .policy_period_enum import PolicyPeriodEnum
 from .policy_type_enum import PolicyTypeEnum
 from .posix_id_pool import PosixIdPool
 from .posix_id_pool_field_enum import PosixIdPoolFieldEnum
+from .posix_id_pool_left_behind_consumer import PosixIdPoolLeftBehindConsumer
 from .posix_id_pool_namespace_stats import PosixIdPoolNamespaceStats
+from .posix_id_pool_repoint import PosixIdPoolRepoint
+from .posix_id_pool_repoint_change import PosixIdPoolRepointChange
+from .posix_id_pool_repoint_request_request import PosixIdPoolRepointRequestRequest
 from .posix_id_pool_request import PosixIdPoolRequest
 from .posix_id_pool_stats import PosixIdPoolStats
 from .posix_id_source_enum import PosixIdSourceEnum
 from .posix_identity import PosixIdentity
+from .posix_identity_consumer_type_enum import PosixIdentityConsumerTypeEnum
+from .posix_identity_o_enum import PosixIdentityOEnum
+from .posix_sharing_offering import PosixSharingOffering
 from .preset_enum import PresetEnum
 from .preview_period import PreviewPeriod
 from .preview_service_attributes_request_request import PreviewServiceAttributesRequestRequest
@@ -4775,12 +4782,19 @@ __all__ = (
     "PolicyPeriodEnum",
     "PolicyTypeEnum",
     "PosixIdentity",
+    "PosixIdentityConsumerTypeEnum",
+    "PosixIdentityOEnum",
     "PosixIdPool",
     "PosixIdPoolFieldEnum",
+    "PosixIdPoolLeftBehindConsumer",
     "PosixIdPoolNamespaceStats",
+    "PosixIdPoolRepoint",
+    "PosixIdPoolRepointChange",
+    "PosixIdPoolRepointRequestRequest",
     "PosixIdPoolRequest",
     "PosixIdPoolStats",
     "PosixIdSourceEnum",
+    "PosixSharingOffering",
     "PresetEnum",
     "PreviewPeriod",
     "PreviewServiceAttributesRequestRequest",

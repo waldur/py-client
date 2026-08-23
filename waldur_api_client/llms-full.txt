@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.2.dev.20260821091556
+# Version: 8.1.3-rc.2.dev.20260823190447
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -7878,7 +7878,7 @@ Query parameters (1):
 ### marketplace_offering_users_posix_identities_list
 GET /api/marketplace-offering-users/posix_identities/
 Summary: List a user's POSIX identities across all their offerings
-Description: Consolidated view of one user's POSIX identifiers (UID, primary GID and project group GIDs) across every offering they have an account on, each with the range it was allocated from. Scoped to the offering users the requester is allowed to see.
+Description: Consolidated view of one user's POSIX identifiers (UID, primary GID and project group GIDs), one row per pool and namespace: a UID allocated once for the user is reported once, listing every offering that uses it. An offering with its own pool yields its own row. Scoped to the offering users the ...
 Query parameters (19):
   - created — Created after
   - created_before — Created before
@@ -8003,7 +8003,7 @@ Path parameters:
 ### marketplace_offering_users_posix_allocations_list
 GET /api/marketplace-offering-users/{uuid}/posix_allocations/
 Summary: List POSIX UID/GID allocations of an offering user
-Description: Returns the user's POSIX identifiers (UID, primary GID) and, for each, the POSIX ID pool that tracks it. The pool fields are null when the value is not tracked by a pool.
+Description: Returns the user's POSIX identifiers (UID, primary GID) and, for each, the POSIX ID pool that tracks it plus the user's other offerings that resolve to the same pool and therefore carry the very same value. The pool fields are null when the value is not tracked by a pool.
 Path parameters:
   - uuid
 Query parameters (19):
@@ -8662,6 +8662,21 @@ DELETE /api/marketplace-posix-id-pools/{uuid}/
 Path parameters:
   - uuid
 
+### marketplace_posix_id_pools_repoint
+POST /api/marketplace-posix-id-pools/{uuid}/repoint/
+Summary: Re-point existing accounts onto this pool
+Description: Moves the offering's existing accounts onto this override pool and returns the identifiers that changed. Requires 'confirm': true - preview the impact with repoint_preview first, and reconcile the provider's filesystem afterwards, since the accounts' files still carry the old numbers. Values free...
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_posix_id_pools_repoint_preview_retrieve
+GET /api/marketplace-posix-id-pools/{uuid}/repoint_preview/
+Summary: Preview re-pointing existing accounts onto this pool
+Description: Adding an override pool to an offering that already has accounts changes nothing by itself: accounts created afterwards draw from the override pool, while existing ones keep the values they were given by the previously resolved pool. This action reports which offering users would change and from ...
+Path parameters:
+  - uuid
+
 ### marketplace_posix_id_pools_stats_retrieve
 GET /api/marketplace-posix-id-pools/{uuid}/stats/
 Summary: Pool utilization statistics
@@ -8674,19 +8689,41 @@ Path parameters:
 
 ### marketplace_posix_identities_list
 GET /api/marketplace-posix-identities/
-Query parameters (3):
+Query parameters (14):
+  - consumer_type — Principal kind
+  - gid — GID
+  - gid_max — Maximum GID
+  - gid_min — Minimum GID
   - is_released
+  - keyword — Keyword (account username, first or last name, robot account name)
+  - o — Ordering
   - offering_uuid — Offering UUID
   - pool_uuid — POSIX ID pool UUID
+  - recyclable — Recyclable (false lists released values withheld from the pool)
+  - uid — UID
+  - uid_max — Maximum UID
+  - uid_min — Minimum UID
+  - user_uuid — User UUID
 
 ### marketplace_posix_identities_count
 HEAD /api/marketplace-posix-identities/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (3):
+Query parameters (14):
+  - consumer_type — Principal kind
+  - gid — GID
+  - gid_max — Maximum GID
+  - gid_min — Minimum GID
   - is_released
+  - keyword — Keyword (account username, first or last name, robot account name)
+  - o — Ordering
   - offering_uuid — Offering UUID
   - pool_uuid — POSIX ID pool UUID
+  - recyclable — Recyclable (false lists released values withheld from the pool)
+  - uid — UID
+  - uid_max — Maximum UID
+  - uid_min — Minimum UID
+  - user_uuid — User UUID
 
 ### marketplace_posix_identities_retrieve
 GET /api/marketplace-posix-identities/{uuid}/

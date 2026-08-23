@@ -205,7 +205,8 @@ def sync_detailed(
     """List POSIX UID/GID allocations of an offering user
 
      Returns the user's POSIX identifiers (UID, primary GID) and, for each, the POSIX ID pool that tracks
-    it. The pool fields are null when the value is not tracked by a pool.
+    it plus the user's other offerings that resolve to the same pool and therefore carry the very same
+    value. The pool fields are null when the value is not tracked by a pool.
 
     Args:
         uuid (UUID):
@@ -300,7 +301,8 @@ def sync(
     """List POSIX UID/GID allocations of an offering user
 
      Returns the user's POSIX identifiers (UID, primary GID) and, for each, the POSIX ID pool that tracks
-    it. The pool fields are null when the value is not tracked by a pool.
+    it plus the user's other offerings that resolve to the same pool and therefore carry the very same
+    value. The pool fields are null when the value is not tracked by a pool.
 
     Args:
         uuid (UUID):
@@ -390,7 +392,8 @@ async def asyncio_detailed(
     """List POSIX UID/GID allocations of an offering user
 
      Returns the user's POSIX identifiers (UID, primary GID) and, for each, the POSIX ID pool that tracks
-    it. The pool fields are null when the value is not tracked by a pool.
+    it plus the user's other offerings that resolve to the same pool and therefore carry the very same
+    value. The pool fields are null when the value is not tracked by a pool.
 
     Args:
         uuid (UUID):
@@ -483,7 +486,8 @@ async def asyncio(
     """List POSIX UID/GID allocations of an offering user
 
      Returns the user's POSIX identifiers (UID, primary GID) and, for each, the POSIX ID pool that tracks
-    it. The pool fields are null when the value is not tracked by a pool.
+    it plus the user's other offerings that resolve to the same pool and therefore carry the very same
+    value. The pool fields are null when the value is not tracked by a pool.
 
     Args:
         uuid (UUID):

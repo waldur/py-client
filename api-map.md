@@ -1554,13 +1554,15 @@ Module: `waldur_api_client.api.marketplace_posix_id_pools`
 - `marketplace_posix_id_pools_update` PUT `/api/marketplace-posix-id-pools/{uuid}/` (path: uuid | request body)
 - `marketplace_posix_id_pools_partial_update` PATCH `/api/marketplace-posix-id-pools/{uuid}/` (path: uuid | request body)
 - `marketplace_posix_id_pools_destroy` DELETE `/api/marketplace-posix-id-pools/{uuid}/` (path: uuid)
+- `marketplace_posix_id_pools_repoint` POST `/api/marketplace-posix-id-pools/{uuid}/repoint/` — Re-point existing accounts onto this pool (path: uuid | request body)
+- `marketplace_posix_id_pools_repoint_preview_retrieve` GET `/api/marketplace-posix-id-pools/{uuid}/repoint_preview/` — Preview re-pointing existing accounts onto this pool (path: uuid)
 - `marketplace_posix_id_pools_stats_retrieve` GET `/api/marketplace-posix-id-pools/{uuid}/stats/` — Pool utilization statistics (path: uuid)
 
 ## marketplace-posix-identities
 Module: `waldur_api_client.api.marketplace_posix_identities`
 
-- `marketplace_posix_identities_list` GET `/api/marketplace-posix-identities/` (3 query params)
-- `marketplace_posix_identities_count` HEAD `/api/marketplace-posix-identities/` — Get number of items in the collection matching the request parameters (3 query params)
+- `marketplace_posix_identities_list` GET `/api/marketplace-posix-identities/` (14 query params)
+- `marketplace_posix_identities_count` HEAD `/api/marketplace-posix-identities/` — Get number of items in the collection matching the request parameters (14 query params)
 - `marketplace_posix_identities_retrieve` GET `/api/marketplace-posix-identities/{uuid}/` (path: uuid)
 
 ## marketplace-project-estimated-cost-policies
