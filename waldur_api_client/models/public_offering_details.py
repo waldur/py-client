@@ -86,6 +86,9 @@ class PublicOfferingDetails:
         scope_name (Union[None, Unset, str]):
         scope_state (Union[CoreStates, None, Unset]):
         scope_error_message (Union[None, Unset, str]):
+        scope_resource (Union[None, Unset, str]):
+        scope_resource_uuid (Union[None, Unset, str]):
+        scope_resource_name (Union[None, Unset, str]):
         files (Union[Unset, list['NestedOfferingFile']]):
         quotas (Union[Unset, list['Quota']]):
         paused_reason (Union[Unset, str]):
@@ -116,6 +119,7 @@ class PublicOfferingDetails:
         offering_group_uuid (Union[None, UUID, Unset]):
         offering_group_title (Union[None, Unset, str]):
         user_has_consent (Union[Unset, bool]):
+        user_has_offering_user (Union[Unset, bool]):
         is_accessible (Union[Unset, bool]):
         open_for_proposals (Union[Unset, bool]):
         config_drive_default (Union[Unset, bool]):
@@ -170,6 +174,9 @@ class PublicOfferingDetails:
     scope_name: Union[None, Unset, str] = UNSET
     scope_state: Union[CoreStates, None, Unset] = UNSET
     scope_error_message: Union[None, Unset, str] = UNSET
+    scope_resource: Union[None, Unset, str] = UNSET
+    scope_resource_uuid: Union[None, Unset, str] = UNSET
+    scope_resource_name: Union[None, Unset, str] = UNSET
     files: Union[Unset, list["NestedOfferingFile"]] = UNSET
     quotas: Union[Unset, list["Quota"]] = UNSET
     paused_reason: Union[Unset, str] = UNSET
@@ -199,6 +206,7 @@ class PublicOfferingDetails:
     offering_group_uuid: Union[None, UUID, Unset] = UNSET
     offering_group_title: Union[None, Unset, str] = UNSET
     user_has_consent: Union[Unset, bool] = UNSET
+    user_has_offering_user: Union[Unset, bool] = UNSET
     is_accessible: Union[Unset, bool] = UNSET
     open_for_proposals: Union[Unset, bool] = UNSET
     config_drive_default: Union[Unset, bool] = UNSET
@@ -408,6 +416,24 @@ class PublicOfferingDetails:
         else:
             scope_error_message = self.scope_error_message
 
+        scope_resource: Union[None, Unset, str]
+        if isinstance(self.scope_resource, Unset):
+            scope_resource = UNSET
+        else:
+            scope_resource = self.scope_resource
+
+        scope_resource_uuid: Union[None, Unset, str]
+        if isinstance(self.scope_resource_uuid, Unset):
+            scope_resource_uuid = UNSET
+        else:
+            scope_resource_uuid = self.scope_resource_uuid
+
+        scope_resource_name: Union[None, Unset, str]
+        if isinstance(self.scope_resource_name, Unset):
+            scope_resource_name = UNSET
+        else:
+            scope_resource_name = self.scope_resource_name
+
         files: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.files, Unset):
             files = []
@@ -562,6 +588,8 @@ class PublicOfferingDetails:
 
         user_has_consent = self.user_has_consent
 
+        user_has_offering_user = self.user_has_offering_user
+
         is_accessible = self.is_accessible
 
         open_for_proposals = self.open_for_proposals
@@ -682,6 +710,12 @@ class PublicOfferingDetails:
             field_dict["scope_state"] = scope_state
         if scope_error_message is not UNSET:
             field_dict["scope_error_message"] = scope_error_message
+        if scope_resource is not UNSET:
+            field_dict["scope_resource"] = scope_resource
+        if scope_resource_uuid is not UNSET:
+            field_dict["scope_resource_uuid"] = scope_resource_uuid
+        if scope_resource_name is not UNSET:
+            field_dict["scope_resource_name"] = scope_resource_name
         if files is not UNSET:
             field_dict["files"] = files
         if quotas is not UNSET:
@@ -740,6 +774,8 @@ class PublicOfferingDetails:
             field_dict["offering_group_title"] = offering_group_title
         if user_has_consent is not UNSET:
             field_dict["user_has_consent"] = user_has_consent
+        if user_has_offering_user is not UNSET:
+            field_dict["user_has_offering_user"] = user_has_offering_user
         if is_accessible is not UNSET:
             field_dict["is_accessible"] = is_accessible
         if open_for_proposals is not UNSET:
@@ -1057,6 +1093,33 @@ class PublicOfferingDetails:
 
         scope_error_message = _parse_scope_error_message(d.pop("scope_error_message", UNSET))
 
+        def _parse_scope_resource(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        scope_resource = _parse_scope_resource(d.pop("scope_resource", UNSET))
+
+        def _parse_scope_resource_uuid(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        scope_resource_uuid = _parse_scope_resource_uuid(d.pop("scope_resource_uuid", UNSET))
+
+        def _parse_scope_resource_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        scope_resource_name = _parse_scope_resource_name(d.pop("scope_resource_name", UNSET))
+
         files = []
         _files = d.pop("files", UNSET)
         for files_item_data in _files or []:
@@ -1286,6 +1349,8 @@ class PublicOfferingDetails:
 
         user_has_consent = d.pop("user_has_consent", UNSET)
 
+        user_has_offering_user = d.pop("user_has_offering_user", UNSET)
+
         is_accessible = d.pop("is_accessible", UNSET)
 
         open_for_proposals = d.pop("open_for_proposals", UNSET)
@@ -1364,6 +1429,9 @@ class PublicOfferingDetails:
             scope_name=scope_name,
             scope_state=scope_state,
             scope_error_message=scope_error_message,
+            scope_resource=scope_resource,
+            scope_resource_uuid=scope_resource_uuid,
+            scope_resource_name=scope_resource_name,
             files=files,
             quotas=quotas,
             paused_reason=paused_reason,
@@ -1393,6 +1461,7 @@ class PublicOfferingDetails:
             offering_group_uuid=offering_group_uuid,
             offering_group_title=offering_group_title,
             user_has_consent=user_has_consent,
+            user_has_offering_user=user_has_offering_user,
             is_accessible=is_accessible,
             open_for_proposals=open_for_proposals,
             config_drive_default=config_drive_default,

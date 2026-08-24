@@ -646,8 +646,8 @@ Module: `waldur_api_client.api.conflicts_of_interest`
 ## credit-transactions
 Module: `waldur_api_client.api.credit_transactions`
 
-- `credit_transactions_list` GET `/api/credit-transactions/` (4 query params)
-- `credit_transactions_count` HEAD `/api/credit-transactions/` — Get number of items in the collection matching the request parameters (4 query params)
+- `credit_transactions_list` GET `/api/credit-transactions/` (9 query params)
+- `credit_transactions_count` HEAD `/api/credit-transactions/` — Get number of items in the collection matching the request parameters (9 query params)
 - `credit_transactions_retrieve` GET `/api/credit-transactions/{uuid}/` (path: uuid)
 
 ## customer-affiliates
@@ -1227,8 +1227,8 @@ Module: `waldur_api_client.api.marketplace_component_usage_monthly`
 ## marketplace-component-usages
 Module: `waldur_api_client.api.marketplace_component_usages`
 
-- `marketplace_component_usages_list` GET `/api/marketplace-component-usages/` — List component usage records (13 query params)
-- `marketplace_component_usages_count` HEAD `/api/marketplace-component-usages/` — List component usage records (12 query params)
+- `marketplace_component_usages_list` GET `/api/marketplace-component-usages/` — List component usage records (14 query params)
+- `marketplace_component_usages_count` HEAD `/api/marketplace-component-usages/` — List component usage records (13 query params)
 - `marketplace_component_usages_set_usage` POST `/api/marketplace-component-usages/set_usage/` — Set component usage for a resource (request body)
 - `marketplace_component_usages_retrieve` GET `/api/marketplace-component-usages/{uuid}/` — Retrieve a component usage record (path: uuid | 1 query param)
 - `marketplace_component_usages_set_user_usage` POST `/api/marketplace-component-usages/{uuid}/set_user_usage/` — Set user-specific component usage (path: uuid | request body)
@@ -1268,12 +1268,12 @@ Module: `waldur_api_client.api.marketplace_customer_component_usage_policies`
 ## marketplace-customer-estimated-cost-policies
 Module: `waldur_api_client.api.marketplace_customer_estimated_cost_policies`
 
-- `marketplace_customer_estimated_cost_policies_list` GET `/api/marketplace-customer-estimated-cost-policies/` (4 query params)
+- `marketplace_customer_estimated_cost_policies_list` GET `/api/marketplace-customer-estimated-cost-policies/` (5 query params)
 - `marketplace_customer_estimated_cost_policies_count` HEAD `/api/marketplace-customer-estimated-cost-policies/` — Get number of items in the collection matching the request parameters (4 query params)
 - `marketplace_customer_estimated_cost_policies_create` POST `/api/marketplace-customer-estimated-cost-policies/` (request body)
 - `marketplace_customer_estimated_cost_policies_actions_retrieve` GET `/api/marketplace-customer-estimated-cost-policies/actions/` (no params)
 - `marketplace_customer_estimated_cost_policies_actions_count` HEAD `/api/marketplace-customer-estimated-cost-policies/actions/` — Get number of items in the collection matching the request parameters (no params)
-- `marketplace_customer_estimated_cost_policies_retrieve` GET `/api/marketplace-customer-estimated-cost-policies/{uuid}/` (path: uuid)
+- `marketplace_customer_estimated_cost_policies_retrieve` GET `/api/marketplace-customer-estimated-cost-policies/{uuid}/` (path: uuid | 1 query param)
 - `marketplace_customer_estimated_cost_policies_update` PUT `/api/marketplace-customer-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_customer_estimated_cost_policies_partial_update` PATCH `/api/marketplace-customer-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_customer_estimated_cost_policies_destroy` DELETE `/api/marketplace-customer-estimated-cost-policies/{uuid}/` (path: uuid)
@@ -1332,12 +1332,12 @@ Module: `waldur_api_client.api.marketplace_offering_access_subnets`
 ## marketplace-offering-estimated-cost-policies
 Module: `waldur_api_client.api.marketplace_offering_estimated_cost_policies`
 
-- `marketplace_offering_estimated_cost_policies_list` GET `/api/marketplace-offering-estimated-cost-policies/` (2 query params)
+- `marketplace_offering_estimated_cost_policies_list` GET `/api/marketplace-offering-estimated-cost-policies/` (3 query params)
 - `marketplace_offering_estimated_cost_policies_count` HEAD `/api/marketplace-offering-estimated-cost-policies/` — Get number of items in the collection matching the request parameters (2 query params)
 - `marketplace_offering_estimated_cost_policies_create` POST `/api/marketplace-offering-estimated-cost-policies/` (request body)
 - `marketplace_offering_estimated_cost_policies_actions_retrieve` GET `/api/marketplace-offering-estimated-cost-policies/actions/` — List available actions for OfferingEstimatedCostPolicy (no params)
 - `marketplace_offering_estimated_cost_policies_actions_count` HEAD `/api/marketplace-offering-estimated-cost-policies/actions/` — Get number of items in the collection matching the request parameters (no params)
-- `marketplace_offering_estimated_cost_policies_retrieve` GET `/api/marketplace-offering-estimated-cost-policies/{uuid}/` (path: uuid)
+- `marketplace_offering_estimated_cost_policies_retrieve` GET `/api/marketplace-offering-estimated-cost-policies/{uuid}/` (path: uuid | 1 query param)
 - `marketplace_offering_estimated_cost_policies_update` PUT `/api/marketplace-offering-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_offering_estimated_cost_policies_partial_update` PATCH `/api/marketplace-offering-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_offering_estimated_cost_policies_destroy` DELETE `/api/marketplace-offering-estimated-cost-policies/{uuid}/` (path: uuid)
@@ -1554,24 +1554,26 @@ Module: `waldur_api_client.api.marketplace_posix_id_pools`
 - `marketplace_posix_id_pools_update` PUT `/api/marketplace-posix-id-pools/{uuid}/` (path: uuid | request body)
 - `marketplace_posix_id_pools_partial_update` PATCH `/api/marketplace-posix-id-pools/{uuid}/` (path: uuid | request body)
 - `marketplace_posix_id_pools_destroy` DELETE `/api/marketplace-posix-id-pools/{uuid}/` (path: uuid)
+- `marketplace_posix_id_pools_repoint` POST `/api/marketplace-posix-id-pools/{uuid}/repoint/` — Re-point existing accounts onto this pool (path: uuid | request body)
+- `marketplace_posix_id_pools_repoint_preview_retrieve` GET `/api/marketplace-posix-id-pools/{uuid}/repoint_preview/` — Preview re-pointing existing accounts onto this pool (path: uuid)
 - `marketplace_posix_id_pools_stats_retrieve` GET `/api/marketplace-posix-id-pools/{uuid}/stats/` — Pool utilization statistics (path: uuid)
 
 ## marketplace-posix-identities
 Module: `waldur_api_client.api.marketplace_posix_identities`
 
-- `marketplace_posix_identities_list` GET `/api/marketplace-posix-identities/` (3 query params)
-- `marketplace_posix_identities_count` HEAD `/api/marketplace-posix-identities/` — Get number of items in the collection matching the request parameters (3 query params)
+- `marketplace_posix_identities_list` GET `/api/marketplace-posix-identities/` (14 query params)
+- `marketplace_posix_identities_count` HEAD `/api/marketplace-posix-identities/` — Get number of items in the collection matching the request parameters (14 query params)
 - `marketplace_posix_identities_retrieve` GET `/api/marketplace-posix-identities/{uuid}/` (path: uuid)
 
 ## marketplace-project-estimated-cost-policies
 Module: `waldur_api_client.api.marketplace_project_estimated_cost_policies`
 
-- `marketplace_project_estimated_cost_policies_list` GET `/api/marketplace-project-estimated-cost-policies/` (10 query params)
+- `marketplace_project_estimated_cost_policies_list` GET `/api/marketplace-project-estimated-cost-policies/` (11 query params)
 - `marketplace_project_estimated_cost_policies_count` HEAD `/api/marketplace-project-estimated-cost-policies/` — Get number of items in the collection matching the request parameters (10 query params)
 - `marketplace_project_estimated_cost_policies_create` POST `/api/marketplace-project-estimated-cost-policies/` (request body)
 - `marketplace_project_estimated_cost_policies_actions_retrieve` GET `/api/marketplace-project-estimated-cost-policies/actions/` (no params)
 - `marketplace_project_estimated_cost_policies_actions_count` HEAD `/api/marketplace-project-estimated-cost-policies/actions/` — Get number of items in the collection matching the request parameters (no params)
-- `marketplace_project_estimated_cost_policies_retrieve` GET `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid)
+- `marketplace_project_estimated_cost_policies_retrieve` GET `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid | 1 query param)
 - `marketplace_project_estimated_cost_policies_update` PUT `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_project_estimated_cost_policies_partial_update` PATCH `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_project_estimated_cost_policies_destroy` DELETE `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid)
@@ -3733,36 +3735,6 @@ Module: `waldur_api_client.api.service_settings`
 - `service_settings_list` GET `/api/service-settings/` (11 query params)
 - `service_settings_count` HEAD `/api/service-settings/` — Get number of items in the collection matching the request parameters (10 query params)
 - `service_settings_retrieve` GET `/api/service-settings/{uuid}/` (path: uuid | 1 query param)
-
-## slurm-allocation-user-usage
-Module: `waldur_api_client.api.slurm_allocation_user_usage`
-
-- `slurm_allocation_user_usage_list` GET `/api/slurm-allocation-user-usage/` (6 query params)
-- `slurm_allocation_user_usage_count` HEAD `/api/slurm-allocation-user-usage/` — Get number of items in the collection matching the request parameters (6 query params)
-- `slurm_allocation_user_usage_retrieve` GET `/api/slurm-allocation-user-usage/{id}/` (path: id)
-
-## slurm-allocations
-Module: `waldur_api_client.api.slurm_allocations`
-
-- `slurm_allocations_list` GET `/api/slurm-allocations/` (19 query params)
-- `slurm_allocations_count` HEAD `/api/slurm-allocations/` — Get number of items in the collection matching the request parameters (18 query params)
-- `slurm_allocations_create` POST `/api/slurm-allocations/` (request body)
-- `slurm_allocations_retrieve` GET `/api/slurm-allocations/{uuid}/` (path: uuid | 1 query param)
-- `slurm_allocations_update` PUT `/api/slurm-allocations/{uuid}/` (path: uuid | request body)
-- `slurm_allocations_partial_update` PATCH `/api/slurm-allocations/{uuid}/` (path: uuid | request body)
-- `slurm_allocations_destroy` DELETE `/api/slurm-allocations/{uuid}/` (path: uuid)
-- `slurm_allocations_pull` POST `/api/slurm-allocations/{uuid}/pull/` — Synchronize resource state (path: uuid)
-- `slurm_allocations_set_erred` POST `/api/slurm-allocations/{uuid}/set_erred/` — Mark resource as ERRED (path: uuid | request body)
-- `slurm_allocations_set_limits` POST `/api/slurm-allocations/{uuid}/set_limits/` (path: uuid | request body)
-- `slurm_allocations_set_ok` POST `/api/slurm-allocations/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
-- `slurm_allocations_unlink` POST `/api/slurm-allocations/{uuid}/unlink/` — Unlink resource (path: uuid)
-
-## slurm-associations
-Module: `waldur_api_client.api.slurm_associations`
-
-- `slurm_associations_list` GET `/api/slurm-associations/` (2 query params)
-- `slurm_associations_count` HEAD `/api/slurm-associations/` — Get number of items in the collection matching the request parameters (2 query params)
-- `slurm_associations_retrieve` GET `/api/slurm-associations/{uuid}/` (path: uuid)
 
 ## slurm-jobs
 Module: `waldur_api_client.api.slurm_jobs`

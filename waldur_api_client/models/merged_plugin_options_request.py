@@ -45,7 +45,9 @@ class MergedPluginOptionsRequest:
         auto_approve_in_service_provider_projects (Union[Unset, bool]): Skip approval of public offering belonging to
             the same organization under which the request is done
         disable_autoapprove (Union[Unset, bool]): If set to True, orders for this offering will always require manual
-            approval, overriding auto_approve_in_service_provider_projects
+            consumer approval, overriding every other consumer-side auto-approve mechanism
+            (auto_approve_in_service_provider_projects, auto_approve_for_roles, project auto-approval rules, and the
+            ORDER.APPROVE permission). Termination orders, staff users and provider approval are not affected
         supports_downscaling (Union[Unset, bool]): If set to True, it will be possible to downscale resources
         supports_pausing (Union[Unset, bool]): If set to True, it will be possible to pause resources
         disable_grace_period (Union[Unset, bool]): If set to True, this offering's resources ignore the project grace

@@ -200,9 +200,10 @@ def sync_detailed(
 ) -> Response[list["UserPosixIdentity"]]:
     """List a user's POSIX identities across all their offerings
 
-     Consolidated view of one user's POSIX identifiers (UID, primary GID and project group GIDs) across
-    every offering they have an account on, each with the range it was allocated from. Scoped to the
-    offering users the requester is allowed to see.
+     Consolidated view of one user's POSIX identifiers (UID, primary GID and project group GIDs), one row
+    per pool and namespace: a UID allocated once for the user is reported once, listing every offering
+    that uses it. An offering with its own pool yields its own row. Scoped to the offering users the
+    requester is allowed to see.
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -293,9 +294,10 @@ def sync(
 ) -> list["UserPosixIdentity"]:
     """List a user's POSIX identities across all their offerings
 
-     Consolidated view of one user's POSIX identifiers (UID, primary GID and project group GIDs) across
-    every offering they have an account on, each with the range it was allocated from. Scoped to the
-    offering users the requester is allowed to see.
+     Consolidated view of one user's POSIX identifiers (UID, primary GID and project group GIDs), one row
+    per pool and namespace: a UID allocated once for the user is reported once, listing every offering
+    that uses it. An offering with its own pool yields its own row. Scoped to the offering users the
+    requester is allowed to see.
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -381,9 +383,10 @@ async def asyncio_detailed(
 ) -> Response[list["UserPosixIdentity"]]:
     """List a user's POSIX identities across all their offerings
 
-     Consolidated view of one user's POSIX identifiers (UID, primary GID and project group GIDs) across
-    every offering they have an account on, each with the range it was allocated from. Scoped to the
-    offering users the requester is allowed to see.
+     Consolidated view of one user's POSIX identifiers (UID, primary GID and project group GIDs), one row
+    per pool and namespace: a UID allocated once for the user is reported once, listing every offering
+    that uses it. An offering with its own pool yields its own row. Scoped to the offering users the
+    requester is allowed to see.
 
     Args:
         created (Union[Unset, datetime.datetime]):
@@ -472,9 +475,10 @@ async def asyncio(
 ) -> list["UserPosixIdentity"]:
     """List a user's POSIX identities across all their offerings
 
-     Consolidated view of one user's POSIX identifiers (UID, primary GID and project group GIDs) across
-    every offering they have an account on, each with the range it was allocated from. Scoped to the
-    offering users the requester is allowed to see.
+     Consolidated view of one user's POSIX identifiers (UID, primary GID and project group GIDs), one row
+    per pool and namespace: a UID allocated once for the user is reported once, listing every offering
+    that uses it. An offering with its own pool yields its own row. Scoped to the offering users the
+    requester is allowed to see.
 
     Args:
         created (Union[Unset, datetime.datetime]):

@@ -63,6 +63,9 @@ class OfferingFieldEnum(str, Enum):
     SCOPE = "scope"
     SCOPE_ERROR_MESSAGE = "scope_error_message"
     SCOPE_NAME = "scope_name"
+    SCOPE_RESOURCE = "scope_resource"
+    SCOPE_RESOURCE_NAME = "scope_resource_name"
+    SCOPE_RESOURCE_UUID = "scope_resource_uuid"
     SCOPE_STATE = "scope_state"
     SCOPE_UUID = "scope_uuid"
     SCREENSHOTS = "screenshots"
@@ -80,6 +83,7 @@ class OfferingFieldEnum(str, Enum):
     TYPE = "type"
     URL = "url"
     USER_HAS_CONSENT = "user_has_consent"
+    USER_HAS_OFFERING_USER = "user_has_offering_user"
     UUID = "uuid"
     VENDOR_DETAILS = "vendor_details"
 

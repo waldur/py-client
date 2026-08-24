@@ -568,6 +568,7 @@ from .create_router import CreateRouter
 from .create_router_request import CreateRouterRequest
 from .credentials_validation_response import CredentialsValidationResponse
 from .credit_transaction import CreditTransaction
+from .credit_transaction_o_enum import CreditTransactionOEnum
 from .current_qos_status_enum import CurrentQosStatusEnum
 from .customer import Customer
 from .customer_affiliate import CustomerAffiliate
@@ -590,6 +591,7 @@ from .customer_credit_o_enum import CustomerCreditOEnum
 from .customer_default_affiliations_update_request import CustomerDefaultAffiliationsUpdateRequest
 from .customer_details import CustomerDetails
 from .customer_estimated_cost_policy import CustomerEstimatedCostPolicy
+from .customer_estimated_cost_policy_field_enum import CustomerEstimatedCostPolicyFieldEnum
 from .customer_estimated_cost_policy_options import CustomerEstimatedCostPolicyOptions
 from .customer_estimated_cost_policy_request import CustomerEstimatedCostPolicyRequest
 from .customer_estimated_cost_policy_request_options import CustomerEstimatedCostPolicyRequestOptions
@@ -1157,6 +1159,7 @@ from .migration_create_request import MigrationCreateRequest
 from .migration_details import MigrationDetails
 from .migration_details_request import MigrationDetailsRequest
 from .minimal_consumption_logic_enum import MinimalConsumptionLogicEnum
+from .missing_usage_policy_enum import MissingUsagePolicyEnum
 from .move_offering_request import MoveOfferingRequest
 from .move_project_request import MoveProjectRequest
 from .move_resource_request import MoveResourceRequest
@@ -1288,6 +1291,7 @@ from .offering_create_request_multipart_limits import OfferingCreateRequestMulti
 from .offering_default_access_subnet_row import OfferingDefaultAccessSubnetRow
 from .offering_description_update_request import OfferingDescriptionUpdateRequest
 from .offering_estimated_cost_policy import OfferingEstimatedCostPolicy
+from .offering_estimated_cost_policy_field_enum import OfferingEstimatedCostPolicyFieldEnum
 from .offering_estimated_cost_policy_options import OfferingEstimatedCostPolicyOptions
 from .offering_estimated_cost_policy_request import OfferingEstimatedCostPolicyRequest
 from .offering_estimated_cost_policy_request_options import OfferingEstimatedCostPolicyRequestOptions
@@ -1859,7 +1863,6 @@ from .patched_section_request import PatchedSectionRequest
 from .patched_service_provider_request import PatchedServiceProviderRequest
 from .patched_service_provider_request_form import PatchedServiceProviderRequestForm
 from .patched_service_provider_request_multipart import PatchedServiceProviderRequestMultipart
-from .patched_slurm_allocation_request import PatchedSlurmAllocationRequest
 from .patched_slurm_periodic_usage_policy_request import PatchedSlurmPeriodicUsagePolicyRequest
 from .patched_slurm_periodic_usage_policy_request_options import PatchedSlurmPeriodicUsagePolicyRequestOptions
 from .patched_slurm_periodic_usage_policy_request_tres_billing_weights import (
@@ -1930,11 +1933,18 @@ from .policy_period_enum import PolicyPeriodEnum
 from .policy_type_enum import PolicyTypeEnum
 from .posix_id_pool import PosixIdPool
 from .posix_id_pool_field_enum import PosixIdPoolFieldEnum
+from .posix_id_pool_left_behind_consumer import PosixIdPoolLeftBehindConsumer
 from .posix_id_pool_namespace_stats import PosixIdPoolNamespaceStats
+from .posix_id_pool_repoint import PosixIdPoolRepoint
+from .posix_id_pool_repoint_change import PosixIdPoolRepointChange
+from .posix_id_pool_repoint_request_request import PosixIdPoolRepointRequestRequest
 from .posix_id_pool_request import PosixIdPoolRequest
 from .posix_id_pool_stats import PosixIdPoolStats
 from .posix_id_source_enum import PosixIdSourceEnum
 from .posix_identity import PosixIdentity
+from .posix_identity_consumer_type_enum import PosixIdentityConsumerTypeEnum
+from .posix_identity_o_enum import PosixIdentityOEnum
+from .posix_sharing_offering import PosixSharingOffering
 from .preset_enum import PresetEnum
 from .preview_period import PreviewPeriod
 from .preview_service_attributes_request_request import PreviewServiceAttributesRequestRequest
@@ -1966,6 +1976,7 @@ from .project_end_date_change_request import ProjectEndDateChangeRequest
 from .project_end_date_change_request_create import ProjectEndDateChangeRequestCreate
 from .project_end_date_change_request_create_request import ProjectEndDateChangeRequestCreateRequest
 from .project_estimated_cost_policy import ProjectEstimatedCostPolicy
+from .project_estimated_cost_policy_field_enum import ProjectEstimatedCostPolicyFieldEnum
 from .project_estimated_cost_policy_options import ProjectEstimatedCostPolicyOptions
 from .project_estimated_cost_policy_request import ProjectEstimatedCostPolicyRequest
 from .project_estimated_cost_policy_request_options import ProjectEstimatedCostPolicyRequestOptions
@@ -2623,22 +2634,12 @@ from .site_agent_config_generation_request import SiteAgentConfigGenerationReque
 from .site_agent_log import SiteAgentLog
 from .site_agent_log_create_request import SiteAgentLogCreateRequest
 from .skipped_proposal import SkippedProposal
-from .slurm_allocation import SlurmAllocation
-from .slurm_allocation_field_enum import SlurmAllocationFieldEnum
-from .slurm_allocation_marketplace_offering_plugin_options_type_0 import (
-    SlurmAllocationMarketplaceOfferingPluginOptionsType0,
-)
-from .slurm_allocation_request import SlurmAllocationRequest
-from .slurm_allocation_set_limits_request import SlurmAllocationSetLimitsRequest
-from .slurm_allocation_user_usage import SlurmAllocationUserUsage
-from .slurm_association import SlurmAssociation
 from .slurm_command import SlurmCommand
 from .slurm_command_history import SlurmCommandHistory
 from .slurm_command_history_parameters import SlurmCommandHistoryParameters
 from .slurm_command_parameters import SlurmCommandParameters
 from .slurm_command_result_mode_enum import SlurmCommandResultModeEnum
 from .slurm_command_result_request import SlurmCommandResultRequest
-from .slurm_invoices_slurm_package_create_order_attributes import SlurmInvoicesSlurmPackageCreateOrderAttributes
 from .slurm_periodic_usage_policy import SlurmPeriodicUsagePolicy
 from .slurm_periodic_usage_policy_options import SlurmPeriodicUsagePolicyOptions
 from .slurm_periodic_usage_policy_request import SlurmPeriodicUsagePolicyRequest
@@ -3493,6 +3494,7 @@ __all__ = (
     "CreateRouterRequest",
     "CredentialsValidationResponse",
     "CreditTransaction",
+    "CreditTransactionOEnum",
     "CurrentQosStatusEnum",
     "Customer",
     "CustomerAffiliate",
@@ -3515,6 +3517,7 @@ __all__ = (
     "CustomerDefaultAffiliationsUpdateRequest",
     "CustomerDetails",
     "CustomerEstimatedCostPolicy",
+    "CustomerEstimatedCostPolicyFieldEnum",
     "CustomerEstimatedCostPolicyOptions",
     "CustomerEstimatedCostPolicyRequest",
     "CustomerEstimatedCostPolicyRequestOptions",
@@ -4060,6 +4063,7 @@ __all__ = (
     "MigrationDetails",
     "MigrationDetailsRequest",
     "MinimalConsumptionLogicEnum",
+    "MissingUsagePolicyEnum",
     "MoveOfferingRequest",
     "MoveProjectRequest",
     "MoveResourceRequest",
@@ -4191,6 +4195,7 @@ __all__ = (
     "OfferingDefaultAccessSubnetRow",
     "OfferingDescriptionUpdateRequest",
     "OfferingEstimatedCostPolicy",
+    "OfferingEstimatedCostPolicyFieldEnum",
     "OfferingEstimatedCostPolicyOptions",
     "OfferingEstimatedCostPolicyRequest",
     "OfferingEstimatedCostPolicyRequestOptions",
@@ -4716,7 +4721,6 @@ __all__ = (
     "PatchedServiceProviderRequest",
     "PatchedServiceProviderRequestForm",
     "PatchedServiceProviderRequestMultipart",
-    "PatchedSlurmAllocationRequest",
     "PatchedSlurmPeriodicUsagePolicyRequest",
     "PatchedSlurmPeriodicUsagePolicyRequestOptions",
     "PatchedSlurmPeriodicUsagePolicyRequestTresBillingWeights",
@@ -4778,12 +4782,19 @@ __all__ = (
     "PolicyPeriodEnum",
     "PolicyTypeEnum",
     "PosixIdentity",
+    "PosixIdentityConsumerTypeEnum",
+    "PosixIdentityOEnum",
     "PosixIdPool",
     "PosixIdPoolFieldEnum",
+    "PosixIdPoolLeftBehindConsumer",
     "PosixIdPoolNamespaceStats",
+    "PosixIdPoolRepoint",
+    "PosixIdPoolRepointChange",
+    "PosixIdPoolRepointRequestRequest",
     "PosixIdPoolRequest",
     "PosixIdPoolStats",
     "PosixIdSourceEnum",
+    "PosixSharingOffering",
     "PresetEnum",
     "PreviewPeriod",
     "PreviewServiceAttributesRequestRequest",
@@ -4815,6 +4826,7 @@ __all__ = (
     "ProjectEndDateChangeRequestCreate",
     "ProjectEndDateChangeRequestCreateRequest",
     "ProjectEstimatedCostPolicy",
+    "ProjectEstimatedCostPolicyFieldEnum",
     "ProjectEstimatedCostPolicyOptions",
     "ProjectEstimatedCostPolicyRequest",
     "ProjectEstimatedCostPolicyRequestOptions",
@@ -5448,20 +5460,12 @@ __all__ = (
     "SiteAgentLog",
     "SiteAgentLogCreateRequest",
     "SkippedProposal",
-    "SlurmAllocation",
-    "SlurmAllocationFieldEnum",
-    "SlurmAllocationMarketplaceOfferingPluginOptionsType0",
-    "SlurmAllocationRequest",
-    "SlurmAllocationSetLimitsRequest",
-    "SlurmAllocationUserUsage",
-    "SlurmAssociation",
     "SlurmCommand",
     "SlurmCommandHistory",
     "SlurmCommandHistoryParameters",
     "SlurmCommandParameters",
     "SlurmCommandResultModeEnum",
     "SlurmCommandResultRequest",
-    "SlurmInvoicesSlurmPackageCreateOrderAttributes",
     "SlurmPeriodicUsagePolicy",
     "SlurmPeriodicUsagePolicyOptions",
     "SlurmPeriodicUsagePolicyRequest",

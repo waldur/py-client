@@ -19,6 +19,14 @@ T = TypeVar("T", bound="MergedSecretOptionsRequest")
 class MergedSecretOptionsRequest:
     """
     Attributes:
+        order_notification_emails (Union[Unset, list[str]]): Email addresses notified about every new order for this
+            offering, regardless of whether the order needs approval. Intended for provider-side mailboxes which do not
+            belong to a Waldur user, so these addresses are notified even if a user with the same address disabled
+            notifications. At most 10 addresses.
+        order_notification_roles (Union[Unset, list[str]]): List of organization or offering role names (e.g.
+            'CUSTOMER.OWNER', 'OFFERING.MANAGER') whose holders are notified about every new order for this offering,
+            regardless of whether the order needs approval. Names are resolved on the provider organization and on the
+            offering itself. Users who disabled notifications in their profile are skipped. At most 10 names.
         heappe_cluster_password (Union[Unset, str]): HEAppE cluster password
         heappe_password (Union[Unset, str]): HEAppE password
         ipv4_external_ip_mapping (Union[Unset, list['IPMappingRequest']]): OpenStack IPv4 external IP mapping
@@ -63,6 +71,8 @@ class MergedSecretOptionsRequest:
         node_disk_driver (Union[Unset, NodeDiskDriverEnum]):
     """
 
+    order_notification_emails: Union[Unset, list[str]] = UNSET
+    order_notification_roles: Union[Unset, list[str]] = UNSET
     heappe_cluster_password: Union[Unset, str] = UNSET
     heappe_password: Union[Unset, str] = UNSET
     ipv4_external_ip_mapping: Union[Unset, list["IPMappingRequest"]] = UNSET
@@ -106,6 +116,14 @@ class MergedSecretOptionsRequest:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        order_notification_emails: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.order_notification_emails, Unset):
+            order_notification_emails = self.order_notification_emails
+
+        order_notification_roles: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.order_notification_roles, Unset):
+            order_notification_roles = self.order_notification_roles
+
         heappe_cluster_password = self.heappe_cluster_password
 
         heappe_password = self.heappe_password
@@ -203,6 +221,10 @@ class MergedSecretOptionsRequest:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if order_notification_emails is not UNSET:
+            field_dict["order_notification_emails"] = order_notification_emails
+        if order_notification_roles is not UNSET:
+            field_dict["order_notification_roles"] = order_notification_roles
         if heappe_cluster_password is not UNSET:
             field_dict["heappe_cluster_password"] = heappe_cluster_password
         if heappe_password is not UNSET:
@@ -294,6 +316,10 @@ class MergedSecretOptionsRequest:
         from ..models.script_env_var_request import ScriptEnvVarRequest
 
         d = dict(src_dict)
+        order_notification_emails = cast(list[str], d.pop("order_notification_emails", UNSET))
+
+        order_notification_roles = cast(list[str], d.pop("order_notification_roles", UNSET))
+
         heappe_cluster_password = d.pop("heappe_cluster_password", UNSET)
 
         heappe_password = d.pop("heappe_password", UNSET)
@@ -392,6 +418,8 @@ class MergedSecretOptionsRequest:
             node_disk_driver = NodeDiskDriverEnum(_node_disk_driver)
 
         merged_secret_options_request = cls(
+            order_notification_emails=order_notification_emails,
+            order_notification_roles=order_notification_roles,
             heappe_cluster_password=heappe_cluster_password,
             heappe_password=heappe_password,
             ipv4_external_ip_mapping=ipv4_external_ip_mapping,

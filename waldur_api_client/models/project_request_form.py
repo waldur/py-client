@@ -25,6 +25,8 @@ class ProjectRequestForm:
         customer (str):
         slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         description (Union[Unset, str]): Project description (HTML content will be sanitized)
+        display_credit_reports (Union[Unset, bool]): Show credit and usage analytics widgets on this project's
+            dashboard.
         type_ (Union[None, Unset, str]):
         backend_id (Union[Unset, str]):
         start_date (Union[None, Unset, datetime.date]): Project start date. Cannot be edited after the start date has
@@ -50,6 +52,7 @@ class ProjectRequestForm:
     customer: str
     slug: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
+    display_credit_reports: Union[Unset, bool] = UNSET
     type_: Union[None, Unset, str] = UNSET
     backend_id: Union[Unset, str] = UNSET
     start_date: Union[None, Unset, datetime.date] = UNSET
@@ -75,6 +78,8 @@ class ProjectRequestForm:
         slug = self.slug
 
         description = self.description
+
+        display_credit_reports = self.display_credit_reports
 
         type_: Union[None, Unset, str]
         if isinstance(self.type_, Unset):
@@ -173,6 +178,8 @@ class ProjectRequestForm:
             field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
+        if display_credit_reports is not UNSET:
+            field_dict["display_credit_reports"] = display_credit_reports
         if type_ is not UNSET:
             field_dict["type"] = type_
         if backend_id is not UNSET:
@@ -216,6 +223,8 @@ class ProjectRequestForm:
         slug = d.pop("slug", UNSET)
 
         description = d.pop("description", UNSET)
+
+        display_credit_reports = d.pop("display_credit_reports", UNSET)
 
         def _parse_type_(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -369,6 +378,7 @@ class ProjectRequestForm:
             customer=customer,
             slug=slug,
             description=description,
+            display_credit_reports=display_credit_reports,
             type_=type_,
             backend_id=backend_id,
             start_date=start_date,
