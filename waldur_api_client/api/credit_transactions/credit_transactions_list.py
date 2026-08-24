@@ -1,4 +1,3 @@
-import datetime
 from http import HTTPStatus
 from typing import Any, Union
 from uuid import UUID
@@ -7,42 +6,22 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.backend_resource_req_o_enum import BackendResourceReqOEnum
 from ...models.credit_transaction import CreditTransaction
-from ...models.credit_transaction_o_enum import CreditTransactionOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
-    billing_period: Union[Unset, datetime.date] = UNSET,
-    billing_period_after: Union[Unset, datetime.date] = UNSET,
-    billing_period_before: Union[Unset, datetime.date] = UNSET,
     credit_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CreditTransactionOEnum]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    project_credit_uuid: Union[Unset, UUID] = UNSET,
-    project_uuid: Union[Unset, str] = UNSET,
     transaction_type: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
-
-    json_billing_period: Union[Unset, str] = UNSET
-    if not isinstance(billing_period, Unset):
-        json_billing_period = billing_period.isoformat()
-    params["billing_period"] = json_billing_period
-
-    json_billing_period_after: Union[Unset, str] = UNSET
-    if not isinstance(billing_period_after, Unset):
-        json_billing_period_after = billing_period_after.isoformat()
-    params["billing_period_after"] = json_billing_period_after
-
-    json_billing_period_before: Union[Unset, str] = UNSET
-    if not isinstance(billing_period_before, Unset):
-        json_billing_period_before = billing_period_before.isoformat()
-    params["billing_period_before"] = json_billing_period_before
 
     json_credit_uuid: Union[Unset, str] = UNSET
     if not isinstance(credit_uuid, Unset):
@@ -66,13 +45,6 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
-
-    json_project_credit_uuid: Union[Unset, str] = UNSET
-    if not isinstance(project_credit_uuid, Unset):
-        json_project_credit_uuid = str(project_credit_uuid)
-    params["project_credit_uuid"] = json_project_credit_uuid
-
-    params["project_uuid"] = project_uuid
 
     params["transaction_type"] = transaction_type
 
@@ -118,30 +90,20 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    billing_period: Union[Unset, datetime.date] = UNSET,
-    billing_period_after: Union[Unset, datetime.date] = UNSET,
-    billing_period_before: Union[Unset, datetime.date] = UNSET,
     credit_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CreditTransactionOEnum]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    project_credit_uuid: Union[Unset, UUID] = UNSET,
-    project_uuid: Union[Unset, str] = UNSET,
     transaction_type: Union[Unset, str] = UNSET,
 ) -> Response[list["CreditTransaction"]]:
     """
     Args:
-        billing_period (Union[Unset, datetime.date]):
-        billing_period_after (Union[Unset, datetime.date]):
-        billing_period_before (Union[Unset, datetime.date]):
         credit_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CreditTransactionOEnum]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        project_credit_uuid (Union[Unset, UUID]):
-        project_uuid (Union[Unset, str]):
         transaction_type (Union[Unset, str]):
 
     Raises:
@@ -153,16 +115,11 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        billing_period=billing_period,
-        billing_period_after=billing_period_after,
-        billing_period_before=billing_period_before,
         credit_uuid=credit_uuid,
         customer_uuid=customer_uuid,
         o=o,
         page=page,
         page_size=page_size,
-        project_credit_uuid=project_credit_uuid,
-        project_uuid=project_uuid,
         transaction_type=transaction_type,
     )
 
@@ -176,30 +133,20 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    billing_period: Union[Unset, datetime.date] = UNSET,
-    billing_period_after: Union[Unset, datetime.date] = UNSET,
-    billing_period_before: Union[Unset, datetime.date] = UNSET,
     credit_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CreditTransactionOEnum]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    project_credit_uuid: Union[Unset, UUID] = UNSET,
-    project_uuid: Union[Unset, str] = UNSET,
     transaction_type: Union[Unset, str] = UNSET,
 ) -> list["CreditTransaction"]:
     """
     Args:
-        billing_period (Union[Unset, datetime.date]):
-        billing_period_after (Union[Unset, datetime.date]):
-        billing_period_before (Union[Unset, datetime.date]):
         credit_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CreditTransactionOEnum]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        project_credit_uuid (Union[Unset, UUID]):
-        project_uuid (Union[Unset, str]):
         transaction_type (Union[Unset, str]):
 
     Raises:
@@ -212,16 +159,11 @@ def sync(
 
     return sync_detailed(
         client=client,
-        billing_period=billing_period,
-        billing_period_after=billing_period_after,
-        billing_period_before=billing_period_before,
         credit_uuid=credit_uuid,
         customer_uuid=customer_uuid,
         o=o,
         page=page,
         page_size=page_size,
-        project_credit_uuid=project_credit_uuid,
-        project_uuid=project_uuid,
         transaction_type=transaction_type,
     ).parsed
 
@@ -229,30 +171,20 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    billing_period: Union[Unset, datetime.date] = UNSET,
-    billing_period_after: Union[Unset, datetime.date] = UNSET,
-    billing_period_before: Union[Unset, datetime.date] = UNSET,
     credit_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CreditTransactionOEnum]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    project_credit_uuid: Union[Unset, UUID] = UNSET,
-    project_uuid: Union[Unset, str] = UNSET,
     transaction_type: Union[Unset, str] = UNSET,
 ) -> Response[list["CreditTransaction"]]:
     """
     Args:
-        billing_period (Union[Unset, datetime.date]):
-        billing_period_after (Union[Unset, datetime.date]):
-        billing_period_before (Union[Unset, datetime.date]):
         credit_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CreditTransactionOEnum]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        project_credit_uuid (Union[Unset, UUID]):
-        project_uuid (Union[Unset, str]):
         transaction_type (Union[Unset, str]):
 
     Raises:
@@ -264,16 +196,11 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        billing_period=billing_period,
-        billing_period_after=billing_period_after,
-        billing_period_before=billing_period_before,
         credit_uuid=credit_uuid,
         customer_uuid=customer_uuid,
         o=o,
         page=page,
         page_size=page_size,
-        project_credit_uuid=project_credit_uuid,
-        project_uuid=project_uuid,
         transaction_type=transaction_type,
     )
 
@@ -285,30 +212,20 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    billing_period: Union[Unset, datetime.date] = UNSET,
-    billing_period_after: Union[Unset, datetime.date] = UNSET,
-    billing_period_before: Union[Unset, datetime.date] = UNSET,
     credit_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CreditTransactionOEnum]] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
-    project_credit_uuid: Union[Unset, UUID] = UNSET,
-    project_uuid: Union[Unset, str] = UNSET,
     transaction_type: Union[Unset, str] = UNSET,
 ) -> list["CreditTransaction"]:
     """
     Args:
-        billing_period (Union[Unset, datetime.date]):
-        billing_period_after (Union[Unset, datetime.date]):
-        billing_period_before (Union[Unset, datetime.date]):
         credit_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CreditTransactionOEnum]]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
-        project_credit_uuid (Union[Unset, UUID]):
-        project_uuid (Union[Unset, str]):
         transaction_type (Union[Unset, str]):
 
     Raises:
@@ -322,16 +239,11 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
-            billing_period=billing_period,
-            billing_period_after=billing_period_after,
-            billing_period_before=billing_period_before,
             credit_uuid=credit_uuid,
             customer_uuid=customer_uuid,
             o=o,
             page=page,
             page_size=page_size,
-            project_credit_uuid=project_credit_uuid,
-            project_uuid=project_uuid,
             transaction_type=transaction_type,
         )
     ).parsed
@@ -340,14 +252,9 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    billing_period: Union[Unset, datetime.date] = UNSET,
-    billing_period_after: Union[Unset, datetime.date] = UNSET,
-    billing_period_before: Union[Unset, datetime.date] = UNSET,
     credit_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CreditTransactionOEnum]] = UNSET,
-    project_credit_uuid: Union[Unset, UUID] = UNSET,
-    project_uuid: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     transaction_type: Union[Unset, str] = UNSET,
 ) -> list["CreditTransaction"]:
     """Get All Pages
@@ -358,14 +265,9 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        billing_period (Union[Unset, datetime.date]):
-        billing_period_after (Union[Unset, datetime.date]):
-        billing_period_before (Union[Unset, datetime.date]):
         credit_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CreditTransactionOEnum]]):
-        project_credit_uuid (Union[Unset, UUID]):
-        project_uuid (Union[Unset, str]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         transaction_type (Union[Unset, str]):
 
     Raises:
@@ -381,14 +283,9 @@ def sync_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
-        billing_period=billing_period,
-        billing_period_after=billing_period_after,
-        billing_period_before=billing_period_before,
         credit_uuid=credit_uuid,
         customer_uuid=customer_uuid,
         o=o,
-        project_credit_uuid=project_credit_uuid,
-        project_uuid=project_uuid,
         transaction_type=transaction_type,
     )
 
@@ -437,14 +334,9 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    billing_period: Union[Unset, datetime.date] = UNSET,
-    billing_period_after: Union[Unset, datetime.date] = UNSET,
-    billing_period_before: Union[Unset, datetime.date] = UNSET,
     credit_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    o: Union[Unset, list[CreditTransactionOEnum]] = UNSET,
-    project_credit_uuid: Union[Unset, UUID] = UNSET,
-    project_uuid: Union[Unset, str] = UNSET,
+    o: Union[Unset, list[BackendResourceReqOEnum]] = UNSET,
     transaction_type: Union[Unset, str] = UNSET,
 ) -> list["CreditTransaction"]:
     """Get All Pages (Async)
@@ -455,14 +347,9 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        billing_period (Union[Unset, datetime.date]):
-        billing_period_after (Union[Unset, datetime.date]):
-        billing_period_before (Union[Unset, datetime.date]):
         credit_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
-        o (Union[Unset, list[CreditTransactionOEnum]]):
-        project_credit_uuid (Union[Unset, UUID]):
-        project_uuid (Union[Unset, str]):
+        o (Union[Unset, list[BackendResourceReqOEnum]]):
         transaction_type (Union[Unset, str]):
 
     Raises:
@@ -478,14 +365,9 @@ async def asyncio_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
-        billing_period=billing_period,
-        billing_period_after=billing_period_after,
-        billing_period_before=billing_period_before,
         credit_uuid=credit_uuid,
         customer_uuid=customer_uuid,
         o=o,
-        project_credit_uuid=project_credit_uuid,
-        project_uuid=project_uuid,
         transaction_type=transaction_type,
     )
 

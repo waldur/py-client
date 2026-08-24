@@ -7,57 +7,21 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.posix_identity import PosixIdentity
-from ...models.posix_identity_consumer_type_enum import PosixIdentityConsumerTypeEnum
-from ...models.posix_identity_o_enum import PosixIdentityOEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
 def _get_kwargs(
     *,
-    consumer_type: Union[Unset, PosixIdentityConsumerTypeEnum] = UNSET,
-    gid: Union[Unset, int] = UNSET,
-    gid_max: Union[Unset, int] = UNSET,
-    gid_min: Union[Unset, int] = UNSET,
     is_released: Union[Unset, bool] = UNSET,
-    keyword: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[PosixIdentityOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     pool_uuid: Union[Unset, UUID] = UNSET,
-    recyclable: Union[Unset, bool] = UNSET,
-    uid: Union[Unset, int] = UNSET,
-    uid_max: Union[Unset, int] = UNSET,
-    uid_min: Union[Unset, int] = UNSET,
-    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
-    json_consumer_type: Union[Unset, str] = UNSET
-    if not isinstance(consumer_type, Unset):
-        json_consumer_type = consumer_type.value
-
-    params["consumer_type"] = json_consumer_type
-
-    params["gid"] = gid
-
-    params["gid_max"] = gid_max
-
-    params["gid_min"] = gid_min
-
     params["is_released"] = is_released
-
-    params["keyword"] = keyword
-
-    json_o: Union[Unset, list[str]] = UNSET
-    if not isinstance(o, Unset):
-        json_o = []
-        for o_item_data in o:
-            o_item = o_item_data.value
-            json_o.append(o_item)
-
-    params["o"] = json_o
 
     json_offering_uuid: Union[Unset, str] = UNSET
     if not isinstance(offering_uuid, Unset):
@@ -72,19 +36,6 @@ def _get_kwargs(
     if not isinstance(pool_uuid, Unset):
         json_pool_uuid = str(pool_uuid)
     params["pool_uuid"] = json_pool_uuid
-
-    params["recyclable"] = recyclable
-
-    params["uid"] = uid
-
-    params["uid_max"] = uid_max
-
-    params["uid_min"] = uid_min
-
-    json_user_uuid: Union[Unset, str] = UNSET
-    if not isinstance(user_uuid, Unset):
-        json_user_uuid = str(user_uuid)
-    params["user_uuid"] = json_user_uuid
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -126,41 +77,19 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    consumer_type: Union[Unset, PosixIdentityConsumerTypeEnum] = UNSET,
-    gid: Union[Unset, int] = UNSET,
-    gid_max: Union[Unset, int] = UNSET,
-    gid_min: Union[Unset, int] = UNSET,
     is_released: Union[Unset, bool] = UNSET,
-    keyword: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[PosixIdentityOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     pool_uuid: Union[Unset, UUID] = UNSET,
-    recyclable: Union[Unset, bool] = UNSET,
-    uid: Union[Unset, int] = UNSET,
-    uid_max: Union[Unset, int] = UNSET,
-    uid_min: Union[Unset, int] = UNSET,
-    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["PosixIdentity"]]:
     """
     Args:
-        consumer_type (Union[Unset, PosixIdentityConsumerTypeEnum]):
-        gid (Union[Unset, int]):
-        gid_max (Union[Unset, int]):
-        gid_min (Union[Unset, int]):
         is_released (Union[Unset, bool]):
-        keyword (Union[Unset, str]):
-        o (Union[Unset, list[PosixIdentityOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         pool_uuid (Union[Unset, UUID]):
-        recyclable (Union[Unset, bool]):
-        uid (Union[Unset, int]):
-        uid_max (Union[Unset, int]):
-        uid_min (Union[Unset, int]):
-        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -171,22 +100,11 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        consumer_type=consumer_type,
-        gid=gid,
-        gid_max=gid_max,
-        gid_min=gid_min,
         is_released=is_released,
-        keyword=keyword,
-        o=o,
         offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
         pool_uuid=pool_uuid,
-        recyclable=recyclable,
-        uid=uid,
-        uid_max=uid_max,
-        uid_min=uid_min,
-        user_uuid=user_uuid,
     )
 
     response = client.get_httpx_client().request(
@@ -199,41 +117,19 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    consumer_type: Union[Unset, PosixIdentityConsumerTypeEnum] = UNSET,
-    gid: Union[Unset, int] = UNSET,
-    gid_max: Union[Unset, int] = UNSET,
-    gid_min: Union[Unset, int] = UNSET,
     is_released: Union[Unset, bool] = UNSET,
-    keyword: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[PosixIdentityOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     pool_uuid: Union[Unset, UUID] = UNSET,
-    recyclable: Union[Unset, bool] = UNSET,
-    uid: Union[Unset, int] = UNSET,
-    uid_max: Union[Unset, int] = UNSET,
-    uid_min: Union[Unset, int] = UNSET,
-    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["PosixIdentity"]:
     """
     Args:
-        consumer_type (Union[Unset, PosixIdentityConsumerTypeEnum]):
-        gid (Union[Unset, int]):
-        gid_max (Union[Unset, int]):
-        gid_min (Union[Unset, int]):
         is_released (Union[Unset, bool]):
-        keyword (Union[Unset, str]):
-        o (Union[Unset, list[PosixIdentityOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         pool_uuid (Union[Unset, UUID]):
-        recyclable (Union[Unset, bool]):
-        uid (Union[Unset, int]):
-        uid_max (Union[Unset, int]):
-        uid_min (Union[Unset, int]):
-        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -245,63 +141,30 @@ def sync(
 
     return sync_detailed(
         client=client,
-        consumer_type=consumer_type,
-        gid=gid,
-        gid_max=gid_max,
-        gid_min=gid_min,
         is_released=is_released,
-        keyword=keyword,
-        o=o,
         offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
         pool_uuid=pool_uuid,
-        recyclable=recyclable,
-        uid=uid,
-        uid_max=uid_max,
-        uid_min=uid_min,
-        user_uuid=user_uuid,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    consumer_type: Union[Unset, PosixIdentityConsumerTypeEnum] = UNSET,
-    gid: Union[Unset, int] = UNSET,
-    gid_max: Union[Unset, int] = UNSET,
-    gid_min: Union[Unset, int] = UNSET,
     is_released: Union[Unset, bool] = UNSET,
-    keyword: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[PosixIdentityOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     pool_uuid: Union[Unset, UUID] = UNSET,
-    recyclable: Union[Unset, bool] = UNSET,
-    uid: Union[Unset, int] = UNSET,
-    uid_max: Union[Unset, int] = UNSET,
-    uid_min: Union[Unset, int] = UNSET,
-    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[list["PosixIdentity"]]:
     """
     Args:
-        consumer_type (Union[Unset, PosixIdentityConsumerTypeEnum]):
-        gid (Union[Unset, int]):
-        gid_max (Union[Unset, int]):
-        gid_min (Union[Unset, int]):
         is_released (Union[Unset, bool]):
-        keyword (Union[Unset, str]):
-        o (Union[Unset, list[PosixIdentityOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         pool_uuid (Union[Unset, UUID]):
-        recyclable (Union[Unset, bool]):
-        uid (Union[Unset, int]):
-        uid_max (Union[Unset, int]):
-        uid_min (Union[Unset, int]):
-        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -312,22 +175,11 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        consumer_type=consumer_type,
-        gid=gid,
-        gid_max=gid_max,
-        gid_min=gid_min,
         is_released=is_released,
-        keyword=keyword,
-        o=o,
         offering_uuid=offering_uuid,
         page=page,
         page_size=page_size,
         pool_uuid=pool_uuid,
-        recyclable=recyclable,
-        uid=uid,
-        uid_max=uid_max,
-        uid_min=uid_min,
-        user_uuid=user_uuid,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -338,41 +190,19 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    consumer_type: Union[Unset, PosixIdentityConsumerTypeEnum] = UNSET,
-    gid: Union[Unset, int] = UNSET,
-    gid_max: Union[Unset, int] = UNSET,
-    gid_min: Union[Unset, int] = UNSET,
     is_released: Union[Unset, bool] = UNSET,
-    keyword: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[PosixIdentityOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     pool_uuid: Union[Unset, UUID] = UNSET,
-    recyclable: Union[Unset, bool] = UNSET,
-    uid: Union[Unset, int] = UNSET,
-    uid_max: Union[Unset, int] = UNSET,
-    uid_min: Union[Unset, int] = UNSET,
-    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["PosixIdentity"]:
     """
     Args:
-        consumer_type (Union[Unset, PosixIdentityConsumerTypeEnum]):
-        gid (Union[Unset, int]):
-        gid_max (Union[Unset, int]):
-        gid_min (Union[Unset, int]):
         is_released (Union[Unset, bool]):
-        keyword (Union[Unset, str]):
-        o (Union[Unset, list[PosixIdentityOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         pool_uuid (Union[Unset, UUID]):
-        recyclable (Union[Unset, bool]):
-        uid (Union[Unset, int]):
-        uid_max (Union[Unset, int]):
-        uid_min (Union[Unset, int]):
-        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -385,22 +215,11 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
-            consumer_type=consumer_type,
-            gid=gid,
-            gid_max=gid_max,
-            gid_min=gid_min,
             is_released=is_released,
-            keyword=keyword,
-            o=o,
             offering_uuid=offering_uuid,
             page=page,
             page_size=page_size,
             pool_uuid=pool_uuid,
-            recyclable=recyclable,
-            uid=uid,
-            uid_max=uid_max,
-            uid_min=uid_min,
-            user_uuid=user_uuid,
         )
     ).parsed
 
@@ -408,20 +227,9 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
-    consumer_type: Union[Unset, PosixIdentityConsumerTypeEnum] = UNSET,
-    gid: Union[Unset, int] = UNSET,
-    gid_max: Union[Unset, int] = UNSET,
-    gid_min: Union[Unset, int] = UNSET,
     is_released: Union[Unset, bool] = UNSET,
-    keyword: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[PosixIdentityOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     pool_uuid: Union[Unset, UUID] = UNSET,
-    recyclable: Union[Unset, bool] = UNSET,
-    uid: Union[Unset, int] = UNSET,
-    uid_max: Union[Unset, int] = UNSET,
-    uid_min: Union[Unset, int] = UNSET,
-    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["PosixIdentity"]:
     """Get All Pages
 
@@ -431,20 +239,9 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        consumer_type (Union[Unset, PosixIdentityConsumerTypeEnum]):
-        gid (Union[Unset, int]):
-        gid_max (Union[Unset, int]):
-        gid_min (Union[Unset, int]):
         is_released (Union[Unset, bool]):
-        keyword (Union[Unset, str]):
-        o (Union[Unset, list[PosixIdentityOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         pool_uuid (Union[Unset, UUID]):
-        recyclable (Union[Unset, bool]):
-        uid (Union[Unset, int]):
-        uid_max (Union[Unset, int]):
-        uid_min (Union[Unset, int]):
-        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -459,20 +256,9 @@ def sync_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
-        consumer_type=consumer_type,
-        gid=gid,
-        gid_max=gid_max,
-        gid_min=gid_min,
         is_released=is_released,
-        keyword=keyword,
-        o=o,
         offering_uuid=offering_uuid,
         pool_uuid=pool_uuid,
-        recyclable=recyclable,
-        uid=uid,
-        uid_max=uid_max,
-        uid_min=uid_min,
-        user_uuid=user_uuid,
     )
 
     # Set page_size to maximum
@@ -520,20 +306,9 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
-    consumer_type: Union[Unset, PosixIdentityConsumerTypeEnum] = UNSET,
-    gid: Union[Unset, int] = UNSET,
-    gid_max: Union[Unset, int] = UNSET,
-    gid_min: Union[Unset, int] = UNSET,
     is_released: Union[Unset, bool] = UNSET,
-    keyword: Union[Unset, str] = UNSET,
-    o: Union[Unset, list[PosixIdentityOEnum]] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
     pool_uuid: Union[Unset, UUID] = UNSET,
-    recyclable: Union[Unset, bool] = UNSET,
-    uid: Union[Unset, int] = UNSET,
-    uid_max: Union[Unset, int] = UNSET,
-    uid_min: Union[Unset, int] = UNSET,
-    user_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["PosixIdentity"]:
     """Get All Pages (Async)
 
@@ -543,20 +318,9 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
-        consumer_type (Union[Unset, PosixIdentityConsumerTypeEnum]):
-        gid (Union[Unset, int]):
-        gid_max (Union[Unset, int]):
-        gid_min (Union[Unset, int]):
         is_released (Union[Unset, bool]):
-        keyword (Union[Unset, str]):
-        o (Union[Unset, list[PosixIdentityOEnum]]):
         offering_uuid (Union[Unset, UUID]):
         pool_uuid (Union[Unset, UUID]):
-        recyclable (Union[Unset, bool]):
-        uid (Union[Unset, int]):
-        uid_max (Union[Unset, int]):
-        uid_min (Union[Unset, int]):
-        user_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -571,20 +335,9 @@ async def asyncio_all(
 
     # Get initial request kwargs
     kwargs = _get_kwargs(
-        consumer_type=consumer_type,
-        gid=gid,
-        gid_max=gid_max,
-        gid_min=gid_min,
         is_released=is_released,
-        keyword=keyword,
-        o=o,
         offering_uuid=offering_uuid,
         pool_uuid=pool_uuid,
-        recyclable=recyclable,
-        uid=uid,
-        uid_max=uid_max,
-        uid_min=uid_min,
-        user_uuid=user_uuid,
     )
 
     # Set page_size to maximum

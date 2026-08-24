@@ -7,7 +7,6 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.project_estimated_cost_policy import ProjectEstimatedCostPolicy
-from ...models.project_estimated_cost_policy_field_enum import ProjectEstimatedCostPolicyFieldEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -16,7 +15,6 @@ def _get_kwargs(
     *,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[ProjectEstimatedCostPolicyFieldEnum]] = UNSET,
     has_resource: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -36,15 +34,6 @@ def _get_kwargs(
     if not isinstance(customer_uuid, Unset):
         json_customer_uuid = str(customer_uuid)
     params["customer_uuid"] = json_customer_uuid
-
-    json_field: Union[Unset, list[str]] = UNSET
-    if not isinstance(field, Unset):
-        json_field = []
-        for field_item_data in field:
-            field_item = field_item_data.value
-            json_field.append(field_item)
-
-    params["field"] = json_field
 
     params["has_resource"] = has_resource
 
@@ -119,7 +108,6 @@ def sync_detailed(
     client: AuthenticatedClient,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[ProjectEstimatedCostPolicyFieldEnum]] = UNSET,
     has_resource: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -135,7 +123,6 @@ def sync_detailed(
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[ProjectEstimatedCostPolicyFieldEnum]]):
         has_resource (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -158,7 +145,6 @@ def sync_detailed(
     kwargs = _get_kwargs(
         customer=customer,
         customer_uuid=customer_uuid,
-        field=field,
         has_resource=has_resource,
         page=page,
         page_size=page_size,
@@ -183,7 +169,6 @@ def sync(
     client: AuthenticatedClient,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[ProjectEstimatedCostPolicyFieldEnum]] = UNSET,
     has_resource: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -199,7 +184,6 @@ def sync(
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[ProjectEstimatedCostPolicyFieldEnum]]):
         has_resource (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -223,7 +207,6 @@ def sync(
         client=client,
         customer=customer,
         customer_uuid=customer_uuid,
-        field=field,
         has_resource=has_resource,
         page=page,
         page_size=page_size,
@@ -242,7 +225,6 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[ProjectEstimatedCostPolicyFieldEnum]] = UNSET,
     has_resource: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -258,7 +240,6 @@ async def asyncio_detailed(
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[ProjectEstimatedCostPolicyFieldEnum]]):
         has_resource (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -281,7 +262,6 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         customer=customer,
         customer_uuid=customer_uuid,
-        field=field,
         has_resource=has_resource,
         page=page,
         page_size=page_size,
@@ -304,7 +284,6 @@ async def asyncio(
     client: AuthenticatedClient,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[ProjectEstimatedCostPolicyFieldEnum]] = UNSET,
     has_resource: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -320,7 +299,6 @@ async def asyncio(
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[ProjectEstimatedCostPolicyFieldEnum]]):
         has_resource (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -345,7 +323,6 @@ async def asyncio(
             client=client,
             customer=customer,
             customer_uuid=customer_uuid,
-            field=field,
             has_resource=has_resource,
             page=page,
             page_size=page_size,
@@ -365,7 +342,6 @@ def sync_all(
     client: AuthenticatedClient,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[ProjectEstimatedCostPolicyFieldEnum]] = UNSET,
     has_resource: Union[Unset, bool] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -385,7 +361,6 @@ def sync_all(
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[ProjectEstimatedCostPolicyFieldEnum]]):
         has_resource (Union[Unset, bool]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
@@ -410,7 +385,6 @@ def sync_all(
     kwargs = _get_kwargs(
         customer=customer,
         customer_uuid=customer_uuid,
-        field=field,
         has_resource=has_resource,
         project=project,
         project_uuid=project_uuid,
@@ -468,7 +442,6 @@ async def asyncio_all(
     client: AuthenticatedClient,
     customer: Union[Unset, str] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
-    field: Union[Unset, list[ProjectEstimatedCostPolicyFieldEnum]] = UNSET,
     has_resource: Union[Unset, bool] = UNSET,
     project: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
@@ -488,7 +461,6 @@ async def asyncio_all(
     Args:
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
-        field (Union[Unset, list[ProjectEstimatedCostPolicyFieldEnum]]):
         has_resource (Union[Unset, bool]):
         project (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
@@ -513,7 +485,6 @@ async def asyncio_all(
     kwargs = _get_kwargs(
         customer=customer,
         customer_uuid=customer_uuid,
-        field=field,
         has_resource=has_resource,
         project=project,
         project_uuid=project_uuid,

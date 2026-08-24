@@ -19,7 +19,6 @@ class OfferingUserPosixGroup:
         customer_uuid (Union[None, str]):
         project_accessible (bool):
         pool_uuid (Union[None, str]):
-        pool_scope (Union[None, str]):
     """
 
     gid: int
@@ -30,7 +29,6 @@ class OfferingUserPosixGroup:
     customer_uuid: Union[None, str]
     project_accessible: bool
     pool_uuid: Union[None, str]
-    pool_scope: Union[None, str]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -55,9 +53,6 @@ class OfferingUserPosixGroup:
         pool_uuid: Union[None, str]
         pool_uuid = self.pool_uuid
 
-        pool_scope: Union[None, str]
-        pool_scope = self.pool_scope
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -70,7 +65,6 @@ class OfferingUserPosixGroup:
                 "customer_uuid": customer_uuid,
                 "project_accessible": project_accessible,
                 "pool_uuid": pool_uuid,
-                "pool_scope": pool_scope,
             }
         )
 
@@ -120,13 +114,6 @@ class OfferingUserPosixGroup:
 
         pool_uuid = _parse_pool_uuid(d.pop("pool_uuid"))
 
-        def _parse_pool_scope(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        pool_scope = _parse_pool_scope(d.pop("pool_scope"))
-
         offering_user_posix_group = cls(
             gid=gid,
             offering_name=offering_name,
@@ -136,7 +123,6 @@ class OfferingUserPosixGroup:
             customer_uuid=customer_uuid,
             project_accessible=project_accessible,
             pool_uuid=pool_uuid,
-            pool_scope=pool_scope,
         )
 
         offering_user_posix_group.additional_properties = d

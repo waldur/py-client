@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.2.dev.20260823203546
+# Version: 8.1.2
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -3501,30 +3501,20 @@ Request body: yes
 
 ### credit_transactions_list
 GET /api/credit-transactions/
-Query parameters (9):
-  - billing_period
-  - billing_period_after
-  - billing_period_before
+Query parameters (4):
   - credit_uuid
   - customer_uuid
   - o — Ordering
-  - project_credit_uuid
-  - project_uuid
   - transaction_type
 
 ### credit_transactions_count
 HEAD /api/credit-transactions/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (9):
-  - billing_period
-  - billing_period_after
-  - billing_period_before
+Query parameters (4):
   - credit_uuid
   - customer_uuid
   - o — Ordering
-  - project_credit_uuid
-  - project_uuid
   - transaction_type
 
 ### credit_transactions_retrieve
@@ -6690,7 +6680,7 @@ Query parameters (10):
 GET /api/marketplace-component-usages/
 Summary: List component usage records
 Description: Returns a paginated list of component usage records for resources. This data is used for billing and usage tracking.
-Query parameters (14):
+Query parameters (13):
   - billing_period
   - billing_period_month — Billing period month
   - billing_period_year — Billing period year
@@ -6698,7 +6688,6 @@ Query parameters (14):
   - date_after — Date after or equal to
   - date_before — Date before or equal to
   - field
-  - missing_usage_policy — Missing usage policy
   - o — Ordering
   - offering_uuid — Offering UUID
   - project_uuid — Project UUID
@@ -6710,14 +6699,13 @@ Query parameters (14):
 HEAD /api/marketplace-component-usages/
 Summary: List component usage records
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (13):
+Query parameters (12):
   - billing_period
   - billing_period_month — Billing period month
   - billing_period_year — Billing period year
   - customer_uuid — Customer UUID
   - date_after — Date after or equal to
   - date_before — Date before or equal to
-  - missing_usage_policy — Missing usage policy
   - o — Ordering
   - offering_uuid — Offering UUID
   - project_uuid — Project UUID
@@ -6960,10 +6948,9 @@ Path parameters:
 
 ### marketplace_customer_estimated_cost_policies_list
 GET /api/marketplace-customer-estimated-cost-policies/
-Query parameters (5):
+Query parameters (4):
   - customer
   - customer_uuid
-  - field
   - scope
   - scope_uuid
 
@@ -6993,8 +6980,6 @@ Description: Get number of items in the collection matching the request paramete
 GET /api/marketplace-customer-estimated-cost-policies/{uuid}/
 Path parameters:
   - uuid
-Query parameters (1):
-  - field
 
 ### marketplace_customer_estimated_cost_policies_update
 PUT /api/marketplace-customer-estimated-cost-policies/{uuid}/
@@ -7264,8 +7249,7 @@ Path parameters:
 
 ### marketplace_offering_estimated_cost_policies_list
 GET /api/marketplace-offering-estimated-cost-policies/
-Query parameters (3):
-  - field
+Query parameters (2):
   - scope
   - scope_uuid
 
@@ -7294,8 +7278,6 @@ Description: Get number of items in the collection matching the request paramete
 GET /api/marketplace-offering-estimated-cost-policies/{uuid}/
 Path parameters:
   - uuid
-Query parameters (1):
-  - field
 
 ### marketplace_offering_estimated_cost_policies_update
 PUT /api/marketplace-offering-estimated-cost-policies/{uuid}/
@@ -7878,7 +7860,7 @@ Query parameters (1):
 ### marketplace_offering_users_posix_identities_list
 GET /api/marketplace-offering-users/posix_identities/
 Summary: List a user's POSIX identities across all their offerings
-Description: Consolidated view of one user's POSIX identifiers (UID, primary GID and project group GIDs), one row per pool and namespace: a UID allocated once for the user is reported once, listing every offering that uses it. An offering with its own pool yields its own row. Scoped to the offering users the ...
+Description: Consolidated view of one user's POSIX identifiers (UID, primary GID and project group GIDs) across every offering they have an account on, each with the range it was allocated from. Scoped to the offering users the requester is allowed to see.
 Query parameters (19):
   - created — Created after
   - created_before — Created before
@@ -8003,7 +7985,7 @@ Path parameters:
 ### marketplace_offering_users_posix_allocations_list
 GET /api/marketplace-offering-users/{uuid}/posix_allocations/
 Summary: List POSIX UID/GID allocations of an offering user
-Description: Returns the user's POSIX identifiers (UID, primary GID) and, for each, the POSIX ID pool that tracks it plus the user's other offerings that resolve to the same pool and therefore carry the very same value. The pool fields are null when the value is not tracked by a pool.
+Description: Returns the user's POSIX identifiers (UID, primary GID) and, for each, the POSIX ID pool that tracks it. The pool fields are null when the value is not tracked by a pool.
 Path parameters:
   - uuid
 Query parameters (19):
@@ -8662,21 +8644,6 @@ DELETE /api/marketplace-posix-id-pools/{uuid}/
 Path parameters:
   - uuid
 
-### marketplace_posix_id_pools_repoint
-POST /api/marketplace-posix-id-pools/{uuid}/repoint/
-Summary: Re-point existing accounts onto this pool
-Description: Moves the offering's existing accounts onto this override pool and returns the identifiers that changed. Requires 'confirm': true - preview the impact with repoint_preview first, and reconcile the provider's filesystem afterwards, since the accounts' files still carry the old numbers. Values free...
-Path parameters:
-  - uuid
-Request body: yes
-
-### marketplace_posix_id_pools_repoint_preview_retrieve
-GET /api/marketplace-posix-id-pools/{uuid}/repoint_preview/
-Summary: Preview re-pointing existing accounts onto this pool
-Description: Adding an override pool to an offering that already has accounts changes nothing by itself: accounts created afterwards draw from the override pool, while existing ones keep the values they were given by the previously resolved pool. This action reports which offering users would change and from ...
-Path parameters:
-  - uuid
-
 ### marketplace_posix_id_pools_stats_retrieve
 GET /api/marketplace-posix-id-pools/{uuid}/stats/
 Summary: Pool utilization statistics
@@ -8689,41 +8656,19 @@ Path parameters:
 
 ### marketplace_posix_identities_list
 GET /api/marketplace-posix-identities/
-Query parameters (14):
-  - consumer_type — Principal kind
-  - gid — GID
-  - gid_max — Maximum GID
-  - gid_min — Minimum GID
+Query parameters (3):
   - is_released
-  - keyword — Keyword (account username, first or last name, robot account name)
-  - o — Ordering
   - offering_uuid — Offering UUID
   - pool_uuid — POSIX ID pool UUID
-  - recyclable — Recyclable (false lists released values withheld from the pool)
-  - uid — UID
-  - uid_max — Maximum UID
-  - uid_min — Minimum UID
-  - user_uuid — User UUID
 
 ### marketplace_posix_identities_count
 HEAD /api/marketplace-posix-identities/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (14):
-  - consumer_type — Principal kind
-  - gid — GID
-  - gid_max — Maximum GID
-  - gid_min — Minimum GID
+Query parameters (3):
   - is_released
-  - keyword — Keyword (account username, first or last name, robot account name)
-  - o — Ordering
   - offering_uuid — Offering UUID
   - pool_uuid — POSIX ID pool UUID
-  - recyclable — Recyclable (false lists released values withheld from the pool)
-  - uid — UID
-  - uid_max — Maximum UID
-  - uid_min — Minimum UID
-  - user_uuid — User UUID
 
 ### marketplace_posix_identities_retrieve
 GET /api/marketplace-posix-identities/{uuid}/
@@ -8736,10 +8681,9 @@ Path parameters:
 
 ### marketplace_project_estimated_cost_policies_list
 GET /api/marketplace-project-estimated-cost-policies/
-Query parameters (11):
+Query parameters (10):
   - customer
   - customer_uuid
-  - field
   - has_resource
   - project
   - project_uuid
@@ -8781,8 +8725,6 @@ Description: Get number of items in the collection matching the request paramete
 GET /api/marketplace-project-estimated-cost-policies/{uuid}/
 Path parameters:
   - uuid
-Query parameters (1):
-  - field
 
 ### marketplace_project_estimated_cost_policies_update
 PUT /api/marketplace-project-estimated-cost-policies/{uuid}/
@@ -23470,6 +23412,176 @@ Path parameters:
   - uuid
 Query parameters (1):
   - field
+
+============================================================
+## slurm-allocation-user-usage  (module: waldur_api_client.api.slurm_allocation_user_usage)
+============================================================
+
+### slurm_allocation_user_usage_list
+GET /api/slurm-allocation-user-usage/
+Query parameters (6):
+  - allocation
+  - allocation_uuid
+  - month
+  - user
+  - user_uuid
+  - year
+
+### slurm_allocation_user_usage_count
+HEAD /api/slurm-allocation-user-usage/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (6):
+  - allocation
+  - allocation_uuid
+  - month
+  - user
+  - user_uuid
+  - year
+
+### slurm_allocation_user_usage_retrieve
+GET /api/slurm-allocation-user-usage/{id}/
+Path parameters:
+  - id — A unique integer value identifying this allocation user usage.
+
+============================================================
+## slurm-allocations  (module: waldur_api_client.api.slurm_allocations)
+============================================================
+
+### slurm_allocations_list
+GET /api/slurm-allocations/
+Query parameters (19):
+  - backend_id — Backend ID
+  - can_manage — Can manage
+  - customer — Customer UUID
+  - customer_abbreviation — Customer abbreviation
+  - customer_name — Customer name
+  - customer_native_name — Customer native name
+  - customer_uuid — Customer UUID
+  - description — Description
+  - external_ip — External IP
+  - field
+  - is_active
+  - name — Name
+  - name_exact — Name (exact)
+  - project — Project UUID
+  - project_name — Project name
+  - project_uuid — Project UUID
+  - service_settings_name — Service settings name
+  - service_settings_uuid — Service settings UUID
+  - state — State
+
+### slurm_allocations_count
+HEAD /api/slurm-allocations/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (18):
+  - backend_id — Backend ID
+  - can_manage — Can manage
+  - customer — Customer UUID
+  - customer_abbreviation — Customer abbreviation
+  - customer_name — Customer name
+  - customer_native_name — Customer native name
+  - customer_uuid — Customer UUID
+  - description — Description
+  - external_ip — External IP
+  - is_active
+  - name — Name
+  - name_exact — Name (exact)
+  - project — Project UUID
+  - project_name — Project name
+  - project_uuid — Project UUID
+  - service_settings_name — Service settings name
+  - service_settings_uuid — Service settings UUID
+  - state — State
+
+### slurm_allocations_create
+POST /api/slurm-allocations/
+Request body: yes
+
+### slurm_allocations_retrieve
+GET /api/slurm-allocations/{uuid}/
+Path parameters:
+  - uuid
+Query parameters (1):
+  - field
+
+### slurm_allocations_update
+PUT /api/slurm-allocations/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### slurm_allocations_partial_update
+PATCH /api/slurm-allocations/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### slurm_allocations_destroy
+DELETE /api/slurm-allocations/{uuid}/
+Path parameters:
+  - uuid
+
+### slurm_allocations_pull
+POST /api/slurm-allocations/{uuid}/pull/
+Summary: Synchronize resource state
+Description: Schedule an asynchronous pull operation to synchronize resource state from the backend. Returns 202 if the pull was scheduled successfully, or 409 if the pull operation is not implemented for this resource type.
+Path parameters:
+  - uuid
+
+### slurm_allocations_set_erred
+POST /api/slurm-allocations/{uuid}/set_erred/
+Summary: Mark resource as ERRED
+Description: Manually transition the resource to ERRED state. This is useful for resources stuck in transitional states (CREATING, UPDATING, DELETING) that cannot be synced via pull. Staff-only operation.
+Path parameters:
+  - uuid
+Request body: yes
+
+### slurm_allocations_set_limits
+POST /api/slurm-allocations/{uuid}/set_limits/
+Path parameters:
+  - uuid
+Request body: yes
+
+### slurm_allocations_set_ok
+POST /api/slurm-allocations/{uuid}/set_ok/
+Summary: Mark resource as OK
+Description: Manually transition the resource to OK state and clear error fields. Staff-only operation.
+Path parameters:
+  - uuid
+
+### slurm_allocations_unlink
+POST /api/slurm-allocations/{uuid}/unlink/
+Summary: Unlink resource
+Description: Delete resource from the database without scheduling operations on backend
+        and without checking current state of the resource. It is intended to be used
+        for removing resource stuck in transitioning state.
+Path parameters:
+  - uuid
+
+============================================================
+## slurm-associations  (module: waldur_api_client.api.slurm_associations)
+============================================================
+
+### slurm_associations_list
+GET /api/slurm-associations/
+Query parameters (2):
+  - allocation
+  - allocation_uuid
+
+### slurm_associations_count
+HEAD /api/slurm-associations/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (2):
+  - allocation
+  - allocation_uuid
+
+### slurm_associations_retrieve
+GET /api/slurm-associations/{uuid}/
+Path parameters:
+  - uuid
 
 ============================================================
 ## slurm-jobs  (module: waldur_api_client.api.slurm_jobs)

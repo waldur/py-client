@@ -22,53 +22,49 @@ T = TypeVar("T", bound="CustomerEstimatedCostPolicy")
 class CustomerEstimatedCostPolicy:
     """
     Attributes:
-        uuid (Union[Unset, UUID]):
-        url (Union[Unset, str]):
-        scope (Union[Unset, str]):
-        scope_name (Union[Unset, str]):
-        scope_uuid (Union[Unset, UUID]):
-        actions (Union[Unset, str]):
-        created (Union[Unset, datetime.datetime]):
-        created_by_full_name (Union[Unset, str]):
-        created_by_username (Union[Unset, str]):
-        has_fired (Union[Unset, bool]):
-        fired_datetime (Union[Unset, datetime.datetime]):
+        uuid (UUID):
+        url (str):
+        scope (str):
+        scope_name (str):
+        scope_uuid (UUID):
+        actions (str):
+        created (datetime.datetime):
+        created_by_full_name (str):
+        created_by_username (str):
+        has_fired (bool):
+        fired_datetime (datetime.datetime):
+        affected_resources_count (int):
+        limit_cost (int):
+        period_name (str):
+        customer_credit (Union[None, str]):
+        billing_price_estimate (NestedPriceEstimate):
         options (Union[Unset, CustomerEstimatedCostPolicyOptions]): Fields for saving actions extra data. Keys are name
             of actions.
-        affected_resources_count (Union[Unset, int]):
-        limit_cost (Union[Unset, int]):
         period (Union[Unset, PolicyPeriodEnum]):
-        period_name (Union[Unset, str]):
-        current_cost (Union[Unset, str]):
-        customer_credit (Union[None, Unset, str]):
-        billing_price_estimate (Union[Unset, NestedPriceEstimate]):
     """
 
-    uuid: Union[Unset, UUID] = UNSET
-    url: Union[Unset, str] = UNSET
-    scope: Union[Unset, str] = UNSET
-    scope_name: Union[Unset, str] = UNSET
-    scope_uuid: Union[Unset, UUID] = UNSET
-    actions: Union[Unset, str] = UNSET
-    created: Union[Unset, datetime.datetime] = UNSET
-    created_by_full_name: Union[Unset, str] = UNSET
-    created_by_username: Union[Unset, str] = UNSET
-    has_fired: Union[Unset, bool] = UNSET
-    fired_datetime: Union[Unset, datetime.datetime] = UNSET
+    uuid: UUID
+    url: str
+    scope: str
+    scope_name: str
+    scope_uuid: UUID
+    actions: str
+    created: datetime.datetime
+    created_by_full_name: str
+    created_by_username: str
+    has_fired: bool
+    fired_datetime: datetime.datetime
+    affected_resources_count: int
+    limit_cost: int
+    period_name: str
+    customer_credit: Union[None, str]
+    billing_price_estimate: "NestedPriceEstimate"
     options: Union[Unset, "CustomerEstimatedCostPolicyOptions"] = UNSET
-    affected_resources_count: Union[Unset, int] = UNSET
-    limit_cost: Union[Unset, int] = UNSET
     period: Union[Unset, PolicyPeriodEnum] = UNSET
-    period_name: Union[Unset, str] = UNSET
-    current_cost: Union[Unset, str] = UNSET
-    customer_credit: Union[None, Unset, str] = UNSET
-    billing_price_estimate: Union[Unset, "NestedPriceEstimate"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.uuid, Unset):
-            uuid = str(self.uuid)
+        uuid = str(self.uuid)
 
         url = self.url
 
@@ -76,15 +72,11 @@ class CustomerEstimatedCostPolicy:
 
         scope_name = self.scope_name
 
-        scope_uuid: Union[Unset, str] = UNSET
-        if not isinstance(self.scope_uuid, Unset):
-            scope_uuid = str(self.scope_uuid)
+        scope_uuid = str(self.scope_uuid)
 
         actions = self.actions
 
-        created: Union[Unset, str] = UNSET
-        if not isinstance(self.created, Unset):
-            created = self.created.isoformat()
+        created = self.created.isoformat()
 
         created_by_full_name = self.created_by_full_name
 
@@ -92,77 +84,53 @@ class CustomerEstimatedCostPolicy:
 
         has_fired = self.has_fired
 
-        fired_datetime: Union[Unset, str] = UNSET
-        if not isinstance(self.fired_datetime, Unset):
-            fired_datetime = self.fired_datetime.isoformat()
-
-        options: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.options, Unset):
-            options = self.options.to_dict()
+        fired_datetime = self.fired_datetime.isoformat()
 
         affected_resources_count = self.affected_resources_count
 
         limit_cost = self.limit_cost
 
+        period_name = self.period_name
+
+        customer_credit: Union[None, str]
+        customer_credit = self.customer_credit
+
+        billing_price_estimate = self.billing_price_estimate.to_dict()
+
+        options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.options, Unset):
+            options = self.options.to_dict()
+
         period: Union[Unset, int] = UNSET
         if not isinstance(self.period, Unset):
             period = self.period.value
 
-        period_name = self.period_name
-
-        current_cost = self.current_cost
-
-        customer_credit: Union[None, Unset, str]
-        if isinstance(self.customer_credit, Unset):
-            customer_credit = UNSET
-        else:
-            customer_credit = self.customer_credit
-
-        billing_price_estimate: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.billing_price_estimate, Unset):
-            billing_price_estimate = self.billing_price_estimate.to_dict()
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if uuid is not UNSET:
-            field_dict["uuid"] = uuid
-        if url is not UNSET:
-            field_dict["url"] = url
-        if scope is not UNSET:
-            field_dict["scope"] = scope
-        if scope_name is not UNSET:
-            field_dict["scope_name"] = scope_name
-        if scope_uuid is not UNSET:
-            field_dict["scope_uuid"] = scope_uuid
-        if actions is not UNSET:
-            field_dict["actions"] = actions
-        if created is not UNSET:
-            field_dict["created"] = created
-        if created_by_full_name is not UNSET:
-            field_dict["created_by_full_name"] = created_by_full_name
-        if created_by_username is not UNSET:
-            field_dict["created_by_username"] = created_by_username
-        if has_fired is not UNSET:
-            field_dict["has_fired"] = has_fired
-        if fired_datetime is not UNSET:
-            field_dict["fired_datetime"] = fired_datetime
+        field_dict.update(
+            {
+                "uuid": uuid,
+                "url": url,
+                "scope": scope,
+                "scope_name": scope_name,
+                "scope_uuid": scope_uuid,
+                "actions": actions,
+                "created": created,
+                "created_by_full_name": created_by_full_name,
+                "created_by_username": created_by_username,
+                "has_fired": has_fired,
+                "fired_datetime": fired_datetime,
+                "affected_resources_count": affected_resources_count,
+                "limit_cost": limit_cost,
+                "period_name": period_name,
+                "customer_credit": customer_credit,
+                "billing_price_estimate": billing_price_estimate,
+            }
+        )
         if options is not UNSET:
             field_dict["options"] = options
-        if affected_resources_count is not UNSET:
-            field_dict["affected_resources_count"] = affected_resources_count
-        if limit_cost is not UNSET:
-            field_dict["limit_cost"] = limit_cost
         if period is not UNSET:
             field_dict["period"] = period
-        if period_name is not UNSET:
-            field_dict["period_name"] = period_name
-        if current_cost is not UNSET:
-            field_dict["current_cost"] = current_cost
-        if customer_credit is not UNSET:
-            field_dict["customer_credit"] = customer_credit
-        if billing_price_estimate is not UNSET:
-            field_dict["billing_price_estimate"] = billing_price_estimate
 
         return field_dict
 
@@ -172,47 +140,42 @@ class CustomerEstimatedCostPolicy:
         from ..models.nested_price_estimate import NestedPriceEstimate
 
         d = dict(src_dict)
-        _uuid = d.pop("uuid", UNSET)
-        uuid: Union[Unset, UUID]
-        if isinstance(_uuid, Unset):
-            uuid = UNSET
-        else:
-            uuid = UUID(_uuid)
+        uuid = UUID(d.pop("uuid"))
 
-        url = d.pop("url", UNSET)
+        url = d.pop("url")
 
-        scope = d.pop("scope", UNSET)
+        scope = d.pop("scope")
 
-        scope_name = d.pop("scope_name", UNSET)
+        scope_name = d.pop("scope_name")
 
-        _scope_uuid = d.pop("scope_uuid", UNSET)
-        scope_uuid: Union[Unset, UUID]
-        if isinstance(_scope_uuid, Unset):
-            scope_uuid = UNSET
-        else:
-            scope_uuid = UUID(_scope_uuid)
+        scope_uuid = UUID(d.pop("scope_uuid"))
 
-        actions = d.pop("actions", UNSET)
+        actions = d.pop("actions")
 
-        _created = d.pop("created", UNSET)
-        created: Union[Unset, datetime.datetime]
-        if isinstance(_created, Unset):
-            created = UNSET
-        else:
-            created = isoparse(_created)
+        created = isoparse(d.pop("created"))
 
-        created_by_full_name = d.pop("created_by_full_name", UNSET)
+        created_by_full_name = d.pop("created_by_full_name")
 
-        created_by_username = d.pop("created_by_username", UNSET)
+        created_by_username = d.pop("created_by_username")
 
-        has_fired = d.pop("has_fired", UNSET)
+        has_fired = d.pop("has_fired")
 
-        _fired_datetime = d.pop("fired_datetime", UNSET)
-        fired_datetime: Union[Unset, datetime.datetime]
-        if isinstance(_fired_datetime, Unset):
-            fired_datetime = UNSET
-        else:
-            fired_datetime = isoparse(_fired_datetime)
+        fired_datetime = isoparse(d.pop("fired_datetime"))
+
+        affected_resources_count = d.pop("affected_resources_count")
+
+        limit_cost = d.pop("limit_cost")
+
+        period_name = d.pop("period_name")
+
+        def _parse_customer_credit(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        customer_credit = _parse_customer_credit(d.pop("customer_credit"))
+
+        billing_price_estimate = NestedPriceEstimate.from_dict(d.pop("billing_price_estimate"))
 
         _options = d.pop("options", UNSET)
         options: Union[Unset, CustomerEstimatedCostPolicyOptions]
@@ -221,36 +184,12 @@ class CustomerEstimatedCostPolicy:
         else:
             options = CustomerEstimatedCostPolicyOptions.from_dict(_options)
 
-        affected_resources_count = d.pop("affected_resources_count", UNSET)
-
-        limit_cost = d.pop("limit_cost", UNSET)
-
         _period = d.pop("period", UNSET)
         period: Union[Unset, PolicyPeriodEnum]
         if isinstance(_period, Unset):
             period = UNSET
         else:
             period = PolicyPeriodEnum(_period)
-
-        period_name = d.pop("period_name", UNSET)
-
-        current_cost = d.pop("current_cost", UNSET)
-
-        def _parse_customer_credit(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        customer_credit = _parse_customer_credit(d.pop("customer_credit", UNSET))
-
-        _billing_price_estimate = d.pop("billing_price_estimate", UNSET)
-        billing_price_estimate: Union[Unset, NestedPriceEstimate]
-        if isinstance(_billing_price_estimate, Unset):
-            billing_price_estimate = UNSET
-        else:
-            billing_price_estimate = NestedPriceEstimate.from_dict(_billing_price_estimate)
 
         customer_estimated_cost_policy = cls(
             uuid=uuid,
@@ -264,14 +203,13 @@ class CustomerEstimatedCostPolicy:
             created_by_username=created_by_username,
             has_fired=has_fired,
             fired_datetime=fired_datetime,
-            options=options,
             affected_resources_count=affected_resources_count,
             limit_cost=limit_cost,
-            period=period,
             period_name=period_name,
-            current_cost=current_cost,
             customer_credit=customer_credit,
             billing_price_estimate=billing_price_estimate,
+            options=options,
+            period=period,
         )
 
         customer_estimated_cost_policy.additional_properties = d

@@ -10,6 +10,7 @@ class OfferingTypeEnum(str, Enum):
     OPENSTACK_INSTANCE = "OpenStack.Instance"
     OPENSTACK_TENANT = "OpenStack.Tenant"
     OPENSTACK_VOLUME = "OpenStack.Volume"
+    SLURMINVOICES_SLURMPACKAGE = "SlurmInvoices.SlurmPackage"
     SUPPORT_OFFERINGTEMPLATE = "Support.OfferingTemplate"
     VMWARE_VIRTUALMACHINE = "VMware.VirtualMachine"
     WALDUR_REMOTEOFFERING = "Waldur.RemoteOffering"

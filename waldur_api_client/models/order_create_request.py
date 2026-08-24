@@ -20,6 +20,9 @@ if TYPE_CHECKING:
     from ..models.open_stack_tenant_create_order_attributes import OpenStackTenantCreateOrderAttributes
     from ..models.open_stack_volume_create_order_attributes import OpenStackVolumeCreateOrderAttributes
     from ..models.order_create_request_limits import OrderCreateRequestLimits
+    from ..models.slurm_invoices_slurm_package_create_order_attributes import (
+        SlurmInvoicesSlurmPackageCreateOrderAttributes,
+    )
     from ..models.v_mware_virtual_machine_create_order_attributes import VMwareVirtualMachineCreateOrderAttributes
 
 
@@ -37,8 +40,9 @@ class OrderCreateRequest:
             'GenericOrderAttributes', 'MarketplaceOpenPortalCreateOrderAttributes',
             'MarketplaceOpenPortalRemoteCreateOrderAttributes', 'OpenStackInstanceCreateOrderAttributes',
             'OpenStackTenantCreateOrderAttributes', 'OpenStackVolumeCreateOrderAttributes',
-            'VMwareVirtualMachineCreateOrderAttributes', Unset]): Attributes structure depends on the offering type
-            specified in the parent object. Can also be a generic object for offerings without a specific attributes schema.
+            'SlurmInvoicesSlurmPackageCreateOrderAttributes', 'VMwareVirtualMachineCreateOrderAttributes', Unset]):
+            Attributes structure depends on the offering type specified in the parent object. Can also be a generic object
+            for offerings without a specific attributes schema.
         limits (Union[Unset, OrderCreateRequestLimits]):
         accepting_terms_of_service (Union[Unset, bool]):
         callback_url (Union[None, Unset, str]):
@@ -59,6 +63,7 @@ class OrderCreateRequest:
         "OpenStackInstanceCreateOrderAttributes",
         "OpenStackTenantCreateOrderAttributes",
         "OpenStackVolumeCreateOrderAttributes",
+        "SlurmInvoicesSlurmPackageCreateOrderAttributes",
         "VMwareVirtualMachineCreateOrderAttributes",
         Unset,
     ] = UNSET
@@ -80,6 +85,9 @@ class OrderCreateRequest:
         from ..models.open_stack_instance_create_order_attributes import OpenStackInstanceCreateOrderAttributes
         from ..models.open_stack_tenant_create_order_attributes import OpenStackTenantCreateOrderAttributes
         from ..models.open_stack_volume_create_order_attributes import OpenStackVolumeCreateOrderAttributes
+        from ..models.slurm_invoices_slurm_package_create_order_attributes import (
+            SlurmInvoicesSlurmPackageCreateOrderAttributes,
+        )
         from ..models.v_mware_virtual_machine_create_order_attributes import VMwareVirtualMachineCreateOrderAttributes
 
         offering = self.offering
@@ -104,6 +112,8 @@ class OrderCreateRequest:
         elif isinstance(self.attributes, OpenStackInstanceCreateOrderAttributes):
             attributes = self.attributes.to_dict()
         elif isinstance(self.attributes, OpenStackVolumeCreateOrderAttributes):
+            attributes = self.attributes.to_dict()
+        elif isinstance(self.attributes, SlurmInvoicesSlurmPackageCreateOrderAttributes):
             attributes = self.attributes.to_dict()
         elif isinstance(self.attributes, VMwareVirtualMachineCreateOrderAttributes):
             attributes = self.attributes.to_dict()
@@ -178,6 +188,9 @@ class OrderCreateRequest:
         from ..models.open_stack_tenant_create_order_attributes import OpenStackTenantCreateOrderAttributes
         from ..models.open_stack_volume_create_order_attributes import OpenStackVolumeCreateOrderAttributes
         from ..models.order_create_request_limits import OrderCreateRequestLimits
+        from ..models.slurm_invoices_slurm_package_create_order_attributes import (
+            SlurmInvoicesSlurmPackageCreateOrderAttributes,
+        )
         from ..models.v_mware_virtual_machine_create_order_attributes import VMwareVirtualMachineCreateOrderAttributes
 
         d = dict(src_dict)
@@ -198,6 +211,7 @@ class OrderCreateRequest:
             "OpenStackInstanceCreateOrderAttributes",
             "OpenStackTenantCreateOrderAttributes",
             "OpenStackVolumeCreateOrderAttributes",
+            "SlurmInvoicesSlurmPackageCreateOrderAttributes",
             "VMwareVirtualMachineCreateOrderAttributes",
             Unset,
         ]:
@@ -262,16 +276,24 @@ class OrderCreateRequest:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                attributes_type_7 = VMwareVirtualMachineCreateOrderAttributes.from_dict(data)
+                attributes_type_7 = SlurmInvoicesSlurmPackageCreateOrderAttributes.from_dict(data)
 
                 return attributes_type_7
             except:  # noqa: E722
                 pass
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                attributes_type_8 = VMwareVirtualMachineCreateOrderAttributes.from_dict(data)
+
+                return attributes_type_8
+            except:  # noqa: E722
+                pass
             if not isinstance(data, dict):
                 raise TypeError()
-            attributes_type_8 = GenericOrderAttributes.from_dict(data)
+            attributes_type_9 = GenericOrderAttributes.from_dict(data)
 
-            return attributes_type_8
+            return attributes_type_9
 
         attributes = _parse_attributes(d.pop("attributes", UNSET))
 

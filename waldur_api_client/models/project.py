@@ -39,8 +39,6 @@ class Project:
         customer_abbreviation (Union[Unset, str]):
         description (Union[Unset, str]): Project description (HTML content will be sanitized)
         customer_display_billing_info_in_projects (Union[Unset, bool]):
-        display_credit_reports (Union[Unset, bool]): Show credit and usage analytics widgets on this project's
-            dashboard.
         created (Union[Unset, datetime.datetime]):
         type_ (Union[None, Unset, str]):
         type_name (Union[None, Unset, str]):
@@ -105,7 +103,6 @@ class Project:
     customer_abbreviation: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     customer_display_billing_info_in_projects: Union[Unset, bool] = UNSET
-    display_credit_reports: Union[Unset, bool] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     type_: Union[None, Unset, str] = UNSET
     type_name: Union[None, Unset, str] = UNSET
@@ -179,8 +176,6 @@ class Project:
         description = self.description
 
         customer_display_billing_info_in_projects = self.customer_display_billing_info_in_projects
-
-        display_credit_reports = self.display_credit_reports
 
         created: Union[Unset, str] = UNSET
         if not isinstance(self.created, Unset):
@@ -404,8 +399,6 @@ class Project:
             field_dict["description"] = description
         if customer_display_billing_info_in_projects is not UNSET:
             field_dict["customer_display_billing_info_in_projects"] = customer_display_billing_info_in_projects
-        if display_credit_reports is not UNSET:
-            field_dict["display_credit_reports"] = display_credit_reports
         if created is not UNSET:
             field_dict["created"] = created
         if type_ is not UNSET:
@@ -531,8 +524,6 @@ class Project:
         description = d.pop("description", UNSET)
 
         customer_display_billing_info_in_projects = d.pop("customer_display_billing_info_in_projects", UNSET)
-
-        display_credit_reports = d.pop("display_credit_reports", UNSET)
 
         _created = d.pop("created", UNSET)
         created: Union[Unset, datetime.datetime]
@@ -871,7 +862,6 @@ class Project:
             customer_abbreviation=customer_abbreviation,
             description=description,
             customer_display_billing_info_in_projects=customer_display_billing_info_in_projects,
-            display_credit_reports=display_credit_reports,
             created=created,
             type_=type_,
             type_name=type_name,

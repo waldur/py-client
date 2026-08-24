@@ -86,9 +86,6 @@ class Offering:
         scope_name (Union[None, Unset, str]):
         scope_state (Union[CoreStates, None, Unset]):
         scope_error_message (Union[None, Unset, str]):
-        scope_resource (Union[None, Unset, str]):
-        scope_resource_uuid (Union[None, Unset, str]):
-        scope_resource_name (Union[None, Unset, str]):
         files (Union[Unset, list['NestedOfferingFile']]):
         quotas (Union[Unset, list['Quota']]):
         paused_reason (Union[Unset, str]):
@@ -170,9 +167,6 @@ class Offering:
     scope_name: Union[None, Unset, str] = UNSET
     scope_state: Union[CoreStates, None, Unset] = UNSET
     scope_error_message: Union[None, Unset, str] = UNSET
-    scope_resource: Union[None, Unset, str] = UNSET
-    scope_resource_uuid: Union[None, Unset, str] = UNSET
-    scope_resource_name: Union[None, Unset, str] = UNSET
     files: Union[Unset, list["NestedOfferingFile"]] = UNSET
     quotas: Union[Unset, list["Quota"]] = UNSET
     paused_reason: Union[Unset, str] = UNSET
@@ -407,24 +401,6 @@ class Offering:
             scope_error_message = UNSET
         else:
             scope_error_message = self.scope_error_message
-
-        scope_resource: Union[None, Unset, str]
-        if isinstance(self.scope_resource, Unset):
-            scope_resource = UNSET
-        else:
-            scope_resource = self.scope_resource
-
-        scope_resource_uuid: Union[None, Unset, str]
-        if isinstance(self.scope_resource_uuid, Unset):
-            scope_resource_uuid = UNSET
-        else:
-            scope_resource_uuid = self.scope_resource_uuid
-
-        scope_resource_name: Union[None, Unset, str]
-        if isinstance(self.scope_resource_name, Unset):
-            scope_resource_name = UNSET
-        else:
-            scope_resource_name = self.scope_resource_name
 
         files: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.files, Unset):
@@ -683,12 +659,6 @@ class Offering:
             field_dict["scope_state"] = scope_state
         if scope_error_message is not UNSET:
             field_dict["scope_error_message"] = scope_error_message
-        if scope_resource is not UNSET:
-            field_dict["scope_resource"] = scope_resource
-        if scope_resource_uuid is not UNSET:
-            field_dict["scope_resource_uuid"] = scope_resource_uuid
-        if scope_resource_name is not UNSET:
-            field_dict["scope_resource_name"] = scope_resource_name
         if files is not UNSET:
             field_dict["files"] = files
         if quotas is not UNSET:
@@ -1058,33 +1028,6 @@ class Offering:
 
         scope_error_message = _parse_scope_error_message(d.pop("scope_error_message", UNSET))
 
-        def _parse_scope_resource(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        scope_resource = _parse_scope_resource(d.pop("scope_resource", UNSET))
-
-        def _parse_scope_resource_uuid(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        scope_resource_uuid = _parse_scope_resource_uuid(d.pop("scope_resource_uuid", UNSET))
-
-        def _parse_scope_resource_name(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        scope_resource_name = _parse_scope_resource_name(d.pop("scope_resource_name", UNSET))
-
         files = []
         _files = d.pop("files", UNSET)
         for files_item_data in _files or []:
@@ -1372,9 +1315,6 @@ class Offering:
             scope_name=scope_name,
             scope_state=scope_state,
             scope_error_message=scope_error_message,
-            scope_resource=scope_resource,
-            scope_resource_uuid=scope_resource_uuid,
-            scope_resource_name=scope_resource_name,
             files=files,
             quotas=quotas,
             paused_reason=paused_reason,
