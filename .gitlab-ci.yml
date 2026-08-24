@@ -105,7 +105,11 @@ Release Python SDK:
         git add waldur_api_client llms.txt llms-full.txt api-map.md
         git diff --cached --quiet && echo "No changes" || git commit -m "chore: nightly update of Waldur Python SDK"
       fi
-    - git push origin HEAD:main || echo "main branch already up to date"
+    # `|| echo` here turned a rejected push into exit 0. When nothing was
+    # committed above, the push is already a no-op that exits 0, so the
+    # fallback only ever hid real failures: a non-fast-forward main, or a
+    # credential that cannot write.
+    - git push origin HEAD:main
 
 Publish Dev to PyPI:
   stage: publish
