@@ -20,8 +20,6 @@ class ProposalReviewRequest:
         summary_private_comment (Union[Unset, str]):
         comment_project_title (Union[None, Unset, str]):
         comment_project_summary (Union[None, Unset, str]):
-        comment_project_is_confidential (Union[None, Unset, str]):
-        comment_project_has_civilian_purpose (Union[None, Unset, str]):
         comment_project_description (Union[None, Unset, str]):
         comment_project_duration (Union[None, Unset, str]):
         comment_project_supporting_documentation (Union[None, Unset, str]):
@@ -36,8 +34,6 @@ class ProposalReviewRequest:
     summary_private_comment: Union[Unset, str] = UNSET
     comment_project_title: Union[None, Unset, str] = UNSET
     comment_project_summary: Union[None, Unset, str] = UNSET
-    comment_project_is_confidential: Union[None, Unset, str] = UNSET
-    comment_project_has_civilian_purpose: Union[None, Unset, str] = UNSET
     comment_project_description: Union[None, Unset, str] = UNSET
     comment_project_duration: Union[None, Unset, str] = UNSET
     comment_project_supporting_documentation: Union[None, Unset, str] = UNSET
@@ -67,18 +63,6 @@ class ProposalReviewRequest:
             comment_project_summary = UNSET
         else:
             comment_project_summary = self.comment_project_summary
-
-        comment_project_is_confidential: Union[None, Unset, str]
-        if isinstance(self.comment_project_is_confidential, Unset):
-            comment_project_is_confidential = UNSET
-        else:
-            comment_project_is_confidential = self.comment_project_is_confidential
-
-        comment_project_has_civilian_purpose: Union[None, Unset, str]
-        if isinstance(self.comment_project_has_civilian_purpose, Unset):
-            comment_project_has_civilian_purpose = UNSET
-        else:
-            comment_project_has_civilian_purpose = self.comment_project_has_civilian_purpose
 
         comment_project_description: Union[None, Unset, str]
         if isinstance(self.comment_project_description, Unset):
@@ -129,10 +113,6 @@ class ProposalReviewRequest:
             field_dict["comment_project_title"] = comment_project_title
         if comment_project_summary is not UNSET:
             field_dict["comment_project_summary"] = comment_project_summary
-        if comment_project_is_confidential is not UNSET:
-            field_dict["comment_project_is_confidential"] = comment_project_is_confidential
-        if comment_project_has_civilian_purpose is not UNSET:
-            field_dict["comment_project_has_civilian_purpose"] = comment_project_has_civilian_purpose
         if comment_project_description is not UNSET:
             field_dict["comment_project_description"] = comment_project_description
         if comment_project_duration is not UNSET:
@@ -176,28 +156,6 @@ class ProposalReviewRequest:
             return cast(Union[None, Unset, str], data)
 
         comment_project_summary = _parse_comment_project_summary(d.pop("comment_project_summary", UNSET))
-
-        def _parse_comment_project_is_confidential(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        comment_project_is_confidential = _parse_comment_project_is_confidential(
-            d.pop("comment_project_is_confidential", UNSET)
-        )
-
-        def _parse_comment_project_has_civilian_purpose(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        comment_project_has_civilian_purpose = _parse_comment_project_has_civilian_purpose(
-            d.pop("comment_project_has_civilian_purpose", UNSET)
-        )
 
         def _parse_comment_project_description(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -254,8 +212,6 @@ class ProposalReviewRequest:
             summary_private_comment=summary_private_comment,
             comment_project_title=comment_project_title,
             comment_project_summary=comment_project_summary,
-            comment_project_is_confidential=comment_project_is_confidential,
-            comment_project_has_civilian_purpose=comment_project_has_civilian_purpose,
             comment_project_description=comment_project_description,
             comment_project_duration=comment_project_duration,
             comment_project_supporting_documentation=comment_project_supporting_documentation,

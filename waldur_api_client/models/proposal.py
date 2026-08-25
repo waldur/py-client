@@ -83,8 +83,6 @@ class Proposal:
         workflow_step (Union[None, StepEnum]): Current active workflow step for this proposal.
         description (Union[Unset, str]):
         project_summary (Union[Unset, str]):
-        project_is_confidential (Union[Unset, bool]):
-        project_has_civilian_purpose (Union[Unset, bool]):
         duration_in_days (Union[None, Unset, int]): Duration in days after provisioning of resources.
         oecd_fos_2007_code (Union[BlankEnum, None, OecdFos2007CodeEnum, Unset]):
         science_sub_domain (Union[None, UUID, Unset]):
@@ -145,8 +143,6 @@ class Proposal:
     workflow_step: Union[None, StepEnum]
     description: Union[Unset, str] = UNSET
     project_summary: Union[Unset, str] = UNSET
-    project_is_confidential: Union[Unset, bool] = UNSET
-    project_has_civilian_purpose: Union[Unset, bool] = UNSET
     duration_in_days: Union[None, Unset, int] = UNSET
     oecd_fos_2007_code: Union[BlankEnum, None, OecdFos2007CodeEnum, Unset] = UNSET
     science_sub_domain: Union[None, UUID, Unset] = UNSET
@@ -292,10 +288,6 @@ class Proposal:
 
         project_summary = self.project_summary
 
-        project_is_confidential = self.project_is_confidential
-
-        project_has_civilian_purpose = self.project_has_civilian_purpose
-
         duration_in_days: Union[None, Unset, int]
         if isinstance(self.duration_in_days, Unset):
             duration_in_days = UNSET
@@ -383,10 +375,6 @@ class Proposal:
             field_dict["description"] = description
         if project_summary is not UNSET:
             field_dict["project_summary"] = project_summary
-        if project_is_confidential is not UNSET:
-            field_dict["project_is_confidential"] = project_is_confidential
-        if project_has_civilian_purpose is not UNSET:
-            field_dict["project_has_civilian_purpose"] = project_has_civilian_purpose
         if duration_in_days is not UNSET:
             field_dict["duration_in_days"] = duration_in_days
         if oecd_fos_2007_code is not UNSET:
@@ -609,10 +597,6 @@ class Proposal:
 
         project_summary = d.pop("project_summary", UNSET)
 
-        project_is_confidential = d.pop("project_is_confidential", UNSET)
-
-        project_has_civilian_purpose = d.pop("project_has_civilian_purpose", UNSET)
-
         def _parse_duration_in_days(data: object) -> Union[None, Unset, int]:
             if data is None:
                 return data
@@ -720,8 +704,6 @@ class Proposal:
             workflow_step=workflow_step,
             description=description,
             project_summary=project_summary,
-            project_is_confidential=project_is_confidential,
-            project_has_civilian_purpose=project_has_civilian_purpose,
             duration_in_days=duration_in_days,
             oecd_fos_2007_code=oecd_fos_2007_code,
             science_sub_domain=science_sub_domain,
