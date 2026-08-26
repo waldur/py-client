@@ -13,9 +13,11 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.call_applicant_visibility_config import CallApplicantVisibilityConfig
     from ..models.call_document import CallDocument
+    from ..models.call_proposal_field_config import CallProposalFieldConfig
     from ..models.call_resource_template import CallResourceTemplate
     from ..models.nested_requested_offering import NestedRequestedOffering
     from ..models.nested_round import NestedRound
+    from ..models.proposal_field_metadata import ProposalFieldMetadata
 
 
 T = TypeVar("T", bound="ProtectedCall")
@@ -50,6 +52,7 @@ class ProtectedCall:
         reviews_visible_to_submitters (Union[Unset, bool]): Whether proposal applicants can see review comments and
             scores
         has_eligibility_restrictions (Union[Unset, bool]): Check if call has any eligibility restrictions configured.
+        proposal_field_config (Union[Unset, CallProposalFieldConfig]):
         created_by (Union[None, Unset, str]):
         reference_code (Union[Unset, str]):
         compliance_checklist (Union[None, UUID, Unset]): Compliance checklist that proposals must complete before
@@ -67,6 +70,8 @@ class ProtectedCall:
         user_assurance_levels (Union[Unset, list[str]]): List of required assurance URIs (REFEDS). User must have ALL of
             these.
         applicant_visibility_config (Union['CallApplicantVisibilityConfig', None, Unset]):
+        proposal_field_metadata (Union[Unset, list['ProposalFieldMetadata']]): Per-field state, permitted transitions
+            and downstream consumers for the Project details step.
         has_proposals (Union[Unset, bool]): Whether any proposal has been submitted to this call. Used by the frontend
             to gate slug-template and checklist fields.
     """
@@ -94,6 +99,7 @@ class ProtectedCall:
     reviewer_identity_visible_to_submitters: Union[Unset, bool] = UNSET
     reviews_visible_to_submitters: Union[Unset, bool] = UNSET
     has_eligibility_restrictions: Union[Unset, bool] = UNSET
+    proposal_field_config: Union[Unset, "CallProposalFieldConfig"] = UNSET
     created_by: Union[None, Unset, str] = UNSET
     reference_code: Union[Unset, str] = UNSET
     compliance_checklist: Union[None, UUID, Unset] = UNSET
@@ -106,6 +112,7 @@ class ProtectedCall:
     user_organization_types: Union[Unset, list[str]] = UNSET
     user_assurance_levels: Union[Unset, list[str]] = UNSET
     applicant_visibility_config: Union["CallApplicantVisibilityConfig", None, Unset] = UNSET
+    proposal_field_metadata: Union[Unset, list["ProposalFieldMetadata"]] = UNSET
     has_proposals: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -200,6 +207,10 @@ class ProtectedCall:
 
         has_eligibility_restrictions = self.has_eligibility_restrictions
 
+        proposal_field_config: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.proposal_field_config, Unset):
+            proposal_field_config = self.proposal_field_config.to_dict()
+
         created_by: Union[None, Unset, str]
         if isinstance(self.created_by, Unset):
             created_by = UNSET
@@ -256,6 +267,13 @@ class ProtectedCall:
         else:
             applicant_visibility_config = self.applicant_visibility_config
 
+        proposal_field_metadata: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.proposal_field_metadata, Unset):
+            proposal_field_metadata = []
+            for proposal_field_metadata_item_data in self.proposal_field_metadata:
+                proposal_field_metadata_item = proposal_field_metadata_item_data.to_dict()
+                proposal_field_metadata.append(proposal_field_metadata_item)
+
         has_proposals = self.has_proposals
 
         field_dict: dict[str, Any] = {}
@@ -307,6 +325,8 @@ class ProtectedCall:
             field_dict["reviews_visible_to_submitters"] = reviews_visible_to_submitters
         if has_eligibility_restrictions is not UNSET:
             field_dict["has_eligibility_restrictions"] = has_eligibility_restrictions
+        if proposal_field_config is not UNSET:
+            field_dict["proposal_field_config"] = proposal_field_config
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if reference_code is not UNSET:
@@ -331,6 +351,8 @@ class ProtectedCall:
             field_dict["user_assurance_levels"] = user_assurance_levels
         if applicant_visibility_config is not UNSET:
             field_dict["applicant_visibility_config"] = applicant_visibility_config
+        if proposal_field_metadata is not UNSET:
+            field_dict["proposal_field_metadata"] = proposal_field_metadata
         if has_proposals is not UNSET:
             field_dict["has_proposals"] = has_proposals
 
@@ -340,9 +362,11 @@ class ProtectedCall:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.call_applicant_visibility_config import CallApplicantVisibilityConfig
         from ..models.call_document import CallDocument
+        from ..models.call_proposal_field_config import CallProposalFieldConfig
         from ..models.call_resource_template import CallResourceTemplate
         from ..models.nested_requested_offering import NestedRequestedOffering
         from ..models.nested_round import NestedRound
+        from ..models.proposal_field_metadata import ProposalFieldMetadata
 
         d = dict(src_dict)
         url = d.pop("url", UNSET)
@@ -460,6 +484,13 @@ class ProtectedCall:
 
         has_eligibility_restrictions = d.pop("has_eligibility_restrictions", UNSET)
 
+        _proposal_field_config = d.pop("proposal_field_config", UNSET)
+        proposal_field_config: Union[Unset, CallProposalFieldConfig]
+        if isinstance(_proposal_field_config, Unset):
+            proposal_field_config = UNSET
+        else:
+            proposal_field_config = CallProposalFieldConfig.from_dict(_proposal_field_config)
+
         def _parse_created_by(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -528,6 +559,13 @@ class ProtectedCall:
 
         applicant_visibility_config = _parse_applicant_visibility_config(d.pop("applicant_visibility_config", UNSET))
 
+        proposal_field_metadata = []
+        _proposal_field_metadata = d.pop("proposal_field_metadata", UNSET)
+        for proposal_field_metadata_item_data in _proposal_field_metadata or []:
+            proposal_field_metadata_item = ProposalFieldMetadata.from_dict(proposal_field_metadata_item_data)
+
+            proposal_field_metadata.append(proposal_field_metadata_item)
+
         has_proposals = d.pop("has_proposals", UNSET)
 
         protected_call = cls(
@@ -554,6 +592,7 @@ class ProtectedCall:
             reviewer_identity_visible_to_submitters=reviewer_identity_visible_to_submitters,
             reviews_visible_to_submitters=reviews_visible_to_submitters,
             has_eligibility_restrictions=has_eligibility_restrictions,
+            proposal_field_config=proposal_field_config,
             created_by=created_by,
             reference_code=reference_code,
             compliance_checklist=compliance_checklist,
@@ -566,6 +605,7 @@ class ProtectedCall:
             user_organization_types=user_organization_types,
             user_assurance_levels=user_assurance_levels,
             applicant_visibility_config=applicant_visibility_config,
+            proposal_field_metadata=proposal_field_metadata,
             has_proposals=has_proposals,
         )
 

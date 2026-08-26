@@ -12,6 +12,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.call_document import CallDocument
+    from ..models.call_proposal_field_config import CallProposalFieldConfig
     from ..models.call_resource_template import CallResourceTemplate
     from ..models.nested_requested_offering import NestedRequestedOffering
     from ..models.nested_round import NestedRound
@@ -50,6 +51,7 @@ class PublicCall:
         reviews_visible_to_submitters (Union[Unset, bool]): Whether proposal applicants can see review comments and
             scores. If False, applicants only see final approval/rejection status.
         has_eligibility_restrictions (Union[Unset, bool]): Check if call has any eligibility restrictions configured.
+        proposal_field_config (Union[Unset, CallProposalFieldConfig]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -75,6 +77,7 @@ class PublicCall:
     reviewer_identity_visible_to_submitters: Union[Unset, bool] = UNSET
     reviews_visible_to_submitters: Union[Unset, bool] = UNSET
     has_eligibility_restrictions: Union[Unset, bool] = UNSET
+    proposal_field_config: Union[Unset, "CallProposalFieldConfig"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -166,6 +169,10 @@ class PublicCall:
 
         has_eligibility_restrictions = self.has_eligibility_restrictions
 
+        proposal_field_config: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.proposal_field_config, Unset):
+            proposal_field_config = self.proposal_field_config.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -215,12 +222,15 @@ class PublicCall:
             field_dict["reviews_visible_to_submitters"] = reviews_visible_to_submitters
         if has_eligibility_restrictions is not UNSET:
             field_dict["has_eligibility_restrictions"] = has_eligibility_restrictions
+        if proposal_field_config is not UNSET:
+            field_dict["proposal_field_config"] = proposal_field_config
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.call_document import CallDocument
+        from ..models.call_proposal_field_config import CallProposalFieldConfig
         from ..models.call_resource_template import CallResourceTemplate
         from ..models.nested_requested_offering import NestedRequestedOffering
         from ..models.nested_round import NestedRound
@@ -341,6 +351,13 @@ class PublicCall:
 
         has_eligibility_restrictions = d.pop("has_eligibility_restrictions", UNSET)
 
+        _proposal_field_config = d.pop("proposal_field_config", UNSET)
+        proposal_field_config: Union[Unset, CallProposalFieldConfig]
+        if isinstance(_proposal_field_config, Unset):
+            proposal_field_config = UNSET
+        else:
+            proposal_field_config = CallProposalFieldConfig.from_dict(_proposal_field_config)
+
         public_call = cls(
             url=url,
             uuid=uuid,
@@ -365,6 +382,7 @@ class PublicCall:
             reviewer_identity_visible_to_submitters=reviewer_identity_visible_to_submitters,
             reviews_visible_to_submitters=reviews_visible_to_submitters,
             has_eligibility_restrictions=has_eligibility_restrictions,
+            proposal_field_config=proposal_field_config,
         )
 
         public_call.additional_properties = d

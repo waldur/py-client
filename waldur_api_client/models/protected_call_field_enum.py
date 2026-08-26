@@ -21,6 +21,8 @@ class ProtectedCallFieldEnum(str, Enum):
     MANAGER_UUID = "manager_uuid"
     NAME = "name"
     OFFERINGS = "offerings"
+    PROPOSAL_FIELD_CONFIG = "proposal_field_config"
+    PROPOSAL_FIELD_METADATA = "proposal_field_metadata"
     PROPOSAL_SLUG_TEMPLATE = "proposal_slug_template"
     REFERENCE_CODE = "reference_code"
     RESOURCE_TEMPLATES = "resource_templates"

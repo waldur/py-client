@@ -341,6 +341,8 @@ from .call_managing_organisation_request_form import CallManagingOrganisationReq
 from .call_managing_organisation_request_multipart import CallManagingOrganisationRequestMultipart
 from .call_managing_organisation_stat import CallManagingOrganisationStat
 from .call_performance_stat import CallPerformanceStat
+from .call_proposal_field_config import CallProposalFieldConfig
+from .call_proposal_field_config_request import CallProposalFieldConfigRequest
 from .call_resource_template import CallResourceTemplate
 from .call_resource_template_attributes import CallResourceTemplateAttributes
 from .call_resource_template_limits import CallResourceTemplateLimits
@@ -2048,11 +2050,14 @@ from .proposal import Proposal
 from .proposal_can_submit_response import ProposalCanSubmitResponse
 from .proposal_checklist_answer_submit_response import ProposalChecklistAnswerSubmitResponse
 from .proposal_compliance_status import ProposalComplianceStatus
+from .proposal_configurable_field_enum import ProposalConfigurableFieldEnum
 from .proposal_detach_documents_request import ProposalDetachDocumentsRequest
 from .proposal_documentation import ProposalDocumentation
 from .proposal_documentation_request import ProposalDocumentationRequest
 from .proposal_documentation_request_form import ProposalDocumentationRequestForm
 from .proposal_documentation_request_multipart import ProposalDocumentationRequestMultipart
+from .proposal_field_metadata import ProposalFieldMetadata
+from .proposal_field_state_enum import ProposalFieldStateEnum
 from .proposal_o_enum import ProposalOEnum
 from .proposal_project_role_mapping import ProposalProjectRoleMapping
 from .proposal_project_role_mapping_request import ProposalProjectRoleMappingRequest
@@ -3272,6 +3277,8 @@ __all__ = (
     "CallManagingOrganisationRequestMultipart",
     "CallManagingOrganisationStat",
     "CallPerformanceStat",
+    "CallProposalFieldConfig",
+    "CallProposalFieldConfigRequest",
     "CallResourceTemplate",
     "CallResourceTemplateAttributes",
     "CallResourceTemplateLimits",
@@ -4890,11 +4897,14 @@ __all__ = (
     "ProposalCanSubmitResponse",
     "ProposalChecklistAnswerSubmitResponse",
     "ProposalComplianceStatus",
+    "ProposalConfigurableFieldEnum",
     "ProposalDetachDocumentsRequest",
     "ProposalDocumentation",
     "ProposalDocumentationRequest",
     "ProposalDocumentationRequestForm",
     "ProposalDocumentationRequestMultipart",
+    "ProposalFieldMetadata",
+    "ProposalFieldStateEnum",
     "ProposalOEnum",
     "ProposalProjectRoleMapping",
     "ProposalProjectRoleMappingRequest",

@@ -17,6 +17,7 @@ from ..models.notify_system_enum import NotifySystemEnum
 from ..models.offering_type_enum import OfferingTypeEnum
 from ..models.onboarding_validation_enum import OnboardingValidationEnum
 from ..models.openportalmembershipsyncmode_enum import OPENPORTALMEMBERSHIPSYNCMODEEnum
+from ..models.proposal_configurable_field_enum import ProposalConfigurableFieldEnum
 from ..models.restrictedofferingvisibilitymode_enum import RESTRICTEDOFFERINGVISIBILITYMODEEnum
 from ..models.scriptrunmode_enum import SCRIPTRUNMODEEnum
 from ..models.serviceaccessmode_enum import SERVICEACCESSMODEEnum
@@ -241,6 +242,8 @@ class ConstanceSettings:
         remote_eduteams_refresh_token (Union[Unset, str]):
         default_offering_user_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
         default_call_user_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
+        default_proposal_required_fields (Union[Unset, list[Union[BlankEnum, ProposalConfigurableFieldEnum]]]):
+        default_proposal_hidden_fields (Union[Unset, list[Union[BlankEnum, ProposalConfigurableFieldEnum]]]):
         invitation_allowed_fields (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
         enabled_user_profile_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
         mandatory_user_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
@@ -568,6 +571,8 @@ class ConstanceSettings:
     remote_eduteams_refresh_token: Union[Unset, str] = UNSET
     default_offering_user_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
     default_call_user_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
+    default_proposal_required_fields: Union[Unset, list[Union[BlankEnum, ProposalConfigurableFieldEnum]]] = UNSET
+    default_proposal_hidden_fields: Union[Unset, list[Union[BlankEnum, ProposalConfigurableFieldEnum]]] = UNSET
     invitation_allowed_fields: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
     enabled_user_profile_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
     mandatory_user_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
@@ -1220,6 +1225,30 @@ class ConstanceSettings:
                     default_call_user_attributes_item = default_call_user_attributes_item_data.value
 
                 default_call_user_attributes.append(default_call_user_attributes_item)
+
+        default_proposal_required_fields: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.default_proposal_required_fields, Unset):
+            default_proposal_required_fields = []
+            for default_proposal_required_fields_item_data in self.default_proposal_required_fields:
+                default_proposal_required_fields_item: str
+                if isinstance(default_proposal_required_fields_item_data, ProposalConfigurableFieldEnum):
+                    default_proposal_required_fields_item = default_proposal_required_fields_item_data.value
+                else:
+                    default_proposal_required_fields_item = default_proposal_required_fields_item_data.value
+
+                default_proposal_required_fields.append(default_proposal_required_fields_item)
+
+        default_proposal_hidden_fields: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.default_proposal_hidden_fields, Unset):
+            default_proposal_hidden_fields = []
+            for default_proposal_hidden_fields_item_data in self.default_proposal_hidden_fields:
+                default_proposal_hidden_fields_item: str
+                if isinstance(default_proposal_hidden_fields_item_data, ProposalConfigurableFieldEnum):
+                    default_proposal_hidden_fields_item = default_proposal_hidden_fields_item_data.value
+                else:
+                    default_proposal_hidden_fields_item = default_proposal_hidden_fields_item_data.value
+
+                default_proposal_hidden_fields.append(default_proposal_hidden_fields_item)
 
         invitation_allowed_fields: Union[Unset, list[str]] = UNSET
         if not isinstance(self.invitation_allowed_fields, Unset):
@@ -1990,6 +2019,10 @@ class ConstanceSettings:
             field_dict["DEFAULT_OFFERING_USER_ATTRIBUTES"] = default_offering_user_attributes
         if default_call_user_attributes is not UNSET:
             field_dict["DEFAULT_CALL_USER_ATTRIBUTES"] = default_call_user_attributes
+        if default_proposal_required_fields is not UNSET:
+            field_dict["DEFAULT_PROPOSAL_REQUIRED_FIELDS"] = default_proposal_required_fields
+        if default_proposal_hidden_fields is not UNSET:
+            field_dict["DEFAULT_PROPOSAL_HIDDEN_FIELDS"] = default_proposal_hidden_fields
         if invitation_allowed_fields is not UNSET:
             field_dict["INVITATION_ALLOWED_FIELDS"] = invitation_allowed_fields
         if enabled_user_profile_attributes is not UNSET:
@@ -2892,6 +2925,60 @@ class ConstanceSettings:
 
             default_call_user_attributes.append(default_call_user_attributes_item)
 
+        default_proposal_required_fields = []
+        _default_proposal_required_fields = d.pop("DEFAULT_PROPOSAL_REQUIRED_FIELDS", UNSET)
+        for default_proposal_required_fields_item_data in _default_proposal_required_fields or []:
+
+            def _parse_default_proposal_required_fields_item(
+                data: object,
+            ) -> Union[BlankEnum, ProposalConfigurableFieldEnum]:
+                try:
+                    if not isinstance(data, str):
+                        raise TypeError()
+                    default_proposal_required_fields_item_type_0 = ProposalConfigurableFieldEnum(data)
+
+                    return default_proposal_required_fields_item_type_0
+                except:  # noqa: E722
+                    pass
+                if not isinstance(data, str):
+                    raise TypeError()
+                default_proposal_required_fields_item_type_1 = BlankEnum(data)
+
+                return default_proposal_required_fields_item_type_1
+
+            default_proposal_required_fields_item = _parse_default_proposal_required_fields_item(
+                default_proposal_required_fields_item_data
+            )
+
+            default_proposal_required_fields.append(default_proposal_required_fields_item)
+
+        default_proposal_hidden_fields = []
+        _default_proposal_hidden_fields = d.pop("DEFAULT_PROPOSAL_HIDDEN_FIELDS", UNSET)
+        for default_proposal_hidden_fields_item_data in _default_proposal_hidden_fields or []:
+
+            def _parse_default_proposal_hidden_fields_item(
+                data: object,
+            ) -> Union[BlankEnum, ProposalConfigurableFieldEnum]:
+                try:
+                    if not isinstance(data, str):
+                        raise TypeError()
+                    default_proposal_hidden_fields_item_type_0 = ProposalConfigurableFieldEnum(data)
+
+                    return default_proposal_hidden_fields_item_type_0
+                except:  # noqa: E722
+                    pass
+                if not isinstance(data, str):
+                    raise TypeError()
+                default_proposal_hidden_fields_item_type_1 = BlankEnum(data)
+
+                return default_proposal_hidden_fields_item_type_1
+
+            default_proposal_hidden_fields_item = _parse_default_proposal_hidden_fields_item(
+                default_proposal_hidden_fields_item_data
+            )
+
+            default_proposal_hidden_fields.append(default_proposal_hidden_fields_item)
+
         invitation_allowed_fields = []
         _invitation_allowed_fields = d.pop("INVITATION_ALLOWED_FIELDS", UNSET)
         for invitation_allowed_fields_item_data in _invitation_allowed_fields or []:
@@ -3578,6 +3665,8 @@ class ConstanceSettings:
             remote_eduteams_refresh_token=remote_eduteams_refresh_token,
             default_offering_user_attributes=default_offering_user_attributes,
             default_call_user_attributes=default_call_user_attributes,
+            default_proposal_required_fields=default_proposal_required_fields,
+            default_proposal_hidden_fields=default_proposal_hidden_fields,
             invitation_allowed_fields=invitation_allowed_fields,
             enabled_user_profile_attributes=enabled_user_profile_attributes,
             mandatory_user_attributes=mandatory_user_attributes,

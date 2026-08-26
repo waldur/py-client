@@ -9,6 +9,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.call_applicant_visibility_config_request import CallApplicantVisibilityConfigRequest
+    from ..models.call_proposal_field_config_request import CallProposalFieldConfigRequest
 
 
 T = TypeVar("T", bound="PatchedProtectedCallRequest")
@@ -28,6 +29,7 @@ class PatchedProtectedCallRequest:
             identities
         reviews_visible_to_submitters (Union[Unset, bool]): Whether proposal applicants can see review comments and
             scores
+        proposal_field_config (Union[Unset, CallProposalFieldConfigRequest]):
         created_by (Union[None, Unset, str]):
         reference_code (Union[Unset, str]):
         compliance_checklist (Union[None, UUID, Unset]): Compliance checklist that proposals must complete before
@@ -54,6 +56,7 @@ class PatchedProtectedCallRequest:
     external_url: Union[None, Unset, str] = UNSET
     reviewer_identity_visible_to_submitters: Union[Unset, bool] = UNSET
     reviews_visible_to_submitters: Union[Unset, bool] = UNSET
+    proposal_field_config: Union[Unset, "CallProposalFieldConfigRequest"] = UNSET
     created_by: Union[None, Unset, str] = UNSET
     reference_code: Union[Unset, str] = UNSET
     compliance_checklist: Union[None, UUID, Unset] = UNSET
@@ -93,6 +96,10 @@ class PatchedProtectedCallRequest:
         reviewer_identity_visible_to_submitters = self.reviewer_identity_visible_to_submitters
 
         reviews_visible_to_submitters = self.reviews_visible_to_submitters
+
+        proposal_field_config: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.proposal_field_config, Unset):
+            proposal_field_config = self.proposal_field_config.to_dict()
 
         created_by: Union[None, Unset, str]
         if isinstance(self.created_by, Unset):
@@ -167,6 +174,8 @@ class PatchedProtectedCallRequest:
             field_dict["reviewer_identity_visible_to_submitters"] = reviewer_identity_visible_to_submitters
         if reviews_visible_to_submitters is not UNSET:
             field_dict["reviews_visible_to_submitters"] = reviews_visible_to_submitters
+        if proposal_field_config is not UNSET:
+            field_dict["proposal_field_config"] = proposal_field_config
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if reference_code is not UNSET:
@@ -195,6 +204,7 @@ class PatchedProtectedCallRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.call_applicant_visibility_config_request import CallApplicantVisibilityConfigRequest
+        from ..models.call_proposal_field_config_request import CallProposalFieldConfigRequest
 
         d = dict(src_dict)
         slug = d.pop("slug", UNSET)
@@ -226,6 +236,13 @@ class PatchedProtectedCallRequest:
         reviewer_identity_visible_to_submitters = d.pop("reviewer_identity_visible_to_submitters", UNSET)
 
         reviews_visible_to_submitters = d.pop("reviews_visible_to_submitters", UNSET)
+
+        _proposal_field_config = d.pop("proposal_field_config", UNSET)
+        proposal_field_config: Union[Unset, CallProposalFieldConfigRequest]
+        if isinstance(_proposal_field_config, Unset):
+            proposal_field_config = UNSET
+        else:
+            proposal_field_config = CallProposalFieldConfigRequest.from_dict(_proposal_field_config)
 
         def _parse_created_by(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -304,6 +321,7 @@ class PatchedProtectedCallRequest:
             external_url=external_url,
             reviewer_identity_visible_to_submitters=reviewer_identity_visible_to_submitters,
             reviews_visible_to_submitters=reviews_visible_to_submitters,
+            proposal_field_config=proposal_field_config,
             created_by=created_by,
             reference_code=reference_code,
             compliance_checklist=compliance_checklist,
