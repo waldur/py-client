@@ -643,6 +643,15 @@ from .daily_storage_report_project_quotas import DailyStorageReportProjectQuotas
 from .daily_storage_report_user_quotas import DailyStorageReportUserQuotas
 from .daily_storage_report_user_quotas_additional_property import DailyStorageReportUserQuotasAdditionalProperty
 from .daily_volume import DailyVolume
+from .dashboard_call_manager_stats import DashboardCallManagerStats
+from .dashboard_general_stats import DashboardGeneralStats
+from .dashboard_my_order import DashboardMyOrder
+from .dashboard_my_order_type_enum import DashboardMyOrderTypeEnum
+from .dashboard_pending_action import DashboardPendingAction
+from .dashboard_review_deadline import DashboardReviewDeadline
+from .dashboard_reviewer_stats import DashboardReviewerStats
+from .dashboard_submitter_stats import DashboardSubmitterStats
+from .dashboard_upcoming_deadline import DashboardUpcomingDeadline
 from .data_access_summary import DataAccessSummary
 from .data_volume import DataVolume
 from .data_volume_request import DataVolumeRequest
@@ -2889,6 +2898,7 @@ from .v_mware_virtual_machine_create_order_attributes_guest_os_type_3_type_1 imp
 from .validation_decision_enum import ValidationDecisionEnum
 from .validation_method_enum import ValidationMethodEnum
 from .value_enum import ValueEnum
+from .variant_enum import VariantEnum
 from .vendor_name_choice import VendorNameChoice
 from .venue_type_enum import VenueTypeEnum
 from .version import Version
@@ -3572,6 +3582,15 @@ __all__ = (
     "DailyStorageReportUserQuotas",
     "DailyStorageReportUserQuotasAdditionalProperty",
     "DailyVolume",
+    "DashboardCallManagerStats",
+    "DashboardGeneralStats",
+    "DashboardMyOrder",
+    "DashboardMyOrderTypeEnum",
+    "DashboardPendingAction",
+    "DashboardReviewDeadline",
+    "DashboardReviewerStats",
+    "DashboardSubmitterStats",
+    "DashboardUpcomingDeadline",
     "DataAccessSummary",
     "DatabaseSizeStats",
     "DatabaseStatsResponse",
@@ -5710,6 +5729,7 @@ __all__ = (
     "ValidationDecisionEnum",
     "ValidationMethodEnum",
     "ValueEnum",
+    "VariantEnum",
     "VendorNameChoice",
     "VenueTypeEnum",
     "Version",

@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.1.3-rc.4.dev.20260826083749).
+> Auto-generated Python SDK for the Waldur API (version 8.1.3-rc.5.dev.20260826203958).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -72,7 +72,7 @@ waldur_api_client/
 - **call-managing-organisations** (19 endpoints)
 - **call-proposal-project-role-mappings** (7 endpoints)
 - **call-reviewer-pools** (7 endpoints)
-- **call-rounds** (4 endpoints)
+- **call-rounds** (6 endpoints)
 - **celery-stats** (1 endpoint)
 - **chat** (1 endpoint)
 - **chat-messages** (2 endpoints)
@@ -172,7 +172,7 @@ waldur_api_client/
 - **marketplace-offering-user-checklist-completions** (3 endpoints)
 - **marketplace-offering-users** (34 endpoints)
 - **marketplace-openstack-duplicate-offerings** (3 endpoints)
-- **marketplace-orders** (24 endpoints)
+- **marketplace-orders** (26 endpoints)
 - **marketplace-plan-components** (3 endpoints)
 - **marketplace-plans** (17 endpoints)
 - **marketplace-plugins** (1 endpoint)
@@ -290,12 +290,12 @@ waldur_api_client/
 - **projects** (24 endpoints)
 - **promotions-campaigns** (10 endpoints)
 - **proposal-my-requested-resources** (3 endpoints)
-- **proposal-proposals** (36 endpoints)
-- **proposal-protected-calls** (69 endpoints)
+- **proposal-proposals** (37 endpoints)
+- **proposal-protected-calls** (70 endpoints)
 - **proposal-public-calls** (4 endpoints)
 - **proposal-requested-offerings** (5 endpoints)
 - **proposal-requested-resources** (3 endpoints)
-- **proposal-reviews** (9 endpoints)
+- **proposal-reviews** (10 endpoints)
 - **provider-canned-responses** (8 endpoints)
 - **provider-helpdesks** (8 endpoints)
 - **provider-invoice-items** (3 endpoints)
@@ -368,7 +368,7 @@ waldur_api_client/
 - **user-invitations** (16 endpoints)
 - **user-permission-requests** (7 endpoints)
 - **user-permissions** (5 endpoints)
-- **users** (34 endpoints)
+- **users** (36 endpoints)
 - **version** (1 endpoint)
 - **vmware-clusters** (3 endpoints)
 - **vmware-datastores** (3 endpoints)

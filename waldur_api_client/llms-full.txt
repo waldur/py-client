@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.4.dev.20260826083749
+# Version: 8.1.3-rc.5.dev.20260826203958
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2851,6 +2851,16 @@ GET /api/call-rounds/
 ### call_rounds_count
 HEAD /api/call-rounds/
 Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+
+### call_rounds_dashboard_deadlines_list
+GET /api/call-rounds/dashboard-deadlines/
+Summary: Get upcoming round deadlines for the call manager dashboard
+Description: Returns the rounds in calls managed by the current user that are still open (cutoff time in the future), nearest first. Paginated: the exact total is in the X-Result-Count header.
+
+### call_rounds_dashboard_deadlines_count
+HEAD /api/call-rounds/dashboard-deadlines/
+Summary: Get upcoming round deadlines for the call manager dashboard
 Description: Get number of items in the collection matching the request parameters.
 
 ### call_rounds_retrieve
@@ -8249,6 +8259,68 @@ POST /api/marketplace-orders/
 Summary: Create an order
 Description: Creates a new order to provision a resource. The order will be placed in a pending state and may require approval depending on the offering and user permissions.
 Request body: yes
+
+### marketplace_orders_dashboard_my_orders_list
+GET /api/marketplace-orders/dashboard-my-orders/
+Summary: List current user's unfinished orders
+Description: Returns the orders created by the current user that are still pending approval or being processed, newest first. Scoped to the requesting user only, so requesters can track their orders even without list permissions on the project or organization. Paginated: the exact total is in the X-Result-Cou...
+Query parameters (25):
+  - can_approve_as_consumer — Can approve as consumer
+  - can_approve_as_provider — Can approve as provider
+  - category_uuid — Category UUID
+  - created — Created after
+  - created_before — Created before
+  - customer_uuid — Customer UUID
+  - modified — Modified after
+  - modified_before — Modified before
+  - o — Ordering
+  - offering
+  - offering_slug — Multiple values may be separated by commas.
+  - offering_type — Offering type
+  - offering_uuid — Offering UUID
+  - parent_offering_uuid
+  - project_uuid — Project UUID
+  - provider_uuid — Provider UUID
+  - query — Search by order UUID, slug, project name or resource name
+  - resource — Resource URL
+  - resource_name — Resource name
+  - resource_uuid — Resource UUID
+  - service_manager_uuid — Service manager UUID
+  - slug — Slug
+  - state — Order state
+  - type — Order type
+  - was_auto_approved — Auto-approved
+
+### marketplace_orders_dashboard_my_orders_count
+HEAD /api/marketplace-orders/dashboard-my-orders/
+Summary: List current user's unfinished orders
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (25):
+  - can_approve_as_consumer — Can approve as consumer
+  - can_approve_as_provider — Can approve as provider
+  - category_uuid — Category UUID
+  - created — Created after
+  - created_before — Created before
+  - customer_uuid — Customer UUID
+  - modified — Modified after
+  - modified_before — Modified before
+  - o — Ordering
+  - offering
+  - offering_slug — Multiple values may be separated by commas.
+  - offering_type — Offering type
+  - offering_uuid — Offering UUID
+  - parent_offering_uuid
+  - project_uuid — Project UUID
+  - provider_uuid — Provider UUID
+  - query — Search by order UUID, slug, project name or resource name
+  - resource — Resource URL
+  - resource_name — Resource name
+  - resource_uuid — Resource UUID
+  - service_manager_uuid — Service manager UUID
+  - slug — Slug
+  - state — Order state
+  - type — Order type
+  - was_auto_approved — Auto-approved
 
 ### marketplace_orders_retrieve
 GET /api/marketplace-orders/{uuid}/
@@ -20088,6 +20160,11 @@ Description: Get number of items in the collection matching the request paramete
 Query parameters (1):
   - parent_uuid (required) — UUID of the parent object (e.g., customer UUID for new projects)
 
+### proposal_proposals_dashboard_stats_retrieve
+GET /api/proposal-proposals/dashboard-stats/
+Summary: Get submitter dashboard stats
+Description: Returns counts of the current user's own proposals grouped by state, covering both in-progress and decided proposals.
+
 ### proposal_proposals_retrieve
 GET /api/proposal-proposals/{uuid}/
 Path parameters:
@@ -20441,6 +20518,11 @@ Query parameters (12):
   - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
+
+### proposal_protected_calls_dashboard_stats_retrieve
+GET /api/proposal-protected-calls/dashboard-stats/
+Summary: Get call manager dashboard stats
+Description: Returns counts for the call manager dashboard: pending assessments, active calls managed by the user, and overdue reviews on calls they manage.
 
 ### proposal_protected_calls_step_checklists_list
 GET /api/proposal-protected-calls/step_checklists/
@@ -21192,6 +21274,11 @@ Query parameters (9):
 ### proposal_reviews_create
 POST /api/proposal-reviews/
 Request body: yes
+
+### proposal_reviews_dashboard_stats_retrieve
+GET /api/proposal-reviews/dashboard-stats/
+Summary: Get reviewer dashboard stats and deadlines
+Description: Returns counts (assigned, pending, completed) for every review assigned to the current user, plus their nearest review deadlines ordered by due date. Overdue reviews sort first and are included; the counts cover all reviews, the deadline list is capped and deadlines_total gives its true length.
 
 ### proposal_reviews_retrieve
 GET /api/proposal-reviews/{uuid}/
@@ -25131,6 +25218,41 @@ POST /api/users/confirm_email/
 Summary: Confirm email change
 Description: Confirm email update using code
 Request body: yes
+
+### users_dashboard_general_stats_retrieve
+GET /api/users/dashboard-general-stats/
+Summary: Get general dashboard stats
+Description: Returns counts shown on the general dashboard for the current user: pending permission requests they can act on, active invitations addressed to them, and their pending onboarding applications.
+
+### users_dashboard_pending_actions_list
+GET /api/users/dashboard-pending-actions/
+Summary: Get pending dashboard actions feed
+Description: Returns a typed feed of actions the current user should take, aggregating pending orders, failed resources, overdue invoices, missing Terms of Service consents, and incomplete profile state.
+Query parameters (24):
+  - agreement_date — Agreement date after
+  - civil_number
+  - customer_uuid — Customer UUID
+  - date_joined — Date joined after
+  - description
+  - email — Email
+  - full_name — Full name
+  - is_active — Is active
+  - is_staff — Is staff
+  - is_support — Is support
+  - job_title — Job title
+  - modified — Date modified after
+  - native_name — Native name
+  - o — Ordering
+  - organization — Organization
+  - organization_roles — Organization roles
+  - phone_number
+  - project_roles — Project roles
+  - project_uuid — Project UUID
+  - query — Filter by first name, last name, civil number, username or email
+  - registration_method
+  - user_keyword — User keyword
+  - username — Username (exact)
+  - username_list — Comma-separated usernames
 
 ### users_me_retrieve
 GET /api/users/me/
