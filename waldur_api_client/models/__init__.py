@@ -170,6 +170,7 @@ from .atlassian_settings_save_request import AtlassianSettingsSaveRequest
 from .atlassian_settings_save_request_support_type_mapping import AtlassianSettingsSaveRequestSupportTypeMapping
 from .attach_resource_request import AttachResourceRequest
 from .attachment import Attachment
+from .attachment_enum import AttachmentEnum
 from .attachment_field_enum import AttachmentFieldEnum
 from .attachment_request import AttachmentRequest
 from .attachment_request_form import AttachmentRequestForm
@@ -188,6 +189,7 @@ from .auth_result_request import AuthResultRequest
 from .auth_result_state_enum import AuthResultStateEnum
 from .auth_result_uuid_request import AuthResultUUIDRequest
 from .auth_token import AuthToken
+from .auth_token_challenge import AuthTokenChallenge
 from .auth_type_enum import AuthTypeEnum
 from .availability_zone_response import AvailabilityZoneResponse
 from .available_arrow_customers_response import AvailableArrowCustomersResponse
@@ -1677,6 +1679,19 @@ from .paid_request_multipart import PaidRequestMultipart
 from .partition_qo_s_item_request import PartitionQoSItemRequest
 from .partition_summary import PartitionSummary
 from .partition_summary_request import PartitionSummaryRequest
+from .passkey_assertion_finish_request import PasskeyAssertionFinishRequest
+from .passkey_assertion_finish_request_credential import PasskeyAssertionFinishRequestCredential
+from .passkey_ceremony_options import PasskeyCeremonyOptions
+from .passkey_ceremony_options_options import PasskeyCeremonyOptionsOptions
+from .passkey_credential import PasskeyCredential
+from .passkey_credential_transports import PasskeyCredentialTransports
+from .passkey_credential_update import PasskeyCredentialUpdate
+from .passkey_credential_update_request import PasskeyCredentialUpdateRequest
+from .passkey_mfa_begin_request import PasskeyMfaBeginRequest
+from .passkey_registration_finish_request import PasskeyRegistrationFinishRequest
+from .passkey_registration_finish_request_credential import PasskeyRegistrationFinishRequestCredential
+from .passkey_revoke_request import PasskeyRevokeRequest
+from .passkey_token import PasskeyToken
 from .password_change_request import PasswordChangeRequest
 from .patched_access_subnet_request import PatchedAccessSubnetRequest
 from .patched_admin_announcement_request import PatchedAdminAnnouncementRequest
@@ -1796,6 +1811,7 @@ from .patched_order_update_request import PatchedOrderUpdateRequest
 from .patched_order_update_request_attributes import PatchedOrderUpdateRequestAttributes
 from .patched_order_update_request_limits import PatchedOrderUpdateRequestLimits
 from .patched_organization_group_request import PatchedOrganizationGroupRequest
+from .patched_passkey_credential_update_request import PatchedPasskeyCredentialUpdateRequest
 from .patched_payment_profile_request import PatchedPaymentProfileRequest
 from .patched_payment_request import PatchedPaymentRequest
 from .patched_payment_request_form import PatchedPaymentRequestForm
@@ -3126,6 +3142,7 @@ __all__ = (
     "AtlassianSettingsSaveRequest",
     "AtlassianSettingsSaveRequestSupportTypeMapping",
     "Attachment",
+    "AttachmentEnum",
     "AttachmentFieldEnum",
     "AttachmentRequest",
     "AttachmentRequestForm",
@@ -3145,6 +3162,7 @@ __all__ = (
     "AuthResultStateEnum",
     "AuthResultUUIDRequest",
     "AuthToken",
+    "AuthTokenChallenge",
     "AuthTypeEnum",
     "AvailabilityZoneResponse",
     "AvailableArrowCustomersResponse",
@@ -4558,6 +4576,19 @@ __all__ = (
     "PartitionQoSItemRequest",
     "PartitionSummary",
     "PartitionSummaryRequest",
+    "PasskeyAssertionFinishRequest",
+    "PasskeyAssertionFinishRequestCredential",
+    "PasskeyCeremonyOptions",
+    "PasskeyCeremonyOptionsOptions",
+    "PasskeyCredential",
+    "PasskeyCredentialTransports",
+    "PasskeyCredentialUpdate",
+    "PasskeyCredentialUpdateRequest",
+    "PasskeyMfaBeginRequest",
+    "PasskeyRegistrationFinishRequest",
+    "PasskeyRegistrationFinishRequestCredential",
+    "PasskeyRevokeRequest",
+    "PasskeyToken",
     "PasswordChangeRequest",
     "PatchedAccessSubnetRequest",
     "PatchedAdminAnnouncementRequest",
@@ -4673,6 +4704,7 @@ __all__ = (
     "PatchedOrderUpdateRequestAttributes",
     "PatchedOrderUpdateRequestLimits",
     "PatchedOrganizationGroupRequest",
+    "PatchedPasskeyCredentialUpdateRequest",
     "PatchedPaymentProfileRequest",
     "PatchedPaymentRequest",
     "PatchedPaymentRequestForm",

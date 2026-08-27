@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.5.dev.20260827064111
+# Version: 8.1.3-rc.6.dev.20260827184234
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -19303,6 +19303,70 @@ Description: Returns all settings that can be overridden in the database via the
 POST /api/override-settings/
 Summary: Update overridable settings
 Description: Updates one or more settings in the database via the Constance backend. Requires admin permissions.
+Request body: yes
+
+============================================================
+## passkeys  (module: waldur_api_client.api.passkeys)
+============================================================
+
+### passkeys_list
+GET /api/passkeys/
+
+### passkeys_count
+HEAD /api/passkeys/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+
+### passkeys_mfa_begin
+POST /api/passkeys/mfa/begin/
+Summary: Begin the passkey second factor
+Request body: yes
+
+### passkeys_mfa_finish
+POST /api/passkeys/mfa/finish/
+Summary: Finish the passkey second factor
+Request body: yes
+
+### passkeys_registration_begin
+POST /api/passkeys/registration/begin/
+Summary: Begin passkey registration
+
+### passkeys_registration_finish
+POST /api/passkeys/registration/finish/
+Summary: Finish passkey registration
+Request body: yes
+
+### passkeys_signin_begin
+POST /api/passkeys/signin/begin/
+Summary: Begin passwordless passkey sign-in
+
+### passkeys_signin_finish
+POST /api/passkeys/signin/finish/
+Summary: Finish passwordless passkey sign-in
+Request body: yes
+
+### passkeys_retrieve
+GET /api/passkeys/{uuid}/
+Path parameters:
+  - uuid
+
+### passkeys_update
+PUT /api/passkeys/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### passkeys_partial_update
+PATCH /api/passkeys/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### passkeys_revoke
+POST /api/passkeys/{uuid}/revoke/
+Summary: Revoke a passkey
+Path parameters:
+  - uuid
 Request body: yes
 
 ============================================================

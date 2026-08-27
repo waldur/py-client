@@ -3026,6 +3026,22 @@ Module: `waldur_api_client.api.override_settings`
 - `override_settings_retrieve` GET `/api/override-settings/` — Get all overridable settings (no params)
 - `override_settings` POST `/api/override-settings/` — Update overridable settings (request body)
 
+## passkeys
+Module: `waldur_api_client.api.passkeys`
+
+- `passkeys_list` GET `/api/passkeys/` (no params)
+- `passkeys_count` HEAD `/api/passkeys/` — Get number of items in the collection matching the request parameters (no params)
+- `passkeys_mfa_begin` POST `/api/passkeys/mfa/begin/` — Begin the passkey second factor (request body)
+- `passkeys_mfa_finish` POST `/api/passkeys/mfa/finish/` — Finish the passkey second factor (request body)
+- `passkeys_registration_begin` POST `/api/passkeys/registration/begin/` — Begin passkey registration (no params)
+- `passkeys_registration_finish` POST `/api/passkeys/registration/finish/` — Finish passkey registration (request body)
+- `passkeys_signin_begin` POST `/api/passkeys/signin/begin/` — Begin passwordless passkey sign-in (no params)
+- `passkeys_signin_finish` POST `/api/passkeys/signin/finish/` — Finish passwordless passkey sign-in (request body)
+- `passkeys_retrieve` GET `/api/passkeys/{uuid}/` (path: uuid)
+- `passkeys_update` PUT `/api/passkeys/{uuid}/` (path: uuid | request body)
+- `passkeys_partial_update` PATCH `/api/passkeys/{uuid}/` (path: uuid | request body)
+- `passkeys_revoke` POST `/api/passkeys/{uuid}/revoke/` — Revoke a passkey (path: uuid | request body)
+
 ## payment-profiles
 Module: `waldur_api_client.api.payment_profiles`
 

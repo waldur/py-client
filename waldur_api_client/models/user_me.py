@@ -65,6 +65,8 @@ class UserMe:
         should_protect_user_details (Union[Unset, bool]):
         has_active_session (Union[Unset, bool]):
         has_usable_password (Union[Unset, bool]):
+        has_passkey (Union[Unset, bool]):
+        passkey_count (Union[Unset, int]):
         ip_address (Union[Unset, str]):
         gender (Union[BlankEnum, GenderEnum, None, Unset]): User's gender (male, female, or unknown)
         personal_title (Union[Unset, str]): Honorific title (Mr, Ms, Dr, Prof, etc.)
@@ -135,6 +137,8 @@ class UserMe:
     should_protect_user_details: Union[Unset, bool] = UNSET
     has_active_session: Union[Unset, bool] = UNSET
     has_usable_password: Union[Unset, bool] = UNSET
+    has_passkey: Union[Unset, bool] = UNSET
+    passkey_count: Union[Unset, int] = UNSET
     ip_address: Union[Unset, str] = UNSET
     gender: Union[BlankEnum, GenderEnum, None, Unset] = UNSET
     personal_title: Union[Unset, str] = UNSET
@@ -284,6 +288,10 @@ class UserMe:
         has_active_session = self.has_active_session
 
         has_usable_password = self.has_usable_password
+
+        has_passkey = self.has_passkey
+
+        passkey_count = self.passkey_count
 
         ip_address = self.ip_address
 
@@ -440,6 +448,10 @@ class UserMe:
             field_dict["has_active_session"] = has_active_session
         if has_usable_password is not UNSET:
             field_dict["has_usable_password"] = has_usable_password
+        if has_passkey is not UNSET:
+            field_dict["has_passkey"] = has_passkey
+        if passkey_count is not UNSET:
+            field_dict["passkey_count"] = passkey_count
         if ip_address is not UNSET:
             field_dict["ip_address"] = ip_address
         if gender is not UNSET:
@@ -662,6 +674,10 @@ class UserMe:
 
         has_usable_password = d.pop("has_usable_password", UNSET)
 
+        has_passkey = d.pop("has_passkey", UNSET)
+
+        passkey_count = d.pop("passkey_count", UNSET)
+
         ip_address = d.pop("ip_address", UNSET)
 
         def _parse_gender(data: object) -> Union[BlankEnum, GenderEnum, None, Unset]:
@@ -796,6 +812,8 @@ class UserMe:
             should_protect_user_details=should_protect_user_details,
             has_active_session=has_active_session,
             has_usable_password=has_usable_password,
+            has_passkey=has_passkey,
+            passkey_count=passkey_count,
             ip_address=ip_address,
             gender=gender,
             personal_title=personal_title,

@@ -5,50 +5,32 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.auth_token_challenge import AuthTokenChallenge
-from ...models.core_auth_token import CoreAuthToken
-from ...models.obtain_auth_token_request import ObtainAuthTokenRequest
+from ...models.passkey_ceremony_options import PasskeyCeremonyOptions
 from ...types import Response
 
 
-def _get_kwargs(
-    *,
-    body: ObtainAuthTokenRequest,
-) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
-
+def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": "/api-auth/password/",
+        "url": "/api/passkeys/signin/begin/",
     }
 
-    _kwargs["json"] = body.to_dict()
-
-    headers["Content-Type"] = "application/json"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Union[AuthTokenChallenge, CoreAuthToken]:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> PasskeyCeremonyOptions:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = CoreAuthToken.from_dict(response.json())
+        response_200 = PasskeyCeremonyOptions.from_dict(response.json())
 
         return response_200
-    if response.status_code == 401:
-        response_401 = AuthTokenChallenge.from_dict(response.json())
-
-        return response_401
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[AuthTokenChallenge, CoreAuthToken]]:
+) -> Response[PasskeyCeremonyOptions]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -60,26 +42,18 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: ObtainAuthTokenRequest,
-) -> Response[Union[AuthTokenChallenge, CoreAuthToken]]:
-    """Obtain authentication token
-
-     Authenticates a user with username and password and returns an authentication token.
-
-    Args:
-        body (ObtainAuthTokenRequest):
+) -> Response[PasskeyCeremonyOptions]:
+    """Begin passwordless passkey sign-in
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AuthTokenChallenge, CoreAuthToken]]
+        Response[PasskeyCeremonyOptions]
     """
 
-    kwargs = _get_kwargs(
-        body=body,
-    )
+    kwargs = _get_kwargs()
 
     response = client.get_httpx_client().request(
         **kwargs,
@@ -91,52 +65,37 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: ObtainAuthTokenRequest,
-) -> Union[AuthTokenChallenge, CoreAuthToken]:
-    """Obtain authentication token
-
-     Authenticates a user with username and password and returns an authentication token.
-
-    Args:
-        body (ObtainAuthTokenRequest):
+) -> PasskeyCeremonyOptions:
+    """Begin passwordless passkey sign-in
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AuthTokenChallenge, CoreAuthToken]
+        PasskeyCeremonyOptions
     """
 
     return sync_detailed(
         client=client,
-        body=body,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: ObtainAuthTokenRequest,
-) -> Response[Union[AuthTokenChallenge, CoreAuthToken]]:
-    """Obtain authentication token
-
-     Authenticates a user with username and password and returns an authentication token.
-
-    Args:
-        body (ObtainAuthTokenRequest):
+) -> Response[PasskeyCeremonyOptions]:
+    """Begin passwordless passkey sign-in
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[AuthTokenChallenge, CoreAuthToken]]
+        Response[PasskeyCeremonyOptions]
     """
 
-    kwargs = _get_kwargs(
-        body=body,
-    )
+    kwargs = _get_kwargs()
 
     response = await client.get_async_httpx_client().request(**kwargs)
 
@@ -146,26 +105,19 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: ObtainAuthTokenRequest,
-) -> Union[AuthTokenChallenge, CoreAuthToken]:
-    """Obtain authentication token
-
-     Authenticates a user with username and password and returns an authentication token.
-
-    Args:
-        body (ObtainAuthTokenRequest):
+) -> PasskeyCeremonyOptions:
+    """Begin passwordless passkey sign-in
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[AuthTokenChallenge, CoreAuthToken]
+        PasskeyCeremonyOptions
     """
 
     return (
         await asyncio_detailed(
             client=client,
-            body=body,
         )
     ).parsed
