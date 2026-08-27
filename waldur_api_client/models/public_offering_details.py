@@ -70,6 +70,8 @@ class PublicOfferingDetails:
         resource_options (Union[Unset, OfferingOptions]):
         components (Union[Unset, list['OfferingComponent']]):
         plugin_options (Union[Unset, MergedPluginOptions]):
+        can_update_integration (Union[Unset, bool]):
+        can_update_options (Union[Unset, bool]):
         state (Union[Unset, OfferingState]):
         vendor_details (Union[Unset, str]):
         getting_started (Union[Unset, str]):
@@ -158,6 +160,8 @@ class PublicOfferingDetails:
     resource_options: Union[Unset, "OfferingOptions"] = UNSET
     components: Union[Unset, list["OfferingComponent"]] = UNSET
     plugin_options: Union[Unset, "MergedPluginOptions"] = UNSET
+    can_update_integration: Union[Unset, bool] = UNSET
+    can_update_options: Union[Unset, bool] = UNSET
     state: Union[Unset, OfferingState] = UNSET
     vendor_details: Union[Unset, str] = UNSET
     getting_started: Union[Unset, str] = UNSET
@@ -347,6 +351,10 @@ class PublicOfferingDetails:
         plugin_options: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.plugin_options, Unset):
             plugin_options = self.plugin_options.to_dict()
+
+        can_update_integration = self.can_update_integration
+
+        can_update_options = self.can_update_options
 
         state: Union[Unset, str] = UNSET
         if not isinstance(self.state, Unset):
@@ -678,6 +686,10 @@ class PublicOfferingDetails:
             field_dict["components"] = components
         if plugin_options is not UNSET:
             field_dict["plugin_options"] = plugin_options
+        if can_update_integration is not UNSET:
+            field_dict["can_update_integration"] = can_update_integration
+        if can_update_options is not UNSET:
+            field_dict["can_update_options"] = can_update_options
         if state is not UNSET:
             field_dict["state"] = state
         if vendor_details is not UNSET:
@@ -994,6 +1006,10 @@ class PublicOfferingDetails:
             plugin_options = UNSET
         else:
             plugin_options = MergedPluginOptions.from_dict(_plugin_options)
+
+        can_update_integration = d.pop("can_update_integration", UNSET)
+
+        can_update_options = d.pop("can_update_options", UNSET)
 
         _state = d.pop("state", UNSET)
         state: Union[Unset, OfferingState]
@@ -1413,6 +1429,8 @@ class PublicOfferingDetails:
             resource_options=resource_options,
             components=components,
             plugin_options=plugin_options,
+            can_update_integration=can_update_integration,
+            can_update_options=can_update_options,
             state=state,
             vendor_details=vendor_details,
             getting_started=getting_started,

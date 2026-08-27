@@ -75,6 +75,8 @@ class ProviderOfferingDetails:
         plugin_options (Union[Unset, MergedPluginOptions]):
         secret_options (Union[Unset, MergedSecretOptions]):
         service_attributes (Union[Unset, ProviderOfferingDetailsServiceAttributes]):
+        can_update_integration (Union[Unset, bool]):
+        can_update_options (Union[Unset, bool]):
         state (Union[Unset, OfferingState]):
         vendor_details (Union[Unset, str]):
         getting_started (Union[Unset, str]):
@@ -162,6 +164,8 @@ class ProviderOfferingDetails:
     plugin_options: Union[Unset, "MergedPluginOptions"] = UNSET
     secret_options: Union[Unset, "MergedSecretOptions"] = UNSET
     service_attributes: Union[Unset, "ProviderOfferingDetailsServiceAttributes"] = UNSET
+    can_update_integration: Union[Unset, bool] = UNSET
+    can_update_options: Union[Unset, bool] = UNSET
     state: Union[Unset, OfferingState] = UNSET
     vendor_details: Union[Unset, str] = UNSET
     getting_started: Union[Unset, str] = UNSET
@@ -355,6 +359,10 @@ class ProviderOfferingDetails:
         service_attributes: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.service_attributes, Unset):
             service_attributes = self.service_attributes.to_dict()
+
+        can_update_integration = self.can_update_integration
+
+        can_update_options = self.can_update_options
 
         state: Union[Unset, str] = UNSET
         if not isinstance(self.state, Unset):
@@ -689,6 +697,10 @@ class ProviderOfferingDetails:
             field_dict["secret_options"] = secret_options
         if service_attributes is not UNSET:
             field_dict["service_attributes"] = service_attributes
+        if can_update_integration is not UNSET:
+            field_dict["can_update_integration"] = can_update_integration
+        if can_update_options is not UNSET:
+            field_dict["can_update_options"] = can_update_options
         if state is not UNSET:
             field_dict["state"] = state
         if vendor_details is not UNSET:
@@ -1014,6 +1026,10 @@ class ProviderOfferingDetails:
             service_attributes = UNSET
         else:
             service_attributes = ProviderOfferingDetailsServiceAttributes.from_dict(_service_attributes)
+
+        can_update_integration = d.pop("can_update_integration", UNSET)
+
+        can_update_options = d.pop("can_update_options", UNSET)
 
         _state = d.pop("state", UNSET)
         state: Union[Unset, OfferingState]
@@ -1447,6 +1463,8 @@ class ProviderOfferingDetails:
             plugin_options=plugin_options,
             secret_options=secret_options,
             service_attributes=service_attributes,
+            can_update_integration=can_update_integration,
+            can_update_options=can_update_options,
             state=state,
             vendor_details=vendor_details,
             getting_started=getting_started,

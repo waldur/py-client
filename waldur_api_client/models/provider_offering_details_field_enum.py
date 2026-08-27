@@ -9,6 +9,8 @@ class ProviderOfferingDetailsFieldEnum(str, Enum):
     BACKEND_METADATA = "backend_metadata"
     BILLABLE = "billable"
     BILLING_TYPE_CLASSIFICATION = "billing_type_classification"
+    CAN_UPDATE_INTEGRATION = "can_update_integration"
+    CAN_UPDATE_OPTIONS = "can_update_options"
     CATEGORY = "category"
     CATEGORY_TITLE = "category_title"
     CATEGORY_UUID = "category_uuid"
