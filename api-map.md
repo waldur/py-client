@@ -1988,8 +1988,8 @@ Module: `waldur_api_client.api.marketplace_sections`
 ## marketplace-service-providers
 Module: `waldur_api_client.api.marketplace_service_providers`
 
-- `marketplace_service_providers_list` GET `/api/marketplace-service-providers/` — List service providers (5 query params)
-- `marketplace_service_providers_count` HEAD `/api/marketplace-service-providers/` — List service providers (4 query params)
+- `marketplace_service_providers_list` GET `/api/marketplace-service-providers/` — List service providers (9 query params)
+- `marketplace_service_providers_count` HEAD `/api/marketplace-service-providers/` — List service providers (8 query params)
 - `marketplace_service_providers_create` POST `/api/marketplace-service-providers/` — Create a service provider (request body)
 - `service_provider_checklists_summary` GET `/api/marketplace-service-providers/{service_provider_uuid}/compliance/checklists_summary/` — Get summary of compliance checklists (path: service_provider_uuid)
 - `marketplace_service_providers_compliance_checklists_summary_count` HEAD `/api/marketplace-service-providers/{service_provider_uuid}/compliance/checklists_summary/` — Get number of items in the collection matching the request parameters (path: service_provider_uuid)
@@ -3773,6 +3773,13 @@ Module: `waldur_api_client.api.slurm_jobs`
 - `slurm_jobs_set_erred` POST `/api/slurm-jobs/{uuid}/set_erred/` — Mark resource as ERRED (path: uuid | request body)
 - `slurm_jobs_set_ok` POST `/api/slurm-jobs/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
 - `slurm_jobs_unlink` POST `/api/slurm-jobs/{uuid}/unlink/` — Unlink resource (path: uuid)
+
+## staff-passkeys
+Module: `waldur_api_client.api.staff_passkeys`
+
+- `staff_passkeys_list` GET `/api/staff-passkeys/` (no params)
+- `staff_passkeys_count` HEAD `/api/staff-passkeys/` — Get number of items in the collection matching the request parameters (no params)
+- `staff_passkeys_revoke` POST `/api/staff-passkeys/{uuid}/revoke/` — Revoke another user's passkey (path: uuid | request body)
 
 ## stats
 Module: `waldur_api_client.api.stats`

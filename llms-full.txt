@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.6.dev.20260827184234
+# Version: 8.1.3-rc.6.dev.20260828082210
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -12263,21 +12263,29 @@ Path parameters:
 GET /api/marketplace-service-providers/
 Summary: List service providers
 Description: Returns a paginated list of service providers.
-Query parameters (5):
+Query parameters (9):
+  - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_keyword — Customer keyword (name, abbreviation or native name)
   - customer_uuid — Customer UUID
   - field
+  - modified — Modified after
+  - modified_before — Modified before
   - o — Ordering
 
 ### marketplace_service_providers_count
 HEAD /api/marketplace-service-providers/
 Summary: List service providers
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (4):
+Query parameters (8):
+  - created — Created after
+  - created_before — Created before
   - customer — Customer URL
   - customer_keyword — Customer keyword (name, abbreviation or native name)
   - customer_uuid — Customer UUID
+  - modified — Modified after
+  - modified_before — Modified before
   - o — Ordering
 
 ### marketplace_service_providers_create
@@ -23694,6 +23702,25 @@ Description: Delete resource from the database without scheduling operations on 
         for removing resource stuck in transitioning state.
 Path parameters:
   - uuid
+
+============================================================
+## staff-passkeys  (module: waldur_api_client.api.staff_passkeys)
+============================================================
+
+### staff_passkeys_list
+GET /api/staff-passkeys/
+
+### staff_passkeys_count
+HEAD /api/staff-passkeys/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+
+### staff_passkeys_revoke
+POST /api/staff-passkeys/{uuid}/revoke/
+Summary: Revoke another user's passkey
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## stats  (module: waldur_api_client.api.stats)

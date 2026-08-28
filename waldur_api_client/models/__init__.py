@@ -1691,6 +1691,7 @@ from .passkey_mfa_begin_request import PasskeyMfaBeginRequest
 from .passkey_registration_finish_request import PasskeyRegistrationFinishRequest
 from .passkey_registration_finish_request_credential import PasskeyRegistrationFinishRequestCredential
 from .passkey_revoke_request import PasskeyRevokeRequest
+from .passkey_staff_revoke_request import PasskeyStaffRevokeRequest
 from .passkey_token import PasskeyToken
 from .password_change_request import PasswordChangeRequest
 from .patched_access_subnet_request import PatchedAccessSubnetRequest
@@ -4588,6 +4589,7 @@ __all__ = (
     "PasskeyRegistrationFinishRequest",
     "PasskeyRegistrationFinishRequestCredential",
     "PasskeyRevokeRequest",
+    "PasskeyStaffRevokeRequest",
     "PasskeyToken",
     "PasswordChangeRequest",
     "PatchedAccessSubnetRequest",

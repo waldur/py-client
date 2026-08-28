@@ -196,6 +196,7 @@ class EventMetadataResponseEventGroupsAdditionalPropertyItem(str, Enum):
     PASSKEY_REGISTERED = "passkey_registered"
     PASSKEY_RENAMED = "passkey_renamed"
     PASSKEY_REVOKED = "passkey_revoked"
+    PASSKEY_REVOKED_BY_STAFF = "passkey_revoked_by_staff"
     PAT_ACCESS_DENIED_FROM_IP = "pat_access_denied_from_ip"
     PAT_AUTHENTICATION_REJECTED = "pat_authentication_rejected"
     PAT_CREATED = "pat_created"
