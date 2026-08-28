@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.6.dev.20260828082210
+# Version: 8.1.3-rc.6.dev.20260828134213
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -4172,6 +4172,38 @@ Summary: Send a test digest email
 Description: Send a test digest email to the requesting user.
 Path parameters:
   - uuid
+
+### customers_providers_list
+GET /api/customers/{uuid}/providers/
+Summary: List service providers serving this customer
+Description: Returns service providers with at least one active resource provisioned for this customer.
+Path parameters:
+  - uuid
+Query parameters (24):
+  - abbreviation — Abbreviation
+  - accounting_is_running — Filter by whether accounting is running.
+  - agreement_number
+  - archived
+  - backend_id
+  - contact_details — Contact details
+  - current_user_has_project_create_permission — Return a list of customers where current user has project create permission.
+  - current_user_has_role — Multiple values may be separated by commas.
+  - field
+  - has_resources — Filter by customers with resources.
+  - is_call_managing_organization — Filter by customers that are call managing organizations.
+  - is_service_provider — Filter by customers that are service providers.
+  - name — Name
+  - name_exact — Name (exact)
+  - native_name — Native name
+  - o — Which field to use when ordering the results.
+  - organization_group_name — Organization group name
+  - organization_group_uuid — Organization group UUID
+  - owned_by_current_user — Return a list of customers where current user is owner.
+  - query — Filter by name, native name, abbreviation, domain, UUID, registration code or agreement number
+  - registration_code
+  - service_provider_uuid — Filter by service provider UUID.
+  - slug — Slug
+  - user_uuid — Filter by user UUID.
 
 ### customers_stats_retrieve
 GET /api/customers/{uuid}/stats/

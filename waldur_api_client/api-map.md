@@ -735,6 +735,7 @@ Module: `waldur_api_client.api.customers`
 - `customers_project_digest_config_retrieve` GET `/api/customers/{uuid}/project-digest-config/` — Get project digest configuration (path: uuid)
 - `customers_project_digest_config_preview` POST `/api/customers/{uuid}/project-digest-config/preview/` — Preview digest for a project (path: uuid | request body)
 - `customers_project_digest_config_send_test` POST `/api/customers/{uuid}/project-digest-config/send-test/` — Send a test digest email (path: uuid)
+- `customers_providers_list` GET `/api/customers/{uuid}/providers/` — List service providers serving this customer (path: uuid | 24 query params)
 - `customers_stats_retrieve` GET `/api/customers/{uuid}/stats/` — Get customer resource usage statistics (path: uuid | 1 query param)
 - `customers_update_project_digest_config_update` PUT `/api/customers/{uuid}/update-project-digest-config/` — Update project digest configuration (path: uuid | request body)
 - `customers_update_project_digest_config_partial_update` PATCH `/api/customers/{uuid}/update-project-digest-config/` — Update project digest configuration (path: uuid | request body)

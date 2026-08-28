@@ -6,6 +6,7 @@ class ProtectedCallFieldEnum(str, Enum):
     BACKEND_ID = "backend_id"
     COMPLIANCE_CHECKLIST = "compliance_checklist"
     COMPLIANCE_CHECKLIST_NAME = "compliance_checklist_name"
+    CONFIRM_DURATION_PROPAGATION = "confirm_duration_propagation"
     CREATED = "created"
     CREATED_BY = "created_by"
     CUSTOMER_NAME = "customer_name"

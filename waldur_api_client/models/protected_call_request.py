@@ -47,6 +47,9 @@ class ProtectedCallRequest:
         user_assurance_levels (Union[Unset, list[str]]): List of required assurance URIs (REFEDS). User must have ALL of
             these.
         applicant_visibility_config (Union['CallApplicantVisibilityConfigRequest', None, Unset]):
+        confirm_duration_propagation (Union[Unset, bool]): Acknowledge that changing fixed_duration_in_days rewrites the
+            duration of proposals that have not been allocated yet. Without it the change is rejected when there is at least
+            one such proposal. Default: False.
     """
 
     name: str
@@ -70,6 +73,7 @@ class ProtectedCallRequest:
     user_organization_types: Union[Unset, list[str]] = UNSET
     user_assurance_levels: Union[Unset, list[str]] = UNSET
     applicant_visibility_config: Union["CallApplicantVisibilityConfigRequest", None, Unset] = UNSET
+    confirm_duration_propagation: Union[Unset, bool] = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -159,6 +163,8 @@ class ProtectedCallRequest:
         else:
             applicant_visibility_config = self.applicant_visibility_config
 
+        confirm_duration_propagation = self.confirm_duration_propagation
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -205,6 +211,8 @@ class ProtectedCallRequest:
             field_dict["user_assurance_levels"] = user_assurance_levels
         if applicant_visibility_config is not UNSET:
             field_dict["applicant_visibility_config"] = applicant_visibility_config
+        if confirm_duration_propagation is not UNSET:
+            field_dict["confirm_duration_propagation"] = confirm_duration_propagation
 
         return field_dict
 
@@ -321,6 +329,8 @@ class ProtectedCallRequest:
 
         applicant_visibility_config = _parse_applicant_visibility_config(d.pop("applicant_visibility_config", UNSET))
 
+        confirm_duration_propagation = d.pop("confirm_duration_propagation", UNSET)
+
         protected_call_request = cls(
             name=name,
             manager=manager,
@@ -343,6 +353,7 @@ class ProtectedCallRequest:
             user_organization_types=user_organization_types,
             user_assurance_levels=user_assurance_levels,
             applicant_visibility_config=applicant_visibility_config,
+            confirm_duration_propagation=confirm_duration_propagation,
         )
 
         protected_call_request.additional_properties = d
