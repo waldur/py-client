@@ -17,14 +17,12 @@ class ProposalUpdateProjectDetailsRequest:
         name (str):
         description (Union[Unset, str]):
         project_summary (Union[Unset, str]):
-        duration_in_days (Union[None, Unset, int]): Duration in days after provisioning of resources.
         science_sub_domain (Union[None, UUID, Unset]):
     """
 
     name: str
     description: Union[Unset, str] = UNSET
     project_summary: Union[Unset, str] = UNSET
-    duration_in_days: Union[None, Unset, int] = UNSET
     science_sub_domain: Union[None, UUID, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -34,12 +32,6 @@ class ProposalUpdateProjectDetailsRequest:
         description = self.description
 
         project_summary = self.project_summary
-
-        duration_in_days: Union[None, Unset, int]
-        if isinstance(self.duration_in_days, Unset):
-            duration_in_days = UNSET
-        else:
-            duration_in_days = self.duration_in_days
 
         science_sub_domain: Union[None, Unset, str]
         if isinstance(self.science_sub_domain, Unset):
@@ -60,8 +52,6 @@ class ProposalUpdateProjectDetailsRequest:
             field_dict["description"] = description
         if project_summary is not UNSET:
             field_dict["project_summary"] = project_summary
-        if duration_in_days is not UNSET:
-            field_dict["duration_in_days"] = duration_in_days
         if science_sub_domain is not UNSET:
             field_dict["science_sub_domain"] = science_sub_domain
 
@@ -75,15 +65,6 @@ class ProposalUpdateProjectDetailsRequest:
         description = d.pop("description", UNSET)
 
         project_summary = d.pop("project_summary", UNSET)
-
-        def _parse_duration_in_days(data: object) -> Union[None, Unset, int]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, int], data)
-
-        duration_in_days = _parse_duration_in_days(d.pop("duration_in_days", UNSET))
 
         def _parse_science_sub_domain(data: object) -> Union[None, UUID, Unset]:
             if data is None:
@@ -106,7 +87,6 @@ class ProposalUpdateProjectDetailsRequest:
             name=name,
             description=description,
             project_summary=project_summary,
-            duration_in_days=duration_in_days,
             science_sub_domain=science_sub_domain,
         )
 
