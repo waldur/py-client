@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.6.dev.20260829060916
+# Version: 8.1.3-rc.6.dev.20260829141456
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -17069,7 +17069,7 @@ Path parameters:
 GET /api/openstack-instances/
 Summary: List instances
 Description: Get a list of VM instances.
-Query parameters (25):
+Query parameters (27):
   - attach_volume_uuid — Filter for attachment to volume UUID
   - availability_zone_name — Availability zone name
   - backend_id — Backend ID
@@ -17090,6 +17090,8 @@ Query parameters (25):
   - project_uuid — Project UUID
   - query — Search by name, internal IP, or external IP
   - runtime_state
+  - security_group — Security group URL
+  - security_group_uuid — Security group UUID
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State
@@ -17100,7 +17102,7 @@ Query parameters (25):
 HEAD /api/openstack-instances/
 Summary: List instances
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (24):
+Query parameters (26):
   - attach_volume_uuid — Filter for attachment to volume UUID
   - availability_zone_name — Availability zone name
   - backend_id — Backend ID
@@ -17120,6 +17122,8 @@ Query parameters (24):
   - project_uuid — Project UUID
   - query — Search by name, internal IP, or external IP
   - runtime_state
+  - security_group — Security group URL
+  - security_group_uuid — Security group UUID
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
   - state — State

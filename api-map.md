@@ -2721,8 +2721,8 @@ Module: `waldur_api_client.api.openstack_instance_availability_zones`
 ## openstack-instances
 Module: `waldur_api_client.api.openstack_instances`
 
-- `openstack_instances_list` GET `/api/openstack-instances/` — List instances (25 query params)
-- `openstack_instances_count` HEAD `/api/openstack-instances/` — List instances (24 query params)
+- `openstack_instances_list` GET `/api/openstack-instances/` — List instances (27 query params)
+- `openstack_instances_count` HEAD `/api/openstack-instances/` — List instances (26 query params)
 - `openstack_instances_retrieve` GET `/api/openstack-instances/{uuid}/` — Get instance details (path: uuid | 1 query param)
 - `openstack_instances_update` PUT `/api/openstack-instances/{uuid}/` — Update instance (path: uuid | request body)
 - `openstack_instances_partial_update` PATCH `/api/openstack-instances/{uuid}/` — Partially update instance (path: uuid | request body)
