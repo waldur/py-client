@@ -2979,6 +2979,7 @@ from .widget_enum import WidgetEnum
 from .withdrawable_adjustment_request import WithdrawableAdjustmentRequest
 from .workflow_criterion import WorkflowCriterion
 from .workflow_criterion_request import WorkflowCriterionRequest
+from .workflow_step_responsible_user import WorkflowStepResponsibleUser
 from .zammadarticletype_enum import ZAMMADARTICLETYPEEnum
 
 __all__ = (
@@ -5835,5 +5836,6 @@ __all__ = (
     "WithdrawableAdjustmentRequest",
     "WorkflowCriterion",
     "WorkflowCriterionRequest",
+    "WorkflowStepResponsibleUser",
     "ZAMMADARTICLETYPEEnum",
 )

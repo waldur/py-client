@@ -17,6 +17,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.call_workflow_step_notification_rule_nested import CallWorkflowStepNotificationRuleNested
     from ..models.workflow_criterion import WorkflowCriterion
+    from ..models.workflow_step_responsible_user import WorkflowStepResponsibleUser
 
 
 T = TypeVar("T", bound="CallWorkflowStep")
@@ -35,6 +36,7 @@ class CallWorkflowStep:
         is_mandatory (bool):
         checklist_name (Union[None, str]):
         notification_rules (list['CallWorkflowStepNotificationRuleNested']):
+        responsible_users (list['WorkflowStepResponsibleUser']):
         is_enabled (Union[Unset, bool]): Whether this step is enabled. Disabled steps are skipped.
         duration_in_days (Union[None, Unset, int]): Duration in days. Used to calculate deadlines.
         checklist (Union[None, UUID, Unset]):
@@ -64,6 +66,7 @@ class CallWorkflowStep:
     is_mandatory: bool
     checklist_name: Union[None, str]
     notification_rules: list["CallWorkflowStepNotificationRuleNested"]
+    responsible_users: list["WorkflowStepResponsibleUser"]
     is_enabled: Union[Unset, bool] = UNSET
     duration_in_days: Union[None, Unset, int] = UNSET
     checklist: Union[None, UUID, Unset] = UNSET
@@ -103,6 +106,11 @@ class CallWorkflowStep:
         for notification_rules_item_data in self.notification_rules:
             notification_rules_item = notification_rules_item_data.to_dict()
             notification_rules.append(notification_rules_item)
+
+        responsible_users = []
+        for responsible_users_item_data in self.responsible_users:
+            responsible_users_item = responsible_users_item_data.to_dict()
+            responsible_users.append(responsible_users_item)
 
         is_enabled = self.is_enabled
 
@@ -186,6 +194,7 @@ class CallWorkflowStep:
                 "is_mandatory": is_mandatory,
                 "checklist_name": checklist_name,
                 "notification_rules": notification_rules,
+                "responsible_users": responsible_users,
             }
         )
         if is_enabled is not UNSET:
@@ -225,6 +234,7 @@ class CallWorkflowStep:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.call_workflow_step_notification_rule_nested import CallWorkflowStepNotificationRuleNested
         from ..models.workflow_criterion import WorkflowCriterion
+        from ..models.workflow_step_responsible_user import WorkflowStepResponsibleUser
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -254,6 +264,13 @@ class CallWorkflowStep:
             notification_rules_item = CallWorkflowStepNotificationRuleNested.from_dict(notification_rules_item_data)
 
             notification_rules.append(notification_rules_item)
+
+        responsible_users = []
+        _responsible_users = d.pop("responsible_users")
+        for responsible_users_item_data in _responsible_users:
+            responsible_users_item = WorkflowStepResponsibleUser.from_dict(responsible_users_item_data)
+
+            responsible_users.append(responsible_users_item)
 
         is_enabled = d.pop("is_enabled", UNSET)
 
@@ -376,6 +393,7 @@ class CallWorkflowStep:
             is_mandatory=is_mandatory,
             checklist_name=checklist_name,
             notification_rules=notification_rules,
+            responsible_users=responsible_users,
             is_enabled=is_enabled,
             duration_in_days=duration_in_days,
             checklist=checklist,
