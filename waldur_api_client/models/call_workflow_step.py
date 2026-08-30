@@ -15,6 +15,7 @@ from ..models.transition_mode_enum import TransitionModeEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.call_workflow_step_notification_rule_nested import CallWorkflowStepNotificationRuleNested
     from ..models.workflow_criterion import WorkflowCriterion
 
 
@@ -33,6 +34,7 @@ class CallWorkflowStep:
         call_name (str):
         is_mandatory (bool):
         checklist_name (Union[None, str]):
+        notification_rules (list['CallWorkflowStepNotificationRuleNested']):
         is_enabled (Union[Unset, bool]): Whether this step is enabled. Disabled steps are skipped.
         duration_in_days (Union[None, Unset, int]): Duration in days. Used to calculate deadlines.
         checklist (Union[None, UUID, Unset]):
@@ -61,6 +63,7 @@ class CallWorkflowStep:
     call_name: str
     is_mandatory: bool
     checklist_name: Union[None, str]
+    notification_rules: list["CallWorkflowStepNotificationRuleNested"]
     is_enabled: Union[Unset, bool] = UNSET
     duration_in_days: Union[None, Unset, int] = UNSET
     checklist: Union[None, UUID, Unset] = UNSET
@@ -95,6 +98,11 @@ class CallWorkflowStep:
 
         checklist_name: Union[None, str]
         checklist_name = self.checklist_name
+
+        notification_rules = []
+        for notification_rules_item_data in self.notification_rules:
+            notification_rules_item = notification_rules_item_data.to_dict()
+            notification_rules.append(notification_rules_item)
 
         is_enabled = self.is_enabled
 
@@ -177,6 +185,7 @@ class CallWorkflowStep:
                 "call_name": call_name,
                 "is_mandatory": is_mandatory,
                 "checklist_name": checklist_name,
+                "notification_rules": notification_rules,
             }
         )
         if is_enabled is not UNSET:
@@ -214,6 +223,7 @@ class CallWorkflowStep:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.call_workflow_step_notification_rule_nested import CallWorkflowStepNotificationRuleNested
         from ..models.workflow_criterion import WorkflowCriterion
 
         d = dict(src_dict)
@@ -237,6 +247,13 @@ class CallWorkflowStep:
             return cast(Union[None, str], data)
 
         checklist_name = _parse_checklist_name(d.pop("checklist_name"))
+
+        notification_rules = []
+        _notification_rules = d.pop("notification_rules")
+        for notification_rules_item_data in _notification_rules:
+            notification_rules_item = CallWorkflowStepNotificationRuleNested.from_dict(notification_rules_item_data)
+
+            notification_rules.append(notification_rules_item)
 
         is_enabled = d.pop("is_enabled", UNSET)
 
@@ -358,6 +375,7 @@ class CallWorkflowStep:
             call_name=call_name,
             is_mandatory=is_mandatory,
             checklist_name=checklist_name,
+            notification_rules=notification_rules,
             is_enabled=is_enabled,
             duration_in_days=duration_in_days,
             checklist=checklist,

@@ -358,6 +358,9 @@ from .call_reviewer_pool_update import CallReviewerPoolUpdate
 from .call_round import CallRound
 from .call_states import CallStates
 from .call_workflow_step import CallWorkflowStep
+from .call_workflow_step_notification_rule import CallWorkflowStepNotificationRule
+from .call_workflow_step_notification_rule_nested import CallWorkflowStepNotificationRuleNested
+from .call_workflow_step_notification_rule_request import CallWorkflowStepNotificationRuleRequest
 from .call_workflow_step_request import CallWorkflowStepRequest
 from .caller_context import CallerContext
 from .campaign import Campaign
@@ -1721,6 +1724,7 @@ from .patched_call_resource_template_request import PatchedCallResourceTemplateR
 from .patched_call_resource_template_request_attributes import PatchedCallResourceTemplateRequestAttributes
 from .patched_call_resource_template_request_limits import PatchedCallResourceTemplateRequestLimits
 from .patched_call_reviewer_pool_update_request import PatchedCallReviewerPoolUpdateRequest
+from .patched_call_workflow_step_notification_rule_request import PatchedCallWorkflowStepNotificationRuleRequest
 from .patched_call_workflow_step_request import PatchedCallWorkflowStepRequest
 from .patched_canned_response_request import PatchedCannedResponseRequest
 from .patched_category_column_request import PatchedCategoryColumnRequest
@@ -2308,6 +2312,7 @@ from .rbac_policy_direction_enum import RbacPolicyDirectionEnum
 from .reassign_item_request import ReassignItemRequest
 from .reassign_item_response import ReassignItemResponse
 from .recent_ticket import RecentTicket
+from .recipient_enum import RecipientEnum
 from .reconcile_request_request import ReconcileRequestRequest
 from .reference_number_request import ReferenceNumberRequest
 from .reject_workflow_step_request import RejectWorkflowStepRequest
@@ -2818,6 +2823,7 @@ from .transition_mode_enum import TransitionModeEnum
 from .trigger_coi_detection_job_type_enum import TriggerCOIDetectionJobTypeEnum
 from .trigger_coi_detection_request import TriggerCOIDetectionRequest
 from .trigger_consumption_sync_request_request import TriggerConsumptionSyncRequestRequest
+from .trigger_enum import TriggerEnum
 from .trigger_sync_request_request import TriggerSyncRequestRequest
 from .update_actions_request import UpdateActionsRequest
 from .update_actions_response import UpdateActionsResponse
@@ -3321,6 +3327,9 @@ __all__ = (
     "CallRound",
     "CallStates",
     "CallWorkflowStep",
+    "CallWorkflowStepNotificationRule",
+    "CallWorkflowStepNotificationRuleNested",
+    "CallWorkflowStepNotificationRuleRequest",
     "CallWorkflowStepRequest",
     "Campaign",
     "CampaignOEnum",
@@ -4619,6 +4628,7 @@ __all__ = (
     "PatchedCallResourceTemplateRequestAttributes",
     "PatchedCallResourceTemplateRequestLimits",
     "PatchedCallReviewerPoolUpdateRequest",
+    "PatchedCallWorkflowStepNotificationRuleRequest",
     "PatchedCallWorkflowStepRequest",
     "PatchedCannedResponseRequest",
     "PatchedCategoryColumnRequest",
@@ -5170,6 +5180,7 @@ __all__ = (
     "ReassignItemRequest",
     "ReassignItemResponse",
     "RecentTicket",
+    "RecipientEnum",
     "ReconcileRequestRequest",
     "ReferenceNumberRequest",
     "RejectWorkflowStepRequest",
@@ -5676,6 +5687,7 @@ __all__ = (
     "TriggerCOIDetectionJobTypeEnum",
     "TriggerCOIDetectionRequest",
     "TriggerConsumptionSyncRequestRequest",
+    "TriggerEnum",
     "TriggerSyncRequestRequest",
     "UpdateActionsRequest",
     "UpdateActionsResponse",

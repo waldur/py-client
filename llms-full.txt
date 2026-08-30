@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.6.dev.20260829141456
+# Version: 8.1.3-rc.6.dev.20260830080937
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2872,6 +2872,56 @@ Path parameters:
 GET /api/call-rounds/{uuid}/reviewers/
 Summary: Return list of reviewers for round
 Description: Return list of reviewers for round.
+Path parameters:
+  - uuid
+
+============================================================
+## call-workflow-step-notification-rules  (module: waldur_api_client.api.call_workflow_step_notification_rules)
+============================================================
+
+### call_workflow_step_notification_rules_list
+GET /api/call-workflow-step-notification-rules/
+Query parameters (5):
+  - call_uuid
+  - is_enabled
+  - step
+  - trigger
+  - workflow_step_uuid
+
+### call_workflow_step_notification_rules_count
+HEAD /api/call-workflow-step-notification-rules/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (5):
+  - call_uuid
+  - is_enabled
+  - step
+  - trigger
+  - workflow_step_uuid
+
+### call_workflow_step_notification_rules_create
+POST /api/call-workflow-step-notification-rules/
+Request body: yes
+
+### call_workflow_step_notification_rules_retrieve
+GET /api/call-workflow-step-notification-rules/{uuid}/
+Path parameters:
+  - uuid
+
+### call_workflow_step_notification_rules_update
+PUT /api/call-workflow-step-notification-rules/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### call_workflow_step_notification_rules_partial_update
+PATCH /api/call-workflow-step-notification-rules/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### call_workflow_step_notification_rules_destroy
+DELETE /api/call-workflow-step-notification-rules/{uuid}/
 Path parameters:
   - uuid
 

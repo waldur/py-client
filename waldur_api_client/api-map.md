@@ -500,6 +500,17 @@ Module: `waldur_api_client.api.call_rounds`
 - `call_rounds_retrieve` GET `/api/call-rounds/{uuid}/` (path: uuid)
 - `call_rounds_reviewers_list` GET `/api/call-rounds/{uuid}/reviewers/` — Return list of reviewers for round (path: uuid)
 
+## call-workflow-step-notification-rules
+Module: `waldur_api_client.api.call_workflow_step_notification_rules`
+
+- `call_workflow_step_notification_rules_list` GET `/api/call-workflow-step-notification-rules/` (5 query params)
+- `call_workflow_step_notification_rules_count` HEAD `/api/call-workflow-step-notification-rules/` — Get number of items in the collection matching the request parameters (5 query params)
+- `call_workflow_step_notification_rules_create` POST `/api/call-workflow-step-notification-rules/` (request body)
+- `call_workflow_step_notification_rules_retrieve` GET `/api/call-workflow-step-notification-rules/{uuid}/` (path: uuid)
+- `call_workflow_step_notification_rules_update` PUT `/api/call-workflow-step-notification-rules/{uuid}/` (path: uuid | request body)
+- `call_workflow_step_notification_rules_partial_update` PATCH `/api/call-workflow-step-notification-rules/{uuid}/` (path: uuid | request body)
+- `call_workflow_step_notification_rules_destroy` DELETE `/api/call-workflow-step-notification-rules/{uuid}/` (path: uuid)
+
 ## celery-stats
 Module: `waldur_api_client.api.celery_stats`
 

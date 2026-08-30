@@ -58,6 +58,9 @@ class ProtectedCall:
         compliance_checklist (Union[None, UUID, Unset]): Compliance checklist that proposals must complete before
             submission
         compliance_checklist_name (Union[Unset, str]):
+        panel_chair (Union[None, UUID, Unset]):
+        panel_chair_uuid (Union[Unset, UUID]):
+        panel_chair_name (Union[Unset, str]):
         proposal_slug_template (Union[None, Unset, str]): Template for proposal slugs. Supports: {call_slug},
             {round_slug}, {org_slug}, {year}, {month}, {counter}, {counter_padded}. Default: {round_slug}-{counter_padded}
         user_email_patterns (Union[Unset, list[str]]): List of email regex patterns. User must match one.
@@ -104,6 +107,9 @@ class ProtectedCall:
     reference_code: Union[Unset, str] = UNSET
     compliance_checklist: Union[None, UUID, Unset] = UNSET
     compliance_checklist_name: Union[Unset, str] = UNSET
+    panel_chair: Union[None, UUID, Unset] = UNSET
+    panel_chair_uuid: Union[Unset, UUID] = UNSET
+    panel_chair_name: Union[Unset, str] = UNSET
     proposal_slug_template: Union[None, Unset, str] = UNSET
     user_email_patterns: Union[Unset, list[str]] = UNSET
     user_affiliations: Union[Unset, list[str]] = UNSET
@@ -229,6 +235,20 @@ class ProtectedCall:
 
         compliance_checklist_name = self.compliance_checklist_name
 
+        panel_chair: Union[None, Unset, str]
+        if isinstance(self.panel_chair, Unset):
+            panel_chair = UNSET
+        elif isinstance(self.panel_chair, UUID):
+            panel_chair = str(self.panel_chair)
+        else:
+            panel_chair = self.panel_chair
+
+        panel_chair_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.panel_chair_uuid, Unset):
+            panel_chair_uuid = str(self.panel_chair_uuid)
+
+        panel_chair_name = self.panel_chair_name
+
         proposal_slug_template: Union[None, Unset, str]
         if isinstance(self.proposal_slug_template, Unset):
             proposal_slug_template = UNSET
@@ -335,6 +355,12 @@ class ProtectedCall:
             field_dict["compliance_checklist"] = compliance_checklist
         if compliance_checklist_name is not UNSET:
             field_dict["compliance_checklist_name"] = compliance_checklist_name
+        if panel_chair is not UNSET:
+            field_dict["panel_chair"] = panel_chair
+        if panel_chair_uuid is not UNSET:
+            field_dict["panel_chair_uuid"] = panel_chair_uuid
+        if panel_chair_name is not UNSET:
+            field_dict["panel_chair_name"] = panel_chair_name
         if proposal_slug_template is not UNSET:
             field_dict["proposal_slug_template"] = proposal_slug_template
         if user_email_patterns is not UNSET:
@@ -521,6 +547,32 @@ class ProtectedCall:
 
         compliance_checklist_name = d.pop("compliance_checklist_name", UNSET)
 
+        def _parse_panel_chair(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                panel_chair_type_0 = UUID(data)
+
+                return panel_chair_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        panel_chair = _parse_panel_chair(d.pop("panel_chair", UNSET))
+
+        _panel_chair_uuid = d.pop("panel_chair_uuid", UNSET)
+        panel_chair_uuid: Union[Unset, UUID]
+        if isinstance(_panel_chair_uuid, Unset):
+            panel_chair_uuid = UNSET
+        else:
+            panel_chair_uuid = UUID(_panel_chair_uuid)
+
+        panel_chair_name = d.pop("panel_chair_name", UNSET)
+
         def _parse_proposal_slug_template(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -597,6 +649,9 @@ class ProtectedCall:
             reference_code=reference_code,
             compliance_checklist=compliance_checklist,
             compliance_checklist_name=compliance_checklist_name,
+            panel_chair=panel_chair,
+            panel_chair_uuid=panel_chair_uuid,
+            panel_chair_name=panel_chair_name,
             proposal_slug_template=proposal_slug_template,
             user_email_patterns=user_email_patterns,
             user_affiliations=user_affiliations,
