@@ -45,6 +45,8 @@ class ProtectedCall:
         documents (Union[Unset, list['CallDocument']]):
         resource_templates (Union[Unset, list['CallResourceTemplate']]):
         fixed_duration_in_days (Union[None, Unset, int]):
+        max_prepaid_duration_months (Union[None, Unset, int]): The longest prepaid subscription, in whole months, that
+            fits inside fixed_duration_in_days measured from today; null when the call fixes no duration.
         backend_id (Union[Unset, str]):
         external_url (Union[None, Unset, str]):
         reviewer_identity_visible_to_submitters (Union[Unset, bool]): Whether proposal applicants can see reviewer
@@ -97,6 +99,7 @@ class ProtectedCall:
     documents: Union[Unset, list["CallDocument"]] = UNSET
     resource_templates: Union[Unset, list["CallResourceTemplate"]] = UNSET
     fixed_duration_in_days: Union[None, Unset, int] = UNSET
+    max_prepaid_duration_months: Union[None, Unset, int] = UNSET
     backend_id: Union[Unset, str] = UNSET
     external_url: Union[None, Unset, str] = UNSET
     reviewer_identity_visible_to_submitters: Union[Unset, bool] = UNSET
@@ -198,6 +201,12 @@ class ProtectedCall:
             fixed_duration_in_days = UNSET
         else:
             fixed_duration_in_days = self.fixed_duration_in_days
+
+        max_prepaid_duration_months: Union[None, Unset, int]
+        if isinstance(self.max_prepaid_duration_months, Unset):
+            max_prepaid_duration_months = UNSET
+        else:
+            max_prepaid_duration_months = self.max_prepaid_duration_months
 
         backend_id = self.backend_id
 
@@ -335,6 +344,8 @@ class ProtectedCall:
             field_dict["resource_templates"] = resource_templates
         if fixed_duration_in_days is not UNSET:
             field_dict["fixed_duration_in_days"] = fixed_duration_in_days
+        if max_prepaid_duration_months is not UNSET:
+            field_dict["max_prepaid_duration_months"] = max_prepaid_duration_months
         if backend_id is not UNSET:
             field_dict["backend_id"] = backend_id
         if external_url is not UNSET:
@@ -493,6 +504,15 @@ class ProtectedCall:
 
         fixed_duration_in_days = _parse_fixed_duration_in_days(d.pop("fixed_duration_in_days", UNSET))
 
+        def _parse_max_prepaid_duration_months(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        max_prepaid_duration_months = _parse_max_prepaid_duration_months(d.pop("max_prepaid_duration_months", UNSET))
+
         backend_id = d.pop("backend_id", UNSET)
 
         def _parse_external_url(data: object) -> Union[None, Unset, str]:
@@ -639,6 +659,7 @@ class ProtectedCall:
             documents=documents,
             resource_templates=resource_templates,
             fixed_duration_in_days=fixed_duration_in_days,
+            max_prepaid_duration_months=max_prepaid_duration_months,
             backend_id=backend_id,
             external_url=external_url,
             reviewer_identity_visible_to_submitters=reviewer_identity_visible_to_submitters,

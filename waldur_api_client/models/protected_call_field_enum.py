@@ -19,6 +19,7 @@ class ProtectedCallFieldEnum(str, Enum):
     HAS_PROPOSALS = "has_proposals"
     MANAGER = "manager"
     MANAGER_UUID = "manager_uuid"
+    MAX_PREPAID_DURATION_MONTHS = "max_prepaid_duration_months"
     NAME = "name"
     OFFERINGS = "offerings"
     PANEL_CHAIR = "panel_chair"
