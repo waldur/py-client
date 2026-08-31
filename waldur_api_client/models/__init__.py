@@ -732,11 +732,17 @@ from .effective_route_source_enum import EffectiveRouteSourceEnum
 from .effective_routes_response import EffectiveRoutesResponse
 from .eligibility_check import EligibilityCheck
 from .eligible_project import EligibleProject
+from .email_config import EmailConfig
+from .email_diagnostics import EmailDiagnostics
+from .email_finding import EmailFinding
 from .email_hook import EmailHook
 from .email_hook_request import EmailHookRequest
 from .email_invitation_request import EmailInvitationRequest
 from .email_log import EmailLog
 from .email_log_o_enum import EmailLogOEnum
+from .email_probe import EmailProbe
+from .email_test_send_request_request import EmailTestSendRequestRequest
+from .email_test_send_result import EmailTestSendResult
 from .enabledreportingscreens_enum import ENABLEDREPORTINGSCREENSEnum
 from .endpoint_uuid import EndpointUUID
 from .endpoint_uuid_request import EndpointUUIDRequest
@@ -3693,11 +3699,17 @@ __all__ = (
     "EffectiveRoutesResponse",
     "EligibilityCheck",
     "EligibleProject",
+    "EmailConfig",
+    "EmailDiagnostics",
+    "EmailFinding",
     "EmailHook",
     "EmailHookRequest",
     "EmailInvitationRequest",
     "EmailLog",
     "EmailLogOEnum",
+    "EmailProbe",
+    "EmailTestSendRequestRequest",
+    "EmailTestSendResult",
     "ENABLEDREPORTINGSCREENSEnum",
     "EndpointUUID",
     "EndpointUUIDRequest",

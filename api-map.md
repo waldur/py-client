@@ -775,6 +775,9 @@ Module: `waldur_api_client.api.database_stats`
 ## debug
 Module: `waldur_api_client.api.debug`
 
+- `debug_email_config_retrieve` GET `/api/debug/email/config/` — Audit the outgoing email configuration (no params)
+- `debug_email_probe` POST `/api/debug/email/probe/` — Test the SMTP connection (no params)
+- `debug_email_send_test` POST `/api/debug/email/send_test/` — Send a test email (request body)
 - `debug_pubsub_circuit_breaker_retrieve` GET `/api/debug/pubsub/circuit_breaker/` — Get circuit breaker state (no params)
 - `debug_pubsub_circuit_breaker_reset` POST `/api/debug/pubsub/circuit_breaker_reset/` — Reset circuit breaker (no params)
 - `debug_pubsub_dead_letter_queue_retrieve` GET `/api/debug/pubsub/dead_letter_queue/` — Get dead letter queue status (no params)
