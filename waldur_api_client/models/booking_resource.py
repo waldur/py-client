@@ -77,6 +77,7 @@ class BookingResource:
         project_uuid (Union[Unset, UUID]):
         project_name (Union[Unset, str]):
         project_description (Union[Unset, str]):
+        project_start_date (Union[None, Unset, datetime.date]):
         project_end_date (Union[None, Unset, datetime.date]): The date is inclusive. Once reached, all project resource
             will be scheduled for termination.
         project_effective_end_date (Union[None, Unset, datetime.date]): Effective project end date including grace
@@ -191,6 +192,7 @@ class BookingResource:
     project_uuid: Union[Unset, UUID] = UNSET
     project_name: Union[Unset, str] = UNSET
     project_description: Union[Unset, str] = UNSET
+    project_start_date: Union[None, Unset, datetime.date] = UNSET
     project_end_date: Union[None, Unset, datetime.date] = UNSET
     project_effective_end_date: Union[None, Unset, datetime.date] = UNSET
     resource_effective_end_date: Union[None, Unset, datetime.date] = UNSET
@@ -381,6 +383,14 @@ class BookingResource:
         project_name = self.project_name
 
         project_description = self.project_description
+
+        project_start_date: Union[None, Unset, str]
+        if isinstance(self.project_start_date, Unset):
+            project_start_date = UNSET
+        elif isinstance(self.project_start_date, datetime.date):
+            project_start_date = self.project_start_date.isoformat()
+        else:
+            project_start_date = self.project_start_date
 
         project_end_date: Union[None, Unset, str]
         if isinstance(self.project_end_date, Unset):
@@ -683,6 +693,8 @@ class BookingResource:
             field_dict["project_name"] = project_name
         if project_description is not UNSET:
             field_dict["project_description"] = project_description
+        if project_start_date is not UNSET:
+            field_dict["project_start_date"] = project_start_date
         if project_end_date is not UNSET:
             field_dict["project_end_date"] = project_end_date
         if project_effective_end_date is not UNSET:
@@ -1009,6 +1021,23 @@ class BookingResource:
         project_name = d.pop("project_name", UNSET)
 
         project_description = d.pop("project_description", UNSET)
+
+        def _parse_project_start_date(data: object) -> Union[None, Unset, datetime.date]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                project_start_date_type_0 = isoparse(data).date()
+
+                return project_start_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.date], data)
+
+        project_start_date = _parse_project_start_date(d.pop("project_start_date", UNSET))
 
         def _parse_project_end_date(data: object) -> Union[None, Unset, datetime.date]:
             if data is None:
@@ -1398,6 +1427,7 @@ class BookingResource:
             project_uuid=project_uuid,
             project_name=project_name,
             project_description=project_description,
+            project_start_date=project_start_date,
             project_end_date=project_end_date,
             project_effective_end_date=project_effective_end_date,
             resource_effective_end_date=resource_effective_end_date,
