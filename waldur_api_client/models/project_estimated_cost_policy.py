@@ -40,6 +40,8 @@ class ProjectEstimatedCostPolicy:
         period (Union[Unset, PolicyPeriodEnum]):
         period_name (Union[Unset, str]):
         current_cost (Union[Unset, str]):
+        eta_days (Union[None, Unset, int]):
+        eta_date (Union[None, Unset, datetime.date]):
         project_credit (Union[None, Unset, str]):
         customer_credit (Union[None, Unset, str]):
         resource (Union[None, UUID, Unset]):
@@ -65,6 +67,8 @@ class ProjectEstimatedCostPolicy:
     period: Union[Unset, PolicyPeriodEnum] = UNSET
     period_name: Union[Unset, str] = UNSET
     current_cost: Union[Unset, str] = UNSET
+    eta_days: Union[None, Unset, int] = UNSET
+    eta_date: Union[None, Unset, datetime.date] = UNSET
     project_credit: Union[None, Unset, str] = UNSET
     customer_credit: Union[None, Unset, str] = UNSET
     resource: Union[None, UUID, Unset] = UNSET
@@ -119,6 +123,20 @@ class ProjectEstimatedCostPolicy:
         period_name = self.period_name
 
         current_cost = self.current_cost
+
+        eta_days: Union[None, Unset, int]
+        if isinstance(self.eta_days, Unset):
+            eta_days = UNSET
+        else:
+            eta_days = self.eta_days
+
+        eta_date: Union[None, Unset, str]
+        if isinstance(self.eta_date, Unset):
+            eta_date = UNSET
+        elif isinstance(self.eta_date, datetime.date):
+            eta_date = self.eta_date.isoformat()
+        else:
+            eta_date = self.eta_date
 
         project_credit: Union[None, Unset, str]
         if isinstance(self.project_credit, Unset):
@@ -185,6 +203,10 @@ class ProjectEstimatedCostPolicy:
             field_dict["period_name"] = period_name
         if current_cost is not UNSET:
             field_dict["current_cost"] = current_cost
+        if eta_days is not UNSET:
+            field_dict["eta_days"] = eta_days
+        if eta_date is not UNSET:
+            field_dict["eta_date"] = eta_date
         if project_credit is not UNSET:
             field_dict["project_credit"] = project_credit
         if customer_credit is not UNSET:
@@ -270,6 +292,32 @@ class ProjectEstimatedCostPolicy:
 
         current_cost = d.pop("current_cost", UNSET)
 
+        def _parse_eta_days(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        eta_days = _parse_eta_days(d.pop("eta_days", UNSET))
+
+        def _parse_eta_date(data: object) -> Union[None, Unset, datetime.date]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                eta_date_type_0 = isoparse(data).date()
+
+                return eta_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.date], data)
+
+        eta_date = _parse_eta_date(d.pop("eta_date", UNSET))
+
         def _parse_project_credit(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -334,6 +382,8 @@ class ProjectEstimatedCostPolicy:
             period=period,
             period_name=period_name,
             current_cost=current_cost,
+            eta_days=eta_days,
+            eta_date=eta_date,
             project_credit=project_credit,
             customer_credit=customer_credit,
             resource=resource,

@@ -9,6 +9,8 @@ class OfferingEstimatedCostPolicyFieldEnum(str, Enum):
     CREATED_BY_FULL_NAME = "created_by_full_name"
     CREATED_BY_USERNAME = "created_by_username"
     CURRENT_COST = "current_cost"
+    ETA_DATE = "eta_date"
+    ETA_DAYS = "eta_days"
     FIRED_DATETIME = "fired_datetime"
     HAS_FIRED = "has_fired"
     LIMIT_COST = "limit_cost"

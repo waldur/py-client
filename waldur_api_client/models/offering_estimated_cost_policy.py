@@ -39,6 +39,8 @@ class OfferingEstimatedCostPolicy:
         period (Union[Unset, PolicyPeriodEnum]):
         period_name (Union[Unset, str]):
         current_cost (Union[Unset, str]):
+        eta_days (Union[None, Unset, int]):
+        eta_date (Union[None, Unset, datetime.date]):
         organization_groups (Union[Unset, list[str]]):
         apply_to_all (Union[Unset, bool]): If True, policy applies to all customers. Mutually exclusive with
             organization_groups.
@@ -61,6 +63,8 @@ class OfferingEstimatedCostPolicy:
     period: Union[Unset, PolicyPeriodEnum] = UNSET
     period_name: Union[Unset, str] = UNSET
     current_cost: Union[Unset, str] = UNSET
+    eta_days: Union[None, Unset, int] = UNSET
+    eta_date: Union[None, Unset, datetime.date] = UNSET
     organization_groups: Union[Unset, list[str]] = UNSET
     apply_to_all: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -112,6 +116,20 @@ class OfferingEstimatedCostPolicy:
 
         current_cost = self.current_cost
 
+        eta_days: Union[None, Unset, int]
+        if isinstance(self.eta_days, Unset):
+            eta_days = UNSET
+        else:
+            eta_days = self.eta_days
+
+        eta_date: Union[None, Unset, str]
+        if isinstance(self.eta_date, Unset):
+            eta_date = UNSET
+        elif isinstance(self.eta_date, datetime.date):
+            eta_date = self.eta_date.isoformat()
+        else:
+            eta_date = self.eta_date
+
         organization_groups: Union[Unset, list[str]] = UNSET
         if not isinstance(self.organization_groups, Unset):
             organization_groups = self.organization_groups
@@ -155,6 +173,10 @@ class OfferingEstimatedCostPolicy:
             field_dict["period_name"] = period_name
         if current_cost is not UNSET:
             field_dict["current_cost"] = current_cost
+        if eta_days is not UNSET:
+            field_dict["eta_days"] = eta_days
+        if eta_date is not UNSET:
+            field_dict["eta_date"] = eta_date
         if organization_groups is not UNSET:
             field_dict["organization_groups"] = organization_groups
         if apply_to_all is not UNSET:
@@ -231,6 +253,32 @@ class OfferingEstimatedCostPolicy:
 
         current_cost = d.pop("current_cost", UNSET)
 
+        def _parse_eta_days(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        eta_days = _parse_eta_days(d.pop("eta_days", UNSET))
+
+        def _parse_eta_date(data: object) -> Union[None, Unset, datetime.date]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                eta_date_type_0 = isoparse(data).date()
+
+                return eta_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.date], data)
+
+        eta_date = _parse_eta_date(d.pop("eta_date", UNSET))
+
         organization_groups = cast(list[str], d.pop("organization_groups", UNSET))
 
         apply_to_all = d.pop("apply_to_all", UNSET)
@@ -253,6 +301,8 @@ class OfferingEstimatedCostPolicy:
             period=period,
             period_name=period_name,
             current_cost=current_cost,
+            eta_days=eta_days,
+            eta_date=eta_date,
             organization_groups=organization_groups,
             apply_to_all=apply_to_all,
         )
