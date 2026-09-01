@@ -2655,6 +2655,7 @@ from .set_earliest_approve_request import SetEarliestApproveRequest
 from .set_erred_request import SetErredRequest
 from .set_external_gateway_fixed_ip_request import SetExternalGatewayFixedIPRequest
 from .set_external_gateway_request import SetExternalGatewayRequest
+from .set_issue_status_request import SetIssueStatusRequest
 from .set_links_request import SetLinksRequest
 from .set_membership_control_request import SetMembershipControlRequest
 from .set_mtu import SetMtu
@@ -5526,6 +5527,7 @@ __all__ = (
     "SetErredRequest",
     "SetExternalGatewayFixedIPRequest",
     "SetExternalGatewayRequest",
+    "SetIssueStatusRequest",
     "SetLinksRequest",
     "SetMembershipControlRequest",
     "SetMtu",

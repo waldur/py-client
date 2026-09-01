@@ -3908,8 +3908,8 @@ Module: `waldur_api_client.api.support_issue_tags`
 ## support-issues
 Module: `waldur_api_client.api.support_issues`
 
-- `support_issues_list` GET `/api/support-issues/` (27 query params)
-- `support_issues_count` HEAD `/api/support-issues/` — Get number of items in the collection matching the request parameters (27 query params)
+- `support_issues_list` GET `/api/support-issues/` (28 query params)
+- `support_issues_count` HEAD `/api/support-issues/` — Get number of items in the collection matching the request parameters (28 query params)
 - `support_issues_create` POST `/api/support-issues/` (request body)
 - `support_issues_bulk_update` POST `/api/support-issues/bulk_update/` — Bulk update multiple issues (request body)
 - `support_issues_retrieve` GET `/api/support-issues/{uuid}/` (path: uuid)
@@ -3921,6 +3921,7 @@ Module: `waldur_api_client.api.support_issues`
 - `support_issues_escalate` POST `/api/support-issues/{uuid}/escalate/` — Escalate an issue (path: uuid | request body)
 - `support_issues_reroute` POST `/api/support-issues/{uuid}/reroute/` — Re-route an already-routed issue to a different provider helpdesk (path: uuid | request body)
 - `support_issues_route_to_provider` POST `/api/support-issues/{uuid}/route_to_provider/` — Manually route an issue to a provider helpdesk (path: uuid | request body)
+- `support_issues_set_status` POST `/api/support-issues/{uuid}/set_status/` — Move an issue to another status (path: uuid | request body)
 - `support_issues_sync` POST `/api/support-issues/{uuid}/sync/` (path: uuid)
 
 ## support-jira-webhook
