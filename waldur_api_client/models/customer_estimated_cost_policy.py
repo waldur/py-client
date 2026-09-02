@@ -39,9 +39,18 @@ class CustomerEstimatedCostPolicy:
         limit_cost (Union[Unset, int]):
         period (Union[Unset, PolicyPeriodEnum]):
         period_name (Union[Unset, str]):
-        current_cost (Union[Unset, str]):
-        eta_days (Union[None, Unset, int]):
-        eta_date (Union[None, Unset, datetime.date]):
+        current_cost (Union[Unset, str]): The cost this policy compares against limit_cost right now: the period's
+            invoice total, less the credit already applied and the credit still to be drawn. Do not re-derive it — only the
+            server can simulate the pending draw, and a figure computed from the invoice alone will not match what the
+            policy evaluates.
+        eta_days (Union[None, Unset, int]): Days until the policy fires, or null when no projection exists. 0 means the
+            threshold is already crossed and the policy is triggered — measured, not projected. Null must be rendered as no
+            date, never as 'now': it is the common case, and it is also what an unprojectable or more-than-a-year-away
+            policy reports. Nothing is projected beyond 365 days, because the rate comes from the current month's spend.
+            Note that a cost policy does not fire on cost alone — it also waits for the credit balance to fall to limit_cost
+            — so a policy far over its cap can still report a future date or null.
+        eta_date (Union[None, Unset, datetime.date]): eta_days as a calendar date, so clients do not each re-derive it.
+            Null whenever eta_days is null; today when eta_days is 0.
         customer_credit (Union[None, Unset, str]):
         billing_price_estimate (Union[Unset, NestedPriceEstimate]):
     """

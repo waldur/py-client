@@ -2752,6 +2752,7 @@ Module: `waldur_api_client.api.openstack_instances`
 - `openstack_instances_rescue` POST `/api/openstack-instances/{uuid}/rescue/` — Rescue instance (path: uuid | request body)
 - `openstack_instances_restart` POST `/api/openstack-instances/{uuid}/restart/` — Restart instance (path: uuid)
 - `openstack_instances_set_erred` POST `/api/openstack-instances/{uuid}/set_erred/` — Mark resource as ERRED (path: uuid | request body)
+- `openstack_instances_set_metadata` POST `/api/openstack-instances/{uuid}/set_metadata/` — Set instance metadata (path: uuid | request body)
 - `openstack_instances_set_ok` POST `/api/openstack-instances/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
 - `openstack_instances_start` POST `/api/openstack-instances/{uuid}/start/` — Start instance (path: uuid)
 - `openstack_instances_stop` POST `/api/openstack-instances/{uuid}/stop/` — Stop instance (path: uuid)

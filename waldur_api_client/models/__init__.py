@@ -936,6 +936,8 @@ from .instance_flavor_change_request import InstanceFlavorChangeRequest
 from .instance_placement_allocation import InstancePlacementAllocation
 from .instance_placement_allocation_resources import InstancePlacementAllocationResources
 from .instance_rescue_request import InstanceRescueRequest
+from .instance_set_metadata_request import InstanceSetMetadataRequest
+from .instance_set_metadata_request_metadata import InstanceSetMetadataRequestMetadata
 from .integration_status import IntegrationStatus
 from .integration_status_details import IntegrationStatusDetails
 from .integration_status_details_o_enum import IntegrationStatusDetailsOEnum
@@ -1491,11 +1493,13 @@ from .open_stack_instance_aggregate_group_by_enum import OpenStackInstanceAggreg
 from .open_stack_instance_allowed_address_pairs_update_request import OpenStackInstanceAllowedAddressPairsUpdateRequest
 from .open_stack_instance_availability_zone import OpenStackInstanceAvailabilityZone
 from .open_stack_instance_create_order_attributes import OpenStackInstanceCreateOrderAttributes
+from .open_stack_instance_create_order_attributes_metadata import OpenStackInstanceCreateOrderAttributesMetadata
 from .open_stack_instance_field_enum import OpenStackInstanceFieldEnum
 from .open_stack_instance_floating_i_ps_update_request import OpenStackInstanceFloatingIPsUpdateRequest
 from .open_stack_instance_marketplace_offering_plugin_options_type_0 import (
     OpenStackInstanceMarketplaceOfferingPluginOptionsType0,
 )
+from .open_stack_instance_metadata import OpenStackInstanceMetadata
 from .open_stack_instance_o_enum import OpenStackInstanceOEnum
 from .open_stack_instance_ports_update_request import OpenStackInstancePortsUpdateRequest
 from .open_stack_instance_report import OpenStackInstanceReport
@@ -3898,6 +3902,8 @@ __all__ = (
     "InstancePlacementAllocation",
     "InstancePlacementAllocationResources",
     "InstanceRescueRequest",
+    "InstanceSetMetadataRequest",
+    "InstanceSetMetadataRequestMetadata",
     "IntegrationStatus",
     "IntegrationStatusDetails",
     "IntegrationStatusDetailsOEnum",
@@ -4436,9 +4442,11 @@ __all__ = (
     "OpenStackInstanceAllowedAddressPairsUpdateRequest",
     "OpenStackInstanceAvailabilityZone",
     "OpenStackInstanceCreateOrderAttributes",
+    "OpenStackInstanceCreateOrderAttributesMetadata",
     "OpenStackInstanceFieldEnum",
     "OpenStackInstanceFloatingIPsUpdateRequest",
     "OpenStackInstanceMarketplaceOfferingPluginOptionsType0",
+    "OpenStackInstanceMetadata",
     "OpenStackInstanceOEnum",
     "OpenStackInstancePortsUpdateRequest",
     "OpenStackInstanceReport",
