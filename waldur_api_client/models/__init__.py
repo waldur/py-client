@@ -1966,6 +1966,7 @@ from .personal_access_token import PersonalAccessToken
 from .personal_access_token_create_request import PersonalAccessTokenCreateRequest
 from .personal_access_token_created import PersonalAccessTokenCreated
 from .personal_access_token_network_acl_request import PersonalAccessTokenNetworkAclRequest
+from .plan_billing_mode import PlanBillingMode
 from .plan_component import PlanComponent
 from .plan_usage_response import PlanUsageResponse
 from .plugin_component import PluginComponent
@@ -4867,6 +4868,7 @@ __all__ = (
     "PersonalAccessTokenNetworkAclRequest",
     "PersonIdentifierFieldsResponse",
     "PersonIdentifierFieldsResponsePersonIdentifierFields",
+    "PlanBillingMode",
     "PlanComponent",
     "PlanUsageResponse",
     "PluginComponent",

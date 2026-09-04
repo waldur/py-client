@@ -141,7 +141,7 @@ Module: `waldur_api_client.api.anonymous_chat_interactions`
 ## api-auth
 Module: `waldur_api_client.api.api_auth`
 
-- `api_auth_default_init_retrieve` GET `/api-auth/default/init/` — Redirect user to the authorization endpoint of the default identity provider (2 query params)
+- `api_auth_default_init_retrieve` GET `/api-auth/default/init/` — Redirect user to the authorization endpoint of the default identity provider (3 query params)
 - `api_auth_eduteams_complete_retrieve` GET `/api-auth/eduteams/complete/` (2 query params)
 - `api_auth_eduteams_init_retrieve` GET `/api-auth/eduteams/init/` — Redirect user to OIDC authorization endpoint (no params)
 - `api_auth_keycloak_complete_retrieve` GET `/api-auth/keycloak/complete/` (2 query params)

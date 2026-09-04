@@ -107,6 +107,8 @@ class OrderDetails:
         new_plan_name (Union[None, Unset, str]):
         old_plan_uuid (Union[None, UUID, Unset]):
         new_plan_uuid (Union[None, UUID, Unset]):
+        old_plan_billing_mode (Union[None, Unset, str]):
+        new_plan_billing_mode (Union[None, Unset, str]):
         old_cost_estimate (Union[Unset, float]):
         new_cost_estimate (Union[None, Unset, str]):
         can_terminate (Union[Unset, bool]):
@@ -204,6 +206,8 @@ class OrderDetails:
     new_plan_name: Union[None, Unset, str] = UNSET
     old_plan_uuid: Union[None, UUID, Unset] = UNSET
     new_plan_uuid: Union[None, UUID, Unset] = UNSET
+    old_plan_billing_mode: Union[None, Unset, str] = UNSET
+    new_plan_billing_mode: Union[None, Unset, str] = UNSET
     old_cost_estimate: Union[Unset, float] = UNSET
     new_cost_estimate: Union[None, Unset, str] = UNSET
     can_terminate: Union[Unset, bool] = UNSET
@@ -560,6 +564,18 @@ class OrderDetails:
         else:
             new_plan_uuid = self.new_plan_uuid
 
+        old_plan_billing_mode: Union[None, Unset, str]
+        if isinstance(self.old_plan_billing_mode, Unset):
+            old_plan_billing_mode = UNSET
+        else:
+            old_plan_billing_mode = self.old_plan_billing_mode
+
+        new_plan_billing_mode: Union[None, Unset, str]
+        if isinstance(self.new_plan_billing_mode, Unset):
+            new_plan_billing_mode = UNSET
+        else:
+            new_plan_billing_mode = self.new_plan_billing_mode
+
         old_cost_estimate = self.old_cost_estimate
 
         new_cost_estimate: Union[None, Unset, str]
@@ -801,6 +817,10 @@ class OrderDetails:
             field_dict["old_plan_uuid"] = old_plan_uuid
         if new_plan_uuid is not UNSET:
             field_dict["new_plan_uuid"] = new_plan_uuid
+        if old_plan_billing_mode is not UNSET:
+            field_dict["old_plan_billing_mode"] = old_plan_billing_mode
+        if new_plan_billing_mode is not UNSET:
+            field_dict["new_plan_billing_mode"] = new_plan_billing_mode
         if old_cost_estimate is not UNSET:
             field_dict["old_cost_estimate"] = old_cost_estimate
         if new_cost_estimate is not UNSET:
@@ -1407,6 +1427,24 @@ class OrderDetails:
 
         new_plan_uuid = _parse_new_plan_uuid(d.pop("new_plan_uuid", UNSET))
 
+        def _parse_old_plan_billing_mode(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        old_plan_billing_mode = _parse_old_plan_billing_mode(d.pop("old_plan_billing_mode", UNSET))
+
+        def _parse_new_plan_billing_mode(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        new_plan_billing_mode = _parse_new_plan_billing_mode(d.pop("new_plan_billing_mode", UNSET))
+
         old_cost_estimate = d.pop("old_cost_estimate", UNSET)
 
         def _parse_new_cost_estimate(data: object) -> Union[None, Unset, str]:
@@ -1628,6 +1666,8 @@ class OrderDetails:
             new_plan_name=new_plan_name,
             old_plan_uuid=old_plan_uuid,
             new_plan_uuid=new_plan_uuid,
+            old_plan_billing_mode=old_plan_billing_mode,
+            new_plan_billing_mode=new_plan_billing_mode,
             old_cost_estimate=old_cost_estimate,
             new_cost_estimate=new_cost_estimate,
             can_terminate=can_terminate,

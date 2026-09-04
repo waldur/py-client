@@ -10,10 +10,13 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
+    probe: Union[Unset, str] = UNSET,
     return_url: Union[Unset, str] = UNSET,
     ui_locales: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    params["probe"] = probe
 
     params["return_url"] = return_url
 
@@ -35,6 +38,10 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 302:
         return None
+    if response.status_code == 204:
+        return None
+    if response.status_code == 404:
+        return None
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
@@ -50,12 +57,14 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
+    probe: Union[Unset, str] = UNSET,
     return_url: Union[Unset, str] = UNSET,
     ui_locales: Union[Unset, str] = UNSET,
 ) -> Response[Any]:
     """Redirect user to the authorization endpoint of the default identity provider
 
     Args:
+        probe (Union[Unset, str]):
         return_url (Union[Unset, str]):
         ui_locales (Union[Unset, str]):
 
@@ -68,6 +77,7 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        probe=probe,
         return_url=return_url,
         ui_locales=ui_locales,
     )
@@ -82,12 +92,14 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
+    probe: Union[Unset, str] = UNSET,
     return_url: Union[Unset, str] = UNSET,
     ui_locales: Union[Unset, str] = UNSET,
 ) -> Response[Any]:
     """Redirect user to the authorization endpoint of the default identity provider
 
     Args:
+        probe (Union[Unset, str]):
         return_url (Union[Unset, str]):
         ui_locales (Union[Unset, str]):
 
@@ -100,6 +112,7 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        probe=probe,
         return_url=return_url,
         ui_locales=ui_locales,
     )

@@ -98,10 +98,9 @@ class Resource:
         parent_uuid (Union[Unset, UUID]):
         parent_name (Union[Unset, str]):
         backend_metadata (Union[Unset, BackendMetadata]):
-        is_usage_based (Union[Unset, bool]): Returns True if the resource has usage-based components that track variable
-            consumption.
-        is_limit_based (Union[Unset, bool]): Returns True if the resource has limit-based components with user-
-            adjustable quotas.
+        is_usage_based (Union[Unset, bool]): Returns True if the resource bills any component by usage under its plan.
+        is_limit_based (Union[Unset, bool]): Returns True if the resource bills any component on user-adjustable limits
+            under its plan.
         name (Union[Unset, str]):
         slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         current_usages (Union[Unset, ResourceCurrentUsages]): Dictionary mapping component types to their latest

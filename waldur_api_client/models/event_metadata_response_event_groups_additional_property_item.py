@@ -99,6 +99,7 @@ class EventMetadataResponseEventGroupsAdditionalPropertyItem(str, Enum):
     MARKETPLACE_RESOURCE_LIMIT_CHANGE_REQUEST_CREATED = "marketplace_resource_limit_change_request_created"
     MARKETPLACE_RESOURCE_LIMIT_CHANGE_REQUEST_REJECTED = "marketplace_resource_limit_change_request_rejected"
     MARKETPLACE_RESOURCE_PAUSED = "marketplace_resource_paused"
+    MARKETPLACE_RESOURCE_PLAN_SWITCHED = "marketplace_resource_plan_switched"
     MARKETPLACE_RESOURCE_PROJECT_CREATED = "marketplace_resource_project_created"
     MARKETPLACE_RESOURCE_PROJECT_RECOVERED = "marketplace_resource_project_recovered"
     MARKETPLACE_RESOURCE_PROJECT_REMOVED = "marketplace_resource_project_removed"
