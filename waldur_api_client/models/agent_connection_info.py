@@ -26,6 +26,8 @@ class AgentConnectionInfo:
         offering_name (str): Associated offering name
         version (Union[None, str]): Agent version
         last_restarted (datetime.datetime): When the agent was last restarted
+        event_consumer_uuid (Union[None, UUID]): UUID of the unified event consumer the agent drains, null while it
+            still runs on legacy subscriptions
         services (list['AgentServiceStatus']): Services running within this agent
         event_subscriptions (list['AgentEventSubscriptionWithConnection']): Event subscriptions with connection status
         queues (list['AgentQueueInfo']): RabbitMQ queues for this agent's offering
@@ -37,6 +39,7 @@ class AgentConnectionInfo:
     offering_name: str
     version: Union[None, str]
     last_restarted: datetime.datetime
+    event_consumer_uuid: Union[None, UUID]
     services: list["AgentServiceStatus"]
     event_subscriptions: list["AgentEventSubscriptionWithConnection"]
     queues: list["AgentQueueInfo"]
@@ -55,6 +58,12 @@ class AgentConnectionInfo:
         version = self.version
 
         last_restarted = self.last_restarted.isoformat()
+
+        event_consumer_uuid: Union[None, str]
+        if isinstance(self.event_consumer_uuid, UUID):
+            event_consumer_uuid = str(self.event_consumer_uuid)
+        else:
+            event_consumer_uuid = self.event_consumer_uuid
 
         services = []
         for services_item_data in self.services:
@@ -81,6 +90,7 @@ class AgentConnectionInfo:
                 "offering_name": offering_name,
                 "version": version,
                 "last_restarted": last_restarted,
+                "event_consumer_uuid": event_consumer_uuid,
                 "services": services,
                 "event_subscriptions": event_subscriptions,
                 "queues": queues,
@@ -113,6 +123,21 @@ class AgentConnectionInfo:
 
         last_restarted = isoparse(d.pop("last_restarted"))
 
+        def _parse_event_consumer_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                event_consumer_uuid_type_0 = UUID(data)
+
+                return event_consumer_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        event_consumer_uuid = _parse_event_consumer_uuid(d.pop("event_consumer_uuid"))
+
         services = []
         _services = d.pop("services")
         for services_item_data in _services:
@@ -141,6 +166,7 @@ class AgentConnectionInfo:
             offering_name=offering_name,
             version=version,
             last_restarted=last_restarted,
+            event_consumer_uuid=event_consumer_uuid,
             services=services,
             event_subscriptions=event_subscriptions,
             queues=queues,

@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,6 +8,11 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.variant_enum import VariantEnum
+
+if TYPE_CHECKING:
+    from ..models.corrective_action import CorrectiveAction
+    from ..models.dashboard_pending_action_route_params import DashboardPendingActionRouteParams
+
 
 T = TypeVar("T", bound="DashboardPendingAction")
 
@@ -24,6 +29,12 @@ class DashboardPendingAction:
         count (Union[None, int]):
         target_uuid (Union[None, UUID]):
         customer_uuid (Union[None, UUID]):
+        uuid (Union[None, UUID]):
+        urgency (Union[None, str]):
+        route_name (Union[None, str]):
+        route_params (DashboardPendingActionRouteParams):
+        can_silence (bool):
+        actions (list['CorrectiveAction']):
     """
 
     type_: str
@@ -34,6 +45,12 @@ class DashboardPendingAction:
     count: Union[None, int]
     target_uuid: Union[None, UUID]
     customer_uuid: Union[None, UUID]
+    uuid: Union[None, UUID]
+    urgency: Union[None, str]
+    route_name: Union[None, str]
+    route_params: "DashboardPendingActionRouteParams"
+    can_silence: bool
+    actions: list["CorrectiveAction"]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -66,6 +83,27 @@ class DashboardPendingAction:
         else:
             customer_uuid = self.customer_uuid
 
+        uuid: Union[None, str]
+        if isinstance(self.uuid, UUID):
+            uuid = str(self.uuid)
+        else:
+            uuid = self.uuid
+
+        urgency: Union[None, str]
+        urgency = self.urgency
+
+        route_name: Union[None, str]
+        route_name = self.route_name
+
+        route_params = self.route_params.to_dict()
+
+        can_silence = self.can_silence
+
+        actions = []
+        for actions_item_data in self.actions:
+            actions_item = actions_item_data.to_dict()
+            actions.append(actions_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -78,6 +116,12 @@ class DashboardPendingAction:
                 "count": count,
                 "target_uuid": target_uuid,
                 "customer_uuid": customer_uuid,
+                "uuid": uuid,
+                "urgency": urgency,
+                "route_name": route_name,
+                "route_params": route_params,
+                "can_silence": can_silence,
+                "actions": actions,
             }
         )
 
@@ -85,6 +129,9 @@ class DashboardPendingAction:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.corrective_action import CorrectiveAction
+        from ..models.dashboard_pending_action_route_params import DashboardPendingActionRouteParams
+
         d = dict(src_dict)
         type_ = d.pop("type")
 
@@ -146,6 +193,46 @@ class DashboardPendingAction:
 
         customer_uuid = _parse_customer_uuid(d.pop("customer_uuid"))
 
+        def _parse_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                uuid_type_0 = UUID(data)
+
+                return uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        uuid = _parse_uuid(d.pop("uuid"))
+
+        def _parse_urgency(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        urgency = _parse_urgency(d.pop("urgency"))
+
+        def _parse_route_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        route_name = _parse_route_name(d.pop("route_name"))
+
+        route_params = DashboardPendingActionRouteParams.from_dict(d.pop("route_params"))
+
+        can_silence = d.pop("can_silence")
+
+        actions = []
+        _actions = d.pop("actions")
+        for actions_item_data in _actions:
+            actions_item = CorrectiveAction.from_dict(actions_item_data)
+
+            actions.append(actions_item)
+
         dashboard_pending_action = cls(
             type_=type_,
             title=title,
@@ -155,6 +242,12 @@ class DashboardPendingAction:
             count=count,
             target_uuid=target_uuid,
             customer_uuid=customer_uuid,
+            uuid=uuid,
+            urgency=urgency,
+            route_name=route_name,
+            route_params=route_params,
+            can_silence=can_silence,
+            actions=actions,
         )
 
         dashboard_pending_action.additional_properties = d

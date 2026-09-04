@@ -141,6 +141,7 @@ Module: `waldur_api_client.api.anonymous_chat_interactions`
 ## api-auth
 Module: `waldur_api_client.api.api_auth`
 
+- `api_auth_default_init_retrieve` GET `/api-auth/default/init/` — Redirect user to the authorization endpoint of the default identity provider (2 query params)
 - `api_auth_eduteams_complete_retrieve` GET `/api-auth/eduteams/complete/` (2 query params)
 - `api_auth_eduteams_init_retrieve` GET `/api-auth/eduteams/init/` — Redirect user to OIDC authorization endpoint (no params)
 - `api_auth_keycloak_complete_retrieve` GET `/api-auth/keycloak/complete/` (2 query params)
@@ -837,8 +838,8 @@ Module: `waldur_api_client.api.email_logs`
 ## event-consumers
 Module: `waldur_api_client.api.event_consumers`
 
-- `event_consumers_list` GET `/api/event-consumers/` (no params)
-- `event_consumers_count` HEAD `/api/event-consumers/` — Get number of items in the collection matching the request parameters (no params)
+- `event_consumers_list` GET `/api/event-consumers/` (4 query params)
+- `event_consumers_count` HEAD `/api/event-consumers/` — Get number of items in the collection matching the request parameters (4 query params)
 - `event_consumers_register` POST `/api/event-consumers/register/` — Register (or refresh) an event-consumer queue for the calling user (request body)
 - `event_consumers_destroy` DELETE `/api/event-consumers/{uuid}/` (path: uuid)
 

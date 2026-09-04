@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -8,7 +8,6 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 if TYPE_CHECKING:
-    from ..models.event_consumer_object_types import EventConsumerObjectTypes
     from ..models.event_consumer_scope_output import EventConsumerScopeOutput
 
 
@@ -20,22 +19,27 @@ class EventConsumer:
     """
     Attributes:
         uuid (UUID):
-        object_types (EventConsumerObjectTypes): List of observable object types this consumer receives. Empty list
-            means all types.
+        object_types (list[str]):
         scopes (list['EventConsumerScopeOutput']):
         is_global (bool):
         rmq_username (str): RabbitMQ username (UUID hex) for the consumer queue.
         queue_created (bool):
+        user_uuid (UUID):
+        user_username (str): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_ characters
+        user_full_name (str):
         created (datetime.datetime):
         modified (datetime.datetime):
     """
 
     uuid: UUID
-    object_types: "EventConsumerObjectTypes"
+    object_types: list[str]
     scopes: list["EventConsumerScopeOutput"]
     is_global: bool
     rmq_username: str
     queue_created: bool
+    user_uuid: UUID
+    user_username: str
+    user_full_name: str
     created: datetime.datetime
     modified: datetime.datetime
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -43,7 +47,7 @@ class EventConsumer:
     def to_dict(self) -> dict[str, Any]:
         uuid = str(self.uuid)
 
-        object_types = self.object_types.to_dict()
+        object_types = self.object_types
 
         scopes = []
         for scopes_item_data in self.scopes:
@@ -55,6 +59,12 @@ class EventConsumer:
         rmq_username = self.rmq_username
 
         queue_created = self.queue_created
+
+        user_uuid = str(self.user_uuid)
+
+        user_username = self.user_username
+
+        user_full_name = self.user_full_name
 
         created = self.created.isoformat()
 
@@ -70,6 +80,9 @@ class EventConsumer:
                 "is_global": is_global,
                 "rmq_username": rmq_username,
                 "queue_created": queue_created,
+                "user_uuid": user_uuid,
+                "user_username": user_username,
+                "user_full_name": user_full_name,
                 "created": created,
                 "modified": modified,
             }
@@ -79,13 +92,12 @@ class EventConsumer:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.event_consumer_object_types import EventConsumerObjectTypes
         from ..models.event_consumer_scope_output import EventConsumerScopeOutput
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
-        object_types = EventConsumerObjectTypes.from_dict(d.pop("object_types"))
+        object_types = cast(list[str], d.pop("object_types"))
 
         scopes = []
         _scopes = d.pop("scopes")
@@ -100,6 +112,12 @@ class EventConsumer:
 
         queue_created = d.pop("queue_created")
 
+        user_uuid = UUID(d.pop("user_uuid"))
+
+        user_username = d.pop("user_username")
+
+        user_full_name = d.pop("user_full_name")
+
         created = isoparse(d.pop("created"))
 
         modified = isoparse(d.pop("modified"))
@@ -111,6 +129,9 @@ class EventConsumer:
             is_global=is_global,
             rmq_username=rmq_username,
             queue_created=queue_created,
+            user_uuid=user_uuid,
+            user_username=user_username,
+            user_full_name=user_full_name,
             created=created,
             modified=modified,
         )

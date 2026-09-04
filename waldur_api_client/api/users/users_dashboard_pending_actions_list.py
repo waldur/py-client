@@ -190,7 +190,10 @@ def sync_detailed(
     """Get pending dashboard actions feed
 
      Returns a typed feed of actions the current user should take, aggregating pending orders, failed
-    resources, overdue invoices, missing Terms of Service consents, and incomplete profile state.
+    resources, overdue invoices, missing Terms of Service consents, and incomplete profile state. Where
+    USER_ACTIONS_ENABLED is set, the persistent UserAction queue is folded in as well; those items carry
+    a uuid addressing the user-actions endpoints, along with any corrective actions and the route
+    recorded for them.
 
     Args:
         agreement_date (Union[Unset, datetime.datetime]):
@@ -297,7 +300,10 @@ def sync(
     """Get pending dashboard actions feed
 
      Returns a typed feed of actions the current user should take, aggregating pending orders, failed
-    resources, overdue invoices, missing Terms of Service consents, and incomplete profile state.
+    resources, overdue invoices, missing Terms of Service consents, and incomplete profile state. Where
+    USER_ACTIONS_ENABLED is set, the persistent UserAction queue is folded in as well; those items carry
+    a uuid addressing the user-actions endpoints, along with any corrective actions and the route
+    recorded for them.
 
     Args:
         agreement_date (Union[Unset, datetime.datetime]):
@@ -399,7 +405,10 @@ async def asyncio_detailed(
     """Get pending dashboard actions feed
 
      Returns a typed feed of actions the current user should take, aggregating pending orders, failed
-    resources, overdue invoices, missing Terms of Service consents, and incomplete profile state.
+    resources, overdue invoices, missing Terms of Service consents, and incomplete profile state. Where
+    USER_ACTIONS_ENABLED is set, the persistent UserAction queue is folded in as well; those items carry
+    a uuid addressing the user-actions endpoints, along with any corrective actions and the route
+    recorded for them.
 
     Args:
         agreement_date (Union[Unset, datetime.datetime]):
@@ -504,7 +513,10 @@ async def asyncio(
     """Get pending dashboard actions feed
 
      Returns a typed feed of actions the current user should take, aggregating pending orders, failed
-    resources, overdue invoices, missing Terms of Service consents, and incomplete profile state.
+    resources, overdue invoices, missing Terms of Service consents, and incomplete profile state. Where
+    USER_ACTIONS_ENABLED is set, the persistent UserAction queue is folded in as well; those items carry
+    a uuid addressing the user-actions endpoints, along with any corrective actions and the route
+    recorded for them.
 
     Args:
         agreement_date (Union[Unset, datetime.datetime]):
