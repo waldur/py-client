@@ -1462,6 +1462,8 @@ from .open_stack_backup_request import OpenStackBackupRequest
 from .open_stack_backup_restoration import OpenStackBackupRestoration
 from .open_stack_backup_restoration_create_request import OpenStackBackupRestorationCreateRequest
 from .open_stack_backup_restoration_request import OpenStackBackupRestorationRequest
+from .open_stack_console_log import OpenStackConsoleLog
+from .open_stack_console_log_request import OpenStackConsoleLogRequest
 from .open_stack_create_floating_ip_request import OpenStackCreateFloatingIPRequest
 from .open_stack_create_instance_port_request import OpenStackCreateInstancePortRequest
 from .open_stack_create_port_request import OpenStackCreatePortRequest
@@ -4416,6 +4418,8 @@ __all__ = (
     "OpenStackBackupRestoration",
     "OpenStackBackupRestorationCreateRequest",
     "OpenStackBackupRestorationRequest",
+    "OpenStackConsoleLog",
+    "OpenStackConsoleLogRequest",
     "OpenStackCreateFloatingIPRequest",
     "OpenStackCreateInstancePortRequest",
     "OpenStackCreatePortRequest",

@@ -2745,6 +2745,7 @@ Module: `waldur_api_client.api.openstack_instances`
 - `openstack_instances_change_flavor` POST `/api/openstack-instances/{uuid}/change_flavor/` — Change instance flavor (path: uuid | request body)
 - `openstack_instances_console_retrieve` GET `/api/openstack-instances/{uuid}/console/` — Get console URL (path: uuid)
 - `openstack_instances_console_log_retrieve` GET `/api/openstack-instances/{uuid}/console_log/` — Get console log (path: uuid | 1 query param)
+- `openstack_instances_console_log` POST `/api/openstack-instances/{uuid}/console_log/` — Get console log (path: uuid | request body)
 - `openstack_instances_diagnose_connectivity` POST `/api/openstack-instances/{uuid}/diagnose_connectivity/` — Diagnose connectivity (path: uuid | request body)
 - `openstack_instances_floating_ips_list` GET `/api/openstack-instances/{uuid}/floating_ips/` — List instance floating IPs (path: uuid)
 - `openstack_instances_placement_allocations_list` GET `/api/openstack-instances/{uuid}/placement_allocations/` — Get Placement allocations for the instance (path: uuid)
