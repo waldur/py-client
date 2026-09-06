@@ -33,7 +33,13 @@ class OfferingComponent:
         is_boolean (Union[Unset, bool]):
         default_limit (Union[None, Unset, int]):
         factor (Union[None, Unset, int]):
-        is_builtin (Union[Unset, bool]):
+        is_builtin (Union[Unset, bool]): The API's older name for ``billed_per_plan``.
+
+            It used to ask the plugin registry whether this component's type is one
+            the plugin declares, which left out the OpenStack per-volume-type
+            quotas: they are created by the volume type sync rather than declared,
+            so the API called them provider components while the billing resolver
+            treated them as builtin. Reading the stored flag makes the two agree.
         is_prepaid (Union[Unset, bool]):
         overage_component (Union[None, UUID, Unset]):
         min_prepaid_duration (Union[None, Unset, int]):
