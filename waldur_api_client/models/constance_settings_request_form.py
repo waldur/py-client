@@ -125,6 +125,7 @@ class ConstanceSettingsRequestForm:
         waldur_support_enabled (Union[Unset, bool]):
         waldur_support_active_backend_type (Union[Unset, WALDURSUPPORTACTIVEBACKENDTYPEEnum]):
         waldur_support_display_request_type (Union[Unset, bool]):
+        waldur_support_issue_key_prefix (Union[Unset, str]):
         waldur_support_provider_routing_enabled (Union[Unset, bool]):
         waldur_support_auto_assign (Union[Unset, bool]):
         waldur_support_auto_assign_strategy (Union[Unset, str]):
@@ -455,6 +456,7 @@ class ConstanceSettingsRequestForm:
     waldur_support_enabled: Union[Unset, bool] = UNSET
     waldur_support_active_backend_type: Union[Unset, WALDURSUPPORTACTIVEBACKENDTYPEEnum] = UNSET
     waldur_support_display_request_type: Union[Unset, bool] = UNSET
+    waldur_support_issue_key_prefix: Union[Unset, str] = UNSET
     waldur_support_provider_routing_enabled: Union[Unset, bool] = UNSET
     waldur_support_auto_assign: Union[Unset, bool] = UNSET
     waldur_support_auto_assign_strategy: Union[Unset, str] = UNSET
@@ -978,6 +980,8 @@ class ConstanceSettingsRequestForm:
             waldur_support_active_backend_type = self.waldur_support_active_backend_type.value
 
         waldur_support_display_request_type = self.waldur_support_display_request_type
+
+        waldur_support_issue_key_prefix = self.waldur_support_issue_key_prefix
 
         waldur_support_provider_routing_enabled = self.waldur_support_provider_routing_enabled
 
@@ -1817,6 +1821,8 @@ class ConstanceSettingsRequestForm:
             field_dict["WALDUR_SUPPORT_ACTIVE_BACKEND_TYPE"] = waldur_support_active_backend_type
         if waldur_support_display_request_type is not UNSET:
             field_dict["WALDUR_SUPPORT_DISPLAY_REQUEST_TYPE"] = waldur_support_display_request_type
+        if waldur_support_issue_key_prefix is not UNSET:
+            field_dict["WALDUR_SUPPORT_ISSUE_KEY_PREFIX"] = waldur_support_issue_key_prefix
         if waldur_support_provider_routing_enabled is not UNSET:
             field_dict["WALDUR_SUPPORT_PROVIDER_ROUTING_ENABLED"] = waldur_support_provider_routing_enabled
         if waldur_support_auto_assign is not UNSET:
@@ -2735,6 +2741,8 @@ class ConstanceSettingsRequestForm:
             waldur_support_active_backend_type = WALDURSUPPORTACTIVEBACKENDTYPEEnum(_waldur_support_active_backend_type)
 
         waldur_support_display_request_type = d.pop("WALDUR_SUPPORT_DISPLAY_REQUEST_TYPE", UNSET)
+
+        waldur_support_issue_key_prefix = d.pop("WALDUR_SUPPORT_ISSUE_KEY_PREFIX", UNSET)
 
         waldur_support_provider_routing_enabled = d.pop("WALDUR_SUPPORT_PROVIDER_ROUTING_ENABLED", UNSET)
 
@@ -3692,6 +3700,7 @@ class ConstanceSettingsRequestForm:
             waldur_support_enabled=waldur_support_enabled,
             waldur_support_active_backend_type=waldur_support_active_backend_type,
             waldur_support_display_request_type=waldur_support_display_request_type,
+            waldur_support_issue_key_prefix=waldur_support_issue_key_prefix,
             waldur_support_provider_routing_enabled=waldur_support_provider_routing_enabled,
             waldur_support_auto_assign=waldur_support_auto_assign,
             waldur_support_auto_assign_strategy=waldur_support_auto_assign_strategy,
