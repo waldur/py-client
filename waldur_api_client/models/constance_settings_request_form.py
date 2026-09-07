@@ -234,6 +234,7 @@ class ConstanceSettingsRequestForm:
         oidc_client_secret (Union[Unset, str]):
         oidc_user_field (Union[Unset, str]):
         oidc_cache_timeout (Union[Unset, int]):
+        oidc_registration_method (Union[Unset, str]):
         oidc_access_token_enabled (Union[Unset, bool]):
         oidc_block_creation_of_uninvited_users (Union[Unset, bool]):
         oidc_block_creation_of_uninvited_users_response_message (Union[Unset, str]):
@@ -563,6 +564,7 @@ class ConstanceSettingsRequestForm:
     oidc_client_secret: Union[Unset, str] = UNSET
     oidc_user_field: Union[Unset, str] = UNSET
     oidc_cache_timeout: Union[Unset, int] = UNSET
+    oidc_registration_method: Union[Unset, str] = UNSET
     oidc_access_token_enabled: Union[Unset, bool] = UNSET
     oidc_block_creation_of_uninvited_users: Union[Unset, bool] = UNSET
     oidc_block_creation_of_uninvited_users_response_message: Union[Unset, str] = UNSET
@@ -1217,6 +1219,8 @@ class ConstanceSettingsRequestForm:
         oidc_user_field = self.oidc_user_field
 
         oidc_cache_timeout = self.oidc_cache_timeout
+
+        oidc_registration_method = self.oidc_registration_method
 
         oidc_access_token_enabled = self.oidc_access_token_enabled
 
@@ -2033,6 +2037,8 @@ class ConstanceSettingsRequestForm:
             field_dict["OIDC_USER_FIELD"] = oidc_user_field
         if oidc_cache_timeout is not UNSET:
             field_dict["OIDC_CACHE_TIMEOUT"] = oidc_cache_timeout
+        if oidc_registration_method is not UNSET:
+            field_dict["OIDC_REGISTRATION_METHOD"] = oidc_registration_method
         if oidc_access_token_enabled is not UNSET:
             field_dict["OIDC_ACCESS_TOKEN_ENABLED"] = oidc_access_token_enabled
         if oidc_block_creation_of_uninvited_users is not UNSET:
@@ -2993,6 +2999,8 @@ class ConstanceSettingsRequestForm:
 
         oidc_cache_timeout = d.pop("OIDC_CACHE_TIMEOUT", UNSET)
 
+        oidc_registration_method = d.pop("OIDC_REGISTRATION_METHOD", UNSET)
+
         oidc_access_token_enabled = d.pop("OIDC_ACCESS_TOKEN_ENABLED", UNSET)
 
         oidc_block_creation_of_uninvited_users = d.pop("OIDC_BLOCK_CREATION_OF_UNINVITED_USERS", UNSET)
@@ -3793,6 +3801,7 @@ class ConstanceSettingsRequestForm:
             oidc_client_secret=oidc_client_secret,
             oidc_user_field=oidc_user_field,
             oidc_cache_timeout=oidc_cache_timeout,
+            oidc_registration_method=oidc_registration_method,
             oidc_access_token_enabled=oidc_access_token_enabled,
             oidc_block_creation_of_uninvited_users=oidc_block_creation_of_uninvited_users,
             oidc_block_creation_of_uninvited_users_response_message=oidc_block_creation_of_uninvited_users_response_message,
