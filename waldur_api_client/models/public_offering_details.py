@@ -30,6 +30,7 @@ if TYPE_CHECKING:
     from ..models.organization_group import OrganizationGroup
     from ..models.public_offering_details_attributes import PublicOfferingDetailsAttributes
     from ..models.public_offering_details_backend_metadata import PublicOfferingDetailsBackendMetadata
+    from ..models.public_offering_details_billing_period_applies import PublicOfferingDetailsBillingPeriodApplies
     from ..models.quota import Quota
 
 
@@ -43,6 +44,9 @@ class PublicOfferingDetails:
         url (Union[Unset, str]):
         uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
+        billing_period_applies (Union[Unset, PublicOfferingDetailsBillingPeriodApplies]): Per plan billing mode, whether
+            a plan's billing period changes what is invoiced. False means every component of this offering would price a
+            quantity of its own under that mode, so the period is inert on the invoice.
         name (Union[Unset, str]):
         slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         description (Union[Unset, str]):
@@ -133,6 +137,7 @@ class PublicOfferingDetails:
     url: Union[Unset, str] = UNSET
     uuid: Union[Unset, UUID] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
+    billing_period_applies: Union[Unset, "PublicOfferingDetailsBillingPeriodApplies"] = UNSET
     name: Union[Unset, str] = UNSET
     slug: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
@@ -229,6 +234,10 @@ class PublicOfferingDetails:
         created: Union[Unset, str] = UNSET
         if not isinstance(self.created, Unset):
             created = self.created.isoformat()
+
+        billing_period_applies: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.billing_period_applies, Unset):
+            billing_period_applies = self.billing_period_applies.to_dict()
 
         name = self.name
 
@@ -632,6 +641,8 @@ class PublicOfferingDetails:
             field_dict["uuid"] = uuid
         if created is not UNSET:
             field_dict["created"] = created
+        if billing_period_applies is not UNSET:
+            field_dict["billing_period_applies"] = billing_period_applies
         if name is not UNSET:
             field_dict["name"] = name
         if slug is not UNSET:
@@ -821,6 +832,7 @@ class PublicOfferingDetails:
         from ..models.organization_group import OrganizationGroup
         from ..models.public_offering_details_attributes import PublicOfferingDetailsAttributes
         from ..models.public_offering_details_backend_metadata import PublicOfferingDetailsBackendMetadata
+        from ..models.public_offering_details_billing_period_applies import PublicOfferingDetailsBillingPeriodApplies
         from ..models.quota import Quota
 
         d = dict(src_dict)
@@ -839,6 +851,13 @@ class PublicOfferingDetails:
             created = UNSET
         else:
             created = isoparse(_created)
+
+        _billing_period_applies = d.pop("billing_period_applies", UNSET)
+        billing_period_applies: Union[Unset, PublicOfferingDetailsBillingPeriodApplies]
+        if isinstance(_billing_period_applies, Unset):
+            billing_period_applies = UNSET
+        else:
+            billing_period_applies = PublicOfferingDetailsBillingPeriodApplies.from_dict(_billing_period_applies)
 
         name = d.pop("name", UNSET)
 
@@ -1402,6 +1421,7 @@ class PublicOfferingDetails:
             url=url,
             uuid=uuid,
             created=created,
+            billing_period_applies=billing_period_applies,
             name=name,
             slug=slug,
             description=description,

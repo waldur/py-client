@@ -1289,6 +1289,7 @@ from .offering_backend_id_rules_update_request_backend_id_rules import OfferingB
 from .offering_backend_metadata import OfferingBackendMetadata
 from .offering_backend_metadata_request import OfferingBackendMetadataRequest
 from .offering_backend_metadata_request_backend_metadata import OfferingBackendMetadataRequestBackendMetadata
+from .offering_billing_period_applies import OfferingBillingPeriodApplies
 from .offering_compliance_checklist_update_request import OfferingComplianceChecklistUpdateRequest
 from .offering_component import OfferingComponent
 from .offering_component_limit_request import OfferingComponentLimitRequest
@@ -2145,6 +2146,7 @@ from .provider_offering_details import ProviderOfferingDetails
 from .provider_offering_details_attributes import ProviderOfferingDetailsAttributes
 from .provider_offering_details_backend_id_rules import ProviderOfferingDetailsBackendIdRules
 from .provider_offering_details_backend_metadata import ProviderOfferingDetailsBackendMetadata
+from .provider_offering_details_billing_period_applies import ProviderOfferingDetailsBillingPeriodApplies
 from .provider_offering_details_field_enum import ProviderOfferingDetailsFieldEnum
 from .provider_offering_details_o_enum import ProviderOfferingDetailsOEnum
 from .provider_offering_details_service_attributes import ProviderOfferingDetailsServiceAttributes
@@ -2190,6 +2192,7 @@ from .public_maintenance_announcement_state_enum import PublicMaintenanceAnnounc
 from .public_offering_details import PublicOfferingDetails
 from .public_offering_details_attributes import PublicOfferingDetailsAttributes
 from .public_offering_details_backend_metadata import PublicOfferingDetailsBackendMetadata
+from .public_offering_details_billing_period_applies import PublicOfferingDetailsBillingPeriodApplies
 from .public_offering_details_field_enum import PublicOfferingDetailsFieldEnum
 from .publishing_metrics import PublishingMetrics
 from .pubsub_circuit_breaker_summary import PubsubCircuitBreakerSummary
@@ -4247,6 +4250,7 @@ __all__ = (
     "OfferingBackendMetadata",
     "OfferingBackendMetadataRequest",
     "OfferingBackendMetadataRequestBackendMetadata",
+    "OfferingBillingPeriodApplies",
     "OfferingComplianceChecklistUpdateRequest",
     "OfferingComponent",
     "OfferingComponentLimitRequest",
@@ -5039,6 +5043,7 @@ __all__ = (
     "ProviderOfferingDetailsAttributes",
     "ProviderOfferingDetailsBackendIdRules",
     "ProviderOfferingDetailsBackendMetadata",
+    "ProviderOfferingDetailsBillingPeriodApplies",
     "ProviderOfferingDetailsFieldEnum",
     "ProviderOfferingDetailsOEnum",
     "ProviderOfferingDetailsServiceAttributes",
@@ -5084,6 +5089,7 @@ __all__ = (
     "PublicOfferingDetails",
     "PublicOfferingDetailsAttributes",
     "PublicOfferingDetailsBackendMetadata",
+    "PublicOfferingDetailsBillingPeriodApplies",
     "PublicOfferingDetailsFieldEnum",
     "PublishingMetrics",
     "PubsubCircuitBreakerSummary",
