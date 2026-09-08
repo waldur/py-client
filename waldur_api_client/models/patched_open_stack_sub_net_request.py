@@ -26,6 +26,8 @@ class PatchedOpenStackSubNetRequest:
         allocation_pools (Union[Unset, list['OpenStackSubNetAllocationPoolRequest']]):
         dns_nameservers (Union[Unset, list[str]]):
         host_routes (Union[Unset, list['OpenStackStaticRouteRequest']]):
+        router (Union[None, Unset, str]): Router to attach the subnet to. Optional: when omitted Waldur picks a router
+            of the tenant itself. Cannot be changed here afterwards -- use the router's add/remove interface actions.
     """
 
     name: Union[Unset, str] = UNSET
@@ -36,6 +38,7 @@ class PatchedOpenStackSubNetRequest:
     allocation_pools: Union[Unset, list["OpenStackSubNetAllocationPoolRequest"]] = UNSET
     dns_nameservers: Union[Unset, list[str]] = UNSET
     host_routes: Union[Unset, list["OpenStackStaticRouteRequest"]] = UNSET
+    router: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -75,6 +78,12 @@ class PatchedOpenStackSubNetRequest:
                 host_routes_item = host_routes_item_data.to_dict()
                 host_routes.append(host_routes_item)
 
+        router: Union[None, Unset, str]
+        if isinstance(self.router, Unset):
+            router = UNSET
+        else:
+            router = self.router
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -94,6 +103,8 @@ class PatchedOpenStackSubNetRequest:
             field_dict["dns_nameservers"] = dns_nameservers
         if host_routes is not UNSET:
             field_dict["host_routes"] = host_routes
+        if router is not UNSET:
+            field_dict["router"] = router
 
         return field_dict
 
@@ -145,6 +156,15 @@ class PatchedOpenStackSubNetRequest:
 
             host_routes.append(host_routes_item)
 
+        def _parse_router(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        router = _parse_router(d.pop("router", UNSET))
+
         patched_open_stack_sub_net_request = cls(
             name=name,
             description=description,
@@ -154,6 +174,7 @@ class PatchedOpenStackSubNetRequest:
             allocation_pools=allocation_pools,
             dns_nameservers=dns_nameservers,
             host_routes=host_routes,
+            router=router,
         )
 
         patched_open_stack_sub_net_request.additional_properties = d

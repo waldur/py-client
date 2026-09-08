@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.10.dev.20260908080241
+# Version: 8.1.3-rc.10.dev.20260908200019
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -18857,14 +18857,14 @@ Path parameters:
 ### openstack_subnets_connect
 POST /api/openstack-subnets/{uuid}/connect/
 Summary: Connect subnet to router
-Description: Connect the subnet to the default tenant router.
+Description: Connect the subnet to its router: the one chosen when the subnet was created or last attached to, and otherwise the tenant router Waldur picks.
 Path parameters:
   - uuid
 
 ### openstack_subnets_disconnect
 POST /api/openstack-subnets/{uuid}/disconnect/
 Summary: Disconnect subnet from router
-Description: Disconnect the subnet from the default tenant router.
+Description: Disconnect the subnet from its router. The router is remembered, so connecting again returns the subnet to it.
 Path parameters:
   - uuid
 

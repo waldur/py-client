@@ -64,6 +64,10 @@ class OpenStackSubNet:
         host_routes (Union[Unset, list['OpenStackStaticRoute']]):
         is_connected (Union[Unset, bool]): Is subnet connected to the default tenant router.
         port_security_enabled (Union[Unset, bool]):
+        router (Union[None, Unset, str]): Router to attach the subnet to. Optional: when omitted Waldur picks a router
+            of the tenant itself. Cannot be changed here afterwards -- use the router's add/remove interface actions.
+        router_name (Union[None, Unset, str]):
+        router_uuid (Union[None, UUID, Unset]):
         marketplace_offering_uuid (Union[None, Unset, str]):
         marketplace_offering_name (Union[None, Unset, str]):
         marketplace_offering_type (Union[None, Unset, str]):
@@ -117,6 +121,9 @@ class OpenStackSubNet:
     host_routes: Union[Unset, list["OpenStackStaticRoute"]] = UNSET
     is_connected: Union[Unset, bool] = UNSET
     port_security_enabled: Union[Unset, bool] = UNSET
+    router: Union[None, Unset, str] = UNSET
+    router_name: Union[None, Unset, str] = UNSET
+    router_uuid: Union[None, UUID, Unset] = UNSET
     marketplace_offering_uuid: Union[None, Unset, str] = UNSET
     marketplace_offering_name: Union[None, Unset, str] = UNSET
     marketplace_offering_type: Union[None, Unset, str] = UNSET
@@ -255,6 +262,26 @@ class OpenStackSubNet:
         is_connected = self.is_connected
 
         port_security_enabled = self.port_security_enabled
+
+        router: Union[None, Unset, str]
+        if isinstance(self.router, Unset):
+            router = UNSET
+        else:
+            router = self.router
+
+        router_name: Union[None, Unset, str]
+        if isinstance(self.router_name, Unset):
+            router_name = UNSET
+        else:
+            router_name = self.router_name
+
+        router_uuid: Union[None, Unset, str]
+        if isinstance(self.router_uuid, Unset):
+            router_uuid = UNSET
+        elif isinstance(self.router_uuid, UUID):
+            router_uuid = str(self.router_uuid)
+        else:
+            router_uuid = self.router_uuid
 
         marketplace_offering_uuid: Union[None, Unset, str]
         if isinstance(self.marketplace_offering_uuid, Unset):
@@ -405,6 +432,12 @@ class OpenStackSubNet:
             field_dict["is_connected"] = is_connected
         if port_security_enabled is not UNSET:
             field_dict["port_security_enabled"] = port_security_enabled
+        if router is not UNSET:
+            field_dict["router"] = router
+        if router_name is not UNSET:
+            field_dict["router_name"] = router_name
+        if router_uuid is not UNSET:
+            field_dict["router_uuid"] = router_uuid
         if marketplace_offering_uuid is not UNSET:
             field_dict["marketplace_offering_uuid"] = marketplace_offering_uuid
         if marketplace_offering_name is not UNSET:
@@ -593,6 +626,41 @@ class OpenStackSubNet:
 
         port_security_enabled = d.pop("port_security_enabled", UNSET)
 
+        def _parse_router(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        router = _parse_router(d.pop("router", UNSET))
+
+        def _parse_router_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        router_name = _parse_router_name(d.pop("router_name", UNSET))
+
+        def _parse_router_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                router_uuid_type_0 = UUID(data)
+
+                return router_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        router_uuid = _parse_router_uuid(d.pop("router_uuid", UNSET))
+
         def _parse_marketplace_offering_uuid(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -746,6 +814,9 @@ class OpenStackSubNet:
             host_routes=host_routes,
             is_connected=is_connected,
             port_security_enabled=port_security_enabled,
+            router=router,
+            router_name=router_name,
+            router_uuid=router_uuid,
             marketplace_offering_uuid=marketplace_offering_uuid,
             marketplace_offering_name=marketplace_offering_name,
             marketplace_offering_type=marketplace_offering_type,
