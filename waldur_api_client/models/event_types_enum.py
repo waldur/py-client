@@ -36,6 +36,7 @@ class EventTypesEnum(str, Enum):
     CUSTOM_NOTIFICATION = "custom_notification"
     DROPLET_RESIZE_SCHEDULED = "droplet_resize_scheduled"
     DROPLET_RESIZE_SUCCEEDED = "droplet_resize_succeeded"
+    EVENT_CONSUMER_REGISTERED_WITH_BROAD_CREDENTIAL = "event_consumer_registered_with_broad_credential"
     FREEIPA_PROFILE_CREATED = "freeipa_profile_created"
     FREEIPA_PROFILE_DELETED = "freeipa_profile_deleted"
     FREEIPA_PROFILE_DISABLED = "freeipa_profile_disabled"

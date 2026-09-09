@@ -183,6 +183,7 @@ from .attribute_request import AttributeRequest
 from .attribute_request_default_type_0 import AttributeRequestDefaultType0
 from .attribute_source_detail import AttributeSourceDetail
 from .attribute_type_enum import AttributeTypeEnum
+from .auth_kind_enum import AuthKindEnum
 from .auth_method_enum import AuthMethodEnum
 from .auth_result import AuthResult
 from .auth_result_request import AuthResultRequest
@@ -191,6 +192,7 @@ from .auth_result_uuid_request import AuthResultUUIDRequest
 from .auth_token import AuthToken
 from .auth_token_challenge import AuthTokenChallenge
 from .auth_type_enum import AuthTypeEnum
+from .authorized_via_enum import AuthorizedViaEnum
 from .availability_zone_response import AvailabilityZoneResponse
 from .available_arrow_customers_response import AvailableArrowCustomersResponse
 from .available_binding_target import AvailableBindingTarget
@@ -3182,7 +3184,9 @@ __all__ = (
     "AttributeRequestDefaultType0",
     "AttributeSourceDetail",
     "AttributeTypeEnum",
+    "AuthKindEnum",
     "AuthMethodEnum",
+    "AuthorizedViaEnum",
     "AuthResult",
     "AuthResultRequest",
     "AuthResultStateEnum",
