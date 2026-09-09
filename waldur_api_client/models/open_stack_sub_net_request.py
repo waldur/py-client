@@ -28,6 +28,9 @@ class OpenStackSubNetRequest:
         host_routes (Union[Unset, list['OpenStackStaticRouteRequest']]):
         router (Union[None, Unset, str]): Router to attach the subnet to. Optional: when omitted Waldur picks a router
             of the tenant itself. Cannot be changed here afterwards -- use the router's add/remove interface actions.
+        skip_router_connection (Union[Unset, bool]): Create the subnet without attaching it to a router. Off by default,
+            so an omitted field behaves exactly as before: Waldur attaches the subnet to a router of the tenant. Default:
+            False.
     """
 
     name: str
@@ -39,6 +42,7 @@ class OpenStackSubNetRequest:
     dns_nameservers: Union[Unset, list[str]] = UNSET
     host_routes: Union[Unset, list["OpenStackStaticRouteRequest"]] = UNSET
     router: Union[None, Unset, str] = UNSET
+    skip_router_connection: Union[Unset, bool] = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -84,6 +88,8 @@ class OpenStackSubNetRequest:
         else:
             router = self.router
 
+        skip_router_connection = self.skip_router_connection
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -107,6 +113,8 @@ class OpenStackSubNetRequest:
             field_dict["host_routes"] = host_routes
         if router is not UNSET:
             field_dict["router"] = router
+        if skip_router_connection is not UNSET:
+            field_dict["skip_router_connection"] = skip_router_connection
 
         return field_dict
 
@@ -167,6 +175,8 @@ class OpenStackSubNetRequest:
 
         router = _parse_router(d.pop("router", UNSET))
 
+        skip_router_connection = d.pop("skip_router_connection", UNSET)
+
         open_stack_sub_net_request = cls(
             name=name,
             description=description,
@@ -177,6 +187,7 @@ class OpenStackSubNetRequest:
             dns_nameservers=dns_nameservers,
             host_routes=host_routes,
             router=router,
+            skip_router_connection=skip_router_connection,
         )
 
         open_stack_sub_net_request.additional_properties = d

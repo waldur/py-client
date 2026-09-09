@@ -50,6 +50,7 @@ class OpenStackSubNetFieldEnum(str, Enum):
     SERVICE_SETTINGS_ERROR_MESSAGE = "service_settings_error_message"
     SERVICE_SETTINGS_STATE = "service_settings_state"
     SERVICE_SETTINGS_UUID = "service_settings_uuid"
+    SKIP_ROUTER_CONNECTION = "skip_router_connection"
     STATE = "state"
     TENANT = "tenant"
     TENANT_NAME = "tenant_name"
