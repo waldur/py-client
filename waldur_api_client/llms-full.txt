@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.10.dev.20260909194517
+# Version: 8.1.3-rc.10.dev.20260910153208
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -12385,6 +12385,81 @@ Path parameters:
   - key — A unique value identifying this section.
 
 ============================================================
+## marketplace-service-provider-accounts  (module: waldur_api_client.api.marketplace_service_provider_accounts)
+============================================================
+
+### marketplace_service_provider_accounts_list
+GET /api/marketplace-service-provider-accounts/
+Summary: List service provider accounts
+Description: Returns a paginated list of the accounts a service provider holds for its users --
+        one per user per provider, shared by every offering of that provider.
+        Scoped to providers whose organization the caller can see.
+Query parameters (14):
+  - created — Created after
+  - created_before — Created before
+  - customer_uuid — Provider organization UUID
+  - field
+  - is_restricted — Is restricted
+  - modified — Modified after
+  - modified_before — Modified before
+  - o — Ordering
+  - provider_uuid — Service provider UUID
+  - query — Search by username, user name, UID or primary GID
+  - runtime_state — Account runtime state
+  - state — Account state
+  - user_username — User username
+  - user_uuid — User UUID
+
+### marketplace_service_provider_accounts_count
+HEAD /api/marketplace-service-provider-accounts/
+Summary: List service provider accounts
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (13):
+  - created — Created after
+  - created_before — Created before
+  - customer_uuid — Provider organization UUID
+  - is_restricted — Is restricted
+  - modified — Modified after
+  - modified_before — Modified before
+  - o — Ordering
+  - provider_uuid — Service provider UUID
+  - query — Search by username, user name, UID or primary GID
+  - runtime_state — Account runtime state
+  - state — Account state
+  - user_username — User username
+  - user_uuid — User UUID
+
+### marketplace_service_provider_accounts_retrieve
+GET /api/marketplace-service-provider-accounts/{uuid}/
+Summary: Retrieve a service provider account
+Description: Returns one provider account, including its POSIX identity and the number of offering accounts reading through it.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - field
+
+### marketplace_service_provider_accounts_update
+PUT /api/marketplace-service-provider-accounts/{uuid}/
+Summary: Update a service provider account
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_service_provider_accounts_partial_update
+PATCH /api/marketplace-service-provider-accounts/{uuid}/
+Summary: Update a service provider account
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_service_provider_accounts_destroy
+DELETE /api/marketplace-service-provider-accounts/{uuid}/
+Summary: Delete a service provider account
+Description: Refused while offering accounts still read through this record.
+Path parameters:
+  - uuid
+
+============================================================
 ## marketplace-service-providers  (module: waldur_api_client.api.marketplace_service_providers)
 ============================================================
 
@@ -13186,6 +13261,16 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_service_providers_adopt_provider_accounts
+POST /api/marketplace-service-providers/{uuid}/adopt_provider_accounts/
+Summary: Adopt provider-level accounts
+Description: Backs every offering account at this provider with one provider-level account per user, so a person resolves to a single username and POSIX identity across the provider's offerings.
+
+Users whose accounts already agree are adopted without input. A user whose accounts disagree must be given a survi...
+Path parameters:
+  - uuid
+Request body: yes
+
 ### service_provider_api_secret_code_retrieve
 GET /api/marketplace-service-providers/{uuid}/api_secret_code/
 Summary: Get service provider API secret code
@@ -13299,6 +13384,22 @@ Description: Updates the expiration time for a user's existing role in the curre
 Path parameters:
   - uuid
 Request body: yes
+
+### marketplace_service_providers_username_conflicts_list
+GET /api/marketplace-service-providers/{uuid}/username_conflicts/
+Summary: Report username conflicts before adopting provider accounts
+Description: Lists every user whose offering accounts at this provider disagree about the username, with the evidence needed to choose which one survives: how many offerings use it, whether any of those accounts belongs to a user with a live resource, and the home directories recorded for it. An empty list me...
+Path parameters:
+  - uuid
+Query parameters (8):
+  - created — Created after
+  - created_before — Created before
+  - customer — Customer URL
+  - customer_keyword — Customer keyword (name, abbreviation or native name)
+  - customer_uuid — Customer UUID
+  - modified — Modified after
+  - modified_before — Modified before
+  - o — Ordering
 
 ============================================================
 ## marketplace-site-agent-connection-stats  (module: waldur_api_client.api.marketplace_site_agent_connection_stats)

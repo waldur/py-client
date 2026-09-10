@@ -5,6 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.account_name_generation_policy_enum import AccountNameGenerationPolicyEnum
+from ..models.account_scope import AccountScope
 from ..models.action_on_usage_limit_enum import ActionOnUsageLimitEnum
 from ..models.billing_source_enum import BillingSourceEnum
 from ..models.blank_enum import BlankEnum
@@ -29,6 +30,7 @@ T = TypeVar("T", bound="MergedPluginOptionsRequest")
 class MergedPluginOptionsRequest:
     """
     Attributes:
+        account_scope (Union[Unset, AccountScope]):
         auto_approve_remote_orders (Union[Unset, bool]): If set to True, an order can be processed without approval
         resource_expiration_threshold (Union[Unset, int]): Resource expiration threshold in days. Default: 30.
         service_provider_can_create_offering_user (Union[Unset, bool]): Service provider can create offering user
@@ -221,6 +223,7 @@ class MergedPluginOptionsRequest:
             on the OpenStack instance order form. Default: False.
     """
 
+    account_scope: Union[Unset, AccountScope] = UNSET
     auto_approve_remote_orders: Union[Unset, bool] = UNSET
     resource_expiration_threshold: Union[Unset, int] = 30
     service_provider_can_create_offering_user: Union[Unset, bool] = UNSET
@@ -324,6 +327,10 @@ class MergedPluginOptionsRequest:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        account_scope: Union[Unset, str] = UNSET
+        if not isinstance(self.account_scope, Unset):
+            account_scope = self.account_scope.value
+
         auto_approve_remote_orders = self.auto_approve_remote_orders
 
         resource_expiration_threshold = self.resource_expiration_threshold
@@ -587,6 +594,8 @@ class MergedPluginOptionsRequest:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if account_scope is not UNSET:
+            field_dict["account_scope"] = account_scope
         if auto_approve_remote_orders is not UNSET:
             field_dict["auto_approve_remote_orders"] = auto_approve_remote_orders
         if resource_expiration_threshold is not UNSET:
@@ -808,6 +817,13 @@ class MergedPluginOptionsRequest:
         from ..models.merged_plugin_options_request_resource_role_map import MergedPluginOptionsRequestResourceRoleMap
 
         d = dict(src_dict)
+        _account_scope = d.pop("account_scope", UNSET)
+        account_scope: Union[Unset, AccountScope]
+        if isinstance(_account_scope, Unset):
+            account_scope = UNSET
+        else:
+            account_scope = AccountScope(_account_scope)
+
         auto_approve_remote_orders = d.pop("auto_approve_remote_orders", UNSET)
 
         resource_expiration_threshold = d.pop("resource_expiration_threshold", UNSET)
@@ -1154,6 +1170,7 @@ class MergedPluginOptionsRequest:
         show_ssh_key_loss_warning = d.pop("show_ssh_key_loss_warning", UNSET)
 
         merged_plugin_options_request = cls(
+            account_scope=account_scope,
             auto_approve_remote_orders=auto_approve_remote_orders,
             resource_expiration_threshold=resource_expiration_threshold,
             service_provider_can_create_offering_user=service_provider_can_create_offering_user,

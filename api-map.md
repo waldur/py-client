@@ -2001,6 +2001,16 @@ Module: `waldur_api_client.api.marketplace_sections`
 - `marketplace_sections_partial_update` PATCH `/api/marketplace-sections/{key}/` — Partially update a section (path: key | request body)
 - `marketplace_sections_destroy` DELETE `/api/marketplace-sections/{key}/` — Delete a section (path: key)
 
+## marketplace-service-provider-accounts
+Module: `waldur_api_client.api.marketplace_service_provider_accounts`
+
+- `marketplace_service_provider_accounts_list` GET `/api/marketplace-service-provider-accounts/` — List service provider accounts (14 query params)
+- `marketplace_service_provider_accounts_count` HEAD `/api/marketplace-service-provider-accounts/` — List service provider accounts (13 query params)
+- `marketplace_service_provider_accounts_retrieve` GET `/api/marketplace-service-provider-accounts/{uuid}/` — Retrieve a service provider account (path: uuid | 1 query param)
+- `marketplace_service_provider_accounts_update` PUT `/api/marketplace-service-provider-accounts/{uuid}/` — Update a service provider account (path: uuid | request body)
+- `marketplace_service_provider_accounts_partial_update` PATCH `/api/marketplace-service-provider-accounts/{uuid}/` — Update a service provider account (path: uuid | request body)
+- `marketplace_service_provider_accounts_destroy` DELETE `/api/marketplace-service-provider-accounts/{uuid}/` — Delete a service provider account (path: uuid)
+
 ## marketplace-service-providers
 Module: `waldur_api_client.api.marketplace_service_providers`
 
@@ -2040,6 +2050,7 @@ Module: `waldur_api_client.api.marketplace_service_providers`
 - `marketplace_service_providers_partial_update` PATCH `/api/marketplace-service-providers/{uuid}/` — Partially update a service provider (path: uuid | request body)
 - `marketplace_service_providers_destroy` DELETE `/api/marketplace-service-providers/{uuid}/` — Delete a service provider (path: uuid)
 - `marketplace_service_providers_add_user` POST `/api/marketplace-service-providers/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
+- `marketplace_service_providers_adopt_provider_accounts` POST `/api/marketplace-service-providers/{uuid}/adopt_provider_accounts/` — Adopt provider-level accounts (path: uuid | request body)
 - `service_provider_api_secret_code_retrieve` GET `/api/marketplace-service-providers/{uuid}/api_secret_code/` — Get service provider API secret code (path: uuid)
 - `service_provider_api_secret_code_generate` POST `/api/marketplace-service-providers/{uuid}/api_secret_code/` — Generate new service provider API secret code (path: uuid)
 - `marketplace_service_providers_delete_user` POST `/api/marketplace-service-providers/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
@@ -2052,6 +2063,7 @@ Module: `waldur_api_client.api.marketplace_service_providers`
 - `marketplace_service_providers_set_offerings_username` POST `/api/marketplace-service-providers/{uuid}/set_offerings_username/` — Set offering username for a user (path: uuid | request body)
 - `marketplace_service_providers_stat_retrieve` GET `/api/marketplace-service-providers/{uuid}/stat/` — Get service provider statistics (path: uuid)
 - `marketplace_service_providers_update_user` POST `/api/marketplace-service-providers/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
+- `marketplace_service_providers_username_conflicts_list` GET `/api/marketplace-service-providers/{uuid}/username_conflicts/` — Report username conflicts before adopting provider accounts (path: uuid | 8 query params)
 
 ## marketplace-site-agent-connection-stats
 Module: `waldur_api_client.api.marketplace_site_agent_connection_stats`

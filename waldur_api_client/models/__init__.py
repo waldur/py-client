@@ -14,6 +14,7 @@ from .access_type_enum import AccessTypeEnum
 from .accessor_type_enum import AccessorTypeEnum
 from .accessor_user import AccessorUser
 from .account_name_generation_policy_enum import AccountNameGenerationPolicyEnum
+from .account_scope import AccountScope
 from .action_on_usage_limit_enum import ActionOnUsageLimitEnum
 from .action_taken_enum import ActionTakenEnum
 from .active_agent_task import ActiveAgentTask
@@ -30,6 +31,9 @@ from .admin_announcement_request import AdminAnnouncementRequest
 from .admin_announcement_type_enum import AdminAnnouncementTypeEnum
 from .admin_user import AdminUser
 from .administrative_access import AdministrativeAccess
+from .adopt_provider_accounts_request import AdoptProviderAccountsRequest
+from .adopt_provider_accounts_request_resolutions import AdoptProviderAccountsRequestResolutions
+from .adopt_provider_accounts_response import AdoptProviderAccountsResponse
 from .affiliate_earnings import AffiliateEarnings
 from .affiliate_earnings_month import AffiliateEarningsMonth
 from .affiliate_fee_accrual import AffiliateFeeAccrual
@@ -1907,6 +1911,7 @@ from .patched_science_domain_request import PatchedScienceDomainRequest
 from .patched_science_sub_domain_request import PatchedScienceSubDomainRequest
 from .patched_screenshot_request import PatchedScreenshotRequest
 from .patched_section_request import PatchedSectionRequest
+from .patched_service_provider_account_request import PatchedServiceProviderAccountRequest
 from .patched_service_provider_request import PatchedServiceProviderRequest
 from .patched_service_provider_request_form import PatchedServiceProviderRequestForm
 from .patched_service_provider_request_multipart import PatchedServiceProviderRequestMultipart
@@ -2186,6 +2191,8 @@ from .provider_ticket import ProviderTicket
 from .provider_ticket_o_enum import ProviderTicketOEnum
 from .provider_ticket_request import ProviderTicketRequest
 from .provider_user import ProviderUser
+from .provider_username_candidate import ProviderUsernameCandidate
+from .provider_username_conflict import ProviderUsernameConflict
 from .public_call import PublicCall
 from .public_call_field_enum import PublicCallFieldEnum
 from .public_invitation import PublicInvitation
@@ -2645,6 +2652,9 @@ from .service_attributes_preview_plugin_options import ServiceAttributesPreviewP
 from .service_attributes_preview_service_attributes import ServiceAttributesPreviewServiceAttributes
 from .service_provider import ServiceProvider
 from .service_provider_access import ServiceProviderAccess
+from .service_provider_account import ServiceProviderAccount
+from .service_provider_account_field_enum import ServiceProviderAccountFieldEnum
+from .service_provider_account_request import ServiceProviderAccountRequest
 from .service_provider_api_secret_code import ServiceProviderApiSecretCode
 from .service_provider_checklist_summary import ServiceProviderChecklistSummary
 from .service_provider_compliance_overview import ServiceProviderComplianceOverview
@@ -3017,6 +3027,7 @@ __all__ = (
     "AccessSubnetRequest",
     "AccessTypeEnum",
     "AccountNameGenerationPolicyEnum",
+    "AccountScope",
     "ActionOnUsageLimitEnum",
     "ActionTakenEnum",
     "ActiveAgentTask",
@@ -3033,6 +3044,9 @@ __all__ = (
     "AdminAnnouncementTypeEnum",
     "AdministrativeAccess",
     "AdminUser",
+    "AdoptProviderAccountsRequest",
+    "AdoptProviderAccountsRequestResolutions",
+    "AdoptProviderAccountsResponse",
     "AffiliatedOrganization",
     "AffiliatedOrganizationFieldEnum",
     "AffiliatedOrganizationReportRow",
@@ -4824,6 +4838,7 @@ __all__ = (
     "PatchedScienceSubDomainRequest",
     "PatchedScreenshotRequest",
     "PatchedSectionRequest",
+    "PatchedServiceProviderAccountRequest",
     "PatchedServiceProviderRequest",
     "PatchedServiceProviderRequestForm",
     "PatchedServiceProviderRequestMultipart",
@@ -5085,6 +5100,8 @@ __all__ = (
     "ProviderTicketOEnum",
     "ProviderTicketRequest",
     "ProviderUser",
+    "ProviderUsernameCandidate",
+    "ProviderUsernameConflict",
     "PublicCall",
     "PublicCallFieldEnum",
     "PublicInvitation",
@@ -5531,6 +5548,9 @@ __all__ = (
     "ServiceAttributesPreviewServiceAttributes",
     "ServiceProvider",
     "ServiceProviderAccess",
+    "ServiceProviderAccount",
+    "ServiceProviderAccountFieldEnum",
+    "ServiceProviderAccountRequest",
     "ServiceProviderApiSecretCode",
     "ServiceProviderChecklistSummary",
     "ServiceProviderComplianceOverview",

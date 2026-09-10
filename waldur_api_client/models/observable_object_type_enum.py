@@ -12,6 +12,7 @@ class ObservableObjectTypeEnum(str, Enum):
     RESOURCE_END_DATE_CHANGE_REQUEST = "resource_end_date_change_request"
     RESOURCE_PERIODIC_LIMITS = "resource_periodic_limits"
     SERVICE_ACCOUNT = "service_account"
+    SERVICE_PROVIDER_ACCOUNT = "service_provider_account"
     USER_LIFECYCLE = "user_lifecycle"
     USER_PROFILE = "user_profile"
     USER_ROLE = "user_role"

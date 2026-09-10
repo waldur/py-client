@@ -2,6 +2,10 @@ from enum import Enum
 
 
 class ServiceProviderFieldEnum(str, Enum):
+    ACCOUNT_HOMEDIR_PREFIX = "account_homedir_prefix"
+    ACCOUNT_LOGIN_SHELL = "account_login_shell"
+    ACCOUNT_SCOPE = "account_scope"
+    ACCOUNT_USERNAME_GENERATION_POLICY = "account_username_generation_policy"
     ALLOWED_DOMAINS = "allowed_domains"
     CREATED = "created"
     CUSTOMER = "customer"

@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.account_scope import AccountScope
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -38,6 +39,13 @@ class GoogleCredentials:
         offering_count (Union[Unset, int]):
         allowed_domains (Union[Unset, list[str]]): List of allowed domains for offering endpoints. Only staff can modify
             this field.
+        account_scope (Union[Unset, AccountScope]):
+        account_username_generation_policy (Union[Unset, str]): Provider-level default for the offering plugin option of
+            the same name. Blank means each offering decides for itself.
+        account_homedir_prefix (Union[Unset, str]): Provider-level default home directory prefix. Blank means each
+            offering decides for itself.
+        account_login_shell (Union[Unset, str]): Provider-level default login shell. Blank means each offering decides
+            for itself.
         calendar_token (Union[Unset, str]):
         calendar_refresh_token (Union[Unset, str]):
         google_auth_url (Union[Unset, str]):
@@ -60,6 +68,10 @@ class GoogleCredentials:
     organization_groups: Union[Unset, list["OrganizationGroup"]] = UNSET
     offering_count: Union[Unset, int] = UNSET
     allowed_domains: Union[Unset, list[str]] = UNSET
+    account_scope: Union[Unset, AccountScope] = UNSET
+    account_username_generation_policy: Union[Unset, str] = UNSET
+    account_homedir_prefix: Union[Unset, str] = UNSET
+    account_login_shell: Union[Unset, str] = UNSET
     calendar_token: Union[Unset, str] = UNSET
     calendar_refresh_token: Union[Unset, str] = UNSET
     google_auth_url: Union[Unset, str] = UNSET
@@ -117,6 +129,16 @@ class GoogleCredentials:
         if not isinstance(self.allowed_domains, Unset):
             allowed_domains = self.allowed_domains
 
+        account_scope: Union[Unset, str] = UNSET
+        if not isinstance(self.account_scope, Unset):
+            account_scope = self.account_scope.value
+
+        account_username_generation_policy = self.account_username_generation_policy
+
+        account_homedir_prefix = self.account_homedir_prefix
+
+        account_login_shell = self.account_login_shell
+
         calendar_token = self.calendar_token
 
         calendar_refresh_token = self.calendar_refresh_token
@@ -160,6 +182,14 @@ class GoogleCredentials:
             field_dict["offering_count"] = offering_count
         if allowed_domains is not UNSET:
             field_dict["allowed_domains"] = allowed_domains
+        if account_scope is not UNSET:
+            field_dict["account_scope"] = account_scope
+        if account_username_generation_policy is not UNSET:
+            field_dict["account_username_generation_policy"] = account_username_generation_policy
+        if account_homedir_prefix is not UNSET:
+            field_dict["account_homedir_prefix"] = account_homedir_prefix
+        if account_login_shell is not UNSET:
+            field_dict["account_login_shell"] = account_login_shell
         if calendar_token is not UNSET:
             field_dict["calendar_token"] = calendar_token
         if calendar_refresh_token is not UNSET:
@@ -235,6 +265,19 @@ class GoogleCredentials:
 
         allowed_domains = cast(list[str], d.pop("allowed_domains", UNSET))
 
+        _account_scope = d.pop("account_scope", UNSET)
+        account_scope: Union[Unset, AccountScope]
+        if isinstance(_account_scope, Unset):
+            account_scope = UNSET
+        else:
+            account_scope = AccountScope(_account_scope)
+
+        account_username_generation_policy = d.pop("account_username_generation_policy", UNSET)
+
+        account_homedir_prefix = d.pop("account_homedir_prefix", UNSET)
+
+        account_login_shell = d.pop("account_login_shell", UNSET)
+
         calendar_token = d.pop("calendar_token", UNSET)
 
         calendar_refresh_token = d.pop("calendar_refresh_token", UNSET)
@@ -259,6 +302,10 @@ class GoogleCredentials:
             organization_groups=organization_groups,
             offering_count=offering_count,
             allowed_domains=allowed_domains,
+            account_scope=account_scope,
+            account_username_generation_policy=account_username_generation_policy,
+            account_homedir_prefix=account_homedir_prefix,
+            account_login_shell=account_login_shell,
             calendar_token=calendar_token,
             calendar_refresh_token=calendar_refresh_token,
             google_auth_url=google_auth_url,

@@ -6,6 +6,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from .. import types
+from ..models.account_scope import AccountScope
 from ..types import UNSET, File, Unset
 
 T = TypeVar("T", bound="ServiceProviderRequestMultipart")
@@ -21,6 +22,13 @@ class ServiceProviderRequestMultipart:
         image (Union[File, None, Unset]):
         allowed_domains (Union[Unset, list[str]]): List of allowed domains for offering endpoints. Only staff can modify
             this field.
+        account_scope (Union[Unset, AccountScope]):
+        account_username_generation_policy (Union[Unset, str]): Provider-level default for the offering plugin option of
+            the same name. Blank means each offering decides for itself.
+        account_homedir_prefix (Union[Unset, str]): Provider-level default home directory prefix. Blank means each
+            offering decides for itself.
+        account_login_shell (Union[Unset, str]): Provider-level default login shell. Blank means each offering decides
+            for itself.
     """
 
     customer: str
@@ -28,6 +36,10 @@ class ServiceProviderRequestMultipart:
     enable_notifications: Union[Unset, bool] = UNSET
     image: Union[File, None, Unset] = UNSET
     allowed_domains: Union[Unset, list[str]] = UNSET
+    account_scope: Union[Unset, AccountScope] = UNSET
+    account_username_generation_policy: Union[Unset, str] = UNSET
+    account_homedir_prefix: Union[Unset, str] = UNSET
+    account_login_shell: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -50,6 +62,16 @@ class ServiceProviderRequestMultipart:
         if not isinstance(self.allowed_domains, Unset):
             allowed_domains = self.allowed_domains
 
+        account_scope: Union[Unset, str] = UNSET
+        if not isinstance(self.account_scope, Unset):
+            account_scope = self.account_scope.value
+
+        account_username_generation_policy = self.account_username_generation_policy
+
+        account_homedir_prefix = self.account_homedir_prefix
+
+        account_login_shell = self.account_login_shell
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -65,6 +87,14 @@ class ServiceProviderRequestMultipart:
             field_dict["image"] = image
         if allowed_domains is not UNSET:
             field_dict["allowed_domains"] = allowed_domains
+        if account_scope is not UNSET:
+            field_dict["account_scope"] = account_scope
+        if account_username_generation_policy is not UNSET:
+            field_dict["account_username_generation_policy"] = account_username_generation_policy
+        if account_homedir_prefix is not UNSET:
+            field_dict["account_homedir_prefix"] = account_homedir_prefix
+        if account_login_shell is not UNSET:
+            field_dict["account_login_shell"] = account_login_shell
 
         return field_dict
 
@@ -88,6 +118,23 @@ class ServiceProviderRequestMultipart:
         if not isinstance(self.allowed_domains, Unset):
             for allowed_domains_item_element in self.allowed_domains:
                 files.append(("allowed_domains", (None, str(allowed_domains_item_element).encode(), "text/plain")))
+
+        if not isinstance(self.account_scope, Unset):
+            files.append(("account_scope", (None, str(self.account_scope.value).encode(), "text/plain")))
+
+        if not isinstance(self.account_username_generation_policy, Unset):
+            files.append(
+                (
+                    "account_username_generation_policy",
+                    (None, str(self.account_username_generation_policy).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.account_homedir_prefix, Unset):
+            files.append(("account_homedir_prefix", (None, str(self.account_homedir_prefix).encode(), "text/plain")))
+
+        if not isinstance(self.account_login_shell, Unset):
+            files.append(("account_login_shell", (None, str(self.account_login_shell).encode(), "text/plain")))
 
         for prop_name, prop in self.additional_properties.items():
             files.append((prop_name, (None, str(prop).encode(), "text/plain")))
@@ -122,12 +169,29 @@ class ServiceProviderRequestMultipart:
 
         allowed_domains = cast(list[str], d.pop("allowed_domains", UNSET))
 
+        _account_scope = d.pop("account_scope", UNSET)
+        account_scope: Union[Unset, AccountScope]
+        if isinstance(_account_scope, Unset):
+            account_scope = UNSET
+        else:
+            account_scope = AccountScope(_account_scope)
+
+        account_username_generation_policy = d.pop("account_username_generation_policy", UNSET)
+
+        account_homedir_prefix = d.pop("account_homedir_prefix", UNSET)
+
+        account_login_shell = d.pop("account_login_shell", UNSET)
+
         service_provider_request_multipart = cls(
             customer=customer,
             description=description,
             enable_notifications=enable_notifications,
             image=image,
             allowed_domains=allowed_domains,
+            account_scope=account_scope,
+            account_username_generation_policy=account_username_generation_policy,
+            account_homedir_prefix=account_homedir_prefix,
+            account_login_shell=account_login_shell,
         )
 
         service_provider_request_multipart.additional_properties = d
