@@ -14,6 +14,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.permission import Permission
     from ..models.user_attribute_sources import UserAttributeSources
+    from ..models.user_details import UserDetails
 
 
 T = TypeVar("T", bound="User")
@@ -95,6 +96,7 @@ class User:
         deactivation_reason (Union[Unset, str]): Reason why the user was deactivated. Visible to staff and support.
         is_admin_deactivated (Union[Unset, bool]): Designates that the user was deactivated by an administrator and must
             not be reactivated automatically by the role-sync task. Visible to staff and support.
+        details (Union[Unset, UserDetails]): Extra details from authentication backend.
     """
 
     url: Union[Unset, str] = UNSET
@@ -160,6 +162,7 @@ class User:
     active_isds: Union[Unset, list[str]] = UNSET
     deactivation_reason: Union[Unset, str] = UNSET
     is_admin_deactivated: Union[Unset, bool] = UNSET
+    details: Union[Unset, "UserDetails"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -366,6 +369,10 @@ class User:
 
         is_admin_deactivated = self.is_admin_deactivated
 
+        details: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.details, Unset):
+            details = self.details.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -495,6 +502,8 @@ class User:
             field_dict["deactivation_reason"] = deactivation_reason
         if is_admin_deactivated is not UNSET:
             field_dict["is_admin_deactivated"] = is_admin_deactivated
+        if details is not UNSET:
+            field_dict["details"] = details
 
         return field_dict
 
@@ -502,6 +511,7 @@ class User:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.permission import Permission
         from ..models.user_attribute_sources import UserAttributeSources
+        from ..models.user_details import UserDetails
 
         d = dict(src_dict)
         url = d.pop("url", UNSET)
@@ -767,6 +777,13 @@ class User:
 
         is_admin_deactivated = d.pop("is_admin_deactivated", UNSET)
 
+        _details = d.pop("details", UNSET)
+        details: Union[Unset, UserDetails]
+        if isinstance(_details, Unset):
+            details = UNSET
+        else:
+            details = UserDetails.from_dict(_details)
+
         user = cls(
             url=url,
             uuid=uuid,
@@ -831,6 +848,7 @@ class User:
             active_isds=active_isds,
             deactivation_reason=deactivation_reason,
             is_admin_deactivated=is_admin_deactivated,
+            details=details,
         )
 
         user.additional_properties = d

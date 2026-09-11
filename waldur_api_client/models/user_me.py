@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from ..models.me_permission import MePermission
     from ..models.profile_completeness import ProfileCompleteness
     from ..models.user_me_attribute_sources import UserMeAttributeSources
+    from ..models.user_me_details import UserMeDetails
 
 
 T = TypeVar("T", bound="UserMe")
@@ -96,6 +97,7 @@ class UserMe:
         deactivation_reason (Union[Unset, str]): Reason why the user was deactivated. Visible to staff and support.
         is_admin_deactivated (Union[Unset, bool]): Designates that the user was deactivated by an administrator and must
             not be reactivated automatically by the role-sync task. Visible to staff and support.
+        details (Union[Unset, UserMeDetails]): Extra details from authentication backend.
         profile_completeness (Union[Unset, ProfileCompleteness]):
     """
 
@@ -162,6 +164,7 @@ class UserMe:
     active_isds: Union[Unset, list[str]] = UNSET
     deactivation_reason: Union[Unset, str] = UNSET
     is_admin_deactivated: Union[Unset, bool] = UNSET
+    details: Union[Unset, "UserMeDetails"] = UNSET
     profile_completeness: Union[Unset, "ProfileCompleteness"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -365,6 +368,10 @@ class UserMe:
 
         is_admin_deactivated = self.is_admin_deactivated
 
+        details: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.details, Unset):
+            details = self.details.to_dict()
+
         profile_completeness: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.profile_completeness, Unset):
             profile_completeness = self.profile_completeness.to_dict()
@@ -498,6 +505,8 @@ class UserMe:
             field_dict["deactivation_reason"] = deactivation_reason
         if is_admin_deactivated is not UNSET:
             field_dict["is_admin_deactivated"] = is_admin_deactivated
+        if details is not UNSET:
+            field_dict["details"] = details
         if profile_completeness is not UNSET:
             field_dict["profile_completeness"] = profile_completeness
 
@@ -508,6 +517,7 @@ class UserMe:
         from ..models.me_permission import MePermission
         from ..models.profile_completeness import ProfileCompleteness
         from ..models.user_me_attribute_sources import UserMeAttributeSources
+        from ..models.user_me_details import UserMeDetails
 
         d = dict(src_dict)
         url = d.pop("url", UNSET)
@@ -766,6 +776,13 @@ class UserMe:
 
         is_admin_deactivated = d.pop("is_admin_deactivated", UNSET)
 
+        _details = d.pop("details", UNSET)
+        details: Union[Unset, UserMeDetails]
+        if isinstance(_details, Unset):
+            details = UNSET
+        else:
+            details = UserMeDetails.from_dict(_details)
+
         _profile_completeness = d.pop("profile_completeness", UNSET)
         profile_completeness: Union[Unset, ProfileCompleteness]
         if isinstance(_profile_completeness, Unset):
@@ -837,6 +854,7 @@ class UserMe:
             active_isds=active_isds,
             deactivation_reason=deactivation_reason,
             is_admin_deactivated=is_admin_deactivated,
+            details=details,
             profile_completeness=profile_completeness,
         )
 

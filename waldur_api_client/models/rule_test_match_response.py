@@ -7,6 +7,7 @@ from attrs import field as _attrs_field
 if TYPE_CHECKING:
     from ..models.customer_candidate import CustomerCandidate
     from ..models.filter_check_result import FilterCheckResult
+    from ..models.rule_test_match_response_user_claims import RuleTestMatchResponseUserClaims
 
 
 T = TypeVar("T", bound="RuleTestMatchResponse")
@@ -24,6 +25,10 @@ class RuleTestMatchResponse:
         user_registration_method (str):
         user_identity_source (str):
         user_affiliations (list[str]):
+        user_claims (RuleTestMatchResponseUserClaims): Values the user carries for each claim the rule requires.
+        unconfigured_claims (list[str]): Claims the rule matches on that no active identity provider passes through, so
+            Waldur never receives them. Distinguishes 'the provider sent a different value' from 'the provider never sent
+            this claim', which need opposite fixes.
         user_is_protected (bool):
         filter_results (list['FilterCheckResult']):
         customer_lookup_performed (bool):
@@ -40,6 +45,8 @@ class RuleTestMatchResponse:
     user_registration_method: str
     user_identity_source: str
     user_affiliations: list[str]
+    user_claims: "RuleTestMatchResponseUserClaims"
+    unconfigured_claims: list[str]
     user_is_protected: bool
     filter_results: list["FilterCheckResult"]
     customer_lookup_performed: bool
@@ -64,6 +71,10 @@ class RuleTestMatchResponse:
         user_identity_source = self.user_identity_source
 
         user_affiliations = self.user_affiliations
+
+        user_claims = self.user_claims.to_dict()
+
+        unconfigured_claims = self.unconfigured_claims
 
         user_is_protected = self.user_is_protected
 
@@ -96,6 +107,8 @@ class RuleTestMatchResponse:
                 "user_registration_method": user_registration_method,
                 "user_identity_source": user_identity_source,
                 "user_affiliations": user_affiliations,
+                "user_claims": user_claims,
+                "unconfigured_claims": unconfigured_claims,
                 "user_is_protected": user_is_protected,
                 "filter_results": filter_results,
                 "customer_lookup_performed": customer_lookup_performed,
@@ -111,6 +124,7 @@ class RuleTestMatchResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.customer_candidate import CustomerCandidate
         from ..models.filter_check_result import FilterCheckResult
+        from ..models.rule_test_match_response_user_claims import RuleTestMatchResponseUserClaims
 
         d = dict(src_dict)
         would_provision = d.pop("would_provision")
@@ -128,6 +142,10 @@ class RuleTestMatchResponse:
         user_identity_source = d.pop("user_identity_source")
 
         user_affiliations = cast(list[str], d.pop("user_affiliations"))
+
+        user_claims = RuleTestMatchResponseUserClaims.from_dict(d.pop("user_claims"))
+
+        unconfigured_claims = cast(list[str], d.pop("unconfigured_claims"))
 
         user_is_protected = d.pop("user_is_protected")
 
@@ -165,6 +183,8 @@ class RuleTestMatchResponse:
             user_registration_method=user_registration_method,
             user_identity_source=user_identity_source,
             user_affiliations=user_affiliations,
+            user_claims=user_claims,
+            unconfigured_claims=unconfigured_claims,
             user_is_protected=user_is_protected,
             filter_results=filter_results,
             customer_lookup_performed=customer_lookup_performed,

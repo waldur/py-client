@@ -1905,6 +1905,7 @@ from .patched_role_details_request import PatchedRoleDetailsRequest
 from .patched_rule_request import PatchedRuleRequest
 from .patched_rule_request_plan_attributes import PatchedRuleRequestPlanAttributes
 from .patched_rule_request_plan_limits import PatchedRuleRequestPlanLimits
+from .patched_rule_request_user_claims import PatchedRuleRequestUserClaims
 from .patched_saved_filter_request import PatchedSavedFilterRequest
 from .patched_saved_filter_request_filter_params import PatchedSavedFilterRequestFilterParams
 from .patched_science_domain_request import PatchedScienceDomainRequest
@@ -2596,8 +2597,11 @@ from .rule_plan_limits import RulePlanLimits
 from .rule_request import RuleRequest
 from .rule_request_plan_attributes import RuleRequestPlanAttributes
 from .rule_request_plan_limits import RuleRequestPlanLimits
+from .rule_request_user_claims import RuleRequestUserClaims
 from .rule_test_match_request_request import RuleTestMatchRequestRequest
 from .rule_test_match_response import RuleTestMatchResponse
+from .rule_test_match_response_user_claims import RuleTestMatchResponseUserClaims
+from .rule_user_claims import RuleUserClaims
 from .runtime_state_enum import RuntimeStateEnum
 from .runtime_states import RuntimeStates
 from .saml_2_login import Saml2Login
@@ -2896,6 +2900,7 @@ from .user_consent_info import UserConsentInfo
 from .user_data_access import UserDataAccess
 from .user_data_access_log import UserDataAccessLog
 from .user_data_access_log_context import UserDataAccessLogContext
+from .user_details import UserDetails
 from .user_email_change_request import UserEmailChangeRequest
 from .user_field_enum import UserFieldEnum
 from .user_has_resource_access import UserHasResourceAccess
@@ -2908,6 +2913,7 @@ from .user_mapping import UserMapping
 from .user_mapping_map import UserMappingMap
 from .user_me import UserMe
 from .user_me_attribute_sources import UserMeAttributeSources
+from .user_me_details import UserMeDetails
 from .user_me_field_enum import UserMeFieldEnum
 from .user_nationality_stats import UserNationalityStats
 from .user_offering_consent import UserOfferingConsent
@@ -4832,6 +4838,7 @@ __all__ = (
     "PatchedRuleRequest",
     "PatchedRuleRequestPlanAttributes",
     "PatchedRuleRequestPlanLimits",
+    "PatchedRuleRequestUserClaims",
     "PatchedSavedFilterRequest",
     "PatchedSavedFilterRequestFilterParams",
     "PatchedScienceDomainRequest",
@@ -5491,8 +5498,11 @@ __all__ = (
     "RuleRequest",
     "RuleRequestPlanAttributes",
     "RuleRequestPlanLimits",
+    "RuleRequestUserClaims",
     "RuleTestMatchRequestRequest",
     "RuleTestMatchResponse",
+    "RuleTestMatchResponseUserClaims",
+    "RuleUserClaims",
     "RuntimeStateEnum",
     "RuntimeStates",
     "Saml2Login",
@@ -5791,6 +5801,7 @@ __all__ = (
     "UserDataAccess",
     "UserDataAccessLog",
     "UserDataAccessLogContext",
+    "UserDetails",
     "UserEmailChangeRequest",
     "UserFieldEnum",
     "UserHasResourceAccess",
@@ -5803,6 +5814,7 @@ __all__ = (
     "UserMappingMap",
     "UserMe",
     "UserMeAttributeSources",
+    "UserMeDetails",
     "UserMeFieldEnum",
     "UsernameGenerationPolicyEnum",
     "UserNationalityStats",

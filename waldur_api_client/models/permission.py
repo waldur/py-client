@@ -30,6 +30,7 @@ class Permission:
         revoked_by_full_name (Union[None, Unset, str]):
         revoked_by_username (Union[None, Unset, str]):
         revoke_reason (Union[Unset, str]):
+        source (Union[Unset, str]):
         role_name (Union[Unset, str]):
         role_description (Union[Unset, str]):
         role_uuid (Union[Unset, UUID]):
@@ -57,6 +58,7 @@ class Permission:
     revoked_by_full_name: Union[None, Unset, str] = UNSET
     revoked_by_username: Union[None, Unset, str] = UNSET
     revoke_reason: Union[Unset, str] = UNSET
+    source: Union[Unset, str] = UNSET
     role_name: Union[Unset, str] = UNSET
     role_description: Union[Unset, str] = UNSET
     role_uuid: Union[Unset, UUID] = UNSET
@@ -122,6 +124,8 @@ class Permission:
             revoked_by_username = self.revoked_by_username
 
         revoke_reason = self.revoke_reason
+
+        source = self.source
 
         role_name = self.role_name
 
@@ -206,6 +210,8 @@ class Permission:
             field_dict["revoked_by_username"] = revoked_by_username
         if revoke_reason is not UNSET:
             field_dict["revoke_reason"] = revoke_reason
+        if source is not UNSET:
+            field_dict["source"] = source
         if role_name is not UNSET:
             field_dict["role_name"] = role_name
         if role_description is not UNSET:
@@ -313,6 +319,8 @@ class Permission:
 
         revoke_reason = d.pop("revoke_reason", UNSET)
 
+        source = d.pop("source", UNSET)
+
         role_name = d.pop("role_name", UNSET)
 
         role_description = d.pop("role_description", UNSET)
@@ -419,6 +427,7 @@ class Permission:
             revoked_by_full_name=revoked_by_full_name,
             revoked_by_username=revoked_by_username,
             revoke_reason=revoke_reason,
+            source=source,
             role_name=role_name,
             role_description=role_description,
             role_uuid=role_uuid,

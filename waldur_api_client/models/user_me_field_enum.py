@@ -15,6 +15,7 @@ class UserMeFieldEnum(str, Enum):
     DATE_JOINED = "date_joined"
     DEACTIVATION_REASON = "deactivation_reason"
     DESCRIPTION = "description"
+    DETAILS = "details"
     EDUPERSON_ASSURANCE = "eduperson_assurance"
     EMAIL = "email"
     FIRST_NAME = "first_name"
