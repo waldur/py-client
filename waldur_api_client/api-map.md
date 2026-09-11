@@ -3404,10 +3404,10 @@ Module: `waldur_api_client.api.provider_support_users`
 ## provider-tickets
 Module: `waldur_api_client.api.provider_tickets`
 
-- `provider_tickets_list` GET `/api/provider-tickets/` (7 query params)
-- `provider_tickets_count` HEAD `/api/provider-tickets/` — Get number of items in the collection matching the request parameters (7 query params)
-- `provider_tickets_stats_retrieve` GET `/api/provider-tickets/stats/` — Get statistics for provider tickets (no params)
-- `provider_tickets_stats_count` HEAD `/api/provider-tickets/stats/` — Get statistics for provider tickets (no params)
+- `provider_tickets_list` GET `/api/provider-tickets/` (8 query params)
+- `provider_tickets_count` HEAD `/api/provider-tickets/` — Get number of items in the collection matching the request parameters (8 query params)
+- `provider_tickets_stats_retrieve` GET `/api/provider-tickets/stats/` — Get statistics for provider tickets (1 query param)
+- `provider_tickets_stats_count` HEAD `/api/provider-tickets/stats/` — Get statistics for provider tickets (1 query param)
 - `provider_tickets_retrieve` GET `/api/provider-tickets/{uuid}/` (path: uuid)
 - `provider_tickets_update` PUT `/api/provider-tickets/{uuid}/` (path: uuid | request body)
 - `provider_tickets_partial_update` PATCH `/api/provider-tickets/{uuid}/` (path: uuid | request body)
@@ -3748,6 +3748,8 @@ Module: `waldur_api_client.api.roles`
 - `roles_list` GET `/api/roles/` — List roles (10 query params)
 - `roles_count` HEAD `/api/roles/` — List roles (9 query params)
 - `roles_create` POST `/api/roles/` — Create a new role (request body)
+- `roles_hygiene_report_retrieve` GET `/api/roles/hygiene_report/` — Role hygiene report (no params)
+- `roles_hygiene_report_count` HEAD `/api/roles/hygiene_report/` — Role hygiene report (no params)
 - `roles_retrieve` GET `/api/roles/{uuid}/` — Get role details (path: uuid | 1 query param)
 - `roles_update` PUT `/api/roles/{uuid}/` — Update a role (path: uuid | request body)
 - `roles_partial_update` PATCH `/api/roles/{uuid}/` (path: uuid | request body)

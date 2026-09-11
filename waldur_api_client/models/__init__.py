@@ -2583,6 +2583,10 @@ from .role_description_request import RoleDescriptionRequest
 from .role_details import RoleDetails
 from .role_details_field_enum import RoleDetailsFieldEnum
 from .role_details_o_enum import RoleDetailsOEnum
+from .role_hygiene_finding import RoleHygieneFinding
+from .role_hygiene_finding_details import RoleHygieneFindingDetails
+from .role_hygiene_finding_severity_enum import RoleHygieneFindingSeverityEnum
+from .role_hygiene_report import RoleHygieneReport
 from .role_modify_request import RoleModifyRequest
 from .role_modify_request_permissions import RoleModifyRequestPermissions
 from .role_template import RoleTemplate
@@ -5484,6 +5488,10 @@ __all__ = (
     "RoleDetails",
     "RoleDetailsFieldEnum",
     "RoleDetailsOEnum",
+    "RoleHygieneFinding",
+    "RoleHygieneFindingDetails",
+    "RoleHygieneFindingSeverityEnum",
+    "RoleHygieneReport",
     "RoleModifyRequest",
     "RoleModifyRequestPermissions",
     "RoleTemplate",
