@@ -32,6 +32,7 @@ if TYPE_CHECKING:
     from ..models.provider_offering_details_attributes import ProviderOfferingDetailsAttributes
     from ..models.provider_offering_details_backend_id_rules import ProviderOfferingDetailsBackendIdRules
     from ..models.provider_offering_details_backend_metadata import ProviderOfferingDetailsBackendMetadata
+    from ..models.provider_offering_details_billing_mode_components import ProviderOfferingDetailsBillingModeComponents
     from ..models.provider_offering_details_billing_period_applies import ProviderOfferingDetailsBillingPeriodApplies
     from ..models.provider_offering_details_service_attributes import ProviderOfferingDetailsServiceAttributes
     from ..models.quota import Quota
@@ -50,6 +51,9 @@ class ProviderOfferingDetails:
         billing_period_applies (Union[Unset, ProviderOfferingDetailsBillingPeriodApplies]): Per plan billing mode,
             whether a plan's billing period changes what is invoiced. False means every component of this offering would
             price a quantity of its own under that mode, so the period is inert on the invoice.
+        billing_mode_components (Union[Unset, ProviderOfferingDetailsBillingModeComponents]): Per plan billing mode,
+            every component of this offering as a plan in that mode would bill it: billing type, measured unit, prepaid flag
+            and limit period.
         name (Union[Unset, str]):
         slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         description (Union[Unset, str]):
@@ -140,6 +144,7 @@ class ProviderOfferingDetails:
     uuid: Union[Unset, UUID] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     billing_period_applies: Union[Unset, "ProviderOfferingDetailsBillingPeriodApplies"] = UNSET
+    billing_mode_components: Union[Unset, "ProviderOfferingDetailsBillingModeComponents"] = UNSET
     name: Union[Unset, str] = UNSET
     slug: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
@@ -238,6 +243,10 @@ class ProviderOfferingDetails:
         billing_period_applies: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.billing_period_applies, Unset):
             billing_period_applies = self.billing_period_applies.to_dict()
+
+        billing_mode_components: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.billing_mode_components, Unset):
+            billing_mode_components = self.billing_mode_components.to_dict()
 
         name = self.name
 
@@ -650,6 +659,8 @@ class ProviderOfferingDetails:
             field_dict["created"] = created
         if billing_period_applies is not UNSET:
             field_dict["billing_period_applies"] = billing_period_applies
+        if billing_mode_components is not UNSET:
+            field_dict["billing_mode_components"] = billing_mode_components
         if name is not UNSET:
             field_dict["name"] = name
         if slug is not UNSET:
@@ -837,6 +848,9 @@ class ProviderOfferingDetails:
         from ..models.provider_offering_details_attributes import ProviderOfferingDetailsAttributes
         from ..models.provider_offering_details_backend_id_rules import ProviderOfferingDetailsBackendIdRules
         from ..models.provider_offering_details_backend_metadata import ProviderOfferingDetailsBackendMetadata
+        from ..models.provider_offering_details_billing_mode_components import (
+            ProviderOfferingDetailsBillingModeComponents,
+        )
         from ..models.provider_offering_details_billing_period_applies import (
             ProviderOfferingDetailsBillingPeriodApplies,
         )
@@ -866,6 +880,13 @@ class ProviderOfferingDetails:
             billing_period_applies = UNSET
         else:
             billing_period_applies = ProviderOfferingDetailsBillingPeriodApplies.from_dict(_billing_period_applies)
+
+        _billing_mode_components = d.pop("billing_mode_components", UNSET)
+        billing_mode_components: Union[Unset, ProviderOfferingDetailsBillingModeComponents]
+        if isinstance(_billing_mode_components, Unset):
+            billing_mode_components = UNSET
+        else:
+            billing_mode_components = ProviderOfferingDetailsBillingModeComponents.from_dict(_billing_mode_components)
 
         name = d.pop("name", UNSET)
 
@@ -1456,6 +1477,7 @@ class ProviderOfferingDetails:
             uuid=uuid,
             created=created,
             billing_period_applies=billing_period_applies,
+            billing_mode_components=billing_mode_components,
             name=name,
             slug=slug,
             description=description,

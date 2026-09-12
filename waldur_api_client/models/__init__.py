@@ -291,6 +291,7 @@ from .basic_customer_request import BasicCustomerRequest
 from .basic_project import BasicProject
 from .basic_user import BasicUser
 from .bid_enum import BidEnum
+from .billing_mode_component import BillingModeComponent
 from .billing_mode_enum import BillingModeEnum
 from .billing_source_enum import BillingSourceEnum
 from .billing_type_enum import BillingTypeEnum
@@ -1295,6 +1296,7 @@ from .offering_backend_id_rules_update_request_backend_id_rules import OfferingB
 from .offering_backend_metadata import OfferingBackendMetadata
 from .offering_backend_metadata_request import OfferingBackendMetadataRequest
 from .offering_backend_metadata_request_backend_metadata import OfferingBackendMetadataRequestBackendMetadata
+from .offering_billing_mode_components import OfferingBillingModeComponents
 from .offering_billing_period_applies import OfferingBillingPeriodApplies
 from .offering_compliance_checklist_update_request import OfferingComplianceChecklistUpdateRequest
 from .offering_component import OfferingComponent
@@ -2154,6 +2156,7 @@ from .provider_offering_details import ProviderOfferingDetails
 from .provider_offering_details_attributes import ProviderOfferingDetailsAttributes
 from .provider_offering_details_backend_id_rules import ProviderOfferingDetailsBackendIdRules
 from .provider_offering_details_backend_metadata import ProviderOfferingDetailsBackendMetadata
+from .provider_offering_details_billing_mode_components import ProviderOfferingDetailsBillingModeComponents
 from .provider_offering_details_billing_period_applies import ProviderOfferingDetailsBillingPeriodApplies
 from .provider_offering_details_field_enum import ProviderOfferingDetailsFieldEnum
 from .provider_offering_details_o_enum import ProviderOfferingDetailsOEnum
@@ -2202,6 +2205,7 @@ from .public_maintenance_announcement_state_enum import PublicMaintenanceAnnounc
 from .public_offering_details import PublicOfferingDetails
 from .public_offering_details_attributes import PublicOfferingDetailsAttributes
 from .public_offering_details_backend_metadata import PublicOfferingDetailsBackendMetadata
+from .public_offering_details_billing_mode_components import PublicOfferingDetailsBillingModeComponents
 from .public_offering_details_billing_period_applies import PublicOfferingDetailsBillingPeriodApplies
 from .public_offering_details_field_enum import PublicOfferingDetailsFieldEnum
 from .publishing_metrics import PublishingMetrics
@@ -3302,6 +3306,7 @@ __all__ = (
     "BasicProject",
     "BasicUser",
     "BidEnum",
+    "BillingModeComponent",
     "BillingModeEnum",
     "BillingSourceEnum",
     "BillingTypeEnum",
@@ -4278,6 +4283,7 @@ __all__ = (
     "OfferingBackendMetadata",
     "OfferingBackendMetadataRequest",
     "OfferingBackendMetadataRequestBackendMetadata",
+    "OfferingBillingModeComponents",
     "OfferingBillingPeriodApplies",
     "OfferingComplianceChecklistUpdateRequest",
     "OfferingComponent",
@@ -5073,6 +5079,7 @@ __all__ = (
     "ProviderOfferingDetailsAttributes",
     "ProviderOfferingDetailsBackendIdRules",
     "ProviderOfferingDetailsBackendMetadata",
+    "ProviderOfferingDetailsBillingModeComponents",
     "ProviderOfferingDetailsBillingPeriodApplies",
     "ProviderOfferingDetailsFieldEnum",
     "ProviderOfferingDetailsOEnum",
@@ -5121,6 +5128,7 @@ __all__ = (
     "PublicOfferingDetails",
     "PublicOfferingDetailsAttributes",
     "PublicOfferingDetailsBackendMetadata",
+    "PublicOfferingDetailsBillingModeComponents",
     "PublicOfferingDetailsBillingPeriodApplies",
     "PublicOfferingDetailsFieldEnum",
     "PublishingMetrics",

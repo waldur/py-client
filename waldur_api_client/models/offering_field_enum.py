@@ -7,6 +7,7 @@ class OfferingFieldEnum(str, Enum):
     BACKEND_ID = "backend_id"
     BACKEND_METADATA = "backend_metadata"
     BILLABLE = "billable"
+    BILLING_MODE_COMPONENTS = "billing_mode_components"
     BILLING_PERIOD_APPLIES = "billing_period_applies"
     BILLING_TYPE_CLASSIFICATION = "billing_type_classification"
     CAN_UPDATE_INTEGRATION = "can_update_integration"

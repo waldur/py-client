@@ -30,6 +30,7 @@ if TYPE_CHECKING:
     from ..models.organization_group import OrganizationGroup
     from ..models.public_offering_details_attributes import PublicOfferingDetailsAttributes
     from ..models.public_offering_details_backend_metadata import PublicOfferingDetailsBackendMetadata
+    from ..models.public_offering_details_billing_mode_components import PublicOfferingDetailsBillingModeComponents
     from ..models.public_offering_details_billing_period_applies import PublicOfferingDetailsBillingPeriodApplies
     from ..models.quota import Quota
 
@@ -47,6 +48,9 @@ class PublicOfferingDetails:
         billing_period_applies (Union[Unset, PublicOfferingDetailsBillingPeriodApplies]): Per plan billing mode, whether
             a plan's billing period changes what is invoiced. False means every component of this offering would price a
             quantity of its own under that mode, so the period is inert on the invoice.
+        billing_mode_components (Union[Unset, PublicOfferingDetailsBillingModeComponents]): Per plan billing mode, every
+            component of this offering as a plan in that mode would bill it: billing type, measured unit, prepaid flag and
+            limit period.
         name (Union[Unset, str]):
         slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         description (Union[Unset, str]):
@@ -138,6 +142,7 @@ class PublicOfferingDetails:
     uuid: Union[Unset, UUID] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     billing_period_applies: Union[Unset, "PublicOfferingDetailsBillingPeriodApplies"] = UNSET
+    billing_mode_components: Union[Unset, "PublicOfferingDetailsBillingModeComponents"] = UNSET
     name: Union[Unset, str] = UNSET
     slug: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
@@ -238,6 +243,10 @@ class PublicOfferingDetails:
         billing_period_applies: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.billing_period_applies, Unset):
             billing_period_applies = self.billing_period_applies.to_dict()
+
+        billing_mode_components: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.billing_mode_components, Unset):
+            billing_mode_components = self.billing_mode_components.to_dict()
 
         name = self.name
 
@@ -643,6 +652,8 @@ class PublicOfferingDetails:
             field_dict["created"] = created
         if billing_period_applies is not UNSET:
             field_dict["billing_period_applies"] = billing_period_applies
+        if billing_mode_components is not UNSET:
+            field_dict["billing_mode_components"] = billing_mode_components
         if name is not UNSET:
             field_dict["name"] = name
         if slug is not UNSET:
@@ -832,6 +843,7 @@ class PublicOfferingDetails:
         from ..models.organization_group import OrganizationGroup
         from ..models.public_offering_details_attributes import PublicOfferingDetailsAttributes
         from ..models.public_offering_details_backend_metadata import PublicOfferingDetailsBackendMetadata
+        from ..models.public_offering_details_billing_mode_components import PublicOfferingDetailsBillingModeComponents
         from ..models.public_offering_details_billing_period_applies import PublicOfferingDetailsBillingPeriodApplies
         from ..models.quota import Quota
 
@@ -858,6 +870,13 @@ class PublicOfferingDetails:
             billing_period_applies = UNSET
         else:
             billing_period_applies = PublicOfferingDetailsBillingPeriodApplies.from_dict(_billing_period_applies)
+
+        _billing_mode_components = d.pop("billing_mode_components", UNSET)
+        billing_mode_components: Union[Unset, PublicOfferingDetailsBillingModeComponents]
+        if isinstance(_billing_mode_components, Unset):
+            billing_mode_components = UNSET
+        else:
+            billing_mode_components = PublicOfferingDetailsBillingModeComponents.from_dict(_billing_mode_components)
 
         name = d.pop("name", UNSET)
 
@@ -1422,6 +1441,7 @@ class PublicOfferingDetails:
             uuid=uuid,
             created=created,
             billing_period_applies=billing_period_applies,
+            billing_mode_components=billing_mode_components,
             name=name,
             slug=slug,
             description=description,

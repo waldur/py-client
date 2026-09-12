@@ -27,6 +27,7 @@ if TYPE_CHECKING:
     from ..models.nested_tag import NestedTag
     from ..models.offering_attributes import OfferingAttributes
     from ..models.offering_backend_metadata import OfferingBackendMetadata
+    from ..models.offering_billing_mode_components import OfferingBillingModeComponents
     from ..models.offering_billing_period_applies import OfferingBillingPeriodApplies
     from ..models.offering_component import OfferingComponent
     from ..models.offering_options import OfferingOptions
@@ -47,6 +48,8 @@ class Offering:
         billing_period_applies (Union[Unset, OfferingBillingPeriodApplies]): Per plan billing mode, whether a plan's
             billing period changes what is invoiced. False means every component of this offering would price a quantity of
             its own under that mode, so the period is inert on the invoice.
+        billing_mode_components (Union[Unset, OfferingBillingModeComponents]): Per plan billing mode, every component of
+            this offering as a plan in that mode would bill it: billing type, measured unit, prepaid flag and limit period.
         name (Union[Unset, str]):
         slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         description (Union[Unset, str]):
@@ -135,6 +138,7 @@ class Offering:
     uuid: Union[Unset, UUID] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     billing_period_applies: Union[Unset, "OfferingBillingPeriodApplies"] = UNSET
+    billing_mode_components: Union[Unset, "OfferingBillingModeComponents"] = UNSET
     name: Union[Unset, str] = UNSET
     slug: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
@@ -232,6 +236,10 @@ class Offering:
         billing_period_applies: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.billing_period_applies, Unset):
             billing_period_applies = self.billing_period_applies.to_dict()
+
+        billing_mode_components: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.billing_mode_components, Unset):
+            billing_mode_components = self.billing_mode_components.to_dict()
 
         name = self.name
 
@@ -620,6 +628,8 @@ class Offering:
             field_dict["created"] = created
         if billing_period_applies is not UNSET:
             field_dict["billing_period_applies"] = billing_period_applies
+        if billing_mode_components is not UNSET:
+            field_dict["billing_mode_components"] = billing_mode_components
         if name is not UNSET:
             field_dict["name"] = name
         if slug is not UNSET:
@@ -800,6 +810,7 @@ class Offering:
         from ..models.nested_tag import NestedTag
         from ..models.offering_attributes import OfferingAttributes
         from ..models.offering_backend_metadata import OfferingBackendMetadata
+        from ..models.offering_billing_mode_components import OfferingBillingModeComponents
         from ..models.offering_billing_period_applies import OfferingBillingPeriodApplies
         from ..models.offering_component import OfferingComponent
         from ..models.offering_options import OfferingOptions
@@ -829,6 +840,13 @@ class Offering:
             billing_period_applies = UNSET
         else:
             billing_period_applies = OfferingBillingPeriodApplies.from_dict(_billing_period_applies)
+
+        _billing_mode_components = d.pop("billing_mode_components", UNSET)
+        billing_mode_components: Union[Unset, OfferingBillingModeComponents]
+        if isinstance(_billing_mode_components, Unset):
+            billing_mode_components = UNSET
+        else:
+            billing_mode_components = OfferingBillingModeComponents.from_dict(_billing_mode_components)
 
         name = d.pop("name", UNSET)
 
@@ -1373,6 +1391,7 @@ class Offering:
             uuid=uuid,
             created=created,
             billing_period_applies=billing_period_applies,
+            billing_mode_components=billing_mode_components,
             name=name,
             slug=slug,
             description=description,
