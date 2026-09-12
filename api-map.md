@@ -315,37 +315,6 @@ Module: `waldur_api_client.api.azure_sizes`
 - `azure_sizes_count` HEAD `/api/azure-sizes/` — Get number of items in the collection matching the request parameters (7 query params)
 - `azure_sizes_retrieve` GET `/api/azure-sizes/{uuid}/` (path: uuid)
 
-## azure-sql-databases
-Module: `waldur_api_client.api.azure_sql_databases`
-
-- `azure_sql_databases_list` GET `/api/azure-sql-databases/` (22 query params)
-- `azure_sql_databases_count` HEAD `/api/azure-sql-databases/` — Get number of items in the collection matching the request parameters (21 query params)
-- `azure_sql_databases_create` POST `/api/azure-sql-databases/` (request body)
-- `azure_sql_databases_retrieve` GET `/api/azure-sql-databases/{uuid}/` (path: uuid | 1 query param)
-- `azure_sql_databases_update` PUT `/api/azure-sql-databases/{uuid}/` (path: uuid | request body)
-- `azure_sql_databases_partial_update` PATCH `/api/azure-sql-databases/{uuid}/` (path: uuid | request body)
-- `azure_sql_databases_destroy` DELETE `/api/azure-sql-databases/{uuid}/` (path: uuid)
-- `azure_sql_databases_pull` POST `/api/azure-sql-databases/{uuid}/pull/` — Synchronize resource state (path: uuid)
-- `azure_sql_databases_set_erred` POST `/api/azure-sql-databases/{uuid}/set_erred/` — Mark resource as ERRED (path: uuid | request body)
-- `azure_sql_databases_set_ok` POST `/api/azure-sql-databases/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
-- `azure_sql_databases_unlink` POST `/api/azure-sql-databases/{uuid}/unlink/` — Unlink resource (path: uuid)
-
-## azure-sql-servers
-Module: `waldur_api_client.api.azure_sql_servers`
-
-- `azure_sql_servers_list` GET `/api/azure-sql-servers/` (20 query params)
-- `azure_sql_servers_count` HEAD `/api/azure-sql-servers/` — Get number of items in the collection matching the request parameters (19 query params)
-- `azure_sql_servers_create` POST `/api/azure-sql-servers/` (request body)
-- `azure_sql_servers_retrieve` GET `/api/azure-sql-servers/{uuid}/` (path: uuid | 1 query param)
-- `azure_sql_servers_update` PUT `/api/azure-sql-servers/{uuid}/` (path: uuid | request body)
-- `azure_sql_servers_partial_update` PATCH `/api/azure-sql-servers/{uuid}/` (path: uuid | request body)
-- `azure_sql_servers_destroy` DELETE `/api/azure-sql-servers/{uuid}/` (path: uuid)
-- `azure_sql_servers_create_database` POST `/api/azure-sql-servers/{uuid}/create_database/` (path: uuid | request body)
-- `azure_sql_servers_pull` POST `/api/azure-sql-servers/{uuid}/pull/` — Synchronize resource state (path: uuid)
-- `azure_sql_servers_set_erred` POST `/api/azure-sql-servers/{uuid}/set_erred/` — Mark resource as ERRED (path: uuid | request body)
-- `azure_sql_servers_set_ok` POST `/api/azure-sql-servers/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
-- `azure_sql_servers_unlink` POST `/api/azure-sql-servers/{uuid}/unlink/` — Unlink resource (path: uuid)
-
 ## azure-virtualmachines
 Module: `waldur_api_client.api.azure_virtualmachines`
 

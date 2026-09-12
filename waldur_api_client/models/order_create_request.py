@@ -9,7 +9,6 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.azure_sql_server_create_order_attributes import AzureSQLServerCreateOrderAttributes
     from ..models.azure_virtual_machine_create_order_attributes import AzureVirtualMachineCreateOrderAttributes
     from ..models.generic_order_attributes import GenericOrderAttributes
     from ..models.marketplace_open_portal_create_order_attributes import MarketplaceOpenPortalCreateOrderAttributes
@@ -33,12 +32,12 @@ class OrderCreateRequest:
         offering (str):
         project (str):
         plan (Union[Unset, str]):
-        attributes (Union['AzureSQLServerCreateOrderAttributes', 'AzureVirtualMachineCreateOrderAttributes',
-            'GenericOrderAttributes', 'MarketplaceOpenPortalCreateOrderAttributes',
-            'MarketplaceOpenPortalRemoteCreateOrderAttributes', 'OpenStackInstanceCreateOrderAttributes',
-            'OpenStackTenantCreateOrderAttributes', 'OpenStackVolumeCreateOrderAttributes',
-            'VMwareVirtualMachineCreateOrderAttributes', Unset]): Attributes structure depends on the offering type
-            specified in the parent object. Can also be a generic object for offerings without a specific attributes schema.
+        attributes (Union['AzureVirtualMachineCreateOrderAttributes', 'GenericOrderAttributes',
+            'MarketplaceOpenPortalCreateOrderAttributes', 'MarketplaceOpenPortalRemoteCreateOrderAttributes',
+            'OpenStackInstanceCreateOrderAttributes', 'OpenStackTenantCreateOrderAttributes',
+            'OpenStackVolumeCreateOrderAttributes', 'VMwareVirtualMachineCreateOrderAttributes', Unset]): Attributes
+            structure depends on the offering type specified in the parent object. Can also be a generic object for
+            offerings without a specific attributes schema.
         limits (Union[Unset, OrderCreateRequestLimits]):
         accepting_terms_of_service (Union[Unset, bool]):
         callback_url (Union[None, Unset, str]):
@@ -51,7 +50,6 @@ class OrderCreateRequest:
     project: str
     plan: Union[Unset, str] = UNSET
     attributes: Union[
-        "AzureSQLServerCreateOrderAttributes",
         "AzureVirtualMachineCreateOrderAttributes",
         "GenericOrderAttributes",
         "MarketplaceOpenPortalCreateOrderAttributes",
@@ -71,7 +69,6 @@ class OrderCreateRequest:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        from ..models.azure_sql_server_create_order_attributes import AzureSQLServerCreateOrderAttributes
         from ..models.azure_virtual_machine_create_order_attributes import AzureVirtualMachineCreateOrderAttributes
         from ..models.marketplace_open_portal_create_order_attributes import MarketplaceOpenPortalCreateOrderAttributes
         from ..models.marketplace_open_portal_remote_create_order_attributes import (
@@ -92,8 +89,6 @@ class OrderCreateRequest:
         if isinstance(self.attributes, Unset):
             attributes = UNSET
         elif isinstance(self.attributes, AzureVirtualMachineCreateOrderAttributes):
-            attributes = self.attributes.to_dict()
-        elif isinstance(self.attributes, AzureSQLServerCreateOrderAttributes):
             attributes = self.attributes.to_dict()
         elif isinstance(self.attributes, MarketplaceOpenPortalCreateOrderAttributes):
             attributes = self.attributes.to_dict()
@@ -167,7 +162,6 @@ class OrderCreateRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.azure_sql_server_create_order_attributes import AzureSQLServerCreateOrderAttributes
         from ..models.azure_virtual_machine_create_order_attributes import AzureVirtualMachineCreateOrderAttributes
         from ..models.generic_order_attributes import GenericOrderAttributes
         from ..models.marketplace_open_portal_create_order_attributes import MarketplaceOpenPortalCreateOrderAttributes
@@ -190,7 +184,6 @@ class OrderCreateRequest:
         def _parse_attributes(
             data: object,
         ) -> Union[
-            "AzureSQLServerCreateOrderAttributes",
             "AzureVirtualMachineCreateOrderAttributes",
             "GenericOrderAttributes",
             "MarketplaceOpenPortalCreateOrderAttributes",
@@ -214,7 +207,7 @@ class OrderCreateRequest:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                attributes_type_1 = AzureSQLServerCreateOrderAttributes.from_dict(data)
+                attributes_type_1 = MarketplaceOpenPortalCreateOrderAttributes.from_dict(data)
 
                 return attributes_type_1
             except:  # noqa: E722
@@ -222,7 +215,7 @@ class OrderCreateRequest:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                attributes_type_2 = MarketplaceOpenPortalCreateOrderAttributes.from_dict(data)
+                attributes_type_2 = MarketplaceOpenPortalRemoteCreateOrderAttributes.from_dict(data)
 
                 return attributes_type_2
             except:  # noqa: E722
@@ -230,7 +223,7 @@ class OrderCreateRequest:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                attributes_type_3 = MarketplaceOpenPortalRemoteCreateOrderAttributes.from_dict(data)
+                attributes_type_3 = OpenStackTenantCreateOrderAttributes.from_dict(data)
 
                 return attributes_type_3
             except:  # noqa: E722
@@ -238,7 +231,7 @@ class OrderCreateRequest:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                attributes_type_4 = OpenStackTenantCreateOrderAttributes.from_dict(data)
+                attributes_type_4 = OpenStackInstanceCreateOrderAttributes.from_dict(data)
 
                 return attributes_type_4
             except:  # noqa: E722
@@ -246,7 +239,7 @@ class OrderCreateRequest:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                attributes_type_5 = OpenStackInstanceCreateOrderAttributes.from_dict(data)
+                attributes_type_5 = OpenStackVolumeCreateOrderAttributes.from_dict(data)
 
                 return attributes_type_5
             except:  # noqa: E722
@@ -254,24 +247,16 @@ class OrderCreateRequest:
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                attributes_type_6 = OpenStackVolumeCreateOrderAttributes.from_dict(data)
+                attributes_type_6 = VMwareVirtualMachineCreateOrderAttributes.from_dict(data)
 
                 return attributes_type_6
             except:  # noqa: E722
                 pass
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                attributes_type_7 = VMwareVirtualMachineCreateOrderAttributes.from_dict(data)
-
-                return attributes_type_7
-            except:  # noqa: E722
-                pass
             if not isinstance(data, dict):
                 raise TypeError()
-            attributes_type_8 = GenericOrderAttributes.from_dict(data)
+            attributes_type_7 = GenericOrderAttributes.from_dict(data)
 
-            return attributes_type_8
+            return attributes_type_7
 
         attributes = _parse_attributes(d.pop("attributes", UNSET))
 

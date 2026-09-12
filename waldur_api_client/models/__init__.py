@@ -240,21 +240,6 @@ from .azure_resource_group_marketplace_offering_plugin_options_type_0 import (
     AzureResourceGroupMarketplaceOfferingPluginOptionsType0,
 )
 from .azure_size import AzureSize
-from .azure_sql_database import AzureSqlDatabase
-from .azure_sql_database_create_request import AzureSqlDatabaseCreateRequest
-from .azure_sql_database_create_response import AzureSqlDatabaseCreateResponse
-from .azure_sql_database_field_enum import AzureSqlDatabaseFieldEnum
-from .azure_sql_database_marketplace_offering_plugin_options_type_0 import (
-    AzureSqlDatabaseMarketplaceOfferingPluginOptionsType0,
-)
-from .azure_sql_database_request import AzureSqlDatabaseRequest
-from .azure_sql_server import AzureSqlServer
-from .azure_sql_server_create_order_attributes import AzureSQLServerCreateOrderAttributes
-from .azure_sql_server_field_enum import AzureSqlServerFieldEnum
-from .azure_sql_server_marketplace_offering_plugin_options_type_0 import (
-    AzureSqlServerMarketplaceOfferingPluginOptionsType0,
-)
-from .azure_sql_server_request import AzureSqlServerRequest
 from .azure_virtual_machine import AzureVirtualMachine
 from .azure_virtual_machine_create_order_attributes import AzureVirtualMachineCreateOrderAttributes
 from .azure_virtual_machine_field_enum import AzureVirtualMachineFieldEnum
@@ -1732,8 +1717,6 @@ from .patched_attribute_request import PatchedAttributeRequest
 from .patched_attribute_request_default_type_0 import PatchedAttributeRequestDefaultType0
 from .patched_aws_instance_request import PatchedAwsInstanceRequest
 from .patched_azure_public_ip_request import PatchedAzurePublicIPRequest
-from .patched_azure_sql_database_request import PatchedAzureSqlDatabaseRequest
-from .patched_azure_sql_server_request import PatchedAzureSqlServerRequest
 from .patched_azure_virtual_machine_request import PatchedAzureVirtualMachineRequest
 from .patched_broadcast_message_request import PatchedBroadcastMessageRequest
 from .patched_call_assignment_configuration_request import PatchedCallAssignmentConfigurationRequest
@@ -3261,17 +3244,6 @@ __all__ = (
     "AzureResourceGroupFieldEnum",
     "AzureResourceGroupMarketplaceOfferingPluginOptionsType0",
     "AzureSize",
-    "AzureSqlDatabase",
-    "AzureSqlDatabaseCreateRequest",
-    "AzureSqlDatabaseCreateResponse",
-    "AzureSqlDatabaseFieldEnum",
-    "AzureSqlDatabaseMarketplaceOfferingPluginOptionsType0",
-    "AzureSqlDatabaseRequest",
-    "AzureSqlServer",
-    "AzureSQLServerCreateOrderAttributes",
-    "AzureSqlServerFieldEnum",
-    "AzureSqlServerMarketplaceOfferingPluginOptionsType0",
-    "AzureSqlServerRequest",
     "AzureVirtualMachine",
     "AzureVirtualMachineCreateOrderAttributes",
     "AzureVirtualMachineFieldEnum",
@@ -4681,8 +4653,6 @@ __all__ = (
     "PatchedAttributeRequestDefaultType0",
     "PatchedAwsInstanceRequest",
     "PatchedAzurePublicIPRequest",
-    "PatchedAzureSqlDatabaseRequest",
-    "PatchedAzureSqlServerRequest",
     "PatchedAzureVirtualMachineRequest",
     "PatchedBroadcastMessageRequest",
     "PatchedCallAssignmentConfigurationRequest",
