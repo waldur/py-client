@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.1.3-rc.11.dev.20260912170136).
+> Auto-generated Python SDK for the Waldur API (version 8.1.3-rc.11.dev.20260913151604).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -53,12 +53,6 @@ waldur_api_client/
 - **aws-regions** (3 endpoints)
 - **aws-sizes** (3 endpoints)
 - **aws-volumes** (13 endpoints)
-- **azure-images** (3 endpoints)
-- **azure-locations** (3 endpoints)
-- **azure-public-ips** (11 endpoints)
-- **azure-resource-groups** (3 endpoints)
-- **azure-sizes** (3 endpoints)
-- **azure-virtualmachines** (14 endpoints)
 - **backend-resource-requests** (7 endpoints)
 - **backend-resources** (6 endpoints)
 - **billing-total-cost** (1 endpoint)
@@ -381,3 +375,4 @@ waldur_api_client/
 - **vmware-ports** (8 endpoints)
 - **vmware-templates** (3 endpoints)
 - **vmware-virtual-machine** (21 endpoints)
+- **web-shell-ticket** (1 endpoint)

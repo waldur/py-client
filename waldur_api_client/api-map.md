@@ -272,67 +272,6 @@ Module: `waldur_api_client.api.aws_volumes`
 - `aws_volumes_set_ok` POST `/api/aws-volumes/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
 - `aws_volumes_unlink` POST `/api/aws-volumes/{uuid}/unlink/` — Unlink resource (path: uuid)
 
-## azure-images
-Module: `waldur_api_client.api.azure_images`
-
-- `azure_images_list` GET `/api/azure-images/` (6 query params)
-- `azure_images_count` HEAD `/api/azure-images/` — Get number of items in the collection matching the request parameters (6 query params)
-- `azure_images_retrieve` GET `/api/azure-images/{uuid}/` (path: uuid)
-
-## azure-locations
-Module: `waldur_api_client.api.azure_locations`
-
-- `azure_locations_list` GET `/api/azure-locations/` (5 query params)
-- `azure_locations_count` HEAD `/api/azure-locations/` — Get number of items in the collection matching the request parameters (5 query params)
-- `azure_locations_retrieve` GET `/api/azure-locations/{uuid}/` (path: uuid)
-
-## azure-public-ips
-Module: `waldur_api_client.api.azure_public_ips`
-
-- `azure_public_ips_list` GET `/api/azure-public-ips/` (20 query params)
-- `azure_public_ips_count` HEAD `/api/azure-public-ips/` — Get number of items in the collection matching the request parameters (19 query params)
-- `azure_public_ips_create` POST `/api/azure-public-ips/` (request body)
-- `azure_public_ips_retrieve` GET `/api/azure-public-ips/{uuid}/` (path: uuid | 1 query param)
-- `azure_public_ips_update` PUT `/api/azure-public-ips/{uuid}/` (path: uuid | request body)
-- `azure_public_ips_partial_update` PATCH `/api/azure-public-ips/{uuid}/` (path: uuid | request body)
-- `azure_public_ips_destroy` DELETE `/api/azure-public-ips/{uuid}/` (path: uuid)
-- `azure_public_ips_pull` POST `/api/azure-public-ips/{uuid}/pull/` — Synchronize resource state (path: uuid)
-- `azure_public_ips_set_erred` POST `/api/azure-public-ips/{uuid}/set_erred/` — Mark resource as ERRED (path: uuid | request body)
-- `azure_public_ips_set_ok` POST `/api/azure-public-ips/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
-- `azure_public_ips_unlink` POST `/api/azure-public-ips/{uuid}/unlink/` — Unlink resource (path: uuid)
-
-## azure-resource-groups
-Module: `waldur_api_client.api.azure_resource_groups`
-
-- `azure_resource_groups_list` GET `/api/azure-resource-groups/` (1 query param)
-- `azure_resource_groups_count` HEAD `/api/azure-resource-groups/` — Get number of items in the collection matching the request parameters (no params)
-- `azure_resource_groups_retrieve` GET `/api/azure-resource-groups/{uuid}/` (path: uuid | 1 query param)
-
-## azure-sizes
-Module: `waldur_api_client.api.azure_sizes`
-
-- `azure_sizes_list` GET `/api/azure-sizes/` (7 query params)
-- `azure_sizes_count` HEAD `/api/azure-sizes/` — Get number of items in the collection matching the request parameters (7 query params)
-- `azure_sizes_retrieve` GET `/api/azure-sizes/{uuid}/` (path: uuid)
-
-## azure-virtualmachines
-Module: `waldur_api_client.api.azure_virtualmachines`
-
-- `azure_virtualmachines_list` GET `/api/azure-virtualmachines/` (20 query params)
-- `azure_virtualmachines_count` HEAD `/api/azure-virtualmachines/` — Get number of items in the collection matching the request parameters (19 query params)
-- `azure_virtualmachines_create` POST `/api/azure-virtualmachines/` (request body)
-- `azure_virtualmachines_retrieve` GET `/api/azure-virtualmachines/{uuid}/` (path: uuid | 1 query param)
-- `azure_virtualmachines_update` PUT `/api/azure-virtualmachines/{uuid}/` (path: uuid | request body)
-- `azure_virtualmachines_partial_update` PATCH `/api/azure-virtualmachines/{uuid}/` (path: uuid | request body)
-- `azure_virtualmachines_destroy` DELETE `/api/azure-virtualmachines/{uuid}/` (path: uuid)
-- `azure_virtualmachines_pull` POST `/api/azure-virtualmachines/{uuid}/pull/` — Synchronize resource state (path: uuid)
-- `azure_virtualmachines_restart` POST `/api/azure-virtualmachines/{uuid}/restart/` (path: uuid)
-- `azure_virtualmachines_set_erred` POST `/api/azure-virtualmachines/{uuid}/set_erred/` — Mark resource as ERRED (path: uuid | request body)
-- `azure_virtualmachines_set_ok` POST `/api/azure-virtualmachines/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
-- `azure_virtualmachines_start` POST `/api/azure-virtualmachines/{uuid}/start/` (path: uuid)
-- `azure_virtualmachines_stop` POST `/api/azure-virtualmachines/{uuid}/stop/` (path: uuid)
-- `azure_virtualmachines_unlink` POST `/api/azure-virtualmachines/{uuid}/unlink/` — Unlink resource (path: uuid)
-
 ## backend-resource-requests
 Module: `waldur_api_client.api.backend_resource_requests`
 
@@ -4244,3 +4183,8 @@ Module: `waldur_api_client.api.vmware_virtual_machine`
 - `vmware_virtual_machine_suspend` POST `/api/vmware-virtual-machine/{uuid}/suspend/` (path: uuid)
 - `vmware_virtual_machine_unlink` POST `/api/vmware-virtual-machine/{uuid}/unlink/` — Unlink resource (path: uuid)
 - `vmware_virtual_machine_web_console_retrieve` GET `/api/vmware-virtual-machine/{uuid}/web_console/` — This endpoint provides access to HTML Console aka WMKS (path: uuid)
+
+## web-shell-ticket
+Module: `waldur_api_client.api.web_shell_ticket`
+
+- `web_shell_ticket` POST `/api/web-shell-ticket/` — Open a web shell session (no params)

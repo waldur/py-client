@@ -226,27 +226,6 @@ from .aws_volume_attach_request import AwsVolumeAttachRequest
 from .aws_volume_field_enum import AwsVolumeFieldEnum
 from .aws_volume_marketplace_offering_plugin_options_type_0 import AwsVolumeMarketplaceOfferingPluginOptionsType0
 from .aws_volume_request import AwsVolumeRequest
-from .azure_image import AzureImage
-from .azure_location import AzureLocation
-from .azure_public_ip import AzurePublicIP
-from .azure_public_ip_field_enum import AzurePublicIPFieldEnum
-from .azure_public_ip_marketplace_offering_plugin_options_type_0 import (
-    AzurePublicIPMarketplaceOfferingPluginOptionsType0,
-)
-from .azure_public_ip_request import AzurePublicIPRequest
-from .azure_resource_group import AzureResourceGroup
-from .azure_resource_group_field_enum import AzureResourceGroupFieldEnum
-from .azure_resource_group_marketplace_offering_plugin_options_type_0 import (
-    AzureResourceGroupMarketplaceOfferingPluginOptionsType0,
-)
-from .azure_size import AzureSize
-from .azure_virtual_machine import AzureVirtualMachine
-from .azure_virtual_machine_create_order_attributes import AzureVirtualMachineCreateOrderAttributes
-from .azure_virtual_machine_field_enum import AzureVirtualMachineFieldEnum
-from .azure_virtual_machine_marketplace_offering_plugin_options_type_0 import (
-    AzureVirtualMachineMarketplaceOfferingPluginOptionsType0,
-)
-from .azure_virtual_machine_request import AzureVirtualMachineRequest
 from .backend_id_request import BackendIdRequest
 from .backend_metadata import BackendMetadata
 from .backend_resource import BackendResource
@@ -1716,8 +1695,6 @@ from .patched_attribute_option_request import PatchedAttributeOptionRequest
 from .patched_attribute_request import PatchedAttributeRequest
 from .patched_attribute_request_default_type_0 import PatchedAttributeRequestDefaultType0
 from .patched_aws_instance_request import PatchedAwsInstanceRequest
-from .patched_azure_public_ip_request import PatchedAzurePublicIPRequest
-from .patched_azure_virtual_machine_request import PatchedAzureVirtualMachineRequest
 from .patched_broadcast_message_request import PatchedBroadcastMessageRequest
 from .patched_call_assignment_configuration_request import PatchedCallAssignmentConfigurationRequest
 from .patched_call_coi_configuration_request import PatchedCallCOIConfigurationRequest
@@ -3000,6 +2977,7 @@ from .web_hook_content_type_enum_1 import WebHookContentTypeEnum1
 from .web_hook_receiver import WebHookReceiver
 from .web_hook_receiver_request import WebHookReceiverRequest
 from .web_hook_request import WebHookRequest
+from .web_shell_ticket import WebShellTicket
 from .webhook_payload import WebhookPayload
 from .webhook_payload_request import WebhookPayloadRequest
 from .widget_enum import WidgetEnum
@@ -3234,21 +3212,6 @@ __all__ = (
     "AwsVolumeFieldEnum",
     "AwsVolumeMarketplaceOfferingPluginOptionsType0",
     "AwsVolumeRequest",
-    "AzureImage",
-    "AzureLocation",
-    "AzurePublicIP",
-    "AzurePublicIPFieldEnum",
-    "AzurePublicIPMarketplaceOfferingPluginOptionsType0",
-    "AzurePublicIPRequest",
-    "AzureResourceGroup",
-    "AzureResourceGroupFieldEnum",
-    "AzureResourceGroupMarketplaceOfferingPluginOptionsType0",
-    "AzureSize",
-    "AzureVirtualMachine",
-    "AzureVirtualMachineCreateOrderAttributes",
-    "AzureVirtualMachineFieldEnum",
-    "AzureVirtualMachineMarketplaceOfferingPluginOptionsType0",
-    "AzureVirtualMachineRequest",
     "BackendIdRequest",
     "BackendMetadata",
     "BackendResource",
@@ -4652,8 +4615,6 @@ __all__ = (
     "PatchedAttributeRequest",
     "PatchedAttributeRequestDefaultType0",
     "PatchedAwsInstanceRequest",
-    "PatchedAzurePublicIPRequest",
-    "PatchedAzureVirtualMachineRequest",
     "PatchedBroadcastMessageRequest",
     "PatchedCallAssignmentConfigurationRequest",
     "PatchedCallCOIConfigurationRequest",
@@ -5890,6 +5851,7 @@ __all__ = (
     "WebHookReceiver",
     "WebHookReceiverRequest",
     "WebHookRequest",
+    "WebShellTicket",
     "WidgetEnum",
     "WithdrawableAdjustmentRequest",
     "WorkflowCriterion",

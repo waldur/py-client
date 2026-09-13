@@ -80,6 +80,7 @@ class ProviderOfferingDetails:
         options (Union[Unset, OfferingOptions]):
         resource_options (Union[Unset, OfferingOptions]):
         components (Union[Unset, list['OfferingComponent']]):
+        limit_precision_advisory (Union[None, Unset, str]):
         plugin_options (Union[Unset, MergedPluginOptions]):
         secret_options (Union[Unset, MergedSecretOptions]):
         service_attributes (Union[Unset, ProviderOfferingDetailsServiceAttributes]):
@@ -171,6 +172,7 @@ class ProviderOfferingDetails:
     options: Union[Unset, "OfferingOptions"] = UNSET
     resource_options: Union[Unset, "OfferingOptions"] = UNSET
     components: Union[Unset, list["OfferingComponent"]] = UNSET
+    limit_precision_advisory: Union[None, Unset, str] = UNSET
     plugin_options: Union[Unset, "MergedPluginOptions"] = UNSET
     secret_options: Union[Unset, "MergedSecretOptions"] = UNSET
     service_attributes: Union[Unset, "ProviderOfferingDetailsServiceAttributes"] = UNSET
@@ -365,6 +367,12 @@ class ProviderOfferingDetails:
             for components_item_data in self.components:
                 components_item = components_item_data.to_dict()
                 components.append(components_item)
+
+        limit_precision_advisory: Union[None, Unset, str]
+        if isinstance(self.limit_precision_advisory, Unset):
+            limit_precision_advisory = UNSET
+        else:
+            limit_precision_advisory = self.limit_precision_advisory
 
         plugin_options: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.plugin_options, Unset):
@@ -713,6 +721,8 @@ class ProviderOfferingDetails:
             field_dict["resource_options"] = resource_options
         if components is not UNSET:
             field_dict["components"] = components
+        if limit_precision_advisory is not UNSET:
+            field_dict["limit_precision_advisory"] = limit_precision_advisory
         if plugin_options is not UNSET:
             field_dict["plugin_options"] = plugin_options
         if secret_options is not UNSET:
@@ -1047,6 +1057,15 @@ class ProviderOfferingDetails:
             components_item = OfferingComponent.from_dict(components_item_data)
 
             components.append(components_item)
+
+        def _parse_limit_precision_advisory(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        limit_precision_advisory = _parse_limit_precision_advisory(d.pop("limit_precision_advisory", UNSET))
 
         _plugin_options = d.pop("plugin_options", UNSET)
         plugin_options: Union[Unset, MergedPluginOptions]
@@ -1504,6 +1523,7 @@ class ProviderOfferingDetails:
             options=options,
             resource_options=resource_options,
             components=components,
+            limit_precision_advisory=limit_precision_advisory,
             plugin_options=plugin_options,
             secret_options=secret_options,
             service_attributes=service_attributes,

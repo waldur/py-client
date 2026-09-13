@@ -41,6 +41,7 @@ class ProviderOfferingDetailsFieldEnum(str, Enum):
     INTEGRATION_GUIDE = "integration_guide"
     INTEGRATION_STATUS = "integration_status"
     LATITUDE = "latitude"
+    LIMIT_PRECISION_ADVISORY = "limit_precision_advisory"
     LONGITUDE = "longitude"
     NAME = "name"
     OFFERING_GROUP = "offering_group"
