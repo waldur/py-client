@@ -1976,6 +1976,8 @@ from .project_accounting_summary import ProjectAccountingSummary
 from .project_action_enum import ProjectActionEnum
 from .project_affiliation_update_request import ProjectAffiliationUpdateRequest
 from .project_answer import ProjectAnswer
+from .project_answer_detail import ProjectAnswerDetail
+from .project_answer_detail_answer_data_type_0 import ProjectAnswerDetailAnswerDataType0
 from .project_attach_request import ProjectAttachRequest
 from .project_classification_summary import ProjectClassificationSummary
 from .project_creation_trend import ProjectCreationTrend
@@ -2185,7 +2187,6 @@ from .question_admin_guidance_answer_value_type_0 import QuestionAdminGuidanceAn
 from .question_admin_request import QuestionAdminRequest
 from .question_admin_request_guidance_answer_value_type_0 import QuestionAdminRequestGuidanceAnswerValueType0
 from .question_answer import QuestionAnswer
-from .question_answer_project_answers_item import QuestionAnswerProjectAnswersItem
 from .question_answer_question_options_item import QuestionAnswerQuestionOptionsItem
 from .question_condition import QuestionCondition
 from .question_condition_required_value import QuestionConditionRequiredValue
@@ -4881,6 +4882,8 @@ __all__ = (
     "ProjectActionEnum",
     "ProjectAffiliationUpdateRequest",
     "ProjectAnswer",
+    "ProjectAnswerDetail",
+    "ProjectAnswerDetailAnswerDataType0",
     "ProjectAttachRequest",
     "ProjectClassificationSummary",
     "ProjectCreationTrend",
@@ -5080,7 +5083,6 @@ __all__ = (
     "QuestionAdminRequest",
     "QuestionAdminRequestGuidanceAnswerValueType0",
     "QuestionAnswer",
-    "QuestionAnswerProjectAnswersItem",
     "QuestionAnswerQuestionOptionsItem",
     "QuestionCondition",
     "QuestionConditionRequiredValue",

@@ -56,7 +56,7 @@ class Project:
         image (Union[None, Unset, str]):
         resources_count (Union[Unset, int]): Number of active resources in this project
         project_metadata (Union[Unset, list['ProjectMetadataAnswer']]): Answers to the customer's project-metadata
-            checklist (read-only).
+            checklist (read-only): the latest answer per question.
         max_service_accounts (Union[None, Unset, int]): Maximum number of service accounts allowed
         kind (Union[Unset, ProjectKindEnum]):
         is_removed (Union[Unset, bool]):
