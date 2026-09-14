@@ -47,6 +47,8 @@ class Rule:
         use_user_organization_as_customer_name (Union[Unset, bool]):
         create_project (Union[Unset, bool]): Create (or join) a project for the matched user. Disable to grant only the
             organization-level role.
+        project_name_template (Union[None, Unset, str]): Template for project name. Supports {username}, {email},
+            {full_name} variables
         revoke_when_unmatched (Union[Unset, bool]): Revoke the roles this rule granted once the user stops matching it.
             Off by default so enabling a rule cannot silently strip access that is already in use.
         project_role (Union[None, Unset, str]):
@@ -80,6 +82,7 @@ class Rule:
     customer: Union[None, Unset, str] = UNSET
     use_user_organization_as_customer_name: Union[Unset, bool] = UNSET
     create_project: Union[Unset, bool] = UNSET
+    project_name_template: Union[None, Unset, str] = UNSET
     revoke_when_unmatched: Union[Unset, bool] = UNSET
     project_role: Union[None, Unset, str] = UNSET
     customer_role: Union[None, Unset, str] = UNSET
@@ -155,6 +158,12 @@ class Rule:
 
         create_project = self.create_project
 
+        project_name_template: Union[None, Unset, str]
+        if isinstance(self.project_name_template, Unset):
+            project_name_template = UNSET
+        else:
+            project_name_template = self.project_name_template
+
         revoke_when_unmatched = self.revoke_when_unmatched
 
         project_role: Union[None, Unset, str]
@@ -223,6 +232,8 @@ class Rule:
             field_dict["use_user_organization_as_customer_name"] = use_user_organization_as_customer_name
         if create_project is not UNSET:
             field_dict["create_project"] = create_project
+        if project_name_template is not UNSET:
+            field_dict["project_name_template"] = project_name_template
         if revoke_when_unmatched is not UNSET:
             field_dict["revoke_when_unmatched"] = revoke_when_unmatched
         if project_role is not UNSET:
@@ -305,6 +316,15 @@ class Rule:
 
         create_project = d.pop("create_project", UNSET)
 
+        def _parse_project_name_template(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        project_name_template = _parse_project_name_template(d.pop("project_name_template", UNSET))
+
         revoke_when_unmatched = d.pop("revoke_when_unmatched", UNSET)
 
         def _parse_project_role(data: object) -> Union[None, Unset, str]:
@@ -373,6 +393,7 @@ class Rule:
             customer=customer,
             use_user_organization_as_customer_name=use_user_organization_as_customer_name,
             create_project=create_project,
+            project_name_template=project_name_template,
             revoke_when_unmatched=revoke_when_unmatched,
             project_role=project_role,
             customer_role=customer_role,

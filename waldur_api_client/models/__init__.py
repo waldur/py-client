@@ -1973,6 +1973,7 @@ from .proficiency_level_enum import ProficiencyLevelEnum
 from .profile_completeness import ProfileCompleteness
 from .project import Project
 from .project_accounting_summary import ProjectAccountingSummary
+from .project_action_enum import ProjectActionEnum
 from .project_affiliation_update_request import ProjectAffiliationUpdateRequest
 from .project_answer import ProjectAnswer
 from .project_attach_request import ProjectAttachRequest
@@ -4877,6 +4878,7 @@ __all__ = (
     "ProfileCompleteness",
     "Project",
     "ProjectAccountingSummary",
+    "ProjectActionEnum",
     "ProjectAffiliationUpdateRequest",
     "ProjectAnswer",
     "ProjectAttachRequest",

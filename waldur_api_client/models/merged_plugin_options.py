@@ -154,7 +154,8 @@ class MergedPluginOptions:
         resource_project_role_group_template (Union[Unset, str]): string.Template for resource-project-scope role group
             names. Adds ${rp_uuid}, ${rp_uuid_short}, ${project_name} to the variables available for resource-scope
             templates. Default: '${resource_slug}_${rp_uuid_short}_${role_name}'.
-        username_anonymized_prefix (Union[Unset, str]): GLAuth prefix for anonymized usernames Default: 'waldur_'.
+        username_anonymized_prefix (Union[Unset, str]): Prefix for anonymized usernames; the name is the prefix followed
+            by the account's POSIX UID Default: 'waldur_'.
         username_generation_policy (Union[Unset, UsernameGenerationPolicyEnum]):  Default:
             UsernameGenerationPolicyEnum.SERVICE_PROVIDER.
         login_shell (Union[Unset, str]): Default login shell assigned to GLAuth/LDAP accounts. Default: '/bin/bash'.

@@ -28,6 +28,8 @@ class PatchedServiceProviderRequestMultipart:
             offering decides for itself.
         account_login_shell (Union[Unset, str]): Provider-level default login shell. Blank means each offering decides
             for itself.
+        account_username_anonymized_prefix (Union[Unset, str]): Provider-level default prefix for anonymized usernames,
+            which are the prefix followed by the account's POSIX UID. Blank means each offering decides for itself.
     """
 
     description: Union[Unset, str] = UNSET
@@ -38,6 +40,7 @@ class PatchedServiceProviderRequestMultipart:
     account_username_generation_policy: Union[Unset, str] = UNSET
     account_homedir_prefix: Union[Unset, str] = UNSET
     account_login_shell: Union[Unset, str] = UNSET
+    account_username_anonymized_prefix: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -68,6 +71,8 @@ class PatchedServiceProviderRequestMultipart:
 
         account_login_shell = self.account_login_shell
 
+        account_username_anonymized_prefix = self.account_username_anonymized_prefix
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -87,6 +92,8 @@ class PatchedServiceProviderRequestMultipart:
             field_dict["account_homedir_prefix"] = account_homedir_prefix
         if account_login_shell is not UNSET:
             field_dict["account_login_shell"] = account_login_shell
+        if account_username_anonymized_prefix is not UNSET:
+            field_dict["account_username_anonymized_prefix"] = account_username_anonymized_prefix
 
         return field_dict
 
@@ -125,6 +132,14 @@ class PatchedServiceProviderRequestMultipart:
 
         if not isinstance(self.account_login_shell, Unset):
             files.append(("account_login_shell", (None, str(self.account_login_shell).encode(), "text/plain")))
+
+        if not isinstance(self.account_username_anonymized_prefix, Unset):
+            files.append(
+                (
+                    "account_username_anonymized_prefix",
+                    (None, str(self.account_username_anonymized_prefix).encode(), "text/plain"),
+                )
+            )
 
         for prop_name, prop in self.additional_properties.items():
             files.append((prop_name, (None, str(prop).encode(), "text/plain")))
@@ -170,6 +185,8 @@ class PatchedServiceProviderRequestMultipart:
 
         account_login_shell = d.pop("account_login_shell", UNSET)
 
+        account_username_anonymized_prefix = d.pop("account_username_anonymized_prefix", UNSET)
+
         patched_service_provider_request_multipart = cls(
             description=description,
             enable_notifications=enable_notifications,
@@ -179,6 +196,7 @@ class PatchedServiceProviderRequestMultipart:
             account_username_generation_policy=account_username_generation_policy,
             account_homedir_prefix=account_homedir_prefix,
             account_login_shell=account_login_shell,
+            account_username_anonymized_prefix=account_username_anonymized_prefix,
         )
 
         patched_service_provider_request_multipart.additional_properties = d
