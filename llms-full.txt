@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.11.dev.20260914080636
+# Version: 8.1.3-rc.11.dev.20260914110118
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -3259,7 +3259,7 @@ Path parameters:
 ### customers_list
 GET /api/customers/
 Summary: List customers
-Description: Retrieve a list of customers. The list is filtered based on the user's permissions.
+Description: Retrieve a list of customers. The list is filtered based on the user's permissions. A user whose only link to an organization is a role on its service provider sees it with a restricted field set: url, uuid, name, native_name, display_name, abbreviation, slug, image, country, country_name, is_ser...
 Query parameters (24):
   - abbreviation — Abbreviation
   - accounting_is_running — Filter by whether accounting is running.
@@ -3491,7 +3491,7 @@ Query parameters (18):
 ### customers_retrieve
 GET /api/customers/{uuid}/
 Summary: Retrieve customer details
-Description: Fetch the details of a specific customer by its UUID.
+Description: Fetch the details of a specific customer by its UUID. A user whose only link to the organization is a role on its service provider receives the restricted field set described on the list operation.
 Path parameters:
   - uuid
 Query parameters (1):
