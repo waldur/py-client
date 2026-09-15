@@ -139,16 +139,16 @@ class MergedPluginOptionsRequest:
         usage_poll_interval_minutes (Union[Unset, int]): Interval in minutes between usage polling for this offering
             (default: 60)
         billing_source (Union[Unset, BillingSourceEnum]):
-        heappe_cluster_id (Union[Unset, str]): HEAppE cluster id
-        heappe_local_base_path (Union[Unset, str]): HEAppE local base path
-        heappe_identifier (Union[Unset, str]): Identifier of the HEAppE instance this offering targets, e.g.
+        heappe_cluster_id (Union[None, Unset, str]): HEAppE cluster id
+        heappe_local_base_path (Union[None, Unset, str]): HEAppE local base path
+        heappe_url (Union[None, Unset, str]): HEAppE url
+        heappe_username (Union[None, Unset, str]): HEAppE username
+        heappe_identifier (Union[None, Unset, str]): Identifier of the HEAppE instance this offering targets, e.g.
             'it4i-heappe-prod'. Lets providers with multiple HEAppE deployments disambiguate which one a given offering
             uses.
-        heappe_url (Union[Unset, str]): HEAppE url
-        heappe_username (Union[Unset, str]): HEAppE username
         homedir_prefix (Union[Unset, str]): GLAuth homedir prefix Default: '/home/'.
-        scratch_project_directory (Union[Unset, str]): HEAppE scratch project directory
-        project_permanent_directory (Union[Unset, str]): HEAppE project permanent directory
+        scratch_project_directory (Union[None, Unset, str]): HEAppE scratch project directory
+        project_permanent_directory (Union[None, Unset, str]): HEAppE project permanent directory
         enable_posix_account (Union[Unset, bool]): Manage a POSIX/LDAP account (UID, GID, home directory, login shell
             and GLAuth exposure) for this offering's users. Disable for offerings that only need a username. Default: True.
         resource_role_map (Union[Unset, MergedPluginOptionsRequestResourceRoleMap]): Mapping of Waldur role names (on
@@ -281,14 +281,14 @@ class MergedPluginOptionsRequest:
     lbaas_enabled: Union[Unset, bool] = UNSET
     usage_poll_interval_minutes: Union[Unset, int] = UNSET
     billing_source: Union[Unset, BillingSourceEnum] = UNSET
-    heappe_cluster_id: Union[Unset, str] = UNSET
-    heappe_local_base_path: Union[Unset, str] = UNSET
-    heappe_identifier: Union[Unset, str] = UNSET
-    heappe_url: Union[Unset, str] = UNSET
-    heappe_username: Union[Unset, str] = UNSET
+    heappe_cluster_id: Union[None, Unset, str] = UNSET
+    heappe_local_base_path: Union[None, Unset, str] = UNSET
+    heappe_url: Union[None, Unset, str] = UNSET
+    heappe_username: Union[None, Unset, str] = UNSET
+    heappe_identifier: Union[None, Unset, str] = UNSET
     homedir_prefix: Union[Unset, str] = "/home/"
-    scratch_project_directory: Union[Unset, str] = UNSET
-    project_permanent_directory: Union[Unset, str] = UNSET
+    scratch_project_directory: Union[None, Unset, str] = UNSET
+    project_permanent_directory: Union[None, Unset, str] = UNSET
     enable_posix_account: Union[Unset, bool] = True
     resource_role_map: Union[Unset, "MergedPluginOptionsRequestResourceRoleMap"] = UNSET
     resource_project_role_map: Union[Unset, "MergedPluginOptionsRequestResourceProjectRoleMap"] = UNSET
@@ -480,21 +480,49 @@ class MergedPluginOptionsRequest:
         if not isinstance(self.billing_source, Unset):
             billing_source = self.billing_source.value
 
-        heappe_cluster_id = self.heappe_cluster_id
+        heappe_cluster_id: Union[None, Unset, str]
+        if isinstance(self.heappe_cluster_id, Unset):
+            heappe_cluster_id = UNSET
+        else:
+            heappe_cluster_id = self.heappe_cluster_id
 
-        heappe_local_base_path = self.heappe_local_base_path
+        heappe_local_base_path: Union[None, Unset, str]
+        if isinstance(self.heappe_local_base_path, Unset):
+            heappe_local_base_path = UNSET
+        else:
+            heappe_local_base_path = self.heappe_local_base_path
 
-        heappe_identifier = self.heappe_identifier
+        heappe_url: Union[None, Unset, str]
+        if isinstance(self.heappe_url, Unset):
+            heappe_url = UNSET
+        else:
+            heappe_url = self.heappe_url
 
-        heappe_url = self.heappe_url
+        heappe_username: Union[None, Unset, str]
+        if isinstance(self.heappe_username, Unset):
+            heappe_username = UNSET
+        else:
+            heappe_username = self.heappe_username
 
-        heappe_username = self.heappe_username
+        heappe_identifier: Union[None, Unset, str]
+        if isinstance(self.heappe_identifier, Unset):
+            heappe_identifier = UNSET
+        else:
+            heappe_identifier = self.heappe_identifier
 
         homedir_prefix = self.homedir_prefix
 
-        scratch_project_directory = self.scratch_project_directory
+        scratch_project_directory: Union[None, Unset, str]
+        if isinstance(self.scratch_project_directory, Unset):
+            scratch_project_directory = UNSET
+        else:
+            scratch_project_directory = self.scratch_project_directory
 
-        project_permanent_directory = self.project_permanent_directory
+        project_permanent_directory: Union[None, Unset, str]
+        if isinstance(self.project_permanent_directory, Unset):
+            project_permanent_directory = UNSET
+        else:
+            project_permanent_directory = self.project_permanent_directory
 
         enable_posix_account = self.enable_posix_account
 
@@ -713,12 +741,12 @@ class MergedPluginOptionsRequest:
             field_dict["heappe_cluster_id"] = heappe_cluster_id
         if heappe_local_base_path is not UNSET:
             field_dict["heappe_local_base_path"] = heappe_local_base_path
-        if heappe_identifier is not UNSET:
-            field_dict["heappe_identifier"] = heappe_identifier
         if heappe_url is not UNSET:
             field_dict["heappe_url"] = heappe_url
         if heappe_username is not UNSET:
             field_dict["heappe_username"] = heappe_username
+        if heappe_identifier is not UNSET:
+            field_dict["heappe_identifier"] = heappe_identifier
         if homedir_prefix is not UNSET:
             field_dict["homedir_prefix"] = homedir_prefix
         if scratch_project_directory is not UNSET:
@@ -1031,21 +1059,70 @@ class MergedPluginOptionsRequest:
         else:
             billing_source = BillingSourceEnum(_billing_source)
 
-        heappe_cluster_id = d.pop("heappe_cluster_id", UNSET)
+        def _parse_heappe_cluster_id(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        heappe_local_base_path = d.pop("heappe_local_base_path", UNSET)
+        heappe_cluster_id = _parse_heappe_cluster_id(d.pop("heappe_cluster_id", UNSET))
 
-        heappe_identifier = d.pop("heappe_identifier", UNSET)
+        def _parse_heappe_local_base_path(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        heappe_url = d.pop("heappe_url", UNSET)
+        heappe_local_base_path = _parse_heappe_local_base_path(d.pop("heappe_local_base_path", UNSET))
 
-        heappe_username = d.pop("heappe_username", UNSET)
+        def _parse_heappe_url(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        heappe_url = _parse_heappe_url(d.pop("heappe_url", UNSET))
+
+        def _parse_heappe_username(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        heappe_username = _parse_heappe_username(d.pop("heappe_username", UNSET))
+
+        def _parse_heappe_identifier(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        heappe_identifier = _parse_heappe_identifier(d.pop("heappe_identifier", UNSET))
 
         homedir_prefix = d.pop("homedir_prefix", UNSET)
 
-        scratch_project_directory = d.pop("scratch_project_directory", UNSET)
+        def _parse_scratch_project_directory(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        project_permanent_directory = d.pop("project_permanent_directory", UNSET)
+        scratch_project_directory = _parse_scratch_project_directory(d.pop("scratch_project_directory", UNSET))
+
+        def _parse_project_permanent_directory(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        project_permanent_directory = _parse_project_permanent_directory(d.pop("project_permanent_directory", UNSET))
 
         enable_posix_account = d.pop("enable_posix_account", UNSET)
 
@@ -1244,9 +1321,9 @@ class MergedPluginOptionsRequest:
             billing_source=billing_source,
             heappe_cluster_id=heappe_cluster_id,
             heappe_local_base_path=heappe_local_base_path,
-            heappe_identifier=heappe_identifier,
             heappe_url=heappe_url,
             heappe_username=heappe_username,
+            heappe_identifier=heappe_identifier,
             homedir_prefix=homedir_prefix,
             scratch_project_directory=scratch_project_directory,
             project_permanent_directory=project_permanent_directory,

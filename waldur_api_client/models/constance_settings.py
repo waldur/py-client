@@ -137,6 +137,7 @@ class ConstanceSettings:
         atlassian_token (Union[Unset, str]):
         atlassian_personal_access_token (Union[Unset, str]):
         atlassian_oauth2_client_id (Union[Unset, str]):
+        atlassian_oauth2_client_secret (Union[Unset, str]):
         atlassian_oauth2_access_token (Union[Unset, str]):
         atlassian_oauth2_token_type (Union[Unset, str]):
         atlassian_verify_ssl (Union[Unset, bool]):
@@ -468,6 +469,7 @@ class ConstanceSettings:
     atlassian_token: Union[Unset, str] = UNSET
     atlassian_personal_access_token: Union[Unset, str] = UNSET
     atlassian_oauth2_client_id: Union[Unset, str] = UNSET
+    atlassian_oauth2_client_secret: Union[Unset, str] = UNSET
     atlassian_oauth2_access_token: Union[Unset, str] = UNSET
     atlassian_oauth2_token_type: Union[Unset, str] = UNSET
     atlassian_verify_ssl: Union[Unset, bool] = UNSET
@@ -975,6 +977,8 @@ class ConstanceSettings:
         atlassian_personal_access_token = self.atlassian_personal_access_token
 
         atlassian_oauth2_client_id = self.atlassian_oauth2_client_id
+
+        atlassian_oauth2_client_secret = self.atlassian_oauth2_client_secret
 
         atlassian_oauth2_access_token = self.atlassian_oauth2_access_token
 
@@ -1815,6 +1819,8 @@ class ConstanceSettings:
             field_dict["ATLASSIAN_PERSONAL_ACCESS_TOKEN"] = atlassian_personal_access_token
         if atlassian_oauth2_client_id is not UNSET:
             field_dict["ATLASSIAN_OAUTH2_CLIENT_ID"] = atlassian_oauth2_client_id
+        if atlassian_oauth2_client_secret is not UNSET:
+            field_dict["ATLASSIAN_OAUTH2_CLIENT_SECRET"] = atlassian_oauth2_client_secret
         if atlassian_oauth2_access_token is not UNSET:
             field_dict["ATLASSIAN_OAUTH2_ACCESS_TOKEN"] = atlassian_oauth2_access_token
         if atlassian_oauth2_token_type is not UNSET:
@@ -2643,6 +2649,8 @@ class ConstanceSettings:
         atlassian_personal_access_token = d.pop("ATLASSIAN_PERSONAL_ACCESS_TOKEN", UNSET)
 
         atlassian_oauth2_client_id = d.pop("ATLASSIAN_OAUTH2_CLIENT_ID", UNSET)
+
+        atlassian_oauth2_client_secret = d.pop("ATLASSIAN_OAUTH2_CLIENT_SECRET", UNSET)
 
         atlassian_oauth2_access_token = d.pop("ATLASSIAN_OAUTH2_ACCESS_TOKEN", UNSET)
 
@@ -3576,6 +3584,7 @@ class ConstanceSettings:
             atlassian_token=atlassian_token,
             atlassian_personal_access_token=atlassian_personal_access_token,
             atlassian_oauth2_client_id=atlassian_oauth2_client_id,
+            atlassian_oauth2_client_secret=atlassian_oauth2_client_secret,
             atlassian_oauth2_access_token=atlassian_oauth2_access_token,
             atlassian_oauth2_token_type=atlassian_oauth2_token_type,
             atlassian_verify_ssl=atlassian_verify_ssl,

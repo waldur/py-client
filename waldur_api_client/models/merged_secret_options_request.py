@@ -27,8 +27,8 @@ class MergedSecretOptionsRequest:
             'CUSTOMER.OWNER', 'OFFERING.MANAGER') whose holders are notified about every new order for this offering,
             regardless of whether the order needs approval. Names are resolved on the provider organization and on the
             offering itself. Users who disabled notifications in their profile are skipped. At most 10 names.
-        heappe_cluster_password (Union[Unset, str]): HEAppE cluster password
-        heappe_password (Union[Unset, str]): HEAppE password
+        heappe_cluster_password (Union[None, Unset, str]): HEAppE cluster password
+        heappe_password (Union[None, Unset, str]): HEAppE password
         ipv4_external_ip_mapping (Union[Unset, list['IPMappingRequest']]): OpenStack IPv4 external IP mapping
         openstack_api_tls_certificate (Union[Unset, str]): TLS certificate for OpenStack API connection verification
         dns_nameservers (Union[Unset, list[str]]): Default value for new subnets DNS name servers. Should be defined as
@@ -73,8 +73,8 @@ class MergedSecretOptionsRequest:
 
     order_notification_emails: Union[Unset, list[str]] = UNSET
     order_notification_roles: Union[Unset, list[str]] = UNSET
-    heappe_cluster_password: Union[Unset, str] = UNSET
-    heappe_password: Union[Unset, str] = UNSET
+    heappe_cluster_password: Union[None, Unset, str] = UNSET
+    heappe_password: Union[None, Unset, str] = UNSET
     ipv4_external_ip_mapping: Union[Unset, list["IPMappingRequest"]] = UNSET
     openstack_api_tls_certificate: Union[Unset, str] = UNSET
     dns_nameservers: Union[Unset, list[str]] = UNSET
@@ -124,9 +124,17 @@ class MergedSecretOptionsRequest:
         if not isinstance(self.order_notification_roles, Unset):
             order_notification_roles = self.order_notification_roles
 
-        heappe_cluster_password = self.heappe_cluster_password
+        heappe_cluster_password: Union[None, Unset, str]
+        if isinstance(self.heappe_cluster_password, Unset):
+            heappe_cluster_password = UNSET
+        else:
+            heappe_cluster_password = self.heappe_cluster_password
 
-        heappe_password = self.heappe_password
+        heappe_password: Union[None, Unset, str]
+        if isinstance(self.heappe_password, Unset):
+            heappe_password = UNSET
+        else:
+            heappe_password = self.heappe_password
 
         ipv4_external_ip_mapping: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.ipv4_external_ip_mapping, Unset):
@@ -320,9 +328,23 @@ class MergedSecretOptionsRequest:
 
         order_notification_roles = cast(list[str], d.pop("order_notification_roles", UNSET))
 
-        heappe_cluster_password = d.pop("heappe_cluster_password", UNSET)
+        def _parse_heappe_cluster_password(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        heappe_password = d.pop("heappe_password", UNSET)
+        heappe_cluster_password = _parse_heappe_cluster_password(d.pop("heappe_cluster_password", UNSET))
+
+        def _parse_heappe_password(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        heappe_password = _parse_heappe_password(d.pop("heappe_password", UNSET))
 
         ipv4_external_ip_mapping = []
         _ipv4_external_ip_mapping = d.pop("ipv4_external_ip_mapping", UNSET)
