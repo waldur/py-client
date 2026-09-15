@@ -26,6 +26,7 @@ if TYPE_CHECKING:
     from ..models.nested_screenshot import NestedScreenshot
     from ..models.nested_software_catalog import NestedSoftwareCatalog
     from ..models.nested_tag import NestedTag
+    from ..models.offering_account_settings import OfferingAccountSettings
     from ..models.offering_component import OfferingComponent
     from ..models.offering_options import OfferingOptions
     from ..models.organization_group import OrganizationGroup
@@ -82,6 +83,7 @@ class ProviderOfferingDetails:
         components (Union[Unset, list['OfferingComponent']]):
         limit_precision_advisory (Union[None, Unset, str]):
         plugin_options (Union[Unset, MergedPluginOptions]):
+        account_settings (Union[Unset, OfferingAccountSettings]):
         secret_options (Union[Unset, MergedSecretOptions]):
         service_attributes (Union[Unset, ProviderOfferingDetailsServiceAttributes]):
         can_update_integration (Union[Unset, bool]):
@@ -174,6 +176,7 @@ class ProviderOfferingDetails:
     components: Union[Unset, list["OfferingComponent"]] = UNSET
     limit_precision_advisory: Union[None, Unset, str] = UNSET
     plugin_options: Union[Unset, "MergedPluginOptions"] = UNSET
+    account_settings: Union[Unset, "OfferingAccountSettings"] = UNSET
     secret_options: Union[Unset, "MergedSecretOptions"] = UNSET
     service_attributes: Union[Unset, "ProviderOfferingDetailsServiceAttributes"] = UNSET
     can_update_integration: Union[Unset, bool] = UNSET
@@ -377,6 +380,10 @@ class ProviderOfferingDetails:
         plugin_options: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.plugin_options, Unset):
             plugin_options = self.plugin_options.to_dict()
+
+        account_settings: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.account_settings, Unset):
+            account_settings = self.account_settings.to_dict()
 
         secret_options: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.secret_options, Unset):
@@ -725,6 +732,8 @@ class ProviderOfferingDetails:
             field_dict["limit_precision_advisory"] = limit_precision_advisory
         if plugin_options is not UNSET:
             field_dict["plugin_options"] = plugin_options
+        if account_settings is not UNSET:
+            field_dict["account_settings"] = account_settings
         if secret_options is not UNSET:
             field_dict["secret_options"] = secret_options
         if service_attributes is not UNSET:
@@ -852,6 +861,7 @@ class ProviderOfferingDetails:
         from ..models.nested_screenshot import NestedScreenshot
         from ..models.nested_software_catalog import NestedSoftwareCatalog
         from ..models.nested_tag import NestedTag
+        from ..models.offering_account_settings import OfferingAccountSettings
         from ..models.offering_component import OfferingComponent
         from ..models.offering_options import OfferingOptions
         from ..models.organization_group import OrganizationGroup
@@ -1073,6 +1083,13 @@ class ProviderOfferingDetails:
             plugin_options = UNSET
         else:
             plugin_options = MergedPluginOptions.from_dict(_plugin_options)
+
+        _account_settings = d.pop("account_settings", UNSET)
+        account_settings: Union[Unset, OfferingAccountSettings]
+        if isinstance(_account_settings, Unset):
+            account_settings = UNSET
+        else:
+            account_settings = OfferingAccountSettings.from_dict(_account_settings)
 
         _secret_options = d.pop("secret_options", UNSET)
         secret_options: Union[Unset, MergedSecretOptions]
@@ -1525,6 +1542,7 @@ class ProviderOfferingDetails:
             components=components,
             limit_precision_advisory=limit_precision_advisory,
             plugin_options=plugin_options,
+            account_settings=account_settings,
             secret_options=secret_options,
             service_attributes=service_attributes,
             can_update_integration=can_update_integration,

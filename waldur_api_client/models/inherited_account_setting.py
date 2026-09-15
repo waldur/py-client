@@ -4,52 +4,60 @@ from typing import Any, TypeVar, Union
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.account_setting_source import AccountSettingSource
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="PatchedConflictOfInterestRequest")
+T = TypeVar("T", bound="InheritedAccountSetting")
 
 
 @_attrs_define
-class PatchedConflictOfInterestRequest:
+class InheritedAccountSetting:
     """
     Attributes:
-        review_notes (Union[Unset, str]):
-        management_plan (Union[Unset, str]): If waived, how is it managed
+        value (Union[Unset, str]): The value the setting resolves to.
+        source (Union[Unset, AccountSettingSource]):
     """
 
-    review_notes: Union[Unset, str] = UNSET
-    management_plan: Union[Unset, str] = UNSET
+    value: Union[Unset, str] = UNSET
+    source: Union[Unset, AccountSettingSource] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        review_notes = self.review_notes
+        value = self.value
 
-        management_plan = self.management_plan
+        source: Union[Unset, str] = UNSET
+        if not isinstance(self.source, Unset):
+            source = self.source.value
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if review_notes is not UNSET:
-            field_dict["review_notes"] = review_notes
-        if management_plan is not UNSET:
-            field_dict["management_plan"] = management_plan
+        if value is not UNSET:
+            field_dict["value"] = value
+        if source is not UNSET:
+            field_dict["source"] = source
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        review_notes = d.pop("review_notes", UNSET)
+        value = d.pop("value", UNSET)
 
-        management_plan = d.pop("management_plan", UNSET)
+        _source = d.pop("source", UNSET)
+        source: Union[Unset, AccountSettingSource]
+        if isinstance(_source, Unset):
+            source = UNSET
+        else:
+            source = AccountSettingSource(_source)
 
-        patched_conflict_of_interest_request = cls(
-            review_notes=review_notes,
-            management_plan=management_plan,
+        inherited_account_setting = cls(
+            value=value,
+            source=source,
         )
 
-        patched_conflict_of_interest_request.additional_properties = d
-        return patched_conflict_of_interest_request
+        inherited_account_setting.additional_properties = d
+        return inherited_account_setting
 
     @property
     def additional_keys(self) -> list[str]:

@@ -90,6 +90,7 @@ class OrderDetailsFieldEnum(str, Enum):
     PROVIDER_SLUG = "provider_slug"
     PROVIDER_UUID = "provider_uuid"
     REQUEST_COMMENT = "request_comment"
+    RESOURCE_END_DATE = "resource_end_date"
     RESOURCE_NAME = "resource_name"
     RESOURCE_TYPE = "resource_type"
     RESOURCE_UUID = "resource_uuid"

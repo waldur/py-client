@@ -30,7 +30,14 @@ T = TypeVar("T", bound="MergedPluginOptionsRequest")
 class MergedPluginOptionsRequest:
     """
     Attributes:
-        account_scope (Union[Unset, AccountScope]):
+        account_scope (Union[AccountScope, BlankEnum, Unset]): Where accounts are held: 'offering' keeps one account per
+            offering (the historical behaviour); 'provider' shares one account per user across the provider's offerings.
+        username_generation_policy (Union[BlankEnum, Unset, UsernameGenerationPolicyEnum]): How the usernames of
+            offering users are generated.
+        username_anonymized_prefix (Union[Unset, str]): Prefix for anonymized usernames; the name is the prefix followed
+            by the account's POSIX UID.
+        homedir_prefix (Union[Unset, str]): Prefix of each account's home directory; the username follows.
+        login_shell (Union[Unset, str]): Login shell assigned to GLAuth/LDAP accounts.
         auto_approve_remote_orders (Union[Unset, bool]): If set to True, an order can be processed without approval
         resource_expiration_threshold (Union[Unset, int]): Resource expiration threshold in days. Default: 30.
         service_provider_can_create_offering_user (Union[Unset, bool]): Service provider can create offering user
@@ -146,7 +153,6 @@ class MergedPluginOptionsRequest:
         heappe_identifier (Union[None, Unset, str]): Identifier of the HEAppE instance this offering targets, e.g.
             'it4i-heappe-prod'. Lets providers with multiple HEAppE deployments disambiguate which one a given offering
             uses.
-        homedir_prefix (Union[Unset, str]): GLAuth homedir prefix Default: '/home/'.
         scratch_project_directory (Union[None, Unset, str]): HEAppE scratch project directory
         project_permanent_directory (Union[None, Unset, str]): HEAppE project permanent directory
         enable_posix_account (Union[Unset, bool]): Manage a POSIX/LDAP account (UID, GID, home directory, login shell
@@ -162,11 +168,6 @@ class MergedPluginOptionsRequest:
         resource_project_role_group_template (Union[Unset, str]): string.Template for resource-project-scope role group
             names. Adds ${rp_uuid}, ${rp_uuid_short}, ${project_name} to the variables available for resource-scope
             templates. Default: '${resource_slug}_${rp_uuid_short}_${role_name}'.
-        username_anonymized_prefix (Union[Unset, str]): Prefix for anonymized usernames; the name is the prefix followed
-            by the account's POSIX UID Default: 'waldur_'.
-        username_generation_policy (Union[Unset, UsernameGenerationPolicyEnum]):  Default:
-            UsernameGenerationPolicyEnum.SERVICE_PROVIDER.
-        login_shell (Union[Unset, str]): Default login shell assigned to GLAuth/LDAP accounts. Default: '/bin/bash'.
         uid_source (Union[Unset, PosixIdSourceEnum]):  Default: PosixIdSourceEnum.POOL.
         gid_source (Union[Unset, PosixIdSourceEnum]):  Default: PosixIdSourceEnum.POOL.
         emit_display_name (Union[Unset, bool]): Emit the user's full name as a GLAuth displayName custom attribute
@@ -230,7 +231,11 @@ class MergedPluginOptionsRequest:
             on the OpenStack instance order form. Default: False.
     """
 
-    account_scope: Union[Unset, AccountScope] = UNSET
+    account_scope: Union[AccountScope, BlankEnum, Unset] = UNSET
+    username_generation_policy: Union[BlankEnum, Unset, UsernameGenerationPolicyEnum] = UNSET
+    username_anonymized_prefix: Union[Unset, str] = UNSET
+    homedir_prefix: Union[Unset, str] = UNSET
+    login_shell: Union[Unset, str] = UNSET
     auto_approve_remote_orders: Union[Unset, bool] = UNSET
     resource_expiration_threshold: Union[Unset, int] = 30
     service_provider_can_create_offering_user: Union[Unset, bool] = UNSET
@@ -286,7 +291,6 @@ class MergedPluginOptionsRequest:
     heappe_url: Union[None, Unset, str] = UNSET
     heappe_username: Union[None, Unset, str] = UNSET
     heappe_identifier: Union[None, Unset, str] = UNSET
-    homedir_prefix: Union[Unset, str] = "/home/"
     scratch_project_directory: Union[None, Unset, str] = UNSET
     project_permanent_directory: Union[None, Unset, str] = UNSET
     enable_posix_account: Union[Unset, bool] = True
@@ -294,11 +298,6 @@ class MergedPluginOptionsRequest:
     resource_project_role_map: Union[Unset, "MergedPluginOptionsRequestResourceProjectRoleMap"] = UNSET
     resource_role_group_template: Union[Unset, str] = "${resource_slug}_${role_name}"
     resource_project_role_group_template: Union[Unset, str] = "${resource_slug}_${rp_uuid_short}_${role_name}"
-    username_anonymized_prefix: Union[Unset, str] = "waldur_"
-    username_generation_policy: Union[Unset, UsernameGenerationPolicyEnum] = (
-        UsernameGenerationPolicyEnum.SERVICE_PROVIDER
-    )
-    login_shell: Union[Unset, str] = "/bin/bash"
     uid_source: Union[Unset, PosixIdSourceEnum] = PosixIdSourceEnum.POOL
     gid_source: Union[Unset, PosixIdSourceEnum] = PosixIdSourceEnum.POOL
     emit_display_name: Union[Unset, bool] = False
@@ -336,9 +335,27 @@ class MergedPluginOptionsRequest:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        account_scope: Union[Unset, str] = UNSET
-        if not isinstance(self.account_scope, Unset):
+        account_scope: Union[Unset, str]
+        if isinstance(self.account_scope, Unset):
+            account_scope = UNSET
+        elif isinstance(self.account_scope, AccountScope):
             account_scope = self.account_scope.value
+        else:
+            account_scope = self.account_scope.value
+
+        username_generation_policy: Union[Unset, str]
+        if isinstance(self.username_generation_policy, Unset):
+            username_generation_policy = UNSET
+        elif isinstance(self.username_generation_policy, UsernameGenerationPolicyEnum):
+            username_generation_policy = self.username_generation_policy.value
+        else:
+            username_generation_policy = self.username_generation_policy.value
+
+        username_anonymized_prefix = self.username_anonymized_prefix
+
+        homedir_prefix = self.homedir_prefix
+
+        login_shell = self.login_shell
 
         auto_approve_remote_orders = self.auto_approve_remote_orders
 
@@ -510,8 +527,6 @@ class MergedPluginOptionsRequest:
         else:
             heappe_identifier = self.heappe_identifier
 
-        homedir_prefix = self.homedir_prefix
-
         scratch_project_directory: Union[None, Unset, str]
         if isinstance(self.scratch_project_directory, Unset):
             scratch_project_directory = UNSET
@@ -537,14 +552,6 @@ class MergedPluginOptionsRequest:
         resource_role_group_template = self.resource_role_group_template
 
         resource_project_role_group_template = self.resource_project_role_group_template
-
-        username_anonymized_prefix = self.username_anonymized_prefix
-
-        username_generation_policy: Union[Unset, str] = UNSET
-        if not isinstance(self.username_generation_policy, Unset):
-            username_generation_policy = self.username_generation_policy.value
-
-        login_shell = self.login_shell
 
         uid_source: Union[Unset, str] = UNSET
         if not isinstance(self.uid_source, Unset):
@@ -637,6 +644,14 @@ class MergedPluginOptionsRequest:
         field_dict.update({})
         if account_scope is not UNSET:
             field_dict["account_scope"] = account_scope
+        if username_generation_policy is not UNSET:
+            field_dict["username_generation_policy"] = username_generation_policy
+        if username_anonymized_prefix is not UNSET:
+            field_dict["username_anonymized_prefix"] = username_anonymized_prefix
+        if homedir_prefix is not UNSET:
+            field_dict["homedir_prefix"] = homedir_prefix
+        if login_shell is not UNSET:
+            field_dict["login_shell"] = login_shell
         if auto_approve_remote_orders is not UNSET:
             field_dict["auto_approve_remote_orders"] = auto_approve_remote_orders
         if resource_expiration_threshold is not UNSET:
@@ -747,8 +762,6 @@ class MergedPluginOptionsRequest:
             field_dict["heappe_username"] = heappe_username
         if heappe_identifier is not UNSET:
             field_dict["heappe_identifier"] = heappe_identifier
-        if homedir_prefix is not UNSET:
-            field_dict["homedir_prefix"] = homedir_prefix
         if scratch_project_directory is not UNSET:
             field_dict["scratch_project_directory"] = scratch_project_directory
         if project_permanent_directory is not UNSET:
@@ -763,12 +776,6 @@ class MergedPluginOptionsRequest:
             field_dict["resource_role_group_template"] = resource_role_group_template
         if resource_project_role_group_template is not UNSET:
             field_dict["resource_project_role_group_template"] = resource_project_role_group_template
-        if username_anonymized_prefix is not UNSET:
-            field_dict["username_anonymized_prefix"] = username_anonymized_prefix
-        if username_generation_policy is not UNSET:
-            field_dict["username_generation_policy"] = username_generation_policy
-        if login_shell is not UNSET:
-            field_dict["login_shell"] = login_shell
         if uid_source is not UNSET:
             field_dict["uid_source"] = uid_source
         if gid_source is not UNSET:
@@ -862,12 +869,50 @@ class MergedPluginOptionsRequest:
         from ..models.merged_plugin_options_request_resource_role_map import MergedPluginOptionsRequestResourceRoleMap
 
         d = dict(src_dict)
-        _account_scope = d.pop("account_scope", UNSET)
-        account_scope: Union[Unset, AccountScope]
-        if isinstance(_account_scope, Unset):
-            account_scope = UNSET
-        else:
-            account_scope = AccountScope(_account_scope)
+
+        def _parse_account_scope(data: object) -> Union[AccountScope, BlankEnum, Unset]:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                account_scope_type_0 = AccountScope(data)
+
+                return account_scope_type_0
+            except:  # noqa: E722
+                pass
+            if not isinstance(data, str):
+                raise TypeError()
+            account_scope_type_1 = BlankEnum(data)
+
+            return account_scope_type_1
+
+        account_scope = _parse_account_scope(d.pop("account_scope", UNSET))
+
+        def _parse_username_generation_policy(data: object) -> Union[BlankEnum, Unset, UsernameGenerationPolicyEnum]:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                username_generation_policy_type_0 = UsernameGenerationPolicyEnum(data)
+
+                return username_generation_policy_type_0
+            except:  # noqa: E722
+                pass
+            if not isinstance(data, str):
+                raise TypeError()
+            username_generation_policy_type_1 = BlankEnum(data)
+
+            return username_generation_policy_type_1
+
+        username_generation_policy = _parse_username_generation_policy(d.pop("username_generation_policy", UNSET))
+
+        username_anonymized_prefix = d.pop("username_anonymized_prefix", UNSET)
+
+        homedir_prefix = d.pop("homedir_prefix", UNSET)
+
+        login_shell = d.pop("login_shell", UNSET)
 
         auto_approve_remote_orders = d.pop("auto_approve_remote_orders", UNSET)
 
@@ -1104,8 +1149,6 @@ class MergedPluginOptionsRequest:
 
         heappe_identifier = _parse_heappe_identifier(d.pop("heappe_identifier", UNSET))
 
-        homedir_prefix = d.pop("homedir_prefix", UNSET)
-
         def _parse_scratch_project_directory(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -1145,17 +1188,6 @@ class MergedPluginOptionsRequest:
         resource_role_group_template = d.pop("resource_role_group_template", UNSET)
 
         resource_project_role_group_template = d.pop("resource_project_role_group_template", UNSET)
-
-        username_anonymized_prefix = d.pop("username_anonymized_prefix", UNSET)
-
-        _username_generation_policy = d.pop("username_generation_policy", UNSET)
-        username_generation_policy: Union[Unset, UsernameGenerationPolicyEnum]
-        if isinstance(_username_generation_policy, Unset):
-            username_generation_policy = UNSET
-        else:
-            username_generation_policy = UsernameGenerationPolicyEnum(_username_generation_policy)
-
-        login_shell = d.pop("login_shell", UNSET)
 
         _uid_source = d.pop("uid_source", UNSET)
         uid_source: Union[Unset, PosixIdSourceEnum]
@@ -1269,6 +1301,10 @@ class MergedPluginOptionsRequest:
 
         merged_plugin_options_request = cls(
             account_scope=account_scope,
+            username_generation_policy=username_generation_policy,
+            username_anonymized_prefix=username_anonymized_prefix,
+            homedir_prefix=homedir_prefix,
+            login_shell=login_shell,
             auto_approve_remote_orders=auto_approve_remote_orders,
             resource_expiration_threshold=resource_expiration_threshold,
             service_provider_can_create_offering_user=service_provider_can_create_offering_user,
@@ -1324,7 +1360,6 @@ class MergedPluginOptionsRequest:
             heappe_url=heappe_url,
             heappe_username=heappe_username,
             heappe_identifier=heappe_identifier,
-            homedir_prefix=homedir_prefix,
             scratch_project_directory=scratch_project_directory,
             project_permanent_directory=project_permanent_directory,
             enable_posix_account=enable_posix_account,
@@ -1332,9 +1367,6 @@ class MergedPluginOptionsRequest:
             resource_project_role_map=resource_project_role_map,
             resource_role_group_template=resource_role_group_template,
             resource_project_role_group_template=resource_project_role_group_template,
-            username_anonymized_prefix=username_anonymized_prefix,
-            username_generation_policy=username_generation_policy,
-            login_shell=login_shell,
             uid_source=uid_source,
             gid_source=gid_source,
             emit_display_name=emit_display_name,

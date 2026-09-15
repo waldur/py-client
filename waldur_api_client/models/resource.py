@@ -17,6 +17,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.backend_metadata import BackendMetadata
     from ..models.nested_endpoint import NestedEndpoint
+    from ..models.offering_account_settings import OfferingAccountSettings
     from ..models.offering_component import OfferingComponent
     from ..models.order_details import OrderDetails
     from ..models.report_section import ReportSection
@@ -140,6 +141,7 @@ class Resource:
         offering_components (Union[Unset, list['OfferingComponent']]):
         has_api_keys (Union[Unset, bool]): Whether the resource owns any API keys, so the portal can offer key
             management without knowing which backend serves the resource.
+        offering_account_settings (Union[Unset, OfferingAccountSettings]):
     """
 
     offering: Union[Unset, str] = UNSET
@@ -229,6 +231,7 @@ class Resource:
     offering_state: Union[Unset, OfferingState] = UNSET
     offering_components: Union[Unset, list["OfferingComponent"]] = UNSET
     has_api_keys: Union[Unset, bool] = UNSET
+    offering_account_settings: Union[Unset, "OfferingAccountSettings"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -575,6 +578,10 @@ class Resource:
 
         has_api_keys = self.has_api_keys
 
+        offering_account_settings: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.offering_account_settings, Unset):
+            offering_account_settings = self.offering_account_settings.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -752,6 +759,8 @@ class Resource:
             field_dict["offering_components"] = offering_components
         if has_api_keys is not UNSET:
             field_dict["has_api_keys"] = has_api_keys
+        if offering_account_settings is not UNSET:
+            field_dict["offering_account_settings"] = offering_account_settings
 
         return field_dict
 
@@ -759,6 +768,7 @@ class Resource:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.backend_metadata import BackendMetadata
         from ..models.nested_endpoint import NestedEndpoint
+        from ..models.offering_account_settings import OfferingAccountSettings
         from ..models.offering_component import OfferingComponent
         from ..models.order_details import OrderDetails
         from ..models.report_section import ReportSection
@@ -1316,6 +1326,13 @@ class Resource:
 
         has_api_keys = d.pop("has_api_keys", UNSET)
 
+        _offering_account_settings = d.pop("offering_account_settings", UNSET)
+        offering_account_settings: Union[Unset, OfferingAccountSettings]
+        if isinstance(_offering_account_settings, Unset):
+            offering_account_settings = UNSET
+        else:
+            offering_account_settings = OfferingAccountSettings.from_dict(_offering_account_settings)
+
         resource = cls(
             offering=offering,
             offering_name=offering_name,
@@ -1404,6 +1421,7 @@ class Resource:
             offering_state=offering_state,
             offering_components=offering_components,
             has_api_keys=has_api_keys,
+            offering_account_settings=offering_account_settings,
         )
 
         resource.additional_properties = d

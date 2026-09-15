@@ -20,6 +20,8 @@ class OpenStackSubNetFieldEnum(str, Enum):
     ERROR_TRACEBACK = "error_traceback"
     GATEWAY_IP = "gateway_ip"
     HOST_ROUTES = "host_routes"
+    IPV6_ADDRESS_MODE = "ipv6_address_mode"
+    IPV6_RA_MODE = "ipv6_ra_mode"
     IP_VERSION = "ip_version"
     IS_CONNECTED = "is_connected"
     IS_LIMIT_BASED = "is_limit_based"

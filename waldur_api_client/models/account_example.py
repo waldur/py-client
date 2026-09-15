@@ -1,55 +1,63 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="ConflictOfInterestRequest")
+T = TypeVar("T", bound="AccountExample")
 
 
 @_attrs_define
-class ConflictOfInterestRequest:
+class AccountExample:
     """
     Attributes:
-        review_notes (Union[Unset, str]):
-        management_plan (Union[Unset, str]): If waived, how is it managed
+        username (str): The username a person new to the offering would get; placeholders in angle brackets stand for
+            the person's own values.
+        home_directory (str):
+        login_shell (str):
     """
 
-    review_notes: Union[Unset, str] = UNSET
-    management_plan: Union[Unset, str] = UNSET
+    username: str
+    home_directory: str
+    login_shell: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        review_notes = self.review_notes
+        username = self.username
 
-        management_plan = self.management_plan
+        home_directory = self.home_directory
+
+        login_shell = self.login_shell
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if review_notes is not UNSET:
-            field_dict["review_notes"] = review_notes
-        if management_plan is not UNSET:
-            field_dict["management_plan"] = management_plan
+        field_dict.update(
+            {
+                "username": username,
+                "home_directory": home_directory,
+                "login_shell": login_shell,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        review_notes = d.pop("review_notes", UNSET)
+        username = d.pop("username")
 
-        management_plan = d.pop("management_plan", UNSET)
+        home_directory = d.pop("home_directory")
 
-        conflict_of_interest_request = cls(
-            review_notes=review_notes,
-            management_plan=management_plan,
+        login_shell = d.pop("login_shell")
+
+        account_example = cls(
+            username=username,
+            home_directory=home_directory,
+            login_shell=login_shell,
         )
 
-        conflict_of_interest_request.additional_properties = d
-        return conflict_of_interest_request
+        account_example.additional_properties = d
+        return account_example
 
     @property
     def additional_keys(self) -> list[str]:

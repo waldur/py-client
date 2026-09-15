@@ -7,10 +7,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..models.account_scope import AccountScope
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.account_options import AccountOptions
     from ..models.organization_group import OrganizationGroup
 
 
@@ -39,15 +39,7 @@ class ServiceProvider:
         offering_count (Union[Unset, int]):
         allowed_domains (Union[Unset, list[str]]): List of allowed domains for offering endpoints. Only staff can modify
             this field.
-        account_scope (Union[Unset, AccountScope]):
-        account_username_generation_policy (Union[Unset, str]): Provider-level default for the offering plugin option of
-            the same name. Blank means each offering decides for itself.
-        account_homedir_prefix (Union[Unset, str]): Provider-level default home directory prefix. Blank means each
-            offering decides for itself.
-        account_login_shell (Union[Unset, str]): Provider-level default login shell. Blank means each offering decides
-            for itself.
-        account_username_anonymized_prefix (Union[Unset, str]): Provider-level default prefix for anonymized usernames,
-            which are the prefix followed by the account's POSIX UID. Blank means each offering decides for itself.
+        account_options (Union[Unset, AccountOptions]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -67,11 +59,7 @@ class ServiceProvider:
     organization_groups: Union[Unset, list["OrganizationGroup"]] = UNSET
     offering_count: Union[Unset, int] = UNSET
     allowed_domains: Union[Unset, list[str]] = UNSET
-    account_scope: Union[Unset, AccountScope] = UNSET
-    account_username_generation_policy: Union[Unset, str] = UNSET
-    account_homedir_prefix: Union[Unset, str] = UNSET
-    account_login_shell: Union[Unset, str] = UNSET
-    account_username_anonymized_prefix: Union[Unset, str] = UNSET
+    account_options: Union[Unset, "AccountOptions"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -126,17 +114,9 @@ class ServiceProvider:
         if not isinstance(self.allowed_domains, Unset):
             allowed_domains = self.allowed_domains
 
-        account_scope: Union[Unset, str] = UNSET
-        if not isinstance(self.account_scope, Unset):
-            account_scope = self.account_scope.value
-
-        account_username_generation_policy = self.account_username_generation_policy
-
-        account_homedir_prefix = self.account_homedir_prefix
-
-        account_login_shell = self.account_login_shell
-
-        account_username_anonymized_prefix = self.account_username_anonymized_prefix
+        account_options: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.account_options, Unset):
+            account_options = self.account_options.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -175,21 +155,14 @@ class ServiceProvider:
             field_dict["offering_count"] = offering_count
         if allowed_domains is not UNSET:
             field_dict["allowed_domains"] = allowed_domains
-        if account_scope is not UNSET:
-            field_dict["account_scope"] = account_scope
-        if account_username_generation_policy is not UNSET:
-            field_dict["account_username_generation_policy"] = account_username_generation_policy
-        if account_homedir_prefix is not UNSET:
-            field_dict["account_homedir_prefix"] = account_homedir_prefix
-        if account_login_shell is not UNSET:
-            field_dict["account_login_shell"] = account_login_shell
-        if account_username_anonymized_prefix is not UNSET:
-            field_dict["account_username_anonymized_prefix"] = account_username_anonymized_prefix
+        if account_options is not UNSET:
+            field_dict["account_options"] = account_options
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.account_options import AccountOptions
         from ..models.organization_group import OrganizationGroup
 
         d = dict(src_dict)
@@ -254,20 +227,12 @@ class ServiceProvider:
 
         allowed_domains = cast(list[str], d.pop("allowed_domains", UNSET))
 
-        _account_scope = d.pop("account_scope", UNSET)
-        account_scope: Union[Unset, AccountScope]
-        if isinstance(_account_scope, Unset):
-            account_scope = UNSET
+        _account_options = d.pop("account_options", UNSET)
+        account_options: Union[Unset, AccountOptions]
+        if isinstance(_account_options, Unset):
+            account_options = UNSET
         else:
-            account_scope = AccountScope(_account_scope)
-
-        account_username_generation_policy = d.pop("account_username_generation_policy", UNSET)
-
-        account_homedir_prefix = d.pop("account_homedir_prefix", UNSET)
-
-        account_login_shell = d.pop("account_login_shell", UNSET)
-
-        account_username_anonymized_prefix = d.pop("account_username_anonymized_prefix", UNSET)
+            account_options = AccountOptions.from_dict(_account_options)
 
         service_provider = cls(
             url=url,
@@ -287,11 +252,7 @@ class ServiceProvider:
             organization_groups=organization_groups,
             offering_count=offering_count,
             allowed_domains=allowed_domains,
-            account_scope=account_scope,
-            account_username_generation_policy=account_username_generation_policy,
-            account_homedir_prefix=account_homedir_prefix,
-            account_login_shell=account_login_shell,
-            account_username_anonymized_prefix=account_username_anonymized_prefix,
+            account_options=account_options,
         )
 
         service_provider.additional_properties = d

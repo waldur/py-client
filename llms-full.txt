@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.12.dev.20260915132336
+# Version: 8.1.3-rc.13.dev.20260915205059
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -1002,10 +1002,6 @@ Query parameters (8):
   - source
   - status
 
-### assignment_batches_create
-POST /api/assignment-batches/
-Request body: yes
-
 ### assignment_batches_retrieve
 GET /api/assignment-batches/{uuid}/
 Path parameters:
@@ -1080,10 +1076,6 @@ Query parameters (8):
   - proposal_uuid
   - reviewer_uuid
   - status
-
-### assignment_items_create
-POST /api/assignment-items/
-Request body: yes
 
 ### assignment_items_retrieve
 GET /api/assignment-items/{uuid}/
@@ -12666,6 +12658,14 @@ Description: Deletes a service provider profile. Only possible if there are no a
 Path parameters:
   - uuid
 
+### marketplace_service_providers_account_options_preview
+POST /api/marketplace-service-providers/{uuid}/account_options_preview/
+Summary: Preview a change of the provider's account options
+Description: Shows what a change of the provider's account options would do, without saving it: each offering's account settings before and after, the offering accounts that would be renamed, the provider accounts that keep their names, and what a new person would get. The options are merged into the current ...
+Path parameters:
+  - uuid
+Request body: yes
+
 ### marketplace_service_providers_add_user
 POST /api/marketplace-service-providers/{uuid}/add_user/
 Summary: Grant a role to a user
@@ -12713,6 +12713,20 @@ Description: Generates a YAML configuration file for waldur-site-agent based on 
 Path parameters:
   - uuid
 Request body: yes
+
+### marketplace_service_providers_glauth_tree_retrieve
+GET /api/marketplace-service-providers/{uuid}/glauth_tree/
+Summary: Get the structured GLAuth tree of the provider's shared accounts
+Description: The same directory as the provider's `glauth_users_config`, as a structured JSON tree.
+Path parameters:
+  - uuid
+
+### marketplace_service_providers_glauth_users_config_retrieve
+GET /api/marketplace-service-providers/{uuid}/glauth_users_config/
+Summary: Get the GLAuth configuration of the provider's shared accounts
+Description: One GLAuth config for the offerings of this provider that use provider accounts, as a directory shared by them serves it: each person once, with the groups of all those offerings. Disagreements between the offerings are listed as comments at the top.
+Path parameters:
+  - uuid
 
 ### marketplace_service_providers_list_users_list
 GET /api/marketplace-service-providers/{uuid}/list_users/

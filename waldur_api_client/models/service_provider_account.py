@@ -27,10 +27,9 @@ class ServiceProviderAccount:
         service_provider_name (Union[Unset, str]):
         user (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
-        user_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and @/./+/-/_
-            characters
-        user_full_name (Union[Unset, str]):
-        user_email (Union[Unset, str]):
+        user_username (Union[None, Unset, str]):
+        user_full_name (Union[None, Unset, str]):
+        user_email (Union[None, Unset, str]):
         username (Union[None, Unset, str]):
         state (Union[Unset, OfferingUserState]):
         runtime_state (Union[Unset, RuntimeStateEnum]):
@@ -55,9 +54,9 @@ class ServiceProviderAccount:
     service_provider_name: Union[Unset, str] = UNSET
     user: Union[Unset, str] = UNSET
     user_uuid: Union[Unset, UUID] = UNSET
-    user_username: Union[Unset, str] = UNSET
-    user_full_name: Union[Unset, str] = UNSET
-    user_email: Union[Unset, str] = UNSET
+    user_username: Union[None, Unset, str] = UNSET
+    user_full_name: Union[None, Unset, str] = UNSET
+    user_email: Union[None, Unset, str] = UNSET
     username: Union[None, Unset, str] = UNSET
     state: Union[Unset, OfferingUserState] = UNSET
     runtime_state: Union[Unset, RuntimeStateEnum] = UNSET
@@ -100,11 +99,23 @@ class ServiceProviderAccount:
         if not isinstance(self.user_uuid, Unset):
             user_uuid = str(self.user_uuid)
 
-        user_username = self.user_username
+        user_username: Union[None, Unset, str]
+        if isinstance(self.user_username, Unset):
+            user_username = UNSET
+        else:
+            user_username = self.user_username
 
-        user_full_name = self.user_full_name
+        user_full_name: Union[None, Unset, str]
+        if isinstance(self.user_full_name, Unset):
+            user_full_name = UNSET
+        else:
+            user_full_name = self.user_full_name
 
-        user_email = self.user_email
+        user_email: Union[None, Unset, str]
+        if isinstance(self.user_email, Unset):
+            user_email = UNSET
+        else:
+            user_email = self.user_email
 
         username: Union[None, Unset, str]
         if isinstance(self.username, Unset):
@@ -250,11 +261,32 @@ class ServiceProviderAccount:
         else:
             user_uuid = UUID(_user_uuid)
 
-        user_username = d.pop("user_username", UNSET)
+        def _parse_user_username(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
 
-        user_full_name = d.pop("user_full_name", UNSET)
+        user_username = _parse_user_username(d.pop("user_username", UNSET))
 
-        user_email = d.pop("user_email", UNSET)
+        def _parse_user_full_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        user_full_name = _parse_user_full_name(d.pop("user_full_name", UNSET))
+
+        def _parse_user_email(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        user_email = _parse_user_email(d.pop("user_email", UNSET))
 
         def _parse_username(data: object) -> Union[None, Unset, str]:
             if data is None:

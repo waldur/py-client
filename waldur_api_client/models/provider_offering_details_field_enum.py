@@ -3,6 +3,7 @@ from enum import Enum
 
 class ProviderOfferingDetailsFieldEnum(str, Enum):
     ACCESS_URL = "access_url"
+    ACCOUNT_SETTINGS = "account_settings"
     ATTRIBUTES = "attributes"
     BACKEND_ID = "backend_id"
     BACKEND_ID_RULES = "backend_id_rules"

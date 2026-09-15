@@ -25,6 +25,7 @@ if TYPE_CHECKING:
     from ..models.nested_screenshot import NestedScreenshot
     from ..models.nested_software_catalog import NestedSoftwareCatalog
     from ..models.nested_tag import NestedTag
+    from ..models.offering_account_settings import OfferingAccountSettings
     from ..models.offering_component import OfferingComponent
     from ..models.offering_options import OfferingOptions
     from ..models.organization_group import OrganizationGroup
@@ -78,6 +79,7 @@ class PublicOfferingDetails:
         resource_options (Union[Unset, OfferingOptions]):
         components (Union[Unset, list['OfferingComponent']]):
         plugin_options (Union[Unset, MergedPluginOptions]):
+        account_settings (Union[Unset, OfferingAccountSettings]):
         can_update_integration (Union[Unset, bool]):
         can_update_options (Union[Unset, bool]):
         state (Union[Unset, OfferingState]):
@@ -170,6 +172,7 @@ class PublicOfferingDetails:
     resource_options: Union[Unset, "OfferingOptions"] = UNSET
     components: Union[Unset, list["OfferingComponent"]] = UNSET
     plugin_options: Union[Unset, "MergedPluginOptions"] = UNSET
+    account_settings: Union[Unset, "OfferingAccountSettings"] = UNSET
     can_update_integration: Union[Unset, bool] = UNSET
     can_update_options: Union[Unset, bool] = UNSET
     state: Union[Unset, OfferingState] = UNSET
@@ -369,6 +372,10 @@ class PublicOfferingDetails:
         plugin_options: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.plugin_options, Unset):
             plugin_options = self.plugin_options.to_dict()
+
+        account_settings: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.account_settings, Unset):
+            account_settings = self.account_settings.to_dict()
 
         can_update_integration = self.can_update_integration
 
@@ -708,6 +715,8 @@ class PublicOfferingDetails:
             field_dict["components"] = components
         if plugin_options is not UNSET:
             field_dict["plugin_options"] = plugin_options
+        if account_settings is not UNSET:
+            field_dict["account_settings"] = account_settings
         if can_update_integration is not UNSET:
             field_dict["can_update_integration"] = can_update_integration
         if can_update_options is not UNSET:
@@ -838,6 +847,7 @@ class PublicOfferingDetails:
         from ..models.nested_screenshot import NestedScreenshot
         from ..models.nested_software_catalog import NestedSoftwareCatalog
         from ..models.nested_tag import NestedTag
+        from ..models.offering_account_settings import OfferingAccountSettings
         from ..models.offering_component import OfferingComponent
         from ..models.offering_options import OfferingOptions
         from ..models.organization_group import OrganizationGroup
@@ -1044,6 +1054,13 @@ class PublicOfferingDetails:
             plugin_options = UNSET
         else:
             plugin_options = MergedPluginOptions.from_dict(_plugin_options)
+
+        _account_settings = d.pop("account_settings", UNSET)
+        account_settings: Union[Unset, OfferingAccountSettings]
+        if isinstance(_account_settings, Unset):
+            account_settings = UNSET
+        else:
+            account_settings = OfferingAccountSettings.from_dict(_account_settings)
 
         can_update_integration = d.pop("can_update_integration", UNSET)
 
@@ -1469,6 +1486,7 @@ class PublicOfferingDetails:
             resource_options=resource_options,
             components=components,
             plugin_options=plugin_options,
+            account_settings=account_settings,
             can_update_integration=can_update_integration,
             can_update_options=can_update_options,
             state=state,

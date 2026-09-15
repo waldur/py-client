@@ -4,6 +4,7 @@ from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.ipv_6_mode import Ipv6Mode
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -24,6 +25,10 @@ class PatchedOpenStackSubNetRequest:
         gateway_ip (Union[None, Unset, str]): IP address of the gateway for this subnet
         disable_gateway (Union[Unset, bool]): If True, no gateway IP address will be allocated
         allocation_pools (Union[Unset, list['OpenStackSubNetAllocationPoolRequest']]):
+        ipv6_ra_mode (Union[Ipv6Mode, None, Unset]): How the router advertises an IPv6 subnet. Set at creation only;
+            null for an IPv4 subnet.
+        ipv6_address_mode (Union[Ipv6Mode, None, Unset]): How instances on an IPv6 subnet get their address. Set at
+            creation only; null for an IPv4 subnet.
         dns_nameservers (Union[Unset, list[str]]):
         host_routes (Union[Unset, list['OpenStackStaticRouteRequest']]):
         router (Union[None, Unset, str]): Router to attach the subnet to. Optional: when omitted Waldur picks a router
@@ -39,6 +44,8 @@ class PatchedOpenStackSubNetRequest:
     gateway_ip: Union[None, Unset, str] = UNSET
     disable_gateway: Union[Unset, bool] = UNSET
     allocation_pools: Union[Unset, list["OpenStackSubNetAllocationPoolRequest"]] = UNSET
+    ipv6_ra_mode: Union[Ipv6Mode, None, Unset] = UNSET
+    ipv6_address_mode: Union[Ipv6Mode, None, Unset] = UNSET
     dns_nameservers: Union[Unset, list[str]] = UNSET
     host_routes: Union[Unset, list["OpenStackStaticRouteRequest"]] = UNSET
     router: Union[None, Unset, str] = UNSET
@@ -66,6 +73,22 @@ class PatchedOpenStackSubNetRequest:
             for allocation_pools_item_data in self.allocation_pools:
                 allocation_pools_item = allocation_pools_item_data.to_dict()
                 allocation_pools.append(allocation_pools_item)
+
+        ipv6_ra_mode: Union[None, Unset, str]
+        if isinstance(self.ipv6_ra_mode, Unset):
+            ipv6_ra_mode = UNSET
+        elif isinstance(self.ipv6_ra_mode, Ipv6Mode):
+            ipv6_ra_mode = self.ipv6_ra_mode.value
+        else:
+            ipv6_ra_mode = self.ipv6_ra_mode
+
+        ipv6_address_mode: Union[None, Unset, str]
+        if isinstance(self.ipv6_address_mode, Unset):
+            ipv6_address_mode = UNSET
+        elif isinstance(self.ipv6_address_mode, Ipv6Mode):
+            ipv6_address_mode = self.ipv6_address_mode.value
+        else:
+            ipv6_address_mode = self.ipv6_address_mode
 
         dns_nameservers: Union[Unset, list[str]] = UNSET
         if not isinstance(self.dns_nameservers, Unset):
@@ -105,6 +128,10 @@ class PatchedOpenStackSubNetRequest:
             field_dict["disable_gateway"] = disable_gateway
         if allocation_pools is not UNSET:
             field_dict["allocation_pools"] = allocation_pools
+        if ipv6_ra_mode is not UNSET:
+            field_dict["ipv6_ra_mode"] = ipv6_ra_mode
+        if ipv6_address_mode is not UNSET:
+            field_dict["ipv6_address_mode"] = ipv6_address_mode
         if dns_nameservers is not UNSET:
             field_dict["dns_nameservers"] = dns_nameservers
         if host_routes is not UNSET:
@@ -146,6 +173,40 @@ class PatchedOpenStackSubNetRequest:
 
             allocation_pools.append(allocation_pools_item)
 
+        def _parse_ipv6_ra_mode(data: object) -> Union[Ipv6Mode, None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                ipv6_ra_mode_type_0 = Ipv6Mode(data)
+
+                return ipv6_ra_mode_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[Ipv6Mode, None, Unset], data)
+
+        ipv6_ra_mode = _parse_ipv6_ra_mode(d.pop("ipv6_ra_mode", UNSET))
+
+        def _parse_ipv6_address_mode(data: object) -> Union[Ipv6Mode, None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                ipv6_address_mode_type_0 = Ipv6Mode(data)
+
+                return ipv6_address_mode_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[Ipv6Mode, None, Unset], data)
+
+        ipv6_address_mode = _parse_ipv6_address_mode(d.pop("ipv6_address_mode", UNSET))
+
         dns_nameservers = []
         _dns_nameservers = d.pop("dns_nameservers", UNSET)
         for dns_nameservers_item_data in _dns_nameservers or []:
@@ -182,6 +243,8 @@ class PatchedOpenStackSubNetRequest:
             gateway_ip=gateway_ip,
             disable_gateway=disable_gateway,
             allocation_pools=allocation_pools,
+            ipv6_ra_mode=ipv6_ra_mode,
+            ipv6_address_mode=ipv6_address_mode,
             dns_nameservers=dns_nameservers,
             host_routes=host_routes,
             router=router,

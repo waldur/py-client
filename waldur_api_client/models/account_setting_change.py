@@ -1,55 +1,60 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
+if TYPE_CHECKING:
+    from ..models.inherited_account_setting import InheritedAccountSetting
 
-T = TypeVar("T", bound="ConflictOfInterestRequest")
+
+T = TypeVar("T", bound="AccountSettingChange")
 
 
 @_attrs_define
-class ConflictOfInterestRequest:
+class AccountSettingChange:
     """
     Attributes:
-        review_notes (Union[Unset, str]):
-        management_plan (Union[Unset, str]): If waived, how is it managed
+        before (InheritedAccountSetting):
+        after (InheritedAccountSetting):
     """
 
-    review_notes: Union[Unset, str] = UNSET
-    management_plan: Union[Unset, str] = UNSET
+    before: "InheritedAccountSetting"
+    after: "InheritedAccountSetting"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        review_notes = self.review_notes
+        before = self.before.to_dict()
 
-        management_plan = self.management_plan
+        after = self.after.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if review_notes is not UNSET:
-            field_dict["review_notes"] = review_notes
-        if management_plan is not UNSET:
-            field_dict["management_plan"] = management_plan
+        field_dict.update(
+            {
+                "before": before,
+                "after": after,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.inherited_account_setting import InheritedAccountSetting
+
         d = dict(src_dict)
-        review_notes = d.pop("review_notes", UNSET)
+        before = InheritedAccountSetting.from_dict(d.pop("before"))
 
-        management_plan = d.pop("management_plan", UNSET)
+        after = InheritedAccountSetting.from_dict(d.pop("after"))
 
-        conflict_of_interest_request = cls(
-            review_notes=review_notes,
-            management_plan=management_plan,
+        account_setting_change = cls(
+            before=before,
+            after=after,
         )
 
-        conflict_of_interest_request.additional_properties = d
-        return conflict_of_interest_request
+        account_setting_change.additional_properties = d
+        return account_setting_change
 
     @property
     def additional_keys(self) -> list[str]:

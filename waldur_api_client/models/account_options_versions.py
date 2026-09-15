@@ -1,55 +1,60 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
+if TYPE_CHECKING:
+    from ..models.account_options import AccountOptions
 
-T = TypeVar("T", bound="ConflictOfInterestRequest")
+
+T = TypeVar("T", bound="AccountOptionsVersions")
 
 
 @_attrs_define
-class ConflictOfInterestRequest:
+class AccountOptionsVersions:
     """
     Attributes:
-        review_notes (Union[Unset, str]):
-        management_plan (Union[Unset, str]): If waived, how is it managed
+        current (AccountOptions):
+        proposed (AccountOptions):
     """
 
-    review_notes: Union[Unset, str] = UNSET
-    management_plan: Union[Unset, str] = UNSET
+    current: "AccountOptions"
+    proposed: "AccountOptions"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        review_notes = self.review_notes
+        current = self.current.to_dict()
 
-        management_plan = self.management_plan
+        proposed = self.proposed.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if review_notes is not UNSET:
-            field_dict["review_notes"] = review_notes
-        if management_plan is not UNSET:
-            field_dict["management_plan"] = management_plan
+        field_dict.update(
+            {
+                "current": current,
+                "proposed": proposed,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.account_options import AccountOptions
+
         d = dict(src_dict)
-        review_notes = d.pop("review_notes", UNSET)
+        current = AccountOptions.from_dict(d.pop("current"))
 
-        management_plan = d.pop("management_plan", UNSET)
+        proposed = AccountOptions.from_dict(d.pop("proposed"))
 
-        conflict_of_interest_request = cls(
-            review_notes=review_notes,
-            management_plan=management_plan,
+        account_options_versions = cls(
+            current=current,
+            proposed=proposed,
         )
 
-        conflict_of_interest_request.additional_properties = d
-        return conflict_of_interest_request
+        account_options_versions.additional_properties = d
+        return account_options_versions
 
     @property
     def additional_keys(self) -> list[str]:

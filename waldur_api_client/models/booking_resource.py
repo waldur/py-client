@@ -25,6 +25,7 @@ if TYPE_CHECKING:
     from ..models.booking_resource_renewal_date_type_0 import BookingResourceRenewalDateType0
     from ..models.booking_slot import BookingSlot
     from ..models.nested_endpoint import NestedEndpoint
+    from ..models.offering_account_settings import OfferingAccountSettings
     from ..models.offering_component import OfferingComponent
     from ..models.order_details import OrderDetails
     from ..models.report_section import ReportSection
@@ -141,6 +142,7 @@ class BookingResource:
         offering_components (Union[Unset, list['OfferingComponent']]):
         has_api_keys (Union[Unset, bool]): Whether the resource owns any API keys, so the portal can offer key
             management without knowing which backend serves the resource.
+        offering_account_settings (Union[Unset, OfferingAccountSettings]):
         created_by (Union[Unset, str]):
         created_by_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and
             @/./+/-/_ characters
@@ -239,6 +241,7 @@ class BookingResource:
     offering_state: Union[Unset, OfferingState] = UNSET
     offering_components: Union[Unset, list["OfferingComponent"]] = UNSET
     has_api_keys: Union[Unset, bool] = UNSET
+    offering_account_settings: Union[Unset, "OfferingAccountSettings"] = UNSET
     created_by: Union[Unset, str] = UNSET
     created_by_username: Union[Unset, str] = UNSET
     created_by_full_name: Union[Unset, str] = UNSET
@@ -592,6 +595,10 @@ class BookingResource:
 
         has_api_keys = self.has_api_keys
 
+        offering_account_settings: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.offering_account_settings, Unset):
+            offering_account_settings = self.offering_account_settings.to_dict()
+
         created_by = self.created_by
 
         created_by_username = self.created_by_username
@@ -788,6 +795,8 @@ class BookingResource:
             field_dict["offering_components"] = offering_components
         if has_api_keys is not UNSET:
             field_dict["has_api_keys"] = has_api_keys
+        if offering_account_settings is not UNSET:
+            field_dict["offering_account_settings"] = offering_account_settings
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if created_by_username is not UNSET:
@@ -817,6 +826,7 @@ class BookingResource:
         from ..models.booking_resource_renewal_date_type_0 import BookingResourceRenewalDateType0
         from ..models.booking_slot import BookingSlot
         from ..models.nested_endpoint import NestedEndpoint
+        from ..models.offering_account_settings import OfferingAccountSettings
         from ..models.offering_component import OfferingComponent
         from ..models.order_details import OrderDetails
         from ..models.report_section import ReportSection
@@ -1367,6 +1377,13 @@ class BookingResource:
 
         has_api_keys = d.pop("has_api_keys", UNSET)
 
+        _offering_account_settings = d.pop("offering_account_settings", UNSET)
+        offering_account_settings: Union[Unset, OfferingAccountSettings]
+        if isinstance(_offering_account_settings, Unset):
+            offering_account_settings = UNSET
+        else:
+            offering_account_settings = OfferingAccountSettings.from_dict(_offering_account_settings)
+
         created_by = d.pop("created_by", UNSET)
 
         created_by_username = d.pop("created_by_username", UNSET)
@@ -1474,6 +1491,7 @@ class BookingResource:
             offering_state=offering_state,
             offering_components=offering_components,
             has_api_keys=has_api_keys,
+            offering_account_settings=offering_account_settings,
             created_by=created_by,
             created_by_username=created_by_username,
             created_by_full_name=created_by_full_name,

@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.core_states import CoreStates
+from ..models.ipv_6_mode import Ipv6Mode
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -59,6 +60,10 @@ class OpenStackSubNet:
         disable_gateway (Union[Unset, bool]): If True, no gateway IP address will be allocated
         allocation_pools (Union[Unset, list['OpenStackSubNetAllocationPool']]):
         ip_version (Union[Unset, int]): IP protocol version (4 or 6)
+        ipv6_ra_mode (Union[Ipv6Mode, None, Unset]): How the router advertises an IPv6 subnet. Set at creation only;
+            null for an IPv4 subnet.
+        ipv6_address_mode (Union[Ipv6Mode, None, Unset]): How instances on an IPv6 subnet get their address. Set at
+            creation only; null for an IPv4 subnet.
         enable_dhcp (Union[Unset, bool]): If True, DHCP service will be enabled on this subnet
         dns_nameservers (Union[Unset, list[str]]):
         host_routes (Union[Unset, list['OpenStackStaticRoute']]):
@@ -116,6 +121,8 @@ class OpenStackSubNet:
     disable_gateway: Union[Unset, bool] = UNSET
     allocation_pools: Union[Unset, list["OpenStackSubNetAllocationPool"]] = UNSET
     ip_version: Union[Unset, int] = UNSET
+    ipv6_ra_mode: Union[Ipv6Mode, None, Unset] = UNSET
+    ipv6_address_mode: Union[Ipv6Mode, None, Unset] = UNSET
     enable_dhcp: Union[Unset, bool] = UNSET
     dns_nameservers: Union[Unset, list[str]] = UNSET
     host_routes: Union[Unset, list["OpenStackStaticRoute"]] = UNSET
@@ -241,6 +248,22 @@ class OpenStackSubNet:
                 allocation_pools.append(allocation_pools_item)
 
         ip_version = self.ip_version
+
+        ipv6_ra_mode: Union[None, Unset, str]
+        if isinstance(self.ipv6_ra_mode, Unset):
+            ipv6_ra_mode = UNSET
+        elif isinstance(self.ipv6_ra_mode, Ipv6Mode):
+            ipv6_ra_mode = self.ipv6_ra_mode.value
+        else:
+            ipv6_ra_mode = self.ipv6_ra_mode
+
+        ipv6_address_mode: Union[None, Unset, str]
+        if isinstance(self.ipv6_address_mode, Unset):
+            ipv6_address_mode = UNSET
+        elif isinstance(self.ipv6_address_mode, Ipv6Mode):
+            ipv6_address_mode = self.ipv6_address_mode.value
+        else:
+            ipv6_address_mode = self.ipv6_address_mode
 
         enable_dhcp = self.enable_dhcp
 
@@ -422,6 +445,10 @@ class OpenStackSubNet:
             field_dict["allocation_pools"] = allocation_pools
         if ip_version is not UNSET:
             field_dict["ip_version"] = ip_version
+        if ipv6_ra_mode is not UNSET:
+            field_dict["ipv6_ra_mode"] = ipv6_ra_mode
+        if ipv6_address_mode is not UNSET:
+            field_dict["ipv6_address_mode"] = ipv6_address_mode
         if enable_dhcp is not UNSET:
             field_dict["enable_dhcp"] = enable_dhcp
         if dns_nameservers is not UNSET:
@@ -601,6 +628,40 @@ class OpenStackSubNet:
             allocation_pools.append(allocation_pools_item)
 
         ip_version = d.pop("ip_version", UNSET)
+
+        def _parse_ipv6_ra_mode(data: object) -> Union[Ipv6Mode, None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                ipv6_ra_mode_type_0 = Ipv6Mode(data)
+
+                return ipv6_ra_mode_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[Ipv6Mode, None, Unset], data)
+
+        ipv6_ra_mode = _parse_ipv6_ra_mode(d.pop("ipv6_ra_mode", UNSET))
+
+        def _parse_ipv6_address_mode(data: object) -> Union[Ipv6Mode, None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                ipv6_address_mode_type_0 = Ipv6Mode(data)
+
+                return ipv6_address_mode_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[Ipv6Mode, None, Unset], data)
+
+        ipv6_address_mode = _parse_ipv6_address_mode(d.pop("ipv6_address_mode", UNSET))
 
         enable_dhcp = d.pop("enable_dhcp", UNSET)
 
@@ -809,6 +870,8 @@ class OpenStackSubNet:
             disable_gateway=disable_gateway,
             allocation_pools=allocation_pools,
             ip_version=ip_version,
+            ipv6_ra_mode=ipv6_ra_mode,
+            ipv6_address_mode=ipv6_address_mode,
             enable_dhcp=enable_dhcp,
             dns_nameservers=dns_nameservers,
             host_routes=host_routes,
