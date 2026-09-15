@@ -139,6 +139,9 @@ class MergedPluginOptions:
         billing_source (Union[Unset, BillingSourceEnum]):
         heappe_cluster_id (Union[Unset, str]): HEAppE cluster id
         heappe_local_base_path (Union[Unset, str]): HEAppE local base path
+        heappe_identifier (Union[Unset, str]): Identifier of the HEAppE instance this offering targets, e.g.
+            'it4i-heappe-prod'. Lets providers with multiple HEAppE deployments disambiguate which one a given offering
+            uses.
         heappe_url (Union[Unset, str]): HEAppE url
         heappe_username (Union[Unset, str]): HEAppE username
         homedir_prefix (Union[Unset, str]): GLAuth homedir prefix Default: '/home/'.
@@ -278,6 +281,7 @@ class MergedPluginOptions:
     billing_source: Union[Unset, BillingSourceEnum] = UNSET
     heappe_cluster_id: Union[Unset, str] = UNSET
     heappe_local_base_path: Union[Unset, str] = UNSET
+    heappe_identifier: Union[Unset, str] = UNSET
     heappe_url: Union[Unset, str] = UNSET
     heappe_username: Union[Unset, str] = UNSET
     homedir_prefix: Union[Unset, str] = "/home/"
@@ -477,6 +481,8 @@ class MergedPluginOptions:
         heappe_cluster_id = self.heappe_cluster_id
 
         heappe_local_base_path = self.heappe_local_base_path
+
+        heappe_identifier = self.heappe_identifier
 
         heappe_url = self.heappe_url
 
@@ -705,6 +711,8 @@ class MergedPluginOptions:
             field_dict["heappe_cluster_id"] = heappe_cluster_id
         if heappe_local_base_path is not UNSET:
             field_dict["heappe_local_base_path"] = heappe_local_base_path
+        if heappe_identifier is not UNSET:
+            field_dict["heappe_identifier"] = heappe_identifier
         if heappe_url is not UNSET:
             field_dict["heappe_url"] = heappe_url
         if heappe_username is not UNSET:
@@ -1023,6 +1031,8 @@ class MergedPluginOptions:
 
         heappe_local_base_path = d.pop("heappe_local_base_path", UNSET)
 
+        heappe_identifier = d.pop("heappe_identifier", UNSET)
+
         heappe_url = d.pop("heappe_url", UNSET)
 
         heappe_username = d.pop("heappe_username", UNSET)
@@ -1228,6 +1238,7 @@ class MergedPluginOptions:
             billing_source=billing_source,
             heappe_cluster_id=heappe_cluster_id,
             heappe_local_base_path=heappe_local_base_path,
+            heappe_identifier=heappe_identifier,
             heappe_url=heappe_url,
             heappe_username=heappe_username,
             homedir_prefix=homedir_prefix,
