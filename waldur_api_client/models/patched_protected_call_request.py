@@ -5,6 +5,7 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.support_ticket_caller_enum import SupportTicketCallerEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -47,6 +48,9 @@ class PatchedProtectedCallRequest:
         user_assurance_levels (Union[Unset, list[str]]): List of required assurance URIs (REFEDS). User must have ALL of
             these.
         applicant_visibility_config (Union['CallApplicantVisibilityConfigRequest', None, Unset]):
+        support_ticket_caller (Union[Unset, SupportTicketCallerEnum]):
+        support_ticket_caller_user (Union[None, UUID, Unset]): The person tickets go to when the caller is a named
+            contact. Must hold a role on this call or on the organisation managing it.
     """
 
     slug: Union[Unset, str] = UNSET
@@ -70,6 +74,8 @@ class PatchedProtectedCallRequest:
     user_organization_types: Union[Unset, list[str]] = UNSET
     user_assurance_levels: Union[Unset, list[str]] = UNSET
     applicant_visibility_config: Union["CallApplicantVisibilityConfigRequest", None, Unset] = UNSET
+    support_ticket_caller: Union[Unset, SupportTicketCallerEnum] = UNSET
+    support_ticket_caller_user: Union[None, UUID, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -165,6 +171,18 @@ class PatchedProtectedCallRequest:
         else:
             applicant_visibility_config = self.applicant_visibility_config
 
+        support_ticket_caller: Union[Unset, str] = UNSET
+        if not isinstance(self.support_ticket_caller, Unset):
+            support_ticket_caller = self.support_ticket_caller.value
+
+        support_ticket_caller_user: Union[None, Unset, str]
+        if isinstance(self.support_ticket_caller_user, Unset):
+            support_ticket_caller_user = UNSET
+        elif isinstance(self.support_ticket_caller_user, UUID):
+            support_ticket_caller_user = str(self.support_ticket_caller_user)
+        else:
+            support_ticket_caller_user = self.support_ticket_caller_user
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -210,6 +228,10 @@ class PatchedProtectedCallRequest:
             field_dict["user_assurance_levels"] = user_assurance_levels
         if applicant_visibility_config is not UNSET:
             field_dict["applicant_visibility_config"] = applicant_visibility_config
+        if support_ticket_caller is not UNSET:
+            field_dict["support_ticket_caller"] = support_ticket_caller
+        if support_ticket_caller_user is not UNSET:
+            field_dict["support_ticket_caller_user"] = support_ticket_caller_user
 
         return field_dict
 
@@ -341,6 +363,30 @@ class PatchedProtectedCallRequest:
 
         applicant_visibility_config = _parse_applicant_visibility_config(d.pop("applicant_visibility_config", UNSET))
 
+        _support_ticket_caller = d.pop("support_ticket_caller", UNSET)
+        support_ticket_caller: Union[Unset, SupportTicketCallerEnum]
+        if isinstance(_support_ticket_caller, Unset):
+            support_ticket_caller = UNSET
+        else:
+            support_ticket_caller = SupportTicketCallerEnum(_support_ticket_caller)
+
+        def _parse_support_ticket_caller_user(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                support_ticket_caller_user_type_0 = UUID(data)
+
+                return support_ticket_caller_user_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        support_ticket_caller_user = _parse_support_ticket_caller_user(d.pop("support_ticket_caller_user", UNSET))
+
         patched_protected_call_request = cls(
             slug=slug,
             name=name,
@@ -363,6 +409,8 @@ class PatchedProtectedCallRequest:
             user_organization_types=user_organization_types,
             user_assurance_levels=user_assurance_levels,
             applicant_visibility_config=applicant_visibility_config,
+            support_ticket_caller=support_ticket_caller,
+            support_ticket_caller_user=support_ticket_caller_user,
         )
 
         patched_protected_call_request.additional_properties = d
