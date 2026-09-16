@@ -3715,6 +3715,25 @@ Module: `waldur_api_client.api.slurm_jobs`
 - `slurm_jobs_set_ok` POST `/api/slurm-jobs/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
 - `slurm_jobs_unlink` POST `/api/slurm-jobs/{uuid}/unlink/` — Unlink resource (path: uuid)
 
+## sram-groups
+Module: `waldur_api_client.api.sram_groups`
+
+- `sram_groups_list` GET `/api/sram-groups/` — SRAM collaborations and groups provisioned into Waldur (3 query params)
+- `sram_groups_count` HEAD `/api/sram-groups/` — Get number of items in the collection matching the request parameters (3 query params)
+- `sram_groups_retrieve` GET `/api/sram-groups/{uuid}/` — SRAM collaborations and groups provisioned into Waldur (path: uuid)
+
+## sram-project-rules
+Module: `waldur_api_client.api.sram_project_rules`
+
+- `sram_project_rules_list` GET `/api/sram-project-rules/` — Rules granting project roles to holders of SRAM placeholder roles (no params)
+- `sram_project_rules_count` HEAD `/api/sram-project-rules/` — Get number of items in the collection matching the request parameters (no params)
+- `sram_project_rules_create` POST `/api/sram-project-rules/` — Rules granting project roles to holders of SRAM placeholder roles (request body)
+- `sram_project_rules_retrieve` GET `/api/sram-project-rules/{uuid}/` — Rules granting project roles to holders of SRAM placeholder roles (path: uuid)
+- `sram_project_rules_update` PUT `/api/sram-project-rules/{uuid}/` — Rules granting project roles to holders of SRAM placeholder roles (path: uuid | request body)
+- `sram_project_rules_partial_update` PATCH `/api/sram-project-rules/{uuid}/` — Rules granting project roles to holders of SRAM placeholder roles (path: uuid | request body)
+- `sram_project_rules_destroy` DELETE `/api/sram-project-rules/{uuid}/` — Rules granting project roles to holders of SRAM placeholder roles (path: uuid)
+- `sram_project_rules_preview_list` GET `/api/sram-project-rules/{uuid}/preview/` — Preview a rule (path: uuid)
+
 ## staff-passkeys
 Module: `waldur_api_client.api.staff_passkeys`
 

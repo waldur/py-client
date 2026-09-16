@@ -1902,6 +1902,7 @@ from .patched_slurm_periodic_usage_policy_request_tres_billing_weights import (
 from .patched_software_catalog_request import PatchedSoftwareCatalogRequest
 from .patched_software_catalog_request_metadata import PatchedSoftwareCatalogRequestMetadata
 from .patched_software_package_request import PatchedSoftwarePackageRequest
+from .patched_sram_project_rule_request import PatchedSramProjectRuleRequest
 from .patched_support_user_request import PatchedSupportUserRequest
 from .patched_system_prompt_request import PatchedSystemPromptRequest
 from .patched_tag_request import PatchedTagRequest
@@ -2614,6 +2615,7 @@ from .science_sub_domain_o_enum import ScienceSubDomainOEnum
 from .science_sub_domain_request import ScienceSubDomainRequest
 from .scim_pull_attributes_response import ScimPullAttributesResponse
 from .scim_sync_all_response import ScimSyncAllResponse
+from .scimusermatchwaldurattribute_enum import SCIMUSERMATCHWALDURATTRIBUTEEnum
 from .scoped_offering import ScopedOffering
 from .scoped_offering_request import ScopedOfferingRequest
 from .screenshot import Screenshot
@@ -2744,6 +2746,16 @@ from .software_version_dependencies import SoftwareVersionDependencies
 from .software_version_metadata import SoftwareVersionMetadata
 from .software_version_o_enum import SoftwareVersionOEnum
 from .source_type_enum import SourceTypeEnum
+from .sram_group import SramGroup
+from .sram_group_kind_enum import SramGroupKindEnum
+from .sram_project_rule import SramProjectRule
+from .sram_project_rule_field import SramProjectRuleField
+from .sram_project_rule_match import SramProjectRuleMatch
+from .sram_project_rule_request import SramProjectRuleRequest
+from .sram_project_rule_source_kind import SramProjectRuleSourceKind
+from .sram_rule_preview_item import SramRulePreviewItem
+from .sram_rule_preview_project import SramRulePreviewProject
+from .sram_rule_preview_user import SramRulePreviewUser
 from .ssh_key import SshKey
 from .ssh_key_field_enum import SshKeyFieldEnum
 from .ssh_key_o_enum import SshKeyOEnum
@@ -4832,6 +4844,7 @@ __all__ = (
     "PatchedSoftwareCatalogRequest",
     "PatchedSoftwareCatalogRequestMetadata",
     "PatchedSoftwarePackageRequest",
+    "PatchedSramProjectRuleRequest",
     "PatchedSupportUserRequest",
     "PatchedSystemPromptRequest",
     "PatchedTagRequest",
@@ -5514,6 +5527,7 @@ __all__ = (
     "ScienceSubDomainRequest",
     "ScimPullAttributesResponse",
     "ScimSyncAllResponse",
+    "SCIMUSERMATCHWALDURATTRIBUTEEnum",
     "ScopedOffering",
     "ScopedOfferingRequest",
     "Screenshot",
@@ -5644,6 +5658,16 @@ __all__ = (
     "SoftwareVersionMetadata",
     "SoftwareVersionOEnum",
     "SourceTypeEnum",
+    "SramGroup",
+    "SramGroupKindEnum",
+    "SramProjectRule",
+    "SramProjectRuleField",
+    "SramProjectRuleMatch",
+    "SramProjectRuleRequest",
+    "SramProjectRuleSourceKind",
+    "SramRulePreviewItem",
+    "SramRulePreviewProject",
+    "SramRulePreviewUser",
     "SshKey",
     "SSHKEYALLOWEDTYPESEnum",
     "SshKeyFieldEnum",

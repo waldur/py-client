@@ -22,6 +22,7 @@ from ..models.onboarding_validation_enum import OnboardingValidationEnum
 from ..models.openportalmembershipsyncmode_enum import OPENPORTALMEMBERSHIPSYNCMODEEnum
 from ..models.proposal_configurable_field_enum import ProposalConfigurableFieldEnum
 from ..models.restrictedofferingvisibilitymode_enum import RESTRICTEDOFFERINGVISIBILITYMODEEnum
+from ..models.scimusermatchwaldurattribute_enum import SCIMUSERMATCHWALDURATTRIBUTEEnum
 from ..models.scriptrunmode_enum import SCRIPTRUNMODEEnum
 from ..models.serviceaccessmode_enum import SERVICEACCESSMODEEnum
 from ..models.sidebarstyle_enum import SIDEBARSTYLEEnum
@@ -226,6 +227,10 @@ class ConstanceSettingsRequestMultipart:
         scim_inbound_source_name (Union[Unset, str]):
         scim_inbound_allowed_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
         scim_inbound_ssh_keys_enabled (Union[Unset, bool]):
+        scim_user_match_waldur_attribute (Union[Unset, SCIMUSERMATCHWALDURATTRIBUTEEnum]):
+        scim_user_match_scim_attribute (Union[Unset, str]):
+        sram_integration_enabled (Union[Unset, bool]):
+        sram_placeholder_role_template (Union[Unset, str]):
         scim_pull_api_url (Union[Unset, str]):
         scim_pull_api_key (Union[Unset, str]):
         scim_pull_source_name (Union[Unset, str]):
@@ -558,6 +563,10 @@ class ConstanceSettingsRequestMultipart:
     scim_inbound_source_name: Union[Unset, str] = UNSET
     scim_inbound_allowed_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
     scim_inbound_ssh_keys_enabled: Union[Unset, bool] = UNSET
+    scim_user_match_waldur_attribute: Union[Unset, SCIMUSERMATCHWALDURATTRIBUTEEnum] = UNSET
+    scim_user_match_scim_attribute: Union[Unset, str] = UNSET
+    sram_integration_enabled: Union[Unset, bool] = UNSET
+    sram_placeholder_role_template: Union[Unset, str] = UNSET
     scim_pull_api_url: Union[Unset, str] = UNSET
     scim_pull_api_key: Union[Unset, str] = UNSET
     scim_pull_source_name: Union[Unset, str] = UNSET
@@ -1197,6 +1206,16 @@ class ConstanceSettingsRequestMultipart:
                 scim_inbound_allowed_attributes.append(scim_inbound_allowed_attributes_item)
 
         scim_inbound_ssh_keys_enabled = self.scim_inbound_ssh_keys_enabled
+
+        scim_user_match_waldur_attribute: Union[Unset, str] = UNSET
+        if not isinstance(self.scim_user_match_waldur_attribute, Unset):
+            scim_user_match_waldur_attribute = self.scim_user_match_waldur_attribute.value
+
+        scim_user_match_scim_attribute = self.scim_user_match_scim_attribute
+
+        sram_integration_enabled = self.sram_integration_enabled
+
+        sram_placeholder_role_template = self.sram_placeholder_role_template
 
         scim_pull_api_url = self.scim_pull_api_url
 
@@ -2028,6 +2047,14 @@ class ConstanceSettingsRequestMultipart:
             field_dict["SCIM_INBOUND_ALLOWED_ATTRIBUTES"] = scim_inbound_allowed_attributes
         if scim_inbound_ssh_keys_enabled is not UNSET:
             field_dict["SCIM_INBOUND_SSH_KEYS_ENABLED"] = scim_inbound_ssh_keys_enabled
+        if scim_user_match_waldur_attribute is not UNSET:
+            field_dict["SCIM_USER_MATCH_WALDUR_ATTRIBUTE"] = scim_user_match_waldur_attribute
+        if scim_user_match_scim_attribute is not UNSET:
+            field_dict["SCIM_USER_MATCH_SCIM_ATTRIBUTE"] = scim_user_match_scim_attribute
+        if sram_integration_enabled is not UNSET:
+            field_dict["SRAM_INTEGRATION_ENABLED"] = sram_integration_enabled
+        if sram_placeholder_role_template is not UNSET:
+            field_dict["SRAM_PLACEHOLDER_ROLE_TEMPLATE"] = sram_placeholder_role_template
         if scim_pull_api_url is not UNSET:
             field_dict["SCIM_PULL_API_URL"] = scim_pull_api_url
         if scim_pull_api_key is not UNSET:
@@ -3219,6 +3246,35 @@ class ConstanceSettingsRequestMultipart:
                 (
                     "SCIM_INBOUND_SSH_KEYS_ENABLED",
                     (None, str(self.scim_inbound_ssh_keys_enabled).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.scim_user_match_waldur_attribute, Unset):
+            files.append(
+                (
+                    "SCIM_USER_MATCH_WALDUR_ATTRIBUTE",
+                    (None, str(self.scim_user_match_waldur_attribute.value).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.scim_user_match_scim_attribute, Unset):
+            files.append(
+                (
+                    "SCIM_USER_MATCH_SCIM_ATTRIBUTE",
+                    (None, str(self.scim_user_match_scim_attribute).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.sram_integration_enabled, Unset):
+            files.append(
+                ("SRAM_INTEGRATION_ENABLED", (None, str(self.sram_integration_enabled).encode(), "text/plain"))
+            )
+
+        if not isinstance(self.sram_placeholder_role_template, Unset):
+            files.append(
+                (
+                    "SRAM_PLACEHOLDER_ROLE_TEMPLATE",
+                    (None, str(self.sram_placeholder_role_template).encode(), "text/plain"),
                 )
             )
 
@@ -4953,6 +5009,19 @@ class ConstanceSettingsRequestMultipart:
 
         scim_inbound_ssh_keys_enabled = d.pop("SCIM_INBOUND_SSH_KEYS_ENABLED", UNSET)
 
+        _scim_user_match_waldur_attribute = d.pop("SCIM_USER_MATCH_WALDUR_ATTRIBUTE", UNSET)
+        scim_user_match_waldur_attribute: Union[Unset, SCIMUSERMATCHWALDURATTRIBUTEEnum]
+        if isinstance(_scim_user_match_waldur_attribute, Unset):
+            scim_user_match_waldur_attribute = UNSET
+        else:
+            scim_user_match_waldur_attribute = SCIMUSERMATCHWALDURATTRIBUTEEnum(_scim_user_match_waldur_attribute)
+
+        scim_user_match_scim_attribute = d.pop("SCIM_USER_MATCH_SCIM_ATTRIBUTE", UNSET)
+
+        sram_integration_enabled = d.pop("SRAM_INTEGRATION_ENABLED", UNSET)
+
+        sram_placeholder_role_template = d.pop("SRAM_PLACEHOLDER_ROLE_TEMPLATE", UNSET)
+
         scim_pull_api_url = d.pop("SCIM_PULL_API_URL", UNSET)
 
         scim_pull_api_key = d.pop("SCIM_PULL_API_KEY", UNSET)
@@ -5783,6 +5852,10 @@ class ConstanceSettingsRequestMultipart:
             scim_inbound_source_name=scim_inbound_source_name,
             scim_inbound_allowed_attributes=scim_inbound_allowed_attributes,
             scim_inbound_ssh_keys_enabled=scim_inbound_ssh_keys_enabled,
+            scim_user_match_waldur_attribute=scim_user_match_waldur_attribute,
+            scim_user_match_scim_attribute=scim_user_match_scim_attribute,
+            sram_integration_enabled=sram_integration_enabled,
+            sram_placeholder_role_template=sram_placeholder_role_template,
             scim_pull_api_url=scim_pull_api_url,
             scim_pull_api_key=scim_pull_api_key,
             scim_pull_source_name=scim_pull_source_name,

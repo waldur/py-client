@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.14.dev.20260916181037
+# Version: 8.1.3-rc.14.dev.20260916203656
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -23393,6 +23393,92 @@ Summary: Unlink resource
 Description: Delete resource from the database without scheduling operations on backend
         and without checking current state of the resource. It is intended to be used
         for removing resource stuck in transitioning state.
+Path parameters:
+  - uuid
+
+============================================================
+## sram-groups  (module: waldur_api_client.api.sram_groups)
+============================================================
+
+### sram_groups_list
+GET /api/sram-groups/
+Summary: SRAM collaborations and groups provisioned into Waldur
+Description: SRAM collaborations and groups provisioned into Waldur.
+Query parameters (3):
+  - customer_uuid
+  - display_name
+  - kind
+
+### sram_groups_count
+HEAD /api/sram-groups/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - customer_uuid
+  - display_name
+  - kind
+
+### sram_groups_retrieve
+GET /api/sram-groups/{uuid}/
+Summary: SRAM collaborations and groups provisioned into Waldur
+Description: SRAM collaborations and groups provisioned into Waldur.
+Path parameters:
+  - uuid
+
+============================================================
+## sram-project-rules  (module: waldur_api_client.api.sram_project_rules)
+============================================================
+
+### sram_project_rules_list
+GET /api/sram-project-rules/
+Summary: Rules granting project roles to holders of SRAM placeholder roles
+Description: Rules granting project roles to holders of SRAM placeholder roles.
+
+### sram_project_rules_count
+HEAD /api/sram-project-rules/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+
+### sram_project_rules_create
+POST /api/sram-project-rules/
+Summary: Rules granting project roles to holders of SRAM placeholder roles
+Description: Rules granting project roles to holders of SRAM placeholder roles.
+Request body: yes
+
+### sram_project_rules_retrieve
+GET /api/sram-project-rules/{uuid}/
+Summary: Rules granting project roles to holders of SRAM placeholder roles
+Description: Rules granting project roles to holders of SRAM placeholder roles.
+Path parameters:
+  - uuid
+
+### sram_project_rules_update
+PUT /api/sram-project-rules/{uuid}/
+Summary: Rules granting project roles to holders of SRAM placeholder roles
+Description: Rules granting project roles to holders of SRAM placeholder roles.
+Path parameters:
+  - uuid
+Request body: yes
+
+### sram_project_rules_partial_update
+PATCH /api/sram-project-rules/{uuid}/
+Summary: Rules granting project roles to holders of SRAM placeholder roles
+Description: Rules granting project roles to holders of SRAM placeholder roles.
+Path parameters:
+  - uuid
+Request body: yes
+
+### sram_project_rules_destroy
+DELETE /api/sram-project-rules/{uuid}/
+Summary: Rules granting project roles to holders of SRAM placeholder roles
+Description: Rules granting project roles to holders of SRAM placeholder roles.
+Path parameters:
+  - uuid
+
+### sram_project_rules_preview_list
+GET /api/sram-project-rules/{uuid}/preview/
+Summary: Preview a rule
+Description: Groups the rule matches now, with the projects it selects and the placeholder holders who would get the project role.
 Path parameters:
   - uuid
 
