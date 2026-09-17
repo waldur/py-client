@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from ..models.component_multiplier_config_request import ComponentMultiplierConfigRequest
     from ..models.k8s_default_configuration_request import K8SDefaultConfigurationRequest
     from ..models.option_validator_request import OptionValidatorRequest
+    from ..models.option_visible_if_request import OptionVisibleIfRequest
     from ..models.storage_folder_config_request import StorageFolderConfigRequest
 
 
@@ -35,6 +36,7 @@ class OptionFieldRequest:
         storage_folder_config (Union[Unset, StorageFolderConfigRequest]):
         default_configs (Union[Unset, K8SDefaultConfigurationRequest]):
         validators (Union[Unset, list['OptionValidatorRequest']]):
+        visible_if (Union[Unset, OptionVisibleIfRequest]):
     """
 
     type_: OptionFieldTypeEnum
@@ -50,6 +52,7 @@ class OptionFieldRequest:
     storage_folder_config: Union[Unset, "StorageFolderConfigRequest"] = UNSET
     default_configs: Union[Unset, "K8SDefaultConfigurationRequest"] = UNSET
     validators: Union[Unset, list["OptionValidatorRequest"]] = UNSET
+    visible_if: Union[Unset, "OptionVisibleIfRequest"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -94,6 +97,10 @@ class OptionFieldRequest:
                 validators_item = validators_item_data.to_dict()
                 validators.append(validators_item)
 
+        visible_if: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.visible_if, Unset):
+            visible_if = self.visible_if.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -124,6 +131,8 @@ class OptionFieldRequest:
             field_dict["default_configs"] = default_configs
         if validators is not UNSET:
             field_dict["validators"] = validators
+        if visible_if is not UNSET:
+            field_dict["visible_if"] = visible_if
 
         return field_dict
 
@@ -133,6 +142,7 @@ class OptionFieldRequest:
         from ..models.component_multiplier_config_request import ComponentMultiplierConfigRequest
         from ..models.k8s_default_configuration_request import K8SDefaultConfigurationRequest
         from ..models.option_validator_request import OptionValidatorRequest
+        from ..models.option_visible_if_request import OptionVisibleIfRequest
         from ..models.storage_folder_config_request import StorageFolderConfigRequest
 
         d = dict(src_dict)
@@ -187,6 +197,13 @@ class OptionFieldRequest:
 
             validators.append(validators_item)
 
+        _visible_if = d.pop("visible_if", UNSET)
+        visible_if: Union[Unset, OptionVisibleIfRequest]
+        if isinstance(_visible_if, Unset):
+            visible_if = UNSET
+        else:
+            visible_if = OptionVisibleIfRequest.from_dict(_visible_if)
+
         option_field_request = cls(
             type_=type_,
             label=label,
@@ -201,6 +218,7 @@ class OptionFieldRequest:
             storage_folder_config=storage_folder_config,
             default_configs=default_configs,
             validators=validators,
+            visible_if=visible_if,
         )
 
         option_field_request.additional_properties = d

@@ -1631,6 +1631,8 @@ from .option_field_type_enum import OptionFieldTypeEnum
 from .option_validator import OptionValidator
 from .option_validator_request import OptionValidatorRequest
 from .option_validator_type_enum import OptionValidatorTypeEnum
+from .option_visible_if import OptionVisibleIf
+from .option_visible_if_request import OptionVisibleIfRequest
 from .orcid_callback_request import OrcidCallbackRequest
 from .orcid_disconnect_response import OrcidDisconnectResponse
 from .orcid_sync_response import OrcidSyncResponse
@@ -2847,6 +2849,7 @@ from .top_queue import TopQueue
 from .top_service_provider_by_resources import TopServiceProviderByResources
 from .topology_edge import TopologyEdge
 from .topology_edge_kind_enum import TopologyEdgeKindEnum
+from .topology_mode_enum import TopologyModeEnum
 from .topology_node import TopologyNode
 from .topology_node_attrs import TopologyNodeAttrs
 from .topology_node_attrs_additional_property import TopologyNodeAttrsAdditionalProperty
@@ -4584,6 +4587,8 @@ __all__ = (
     "OptionValidator",
     "OptionValidatorRequest",
     "OptionValidatorTypeEnum",
+    "OptionVisibleIf",
+    "OptionVisibleIfRequest",
     "OrcidCallbackRequest",
     "OrcidDisconnectResponse",
     "OrcidSyncResponse",
@@ -5757,6 +5762,7 @@ __all__ = (
     "ToolExecuteRequestArguments",
     "TopologyEdge",
     "TopologyEdgeKindEnum",
+    "TopologyModeEnum",
     "TopologyNode",
     "TopologyNodeAttrs",
     "TopologyNodeAttrsAdditionalProperty",
