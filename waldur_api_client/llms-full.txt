@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.14.dev.20260917060451
+# Version: 8.1.3-rc.14.dev.20260917130240
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -11635,12 +11635,14 @@ Path parameters:
 ### marketplace_runtime_states_list
 GET /api/marketplace-runtime-states/
 Summary: List available runtime states for resources
-Description: Returns a unique, sorted list of runtime states for all resources accessible to the current user.
+Description: Returns a unique, sorted list of runtime states for resources accessible to the current user.
         The runtime state is a backend-specific state of a resource (e.g., 'ACTIVE', 'SHUTOFF' for a VM).
         This endpoint is useful for building dynamic filters in a user interface.
-        The...
-Query parameters (3):
+
+        At lea...
+Query parameters (4):
   - category_uuid — Filter runtime states by resources belonging to a specific category.
+  - customer_uuid — Filter runtime states by resources within a specific customer.
   - offering_uuid — Filter runtime states by resources of a specific offering.
   - project_uuid — Filter runtime states by resources within a specific project.
 
@@ -24804,7 +24806,7 @@ Request body: yes
 ### user_invitations_check_duplicates
 POST /api/user-invitations/check-duplicates/
 Summary: Check for duplicate invitations
-Description: Returns pending invitations that already exist for the same email and role within the given scope.
+Description: Returns pending invitations that already exist for the same email and role within the given scope, along with the active roles those emails already hold in it.
 Request body: yes
 
 ### user_invitations_reject

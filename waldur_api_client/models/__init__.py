@@ -938,6 +938,7 @@ from .invitation_duplicate import InvitationDuplicate
 from .invitation_duplicate_check_item_request import InvitationDuplicateCheckItemRequest
 from .invitation_duplicate_check_request import InvitationDuplicateCheckRequest
 from .invitation_duplicate_check_response import InvitationDuplicateCheckResponse
+from .invitation_existing_role import InvitationExistingRole
 from .invitation_o_enum import InvitationOEnum
 from .invitation_proposal_disclosure_enum import InvitationProposalDisclosureEnum
 from .invitation_proposal_summary import InvitationProposalSummary
@@ -3940,6 +3941,7 @@ __all__ = (
     "InvitationDuplicateCheckItemRequest",
     "InvitationDuplicateCheckRequest",
     "InvitationDuplicateCheckResponse",
+    "InvitationExistingRole",
     "InvitationOEnum",
     "InvitationProposalDisclosureEnum",
     "InvitationProposalSummary",
