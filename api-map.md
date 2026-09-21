@@ -423,6 +423,19 @@ Module: `waldur_api_client.api.celery_stats`
 
 - `celery_stats_retrieve` GET `/api/celery-stats/` — Get Celery worker statistics (no params)
 
+## changelog
+Module: `waldur_api_client.api.changelog`
+
+- `changelog_compare_retrieve` GET `/api/changelog/compare/{from_version}/{to_version}/` — Compare changelog between two versions (path: from_version, to_version)
+- `changelog_pending_retrieve` GET `/api/changelog/pending/` — Get pending changelog (no params)
+- `changelog_retrieve` GET `/api/changelog/{version}/` — Get changelog for a specific version (path: version)
+- `changelog_delta_retrieve` GET `/api/changelog/{version}/delta/` — Get changelog delta for a version (path: version)
+
+## changelog-entries
+Module: `waldur_api_client.api.changelog_entries`
+
+- `changelog_entries_retrieve` GET `/api/changelog-entries/` — List changelog entries (7 query params)
+
 ## chat
 Module: `waldur_api_client.api.chat`
 
@@ -1286,6 +1299,21 @@ Module: `waldur_api_client.api.marketplace_offering_groups`
 - `marketplace_offering_groups_partial_update` PATCH `/api/marketplace-offering-groups/{uuid}/` (path: uuid | request body)
 - `marketplace_offering_groups_destroy` DELETE `/api/marketplace-offering-groups/{uuid}/` (path: uuid)
 
+## marketplace-offering-merges
+Module: `waldur_api_client.api.marketplace_offering_merges`
+
+- `marketplace_offering_merges_list` GET `/api/marketplace-offering-merges/` (9 query params)
+- `marketplace_offering_merges_count` HEAD `/api/marketplace-offering-merges/` — Get number of items in the collection matching the request parameters (9 query params)
+- `marketplace_offering_merges_create` POST `/api/marketplace-offering-merges/` (request body)
+- `marketplace_offering_merges_suggest_mapping_retrieve` GET `/api/marketplace-offering-merges/suggest_mapping/` — Suggest plan mappings by name and component mappings by type (2 query params)
+- `marketplace_offering_merges_retrieve` GET `/api/marketplace-offering-merges/{uuid}/` (path: uuid)
+- `marketplace_offering_merges_partial_update` PATCH `/api/marketplace-offering-merges/{uuid}/` (path: uuid | request body)
+- `marketplace_offering_merges_destroy` DELETE `/api/marketplace-offering-merges/{uuid}/` (path: uuid)
+- `marketplace_offering_merges_affected_list` GET `/api/marketplace-offering-merges/{uuid}/affected/` — List the rows one preview entry changes, newest first (path: uuid | 1 query param)
+- `marketplace_offering_merges_execute` POST `/api/marketplace-offering-merges/{uuid}/execute/` — Queue a previewed merge for execution (path: uuid | request body)
+- `marketplace_offering_merges_preview` POST `/api/marketplace-offering-merges/{uuid}/preview/` — Compute the merge preview: counts, blockers and warnings (path: uuid)
+- `marketplace_offering_merges_undo` POST `/api/marketplace-offering-merges/{uuid}/undo/` — Queue the undo of a completed merge (path: uuid)
+
 ## marketplace-offering-permissions
 Module: `waldur_api_client.api.marketplace_offering_permissions`
 
@@ -1405,7 +1433,6 @@ Module: `waldur_api_client.api.marketplace_openstack_duplicate_offerings`
 
 - `marketplace_openstack_duplicate_offerings_list` GET `/api/marketplace-openstack-duplicate-offerings/` (no params)
 - `marketplace_openstack_duplicate_offerings_count` HEAD `/api/marketplace-openstack-duplicate-offerings/` — Get number of items in the collection matching the request parameters (no params)
-- `marketplace_openstack_duplicate_offerings_remediate` POST `/api/marketplace-openstack-duplicate-offerings/remediate/` — Collapse one duplicate per-tenant offering group onto its keeper (request body)
 
 ## marketplace-orders
 Module: `waldur_api_client.api.marketplace_orders`

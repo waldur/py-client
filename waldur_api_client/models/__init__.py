@@ -26,6 +26,7 @@ from .account_setting import AccountSetting
 from .account_setting_change import AccountSettingChange
 from .account_setting_changes import AccountSettingChanges
 from .account_setting_source import AccountSettingSource
+from .action import Action
 from .action_on_usage_limit_enum import ActionOnUsageLimitEnum
 from .action_taken_enum import ActionTakenEnum
 from .active_agent_task import ActiveAgentTask
@@ -58,6 +59,8 @@ from .affinity_matrix_entry import AffinityMatrixEntry
 from .affinity_matrix_response import AffinityMatrixResponse
 from .affinity_matrix_response_scope_enum import AffinityMatrixResponseScopeEnum
 from .affinity_method_enum import AffinityMethodEnum
+from .agent_compatibility import AgentCompatibility
+from .agent_compatibility_status_enum import AgentCompatibilityStatusEnum
 from .agent_connection_info import AgentConnectionInfo
 from .agent_connection_stats_response import AgentConnectionStatsResponse
 from .agent_connection_summary import AgentConnectionSummary
@@ -406,6 +409,16 @@ from .celery_worker_pool_writes import CeleryWorkerPoolWrites
 from .celery_worker_stats import CeleryWorkerStats
 from .celery_worker_stats_rusage import CeleryWorkerStatsRusage
 from .celery_worker_stats_total import CeleryWorkerStatsTotal
+from .changelog_entry import ChangelogEntry
+from .changelog_entry_list import ChangelogEntryList
+from .changelog_entry_plugin_analysis import ChangelogEntryPluginAnalysis
+from .changelog_entry_settings_analysis import ChangelogEntrySettingsAnalysis
+from .changelog_flat_entry import ChangelogFlatEntry
+from .changelog_flat_entry_plugin_analysis import ChangelogFlatEntryPluginAnalysis
+from .changelog_flat_entry_settings_analysis import ChangelogFlatEntrySettingsAnalysis
+from .changelog_pending import ChangelogPending
+from .changelog_release import ChangelogRelease
+from .changelog_release_component_activity import ChangelogReleaseComponentActivity
 from .chat_request_mode_enum import ChatRequestModeEnum
 from .chat_request_request import ChatRequestRequest
 from .chat_response import ChatResponse
@@ -460,6 +473,7 @@ from .comment_request import CommentRequest
 from .complete_workflow_step_request import CompleteWorkflowStepRequest
 from .complete_workflow_step_response import CompleteWorkflowStepResponse
 from .compliance_overview import ComplianceOverview
+from .component_activity import ComponentActivity
 from .component_multiplier_config import ComponentMultiplierConfig
 from .component_multiplier_config_request import ComponentMultiplierConfigRequest
 from .component_stats import ComponentStats
@@ -707,9 +721,6 @@ from .dry_run_type_enum import DryRunTypeEnum
 from .duplicate_call_request_request import DuplicateCallRequestRequest
 from .duplicate_offering_candidate import DuplicateOfferingCandidate
 from .duplicate_offering_group import DuplicateOfferingGroup
-from .duplicate_offering_merge_plan import DuplicateOfferingMergePlan
-from .duplicate_offering_remediate_request import DuplicateOfferingRemediateRequest
-from .duplicate_offering_remediation import DuplicateOfferingRemediation
 from .effective_route import EffectiveRoute
 from .effective_route_source_enum import EffectiveRouteSourceEnum
 from .effective_routes_response import EffectiveRoutesResponse
@@ -902,6 +913,9 @@ from .identity_providers_generate_mapping_response_200_attribute_mapping import 
 from .image_create_request import ImageCreateRequest
 from .image_create_response import ImageCreateResponse
 from .image_upload_response import ImageUploadResponse
+from .impact import Impact
+from .impact_affected_resources import ImpactAffectedResources
+from .impact_affected_users import ImpactAffectedUsers
 from .impact_level_display_enum import ImpactLevelDisplayEnum
 from .impact_level_enum import ImpactLevelEnum
 from .import_license_request_request import ImportLicenseRequestRequest
@@ -967,6 +981,7 @@ from .invoice_item_update import InvoiceItemUpdate
 from .invoice_item_update_request import InvoiceItemUpdateRequest
 from .invoice_item_uuid import InvoiceItemUUID
 from .invoice_o_enum import InvoiceOEnum
+from .invoice_policy_enum import InvoicePolicyEnum
 from .invoice_price_source_enum import InvoicePriceSourceEnum
 from .invoice_state_enum import InvoiceStateEnum
 from .invoice_stats_offering import InvoiceStatsOffering
@@ -1342,6 +1357,55 @@ from .offering_integration_update_request_service_attributes import OfferingInte
 from .offering_location_update_request import OfferingLocationUpdateRequest
 from .offering_mapping import OfferingMapping
 from .offering_mapping_map import OfferingMappingMap
+from .offering_merge import OfferingMerge
+from .offering_merge_affected_row import OfferingMergeAffectedRow
+from .offering_merge_area_enum import OfferingMergeAreaEnum
+from .offering_merge_attribute_key_mapping import OfferingMergeAttributeKeyMapping
+from .offering_merge_check import OfferingMergeCheck
+from .offering_merge_check_details import OfferingMergeCheckDetails
+from .offering_merge_component_mapping import OfferingMergeComponentMapping
+from .offering_merge_component_mapping_additional_property import OfferingMergeComponentMappingAdditionalProperty
+from .offering_merge_effect_enum import OfferingMergeEffectEnum
+from .offering_merge_entry import OfferingMergeEntry
+from .offering_merge_execute_invoice_report import OfferingMergeExecuteInvoiceReport
+from .offering_merge_execute_invoice_report_to_rewrite_by_policy import (
+    OfferingMergeExecuteInvoiceReportToRewriteByPolicy,
+)
+from .offering_merge_execute_report import OfferingMergeExecuteReport
+from .offering_merge_execute_request import OfferingMergeExecuteRequest
+from .offering_merge_invoice_preview import OfferingMergeInvoicePreview
+from .offering_merge_invoice_preview_to_rewrite_by_policy import OfferingMergeInvoicePreviewToRewriteByPolicy
+from .offering_merge_issue import OfferingMergeIssue
+from .offering_merge_issue_details import OfferingMergeIssueDetails
+from .offering_merge_offering import OfferingMergeOffering
+from .offering_merge_offering_request import OfferingMergeOfferingRequest
+from .offering_merge_plan_mapping import OfferingMergePlanMapping
+from .offering_merge_preview import OfferingMergePreview
+from .offering_merge_preview_counts import OfferingMergePreviewCounts
+from .offering_merge_preview_left_on_source import OfferingMergePreviewLeftOnSource
+from .offering_merge_progress import OfferingMergeProgress
+from .offering_merge_refusal import OfferingMergeRefusal
+from .offering_merge_request import OfferingMergeRequest
+from .offering_merge_request_attribute_key_mapping import OfferingMergeRequestAttributeKeyMapping
+from .offering_merge_request_component_mapping import OfferingMergeRequestComponentMapping
+from .offering_merge_request_component_mapping_additional_property import (
+    OfferingMergeRequestComponentMappingAdditionalProperty,
+)
+from .offering_merge_request_plan_mapping import OfferingMergeRequestPlanMapping
+from .offering_merge_skipped_invoice_item import OfferingMergeSkippedInvoiceItem
+from .offering_merge_state_enum import OfferingMergeStateEnum
+from .offering_merge_suggested_mapping import OfferingMergeSuggestedMapping
+from .offering_merge_suggested_mapping_component_mapping import OfferingMergeSuggestedMappingComponentMapping
+from .offering_merge_suggested_mapping_component_mapping_additional_property import (
+    OfferingMergeSuggestedMappingComponentMappingAdditionalProperty,
+)
+from .offering_merge_suggested_mapping_plan_mapping import OfferingMergeSuggestedMappingPlanMapping
+from .offering_merge_summaries import OfferingMergeSummaries
+from .offering_merge_undo_invoice_report import OfferingMergeUndoInvoiceReport
+from .offering_merge_undo_report import OfferingMergeUndoReport
+from .offering_merge_unmatched_component import OfferingMergeUnmatchedComponent
+from .offering_merge_unmatched_plan import OfferingMergeUnmatchedPlan
+from .offering_merge_verification import OfferingMergeVerification
 from .offering_options import OfferingOptions
 from .offering_options_options import OfferingOptionsOptions
 from .offering_options_request import OfferingOptionsRequest
@@ -1788,6 +1852,13 @@ from .patched_offering_estimated_cost_policy_request_options import PatchedOffer
 from .patched_offering_group_request import PatchedOfferingGroupRequest
 from .patched_offering_group_request_form import PatchedOfferingGroupRequestForm
 from .patched_offering_group_request_multipart import PatchedOfferingGroupRequestMultipart
+from .patched_offering_merge_request import PatchedOfferingMergeRequest
+from .patched_offering_merge_request_attribute_key_mapping import PatchedOfferingMergeRequestAttributeKeyMapping
+from .patched_offering_merge_request_component_mapping import PatchedOfferingMergeRequestComponentMapping
+from .patched_offering_merge_request_component_mapping_additional_property import (
+    PatchedOfferingMergeRequestComponentMappingAdditionalProperty,
+)
+from .patched_offering_merge_request_plan_mapping import PatchedOfferingMergeRequestPlanMapping
 from .patched_offering_partition_update_request import PatchedOfferingPartitionUpdateRequest
 from .patched_offering_profile_request import PatchedOfferingProfileRequest
 from .patched_offering_qo_s_update_request import PatchedOfferingQoSUpdateRequest
@@ -2332,6 +2403,7 @@ from .reference_number_request import ReferenceNumberRequest
 from .reject_workflow_step_request import RejectWorkflowStepRequest
 from .reject_workflow_step_response import RejectWorkflowStepResponse
 from .relationship_type_enum import RelationshipTypeEnum
+from .relevant_when import RelevantWhen
 from .remote_allocation import RemoteAllocation
 from .remote_allocation_field_enum import RemoteAllocationFieldEnum
 from .remote_allocation_marketplace_offering_plugin_options_type_0 import (
@@ -2633,6 +2705,7 @@ from .scriptrunmode_enum import SCRIPTRUNMODEEnum
 from .secret import Secret
 from .section import Section
 from .section_request import SectionRequest
+from .security_detail import SecurityDetail
 from .security_group_rule_direction_enum import SecurityGroupRuleDirectionEnum
 from .self_declared_conflict_request import SelfDeclaredConflictRequest
 from .send_all_assignment_batches_request import SendAllAssignmentBatchesRequest
@@ -2764,6 +2837,7 @@ from .ssh_key_field_enum import SshKeyFieldEnum
 from .ssh_key_o_enum import SshKeyOEnum
 from .ssh_key_request import SshKeyRequest
 from .sshkeyallowedtypes_enum import SSHKEYALLOWEDTYPESEnum
+from .stage_enum import StageEnum
 from .state_transition_error import StateTransitionError
 from .status import Status
 from .step_checklist_response_group import StepChecklistResponseGroup
@@ -2966,6 +3040,7 @@ from .vendor_name_choice import VendorNameChoice
 from .venue_type_enum import VenueTypeEnum
 from .version import Version
 from .version_adoption import VersionAdoption
+from .version_changelog_summary import VersionChangelogSummary
 from .version_history import VersionHistory
 from .version_history_revision_user_type_0 import VersionHistoryRevisionUserType0
 from .version_history_serialized_data import VersionHistorySerializedData
@@ -3050,6 +3125,7 @@ __all__ = (
     "AccountSettingChange",
     "AccountSettingChanges",
     "AccountSettingSource",
+    "Action",
     "ActionOnUsageLimitEnum",
     "ActionTakenEnum",
     "ActiveAgentTask",
@@ -3082,6 +3158,8 @@ __all__ = (
     "AffinityMatrixResponse",
     "AffinityMatrixResponseScopeEnum",
     "AffinityMethodEnum",
+    "AgentCompatibility",
+    "AgentCompatibilityStatusEnum",
     "AgentConnectionInfo",
     "AgentConnectionStatsResponse",
     "AgentConnectionSummary",
@@ -3426,6 +3504,16 @@ __all__ = (
     "CeleryWorkerStats",
     "CeleryWorkerStatsRusage",
     "CeleryWorkerStatsTotal",
+    "ChangelogEntry",
+    "ChangelogEntryList",
+    "ChangelogEntryPluginAnalysis",
+    "ChangelogEntrySettingsAnalysis",
+    "ChangelogFlatEntry",
+    "ChangelogFlatEntryPluginAnalysis",
+    "ChangelogFlatEntrySettingsAnalysis",
+    "ChangelogPending",
+    "ChangelogRelease",
+    "ChangelogReleaseComponentActivity",
     "ChatRequestModeEnum",
     "ChatRequestRequest",
     "ChatResponse",
@@ -3480,6 +3568,7 @@ __all__ = (
     "CompleteWorkflowStepRequest",
     "CompleteWorkflowStepResponse",
     "ComplianceOverview",
+    "ComponentActivity",
     "ComponentMultiplierConfig",
     "ComponentMultiplierConfigRequest",
     "ComponentStats",
@@ -3719,9 +3808,6 @@ __all__ = (
     "DuplicateCallRequestRequest",
     "DuplicateOfferingCandidate",
     "DuplicateOfferingGroup",
-    "DuplicateOfferingMergePlan",
-    "DuplicateOfferingRemediateRequest",
-    "DuplicateOfferingRemediation",
     "EffectiveRoute",
     "EffectiveRouteSourceEnum",
     "EffectiveRoutesResponse",
@@ -3908,6 +3994,9 @@ __all__ = (
     "ImageCreateRequest",
     "ImageCreateResponse",
     "ImageUploadResponse",
+    "Impact",
+    "ImpactAffectedResources",
+    "ImpactAffectedUsers",
     "ImpactLevelDisplayEnum",
     "ImpactLevelEnum",
     "ImportableResource",
@@ -3973,6 +4062,7 @@ __all__ = (
     "InvoiceItemUpdateRequest",
     "InvoiceItemUUID",
     "InvoiceOEnum",
+    "InvoicePolicyEnum",
     "InvoicePriceSourceEnum",
     "InvoicesHistoryAtRetrieveResponse400",
     "InvoicesHistoryAtRetrieveResponse404",
@@ -4336,6 +4426,49 @@ __all__ = (
     "OfferingLocationUpdateRequest",
     "OfferingMapping",
     "OfferingMappingMap",
+    "OfferingMerge",
+    "OfferingMergeAffectedRow",
+    "OfferingMergeAreaEnum",
+    "OfferingMergeAttributeKeyMapping",
+    "OfferingMergeCheck",
+    "OfferingMergeCheckDetails",
+    "OfferingMergeComponentMapping",
+    "OfferingMergeComponentMappingAdditionalProperty",
+    "OfferingMergeEffectEnum",
+    "OfferingMergeEntry",
+    "OfferingMergeExecuteInvoiceReport",
+    "OfferingMergeExecuteInvoiceReportToRewriteByPolicy",
+    "OfferingMergeExecuteReport",
+    "OfferingMergeExecuteRequest",
+    "OfferingMergeInvoicePreview",
+    "OfferingMergeInvoicePreviewToRewriteByPolicy",
+    "OfferingMergeIssue",
+    "OfferingMergeIssueDetails",
+    "OfferingMergeOffering",
+    "OfferingMergeOfferingRequest",
+    "OfferingMergePlanMapping",
+    "OfferingMergePreview",
+    "OfferingMergePreviewCounts",
+    "OfferingMergePreviewLeftOnSource",
+    "OfferingMergeProgress",
+    "OfferingMergeRefusal",
+    "OfferingMergeRequest",
+    "OfferingMergeRequestAttributeKeyMapping",
+    "OfferingMergeRequestComponentMapping",
+    "OfferingMergeRequestComponentMappingAdditionalProperty",
+    "OfferingMergeRequestPlanMapping",
+    "OfferingMergeSkippedInvoiceItem",
+    "OfferingMergeStateEnum",
+    "OfferingMergeSuggestedMapping",
+    "OfferingMergeSuggestedMappingComponentMapping",
+    "OfferingMergeSuggestedMappingComponentMappingAdditionalProperty",
+    "OfferingMergeSuggestedMappingPlanMapping",
+    "OfferingMergeSummaries",
+    "OfferingMergeUndoInvoiceReport",
+    "OfferingMergeUndoReport",
+    "OfferingMergeUnmatchedComponent",
+    "OfferingMergeUnmatchedPlan",
+    "OfferingMergeVerification",
     "OfferingOptions",
     "OfferingOptionsOptions",
     "OfferingOptionsRequest",
@@ -4740,6 +4873,11 @@ __all__ = (
     "PatchedOfferingGroupRequest",
     "PatchedOfferingGroupRequestForm",
     "PatchedOfferingGroupRequestMultipart",
+    "PatchedOfferingMergeRequest",
+    "PatchedOfferingMergeRequestAttributeKeyMapping",
+    "PatchedOfferingMergeRequestComponentMapping",
+    "PatchedOfferingMergeRequestComponentMappingAdditionalProperty",
+    "PatchedOfferingMergeRequestPlanMapping",
     "PatchedOfferingPartitionUpdateRequest",
     "PatchedOfferingProfileRequest",
     "PatchedOfferingQoSUpdateRequest",
@@ -5252,6 +5390,7 @@ __all__ = (
     "RejectWorkflowStepRequest",
     "RejectWorkflowStepResponse",
     "RelationshipTypeEnum",
+    "RelevantWhen",
     "RemoteAllocation",
     "RemoteAllocationFieldEnum",
     "RemoteAllocationMarketplaceOfferingPluginOptionsType0",
@@ -5549,6 +5688,7 @@ __all__ = (
     "Secret",
     "Section",
     "SectionRequest",
+    "SecurityDetail",
     "SecurityGroupRuleDirectionEnum",
     "SelfDeclaredConflictRequest",
     "SendAllAssignmentBatchesRequest",
@@ -5680,6 +5820,7 @@ __all__ = (
     "SshKeyFieldEnum",
     "SshKeyOEnum",
     "SshKeyRequest",
+    "StageEnum",
     "StateTransitionError",
     "Status",
     "StepChecklistResponseGroup",
@@ -5872,6 +6013,7 @@ __all__ = (
     "VenueTypeEnum",
     "Version",
     "VersionAdoption",
+    "VersionChangelogSummary",
     "VersionHistory",
     "VersionHistoryRevisionUserType0",
     "VersionHistorySerializedData",

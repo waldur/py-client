@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.15.dev.20260920030341
+# Version: 8.1.3-rc.15.dev.20260921183754
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2351,6 +2351,54 @@ This endpoint returns detailed information about:
 - **active**: Tasks currently being executed by workers
 - **scheduled**: Tasks scheduled for future execution (with ETA)
 - **reserved**: Tasks received by workers but not yet starte...
+
+============================================================
+## changelog  (module: waldur_api_client.api.changelog)
+============================================================
+
+### changelog_compare_retrieve
+GET /api/changelog/compare/{from_version}/{to_version}/
+Summary: Compare changelog between two versions
+Description: Returns merged delta entries between two arbitrary versions. Useful for seeing what changed between e.g. rc.5 and rc.12.
+Path parameters:
+  - from_version
+  - to_version
+
+### changelog_pending_retrieve
+GET /api/changelog/pending/
+Summary: Get pending changelog
+Description: Returns cumulative changelog entries for all versions newer than the current deployment, with relevance matching and impact analysis results.
+
+### changelog_retrieve
+GET /api/changelog/{version}/
+Summary: Get changelog for a specific version
+Description: Returns the full changelog for a specific release version.
+Path parameters:
+  - version
+
+### changelog_delta_retrieve
+GET /api/changelog/{version}/delta/
+Summary: Get changelog delta for a version
+Description: Returns only the incremental changes since the previous version (since_previous entries).
+Path parameters:
+  - version
+
+============================================================
+## changelog-entries  (module: waldur_api_client.api.changelog_entries)
+============================================================
+
+### changelog_entries_retrieve
+GET /api/changelog-entries/
+Summary: List changelog entries
+Description: Returns a flat, paginated list of changelog entries for all pending versions. Supports filtering by type, risk, scope, version, and text search. Compatible with the standard Waldur table component.
+Query parameters (7):
+  - highlight — Filter highlighted entries only
+  - relevant_only — Show only relevant entries
+  - risk — Filter by risk level
+  - scope — Filter by scope
+  - search — Full-text search in title and description
+  - type — Filter by entry type
+  - version — Filter by release version
 
 ============================================================
 ## chat  (module: waldur_api_client.api.chat)
@@ -6947,6 +6995,112 @@ Path parameters:
   - uuid
 
 ============================================================
+## marketplace-offering-merges  (module: waldur_api_client.api.marketplace_offering_merges)
+============================================================
+
+### marketplace_offering_merges_list
+GET /api/marketplace-offering-merges/
+Query parameters (9):
+  - created — Created after
+  - created_before — Created before
+  - created_by_uuid — Created by UUID
+  - modified — Modified after
+  - modified_before — Modified before
+  - offering_uuid — Source or target offering UUID
+  - source_offering_uuid — Source offering UUID
+  - state
+  - target_offering_uuid — Target offering UUID
+
+### marketplace_offering_merges_count
+HEAD /api/marketplace-offering-merges/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (9):
+  - created — Created after
+  - created_before — Created before
+  - created_by_uuid — Created by UUID
+  - modified — Modified after
+  - modified_before — Modified before
+  - offering_uuid — Source or target offering UUID
+  - source_offering_uuid — Source offering UUID
+  - state
+  - target_offering_uuid — Target offering UUID
+
+### marketplace_offering_merges_create
+POST /api/marketplace-offering-merges/
+Request body: yes
+
+### marketplace_offering_merges_suggest_mapping_retrieve
+GET /api/marketplace-offering-merges/suggest_mapping/
+Summary: Suggest plan mappings by name and component mappings by type
+Description: Suggest plan mappings by name and component mappings by type.
+Query parameters (2):
+  - sources (required) — Source offering UUIDs, comma-separated or repeated.
+  - target (required) — Target offering UUID.
+
+### marketplace_offering_merges_retrieve
+GET /api/marketplace-offering-merges/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_offering_merges_partial_update
+PATCH /api/marketplace-offering-merges/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_offering_merges_destroy
+DELETE /api/marketplace-offering-merges/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_offering_merges_affected_list
+GET /api/marketplace-offering-merges/{uuid}/affected/
+Summary: List the rows one preview entry changes, newest first
+Description: List the rows one preview entry changes, newest first.
+
+Staff and support; nothing is written. A merge that has not run yet
+recomputes its plan, so the listing is what the executor would do
+rather than a stored copy of it. A merge that has run, or has been
+undone, is described from its journal: w...
+Path parameters:
+  - uuid
+Query parameters (1):
+  - entry (required) — Coverage registry entry, as reported by the preview: marketplace.Resource.offering, invoices.InvoiceItem.details, and so on.
+
+### marketplace_offering_merges_execute
+POST /api/marketplace-offering-merges/{uuid}/execute/
+Summary: Queue a previewed merge for execution
+Description: Queue a previewed merge for execution.
+
+Refused with 400 if the stored preview has blockers or a warning code
+is missing from ``acknowledged_warnings``, and with 409 unless the
+merge is ``previewed``, which also refuses a second request.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_offering_merges_preview
+POST /api/marketplace-offering-merges/{uuid}/preview/
+Summary: Compute the merge preview: counts, blockers and warnings
+Description: Compute the merge preview: counts, blockers and warnings.
+
+Staff store it on the record, which moves to ``previewed``. Support
+receive the same preview without it being stored.
+Path parameters:
+  - uuid
+
+### marketplace_offering_merges_undo
+POST /api/marketplace-offering-merges/{uuid}/undo/
+Summary: Queue the undo of a completed merge
+Description: Queue the undo of a completed merge.
+
+The engine's preconditions are checked first: if the undo would be
+refused, the answer is 400 with the blockers and nothing is queued.
+Path parameters:
+  - uuid
+
+============================================================
 ## marketplace-offering-permissions  (module: waldur_api_client.api.marketplace_offering_permissions)
 ============================================================
 
@@ -7714,12 +7868,6 @@ GET /api/marketplace-openstack-duplicate-offerings/
 HEAD /api/marketplace-openstack-duplicate-offerings/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-
-### marketplace_openstack_duplicate_offerings_remediate
-POST /api/marketplace-openstack-duplicate-offerings/remediate/
-Summary: Collapse one duplicate per-tenant offering group onto its keeper
-Description: Collapse one duplicate per-tenant offering group onto its keeper. Previews by default; pass dry_run=false to apply. Refuses to run when history (billing periods, usage records) cannot be re-pointed.
-Request body: yes
 
 ============================================================
 ## marketplace-orders  (module: waldur_api_client.api.marketplace_orders)
