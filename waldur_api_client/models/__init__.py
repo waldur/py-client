@@ -1707,6 +1707,7 @@ from .order_attachment import OrderAttachment
 from .order_attachment_request import OrderAttachmentRequest
 from .order_attachment_request_form import OrderAttachmentRequestForm
 from .order_attachment_request_multipart import OrderAttachmentRequestMultipart
+from .order_author_enum import OrderAuthorEnum
 from .order_backend_id_request import OrderBackendIDRequest
 from .order_consumer_info_request import OrderConsumerInfoRequest
 from .order_consumer_info_request_form import OrderConsumerInfoRequestForm
@@ -2856,7 +2857,6 @@ from .subresource_offering import SubresourceOffering
 from .suggest_alternative_reviewers import SuggestAlternativeReviewers
 from .suggestion_reject_request import SuggestionRejectRequest
 from .support_stats import SupportStats
-from .support_ticket_caller_enum import SupportTicketCallerEnum
 from .support_user import SupportUser
 from .support_user_attachment_brief import SupportUserAttachmentBrief
 from .support_user_comment_brief import SupportUserCommentBrief
@@ -4732,6 +4732,7 @@ __all__ = (
     "OrderAttachmentRequest",
     "OrderAttachmentRequestForm",
     "OrderAttachmentRequestMultipart",
+    "OrderAuthorEnum",
     "OrderBackendIDRequest",
     "OrderConsumerInfoRequest",
     "OrderConsumerInfoRequestForm",
@@ -5840,7 +5841,6 @@ __all__ = (
     "SuggestionRejectRequest",
     "SupportedCountriesResponse",
     "SupportStats",
-    "SupportTicketCallerEnum",
     "SupportUser",
     "SupportUserAttachmentBrief",
     "SupportUserCommentBrief",

@@ -8,7 +8,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.call_states import CallStates
-from ..models.support_ticket_caller_enum import SupportTicketCallerEnum
+from ..models.order_author_enum import OrderAuthorEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -80,11 +80,11 @@ class ProtectedCall:
             and downstream consumers for the Project details step.
         has_proposals (Union[Unset, bool]): Whether any proposal has been submitted to this call. Used by the frontend
             to gate slug-template and checklist fields.
-        support_ticket_caller (Union[Unset, SupportTicketCallerEnum]):
-        support_ticket_caller_user (Union[None, UUID, Unset]): The person tickets go to when the caller is a named
+        order_author (Union[Unset, OrderAuthorEnum]):
+        order_author_user (Union[None, UUID, Unset]): The person orders are attributed to when the author is a named
             contact. Must hold a role on this call or on the organisation managing it.
-        support_ticket_caller_user_uuid (Union[None, UUID, Unset]):
-        support_ticket_caller_user_name (Union[None, Unset, str]):
+        order_author_user_uuid (Union[None, UUID, Unset]):
+        order_author_user_name (Union[None, Unset, str]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -129,10 +129,10 @@ class ProtectedCall:
     applicant_visibility_config: Union["CallApplicantVisibilityConfig", None, Unset] = UNSET
     proposal_field_metadata: Union[Unset, list["ProposalFieldMetadata"]] = UNSET
     has_proposals: Union[Unset, bool] = UNSET
-    support_ticket_caller: Union[Unset, SupportTicketCallerEnum] = UNSET
-    support_ticket_caller_user: Union[None, UUID, Unset] = UNSET
-    support_ticket_caller_user_uuid: Union[None, UUID, Unset] = UNSET
-    support_ticket_caller_user_name: Union[None, Unset, str] = UNSET
+    order_author: Union[Unset, OrderAuthorEnum] = UNSET
+    order_author_user: Union[None, UUID, Unset] = UNSET
+    order_author_user_uuid: Union[None, UUID, Unset] = UNSET
+    order_author_user_name: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -315,31 +315,31 @@ class ProtectedCall:
 
         has_proposals = self.has_proposals
 
-        support_ticket_caller: Union[Unset, str] = UNSET
-        if not isinstance(self.support_ticket_caller, Unset):
-            support_ticket_caller = self.support_ticket_caller.value
+        order_author: Union[Unset, str] = UNSET
+        if not isinstance(self.order_author, Unset):
+            order_author = self.order_author.value
 
-        support_ticket_caller_user: Union[None, Unset, str]
-        if isinstance(self.support_ticket_caller_user, Unset):
-            support_ticket_caller_user = UNSET
-        elif isinstance(self.support_ticket_caller_user, UUID):
-            support_ticket_caller_user = str(self.support_ticket_caller_user)
+        order_author_user: Union[None, Unset, str]
+        if isinstance(self.order_author_user, Unset):
+            order_author_user = UNSET
+        elif isinstance(self.order_author_user, UUID):
+            order_author_user = str(self.order_author_user)
         else:
-            support_ticket_caller_user = self.support_ticket_caller_user
+            order_author_user = self.order_author_user
 
-        support_ticket_caller_user_uuid: Union[None, Unset, str]
-        if isinstance(self.support_ticket_caller_user_uuid, Unset):
-            support_ticket_caller_user_uuid = UNSET
-        elif isinstance(self.support_ticket_caller_user_uuid, UUID):
-            support_ticket_caller_user_uuid = str(self.support_ticket_caller_user_uuid)
+        order_author_user_uuid: Union[None, Unset, str]
+        if isinstance(self.order_author_user_uuid, Unset):
+            order_author_user_uuid = UNSET
+        elif isinstance(self.order_author_user_uuid, UUID):
+            order_author_user_uuid = str(self.order_author_user_uuid)
         else:
-            support_ticket_caller_user_uuid = self.support_ticket_caller_user_uuid
+            order_author_user_uuid = self.order_author_user_uuid
 
-        support_ticket_caller_user_name: Union[None, Unset, str]
-        if isinstance(self.support_ticket_caller_user_name, Unset):
-            support_ticket_caller_user_name = UNSET
+        order_author_user_name: Union[None, Unset, str]
+        if isinstance(self.order_author_user_name, Unset):
+            order_author_user_name = UNSET
         else:
-            support_ticket_caller_user_name = self.support_ticket_caller_user_name
+            order_author_user_name = self.order_author_user_name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -428,14 +428,14 @@ class ProtectedCall:
             field_dict["proposal_field_metadata"] = proposal_field_metadata
         if has_proposals is not UNSET:
             field_dict["has_proposals"] = has_proposals
-        if support_ticket_caller is not UNSET:
-            field_dict["support_ticket_caller"] = support_ticket_caller
-        if support_ticket_caller_user is not UNSET:
-            field_dict["support_ticket_caller_user"] = support_ticket_caller_user
-        if support_ticket_caller_user_uuid is not UNSET:
-            field_dict["support_ticket_caller_user_uuid"] = support_ticket_caller_user_uuid
-        if support_ticket_caller_user_name is not UNSET:
-            field_dict["support_ticket_caller_user_name"] = support_ticket_caller_user_name
+        if order_author is not UNSET:
+            field_dict["order_author"] = order_author
+        if order_author_user is not UNSET:
+            field_dict["order_author_user"] = order_author_user
+        if order_author_user_uuid is not UNSET:
+            field_dict["order_author_user_uuid"] = order_author_user_uuid
+        if order_author_user_name is not UNSET:
+            field_dict["order_author_user_name"] = order_author_user_name
 
         return field_dict
 
@@ -684,14 +684,14 @@ class ProtectedCall:
 
         has_proposals = d.pop("has_proposals", UNSET)
 
-        _support_ticket_caller = d.pop("support_ticket_caller", UNSET)
-        support_ticket_caller: Union[Unset, SupportTicketCallerEnum]
-        if isinstance(_support_ticket_caller, Unset):
-            support_ticket_caller = UNSET
+        _order_author = d.pop("order_author", UNSET)
+        order_author: Union[Unset, OrderAuthorEnum]
+        if isinstance(_order_author, Unset):
+            order_author = UNSET
         else:
-            support_ticket_caller = SupportTicketCallerEnum(_support_ticket_caller)
+            order_author = OrderAuthorEnum(_order_author)
 
-        def _parse_support_ticket_caller_user(data: object) -> Union[None, UUID, Unset]:
+        def _parse_order_author_user(data: object) -> Union[None, UUID, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -699,16 +699,16 @@ class ProtectedCall:
             try:
                 if not isinstance(data, str):
                     raise TypeError()
-                support_ticket_caller_user_type_0 = UUID(data)
+                order_author_user_type_0 = UUID(data)
 
-                return support_ticket_caller_user_type_0
+                return order_author_user_type_0
             except:  # noqa: E722
                 pass
             return cast(Union[None, UUID, Unset], data)
 
-        support_ticket_caller_user = _parse_support_ticket_caller_user(d.pop("support_ticket_caller_user", UNSET))
+        order_author_user = _parse_order_author_user(d.pop("order_author_user", UNSET))
 
-        def _parse_support_ticket_caller_user_uuid(data: object) -> Union[None, UUID, Unset]:
+        def _parse_order_author_user_uuid(data: object) -> Union[None, UUID, Unset]:
             if data is None:
                 return data
             if isinstance(data, Unset):
@@ -716,27 +716,23 @@ class ProtectedCall:
             try:
                 if not isinstance(data, str):
                     raise TypeError()
-                support_ticket_caller_user_uuid_type_0 = UUID(data)
+                order_author_user_uuid_type_0 = UUID(data)
 
-                return support_ticket_caller_user_uuid_type_0
+                return order_author_user_uuid_type_0
             except:  # noqa: E722
                 pass
             return cast(Union[None, UUID, Unset], data)
 
-        support_ticket_caller_user_uuid = _parse_support_ticket_caller_user_uuid(
-            d.pop("support_ticket_caller_user_uuid", UNSET)
-        )
+        order_author_user_uuid = _parse_order_author_user_uuid(d.pop("order_author_user_uuid", UNSET))
 
-        def _parse_support_ticket_caller_user_name(data: object) -> Union[None, Unset, str]:
+        def _parse_order_author_user_name(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
             if isinstance(data, Unset):
                 return data
             return cast(Union[None, Unset, str], data)
 
-        support_ticket_caller_user_name = _parse_support_ticket_caller_user_name(
-            d.pop("support_ticket_caller_user_name", UNSET)
-        )
+        order_author_user_name = _parse_order_author_user_name(d.pop("order_author_user_name", UNSET))
 
         protected_call = cls(
             url=url,
@@ -781,10 +777,10 @@ class ProtectedCall:
             applicant_visibility_config=applicant_visibility_config,
             proposal_field_metadata=proposal_field_metadata,
             has_proposals=has_proposals,
-            support_ticket_caller=support_ticket_caller,
-            support_ticket_caller_user=support_ticket_caller_user,
-            support_ticket_caller_user_uuid=support_ticket_caller_user_uuid,
-            support_ticket_caller_user_name=support_ticket_caller_user_name,
+            order_author=order_author,
+            order_author_user=order_author_user,
+            order_author_user_uuid=order_author_user_uuid,
+            order_author_user_name=order_author_user_name,
         )
 
         protected_call.additional_properties = d
