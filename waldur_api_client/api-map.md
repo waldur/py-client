@@ -436,6 +436,11 @@ Module: `waldur_api_client.api.changelog_entries`
 
 - `changelog_entries_retrieve` GET `/api/changelog-entries/` — List changelog entries (7 query params)
 
+## changelog-upgrade-report
+Module: `waldur_api_client.api.changelog_upgrade_report`
+
+- `changelog_upgrade_report_retrieve` GET `/api/changelog-upgrade-report/` — Get upgrade report (no params)
+
 ## chat
 Module: `waldur_api_client.api.chat`
 

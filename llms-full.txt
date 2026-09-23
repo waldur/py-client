@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.15.dev.20260922171627
+# Version: 8.1.3-rc.16.dev.20260923200128
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2367,7 +2367,7 @@ Path parameters:
 ### changelog_pending_retrieve
 GET /api/changelog/pending/
 Summary: Get pending changelog
-Description: Returns cumulative changelog entries for all versions newer than the current deployment, with relevance matching and impact analysis results.
+Description: Returns the changelog entries this deployment has not seen yet, grouped by each newer version, with relevance matching and impact analysis results.
 
 ### changelog_retrieve
 GET /api/changelog/{version}/
@@ -2399,6 +2399,15 @@ Query parameters (7):
   - search — Full-text search in title and description
   - type — Filter by entry type
   - version — Filter by release version
+
+============================================================
+## changelog-upgrade-report  (module: waldur_api_client.api.changelog_upgrade_report)
+============================================================
+
+### changelog_upgrade_report_retrieve
+GET /api/changelog-upgrade-report/
+Summary: Get upgrade report
+Description: Returns a Markdown upgrade report, maintenance announcement text and upgrade commands covering every changelog entry pending for this deployment, regardless of any table filters or pagination.
 
 ============================================================
 ## chat  (module: waldur_api_client.api.chat)

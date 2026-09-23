@@ -113,6 +113,7 @@ from .allowed_address_pair_entry_request import AllowedAddressPairEntryRequest
 from .allowed_scope_input_request import AllowedScopeInputRequest
 from .allowed_scope_output import AllowedScopeOutput
 from .amount_range_enum import AmountRangeEnum
+from .announcement_type_enum import AnnouncementTypeEnum
 from .anonymous_chat_budget_snapshot import AnonymousChatBudgetSnapshot
 from .anonymous_chat_click_request_request import AnonymousChatClickRequestRequest
 from .anonymous_chat_conversation import AnonymousChatConversation
@@ -419,6 +420,7 @@ from .changelog_flat_entry_settings_analysis import ChangelogFlatEntrySettingsAn
 from .changelog_pending import ChangelogPending
 from .changelog_release import ChangelogRelease
 from .changelog_release_component_activity import ChangelogReleaseComponentActivity
+from .changelog_upgrade_report import ChangelogUpgradeReport
 from .chat_request_mode_enum import ChatRequestModeEnum
 from .chat_request_request import ChatRequestRequest
 from .chat_response import ChatResponse
@@ -2950,6 +2952,7 @@ from .update_pool import UpdatePool
 from .update_pool_member import UpdatePoolMember
 from .update_pool_member_request import UpdatePoolMemberRequest
 from .update_pool_request import UpdatePoolRequest
+from .upgrade_commands import UpgradeCommands
 from .urgency_enum import UrgencyEnum
 from .usage import Usage
 from .usage_limit_restriction_enum import UsageLimitRestrictionEnum
@@ -3210,6 +3213,7 @@ __all__ = (
     "AllowedScopeInputRequest",
     "AllowedScopeOutput",
     "AmountRangeEnum",
+    "AnnouncementTypeEnum",
     "AnonymousChatBudgetSnapshot",
     "AnonymousChatClickRequestRequest",
     "AnonymousChatConversation",
@@ -3514,6 +3518,7 @@ __all__ = (
     "ChangelogPending",
     "ChangelogRelease",
     "ChangelogReleaseComponentActivity",
+    "ChangelogUpgradeReport",
     "ChatRequestModeEnum",
     "ChatRequestRequest",
     "ChatResponse",
@@ -5933,6 +5938,7 @@ __all__ = (
     "UpdatePoolMember",
     "UpdatePoolMemberRequest",
     "UpdatePoolRequest",
+    "UpgradeCommands",
     "UrgencyEnum",
     "Usage",
     "UsageLimitRestrictionEnum",

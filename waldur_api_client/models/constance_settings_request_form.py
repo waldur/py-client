@@ -49,6 +49,8 @@ class ConstanceSettingsRequestForm:
         homeport_url (Union[Unset, str]):
         rancher_username_input_label (Union[Unset, str]):
         disclaimer_area_text (Union[Unset, str]):
+        about_us_page_enabled (Union[Unset, bool]):
+        about_us_page_content (Union[Unset, str]):
         site_address (Union[Unset, str]):
         site_email (Union[Unset, str]):
         site_phone (Union[Unset, str]):
@@ -385,6 +387,8 @@ class ConstanceSettingsRequestForm:
     homeport_url: Union[Unset, str] = UNSET
     rancher_username_input_label: Union[Unset, str] = UNSET
     disclaimer_area_text: Union[Unset, str] = UNSET
+    about_us_page_enabled: Union[Unset, bool] = UNSET
+    about_us_page_content: Union[Unset, str] = UNSET
     site_address: Union[Unset, str] = UNSET
     site_email: Union[Unset, str] = UNSET
     site_phone: Union[Unset, str] = UNSET
@@ -726,6 +730,10 @@ class ConstanceSettingsRequestForm:
         rancher_username_input_label = self.rancher_username_input_label
 
         disclaimer_area_text = self.disclaimer_area_text
+
+        about_us_page_enabled = self.about_us_page_enabled
+
+        about_us_page_content = self.about_us_page_content
 
         site_address = self.site_address
 
@@ -1688,6 +1696,10 @@ class ConstanceSettingsRequestForm:
             field_dict["RANCHER_USERNAME_INPUT_LABEL"] = rancher_username_input_label
         if disclaimer_area_text is not UNSET:
             field_dict["DISCLAIMER_AREA_TEXT"] = disclaimer_area_text
+        if about_us_page_enabled is not UNSET:
+            field_dict["ABOUT_US_PAGE_ENABLED"] = about_us_page_enabled
+        if about_us_page_content is not UNSET:
+            field_dict["ABOUT_US_PAGE_CONTENT"] = about_us_page_content
         if site_address is not UNSET:
             field_dict["SITE_ADDRESS"] = site_address
         if site_email is not UNSET:
@@ -2377,6 +2389,10 @@ class ConstanceSettingsRequestForm:
         rancher_username_input_label = d.pop("RANCHER_USERNAME_INPUT_LABEL", UNSET)
 
         disclaimer_area_text = d.pop("DISCLAIMER_AREA_TEXT", UNSET)
+
+        about_us_page_enabled = d.pop("ABOUT_US_PAGE_ENABLED", UNSET)
+
+        about_us_page_content = d.pop("ABOUT_US_PAGE_CONTENT", UNSET)
 
         site_address = d.pop("SITE_ADDRESS", UNSET)
 
@@ -3671,6 +3687,8 @@ class ConstanceSettingsRequestForm:
             homeport_url=homeport_url,
             rancher_username_input_label=rancher_username_input_label,
             disclaimer_area_text=disclaimer_area_text,
+            about_us_page_enabled=about_us_page_enabled,
+            about_us_page_content=about_us_page_content,
             site_address=site_address,
             site_email=site_email,
             site_phone=site_phone,

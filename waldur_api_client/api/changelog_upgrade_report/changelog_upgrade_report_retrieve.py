@@ -5,24 +5,24 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.changelog_pending import ChangelogPending
+from ...models.changelog_upgrade_report import ChangelogUpgradeReport
 from ...types import Response
 
 
 def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/api/changelog/pending/",
+        "url": "/api/changelog-upgrade-report/",
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ChangelogPending:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ChangelogUpgradeReport:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = ChangelogPending.from_dict(response.json())
+        response_200 = ChangelogUpgradeReport.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -30,7 +30,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ChangelogPending]:
+) -> Response[ChangelogUpgradeReport]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -42,18 +42,18 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[ChangelogPending]:
-    """Get pending changelog
+) -> Response[ChangelogUpgradeReport]:
+    """Get upgrade report
 
-     Returns the changelog entries this deployment has not seen yet, grouped by each newer version, with
-    relevance matching and impact analysis results.
+     Returns a Markdown upgrade report, maintenance announcement text and upgrade commands covering every
+    changelog entry pending for this deployment, regardless of any table filters or pagination.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ChangelogPending]
+        Response[ChangelogUpgradeReport]
     """
 
     kwargs = _get_kwargs()
@@ -68,18 +68,18 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> ChangelogPending:
-    """Get pending changelog
+) -> ChangelogUpgradeReport:
+    """Get upgrade report
 
-     Returns the changelog entries this deployment has not seen yet, grouped by each newer version, with
-    relevance matching and impact analysis results.
+     Returns a Markdown upgrade report, maintenance announcement text and upgrade commands covering every
+    changelog entry pending for this deployment, regardless of any table filters or pagination.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ChangelogPending
+        ChangelogUpgradeReport
     """
 
     return sync_detailed(
@@ -90,18 +90,18 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[ChangelogPending]:
-    """Get pending changelog
+) -> Response[ChangelogUpgradeReport]:
+    """Get upgrade report
 
-     Returns the changelog entries this deployment has not seen yet, grouped by each newer version, with
-    relevance matching and impact analysis results.
+     Returns a Markdown upgrade report, maintenance announcement text and upgrade commands covering every
+    changelog entry pending for this deployment, regardless of any table filters or pagination.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ChangelogPending]
+        Response[ChangelogUpgradeReport]
     """
 
     kwargs = _get_kwargs()
@@ -114,18 +114,18 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> ChangelogPending:
-    """Get pending changelog
+) -> ChangelogUpgradeReport:
+    """Get upgrade report
 
-     Returns the changelog entries this deployment has not seen yet, grouped by each newer version, with
-    relevance matching and impact analysis results.
+     Returns a Markdown upgrade report, maintenance announcement text and upgrade commands covering every
+    changelog entry pending for this deployment, regardless of any table filters or pagination.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ChangelogPending
+        ChangelogUpgradeReport
     """
 
     return (
