@@ -21,7 +21,7 @@ T = TypeVar("T", bound="OptionFieldRequest")
 
 @_attrs_define
 class OptionFieldRequest:
-    """
+    r"""
     Attributes:
         type_ (OptionFieldTypeEnum):
         label (str):
@@ -37,6 +37,10 @@ class OptionFieldRequest:
         default_configs (Union[Unset, K8SDefaultConfigurationRequest]):
         validators (Union[Unset, list['OptionValidatorRequest']]):
         visible_if (Union[Unset, OptionVisibleIfRequest]):
+        pattern (Union[Unset, str]): Regular expression the whole value must match. Only for string and text options.
+            Use syntax common to Python and JavaScript, so the order form can check it too; \w, \d, \s and \b match ASCII
+            characters only. Blank means no pattern.
+        pattern_error (Union[Unset, str]): Error shown when the value does not match the pattern.
     """
 
     type_: OptionFieldTypeEnum
@@ -53,6 +57,8 @@ class OptionFieldRequest:
     default_configs: Union[Unset, "K8SDefaultConfigurationRequest"] = UNSET
     validators: Union[Unset, list["OptionValidatorRequest"]] = UNSET
     visible_if: Union[Unset, "OptionVisibleIfRequest"] = UNSET
+    pattern: Union[Unset, str] = UNSET
+    pattern_error: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -101,6 +107,10 @@ class OptionFieldRequest:
         if not isinstance(self.visible_if, Unset):
             visible_if = self.visible_if.to_dict()
 
+        pattern = self.pattern
+
+        pattern_error = self.pattern_error
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -133,6 +143,10 @@ class OptionFieldRequest:
             field_dict["validators"] = validators
         if visible_if is not UNSET:
             field_dict["visible_if"] = visible_if
+        if pattern is not UNSET:
+            field_dict["pattern"] = pattern
+        if pattern_error is not UNSET:
+            field_dict["pattern_error"] = pattern_error
 
         return field_dict
 
@@ -204,6 +218,10 @@ class OptionFieldRequest:
         else:
             visible_if = OptionVisibleIfRequest.from_dict(_visible_if)
 
+        pattern = d.pop("pattern", UNSET)
+
+        pattern_error = d.pop("pattern_error", UNSET)
+
         option_field_request = cls(
             type_=type_,
             label=label,
@@ -219,6 +237,8 @@ class OptionFieldRequest:
             default_configs=default_configs,
             validators=validators,
             visible_if=visible_if,
+            pattern=pattern,
+            pattern_error=pattern_error,
         )
 
         option_field_request.additional_properties = d

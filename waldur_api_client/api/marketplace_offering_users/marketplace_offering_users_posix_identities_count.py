@@ -36,6 +36,7 @@ def _get_kwargs(
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: UUID,
+    username: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -132,6 +133,8 @@ def _get_kwargs(
     json_user_uuid = str(user_uuid)
     params["user_uuid"] = json_user_uuid
 
+    params["username"] = username
+
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
     _kwargs: dict[str, Any] = {
@@ -193,6 +196,7 @@ def sync_detailed(
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: UUID,
+    username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """List a user's POSIX identities across all their offerings
 
@@ -220,6 +224,7 @@ def sync_detailed(
         state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (UUID):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -251,6 +256,7 @@ def sync_detailed(
         state=state,
         user_username=user_username,
         user_uuid=user_uuid,
+        username=username,
     )
 
     response = client.get_httpx_client().request(
@@ -284,6 +290,7 @@ def sync(
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: UUID,
+    username: Union[Unset, str] = UNSET,
 ) -> int:
     """List a user's POSIX identities across all their offerings
 
@@ -311,6 +318,7 @@ def sync(
         state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (UUID):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -343,6 +351,7 @@ def sync(
         state=state,
         user_username=user_username,
         user_uuid=user_uuid,
+        username=username,
     ).parsed
 
 
@@ -370,6 +379,7 @@ async def asyncio_detailed(
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: UUID,
+    username: Union[Unset, str] = UNSET,
 ) -> Response[int]:
     """List a user's POSIX identities across all their offerings
 
@@ -397,6 +407,7 @@ async def asyncio_detailed(
         state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (UUID):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -428,6 +439,7 @@ async def asyncio_detailed(
         state=state,
         user_username=user_username,
         user_uuid=user_uuid,
+        username=username,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -459,6 +471,7 @@ async def asyncio(
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: UUID,
+    username: Union[Unset, str] = UNSET,
 ) -> int:
     """List a user's POSIX identities across all their offerings
 
@@ -486,6 +499,7 @@ async def asyncio(
         state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (UUID):
+        username (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -519,5 +533,6 @@ async def asyncio(
             state=state,
             user_username=user_username,
             user_uuid=user_uuid,
+            username=username,
         )
     ).parsed

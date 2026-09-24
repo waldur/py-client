@@ -192,6 +192,7 @@ class ConstanceSettingsRequest:
         enable_mock_service_account_backend (Union[Unset, bool]):
         enable_mock_course_account_backend (Union[Unset, bool]):
         proposal_review_duration (Union[Unset, int]):
+        proposal_dashboard_reviews_due_within_days (Union[Unset, int]):
         orcid_client_id (Union[Unset, str]):
         orcid_client_secret (Union[Unset, str]):
         orcid_redirect_uri (Union[Unset, str]):
@@ -530,6 +531,7 @@ class ConstanceSettingsRequest:
     enable_mock_service_account_backend: Union[Unset, bool] = UNSET
     enable_mock_course_account_backend: Union[Unset, bool] = UNSET
     proposal_review_duration: Union[Unset, int] = UNSET
+    proposal_dashboard_reviews_due_within_days: Union[Unset, int] = UNSET
     orcid_client_id: Union[Unset, str] = UNSET
     orcid_client_secret: Union[Unset, str] = UNSET
     orcid_redirect_uri: Union[Unset, str] = UNSET
@@ -1131,6 +1133,8 @@ class ConstanceSettingsRequest:
         enable_mock_course_account_backend = self.enable_mock_course_account_backend
 
         proposal_review_duration = self.proposal_review_duration
+
+        proposal_dashboard_reviews_due_within_days = self.proposal_dashboard_reviews_due_within_days
 
         orcid_client_id = self.orcid_client_id
 
@@ -1988,6 +1992,8 @@ class ConstanceSettingsRequest:
             field_dict["ENABLE_MOCK_COURSE_ACCOUNT_BACKEND"] = enable_mock_course_account_backend
         if proposal_review_duration is not UNSET:
             field_dict["PROPOSAL_REVIEW_DURATION"] = proposal_review_duration
+        if proposal_dashboard_reviews_due_within_days is not UNSET:
+            field_dict["PROPOSAL_DASHBOARD_REVIEWS_DUE_WITHIN_DAYS"] = proposal_dashboard_reviews_due_within_days
         if orcid_client_id is not UNSET:
             field_dict["ORCID_CLIENT_ID"] = orcid_client_id
         if orcid_client_secret is not UNSET:
@@ -2926,6 +2932,8 @@ class ConstanceSettingsRequest:
 
         proposal_review_duration = d.pop("PROPOSAL_REVIEW_DURATION", UNSET)
 
+        proposal_dashboard_reviews_due_within_days = d.pop("PROPOSAL_DASHBOARD_REVIEWS_DUE_WITHIN_DAYS", UNSET)
+
         orcid_client_id = d.pop("ORCID_CLIENT_ID", UNSET)
 
         orcid_client_secret = d.pop("ORCID_CLIENT_SECRET", UNSET)
@@ -3828,6 +3836,7 @@ class ConstanceSettingsRequest:
             enable_mock_service_account_backend=enable_mock_service_account_backend,
             enable_mock_course_account_backend=enable_mock_course_account_backend,
             proposal_review_duration=proposal_review_duration,
+            proposal_dashboard_reviews_due_within_days=proposal_dashboard_reviews_due_within_days,
             orcid_client_id=orcid_client_id,
             orcid_client_secret=orcid_client_secret,
             orcid_redirect_uri=orcid_redirect_uri,

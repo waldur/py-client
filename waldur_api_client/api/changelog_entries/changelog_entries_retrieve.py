@@ -14,6 +14,7 @@ def _get_kwargs(
     highlight: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    release: Union[Unset, str] = UNSET,
     relevant_only: Union[Unset, bool] = UNSET,
     risk: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -28,6 +29,8 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["release"] = release
 
     params["relevant_only"] = relevant_only
 
@@ -79,6 +82,7 @@ def sync_detailed(
     highlight: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    release: Union[Unset, str] = UNSET,
     relevant_only: Union[Unset, bool] = UNSET,
     risk: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -88,13 +92,15 @@ def sync_detailed(
 ) -> Response[ChangelogEntryList]:
     """List changelog entries
 
-     Returns a flat, paginated list of changelog entries for all pending versions. Supports filtering by
-    type, risk, scope, version, and text search. Compatible with the standard Waldur table component.
+     Returns a flat, paginated list of changelog entries for all pending versions, or, with `release`,
+    the entries that release introduced. Supports filtering by type, risk, scope, version, and text
+    search. Compatible with the standard Waldur table component.
 
     Args:
         highlight (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        release (Union[Unset, str]):
         relevant_only (Union[Unset, bool]):
         risk (Union[Unset, str]):
         scope (Union[Unset, str]):
@@ -114,6 +120,7 @@ def sync_detailed(
         highlight=highlight,
         page=page,
         page_size=page_size,
+        release=release,
         relevant_only=relevant_only,
         risk=risk,
         scope=scope,
@@ -135,6 +142,7 @@ def sync(
     highlight: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    release: Union[Unset, str] = UNSET,
     relevant_only: Union[Unset, bool] = UNSET,
     risk: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -144,13 +152,15 @@ def sync(
 ) -> ChangelogEntryList:
     """List changelog entries
 
-     Returns a flat, paginated list of changelog entries for all pending versions. Supports filtering by
-    type, risk, scope, version, and text search. Compatible with the standard Waldur table component.
+     Returns a flat, paginated list of changelog entries for all pending versions, or, with `release`,
+    the entries that release introduced. Supports filtering by type, risk, scope, version, and text
+    search. Compatible with the standard Waldur table component.
 
     Args:
         highlight (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        release (Union[Unset, str]):
         relevant_only (Union[Unset, bool]):
         risk (Union[Unset, str]):
         scope (Union[Unset, str]):
@@ -171,6 +181,7 @@ def sync(
         highlight=highlight,
         page=page,
         page_size=page_size,
+        release=release,
         relevant_only=relevant_only,
         risk=risk,
         scope=scope,
@@ -186,6 +197,7 @@ async def asyncio_detailed(
     highlight: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    release: Union[Unset, str] = UNSET,
     relevant_only: Union[Unset, bool] = UNSET,
     risk: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -195,13 +207,15 @@ async def asyncio_detailed(
 ) -> Response[ChangelogEntryList]:
     """List changelog entries
 
-     Returns a flat, paginated list of changelog entries for all pending versions. Supports filtering by
-    type, risk, scope, version, and text search. Compatible with the standard Waldur table component.
+     Returns a flat, paginated list of changelog entries for all pending versions, or, with `release`,
+    the entries that release introduced. Supports filtering by type, risk, scope, version, and text
+    search. Compatible with the standard Waldur table component.
 
     Args:
         highlight (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        release (Union[Unset, str]):
         relevant_only (Union[Unset, bool]):
         risk (Union[Unset, str]):
         scope (Union[Unset, str]):
@@ -221,6 +235,7 @@ async def asyncio_detailed(
         highlight=highlight,
         page=page,
         page_size=page_size,
+        release=release,
         relevant_only=relevant_only,
         risk=risk,
         scope=scope,
@@ -240,6 +255,7 @@ async def asyncio(
     highlight: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    release: Union[Unset, str] = UNSET,
     relevant_only: Union[Unset, bool] = UNSET,
     risk: Union[Unset, str] = UNSET,
     scope: Union[Unset, str] = UNSET,
@@ -249,13 +265,15 @@ async def asyncio(
 ) -> ChangelogEntryList:
     """List changelog entries
 
-     Returns a flat, paginated list of changelog entries for all pending versions. Supports filtering by
-    type, risk, scope, version, and text search. Compatible with the standard Waldur table component.
+     Returns a flat, paginated list of changelog entries for all pending versions, or, with `release`,
+    the entries that release introduced. Supports filtering by type, risk, scope, version, and text
+    search. Compatible with the standard Waldur table component.
 
     Args:
         highlight (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        release (Union[Unset, str]):
         relevant_only (Union[Unset, bool]):
         risk (Union[Unset, str]):
         scope (Union[Unset, str]):
@@ -277,6 +295,7 @@ async def asyncio(
             highlight=highlight,
             page=page,
             page_size=page_size,
+            release=release,
             relevant_only=relevant_only,
             risk=risk,
             scope=scope,

@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.16.dev.20260923200128
+# Version: 8.1.3-rc.16.dev.20260924180939
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2369,6 +2369,11 @@ GET /api/changelog/pending/
 Summary: Get pending changelog
 Description: Returns the changelog entries this deployment has not seen yet, grouped by each newer version, with relevance matching and impact analysis results.
 
+### changelog_releases_retrieve
+GET /api/changelog/releases/
+Summary: List changelog releases
+Description: Returns every release in the changelog index, newest first, each marked as the release this deployment runs, pending (newer) or older.
+
 ### changelog_retrieve
 GET /api/changelog/{version}/
 Summary: Get changelog for a specific version
@@ -2390,9 +2395,10 @@ Path parameters:
 ### changelog_entries_retrieve
 GET /api/changelog-entries/
 Summary: List changelog entries
-Description: Returns a flat, paginated list of changelog entries for all pending versions. Supports filtering by type, risk, scope, version, and text search. Compatible with the standard Waldur table component.
-Query parameters (7):
+Description: Returns a flat, paginated list of changelog entries for all pending versions, or, with `release`, the entries that release introduced. Supports filtering by type, risk, scope, version, and text search. Compatible with the standard Waldur table component.
+Query parameters (8):
   - highlight — Filter highlighted entries only
+  - release — List what this release introduced instead of the pending entries
   - relevant_only — Show only relevant entries
   - risk — Filter by risk level
   - scope — Filter by scope
@@ -7515,7 +7521,7 @@ Path parameters:
 GET /api/marketplace-offering-users/
 Summary: List offering users
 Description: Returns a paginated list of users associated with offerings. The visibility of users depends on the role of the authenticated user. Staff and support can see all users. Service providers can see users of their offerings if the user has consented. Regular users can only see their own offering-user...
-Query parameters (20):
+Query parameters (21):
   - created — Created after
   - created_before — Created before
   - field
@@ -7536,12 +7542,13 @@ Query parameters (20):
   - state — Offering user state
   - user_username — User username
   - user_uuid — User UUID
+  - username — Username
 
 ### marketplace_offering_users_count
 HEAD /api/marketplace-offering-users/
 Summary: List offering users
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (19):
+Query parameters (20):
   - created — Created after
   - created_before — Created before
   - has_complete_profile — User has complete profile for the offering
@@ -7561,6 +7568,7 @@ Query parameters (19):
   - state — Offering user state
   - user_username — User username
   - user_uuid — User UUID
+  - username — Username
 
 ### marketplace_offering_users_create
 POST /api/marketplace-offering-users/
@@ -7586,7 +7594,7 @@ Query parameters (1):
 GET /api/marketplace-offering-users/posix_identities/
 Summary: List a user's POSIX identities across all their offerings
 Description: Consolidated view of one user's POSIX identifiers (UID, primary GID and project group GIDs), one row per pool and namespace: a UID allocated once for the user is reported once, listing every offering that uses it. An offering with its own pool yields its own row. Scoped to the offering users the ...
-Query parameters (19):
+Query parameters (20):
   - created — Created after
   - created_before — Created before
   - has_complete_profile — User has complete profile for the offering
@@ -7606,12 +7614,13 @@ Query parameters (19):
   - state — Offering user state
   - user_username — User username
   - user_uuid (required)
+  - username — Username
 
 ### marketplace_offering_users_posix_identities_count
 HEAD /api/marketplace-offering-users/posix_identities/
 Summary: List a user's POSIX identities across all their offerings
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (19):
+Query parameters (20):
   - created — Created after
   - created_before — Created before
   - has_complete_profile — User has complete profile for the offering
@@ -7631,6 +7640,7 @@ Query parameters (19):
   - state — Offering user state
   - user_username — User username
   - user_uuid (required)
+  - username — Username
 
 ### marketplace_offering_users_profile_field_warnings_retrieve
 GET /api/marketplace-offering-users/profile_field_warnings/
@@ -7713,7 +7723,7 @@ Summary: List POSIX UID/GID allocations of an offering user
 Description: Returns the user's POSIX identifiers (UID, primary GID) and, for each, the POSIX ID pool that tracks it plus the user's other offerings that resolve to the same pool and therefore carry the very same value. The pool fields are null when the value is not tracked by a pool.
 Path parameters:
   - uuid
-Query parameters (19):
+Query parameters (20):
   - created — Created after
   - created_before — Created before
   - has_complete_profile — User has complete profile for the offering
@@ -7733,6 +7743,7 @@ Query parameters (19):
   - state — Offering user state
   - user_username — User username
   - user_uuid — User UUID
+  - username — Username
 
 ### marketplace_offering_users_posix_groups_list
 GET /api/marketplace-offering-users/{uuid}/posix_groups/
@@ -7740,7 +7751,7 @@ Summary: List project group GIDs an offering user belongs to
 Description: Returns the project group GIDs (shared GIDs that appear in the user's GLAuth otherGroups) for this offering user.
 Path parameters:
   - uuid
-Query parameters (19):
+Query parameters (20):
   - created — Created after
   - created_before — Created before
   - has_complete_profile — User has complete profile for the offering
@@ -7760,6 +7771,7 @@ Query parameters (19):
   - state — Offering user state
   - user_username — User username
   - user_uuid — User UUID
+  - username — Username
 
 ### marketplace_offering_users_request_deletion
 POST /api/marketplace-offering-users/{uuid}/request_deletion/
@@ -7799,7 +7811,7 @@ Path parameters:
 ### marketplace_offering_users_set_ok
 POST /api/marketplace-offering-users/{uuid}/set_ok/
 Summary: Set state to OK
-Description: Manually sets the offering user state to 'OK'. This can be used to recover from an error state or to complete a manual creation process.
+Description: Manually sets the offering user state to 'OK'. This can be used to recover from an error state or to complete a manual creation process. This clears any service provider comments.
 Path parameters:
   - uuid
 
@@ -11958,7 +11970,7 @@ Summary: List service provider accounts
 Description: Returns a paginated list of the accounts a service provider holds for its users --
         one per user per provider, shared by every offering of that provider.
         Scoped to providers whose organization the caller can see.
-Query parameters (14):
+Query parameters (15):
   - created — Created after
   - created_before — Created before
   - customer_uuid — Provider organization UUID
@@ -11973,12 +11985,13 @@ Query parameters (14):
   - state — Account state
   - user_username — User username
   - user_uuid — User UUID
+  - username — Username
 
 ### marketplace_service_provider_accounts_count
 HEAD /api/marketplace-service-provider-accounts/
 Summary: List service provider accounts
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (13):
+Query parameters (14):
   - created — Created after
   - created_before — Created before
   - customer_uuid — Provider organization UUID
@@ -11992,6 +12005,7 @@ Query parameters (13):
   - state — Account state
   - user_username — User username
   - user_uuid — User UUID
+  - username — Username
 
 ### marketplace_service_provider_accounts_retrieve
 GET /api/marketplace-service-provider-accounts/{uuid}/
@@ -20430,7 +20444,7 @@ Query parameters (12):
 ### proposal_protected_calls_dashboard_stats_retrieve
 GET /api/proposal-protected-calls/dashboard-stats/
 Summary: Get call manager dashboard stats
-Description: Returns counts for the call manager dashboard: pending assessments, active calls managed by the user, and overdue reviews on calls they manage.
+Description: Returns counts for the call manager dashboard: pending assessments, active calls managed by the user, and reviews on calls they manage that are due within the next few days.
 
 ### proposal_protected_calls_step_checklists_list
 GET /api/proposal-protected-calls/step_checklists/
@@ -21153,8 +21167,10 @@ Path parameters:
 
 ### proposal_reviews_list
 GET /api/proposal-reviews/
-Query parameters (9):
+Query parameters (11):
   - call_uuid
+  - due_within_days — Only reviews in progress whose deadline is at most this many days away, including ones already past it. Implies state=in_review.
+  - managed_calls_only — Only reviews on calls where the current user is call manager, the same scope as the call manager dashboard.
   - o — Ordering
   - organization_uuid
   - proposal
@@ -21168,8 +21184,10 @@ Query parameters (9):
 HEAD /api/proposal-reviews/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (9):
+Query parameters (11):
   - call_uuid
+  - due_within_days — Only reviews in progress whose deadline is at most this many days away, including ones already past it. Implies state=in_review.
+  - managed_calls_only — Only reviews on calls where the current user is call manager, the same scope as the call manager dashboard.
   - o — Ordering
   - organization_uuid
   - proposal

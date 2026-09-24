@@ -420,6 +420,9 @@ from .changelog_flat_entry_settings_analysis import ChangelogFlatEntrySettingsAn
 from .changelog_pending import ChangelogPending
 from .changelog_release import ChangelogRelease
 from .changelog_release_component_activity import ChangelogReleaseComponentActivity
+from .changelog_release_list import ChangelogReleaseList
+from .changelog_release_summary import ChangelogReleaseSummary
+from .changelog_release_summary_status_enum import ChangelogReleaseSummaryStatusEnum
 from .changelog_upgrade_report import ChangelogUpgradeReport
 from .chat_request_mode_enum import ChatRequestModeEnum
 from .chat_request_request import ChatRequestRequest
@@ -3518,6 +3521,9 @@ __all__ = (
     "ChangelogPending",
     "ChangelogRelease",
     "ChangelogReleaseComponentActivity",
+    "ChangelogReleaseList",
+    "ChangelogReleaseSummary",
+    "ChangelogReleaseSummaryStatusEnum",
     "ChangelogUpgradeReport",
     "ChatRequestModeEnum",
     "ChatRequestRequest",

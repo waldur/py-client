@@ -428,13 +428,14 @@ Module: `waldur_api_client.api.changelog`
 
 - `changelog_compare_retrieve` GET `/api/changelog/compare/{from_version}/{to_version}/` — Compare changelog between two versions (path: from_version, to_version)
 - `changelog_pending_retrieve` GET `/api/changelog/pending/` — Get pending changelog (no params)
+- `changelog_releases_retrieve` GET `/api/changelog/releases/` — List changelog releases (no params)
 - `changelog_retrieve` GET `/api/changelog/{version}/` — Get changelog for a specific version (path: version)
 - `changelog_delta_retrieve` GET `/api/changelog/{version}/delta/` — Get changelog delta for a version (path: version)
 
 ## changelog-entries
 Module: `waldur_api_client.api.changelog_entries`
 
-- `changelog_entries_retrieve` GET `/api/changelog-entries/` — List changelog entries (7 query params)
+- `changelog_entries_retrieve` GET `/api/changelog-entries/` — List changelog entries (8 query params)
 
 ## changelog-upgrade-report
 Module: `waldur_api_client.api.changelog_upgrade_report`
@@ -1398,13 +1399,13 @@ Module: `waldur_api_client.api.marketplace_offering_user_checklist_completions`
 ## marketplace-offering-users
 Module: `waldur_api_client.api.marketplace_offering_users`
 
-- `marketplace_offering_users_list` GET `/api/marketplace-offering-users/` — List offering users (20 query params)
-- `marketplace_offering_users_count` HEAD `/api/marketplace-offering-users/` — List offering users (19 query params)
+- `marketplace_offering_users_list` GET `/api/marketplace-offering-users/` — List offering users (21 query params)
+- `marketplace_offering_users_count` HEAD `/api/marketplace-offering-users/` — List offering users (20 query params)
 - `marketplace_offering_users_create` POST `/api/marketplace-offering-users/` — Create an offering user (request body)
 - `marketplace_offering_users_checklist_template_retrieve` GET `/api/marketplace-offering-users/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `marketplace_offering_users_checklist_template_count` HEAD `/api/marketplace-offering-users/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
-- `marketplace_offering_users_posix_identities_list` GET `/api/marketplace-offering-users/posix_identities/` — List a user's POSIX identities across all their offerings (19 query params)
-- `marketplace_offering_users_posix_identities_count` HEAD `/api/marketplace-offering-users/posix_identities/` — List a user's POSIX identities across all their offerings (19 query params)
+- `marketplace_offering_users_posix_identities_list` GET `/api/marketplace-offering-users/posix_identities/` — List a user's POSIX identities across all their offerings (20 query params)
+- `marketplace_offering_users_posix_identities_count` HEAD `/api/marketplace-offering-users/posix_identities/` — List a user's POSIX identities across all their offerings (20 query params)
 - `marketplace_offering_users_profile_field_warnings_retrieve` GET `/api/marketplace-offering-users/profile_field_warnings/` — Get profile field warnings (no params)
 - `marketplace_offering_users_profile_field_warnings_count` HEAD `/api/marketplace-offering-users/profile_field_warnings/` — Get profile field warnings (no params)
 - `marketplace_offering_users_retrieve` GET `/api/marketplace-offering-users/{uuid}/` — Retrieve an offering user (path: uuid | 1 query param)
@@ -1416,8 +1417,8 @@ Module: `waldur_api_client.api.marketplace_offering_users`
 - `marketplace_offering_users_checklist_review_retrieve` GET `/api/marketplace-offering-users/{uuid}/checklist_review/` — Get checklist with questions and existing answers including review logic (reviewers only) (path: uuid)
 - `marketplace_offering_users_completion_review_status_retrieve` GET `/api/marketplace-offering-users/{uuid}/completion_review_status/` — Get checklist completion status with review triggers (reviewers only) (path: uuid)
 - `marketplace_offering_users_completion_status_retrieve` GET `/api/marketplace-offering-users/{uuid}/completion_status/` — Get checklist completion status (path: uuid)
-- `marketplace_offering_users_posix_allocations_list` GET `/api/marketplace-offering-users/{uuid}/posix_allocations/` — List POSIX UID/GID allocations of an offering user (path: uuid | 19 query params)
-- `marketplace_offering_users_posix_groups_list` GET `/api/marketplace-offering-users/{uuid}/posix_groups/` — List project group GIDs an offering user belongs to (path: uuid | 19 query params)
+- `marketplace_offering_users_posix_allocations_list` GET `/api/marketplace-offering-users/{uuid}/posix_allocations/` — List POSIX UID/GID allocations of an offering user (path: uuid | 20 query params)
+- `marketplace_offering_users_posix_groups_list` GET `/api/marketplace-offering-users/{uuid}/posix_groups/` — List project group GIDs an offering user belongs to (path: uuid | 20 query params)
 - `marketplace_offering_users_request_deletion` POST `/api/marketplace-offering-users/{uuid}/request_deletion/` — Request deletion of an offering user (path: uuid)
 - `marketplace_offering_users_set_deleted` POST `/api/marketplace-offering-users/{uuid}/set_deleted/` — Set state to Deleted (path: uuid)
 - `marketplace_offering_users_set_deleting` POST `/api/marketplace-offering-users/{uuid}/set_deleting/` — Begin deletion process (path: uuid)
@@ -1942,8 +1943,8 @@ Module: `waldur_api_client.api.marketplace_sections`
 ## marketplace-service-provider-accounts
 Module: `waldur_api_client.api.marketplace_service_provider_accounts`
 
-- `marketplace_service_provider_accounts_list` GET `/api/marketplace-service-provider-accounts/` — List service provider accounts (14 query params)
-- `marketplace_service_provider_accounts_count` HEAD `/api/marketplace-service-provider-accounts/` — List service provider accounts (13 query params)
+- `marketplace_service_provider_accounts_list` GET `/api/marketplace-service-provider-accounts/` — List service provider accounts (15 query params)
+- `marketplace_service_provider_accounts_count` HEAD `/api/marketplace-service-provider-accounts/` — List service provider accounts (14 query params)
 - `marketplace_service_provider_accounts_retrieve` GET `/api/marketplace-service-provider-accounts/{uuid}/` — Retrieve a service provider account (path: uuid | 1 query param)
 - `marketplace_service_provider_accounts_update` PUT `/api/marketplace-service-provider-accounts/{uuid}/` — Update a service provider account (path: uuid | request body)
 - `marketplace_service_provider_accounts_partial_update` PATCH `/api/marketplace-service-provider-accounts/{uuid}/` — Update a service provider account (path: uuid | request body)
@@ -3287,8 +3288,8 @@ Module: `waldur_api_client.api.proposal_requested_resources`
 ## proposal-reviews
 Module: `waldur_api_client.api.proposal_reviews`
 
-- `proposal_reviews_list` GET `/api/proposal-reviews/` (9 query params)
-- `proposal_reviews_count` HEAD `/api/proposal-reviews/` — Get number of items in the collection matching the request parameters (9 query params)
+- `proposal_reviews_list` GET `/api/proposal-reviews/` (11 query params)
+- `proposal_reviews_count` HEAD `/api/proposal-reviews/` — Get number of items in the collection matching the request parameters (11 query params)
 - `proposal_reviews_create` POST `/api/proposal-reviews/` (request body)
 - `proposal_reviews_dashboard_stats_retrieve` GET `/api/proposal-reviews/dashboard-stats/` — Get reviewer dashboard stats and deadlines (no params)
 - `proposal_reviews_retrieve` GET `/api/proposal-reviews/{uuid}/` (path: uuid)

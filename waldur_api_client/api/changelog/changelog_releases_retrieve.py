@@ -5,26 +5,24 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.dashboard_call_manager_stats import DashboardCallManagerStats
+from ...models.changelog_release_list import ChangelogReleaseList
 from ...types import Response
 
 
 def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": "/api/proposal-protected-calls/dashboard-stats/",
+        "url": "/api/changelog/releases/",
     }
 
     return _kwargs
 
 
-def _parse_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> DashboardCallManagerStats:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ChangelogReleaseList:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = DashboardCallManagerStats.from_dict(response.json())
+        response_200 = ChangelogReleaseList.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -32,7 +30,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[DashboardCallManagerStats]:
+) -> Response[ChangelogReleaseList]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -44,18 +42,18 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[DashboardCallManagerStats]:
-    """Get call manager dashboard stats
+) -> Response[ChangelogReleaseList]:
+    """List changelog releases
 
-     Returns counts for the call manager dashboard: pending assessments, active calls managed by the
-    user, and reviews on calls they manage that are due within the next few days.
+     Returns every release in the changelog index, newest first, each marked as the release this
+    deployment runs, pending (newer) or older.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DashboardCallManagerStats]
+        Response[ChangelogReleaseList]
     """
 
     kwargs = _get_kwargs()
@@ -70,18 +68,18 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> DashboardCallManagerStats:
-    """Get call manager dashboard stats
+) -> ChangelogReleaseList:
+    """List changelog releases
 
-     Returns counts for the call manager dashboard: pending assessments, active calls managed by the
-    user, and reviews on calls they manage that are due within the next few days.
+     Returns every release in the changelog index, newest first, each marked as the release this
+    deployment runs, pending (newer) or older.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DashboardCallManagerStats
+        ChangelogReleaseList
     """
 
     return sync_detailed(
@@ -92,18 +90,18 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[DashboardCallManagerStats]:
-    """Get call manager dashboard stats
+) -> Response[ChangelogReleaseList]:
+    """List changelog releases
 
-     Returns counts for the call manager dashboard: pending assessments, active calls managed by the
-    user, and reviews on calls they manage that are due within the next few days.
+     Returns every release in the changelog index, newest first, each marked as the release this
+    deployment runs, pending (newer) or older.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[DashboardCallManagerStats]
+        Response[ChangelogReleaseList]
     """
 
     kwargs = _get_kwargs()
@@ -116,18 +114,18 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> DashboardCallManagerStats:
-    """Get call manager dashboard stats
+) -> ChangelogReleaseList:
+    """List changelog releases
 
-     Returns counts for the call manager dashboard: pending assessments, active calls managed by the
-    user, and reviews on calls they manage that are due within the next few days.
+     Returns every release in the changelog index, newest first, each marked as the release this
+    deployment runs, pending (newer) or older.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        DashboardCallManagerStats
+        ChangelogReleaseList
     """
 
     return (
