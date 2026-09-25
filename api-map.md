@@ -346,7 +346,6 @@ Module: `waldur_api_client.api.call_assignment_configurations`
 
 - `call_assignment_configurations_list` GET `/api/call-assignment-configurations/` (no params)
 - `call_assignment_configurations_count` HEAD `/api/call-assignment-configurations/` — Get number of items in the collection matching the request parameters (no params)
-- `call_assignment_configurations_create` POST `/api/call-assignment-configurations/` (request body)
 - `call_assignment_configurations_retrieve` GET `/api/call-assignment-configurations/{uuid}/` (path: uuid)
 - `call_assignment_configurations_update` PUT `/api/call-assignment-configurations/{uuid}/` (path: uuid | request body)
 - `call_assignment_configurations_partial_update` PATCH `/api/call-assignment-configurations/{uuid}/` (path: uuid | request body)

@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.1.3-rc.17.dev.20260925081655).
+> Auto-generated Python SDK for the Waldur API (version 8.1.3-rc.18.dev.20260925200340).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -60,7 +60,7 @@ waldur_api_client/
 - **booking-resources** (5 endpoints)
 - **broadcast-message-templates** (7 endpoints)
 - **broadcast-messages** (11 endpoints)
-- **call-assignment-configurations** (7 endpoints)
+- **call-assignment-configurations** (6 endpoints)
 - **call-managing-organisations** (19 endpoints)
 - **call-proposal-project-role-mappings** (7 endpoints)
 - **call-reviewer-pools** (7 endpoints)
