@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.16.dev.20260924180939
+# Version: 8.1.3-rc.17.dev.20260925030325
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2396,8 +2396,10 @@ Path parameters:
 GET /api/changelog-entries/
 Summary: List changelog entries
 Description: Returns a flat, paginated list of changelog entries for all pending versions, or, with `release`, the entries that release introduced. Supports filtering by type, risk, scope, version, and text search. Compatible with the standard Waldur table component.
-Query parameters (8):
+Query parameters (10):
+  - category — Filter by category
   - highlight — Filter highlighted entries only
+  - o — Sort by a field; prefix with - to reverse. Type and risk sort most consequential first (breaking, high). Without it, relevant entries come first, then by risk.
   - release — List what this release introduced instead of the pending entries
   - relevant_only — Show only relevant entries
   - risk — Filter by risk level

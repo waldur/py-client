@@ -6,25 +6,44 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.changelog_entry_list import ChangelogEntryList
+from ...models.changelog_entry_list_category_enum import ChangelogEntryListCategoryEnum
+from ...models.changelog_entry_list_o_enum import ChangelogEntryListOEnum
+from ...models.changelog_entry_list_risk_enum import ChangelogEntryListRiskEnum
+from ...models.changelog_entry_list_scope_enum import ChangelogEntryListScopeEnum
+from ...models.changelog_entry_list_type_enum import ChangelogEntryListTypeEnum
 from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
+    category: Union[Unset, ChangelogEntryListCategoryEnum] = UNSET,
     highlight: Union[Unset, bool] = UNSET,
+    o: Union[Unset, ChangelogEntryListOEnum] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     release: Union[Unset, str] = UNSET,
     relevant_only: Union[Unset, bool] = UNSET,
-    risk: Union[Unset, str] = UNSET,
-    scope: Union[Unset, str] = UNSET,
+    risk: Union[Unset, ChangelogEntryListRiskEnum] = UNSET,
+    scope: Union[Unset, ChangelogEntryListScopeEnum] = UNSET,
     search: Union[Unset, str] = UNSET,
-    type_: Union[Unset, str] = UNSET,
+    type_: Union[Unset, ChangelogEntryListTypeEnum] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
+    json_category: Union[Unset, str] = UNSET
+    if not isinstance(category, Unset):
+        json_category = category.value
+
+    params["category"] = json_category
+
     params["highlight"] = highlight
+
+    json_o: Union[Unset, str] = UNSET
+    if not isinstance(o, Unset):
+        json_o = o.value
+
+    params["o"] = json_o
 
     params["page"] = page
 
@@ -34,13 +53,25 @@ def _get_kwargs(
 
     params["relevant_only"] = relevant_only
 
-    params["risk"] = risk
+    json_risk: Union[Unset, str] = UNSET
+    if not isinstance(risk, Unset):
+        json_risk = risk.value
 
-    params["scope"] = scope
+    params["risk"] = json_risk
+
+    json_scope: Union[Unset, str] = UNSET
+    if not isinstance(scope, Unset):
+        json_scope = scope.value
+
+    params["scope"] = json_scope
 
     params["search"] = search
 
-    params["type"] = type_
+    json_type_: Union[Unset, str] = UNSET
+    if not isinstance(type_, Unset):
+        json_type_ = type_.value
+
+    params["type"] = json_type_
 
     params["version"] = version
 
@@ -79,15 +110,17 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    category: Union[Unset, ChangelogEntryListCategoryEnum] = UNSET,
     highlight: Union[Unset, bool] = UNSET,
+    o: Union[Unset, ChangelogEntryListOEnum] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     release: Union[Unset, str] = UNSET,
     relevant_only: Union[Unset, bool] = UNSET,
-    risk: Union[Unset, str] = UNSET,
-    scope: Union[Unset, str] = UNSET,
+    risk: Union[Unset, ChangelogEntryListRiskEnum] = UNSET,
+    scope: Union[Unset, ChangelogEntryListScopeEnum] = UNSET,
     search: Union[Unset, str] = UNSET,
-    type_: Union[Unset, str] = UNSET,
+    type_: Union[Unset, ChangelogEntryListTypeEnum] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> Response[ChangelogEntryList]:
     """List changelog entries
@@ -97,15 +130,17 @@ def sync_detailed(
     search. Compatible with the standard Waldur table component.
 
     Args:
+        category (Union[Unset, ChangelogEntryListCategoryEnum]):
         highlight (Union[Unset, bool]):
+        o (Union[Unset, ChangelogEntryListOEnum]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         release (Union[Unset, str]):
         relevant_only (Union[Unset, bool]):
-        risk (Union[Unset, str]):
-        scope (Union[Unset, str]):
+        risk (Union[Unset, ChangelogEntryListRiskEnum]):
+        scope (Union[Unset, ChangelogEntryListScopeEnum]):
         search (Union[Unset, str]):
-        type_ (Union[Unset, str]):
+        type_ (Union[Unset, ChangelogEntryListTypeEnum]):
         version (Union[Unset, str]):
 
     Raises:
@@ -117,7 +152,9 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        category=category,
         highlight=highlight,
+        o=o,
         page=page,
         page_size=page_size,
         release=release,
@@ -139,15 +176,17 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    category: Union[Unset, ChangelogEntryListCategoryEnum] = UNSET,
     highlight: Union[Unset, bool] = UNSET,
+    o: Union[Unset, ChangelogEntryListOEnum] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     release: Union[Unset, str] = UNSET,
     relevant_only: Union[Unset, bool] = UNSET,
-    risk: Union[Unset, str] = UNSET,
-    scope: Union[Unset, str] = UNSET,
+    risk: Union[Unset, ChangelogEntryListRiskEnum] = UNSET,
+    scope: Union[Unset, ChangelogEntryListScopeEnum] = UNSET,
     search: Union[Unset, str] = UNSET,
-    type_: Union[Unset, str] = UNSET,
+    type_: Union[Unset, ChangelogEntryListTypeEnum] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> ChangelogEntryList:
     """List changelog entries
@@ -157,15 +196,17 @@ def sync(
     search. Compatible with the standard Waldur table component.
 
     Args:
+        category (Union[Unset, ChangelogEntryListCategoryEnum]):
         highlight (Union[Unset, bool]):
+        o (Union[Unset, ChangelogEntryListOEnum]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         release (Union[Unset, str]):
         relevant_only (Union[Unset, bool]):
-        risk (Union[Unset, str]):
-        scope (Union[Unset, str]):
+        risk (Union[Unset, ChangelogEntryListRiskEnum]):
+        scope (Union[Unset, ChangelogEntryListScopeEnum]):
         search (Union[Unset, str]):
-        type_ (Union[Unset, str]):
+        type_ (Union[Unset, ChangelogEntryListTypeEnum]):
         version (Union[Unset, str]):
 
     Raises:
@@ -178,7 +219,9 @@ def sync(
 
     return sync_detailed(
         client=client,
+        category=category,
         highlight=highlight,
+        o=o,
         page=page,
         page_size=page_size,
         release=release,
@@ -194,15 +237,17 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    category: Union[Unset, ChangelogEntryListCategoryEnum] = UNSET,
     highlight: Union[Unset, bool] = UNSET,
+    o: Union[Unset, ChangelogEntryListOEnum] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     release: Union[Unset, str] = UNSET,
     relevant_only: Union[Unset, bool] = UNSET,
-    risk: Union[Unset, str] = UNSET,
-    scope: Union[Unset, str] = UNSET,
+    risk: Union[Unset, ChangelogEntryListRiskEnum] = UNSET,
+    scope: Union[Unset, ChangelogEntryListScopeEnum] = UNSET,
     search: Union[Unset, str] = UNSET,
-    type_: Union[Unset, str] = UNSET,
+    type_: Union[Unset, ChangelogEntryListTypeEnum] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> Response[ChangelogEntryList]:
     """List changelog entries
@@ -212,15 +257,17 @@ async def asyncio_detailed(
     search. Compatible with the standard Waldur table component.
 
     Args:
+        category (Union[Unset, ChangelogEntryListCategoryEnum]):
         highlight (Union[Unset, bool]):
+        o (Union[Unset, ChangelogEntryListOEnum]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         release (Union[Unset, str]):
         relevant_only (Union[Unset, bool]):
-        risk (Union[Unset, str]):
-        scope (Union[Unset, str]):
+        risk (Union[Unset, ChangelogEntryListRiskEnum]):
+        scope (Union[Unset, ChangelogEntryListScopeEnum]):
         search (Union[Unset, str]):
-        type_ (Union[Unset, str]):
+        type_ (Union[Unset, ChangelogEntryListTypeEnum]):
         version (Union[Unset, str]):
 
     Raises:
@@ -232,7 +279,9 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        category=category,
         highlight=highlight,
+        o=o,
         page=page,
         page_size=page_size,
         release=release,
@@ -252,15 +301,17 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    category: Union[Unset, ChangelogEntryListCategoryEnum] = UNSET,
     highlight: Union[Unset, bool] = UNSET,
+    o: Union[Unset, ChangelogEntryListOEnum] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     release: Union[Unset, str] = UNSET,
     relevant_only: Union[Unset, bool] = UNSET,
-    risk: Union[Unset, str] = UNSET,
-    scope: Union[Unset, str] = UNSET,
+    risk: Union[Unset, ChangelogEntryListRiskEnum] = UNSET,
+    scope: Union[Unset, ChangelogEntryListScopeEnum] = UNSET,
     search: Union[Unset, str] = UNSET,
-    type_: Union[Unset, str] = UNSET,
+    type_: Union[Unset, ChangelogEntryListTypeEnum] = UNSET,
     version: Union[Unset, str] = UNSET,
 ) -> ChangelogEntryList:
     """List changelog entries
@@ -270,15 +321,17 @@ async def asyncio(
     search. Compatible with the standard Waldur table component.
 
     Args:
+        category (Union[Unset, ChangelogEntryListCategoryEnum]):
         highlight (Union[Unset, bool]):
+        o (Union[Unset, ChangelogEntryListOEnum]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         release (Union[Unset, str]):
         relevant_only (Union[Unset, bool]):
-        risk (Union[Unset, str]):
-        scope (Union[Unset, str]):
+        risk (Union[Unset, ChangelogEntryListRiskEnum]):
+        scope (Union[Unset, ChangelogEntryListScopeEnum]):
         search (Union[Unset, str]):
-        type_ (Union[Unset, str]):
+        type_ (Union[Unset, ChangelogEntryListTypeEnum]):
         version (Union[Unset, str]):
 
     Raises:
@@ -292,7 +345,9 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            category=category,
             highlight=highlight,
+            o=o,
             page=page,
             page_size=page_size,
             release=release,

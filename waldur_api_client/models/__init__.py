@@ -412,6 +412,11 @@ from .celery_worker_stats_rusage import CeleryWorkerStatsRusage
 from .celery_worker_stats_total import CeleryWorkerStatsTotal
 from .changelog_entry import ChangelogEntry
 from .changelog_entry_list import ChangelogEntryList
+from .changelog_entry_list_category_enum import ChangelogEntryListCategoryEnum
+from .changelog_entry_list_o_enum import ChangelogEntryListOEnum
+from .changelog_entry_list_risk_enum import ChangelogEntryListRiskEnum
+from .changelog_entry_list_scope_enum import ChangelogEntryListScopeEnum
+from .changelog_entry_list_type_enum import ChangelogEntryListTypeEnum
 from .changelog_entry_plugin_analysis import ChangelogEntryPluginAnalysis
 from .changelog_entry_settings_analysis import ChangelogEntrySettingsAnalysis
 from .changelog_flat_entry import ChangelogFlatEntry
@@ -3513,6 +3518,11 @@ __all__ = (
     "CeleryWorkerStatsTotal",
     "ChangelogEntry",
     "ChangelogEntryList",
+    "ChangelogEntryListCategoryEnum",
+    "ChangelogEntryListOEnum",
+    "ChangelogEntryListRiskEnum",
+    "ChangelogEntryListScopeEnum",
+    "ChangelogEntryListTypeEnum",
     "ChangelogEntryPluginAnalysis",
     "ChangelogEntrySettingsAnalysis",
     "ChangelogFlatEntry",
