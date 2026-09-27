@@ -59,7 +59,7 @@ def _build_response(
 
 def sync_detailed(
     *,
-    client: AuthenticatedClient,
+    client: Union[AuthenticatedClient, Client],
     body: ObtainAuthTokenRequest,
 ) -> Response[Union[AuthTokenChallenge, CoreAuthToken]]:
     """Obtain authentication token
@@ -90,7 +90,7 @@ def sync_detailed(
 
 def sync(
     *,
-    client: AuthenticatedClient,
+    client: Union[AuthenticatedClient, Client],
     body: ObtainAuthTokenRequest,
 ) -> Union[AuthTokenChallenge, CoreAuthToken]:
     """Obtain authentication token
@@ -116,7 +116,7 @@ def sync(
 
 async def asyncio_detailed(
     *,
-    client: AuthenticatedClient,
+    client: Union[AuthenticatedClient, Client],
     body: ObtainAuthTokenRequest,
 ) -> Response[Union[AuthTokenChallenge, CoreAuthToken]]:
     """Obtain authentication token
@@ -145,7 +145,7 @@ async def asyncio_detailed(
 
 async def asyncio(
     *,
-    client: AuthenticatedClient,
+    client: Union[AuthenticatedClient, Client],
     body: ObtainAuthTokenRequest,
 ) -> Union[AuthTokenChallenge, CoreAuthToken]:
     """Obtain authentication token

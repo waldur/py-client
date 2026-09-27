@@ -19,6 +19,7 @@ class ProviderOfferingDetailsFieldEnum(str, Enum):
     CATEGORY_UUID = "category_uuid"
     CITATION_COUNT = "citation_count"
     COMPLIANCE_CHECKLIST = "compliance_checklist"
+    COMPLIANCE_CHECKLIST_DETAILS = "compliance_checklist_details"
     COMPONENTS = "components"
     COUNTRY = "country"
     CREATED = "created"

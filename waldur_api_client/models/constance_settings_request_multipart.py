@@ -76,6 +76,7 @@ class ConstanceSettingsRequestMultipart:
         enable_issues_for_user_ssh_key_changes (Union[Unset, bool]):
         telemetry_url (Union[Unset, str]):
         telemetry_version (Union[Unset, int]):
+        telemetry_deployment_id (Union[Unset, str]):
         check_for_updates (Union[Unset, bool]):
         script_run_mode (Union[Unset, SCRIPTRUNMODEEnum]):
         docker_client (Union[Unset, str]):
@@ -415,6 +416,7 @@ class ConstanceSettingsRequestMultipart:
     enable_issues_for_user_ssh_key_changes: Union[Unset, bool] = UNSET
     telemetry_url: Union[Unset, str] = UNSET
     telemetry_version: Union[Unset, int] = UNSET
+    telemetry_deployment_id: Union[Unset, str] = UNSET
     check_for_updates: Union[Unset, bool] = UNSET
     script_run_mode: Union[Unset, SCRIPTRUNMODEEnum] = UNSET
     docker_client: Union[Unset, str] = UNSET
@@ -795,6 +797,8 @@ class ConstanceSettingsRequestMultipart:
         telemetry_url = self.telemetry_url
 
         telemetry_version = self.telemetry_version
+
+        telemetry_deployment_id = self.telemetry_deployment_id
 
         check_for_updates = self.check_for_updates
 
@@ -1755,6 +1759,8 @@ class ConstanceSettingsRequestMultipart:
             field_dict["TELEMETRY_URL"] = telemetry_url
         if telemetry_version is not UNSET:
             field_dict["TELEMETRY_VERSION"] = telemetry_version
+        if telemetry_deployment_id is not UNSET:
+            field_dict["TELEMETRY_DEPLOYMENT_ID"] = telemetry_deployment_id
         if check_for_updates is not UNSET:
             field_dict["CHECK_FOR_UPDATES"] = check_for_updates
         if script_run_mode is not UNSET:
@@ -2533,6 +2539,9 @@ class ConstanceSettingsRequestMultipart:
 
         if not isinstance(self.telemetry_version, Unset):
             files.append(("TELEMETRY_VERSION", (None, str(self.telemetry_version).encode(), "text/plain")))
+
+        if not isinstance(self.telemetry_deployment_id, Unset):
+            files.append(("TELEMETRY_DEPLOYMENT_ID", (None, str(self.telemetry_deployment_id).encode(), "text/plain")))
 
         if not isinstance(self.check_for_updates, Unset):
             files.append(("CHECK_FOR_UPDATES", (None, str(self.check_for_updates).encode(), "text/plain")))
@@ -4495,6 +4504,8 @@ class ConstanceSettingsRequestMultipart:
 
         telemetry_version = d.pop("TELEMETRY_VERSION", UNSET)
 
+        telemetry_deployment_id = d.pop("TELEMETRY_DEPLOYMENT_ID", UNSET)
+
         check_for_updates = d.pop("CHECK_FOR_UPDATES", UNSET)
 
         _script_run_mode = d.pop("SCRIPT_RUN_MODE", UNSET)
@@ -5739,6 +5750,7 @@ class ConstanceSettingsRequestMultipart:
             enable_issues_for_user_ssh_key_changes=enable_issues_for_user_ssh_key_changes,
             telemetry_url=telemetry_url,
             telemetry_version=telemetry_version,
+            telemetry_deployment_id=telemetry_deployment_id,
             check_for_updates=check_for_updates,
             script_run_mode=script_run_mode,
             docker_client=docker_client,

@@ -2,11 +2,13 @@ from enum import Enum
 
 
 class ObservableObjectTypeEnum(str, Enum):
+    CALL = "call"
     COURSE_ACCOUNT = "course_account"
     IMPORTABLE_RESOURCES = "importable_resources"
     OFFERING_RESOURCES_SYNC = "offering_resources_sync"
     OFFERING_USER = "offering_user"
     ORDER = "order"
+    PROPOSAL = "proposal"
     RESOURCE = "resource"
     RESOURCE_API_KEY_ROTATION = "resource_api_key_rotation"
     RESOURCE_END_DATE_CHANGE_REQUEST = "resource_end_date_change_request"

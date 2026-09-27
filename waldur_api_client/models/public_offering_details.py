@@ -26,6 +26,7 @@ if TYPE_CHECKING:
     from ..models.nested_software_catalog import NestedSoftwareCatalog
     from ..models.nested_tag import NestedTag
     from ..models.offering_account_settings import OfferingAccountSettings
+    from ..models.offering_compliance_checklist import OfferingComplianceChecklist
     from ..models.offering_component import OfferingComponent
     from ..models.offering_options import OfferingOptions
     from ..models.organization_group import OrganizationGroup
@@ -125,6 +126,7 @@ class PublicOfferingDetails:
             Returns 'limit_only', 'usage_only', or 'mixed'.
         effective_available_limits (Union[Unset, list[str]]):
         compliance_checklist (Union[None, Unset, str]):
+        compliance_checklist_details (Union['OfferingComplianceChecklist', None, Unset]):
         profile_uuid (Union[None, UUID, Unset]):
         profile_name (Union[None, Unset, str]):
         offering_group (Union[None, Unset, str]):
@@ -217,6 +219,7 @@ class PublicOfferingDetails:
     billing_type_classification: Union[Unset, str] = UNSET
     effective_available_limits: Union[Unset, list[str]] = UNSET
     compliance_checklist: Union[None, Unset, str] = UNSET
+    compliance_checklist_details: Union["OfferingComplianceChecklist", None, Unset] = UNSET
     profile_uuid: Union[None, UUID, Unset] = UNSET
     profile_name: Union[None, Unset, str] = UNSET
     offering_group: Union[None, Unset, str] = UNSET
@@ -233,6 +236,8 @@ class PublicOfferingDetails:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.offering_compliance_checklist import OfferingComplianceChecklist
+
         url = self.url
 
         uuid: Union[Unset, str] = UNSET
@@ -585,6 +590,14 @@ class PublicOfferingDetails:
         else:
             compliance_checklist = self.compliance_checklist
 
+        compliance_checklist_details: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.compliance_checklist_details, Unset):
+            compliance_checklist_details = UNSET
+        elif isinstance(self.compliance_checklist_details, OfferingComplianceChecklist):
+            compliance_checklist_details = self.compliance_checklist_details.to_dict()
+        else:
+            compliance_checklist_details = self.compliance_checklist_details
+
         profile_uuid: Union[None, Unset, str]
         if isinstance(self.profile_uuid, Unset):
             profile_uuid = UNSET
@@ -805,6 +818,8 @@ class PublicOfferingDetails:
             field_dict["effective_available_limits"] = effective_available_limits
         if compliance_checklist is not UNSET:
             field_dict["compliance_checklist"] = compliance_checklist
+        if compliance_checklist_details is not UNSET:
+            field_dict["compliance_checklist_details"] = compliance_checklist_details
         if profile_uuid is not UNSET:
             field_dict["profile_uuid"] = profile_uuid
         if profile_name is not UNSET:
@@ -848,6 +863,7 @@ class PublicOfferingDetails:
         from ..models.nested_software_catalog import NestedSoftwareCatalog
         from ..models.nested_tag import NestedTag
         from ..models.offering_account_settings import OfferingAccountSettings
+        from ..models.offering_compliance_checklist import OfferingComplianceChecklist
         from ..models.offering_component import OfferingComponent
         from ..models.offering_options import OfferingOptions
         from ..models.organization_group import OrganizationGroup
@@ -1357,6 +1373,23 @@ class PublicOfferingDetails:
 
         compliance_checklist = _parse_compliance_checklist(d.pop("compliance_checklist", UNSET))
 
+        def _parse_compliance_checklist_details(data: object) -> Union["OfferingComplianceChecklist", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                compliance_checklist_details_type_1 = OfferingComplianceChecklist.from_dict(data)
+
+                return compliance_checklist_details_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["OfferingComplianceChecklist", None, Unset], data)
+
+        compliance_checklist_details = _parse_compliance_checklist_details(d.pop("compliance_checklist_details", UNSET))
+
         def _parse_profile_uuid(data: object) -> Union[None, UUID, Unset]:
             if data is None:
                 return data
@@ -1531,6 +1564,7 @@ class PublicOfferingDetails:
             billing_type_classification=billing_type_classification,
             effective_available_limits=effective_available_limits,
             compliance_checklist=compliance_checklist,
+            compliance_checklist_details=compliance_checklist_details,
             profile_uuid=profile_uuid,
             profile_name=profile_name,
             offering_group=offering_group,

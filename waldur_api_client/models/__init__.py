@@ -1304,6 +1304,7 @@ from .offering_backend_metadata_request import OfferingBackendMetadataRequest
 from .offering_backend_metadata_request_backend_metadata import OfferingBackendMetadataRequestBackendMetadata
 from .offering_billing_mode_components import OfferingBillingModeComponents
 from .offering_billing_period_applies import OfferingBillingPeriodApplies
+from .offering_compliance_checklist import OfferingComplianceChecklist
 from .offering_compliance_checklist_update_request import OfferingComplianceChecklistUpdateRequest
 from .offering_component import OfferingComponent
 from .offering_component_limit_request import OfferingComponentLimitRequest
@@ -4384,6 +4385,7 @@ __all__ = (
     "OfferingBackendMetadataRequestBackendMetadata",
     "OfferingBillingModeComponents",
     "OfferingBillingPeriodApplies",
+    "OfferingComplianceChecklist",
     "OfferingComplianceChecklistUpdateRequest",
     "OfferingComponent",
     "OfferingComponentLimitRequest",

@@ -75,6 +75,7 @@ class ConstanceSettingsRequestForm:
         enable_issues_for_user_ssh_key_changes (Union[Unset, bool]):
         telemetry_url (Union[Unset, str]):
         telemetry_version (Union[Unset, int]):
+        telemetry_deployment_id (Union[Unset, str]):
         check_for_updates (Union[Unset, bool]):
         script_run_mode (Union[Unset, SCRIPTRUNMODEEnum]):
         docker_client (Union[Unset, str]):
@@ -414,6 +415,7 @@ class ConstanceSettingsRequestForm:
     enable_issues_for_user_ssh_key_changes: Union[Unset, bool] = UNSET
     telemetry_url: Union[Unset, str] = UNSET
     telemetry_version: Union[Unset, int] = UNSET
+    telemetry_deployment_id: Union[Unset, str] = UNSET
     check_for_updates: Union[Unset, bool] = UNSET
     script_run_mode: Union[Unset, SCRIPTRUNMODEEnum] = UNSET
     docker_client: Union[Unset, str] = UNSET
@@ -794,6 +796,8 @@ class ConstanceSettingsRequestForm:
         telemetry_url = self.telemetry_url
 
         telemetry_version = self.telemetry_version
+
+        telemetry_deployment_id = self.telemetry_deployment_id
 
         check_for_updates = self.check_for_updates
 
@@ -1754,6 +1758,8 @@ class ConstanceSettingsRequestForm:
             field_dict["TELEMETRY_URL"] = telemetry_url
         if telemetry_version is not UNSET:
             field_dict["TELEMETRY_VERSION"] = telemetry_version
+        if telemetry_deployment_id is not UNSET:
+            field_dict["TELEMETRY_DEPLOYMENT_ID"] = telemetry_deployment_id
         if check_for_updates is not UNSET:
             field_dict["CHECK_FOR_UPDATES"] = check_for_updates
         if script_run_mode is not UNSET:
@@ -2476,6 +2482,8 @@ class ConstanceSettingsRequestForm:
         telemetry_url = d.pop("TELEMETRY_URL", UNSET)
 
         telemetry_version = d.pop("TELEMETRY_VERSION", UNSET)
+
+        telemetry_deployment_id = d.pop("TELEMETRY_DEPLOYMENT_ID", UNSET)
 
         check_for_updates = d.pop("CHECK_FOR_UPDATES", UNSET)
 
@@ -3721,6 +3729,7 @@ class ConstanceSettingsRequestForm:
             enable_issues_for_user_ssh_key_changes=enable_issues_for_user_ssh_key_changes,
             telemetry_url=telemetry_url,
             telemetry_version=telemetry_version,
+            telemetry_deployment_id=telemetry_deployment_id,
             check_for_updates=check_for_updates,
             script_run_mode=script_run_mode,
             docker_client=docker_client,
