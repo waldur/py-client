@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.19.dev.20260927183254
+# Version: 8.1.3-rc.19.dev.20260928141302
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -3263,14 +3263,16 @@ Path parameters:
 GET /api/customer-quotas/
 Summary: List customer quotas
 Description: List customer quotas.
-Query parameters (1):
+Query parameters (2):
+  - customer_uuid — Limit results to the given organization
   - quota_name — Name of the quota
 
 ### customer_quotas_count
 HEAD /api/customer-quotas/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (1):
+Query parameters (2):
+  - customer_uuid — Limit results to the given organization
   - quota_name — Name of the quota
 
 ============================================================
@@ -19567,14 +19569,16 @@ Path parameters:
 GET /api/project-quotas/
 Summary: List project quotas
 Description: List project quotas.
-Query parameters (1):
+Query parameters (2):
+  - customer_uuid — Limit results to the given organization
   - quota_name — Name of the quota
 
 ### project_quotas_count
 HEAD /api/project-quotas/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (1):
+Query parameters (2):
+  - customer_uuid — Limit results to the given organization
   - quota_name — Name of the quota
 
 ============================================================
