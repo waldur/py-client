@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.19.dev.20260928141302
+# Version: 8.1.3-rc.19.dev.20260928203139
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -20448,6 +20448,12 @@ GET /api/proposal-protected-calls/dashboard-stats/
 Summary: Get call manager dashboard stats
 Description: Returns counts for the call manager dashboard: pending assessments, active calls managed by the user, and reviews on calls they manage that are due within the next few days.
 
+### proposal_protected_calls_import_call
+POST /api/proposal-protected-calls/import_call/
+Summary: Import call configuration
+Description: Create a draft call under the given call managing organisation from a document produced by export_call. References that cannot be resolved by name on this portal are skipped and reported in warnings. The import is atomic.
+Request body: yes
+
 ### proposal_protected_calls_step_checklists_list
 GET /api/proposal-protected-calls/step_checklists/
 Summary: List checklists that can be attached to a workflow step (WORKFLOW_STEP-typed)
@@ -20636,6 +20642,14 @@ Request body: yes
 POST /api/proposal-protected-calls/{uuid}/duplicate/
 Summary: Duplicate a call
 Description: Duplicate a call. The new call inherits the source call's configuration (offerings, rounds, workflow steps, resource templates, role mappings, documents, and COI/matching/assignment/applicant-visibility settings) and starts in draft state. Proposals, reviews, team permissions, and reviewer-pool m...
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_export_call
+POST /api/proposal-protected-calls/{uuid}/export_call/
+Summary: Export call configuration
+Description: Export the call's configuration as a portable document that import_call can recreate on another portal. Offerings, plans, checklists and roles are referenced by name. Proposals, reviews, reviewer pools, assignments and user references are never exported.
 Path parameters:
   - uuid
 Request body: yes

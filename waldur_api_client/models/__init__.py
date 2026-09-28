@@ -322,6 +322,12 @@ from .call_compliance_review_request import CallComplianceReviewRequest
 from .call_detach_documents_request import CallDetachDocumentsRequest
 from .call_document import CallDocument
 from .call_document_request import CallDocumentRequest
+from .call_export_parameters_request import CallExportParametersRequest
+from .call_export_response import CallExportResponse
+from .call_export_response_export_data import CallExportResponseExportData
+from .call_import_parameters_request import CallImportParametersRequest
+from .call_import_parameters_request_call_data import CallImportParametersRequestCallData
+from .call_import_response import CallImportResponse
 from .call_managing_organisation import CallManagingOrganisation
 from .call_managing_organisation_o_enum import CallManagingOrganisationOEnum
 from .call_managing_organisation_request import CallManagingOrganisationRequest
@@ -3430,6 +3436,12 @@ __all__ = (
     "CallDocument",
     "CallDocumentRequest",
     "CallerContext",
+    "CallExportParametersRequest",
+    "CallExportResponse",
+    "CallExportResponseExportData",
+    "CallImportParametersRequest",
+    "CallImportParametersRequestCallData",
+    "CallImportResponse",
     "CallManagingOrganisation",
     "CallManagingOrganisationOEnum",
     "CallManagingOrganisationRequest",
