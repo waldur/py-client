@@ -395,6 +395,7 @@ Module: `waldur_api_client.api.call_reviewer_pools`
 - `call_reviewer_pools_accept` POST `/api/call-reviewer-pools/{uuid}/accept/` — Accept a pool invitation (authenticated users only) (path: uuid | request body)
 - `call_reviewer_pools_decline` POST `/api/call-reviewer-pools/{uuid}/decline/` — Decline a pool invitation (authenticated users only) (path: uuid | request body)
 - `call_reviewer_pools_force_accept` POST `/api/call-reviewer-pools/{uuid}/force-accept/` — Force-accept a pool invitation (manager override) (path: uuid | request body)
+- `call_reviewer_pools_resend_invitation` POST `/api/call-reviewer-pools/{uuid}/resend-invitation/` — Send a pending or expired pool invitation again (path: uuid)
 
 ## call-rounds
 Module: `waldur_api_client.api.call_rounds`

@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.call_states import CallStates
+from ..models.evaluation_start_enum import EvaluationStartEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -54,6 +55,7 @@ class PublicCall:
             scores. If False, applicants only see final approval/rejection status.
         has_eligibility_restrictions (Union[Unset, bool]): Check if call has any eligibility restrictions configured.
         proposal_field_config (Union[Unset, CallProposalFieldConfig]):
+        evaluation_start (Union[Unset, EvaluationStartEnum]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -81,6 +83,7 @@ class PublicCall:
     reviews_visible_to_submitters: Union[Unset, bool] = UNSET
     has_eligibility_restrictions: Union[Unset, bool] = UNSET
     proposal_field_config: Union[Unset, "CallProposalFieldConfig"] = UNSET
+    evaluation_start: Union[Unset, EvaluationStartEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -182,6 +185,10 @@ class PublicCall:
         if not isinstance(self.proposal_field_config, Unset):
             proposal_field_config = self.proposal_field_config.to_dict()
 
+        evaluation_start: Union[Unset, str] = UNSET
+        if not isinstance(self.evaluation_start, Unset):
+            evaluation_start = self.evaluation_start.value
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -235,6 +242,8 @@ class PublicCall:
             field_dict["has_eligibility_restrictions"] = has_eligibility_restrictions
         if proposal_field_config is not UNSET:
             field_dict["proposal_field_config"] = proposal_field_config
+        if evaluation_start is not UNSET:
+            field_dict["evaluation_start"] = evaluation_start
 
         return field_dict
 
@@ -378,6 +387,13 @@ class PublicCall:
         else:
             proposal_field_config = CallProposalFieldConfig.from_dict(_proposal_field_config)
 
+        _evaluation_start = d.pop("evaluation_start", UNSET)
+        evaluation_start: Union[Unset, EvaluationStartEnum]
+        if isinstance(_evaluation_start, Unset):
+            evaluation_start = UNSET
+        else:
+            evaluation_start = EvaluationStartEnum(_evaluation_start)
+
         public_call = cls(
             url=url,
             uuid=uuid,
@@ -404,6 +420,7 @@ class PublicCall:
             reviews_visible_to_submitters=reviews_visible_to_submitters,
             has_eligibility_restrictions=has_eligibility_restrictions,
             proposal_field_config=proposal_field_config,
+            evaluation_start=evaluation_start,
         )
 
         public_call.additional_properties = d

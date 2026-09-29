@@ -5,6 +5,7 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.evaluation_start_enum import EvaluationStartEnum
 from ..models.order_author_enum import OrderAuthorEnum
 from ..types import UNSET, Unset
 
@@ -32,6 +33,7 @@ class ProtectedCallRequest:
         reviews_visible_to_submitters (Union[Unset, bool]): Whether proposal applicants can see review comments and
             scores
         proposal_field_config (Union[Unset, CallProposalFieldConfigRequest]):
+        evaluation_start (Union[Unset, EvaluationStartEnum]):
         created_by (Union[None, Unset, str]):
         reference_code (Union[Unset, str]):
         compliance_checklist (Union[None, UUID, Unset]): Compliance checklist that proposals must complete before
@@ -64,6 +66,7 @@ class ProtectedCallRequest:
     reviewer_identity_visible_to_submitters: Union[Unset, bool] = UNSET
     reviews_visible_to_submitters: Union[Unset, bool] = UNSET
     proposal_field_config: Union[Unset, "CallProposalFieldConfigRequest"] = UNSET
+    evaluation_start: Union[Unset, EvaluationStartEnum] = UNSET
     created_by: Union[None, Unset, str] = UNSET
     reference_code: Union[Unset, str] = UNSET
     compliance_checklist: Union[None, UUID, Unset] = UNSET
@@ -112,6 +115,10 @@ class ProtectedCallRequest:
         proposal_field_config: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.proposal_field_config, Unset):
             proposal_field_config = self.proposal_field_config.to_dict()
+
+        evaluation_start: Union[Unset, str] = UNSET
+        if not isinstance(self.evaluation_start, Unset):
+            evaluation_start = self.evaluation_start.value
 
         created_by: Union[None, Unset, str]
         if isinstance(self.created_by, Unset):
@@ -211,6 +218,8 @@ class ProtectedCallRequest:
             field_dict["reviews_visible_to_submitters"] = reviews_visible_to_submitters
         if proposal_field_config is not UNSET:
             field_dict["proposal_field_config"] = proposal_field_config
+        if evaluation_start is not UNSET:
+            field_dict["evaluation_start"] = evaluation_start
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if reference_code is not UNSET:
@@ -286,6 +295,13 @@ class ProtectedCallRequest:
             proposal_field_config = UNSET
         else:
             proposal_field_config = CallProposalFieldConfigRequest.from_dict(_proposal_field_config)
+
+        _evaluation_start = d.pop("evaluation_start", UNSET)
+        evaluation_start: Union[Unset, EvaluationStartEnum]
+        if isinstance(_evaluation_start, Unset):
+            evaluation_start = UNSET
+        else:
+            evaluation_start = EvaluationStartEnum(_evaluation_start)
 
         def _parse_created_by(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -407,6 +423,7 @@ class ProtectedCallRequest:
             reviewer_identity_visible_to_submitters=reviewer_identity_visible_to_submitters,
             reviews_visible_to_submitters=reviews_visible_to_submitters,
             proposal_field_config=proposal_field_config,
+            evaluation_start=evaluation_start,
             created_by=created_by,
             reference_code=reference_code,
             compliance_checklist=compliance_checklist,

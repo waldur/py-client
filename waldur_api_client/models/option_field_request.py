@@ -9,7 +9,9 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.cascade_config_request import CascadeConfigRequest
+    from ..models.component_formula_config_request import ComponentFormulaConfigRequest
     from ..models.component_multiplier_config_request import ComponentMultiplierConfigRequest
+    from ..models.component_sum_config_request import ComponentSumConfigRequest
     from ..models.k8s_default_configuration_request import K8SDefaultConfigurationRequest
     from ..models.option_validator_request import OptionValidatorRequest
     from ..models.option_visible_if_request import OptionVisibleIfRequest
@@ -33,6 +35,8 @@ class OptionFieldRequest:
         max_ (Union[Unset, int]):
         cascade_config (Union[Unset, CascadeConfigRequest]):
         component_multiplier_config (Union[Unset, ComponentMultiplierConfigRequest]):
+        component_formula_config (Union[Unset, ComponentFormulaConfigRequest]):
+        component_sum_config (Union[Unset, ComponentSumConfigRequest]):
         storage_folder_config (Union[Unset, StorageFolderConfigRequest]):
         default_configs (Union[Unset, K8SDefaultConfigurationRequest]):
         validators (Union[Unset, list['OptionValidatorRequest']]):
@@ -53,6 +57,8 @@ class OptionFieldRequest:
     max_: Union[Unset, int] = UNSET
     cascade_config: Union[Unset, "CascadeConfigRequest"] = UNSET
     component_multiplier_config: Union[Unset, "ComponentMultiplierConfigRequest"] = UNSET
+    component_formula_config: Union[Unset, "ComponentFormulaConfigRequest"] = UNSET
+    component_sum_config: Union[Unset, "ComponentSumConfigRequest"] = UNSET
     storage_folder_config: Union[Unset, "StorageFolderConfigRequest"] = UNSET
     default_configs: Union[Unset, "K8SDefaultConfigurationRequest"] = UNSET
     validators: Union[Unset, list["OptionValidatorRequest"]] = UNSET
@@ -87,6 +93,14 @@ class OptionFieldRequest:
         component_multiplier_config: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.component_multiplier_config, Unset):
             component_multiplier_config = self.component_multiplier_config.to_dict()
+
+        component_formula_config: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.component_formula_config, Unset):
+            component_formula_config = self.component_formula_config.to_dict()
+
+        component_sum_config: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.component_sum_config, Unset):
+            component_sum_config = self.component_sum_config.to_dict()
 
         storage_folder_config: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.storage_folder_config, Unset):
@@ -135,6 +149,10 @@ class OptionFieldRequest:
             field_dict["cascade_config"] = cascade_config
         if component_multiplier_config is not UNSET:
             field_dict["component_multiplier_config"] = component_multiplier_config
+        if component_formula_config is not UNSET:
+            field_dict["component_formula_config"] = component_formula_config
+        if component_sum_config is not UNSET:
+            field_dict["component_sum_config"] = component_sum_config
         if storage_folder_config is not UNSET:
             field_dict["storage_folder_config"] = storage_folder_config
         if default_configs is not UNSET:
@@ -153,7 +171,9 @@ class OptionFieldRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.cascade_config_request import CascadeConfigRequest
+        from ..models.component_formula_config_request import ComponentFormulaConfigRequest
         from ..models.component_multiplier_config_request import ComponentMultiplierConfigRequest
+        from ..models.component_sum_config_request import ComponentSumConfigRequest
         from ..models.k8s_default_configuration_request import K8SDefaultConfigurationRequest
         from ..models.option_validator_request import OptionValidatorRequest
         from ..models.option_visible_if_request import OptionVisibleIfRequest
@@ -189,6 +209,20 @@ class OptionFieldRequest:
             component_multiplier_config = UNSET
         else:
             component_multiplier_config = ComponentMultiplierConfigRequest.from_dict(_component_multiplier_config)
+
+        _component_formula_config = d.pop("component_formula_config", UNSET)
+        component_formula_config: Union[Unset, ComponentFormulaConfigRequest]
+        if isinstance(_component_formula_config, Unset):
+            component_formula_config = UNSET
+        else:
+            component_formula_config = ComponentFormulaConfigRequest.from_dict(_component_formula_config)
+
+        _component_sum_config = d.pop("component_sum_config", UNSET)
+        component_sum_config: Union[Unset, ComponentSumConfigRequest]
+        if isinstance(_component_sum_config, Unset):
+            component_sum_config = UNSET
+        else:
+            component_sum_config = ComponentSumConfigRequest.from_dict(_component_sum_config)
 
         _storage_folder_config = d.pop("storage_folder_config", UNSET)
         storage_folder_config: Union[Unset, StorageFolderConfigRequest]
@@ -233,6 +267,8 @@ class OptionFieldRequest:
             max_=max_,
             cascade_config=cascade_config,
             component_multiplier_config=component_multiplier_config,
+            component_formula_config=component_formula_config,
+            component_sum_config=component_sum_config,
             storage_folder_config=storage_folder_config,
             default_configs=default_configs,
             validators=validators,

@@ -13,6 +13,7 @@ class ProtectedCallFieldEnum(str, Enum):
     DESCRIPTION = "description"
     DOCUMENTS = "documents"
     END_DATE = "end_date"
+    EVALUATION_START = "evaluation_start"
     EXTERNAL_URL = "external_url"
     FIXED_DURATION_IN_DAYS = "fixed_duration_in_days"
     HAS_ELIGIBILITY_RESTRICTIONS = "has_eligibility_restrictions"

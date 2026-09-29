@@ -9,7 +9,9 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.cascade_config import CascadeConfig
+    from ..models.component_formula_config import ComponentFormulaConfig
     from ..models.component_multiplier_config import ComponentMultiplierConfig
+    from ..models.component_sum_config import ComponentSumConfig
     from ..models.k8s_default_configuration import K8SDefaultConfiguration
     from ..models.option_validator import OptionValidator
     from ..models.option_visible_if import OptionVisibleIf
@@ -33,6 +35,8 @@ class OptionField:
         max_ (Union[Unset, int]):
         cascade_config (Union[Unset, CascadeConfig]):
         component_multiplier_config (Union[Unset, ComponentMultiplierConfig]):
+        component_formula_config (Union[Unset, ComponentFormulaConfig]):
+        component_sum_config (Union[Unset, ComponentSumConfig]):
         storage_folder_config (Union[Unset, StorageFolderConfig]):
         default_configs (Union[Unset, K8SDefaultConfiguration]):
         validators (Union[Unset, list['OptionValidator']]):
@@ -53,6 +57,8 @@ class OptionField:
     max_: Union[Unset, int] = UNSET
     cascade_config: Union[Unset, "CascadeConfig"] = UNSET
     component_multiplier_config: Union[Unset, "ComponentMultiplierConfig"] = UNSET
+    component_formula_config: Union[Unset, "ComponentFormulaConfig"] = UNSET
+    component_sum_config: Union[Unset, "ComponentSumConfig"] = UNSET
     storage_folder_config: Union[Unset, "StorageFolderConfig"] = UNSET
     default_configs: Union[Unset, "K8SDefaultConfiguration"] = UNSET
     validators: Union[Unset, list["OptionValidator"]] = UNSET
@@ -87,6 +93,14 @@ class OptionField:
         component_multiplier_config: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.component_multiplier_config, Unset):
             component_multiplier_config = self.component_multiplier_config.to_dict()
+
+        component_formula_config: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.component_formula_config, Unset):
+            component_formula_config = self.component_formula_config.to_dict()
+
+        component_sum_config: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.component_sum_config, Unset):
+            component_sum_config = self.component_sum_config.to_dict()
 
         storage_folder_config: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.storage_folder_config, Unset):
@@ -135,6 +149,10 @@ class OptionField:
             field_dict["cascade_config"] = cascade_config
         if component_multiplier_config is not UNSET:
             field_dict["component_multiplier_config"] = component_multiplier_config
+        if component_formula_config is not UNSET:
+            field_dict["component_formula_config"] = component_formula_config
+        if component_sum_config is not UNSET:
+            field_dict["component_sum_config"] = component_sum_config
         if storage_folder_config is not UNSET:
             field_dict["storage_folder_config"] = storage_folder_config
         if default_configs is not UNSET:
@@ -153,7 +171,9 @@ class OptionField:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.cascade_config import CascadeConfig
+        from ..models.component_formula_config import ComponentFormulaConfig
         from ..models.component_multiplier_config import ComponentMultiplierConfig
+        from ..models.component_sum_config import ComponentSumConfig
         from ..models.k8s_default_configuration import K8SDefaultConfiguration
         from ..models.option_validator import OptionValidator
         from ..models.option_visible_if import OptionVisibleIf
@@ -189,6 +209,20 @@ class OptionField:
             component_multiplier_config = UNSET
         else:
             component_multiplier_config = ComponentMultiplierConfig.from_dict(_component_multiplier_config)
+
+        _component_formula_config = d.pop("component_formula_config", UNSET)
+        component_formula_config: Union[Unset, ComponentFormulaConfig]
+        if isinstance(_component_formula_config, Unset):
+            component_formula_config = UNSET
+        else:
+            component_formula_config = ComponentFormulaConfig.from_dict(_component_formula_config)
+
+        _component_sum_config = d.pop("component_sum_config", UNSET)
+        component_sum_config: Union[Unset, ComponentSumConfig]
+        if isinstance(_component_sum_config, Unset):
+            component_sum_config = UNSET
+        else:
+            component_sum_config = ComponentSumConfig.from_dict(_component_sum_config)
 
         _storage_folder_config = d.pop("storage_folder_config", UNSET)
         storage_folder_config: Union[Unset, StorageFolderConfig]
@@ -233,6 +267,8 @@ class OptionField:
             max_=max_,
             cascade_config=cascade_config,
             component_multiplier_config=component_multiplier_config,
+            component_formula_config=component_formula_config,
+            component_sum_config=component_sum_config,
             storage_folder_config=storage_folder_config,
             default_configs=default_configs,
             validators=validators,

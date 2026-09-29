@@ -490,10 +490,16 @@ from .complete_workflow_step_request import CompleteWorkflowStepRequest
 from .complete_workflow_step_response import CompleteWorkflowStepResponse
 from .compliance_overview import ComplianceOverview
 from .component_activity import ComponentActivity
+from .component_formula_config import ComponentFormulaConfig
+from .component_formula_config_request import ComponentFormulaConfigRequest
+from .component_formula_target import ComponentFormulaTarget
+from .component_formula_target_request import ComponentFormulaTargetRequest
 from .component_multiplier_config import ComponentMultiplierConfig
 from .component_multiplier_config_request import ComponentMultiplierConfigRequest
 from .component_stats import ComponentStats
 from .component_stats_per_offering import ComponentStatsPerOffering
+from .component_sum_config import ComponentSumConfig
+from .component_sum_config_request import ComponentSumConfigRequest
 from .component_usage import ComponentUsage
 from .component_usage_create_request import ComponentUsageCreateRequest
 from .component_usage_field_enum import ComponentUsageFieldEnum
@@ -759,6 +765,7 @@ from .endpoint_uuid_request import EndpointUUIDRequest
 from .entity_type_enum import EntityTypeEnum
 from .escalate_issue_request import EscalateIssueRequest
 from .ethertype_enum import EthertypeEnum
+from .evaluation_start_enum import EvaluationStartEnum
 from .event import Event
 from .event_consumer import EventConsumer
 from .event_consumer_registration_request import EventConsumerRegistrationRequest
@@ -3603,10 +3610,16 @@ __all__ = (
     "CompleteWorkflowStepResponse",
     "ComplianceOverview",
     "ComponentActivity",
+    "ComponentFormulaConfig",
+    "ComponentFormulaConfigRequest",
+    "ComponentFormulaTarget",
+    "ComponentFormulaTargetRequest",
     "ComponentMultiplierConfig",
     "ComponentMultiplierConfigRequest",
     "ComponentStats",
     "ComponentStatsPerOffering",
+    "ComponentSumConfig",
+    "ComponentSumConfigRequest",
     "ComponentsUsageStats",
     "ComponentsUsageStatsPerOffering",
     "ComponentUsage",
@@ -3864,6 +3877,7 @@ __all__ = (
     "EntityTypeEnum",
     "EscalateIssueRequest",
     "EthertypeEnum",
+    "EvaluationStartEnum",
     "Event",
     "EventConsumer",
     "EventConsumerRegistrationRequest",

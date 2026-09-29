@@ -21,7 +21,6 @@ class ProposalReviewRequest:
         comment_project_title (Union[None, Unset, str]):
         comment_project_summary (Union[None, Unset, str]):
         comment_project_description (Union[None, Unset, str]):
-        comment_project_duration (Union[None, Unset, str]):
         comment_project_supporting_documentation (Union[None, Unset, str]):
         comment_resource_requests (Union[None, Unset, str]):
         comment_team (Union[None, Unset, str]):
@@ -35,7 +34,6 @@ class ProposalReviewRequest:
     comment_project_title: Union[None, Unset, str] = UNSET
     comment_project_summary: Union[None, Unset, str] = UNSET
     comment_project_description: Union[None, Unset, str] = UNSET
-    comment_project_duration: Union[None, Unset, str] = UNSET
     comment_project_supporting_documentation: Union[None, Unset, str] = UNSET
     comment_resource_requests: Union[None, Unset, str] = UNSET
     comment_team: Union[None, Unset, str] = UNSET
@@ -69,12 +67,6 @@ class ProposalReviewRequest:
             comment_project_description = UNSET
         else:
             comment_project_description = self.comment_project_description
-
-        comment_project_duration: Union[None, Unset, str]
-        if isinstance(self.comment_project_duration, Unset):
-            comment_project_duration = UNSET
-        else:
-            comment_project_duration = self.comment_project_duration
 
         comment_project_supporting_documentation: Union[None, Unset, str]
         if isinstance(self.comment_project_supporting_documentation, Unset):
@@ -115,8 +107,6 @@ class ProposalReviewRequest:
             field_dict["comment_project_summary"] = comment_project_summary
         if comment_project_description is not UNSET:
             field_dict["comment_project_description"] = comment_project_description
-        if comment_project_duration is not UNSET:
-            field_dict["comment_project_duration"] = comment_project_duration
         if comment_project_supporting_documentation is not UNSET:
             field_dict["comment_project_supporting_documentation"] = comment_project_supporting_documentation
         if comment_resource_requests is not UNSET:
@@ -166,15 +156,6 @@ class ProposalReviewRequest:
 
         comment_project_description = _parse_comment_project_description(d.pop("comment_project_description", UNSET))
 
-        def _parse_comment_project_duration(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        comment_project_duration = _parse_comment_project_duration(d.pop("comment_project_duration", UNSET))
-
         def _parse_comment_project_supporting_documentation(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -213,7 +194,6 @@ class ProposalReviewRequest:
             comment_project_title=comment_project_title,
             comment_project_summary=comment_project_summary,
             comment_project_description=comment_project_description,
-            comment_project_duration=comment_project_duration,
             comment_project_supporting_documentation=comment_project_supporting_documentation,
             comment_resource_requests=comment_resource_requests,
             comment_team=comment_team,
