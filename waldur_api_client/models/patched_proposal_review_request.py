@@ -22,6 +22,8 @@ class PatchedProposalReviewRequest:
         comment_project_supporting_documentation (Union[None, Unset, str]):
         comment_resource_requests (Union[None, Unset, str]):
         comment_team (Union[None, Unset, str]):
+        override_workload_limit (Union[Unset, bool]): Create the review even if this takes the reviewer above their
+            maximum number of open assignments in the call's reviewer pool. The override is logged.
     """
 
     summary_score: Union[Unset, int] = UNSET
@@ -33,6 +35,7 @@ class PatchedProposalReviewRequest:
     comment_project_supporting_documentation: Union[None, Unset, str] = UNSET
     comment_resource_requests: Union[None, Unset, str] = UNSET
     comment_team: Union[None, Unset, str] = UNSET
+    override_workload_limit: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -78,6 +81,8 @@ class PatchedProposalReviewRequest:
         else:
             comment_team = self.comment_team
 
+        override_workload_limit = self.override_workload_limit
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -99,6 +104,8 @@ class PatchedProposalReviewRequest:
             field_dict["comment_resource_requests"] = comment_resource_requests
         if comment_team is not UNSET:
             field_dict["comment_team"] = comment_team
+        if override_workload_limit is not UNSET:
+            field_dict["override_workload_limit"] = override_workload_limit
 
         return field_dict
 
@@ -167,6 +174,8 @@ class PatchedProposalReviewRequest:
 
         comment_team = _parse_comment_team(d.pop("comment_team", UNSET))
 
+        override_workload_limit = d.pop("override_workload_limit", UNSET)
+
         patched_proposal_review_request = cls(
             summary_score=summary_score,
             summary_public_comment=summary_public_comment,
@@ -177,6 +186,7 @@ class PatchedProposalReviewRequest:
             comment_project_supporting_documentation=comment_project_supporting_documentation,
             comment_resource_requests=comment_resource_requests,
             comment_team=comment_team,
+            override_workload_limit=override_workload_limit,
         )
 
         patched_proposal_review_request.additional_properties = d

@@ -325,6 +325,7 @@ class EventMetadataResponseEventGroupsAdditionalPropertyItem(str, Enum):
     RESOURCE_UPDATE_SECURITY_GROUPS_SUCCEEDED = "resource_update_security_groups_succeeded"
     RESOURCE_UPDATE_SUCCEEDED = "resource_update_succeeded"
     RESTRICT_MEMBERS = "restrict_members"
+    REVIEWER_WORKLOAD_LIMIT_OVERRIDDEN = "reviewer_workload_limit_overridden"
     REVIEW_CANCELED = "review_canceled"
     ROLE_CLONED = "role_cloned"
     ROLE_CONCEALED = "role_concealed"

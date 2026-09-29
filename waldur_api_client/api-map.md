@@ -3219,6 +3219,8 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_detach_documents` POST `/api/proposal-protected-calls/{uuid}/detach_documents/` — Detach documents from call (path: uuid | request body)
 - `proposal_protected_calls_detect_conflicts` POST `/api/proposal-protected-calls/{uuid}/detect-conflicts/` — Trigger automated COI detection for all reviewer-proposal pairs (path: uuid | request body)
 - `proposal_protected_calls_duplicate` POST `/api/proposal-protected-calls/{uuid}/duplicate/` — Duplicate a call (path: uuid | request body)
+- `proposal_protected_calls_export_proposals` GET `/api/proposal-protected-calls/{uuid}/export-proposals/` — Download the call's proposals as CSV, one row per proposal, with one column per requested offering component (path: uuid | 4 query params)
+- `proposal_protected_calls_export_reviews` GET `/api/proposal-protected-calls/{uuid}/export-reviews/` — Download the call's reviews as CSV, one row per review (path: uuid | 5 query params)
 - `proposal_protected_calls_export_call` POST `/api/proposal-protected-calls/{uuid}/export_call/` — Export call configuration (path: uuid | request body)
 - `proposal_protected_calls_generate_assignments` POST `/api/proposal-protected-calls/{uuid}/generate-assignments/` — Generate assignment batches for reviewers (path: uuid | request body)
 - `proposal_protected_calls_generate_suggestions` POST `/api/proposal-protected-calls/{uuid}/generate-suggestions/` — Generate reviewer suggestions with configurable matching source (path: uuid | request body)

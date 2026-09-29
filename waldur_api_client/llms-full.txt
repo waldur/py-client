@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.19.dev.20260929185658
+# Version: 8.1.3-rc.19.dev.20260929194844
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -20652,6 +20652,31 @@ Description: Duplicate a call. The new call inherits the source call's configura
 Path parameters:
   - uuid
 Request body: yes
+
+### proposal_protected_calls_export_proposals
+GET /api/proposal-protected-calls/{uuid}/export-proposals/
+Summary: Download the call's proposals as CSV, one row per proposal, with one column per requested offering component
+Description: Download the call's proposals as CSV, one row per proposal, with one column per requested offering component. The column set is derived from the call, so it is the same for every row and between exports of the same call.
+Path parameters:
+  - uuid
+Query parameters (4):
+  - created_by_uuid — Limit the export to one applicant.
+  - proposal_name — Limit the export to proposals whose name contains this text — the list's search box. Named proposal_name because a bare `name` is read by the call's own filterset.
+  - proposal_state — Limit the export to proposals in these states.
+  - round_uuid — Limit the export to one round.
+
+### proposal_protected_calls_export_reviews
+GET /api/proposal-protected-calls/{uuid}/export-reviews/
+Summary: Download the call's reviews as CSV, one row per review
+Description: Download the call's reviews as CSV, one row per review. The reviewer's private comment is never included: the export is open to call managers, and the review API keeps that field from them.
+Path parameters:
+  - uuid
+Query parameters (5):
+  - proposal_name — Limit the export to proposals whose name contains this text — the list's search box. Named proposal_name because a bare `name` is read by the call's own filterset.
+  - proposal_uuid — Limit the export to one proposal.
+  - review_state — Limit the export to reviews in these states.
+  - reviewer_uuid — Limit the export to one reviewer.
+  - round_uuid — Limit the export to one round.
 
 ### proposal_protected_calls_export_call
 POST /api/proposal-protected-calls/{uuid}/export_call/
