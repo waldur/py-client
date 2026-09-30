@@ -41,6 +41,8 @@ class OptionFieldRequest:
         default_configs (Union[Unset, K8SDefaultConfigurationRequest]):
         validators (Union[Unset, list['OptionValidatorRequest']]):
         visible_if (Union[Unset, OptionVisibleIfRequest]):
+        unique (Union[Unset, bool]): The value must not be used by another non-terminated resource of this offering.
+            Only for string, text, integer and select_string options.
         pattern (Union[Unset, str]): Regular expression the whole value must match. Only for string and text options.
             Use syntax common to Python and JavaScript, so the order form can check it too; \w, \d, \s and \b match ASCII
             characters only. Blank means no pattern.
@@ -63,6 +65,7 @@ class OptionFieldRequest:
     default_configs: Union[Unset, "K8SDefaultConfigurationRequest"] = UNSET
     validators: Union[Unset, list["OptionValidatorRequest"]] = UNSET
     visible_if: Union[Unset, "OptionVisibleIfRequest"] = UNSET
+    unique: Union[Unset, bool] = UNSET
     pattern: Union[Unset, str] = UNSET
     pattern_error: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -121,6 +124,8 @@ class OptionFieldRequest:
         if not isinstance(self.visible_if, Unset):
             visible_if = self.visible_if.to_dict()
 
+        unique = self.unique
+
         pattern = self.pattern
 
         pattern_error = self.pattern_error
@@ -161,6 +166,8 @@ class OptionFieldRequest:
             field_dict["validators"] = validators
         if visible_if is not UNSET:
             field_dict["visible_if"] = visible_if
+        if unique is not UNSET:
+            field_dict["unique"] = unique
         if pattern is not UNSET:
             field_dict["pattern"] = pattern
         if pattern_error is not UNSET:
@@ -252,6 +259,8 @@ class OptionFieldRequest:
         else:
             visible_if = OptionVisibleIfRequest.from_dict(_visible_if)
 
+        unique = d.pop("unique", UNSET)
+
         pattern = d.pop("pattern", UNSET)
 
         pattern_error = d.pop("pattern_error", UNSET)
@@ -273,6 +282,7 @@ class OptionFieldRequest:
             default_configs=default_configs,
             validators=validators,
             visible_if=visible_if,
+            unique=unique,
             pattern=pattern,
             pattern_error=pattern_error,
         )
