@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.19.dev.20260930115512
+# Version: 8.1.3-rc.20.dev.20261001122342
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -14497,7 +14497,7 @@ Request body: yes
 ### matrix_rooms_eligible_projects_list
 GET /api/matrix/rooms/eligible_projects/
 Summary: List projects the caller can create a Matrix room for
-Description: Returns projects where the caller is customer owner (staff sees all) and no MatrixRoom row exists yet. Existing archived rooms still block creation, so projects with any room are excluded.
+Description: Returns projects where the caller holds MATRIX_ROOM.CREATE on the project or its organization (staff and support see all) and no MatrixRoom row exists yet. Existing archived rooms still block creation, so projects with any room are excluded.
 Query parameters (4):
   - customer_uuid — Limit results to projects under this customer.
   - member — Only rooms the current user is a member of
@@ -20045,7 +20045,8 @@ Path parameters:
 
 ### proposal_proposals_list
 GET /api/proposal-proposals/
-Query parameters (10):
+Query parameters (11):
+  - as_role — Only proposals the current user holds this role on
   - call_uuid
   - created_by_uuid
   - my_proposals
@@ -20061,7 +20062,8 @@ Query parameters (10):
 HEAD /api/proposal-proposals/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (10):
+Query parameters (11):
+  - as_role — Only proposals the current user holds this role on
   - call_uuid
   - created_by_uuid
   - my_proposals
@@ -20291,7 +20293,8 @@ Summary: List a workflow step's checklist answers grouped by reviewer, for the t
 Description: List a workflow step's checklist answers grouped by reviewer, for the threaded technical-assessment view. Each technical reviewer (offering manager) answers the same checklist; this returns every reviewer's decision and comment.
 Path parameters:
   - uuid
-Query parameters (11):
+Query parameters (12):
+  - as_role — Only proposals the current user holds this role on
   - call_uuid
   - created_by_uuid
   - my_proposals
@@ -20361,7 +20364,8 @@ Summary: List all workflow step instances for this proposal
 Description: List all workflow step instances for this proposal.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
+  - as_role — Only proposals the current user holds this role on
   - call_uuid
   - created_by_uuid
   - my_proposals

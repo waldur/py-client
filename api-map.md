@@ -3149,8 +3149,8 @@ Module: `waldur_api_client.api.proposal_my_requested_resources`
 ## proposal-proposals
 Module: `waldur_api_client.api.proposal_proposals`
 
-- `proposal_proposals_list` GET `/api/proposal-proposals/` (10 query params)
-- `proposal_proposals_count` HEAD `/api/proposal-proposals/` — Get number of items in the collection matching the request parameters (10 query params)
+- `proposal_proposals_list` GET `/api/proposal-proposals/` (11 query params)
+- `proposal_proposals_count` HEAD `/api/proposal-proposals/` — Get number of items in the collection matching the request parameters (11 query params)
 - `proposal_proposals_create` POST `/api/proposal-proposals/` (request body)
 - `proposal_proposals_checklist_template_retrieve` GET `/api/proposal-proposals/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `proposal_proposals_checklist_template_count` HEAD `/api/proposal-proposals/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
@@ -3178,14 +3178,14 @@ Module: `waldur_api_client.api.proposal_proposals`
 - `proposal_proposals_resources_destroy` DELETE `/api/proposal-proposals/{uuid}/resources/{obj_uuid}/` (path: obj_uuid, uuid)
 - `proposal_proposals_resource_purchase_order_set` POST `/api/proposal-proposals/{uuid}/resources/{obj_uuid}/purchase_order/` — Upload or replace the purchase order of a requested resource (path: obj_uuid, uuid | request body)
 - `proposal_proposals_resource_purchase_order_delete` DELETE `/api/proposal-proposals/{uuid}/resources/{obj_uuid}/purchase_order/` — Remove the purchase order of a requested resource (path: obj_uuid, uuid)
-- `proposal_proposals_step_checklist_responses_list` GET `/api/proposal-proposals/{uuid}/step-checklist-responses/` — List a workflow step's checklist answers grouped by reviewer, for the threaded technical-assessment view (path: uuid | 11 query params)
+- `proposal_proposals_step_checklist_responses_list` GET `/api/proposal-proposals/{uuid}/step-checklist-responses/` — List a workflow step's checklist answers grouped by reviewer, for the threaded technical-assessment view (path: uuid | 12 query params)
 - `proposal_proposals_step_checklist_retrieve` GET `/api/proposal-proposals/{uuid}/step-checklist/` — Get a workflow step's checklist with questions and answers (path: uuid | 2 query params)
 - `proposal_proposals_submit_step_checklist_answers` POST `/api/proposal-proposals/{uuid}/submit-step-checklist-answers/` — Submit answers to a workflow step's checklist (path: uuid | 1 query param | request body)
 - `proposal_proposals_submit` POST `/api/proposal-proposals/{uuid}/submit/` — Submit a proposal (path: uuid)
 - `proposal_proposals_submit_answers` POST `/api/proposal-proposals/{uuid}/submit_answers/` — Submit checklist answers (path: uuid | request body)
 - `proposal_proposals_update_project_details` POST `/api/proposal-proposals/{uuid}/update_project_details/` — Update project details of a proposal (path: uuid | request body)
 - `proposal_proposals_update_user` POST `/api/proposal-proposals/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
-- `proposal_proposals_workflow_states_list` GET `/api/proposal-proposals/{uuid}/workflow_states/` — List all workflow step instances for this proposal (path: uuid | 10 query params)
+- `proposal_proposals_workflow_states_list` GET `/api/proposal-proposals/{uuid}/workflow_states/` — List all workflow step instances for this proposal (path: uuid | 11 query params)
 
 ## proposal-protected-calls
 Module: `waldur_api_client.api.proposal_protected_calls`

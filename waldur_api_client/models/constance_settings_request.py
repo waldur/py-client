@@ -359,6 +359,7 @@ class ConstanceSettingsRequest:
         posix_id_pool_utilization_threshold (Union[Unset, int]):
         affiliates_enabled (Union[Unset, bool]):
         matrix_enabled (Union[Unset, bool]):
+        matrix_auto_create_project_rooms (Union[Unset, bool]):
         matrix_homeserver_url (Union[Unset, str]):
         matrix_homeserver_public_url (Union[Unset, str]):
         matrix_homeserver_domain (Union[Unset, str]):
@@ -699,6 +700,7 @@ class ConstanceSettingsRequest:
     posix_id_pool_utilization_threshold: Union[Unset, int] = UNSET
     affiliates_enabled: Union[Unset, bool] = UNSET
     matrix_enabled: Union[Unset, bool] = UNSET
+    matrix_auto_create_project_rooms: Union[Unset, bool] = UNSET
     matrix_homeserver_url: Union[Unset, str] = UNSET
     matrix_homeserver_public_url: Union[Unset, str] = UNSET
     matrix_homeserver_domain: Union[Unset, str] = UNSET
@@ -1647,6 +1649,8 @@ class ConstanceSettingsRequest:
 
         matrix_enabled = self.matrix_enabled
 
+        matrix_auto_create_project_rooms = self.matrix_auto_create_project_rooms
+
         matrix_homeserver_url = self.matrix_homeserver_url
 
         matrix_homeserver_public_url = self.matrix_homeserver_public_url
@@ -2338,6 +2342,8 @@ class ConstanceSettingsRequest:
             field_dict["AFFILIATES_ENABLED"] = affiliates_enabled
         if matrix_enabled is not UNSET:
             field_dict["MATRIX_ENABLED"] = matrix_enabled
+        if matrix_auto_create_project_rooms is not UNSET:
+            field_dict["MATRIX_AUTO_CREATE_PROJECT_ROOMS"] = matrix_auto_create_project_rooms
         if matrix_homeserver_url is not UNSET:
             field_dict["MATRIX_HOMESERVER_URL"] = matrix_homeserver_url
         if matrix_homeserver_public_url is not UNSET:
@@ -3651,6 +3657,8 @@ class ConstanceSettingsRequest:
 
         matrix_enabled = d.pop("MATRIX_ENABLED", UNSET)
 
+        matrix_auto_create_project_rooms = d.pop("MATRIX_AUTO_CREATE_PROJECT_ROOMS", UNSET)
+
         matrix_homeserver_url = d.pop("MATRIX_HOMESERVER_URL", UNSET)
 
         matrix_homeserver_public_url = d.pop("MATRIX_HOMESERVER_PUBLIC_URL", UNSET)
@@ -4011,6 +4019,7 @@ class ConstanceSettingsRequest:
             posix_id_pool_utilization_threshold=posix_id_pool_utilization_threshold,
             affiliates_enabled=affiliates_enabled,
             matrix_enabled=matrix_enabled,
+            matrix_auto_create_project_rooms=matrix_auto_create_project_rooms,
             matrix_homeserver_url=matrix_homeserver_url,
             matrix_homeserver_public_url=matrix_homeserver_public_url,
             matrix_homeserver_domain=matrix_homeserver_domain,
