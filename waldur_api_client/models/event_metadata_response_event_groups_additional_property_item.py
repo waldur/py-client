@@ -89,6 +89,7 @@ class EventMetadataResponseEventGroupsAdditionalPropertyItem(str, Enum):
     MARKETPLACE_PLAN_CREATED = "marketplace_plan_created"
     MARKETPLACE_PLAN_DELETED = "marketplace_plan_deleted"
     MARKETPLACE_PLAN_UPDATED = "marketplace_plan_updated"
+    MARKETPLACE_PROVIDER_PROJECT_GROUP_GID_UPDATED = "marketplace_provider_project_group_gid_updated"
     MARKETPLACE_RESOURCE_API_KEY_REVEALED = "marketplace_resource_api_key_revealed"
     MARKETPLACE_RESOURCE_API_KEY_ROTATED = "marketplace_resource_api_key_rotated"
     MARKETPLACE_RESOURCE_CREATE_CANCELED = "marketplace_resource_create_canceled"

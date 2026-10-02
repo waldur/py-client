@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -17,6 +17,7 @@ class AccountOptionsPreview:
     """
     Attributes:
         account_options (AccountOptionsVersions):
+        warnings (list[str]): Things to settle before saving, e.g. a missing group range.
         offerings (list['OfferingAccountPreview']):
         renamed (int):
         provider_accounts_kept (int):
@@ -26,6 +27,7 @@ class AccountOptionsPreview:
     """
 
     account_options: "AccountOptionsVersions"
+    warnings: list[str]
     offerings: list["OfferingAccountPreview"]
     renamed: int
     provider_accounts_kept: int
@@ -35,6 +37,8 @@ class AccountOptionsPreview:
 
     def to_dict(self) -> dict[str, Any]:
         account_options = self.account_options.to_dict()
+
+        warnings = self.warnings
 
         offerings = []
         for offerings_item_data in self.offerings:
@@ -54,6 +58,7 @@ class AccountOptionsPreview:
         field_dict.update(
             {
                 "account_options": account_options,
+                "warnings": warnings,
                 "offerings": offerings,
                 "renamed": renamed,
                 "provider_accounts_kept": provider_accounts_kept,
@@ -72,6 +77,8 @@ class AccountOptionsPreview:
         d = dict(src_dict)
         account_options = AccountOptionsVersions.from_dict(d.pop("account_options"))
 
+        warnings = cast(list[str], d.pop("warnings"))
+
         offerings = []
         _offerings = d.pop("offerings")
         for offerings_item_data in _offerings:
@@ -89,6 +96,7 @@ class AccountOptionsPreview:
 
         account_options_preview = cls(
             account_options=account_options,
+            warnings=warnings,
             offerings=offerings,
             renamed=renamed,
             provider_accounts_kept=provider_accounts_kept,

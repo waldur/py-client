@@ -1951,6 +1951,18 @@ Module: `waldur_api_client.api.marketplace_service_provider_accounts`
 - `marketplace_service_provider_accounts_partial_update` PATCH `/api/marketplace-service-provider-accounts/{uuid}/` — Update a service provider account (path: uuid | request body)
 - `marketplace_service_provider_accounts_destroy` DELETE `/api/marketplace-service-provider-accounts/{uuid}/` — Delete a service provider account (path: uuid)
 
+## marketplace-service-provider-project-groups
+Module: `waldur_api_client.api.marketplace_service_provider_project_groups`
+
+- `marketplace_service_provider_project_groups_list` GET `/api/marketplace-service-provider-project-groups/` (14 query params)
+- `marketplace_service_provider_project_groups_count` HEAD `/api/marketplace-service-provider-project-groups/` — Get number of items in the collection matching the request parameters (14 query params)
+- `marketplace_service_provider_project_groups_create` POST `/api/marketplace-service-provider-project-groups/` — Adopt a POSIX project group with a given GID (request body)
+- `marketplace_service_provider_project_groups_adoptable_projects_list` GET `/api/marketplace-service-provider-project-groups/adoptable_projects/` — Projects a group can be adopted for (2 query params)
+- `marketplace_service_provider_project_groups_adoptable_projects_count` HEAD `/api/marketplace-service-provider-project-groups/adoptable_projects/` — Projects a group can be adopted for (2 query params)
+- `marketplace_service_provider_project_groups_import_groups` POST `/api/marketplace-service-provider-project-groups/import_groups/` — Adopt several POSIX project groups at once (14 query params | request body)
+- `marketplace_service_provider_project_groups_retrieve` GET `/api/marketplace-service-provider-project-groups/{uuid}/` (path: uuid)
+- `marketplace_service_provider_project_groups_set_gid` POST `/api/marketplace-service-provider-project-groups/{uuid}/set_gid/` — Set the GID of a POSIX project group (path: uuid | request body)
+
 ## marketplace-service-providers
 Module: `waldur_api_client.api.marketplace_service_providers`
 

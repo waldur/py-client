@@ -15,10 +15,8 @@ from .accessor_type_enum import AccessorTypeEnum
 from .accessor_user import AccessorUser
 from .account_example import AccountExample
 from .account_name_generation_policy_enum import AccountNameGenerationPolicyEnum
-from .account_options import AccountOptions
 from .account_options_change_request import AccountOptionsChangeRequest
 from .account_options_preview import AccountOptionsPreview
-from .account_options_request import AccountOptionsRequest
 from .account_options_versions import AccountOptionsVersions
 from .account_rename import AccountRename
 from .account_scope import AccountScope
@@ -46,6 +44,7 @@ from .administrative_access import AdministrativeAccess
 from .adopt_provider_accounts_request import AdoptProviderAccountsRequest
 from .adopt_provider_accounts_request_resolutions import AdoptProviderAccountsRequestResolutions
 from .adopt_provider_accounts_response import AdoptProviderAccountsResponse
+from .adoptable_project import AdoptableProject
 from .affiliate_earnings import AffiliateEarnings
 from .affiliate_earnings_month import AffiliateEarningsMonth
 from .affiliate_fee_accrual import AffiliateFeeAccrual
@@ -1487,6 +1486,7 @@ from .offering_user_o_enum import OfferingUserOEnum
 from .offering_user_posix_allocation import OfferingUserPosixAllocation
 from .offering_user_posix_attributes_request import OfferingUserPosixAttributesRequest
 from .offering_user_posix_group import OfferingUserPosixGroup
+from .offering_user_posix_group_kind_enum import OfferingUserPosixGroupKindEnum
 from .offering_user_posix_update_response import OfferingUserPosixUpdateResponse
 from .offering_user_request import OfferingUserRequest
 from .offering_user_service_provider_comment import OfferingUserServiceProviderComment
@@ -2116,6 +2116,8 @@ from .project_estimated_cost_policy_options import ProjectEstimatedCostPolicyOpt
 from .project_estimated_cost_policy_request import ProjectEstimatedCostPolicyRequest
 from .project_estimated_cost_policy_request_options import ProjectEstimatedCostPolicyRequestOptions
 from .project_field_enum import ProjectFieldEnum
+from .project_group_entry_request import ProjectGroupEntryRequest
+from .project_group_gid_request import ProjectGroupGidRequest
 from .project_hyperlink_request import ProjectHyperlinkRequest
 from .project_info import ProjectInfo
 from .project_info_request import ProjectInfoRequest
@@ -2215,6 +2217,8 @@ from .protected_proposal_list import ProtectedProposalList
 from .protected_proposal_list_request import ProtectedProposalListRequest
 from .protected_round import ProtectedRound
 from .protected_round_request import ProtectedRoundRequest
+from .provider_account_options import ProviderAccountOptions
+from .provider_account_options_request import ProviderAccountOptionsRequest
 from .provider_assign_request import ProviderAssignRequest
 from .provider_canned_response import ProviderCannedResponse
 from .provider_canned_response_request import ProviderCannedResponseRequest
@@ -2755,6 +2759,11 @@ from .service_provider_compliance_overview import ServiceProviderComplianceOverv
 from .service_provider_field_enum import ServiceProviderFieldEnum
 from .service_provider_offering_user_compliance import ServiceProviderOfferingUserCompliance
 from .service_provider_offering_user_compliance_state_enum import ServiceProviderOfferingUserComplianceStateEnum
+from .service_provider_project_group import ServiceProviderProjectGroup
+from .service_provider_project_group_create_request import ServiceProviderProjectGroupCreateRequest
+from .service_provider_project_group_import_request import ServiceProviderProjectGroupImportRequest
+from .service_provider_project_group_o_enum import ServiceProviderProjectGroupOEnum
+from .service_provider_project_group_offering import ServiceProviderProjectGroupOffering
 from .service_provider_request import ServiceProviderRequest
 from .service_provider_request_form import ServiceProviderRequestForm
 from .service_provider_request_multipart import ServiceProviderRequestMultipart
@@ -3140,10 +3149,8 @@ __all__ = (
     "AccessTypeEnum",
     "AccountExample",
     "AccountNameGenerationPolicyEnum",
-    "AccountOptions",
     "AccountOptionsChangeRequest",
     "AccountOptionsPreview",
-    "AccountOptionsRequest",
     "AccountOptionsVersions",
     "AccountRename",
     "AccountScope",
@@ -3168,6 +3175,7 @@ __all__ = (
     "AdminAnnouncementTypeEnum",
     "AdministrativeAccess",
     "AdminUser",
+    "AdoptableProject",
     "AdoptProviderAccountsRequest",
     "AdoptProviderAccountsRequestResolutions",
     "AdoptProviderAccountsResponse",
@@ -4576,6 +4584,7 @@ __all__ = (
     "OfferingUserPosixAllocation",
     "OfferingUserPosixAttributesRequest",
     "OfferingUserPosixGroup",
+    "OfferingUserPosixGroupKindEnum",
     "OfferingUserPosixUpdateResponse",
     "OfferingUserRequest",
     "OfferingUserServiceProviderComment",
@@ -5149,6 +5158,8 @@ __all__ = (
     "ProjectEstimatedCostPolicyRequest",
     "ProjectEstimatedCostPolicyRequestOptions",
     "ProjectFieldEnum",
+    "ProjectGroupEntryRequest",
+    "ProjectGroupGidRequest",
     "ProjectHyperlinkRequest",
     "ProjectInfo",
     "ProjectInfoRequest",
@@ -5238,6 +5249,8 @@ __all__ = (
     "ProtectedProposalListRequest",
     "ProtectedRound",
     "ProtectedRoundRequest",
+    "ProviderAccountOptions",
+    "ProviderAccountOptionsRequest",
     "ProviderAssignRequest",
     "ProviderCannedResponse",
     "ProviderCannedResponseRequest",
@@ -5765,6 +5778,11 @@ __all__ = (
     "ServiceProviderFieldEnum",
     "ServiceProviderOfferingUserCompliance",
     "ServiceProviderOfferingUserComplianceStateEnum",
+    "ServiceProviderProjectGroup",
+    "ServiceProviderProjectGroupCreateRequest",
+    "ServiceProviderProjectGroupImportRequest",
+    "ServiceProviderProjectGroupOEnum",
+    "ServiceProviderProjectGroupOffering",
     "ServiceProviderRequest",
     "ServiceProviderRequestForm",
     "ServiceProviderRequestMultipart",

@@ -10,8 +10,8 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.account_options import AccountOptions
     from ..models.organization_group import OrganizationGroup
+    from ..models.provider_account_options import ProviderAccountOptions
 
 
 T = TypeVar("T", bound="GoogleCredentials")
@@ -39,7 +39,7 @@ class GoogleCredentials:
         offering_count (Union[Unset, int]):
         allowed_domains (Union[Unset, list[str]]): List of allowed domains for offering endpoints. Only staff can modify
             this field.
-        account_options (Union[Unset, AccountOptions]):
+        account_options (Union[Unset, ProviderAccountOptions]):
         calendar_token (Union[Unset, str]):
         calendar_refresh_token (Union[Unset, str]):
         google_auth_url (Union[Unset, str]):
@@ -62,7 +62,7 @@ class GoogleCredentials:
     organization_groups: Union[Unset, list["OrganizationGroup"]] = UNSET
     offering_count: Union[Unset, int] = UNSET
     allowed_domains: Union[Unset, list[str]] = UNSET
-    account_options: Union[Unset, "AccountOptions"] = UNSET
+    account_options: Union[Unset, "ProviderAccountOptions"] = UNSET
     calendar_token: Union[Unset, str] = UNSET
     calendar_refresh_token: Union[Unset, str] = UNSET
     google_auth_url: Union[Unset, str] = UNSET
@@ -180,8 +180,8 @@ class GoogleCredentials:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.account_options import AccountOptions
         from ..models.organization_group import OrganizationGroup
+        from ..models.provider_account_options import ProviderAccountOptions
 
         d = dict(src_dict)
         url = d.pop("url", UNSET)
@@ -246,11 +246,11 @@ class GoogleCredentials:
         allowed_domains = cast(list[str], d.pop("allowed_domains", UNSET))
 
         _account_options = d.pop("account_options", UNSET)
-        account_options: Union[Unset, AccountOptions]
+        account_options: Union[Unset, ProviderAccountOptions]
         if isinstance(_account_options, Unset):
             account_options = UNSET
         else:
-            account_options = AccountOptions.from_dict(_account_options)
+            account_options = ProviderAccountOptions.from_dict(_account_options)
 
         calendar_token = d.pop("calendar_token", UNSET)
 

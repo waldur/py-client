@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.20.dev.20261002114344
+# Version: 8.1.3-rc.20.dev.20261002124752
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -12053,6 +12053,104 @@ Summary: Delete a service provider account
 Description: Refused while offering accounts still read through this record.
 Path parameters:
   - uuid
+
+============================================================
+## marketplace-service-provider-project-groups  (module: waldur_api_client.api.marketplace_service_provider_project_groups)
+============================================================
+
+### marketplace_service_provider_project_groups_list
+GET /api/marketplace-service-provider-project-groups/
+Query parameters (14):
+  - created — Created after
+  - created_before — Created before
+  - customer_uuid — UUID of the project's organization
+  - gid
+  - in_use — In use
+  - modified — Modified after
+  - modified_before — Modified before
+  - name
+  - o — Ordering
+  - offering_uuid — Groups of projects with a non-terminated resource on this offering
+  - project_uuid — Project UUID
+  - provider_offering_uuid — Every group of the service provider that owns this offering
+  - query — Search by group name, project name or slug, organization name or GID
+  - service_provider_uuid — Service provider UUID
+
+### marketplace_service_provider_project_groups_count
+HEAD /api/marketplace-service-provider-project-groups/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (14):
+  - created — Created after
+  - created_before — Created before
+  - customer_uuid — UUID of the project's organization
+  - gid
+  - in_use — In use
+  - modified — Modified after
+  - modified_before — Modified before
+  - name
+  - o — Ordering
+  - offering_uuid — Groups of projects with a non-terminated resource on this offering
+  - project_uuid — Project UUID
+  - provider_offering_uuid — Every group of the service provider that owns this offering
+  - query — Search by group name, project name or slug, organization name or GID
+  - service_provider_uuid — Service provider UUID
+
+### marketplace_service_provider_project_groups_create
+POST /api/marketplace-service-provider-project-groups/
+Summary: Adopt a POSIX project group with a given GID
+Description: Create the service provider's group for a project, pinned to a GID the directory already uses. Works for a project that has no resource at the provider yet; the allocator never hands the GID out afterwards. Refused with 400 when the project already has a group (use set_gid), when another consumer...
+Request body: yes
+
+### marketplace_service_provider_project_groups_adoptable_projects_list
+GET /api/marketplace-service-provider-project-groups/adoptable_projects/
+Summary: Projects a group can be adopted for
+Description: Projects with a resource or an order, in any state, on an offering of the service provider: the projects its owners may adopt a group for. Staff may adopt for any project. Filter by name, slug or organization name with query.
+Query parameters (2):
+  - query
+  - service_provider_uuid (required)
+
+### marketplace_service_provider_project_groups_adoptable_projects_count
+HEAD /api/marketplace-service-provider-project-groups/adoptable_projects/
+Summary: Projects a group can be adopted for
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (2):
+  - query
+  - service_provider_uuid (required)
+
+### marketplace_service_provider_project_groups_import_groups
+POST /api/marketplace-service-provider-project-groups/import_groups/
+Summary: Adopt several POSIX project groups at once
+Description: Pin the groups of several projects in one step, e.g. the groups a directory held before Waldur managed it. A project without a group gets one; a project with a group has its GID set. All or nothing: any refused entry leaves every group unchanged.
+Query parameters (14):
+  - created — Created after
+  - created_before — Created before
+  - customer_uuid — UUID of the project's organization
+  - gid
+  - in_use — In use
+  - modified — Modified after
+  - modified_before — Modified before
+  - name
+  - o — Ordering
+  - offering_uuid — Groups of projects with a non-terminated resource on this offering
+  - project_uuid — Project UUID
+  - provider_offering_uuid — Every group of the service provider that owns this offering
+  - query — Search by group name, project name or slug, organization name or GID
+  - service_provider_uuid — Service provider UUID
+Request body: yes
+
+### marketplace_service_provider_project_groups_retrieve
+GET /api/marketplace-service-provider-project-groups/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_service_provider_project_groups_set_gid
+POST /api/marketplace-service-provider-project-groups/{uuid}/set_gid/
+Summary: Set the GID of a POSIX project group
+Description: Move the group to another GID, e.g. one assigned outside Waldur. The previous GID is released but never handed out again automatically, since files may still carry it; renumbering them is the operator's job. Refused with 400 on the same conditions as adopting a group. Recorded as an event with bo...
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## marketplace-service-providers  (module: waldur_api_client.api.marketplace_service_providers)

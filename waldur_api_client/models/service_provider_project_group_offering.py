@@ -1,34 +1,35 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-if TYPE_CHECKING:
-    from ..models.provider_account_options_request import ProviderAccountOptionsRequest
-
-
-T = TypeVar("T", bound="AccountOptionsChangeRequest")
+T = TypeVar("T", bound="ServiceProviderProjectGroupOffering")
 
 
 @_attrs_define
-class AccountOptionsChangeRequest:
+class ServiceProviderProjectGroupOffering:
     """
     Attributes:
-        account_options (ProviderAccountOptionsRequest):
+        uuid (str):
+        name (str):
     """
 
-    account_options: "ProviderAccountOptionsRequest"
+    uuid: str
+    name: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        account_options = self.account_options.to_dict()
+        uuid = self.uuid
+
+        name = self.name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "account_options": account_options,
+                "uuid": uuid,
+                "name": name,
             }
         )
 
@@ -36,17 +37,18 @@ class AccountOptionsChangeRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.provider_account_options_request import ProviderAccountOptionsRequest
-
         d = dict(src_dict)
-        account_options = ProviderAccountOptionsRequest.from_dict(d.pop("account_options"))
+        uuid = d.pop("uuid")
 
-        account_options_change_request = cls(
-            account_options=account_options,
+        name = d.pop("name")
+
+        service_provider_project_group_offering = cls(
+            uuid=uuid,
+            name=name,
         )
 
-        account_options_change_request.additional_properties = d
-        return account_options_change_request
+        service_provider_project_group_offering.additional_properties = d
+        return service_provider_project_group_offering
 
     @property
     def additional_keys(self) -> list[str]:

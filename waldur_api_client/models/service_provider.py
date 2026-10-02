@@ -10,8 +10,8 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.account_options import AccountOptions
     from ..models.organization_group import OrganizationGroup
+    from ..models.provider_account_options import ProviderAccountOptions
 
 
 T = TypeVar("T", bound="ServiceProvider")
@@ -39,7 +39,7 @@ class ServiceProvider:
         offering_count (Union[Unset, int]):
         allowed_domains (Union[Unset, list[str]]): List of allowed domains for offering endpoints. Only staff can modify
             this field.
-        account_options (Union[Unset, AccountOptions]):
+        account_options (Union[Unset, ProviderAccountOptions]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -59,7 +59,7 @@ class ServiceProvider:
     organization_groups: Union[Unset, list["OrganizationGroup"]] = UNSET
     offering_count: Union[Unset, int] = UNSET
     allowed_domains: Union[Unset, list[str]] = UNSET
-    account_options: Union[Unset, "AccountOptions"] = UNSET
+    account_options: Union[Unset, "ProviderAccountOptions"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -162,8 +162,8 @@ class ServiceProvider:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.account_options import AccountOptions
         from ..models.organization_group import OrganizationGroup
+        from ..models.provider_account_options import ProviderAccountOptions
 
         d = dict(src_dict)
         url = d.pop("url", UNSET)
@@ -228,11 +228,11 @@ class ServiceProvider:
         allowed_domains = cast(list[str], d.pop("allowed_domains", UNSET))
 
         _account_options = d.pop("account_options", UNSET)
-        account_options: Union[Unset, AccountOptions]
+        account_options: Union[Unset, ProviderAccountOptions]
         if isinstance(_account_options, Unset):
             account_options = UNSET
         else:
-            account_options = AccountOptions.from_dict(_account_options)
+            account_options = ProviderAccountOptions.from_dict(_account_options)
 
         service_provider = cls(
             url=url,

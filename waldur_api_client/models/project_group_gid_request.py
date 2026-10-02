@@ -1,52 +1,58 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-if TYPE_CHECKING:
-    from ..models.provider_account_options_request import ProviderAccountOptionsRequest
+from ..types import UNSET, Unset
 
-
-T = TypeVar("T", bound="AccountOptionsChangeRequest")
+T = TypeVar("T", bound="ProjectGroupGidRequest")
 
 
 @_attrs_define
-class AccountOptionsChangeRequest:
+class ProjectGroupGidRequest:
     """
     Attributes:
-        account_options (ProviderAccountOptionsRequest):
+        gid (int):
+        allow_outside_range (Union[Unset, bool]): Accept a GID outside the range project groups draw from, e.g. one a
+            directory assigned before Waldur managed it. Default: False.
     """
 
-    account_options: "ProviderAccountOptionsRequest"
+    gid: int
+    allow_outside_range: Union[Unset, bool] = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        account_options = self.account_options.to_dict()
+        gid = self.gid
+
+        allow_outside_range = self.allow_outside_range
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "account_options": account_options,
+                "gid": gid,
             }
         )
+        if allow_outside_range is not UNSET:
+            field_dict["allow_outside_range"] = allow_outside_range
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.provider_account_options_request import ProviderAccountOptionsRequest
-
         d = dict(src_dict)
-        account_options = ProviderAccountOptionsRequest.from_dict(d.pop("account_options"))
+        gid = d.pop("gid")
 
-        account_options_change_request = cls(
-            account_options=account_options,
+        allow_outside_range = d.pop("allow_outside_range", UNSET)
+
+        project_group_gid_request = cls(
+            gid=gid,
+            allow_outside_range=allow_outside_range,
         )
 
-        account_options_change_request.additional_properties = d
-        return account_options_change_request
+        project_group_gid_request.additional_properties = d
+        return project_group_gid_request
 
     @property
     def additional_keys(self) -> list[str]:

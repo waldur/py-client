@@ -10,7 +10,7 @@ from .. import types
 from ..types import UNSET, File, Unset
 
 if TYPE_CHECKING:
-    from ..models.account_options_request import AccountOptionsRequest
+    from ..models.provider_account_options_request import ProviderAccountOptionsRequest
 
 
 T = TypeVar("T", bound="PatchedServiceProviderRequestMultipart")
@@ -25,14 +25,14 @@ class PatchedServiceProviderRequestMultipart:
         image (Union[File, None, Unset]):
         allowed_domains (Union[Unset, list[str]]): List of allowed domains for offering endpoints. Only staff can modify
             this field.
-        account_options (Union[Unset, AccountOptionsRequest]):
+        account_options (Union[Unset, ProviderAccountOptionsRequest]):
     """
 
     description: Union[Unset, str] = UNSET
     enable_notifications: Union[Unset, bool] = UNSET
     image: Union[File, None, Unset] = UNSET
     allowed_domains: Union[Unset, list[str]] = UNSET
-    account_options: Union[Unset, "AccountOptionsRequest"] = UNSET
+    account_options: Union[Unset, "ProviderAccountOptionsRequest"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -104,7 +104,7 @@ class PatchedServiceProviderRequestMultipart:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.account_options_request import AccountOptionsRequest
+        from ..models.provider_account_options_request import ProviderAccountOptionsRequest
 
         d = dict(src_dict)
         description = d.pop("description", UNSET)
@@ -131,11 +131,11 @@ class PatchedServiceProviderRequestMultipart:
         allowed_domains = cast(list[str], d.pop("allowed_domains", UNSET))
 
         _account_options = d.pop("account_options", UNSET)
-        account_options: Union[Unset, AccountOptionsRequest]
+        account_options: Union[Unset, ProviderAccountOptionsRequest]
         if isinstance(_account_options, Unset):
             account_options = UNSET
         else:
-            account_options = AccountOptionsRequest.from_dict(_account_options)
+            account_options = ProviderAccountOptionsRequest.from_dict(_account_options)
 
         patched_service_provider_request_multipart = cls(
             description=description,

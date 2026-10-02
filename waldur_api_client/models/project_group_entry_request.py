@@ -1,52 +1,67 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-if TYPE_CHECKING:
-    from ..models.provider_account_options_request import ProviderAccountOptionsRequest
+from ..types import UNSET, Unset
 
-
-T = TypeVar("T", bound="AccountOptionsChangeRequest")
+T = TypeVar("T", bound="ProjectGroupEntryRequest")
 
 
 @_attrs_define
-class AccountOptionsChangeRequest:
+class ProjectGroupEntryRequest:
     """
     Attributes:
-        account_options (ProviderAccountOptionsRequest):
+        project (str): Project UUID, or its slug when exactly one project with that slug has a resource or order at the
+            service provider.
+        gid (int):
+        name (Union[Unset, str]): Group name, matching ^[a-z_][a-z0-9_-]{0,31}$; derived from the project slug when
+            omitted.
     """
 
-    account_options: "ProviderAccountOptionsRequest"
+    project: str
+    gid: int
+    name: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        account_options = self.account_options.to_dict()
+        project = self.project
+
+        gid = self.gid
+
+        name = self.name
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "account_options": account_options,
+                "project": project,
+                "gid": gid,
             }
         )
+        if name is not UNSET:
+            field_dict["name"] = name
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.provider_account_options_request import ProviderAccountOptionsRequest
-
         d = dict(src_dict)
-        account_options = ProviderAccountOptionsRequest.from_dict(d.pop("account_options"))
+        project = d.pop("project")
 
-        account_options_change_request = cls(
-            account_options=account_options,
+        gid = d.pop("gid")
+
+        name = d.pop("name", UNSET)
+
+        project_group_entry_request = cls(
+            project=project,
+            gid=gid,
+            name=name,
         )
 
-        account_options_change_request.additional_properties = d
-        return account_options_change_request
+        project_group_entry_request.additional_properties = d
+        return project_group_entry_request
 
     @property
     def additional_keys(self) -> list[str]:

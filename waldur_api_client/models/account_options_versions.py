@@ -5,7 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 if TYPE_CHECKING:
-    from ..models.account_options import AccountOptions
+    from ..models.provider_account_options import ProviderAccountOptions
 
 
 T = TypeVar("T", bound="AccountOptionsVersions")
@@ -15,12 +15,12 @@ T = TypeVar("T", bound="AccountOptionsVersions")
 class AccountOptionsVersions:
     """
     Attributes:
-        current (AccountOptions):
-        proposed (AccountOptions):
+        current (ProviderAccountOptions):
+        proposed (ProviderAccountOptions):
     """
 
-    current: "AccountOptions"
-    proposed: "AccountOptions"
+    current: "ProviderAccountOptions"
+    proposed: "ProviderAccountOptions"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -41,12 +41,12 @@ class AccountOptionsVersions:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.account_options import AccountOptions
+        from ..models.provider_account_options import ProviderAccountOptions
 
         d = dict(src_dict)
-        current = AccountOptions.from_dict(d.pop("current"))
+        current = ProviderAccountOptions.from_dict(d.pop("current"))
 
-        proposed = AccountOptions.from_dict(d.pop("proposed"))
+        proposed = ProviderAccountOptions.from_dict(d.pop("proposed"))
 
         account_options_versions = cls(
             current=current,
