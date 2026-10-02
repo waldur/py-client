@@ -2096,6 +2096,7 @@ Module: `waldur_api_client.api.marketplace_software_catalogs`
 - `marketplace_software_catalogs_update` PUT `/api/marketplace-software-catalogs/{uuid}/` — Update a software catalog (path: uuid | request body)
 - `marketplace_software_catalogs_partial_update` PATCH `/api/marketplace-software-catalogs/{uuid}/` — Partially update a software catalog (path: uuid | request body)
 - `marketplace_software_catalogs_destroy` DELETE `/api/marketplace-software-catalogs/{uuid}/` — Delete a software catalog (path: uuid)
+- `marketplace_software_catalogs_cpu_targets_list` GET `/api/marketplace-software-catalogs/{uuid}/cpu_targets/` — List CPU targets for a software catalog (path: uuid)
 - `marketplace_software_catalogs_update_catalog` POST `/api/marketplace-software-catalogs/{uuid}/update_catalog/` — Trigger async update for an existing catalog (path: uuid)
 
 ## marketplace-software-packages

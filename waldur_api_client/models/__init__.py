@@ -2827,6 +2827,7 @@ from .slurm_policy_thresholds import SlurmPolicyThresholds
 from .smax_web_hook_receiver import SmaxWebHookReceiver
 from .smax_web_hook_receiver_request import SmaxWebHookReceiverRequest
 from .software_catalog import SoftwareCatalog
+from .software_catalog_cpu_target import SoftwareCatalogCpuTarget
 from .software_catalog_discover import SoftwareCatalogDiscover
 from .software_catalog_import_request import SoftwareCatalogImportRequest
 from .software_catalog_metadata import SoftwareCatalogMetadata
@@ -5835,6 +5836,7 @@ __all__ = (
     "SmaxWebHookReceiver",
     "SmaxWebHookReceiverRequest",
     "SoftwareCatalog",
+    "SoftwareCatalogCpuTarget",
     "SoftwareCatalogDiscover",
     "SoftwareCatalogImportRequest",
     "SoftwareCatalogMetadata",

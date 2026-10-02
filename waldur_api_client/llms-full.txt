@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.20.dev.20261002090544
+# Version: 8.1.3-rc.20.dev.20261002114344
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -13458,6 +13458,13 @@ Description: Deletes a software catalog. Requires staff permissions.
 Path parameters:
   - uuid
 
+### marketplace_software_catalogs_cpu_targets_list
+GET /api/marketplace-software-catalogs/{uuid}/cpu_targets/
+Summary: List CPU targets for a software catalog
+Description: Returns CPU family and microarchitecture choices for this catalog's version, taken from metadata.architectures_map. cpu_microarchitecture matches SoftwareTarget.target_subtype and the cpu_microarchitecture package filter, including vendor-prefixed paths such as intel/sapphirerapids. Does not scan...
+Path parameters:
+  - uuid
+
 ### marketplace_software_catalogs_update_catalog
 POST /api/marketplace-software-catalogs/{uuid}/update_catalog/
 Summary: Trigger async update for an existing catalog
@@ -13479,8 +13486,8 @@ Query parameters (23):
   - catalog_uuid — Filter packages from a specific software catalog
   - catalog_version — Filter packages by catalog version (case-insensitive partial match)
   - category — Filter packages by category (e.g., bio, hpc, chemistry)
-  - cpu_family — Filter packages available for specific CPU family (e.g., x86_64, aarch64)
-  - cpu_microarchitecture — Filter packages available for specific CPU microarchitecture (e.g., generic, zen2, haswell)
+  - cpu_family — Filter packages available for any of the given CPU families (e.g., x86_64, aarch64)
+  - cpu_microarchitecture — Filter packages available for any of the given CPU microarchitectures (e.g., generic, amd/zen3, intel/sapphirerapids)
   - description — Filter packages by description (case-insensitive partial match)
   - extension_name — Filter packages having extensions with a specific name
   - extension_type — Filter packages having extensions of a specific type (e.g., 'python')
@@ -13508,8 +13515,8 @@ Query parameters (23):
   - catalog_uuid — Filter packages from a specific software catalog
   - catalog_version — Filter packages by catalog version (case-insensitive partial match)
   - category — Filter packages by category (e.g., bio, hpc, chemistry)
-  - cpu_family — Filter packages available for specific CPU family (e.g., x86_64, aarch64)
-  - cpu_microarchitecture — Filter packages available for specific CPU microarchitecture (e.g., generic, zen2, haswell)
+  - cpu_family — Filter packages available for any of the given CPU families (e.g., x86_64, aarch64)
+  - cpu_microarchitecture — Filter packages available for any of the given CPU microarchitectures (e.g., generic, amd/zen3, intel/sapphirerapids)
   - description — Filter packages by description (case-insensitive partial match)
   - extension_name — Filter packages having extensions with a specific name
   - extension_type — Filter packages having extensions of a specific type (e.g., 'python')
