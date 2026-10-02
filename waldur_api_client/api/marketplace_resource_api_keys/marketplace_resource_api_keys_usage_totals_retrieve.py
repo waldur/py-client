@@ -6,26 +6,37 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource_api_key import ResourceApiKey
-from ...types import Response
+from ...models.resource_api_key_usage_totals import ResourceApiKeyUsageTotals
+from ...types import UNSET, Response
 
 
 def _get_kwargs(
-    uuid: UUID,
+    *,
+    resource_uuid: UUID,
 ) -> dict[str, Any]:
+    params: dict[str, Any] = {}
+
+    json_resource_uuid = str(resource_uuid)
+    params["resource_uuid"] = json_resource_uuid
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
     _kwargs: dict[str, Any] = {
         "method": "get",
-        "url": f"/api/marketplace-resource-api-keys/{uuid}/reveal/",
+        "url": "/api/marketplace-resource-api-keys/usage_totals/",
+        "params": params,
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ResourceApiKey:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> ResourceApiKeyUsageTotals:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = ResourceApiKey.from_dict(response.json())
+        response_200 = ResourceApiKeyUsageTotals.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -33,7 +44,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ResourceApiKey]:
+) -> Response[ResourceApiKeyUsageTotals]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -43,28 +54,28 @@ def _build_response(
 
 
 def sync_detailed(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ResourceApiKey]:
-    """Reveal an API key
+    resource_uuid: UUID,
+) -> Response[ResourceApiKeyUsageTotals]:
+    """Total API key usage of a resource
 
-     Returns the decrypted key value. Available to users with resource access (except minimal-visibility
-    viewers); a key with an assignee only to the assignee. Staff and support always. Audit-logged.
+     Sums the usage the site agent reported for the resource's keys in the current month, per component
+    type. Deleted keys are included, so deleting a key leaves the total unchanged.
 
     Args:
-        uuid (UUID):
+        resource_uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceApiKey]
+        Response[ResourceApiKeyUsageTotals]
     """
 
     kwargs = _get_kwargs(
-        uuid=uuid,
+        resource_uuid=resource_uuid,
     )
 
     response = client.get_httpx_client().request(
@@ -75,55 +86,55 @@ def sync_detailed(
 
 
 def sync(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> ResourceApiKey:
-    """Reveal an API key
+    resource_uuid: UUID,
+) -> ResourceApiKeyUsageTotals:
+    """Total API key usage of a resource
 
-     Returns the decrypted key value. Available to users with resource access (except minimal-visibility
-    viewers); a key with an assignee only to the assignee. Staff and support always. Audit-logged.
+     Sums the usage the site agent reported for the resource's keys in the current month, per component
+    type. Deleted keys are included, so deleting a key leaves the total unchanged.
 
     Args:
-        uuid (UUID):
+        resource_uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceApiKey
+        ResourceApiKeyUsageTotals
     """
 
     return sync_detailed(
-        uuid=uuid,
         client=client,
+        resource_uuid=resource_uuid,
     ).parsed
 
 
 async def asyncio_detailed(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[ResourceApiKey]:
-    """Reveal an API key
+    resource_uuid: UUID,
+) -> Response[ResourceApiKeyUsageTotals]:
+    """Total API key usage of a resource
 
-     Returns the decrypted key value. Available to users with resource access (except minimal-visibility
-    viewers); a key with an assignee only to the assignee. Staff and support always. Audit-logged.
+     Sums the usage the site agent reported for the resource's keys in the current month, per component
+    type. Deleted keys are included, so deleting a key leaves the total unchanged.
 
     Args:
-        uuid (UUID):
+        resource_uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceApiKey]
+        Response[ResourceApiKeyUsageTotals]
     """
 
     kwargs = _get_kwargs(
-        uuid=uuid,
+        resource_uuid=resource_uuid,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -132,29 +143,29 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> ResourceApiKey:
-    """Reveal an API key
+    resource_uuid: UUID,
+) -> ResourceApiKeyUsageTotals:
+    """Total API key usage of a resource
 
-     Returns the decrypted key value. Available to users with resource access (except minimal-visibility
-    viewers); a key with an assignee only to the assignee. Staff and support always. Audit-logged.
+     Sums the usage the site agent reported for the resource's keys in the current month, per component
+    type. Deleted keys are included, so deleting a key leaves the total unchanged.
 
     Args:
-        uuid (UUID):
+        resource_uuid (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceApiKey
+        ResourceApiKeyUsageTotals
     """
 
     return (
         await asyncio_detailed(
-            uuid=uuid,
             client=client,
+            resource_uuid=resource_uuid,
         )
     ).parsed

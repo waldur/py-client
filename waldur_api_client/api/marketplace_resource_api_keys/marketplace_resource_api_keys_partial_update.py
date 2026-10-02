@@ -6,7 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource_api_key_set_key_request import ResourceApiKeySetKeyRequest
+from ...models.patched_resource_api_key_update_request import PatchedResourceApiKeyUpdateRequest
 from ...models.resource_api_key_status import ResourceApiKeyStatus
 from ...types import Response
 
@@ -14,13 +14,13 @@ from ...types import Response
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: ResourceApiKeySetKeyRequest,
+    body: PatchedResourceApiKeyUpdateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
-        "method": "post",
-        "url": f"/api/marketplace-resource-api-keys/{uuid}/set_key/",
+        "method": "patch",
+        "url": f"/api/marketplace-resource-api-keys/{uuid}/",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -56,16 +56,17 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
+    body: PatchedResourceApiKeyUpdateRequest,
 ) -> Response[ResourceApiKeyStatus]:
-    """Report a created or rotated API key value
+    r"""Edit an API key
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Changes the key's assignee, limits or model allowlist. A change to limits or models is sent to the
+    site agent as an update command, unless the key is paused: resuming it applies them. Only on
+    offerings with enable_api_key_provisioning, except for unassigning the key ({\"user\": null}).
 
     Args:
         uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
+        body (PatchedResourceApiKeyUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -91,16 +92,17 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
+    body: PatchedResourceApiKeyUpdateRequest,
 ) -> ResourceApiKeyStatus:
-    """Report a created or rotated API key value
+    r"""Edit an API key
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Changes the key's assignee, limits or model allowlist. A change to limits or models is sent to the
+    site agent as an update command, unless the key is paused: resuming it applies them. Only on
+    offerings with enable_api_key_provisioning, except for unassigning the key ({\"user\": null}).
 
     Args:
         uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
+        body (PatchedResourceApiKeyUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -121,16 +123,17 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
+    body: PatchedResourceApiKeyUpdateRequest,
 ) -> Response[ResourceApiKeyStatus]:
-    """Report a created or rotated API key value
+    r"""Edit an API key
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Changes the key's assignee, limits or model allowlist. A change to limits or models is sent to the
+    site agent as an update command, unless the key is paused: resuming it applies them. Only on
+    offerings with enable_api_key_provisioning, except for unassigning the key ({\"user\": null}).
 
     Args:
         uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
+        body (PatchedResourceApiKeyUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -154,16 +157,17 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
+    body: PatchedResourceApiKeyUpdateRequest,
 ) -> ResourceApiKeyStatus:
-    """Report a created or rotated API key value
+    r"""Edit an API key
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Changes the key's assignee, limits or model allowlist. A change to limits or models is sent to the
+    site agent as an update command, unless the key is paused: resuming it applies them. Only on
+    offerings with enable_api_key_provisioning, except for unassigning the key ({\"user\": null}).
 
     Args:
         uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
+        body (PatchedResourceApiKeyUpdateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

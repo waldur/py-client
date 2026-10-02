@@ -1,26 +1,24 @@
 from http import HTTPStatus
 from typing import Any, Union
-from uuid import UUID
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource_api_key_set_key_request import ResourceApiKeySetKeyRequest
+from ...models.resource_api_key_create_request import ResourceApiKeyCreateRequest
 from ...models.resource_api_key_status import ResourceApiKeyStatus
 from ...types import Response
 
 
 def _get_kwargs(
-    uuid: UUID,
     *,
-    body: ResourceApiKeySetKeyRequest,
+    body: ResourceApiKeyCreateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/marketplace-resource-api-keys/{uuid}/set_key/",
+        "url": "/api/marketplace-resource-api-keys/",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -34,10 +32,10 @@ def _get_kwargs(
 def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ResourceApiKeyStatus:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 200:
-        response_200 = ResourceApiKeyStatus.from_dict(response.json())
+    if response.status_code == 201:
+        response_201 = ResourceApiKeyStatus.from_dict(response.json())
 
-        return response_200
+        return response_201
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
@@ -53,19 +51,17 @@ def _build_response(
 
 
 def sync_detailed(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
+    body: ResourceApiKeyCreateRequest,
 ) -> Response[ResourceApiKeyStatus]:
-    """Report a created or rotated API key value
+    """Request an API key
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Asks the site agent to create a key for the resource. Waldur generates nothing: the key appears as
+    Creating and turns OK once the agent reports it. Only on offerings with enable_api_key_provisioning.
 
     Args:
-        uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
+        body (ResourceApiKeyCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -76,7 +72,6 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
-        uuid=uuid,
         body=body,
     )
 
@@ -88,19 +83,17 @@ def sync_detailed(
 
 
 def sync(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
+    body: ResourceApiKeyCreateRequest,
 ) -> ResourceApiKeyStatus:
-    """Report a created or rotated API key value
+    """Request an API key
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Asks the site agent to create a key for the resource. Waldur generates nothing: the key appears as
+    Creating and turns OK once the agent reports it. Only on offerings with enable_api_key_provisioning.
 
     Args:
-        uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
+        body (ResourceApiKeyCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -111,26 +104,23 @@ def sync(
     """
 
     return sync_detailed(
-        uuid=uuid,
         client=client,
         body=body,
     ).parsed
 
 
 async def asyncio_detailed(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
+    body: ResourceApiKeyCreateRequest,
 ) -> Response[ResourceApiKeyStatus]:
-    """Report a created or rotated API key value
+    """Request an API key
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Asks the site agent to create a key for the resource. Waldur generates nothing: the key appears as
+    Creating and turns OK once the agent reports it. Only on offerings with enable_api_key_provisioning.
 
     Args:
-        uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
+        body (ResourceApiKeyCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -141,7 +131,6 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
-        uuid=uuid,
         body=body,
     )
 
@@ -151,19 +140,17 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
+    body: ResourceApiKeyCreateRequest,
 ) -> ResourceApiKeyStatus:
-    """Report a created or rotated API key value
+    """Request an API key
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Asks the site agent to create a key for the resource. Waldur generates nothing: the key appears as
+    Creating and turns OK once the agent reports it. Only on offerings with enable_api_key_provisioning.
 
     Args:
-        uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
+        body (ResourceApiKeyCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -175,7 +162,6 @@ async def asyncio(
 
     return (
         await asyncio_detailed(
-            uuid=uuid,
             client=client,
             body=body,
         )

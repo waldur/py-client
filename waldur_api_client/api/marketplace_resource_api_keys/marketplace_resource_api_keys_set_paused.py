@@ -6,28 +6,18 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource_api_key_set_key_request import ResourceApiKeySetKeyRequest
 from ...models.resource_api_key_status import ResourceApiKeyStatus
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
-    *,
-    body: ResourceApiKeySetKeyRequest,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/marketplace-resource-api-keys/{uuid}/set_key/",
+        "url": f"/api/marketplace-resource-api-keys/{uuid}/set_paused/",
     }
 
-    _kwargs["json"] = body.to_dict()
-
-    headers["Content-Type"] = "application/json"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -56,16 +46,13 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
 ) -> Response[ResourceApiKeyStatus]:
-    """Report a created or rotated API key value
+    """Report an API key paused
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Used by the site agent once the backend refuses the key.
 
     Args:
         uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -77,7 +64,6 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -91,16 +77,13 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
 ) -> ResourceApiKeyStatus:
-    """Report a created or rotated API key value
+    """Report an API key paused
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Used by the site agent once the backend refuses the key.
 
     Args:
         uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -113,7 +96,6 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
-        body=body,
     ).parsed
 
 
@@ -121,16 +103,13 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
 ) -> Response[ResourceApiKeyStatus]:
-    """Report a created or rotated API key value
+    """Report an API key paused
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Used by the site agent once the backend refuses the key.
 
     Args:
         uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -142,7 +121,6 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -154,16 +132,13 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
 ) -> ResourceApiKeyStatus:
-    """Report a created or rotated API key value
+    """Report an API key paused
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Used by the site agent once the backend refuses the key.
 
     Args:
         uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -177,6 +152,5 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            body=body,
         )
     ).parsed

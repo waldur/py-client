@@ -6,44 +6,32 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource_api_key_set_key_request import ResourceApiKeySetKeyRequest
-from ...models.resource_api_key_status import ResourceApiKeyStatus
+from ...models.status import Status
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
-    *,
-    body: ResourceApiKeySetKeyRequest,
 ) -> dict[str, Any]:
-    headers: dict[str, Any] = {}
-
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/marketplace-resource-api-keys/{uuid}/set_key/",
+        "url": f"/api/marketplace-resource-api-keys/{uuid}/pause/",
     }
 
-    _kwargs["json"] = body.to_dict()
-
-    headers["Content-Type"] = "application/json"
-
-    _kwargs["headers"] = headers
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ResourceApiKeyStatus:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Status:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
-    if response.status_code == 200:
-        response_200 = ResourceApiKeyStatus.from_dict(response.json())
+    if response.status_code == 202:
+        response_202 = Status.from_dict(response.json())
 
-        return response_200
+        return response_202
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(
-    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ResourceApiKeyStatus]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Status]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -56,28 +44,25 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
-) -> Response[ResourceApiKeyStatus]:
-    """Report a created or rotated API key value
+) -> Response[Status]:
+    """Pause an API key
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Asks the site agent to stop the backend accepting this key. The key keeps its value; the resource
+    and its other keys keep serving.
 
     Args:
         uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceApiKeyStatus]
+        Response[Status]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -91,29 +76,26 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
-) -> ResourceApiKeyStatus:
-    """Report a created or rotated API key value
+) -> Status:
+    """Pause an API key
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Asks the site agent to stop the backend accepting this key. The key keeps its value; the resource
+    and its other keys keep serving.
 
     Args:
         uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceApiKeyStatus
+        Status
     """
 
     return sync_detailed(
         uuid=uuid,
         client=client,
-        body=body,
     ).parsed
 
 
@@ -121,28 +103,25 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
-) -> Response[ResourceApiKeyStatus]:
-    """Report a created or rotated API key value
+) -> Response[Status]:
+    """Pause an API key
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Asks the site agent to stop the backend accepting this key. The key keeps its value; the resource
+    and its other keys keep serving.
 
     Args:
         uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceApiKeyStatus]
+        Response[Status]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
-        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -154,29 +133,26 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
-) -> ResourceApiKeyStatus:
-    """Report a created or rotated API key value
+) -> Status:
+    """Pause an API key
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Asks the site agent to stop the backend accepting this key. The key keeps its value; the resource
+    and its other keys keep serving.
 
     Args:
         uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceApiKeyStatus
+        Status
     """
 
     return (
         await asyncio_detailed(
             uuid=uuid,
             client=client,
-            body=body,
         )
     ).parsed

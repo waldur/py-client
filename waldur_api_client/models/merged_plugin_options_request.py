@@ -222,6 +222,10 @@ class MergedPluginOptionsRequest:
             the chosen QoS on the SLURM association (QosLevel/DefaultQOS). When disabled (default), QoS is informational
             only — profiles are shown and the selection is recorded on the resource, but the agent does not touch SLURM QoS.
             The agent config may override this per deployment. Default: False.
+        enable_api_key_provisioning (Union[Unset, bool]): Declares that the site agent can govern resource API keys one
+            by one: request, assign, limit, pause, resume and delete them. Without it a resource's keys can only be revealed
+            and rotated. Nothing checks the claim: turn it on only if the agent's backend supports per-key commands (such as
+            the Envoy AI Gateway); on one that does not (such as Ceph S3) every such command errs.
         auto_approve_marketplace_script (Union[Unset, bool]): If set to False, all orders require manual provider
             approval, including for service provider owners and staff Default: True.
         highlight_backend_id_display (Union[Unset, bool]): Defines if backend_id should be shown more prominently by the
@@ -236,6 +240,7 @@ class MergedPluginOptionsRequest:
             offering.
         show_ssh_key_loss_warning (Union[Unset, bool]): Show a warning about unrecoverable loss of the SSH private key
             on the OpenStack instance order form. Default: False.
+        hide_api_keys_tab (Union[Unset, bool]): Hide the API keys tab on resources of this offering.
     """
 
     account_scope: Union[AccountScope, BlankEnum, Unset] = UNSET
@@ -334,6 +339,7 @@ class MergedPluginOptionsRequest:
     enable_display_of_order_actions_for_service_provider: Union[Unset, bool] = True
     slurm_periodic_policy_enabled: Union[Unset, bool] = False
     enforce_qos: Union[Unset, bool] = False
+    enable_api_key_provisioning: Union[Unset, bool] = UNSET
     auto_approve_marketplace_script: Union[Unset, bool] = True
     highlight_backend_id_display: Union[Unset, bool] = False
     backend_id_display_label: Union[Unset, str] = "Backend ID"
@@ -341,6 +347,7 @@ class MergedPluginOptionsRequest:
     expose_inference_playground: Union[Unset, bool] = False
     disabled_resource_actions: Union[Unset, list[str]] = UNSET
     show_ssh_key_loss_warning: Union[Unset, bool] = False
+    hide_api_keys_tab: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -636,6 +643,8 @@ class MergedPluginOptionsRequest:
 
         enforce_qos = self.enforce_qos
 
+        enable_api_key_provisioning = self.enable_api_key_provisioning
+
         auto_approve_marketplace_script = self.auto_approve_marketplace_script
 
         highlight_backend_id_display = self.highlight_backend_id_display
@@ -651,6 +660,8 @@ class MergedPluginOptionsRequest:
             disabled_resource_actions = self.disabled_resource_actions
 
         show_ssh_key_loss_warning = self.show_ssh_key_loss_warning
+
+        hide_api_keys_tab = self.hide_api_keys_tab
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -861,6 +872,8 @@ class MergedPluginOptionsRequest:
             field_dict["slurm_periodic_policy_enabled"] = slurm_periodic_policy_enabled
         if enforce_qos is not UNSET:
             field_dict["enforce_qos"] = enforce_qos
+        if enable_api_key_provisioning is not UNSET:
+            field_dict["enable_api_key_provisioning"] = enable_api_key_provisioning
         if auto_approve_marketplace_script is not UNSET:
             field_dict["auto_approve_marketplace_script"] = auto_approve_marketplace_script
         if highlight_backend_id_display is not UNSET:
@@ -875,6 +888,8 @@ class MergedPluginOptionsRequest:
             field_dict["disabled_resource_actions"] = disabled_resource_actions
         if show_ssh_key_loss_warning is not UNSET:
             field_dict["show_ssh_key_loss_warning"] = show_ssh_key_loss_warning
+        if hide_api_keys_tab is not UNSET:
+            field_dict["hide_api_keys_tab"] = hide_api_keys_tab
 
         return field_dict
 
@@ -1306,6 +1321,8 @@ class MergedPluginOptionsRequest:
 
         enforce_qos = d.pop("enforce_qos", UNSET)
 
+        enable_api_key_provisioning = d.pop("enable_api_key_provisioning", UNSET)
+
         auto_approve_marketplace_script = d.pop("auto_approve_marketplace_script", UNSET)
 
         highlight_backend_id_display = d.pop("highlight_backend_id_display", UNSET)
@@ -1319,6 +1336,8 @@ class MergedPluginOptionsRequest:
         disabled_resource_actions = cast(list[str], d.pop("disabled_resource_actions", UNSET))
 
         show_ssh_key_loss_warning = d.pop("show_ssh_key_loss_warning", UNSET)
+
+        hide_api_keys_tab = d.pop("hide_api_keys_tab", UNSET)
 
         merged_plugin_options_request = cls(
             account_scope=account_scope,
@@ -1417,6 +1436,7 @@ class MergedPluginOptionsRequest:
             enable_display_of_order_actions_for_service_provider=enable_display_of_order_actions_for_service_provider,
             slurm_periodic_policy_enabled=slurm_periodic_policy_enabled,
             enforce_qos=enforce_qos,
+            enable_api_key_provisioning=enable_api_key_provisioning,
             auto_approve_marketplace_script=auto_approve_marketplace_script,
             highlight_backend_id_display=highlight_backend_id_display,
             backend_id_display_label=backend_id_display_label,
@@ -1424,6 +1444,7 @@ class MergedPluginOptionsRequest:
             expose_inference_playground=expose_inference_playground,
             disabled_resource_actions=disabled_resource_actions,
             show_ssh_key_loss_warning=show_ssh_key_loss_warning,
+            hide_api_keys_tab=hide_api_keys_tab,
         )
 
         merged_plugin_options_request.additional_properties = d

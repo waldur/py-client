@@ -6,21 +6,21 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource_api_key_set_key_request import ResourceApiKeySetKeyRequest
 from ...models.resource_api_key_status import ResourceApiKeyStatus
+from ...models.resource_api_key_usage_request import ResourceApiKeyUsageRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: ResourceApiKeySetKeyRequest,
+    body: ResourceApiKeyUsageRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     _kwargs: dict[str, Any] = {
         "method": "post",
-        "url": f"/api/marketplace-resource-api-keys/{uuid}/set_key/",
+        "url": f"/api/marketplace-resource-api-keys/{uuid}/report_usage/",
     }
 
     _kwargs["json"] = body.to_dict()
@@ -56,16 +56,18 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
+    body: ResourceApiKeyUsageRequest,
 ) -> Response[ResourceApiKeyStatus]:
-    """Report a created or rotated API key value
+    """Report API key usage
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Used by the site agent to report a key's usage so far in a month, per component type. Merged into
+    the key's usage for that month; a later month replaces it, and an earlier one is refused. A key
+    whose usage reaches its limit is paused, and a key paused for its limit is resumed once under it
+    again. Accepted for a deleted key too.
 
     Args:
         uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
+        body (ResourceApiKeyUsageRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -91,16 +93,18 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
+    body: ResourceApiKeyUsageRequest,
 ) -> ResourceApiKeyStatus:
-    """Report a created or rotated API key value
+    """Report API key usage
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Used by the site agent to report a key's usage so far in a month, per component type. Merged into
+    the key's usage for that month; a later month replaces it, and an earlier one is refused. A key
+    whose usage reaches its limit is paused, and a key paused for its limit is resumed once under it
+    again. Accepted for a deleted key too.
 
     Args:
         uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
+        body (ResourceApiKeyUsageRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -121,16 +125,18 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
+    body: ResourceApiKeyUsageRequest,
 ) -> Response[ResourceApiKeyStatus]:
-    """Report a created or rotated API key value
+    """Report API key usage
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Used by the site agent to report a key's usage so far in a month, per component type. Merged into
+    the key's usage for that month; a later month replaces it, and an earlier one is refused. A key
+    whose usage reaches its limit is paused, and a key paused for its limit is resumed once under it
+    again. Accepted for a deleted key too.
 
     Args:
         uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
+        body (ResourceApiKeyUsageRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -154,16 +160,18 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceApiKeySetKeyRequest,
+    body: ResourceApiKeyUsageRequest,
 ) -> ResourceApiKeyStatus:
-    """Report a created or rotated API key value
+    """Report API key usage
 
-     Used by the site agent after it applied a requested or rotated key. Replaces the stored value and
-    marks the key OK. A requested key carries the client_id the agent gave it.
+     Used by the site agent to report a key's usage so far in a month, per component type. Merged into
+    the key's usage for that month; a later month replaces it, and an earlier one is refused. A key
+    whose usage reaches its limit is paused, and a key paused for its limit is resumed once under it
+    again. Accepted for a deleted key too.
 
     Args:
         uuid (UUID):
-        body (ResourceApiKeySetKeyRequest):
+        body (ResourceApiKeyUsageRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

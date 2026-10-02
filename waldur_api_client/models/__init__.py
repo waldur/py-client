@@ -1967,6 +1967,8 @@ from .patched_requested_offering_request_attributes import PatchedRequestedOffer
 from .patched_requested_resource_request import PatchedRequestedResourceRequest
 from .patched_requested_resource_request_attributes import PatchedRequestedResourceRequestAttributes
 from .patched_requested_resource_request_limits import PatchedRequestedResourceRequestLimits
+from .patched_resource_api_key_update_request import PatchedResourceApiKeyUpdateRequest
+from .patched_resource_api_key_update_request_limits_type_0 import PatchedResourceApiKeyUpdateRequestLimitsType0
 from .patched_resource_project_request import PatchedResourceProjectRequest
 from .patched_resource_project_request_limits import PatchedResourceProjectRequestLimits
 from .patched_resource_update_request import PatchedResourceUpdateRequest
@@ -2498,11 +2500,22 @@ from .requested_resource_request_limits import RequestedResourceRequestLimits
 from .reserved_agent_task import ReservedAgentTask
 from .resource import Resource
 from .resource_api_key import ResourceApiKey
+from .resource_api_key_action import ResourceApiKeyAction
+from .resource_api_key_create_request import ResourceApiKeyCreateRequest
+from .resource_api_key_create_request_limits_type_0 import ResourceApiKeyCreateRequestLimitsType0
+from .resource_api_key_current_usages_type_0 import ResourceApiKeyCurrentUsagesType0
+from .resource_api_key_limits_type_0 import ResourceApiKeyLimitsType0
 from .resource_api_key_report_created_request import ResourceApiKeyReportCreatedRequest
 from .resource_api_key_set_erred_request import ResourceApiKeySetErredRequest
 from .resource_api_key_set_key_request import ResourceApiKeySetKeyRequest
 from .resource_api_key_state import ResourceApiKeyState
 from .resource_api_key_status import ResourceApiKeyStatus
+from .resource_api_key_status_current_usages_type_0 import ResourceApiKeyStatusCurrentUsagesType0
+from .resource_api_key_status_limits_type_0 import ResourceApiKeyStatusLimitsType0
+from .resource_api_key_usage_request import ResourceApiKeyUsageRequest
+from .resource_api_key_usage_request_usages import ResourceApiKeyUsageRequestUsages
+from .resource_api_key_usage_totals import ResourceApiKeyUsageTotals
+from .resource_api_key_usage_totals_usages import ResourceApiKeyUsageTotalsUsages
 from .resource_attributes import ResourceAttributes
 from .resource_backend_id_request import ResourceBackendIDRequest
 from .resource_backend_metadata_request import ResourceBackendMetadataRequest
@@ -5017,6 +5030,8 @@ __all__ = (
     "PatchedRequestedResourceRequestAttributes",
     "PatchedRequestedResourceRequestLimits",
     "PatchedRequestTypeAdminRequest",
+    "PatchedResourceApiKeyUpdateRequest",
+    "PatchedResourceApiKeyUpdateRequestLimitsType0",
     "PatchedResourceProjectRequest",
     "PatchedResourceProjectRequestLimits",
     "PatchedResourceUpdateRequest",
@@ -5518,11 +5533,22 @@ __all__ = (
     "ReservedAgentTask",
     "Resource",
     "ResourceApiKey",
+    "ResourceApiKeyAction",
+    "ResourceApiKeyCreateRequest",
+    "ResourceApiKeyCreateRequestLimitsType0",
+    "ResourceApiKeyCurrentUsagesType0",
+    "ResourceApiKeyLimitsType0",
     "ResourceApiKeyReportCreatedRequest",
     "ResourceApiKeySetErredRequest",
     "ResourceApiKeySetKeyRequest",
     "ResourceApiKeyState",
     "ResourceApiKeyStatus",
+    "ResourceApiKeyStatusCurrentUsagesType0",
+    "ResourceApiKeyStatusLimitsType0",
+    "ResourceApiKeyUsageRequest",
+    "ResourceApiKeyUsageRequestUsages",
+    "ResourceApiKeyUsageTotals",
+    "ResourceApiKeyUsageTotalsUsages",
     "ResourceAttributes",
     "ResourceBackendIDRequest",
     "ResourceBackendMetadataRequest",

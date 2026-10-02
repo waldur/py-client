@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.20.dev.20261002124752
+# Version: 8.1.3-rc.21.dev.20261002153253
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -10874,37 +10874,107 @@ Path parameters:
 
 ### marketplace_resource_api_keys_list
 GET /api/marketplace-resource-api-keys/
-Query parameters (4):
+Query parameters (7):
+  - has_pending_action — Has a pending command
   - modified_before — Modified before
   - offering_uuid — Offering UUID
+  - pending_action — Pending command
   - resource_uuid — Resource UUID
   - state — API key state
+  - user_uuid — Assignee UUID
 
 ### marketplace_resource_api_keys_count
 HEAD /api/marketplace-resource-api-keys/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (4):
+Query parameters (7):
+  - has_pending_action — Has a pending command
   - modified_before — Modified before
   - offering_uuid — Offering UUID
+  - pending_action — Pending command
   - resource_uuid — Resource UUID
   - state — API key state
+  - user_uuid — Assignee UUID
+
+### marketplace_resource_api_keys_create
+POST /api/marketplace-resource-api-keys/
+Summary: Request an API key
+Description: Asks the site agent to create a key for the resource. Waldur generates nothing: the key appears as Creating and turns OK once the agent reports it. Only on offerings with enable_api_key_provisioning.
+Request body: yes
 
 ### marketplace_resource_api_keys_report_created
 POST /api/marketplace-resource-api-keys/report_created/
 Summary: Report a freshly-applied API key
-Description: Used by the site agent after it generated and applied a key to the backend. Stores the value encrypted and marks the key OK.
+Description: Used by the site agent after it generated and applied a key to the backend at provisioning. Stores the value encrypted and marks the key OK. A requested key is reported through set_key instead.
 Request body: yes
+
+### marketplace_resource_api_keys_usage_totals_retrieve
+GET /api/marketplace-resource-api-keys/usage_totals/
+Summary: Total API key usage of a resource
+Description: Sums the usage the site agent reported for the resource's keys in the current month, per component type. Deleted keys are included, so deleting a key leaves the total unchanged.
+Query parameters (1):
+  - resource_uuid (required)
+
+### marketplace_resource_api_keys_usage_totals_count
+HEAD /api/marketplace-resource-api-keys/usage_totals/
+Summary: Total API key usage of a resource
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (1):
+  - resource_uuid (required)
 
 ### marketplace_resource_api_keys_retrieve
 GET /api/marketplace-resource-api-keys/{uuid}/
 Path parameters:
   - uuid
 
+### marketplace_resource_api_keys_partial_update
+PATCH /api/marketplace-resource-api-keys/{uuid}/
+Summary: Edit an API key
+Description: Changes the key's assignee, limits or model allowlist. A change to limits or models is sent to the site agent as an update command, unless the key is paused: resuming it applies them. Only on offerings with enable_api_key_provisioning, except for unassigning the key ({"user": null}).
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resource_api_keys_destroy
+DELETE /api/marketplace-resource-api-keys/{uuid}/
+Summary: Delete an API key
+Description: Asks the site agent to revoke the key at the backend. Once it has, the key is Deleted: it no longer lists by default, but its row and reported usage are kept. A requested key the agent has not created yet, or failed to create, is Deleted at once.
+Path parameters:
+  - uuid
+
+### marketplace_resource_api_keys_pause
+POST /api/marketplace-resource-api-keys/{uuid}/pause/
+Summary: Pause an API key
+Description: Asks the site agent to stop the backend accepting this key. The key keeps its value; the resource and its other keys keep serving.
+Path parameters:
+  - uuid
+
+### marketplace_resource_api_keys_report_usage
+POST /api/marketplace-resource-api-keys/{uuid}/report_usage/
+Summary: Report API key usage
+Description: Used by the site agent to report a key's usage so far in a month, per component type. Merged into the key's usage for that month; a later month replaces it, and an earlier one is refused. A key whose usage reaches its limit is paused, and a key paused for its limit is resumed once under it again....
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resource_api_keys_resume
+POST /api/marketplace-resource-api-keys/{uuid}/resume/
+Summary: Resume an API key
+Description: Asks the site agent to accept a paused key again, with the limits and models it has now. Available without governance too, so a key paused before the provider switched it off can come back.
+Path parameters:
+  - uuid
+
+### marketplace_resource_api_keys_retry
+POST /api/marketplace-resource-api-keys/{uuid}/retry/
+Summary: Retry a failed API key command
+Description: Sends the command that left the key Erred to the site agent again, with the key's current limits and models. An Erred key accepts only this, the same command, or a delete.
+Path parameters:
+  - uuid
+
 ### marketplace_resource_api_keys_reveal_retrieve
 GET /api/marketplace-resource-api-keys/{uuid}/reveal/
 Summary: Reveal an API key
-Description: Returns the decrypted key value. Available to users with resource access (except minimal-visibility viewers). Audit-logged.
+Description: Returns the decrypted key value. Available to users with resource access (except minimal-visibility viewers); a key with an assignee only to the assignee. Staff and support always. Audit-logged.
 Path parameters:
   - uuid
 
@@ -10912,6 +10982,13 @@ Path parameters:
 POST /api/marketplace-resource-api-keys/{uuid}/rotate/
 Summary: Rotate an API key
 Description: Asks the site agent to replace this key's value at the backend. The other keys are untouched (zero downtime).
+Path parameters:
+  - uuid
+
+### marketplace_resource_api_keys_set_deleted
+POST /api/marketplace-resource-api-keys/{uuid}/set_deleted/
+Summary: Report an API key deleted
+Description: Used by the site agent once the backend has revoked the key. The stored value is dropped; the row and its usage are kept.
 Path parameters:
   - uuid
 
@@ -10925,11 +11002,25 @@ Request body: yes
 
 ### marketplace_resource_api_keys_set_key
 POST /api/marketplace-resource-api-keys/{uuid}/set_key/
-Summary: Report a rotated API key value
-Description: Used by the site agent after it applied a rotated key. Replaces the stored value and marks the key OK.
+Summary: Report a created or rotated API key value
+Description: Used by the site agent after it applied a requested or rotated key. Replaces the stored value and marks the key OK. A requested key carries the client_id the agent gave it.
 Path parameters:
   - uuid
 Request body: yes
+
+### marketplace_resource_api_keys_set_ok
+POST /api/marketplace-resource-api-keys/{uuid}/set_ok/
+Summary: Report an API key resumed or updated
+Description: Used by the site agent once the backend accepts a resumed key again, or has applied a key's new limits and models.
+Path parameters:
+  - uuid
+
+### marketplace_resource_api_keys_set_paused
+POST /api/marketplace-resource-api-keys/{uuid}/set_paused/
+Summary: Report an API key paused
+Description: Used by the site agent once the backend refuses the key.
+Path parameters:
+  - uuid
 
 ============================================================
 ## marketplace-resource-end-date-change-requests  (module: waldur_api_client.api.marketplace_resource_end_date_change_requests)

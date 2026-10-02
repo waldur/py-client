@@ -1781,14 +1781,26 @@ Module: `waldur_api_client.api.marketplace_remote_synchronisations`
 ## marketplace-resource-api-keys
 Module: `waldur_api_client.api.marketplace_resource_api_keys`
 
-- `marketplace_resource_api_keys_list` GET `/api/marketplace-resource-api-keys/` (4 query params)
-- `marketplace_resource_api_keys_count` HEAD `/api/marketplace-resource-api-keys/` — Get number of items in the collection matching the request parameters (4 query params)
+- `marketplace_resource_api_keys_list` GET `/api/marketplace-resource-api-keys/` (7 query params)
+- `marketplace_resource_api_keys_count` HEAD `/api/marketplace-resource-api-keys/` — Get number of items in the collection matching the request parameters (7 query params)
+- `marketplace_resource_api_keys_create` POST `/api/marketplace-resource-api-keys/` — Request an API key (request body)
 - `marketplace_resource_api_keys_report_created` POST `/api/marketplace-resource-api-keys/report_created/` — Report a freshly-applied API key (request body)
+- `marketplace_resource_api_keys_usage_totals_retrieve` GET `/api/marketplace-resource-api-keys/usage_totals/` — Total API key usage of a resource (1 query param)
+- `marketplace_resource_api_keys_usage_totals_count` HEAD `/api/marketplace-resource-api-keys/usage_totals/` — Total API key usage of a resource (1 query param)
 - `marketplace_resource_api_keys_retrieve` GET `/api/marketplace-resource-api-keys/{uuid}/` (path: uuid)
+- `marketplace_resource_api_keys_partial_update` PATCH `/api/marketplace-resource-api-keys/{uuid}/` — Edit an API key (path: uuid | request body)
+- `marketplace_resource_api_keys_destroy` DELETE `/api/marketplace-resource-api-keys/{uuid}/` — Delete an API key (path: uuid)
+- `marketplace_resource_api_keys_pause` POST `/api/marketplace-resource-api-keys/{uuid}/pause/` — Pause an API key (path: uuid)
+- `marketplace_resource_api_keys_report_usage` POST `/api/marketplace-resource-api-keys/{uuid}/report_usage/` — Report API key usage (path: uuid | request body)
+- `marketplace_resource_api_keys_resume` POST `/api/marketplace-resource-api-keys/{uuid}/resume/` — Resume an API key (path: uuid)
+- `marketplace_resource_api_keys_retry` POST `/api/marketplace-resource-api-keys/{uuid}/retry/` — Retry a failed API key command (path: uuid)
 - `marketplace_resource_api_keys_reveal_retrieve` GET `/api/marketplace-resource-api-keys/{uuid}/reveal/` — Reveal an API key (path: uuid)
 - `marketplace_resource_api_keys_rotate` POST `/api/marketplace-resource-api-keys/{uuid}/rotate/` — Rotate an API key (path: uuid)
+- `marketplace_resource_api_keys_set_deleted` POST `/api/marketplace-resource-api-keys/{uuid}/set_deleted/` — Report an API key deleted (path: uuid)
 - `marketplace_resource_api_keys_set_erred` POST `/api/marketplace-resource-api-keys/{uuid}/set_erred/` — Mark an API key as erred (path: uuid | request body)
-- `marketplace_resource_api_keys_set_key` POST `/api/marketplace-resource-api-keys/{uuid}/set_key/` — Report a rotated API key value (path: uuid | request body)
+- `marketplace_resource_api_keys_set_key` POST `/api/marketplace-resource-api-keys/{uuid}/set_key/` — Report a created or rotated API key value (path: uuid | request body)
+- `marketplace_resource_api_keys_set_ok` POST `/api/marketplace-resource-api-keys/{uuid}/set_ok/` — Report an API key resumed or updated (path: uuid)
+- `marketplace_resource_api_keys_set_paused` POST `/api/marketplace-resource-api-keys/{uuid}/set_paused/` — Report an API key paused (path: uuid)
 
 ## marketplace-resource-end-date-change-requests
 Module: `waldur_api_client.api.marketplace_resource_end_date_change_requests`
