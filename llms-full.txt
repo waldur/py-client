@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.20.dev.20261001224350
+# Version: 8.1.3-rc.20.dev.20261002090544
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -10462,6 +10462,16 @@ POST /api/marketplace-provider-resources/{uuid}/restore/
 Path parameters:
   - uuid
 Request body: yes
+
+### marketplace_provider_resources_robot_account_users_list
+GET /api/marketplace-provider-resources/{uuid}/robot_account_users/
+Summary: List users a robot account on this resource may link
+Description: Returns the project and organization users of this resource that a robot account may link as users or as the responsible user. When ENFORCE_USER_CONSENT_FOR_OFFERINGS is enabled and the offering has active Terms of Service, only users with active consent are returned, for every caller.
+Path parameters:
+  - uuid
+Query parameters (2):
+  - full_name — Filter by full name.
+  - user_keyword — Filter by full name, username or email.
 
 ### marketplace_provider_resources_set_as_erred
 POST /api/marketplace-provider-resources/{uuid}/set_as_erred/

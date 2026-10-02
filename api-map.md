@@ -1720,6 +1720,7 @@ Module: `waldur_api_client.api.marketplace_provider_resources`
 - `marketplace_provider_resources_pull` POST `/api/marketplace-provider-resources/{uuid}/pull/` — Pull resource data (path: uuid)
 - `marketplace_provider_resources_refresh_last_sync` POST `/api/marketplace-provider-resources/{uuid}/refresh_last_sync/` — Refresh last sync time (path: uuid)
 - `marketplace_provider_resources_restore` POST `/api/marketplace-provider-resources/{uuid}/restore/` (path: uuid | request body)
+- `marketplace_provider_resources_robot_account_users_list` GET `/api/marketplace-provider-resources/{uuid}/robot_account_users/` — List users a robot account on this resource may link (path: uuid | 2 query params)
 - `marketplace_provider_resources_set_as_erred` POST `/api/marketplace-provider-resources/{uuid}/set_as_erred/` — Set resource state to erred (path: uuid | request body)
 - `marketplace_provider_resources_set_as_ok` POST `/api/marketplace-provider-resources/{uuid}/set_as_ok/` — Set resource state to OK (path: uuid)
 - `marketplace_provider_resources_set_backend_id` POST `/api/marketplace-provider-resources/{uuid}/set_backend_id/` — Set resource backend ID (path: uuid | request body)
