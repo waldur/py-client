@@ -4,27 +4,27 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="OpenStackPortNestedSecurityGroupRequest")
+T = TypeVar("T", bound="MatrixRoomOpen")
 
 
 @_attrs_define
-class OpenStackPortNestedSecurityGroupRequest:
+class MatrixRoomOpen:
     """
     Attributes:
-        url (str):
+        room_id (str):
     """
 
-    url: str
+    room_id: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        url = self.url
+        room_id = self.room_id
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "url": url,
+                "room_id": room_id,
             }
         )
 
@@ -33,14 +33,14 @@ class OpenStackPortNestedSecurityGroupRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        url = d.pop("url")
+        room_id = d.pop("room_id")
 
-        open_stack_port_nested_security_group_request = cls(
-            url=url,
+        matrix_room_open = cls(
+            room_id=room_id,
         )
 
-        open_stack_port_nested_security_group_request.additional_properties = d
-        return open_stack_port_nested_security_group_request
+        matrix_room_open.additional_properties = d
+        return matrix_room_open
 
     @property
     def additional_keys(self) -> list[str]:

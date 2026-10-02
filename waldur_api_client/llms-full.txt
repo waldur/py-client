@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.21.dev.20261002153253
+# Version: 8.1.3-rc.21.dev.20261002204054
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -14767,6 +14767,13 @@ Query parameters (3):
   - project_uuid — Project UUID
   - state
 
+### matrix_rooms_open
+POST /api/matrix/rooms/{uuid}/open/
+Summary: Open a chat room's conversation
+Description: Returns the Matrix room ID to a current member of the room, accepting their pending invite. Other callers get 403; a room that is not active gets 409.
+Path parameters:
+  - uuid
+
 ### matrix_rooms_reactivate
 POST /api/matrix/rooms/{uuid}/reactivate/
 Summary: Re-enable an archived chat room
@@ -14784,6 +14791,11 @@ POST /api/matrix/rooms/{uuid}/sync_members/
 Summary: Force sync room membership with project members
 Path parameters:
   - uuid
+
+### matrix_session
+POST /api/matrix/session/
+Summary: Start a Matrix web chat session
+Description: Signs the caller in to Matrix on a new web device and returns short-lived tokens for the chat drawer. The tokens are not stored.
 
 ============================================================
 ## media  (module: waldur_api_client.api.media)

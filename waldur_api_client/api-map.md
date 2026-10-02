@@ -2303,9 +2303,11 @@ Module: `waldur_api_client.api.matrix`
 - `matrix_rooms_join` POST `/api/matrix/rooms/{uuid}/join/` — Join a chat room as staff (path: uuid)
 - `matrix_rooms_leave` POST `/api/matrix/rooms/{uuid}/leave/` — Leave a chat room as staff (path: uuid)
 - `matrix_rooms_members_list` GET `/api/matrix/rooms/{uuid}/members/` — List room members (path: uuid | 3 query params)
+- `matrix_rooms_open` POST `/api/matrix/rooms/{uuid}/open/` — Open a chat room's conversation (path: uuid)
 - `matrix_rooms_reactivate` POST `/api/matrix/rooms/{uuid}/reactivate/` — Re-enable an archived chat room (path: uuid)
 - `matrix_rooms_retry` POST `/api/matrix/rooms/{uuid}/retry/` — Retry a stuck or failed room operation (path: uuid)
 - `matrix_rooms_sync_members` POST `/api/matrix/rooms/{uuid}/sync_members/` — Force sync room membership with project members (path: uuid)
+- `matrix_session` POST `/api/matrix/session/` — Start a Matrix web chat session (no params)
 
 ## media
 Module: `waldur_api_client.api.media`

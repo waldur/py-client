@@ -1172,7 +1172,9 @@ from .matrix_room_create_request import MatrixRoomCreateRequest
 from .matrix_room_disable_request import MatrixRoomDisableRequest
 from .matrix_room_member import MatrixRoomMember
 from .matrix_room_member_summary import MatrixRoomMemberSummary
+from .matrix_room_open import MatrixRoomOpen
 from .matrix_room_state_enum import MatrixRoomStateEnum
+from .matrix_session import MatrixSession
 from .me_permission import MePermission
 from .member_sync_status_entry_request import MemberSyncStatusEntryRequest
 from .member_sync_status_entry_scope_type_enum import MemberSyncStatusEntryScopeTypeEnum
@@ -4289,7 +4291,9 @@ __all__ = (
     "MatrixRoomDisableRequest",
     "MatrixRoomMember",
     "MatrixRoomMemberSummary",
+    "MatrixRoomOpen",
     "MatrixRoomStateEnum",
+    "MatrixSession",
     "MembershipControlEnum",
     "MembershipStateEnum",
     "MemberSyncStatusEntryRequest",
