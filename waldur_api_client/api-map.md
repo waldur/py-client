@@ -1264,7 +1264,7 @@ Module: `waldur_api_client.api.marketplace_integration_statuses`
 ## marketplace-metric-breakdown
 Module: `waldur_api_client.api.marketplace_metric_breakdown`
 
-- `marketplace_metric_breakdown_list` GET `/api/marketplace-metric-breakdown/` — Break a project's metric figure down by an attribute (5 query params)
+- `marketplace_metric_breakdown_list` GET `/api/marketplace-metric-breakdown/` — Break a metric figure down by an attribute or by resource (6 query params)
 
 ## marketplace-metric-definitions
 Module: `waldur_api_client.api.marketplace_metric_definitions`
@@ -1892,6 +1892,11 @@ Module: `waldur_api_client.api.marketplace_resource_limit_change_requests`
 - `marketplace_resource_limit_change_requests_approve` POST `/api/marketplace-resource-limit-change-requests/{uuid}/approve/` — Approve resource limit change request and apply limits via marketplace order (path: uuid | request body)
 - `marketplace_resource_limit_change_requests_cancel` POST `/api/marketplace-resource-limit-change-requests/{uuid}/cancel/` — Cancel resource limit change request (path: uuid | request body)
 - `marketplace_resource_limit_change_requests_reject` POST `/api/marketplace-resource-limit-change-requests/{uuid}/reject/` — Reject resource limit change request (path: uuid | request body)
+
+## marketplace-resource-metrics
+Module: `waldur_api_client.api.marketplace_resource_metrics`
+
+- `marketplace_resource_metrics_list` GET `/api/marketplace-resource-metrics/` — Get a resource's metric figures (1 query param)
 
 ## marketplace-resource-offerings
 Module: `waldur_api_client.api.marketplace_resource_offerings`

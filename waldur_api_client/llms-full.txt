@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.21.dev.20261004111540
+# Version: 8.1.3-rc.21.dev.20261004115217
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -6822,12 +6822,13 @@ Path parameters:
 
 ### marketplace_metric_breakdown_list
 GET /api/marketplace-metric-breakdown/
-Summary: Break a project's metric figure down by an attribute
-Query parameters (5):
+Summary: Break a metric figure down by an attribute or by resource
+Query parameters (6):
   - end
-  - group_by (required)
+  - group_by (required) — An attribute the metric declares, or 'resource' to break a project's figure down by its resources.
   - offering_metric_uuid (required)
-  - project_uuid (required)
+  - project_uuid — The project whose figure to break down. Either this or resource_uuid.
+  - resource_uuid — The resource whose figure to break down. Either this or project_uuid.
   - start (required)
 
 ============================================================
@@ -11420,6 +11421,17 @@ Description: Reject resource limit change request.
 Path parameters:
   - uuid
 Request body: yes
+
+============================================================
+## marketplace-resource-metrics  (module: waldur_api_client.api.marketplace_resource_metrics)
+============================================================
+
+### marketplace_resource_metrics_list
+GET /api/marketplace-resource-metrics/
+Summary: Get a resource's metric figures
+Description: Figures for the current and the previous calendar month. A resource has no goals: they apply to a project's combined figure.
+Query parameters (1):
+  - resource_uuid (required)
 
 ============================================================
 ## marketplace-resource-offerings  (module: waldur_api_client.api.marketplace_resource_offerings)

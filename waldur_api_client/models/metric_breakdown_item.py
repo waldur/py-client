@@ -1,5 +1,6 @@
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,12 +16,17 @@ T = TypeVar("T", bound="MetricBreakdownItem")
 class MetricBreakdownItem:
     """
     Attributes:
-        value (Union['MetricBreakdownItemValueType0', None]):
+        value (Union['MetricBreakdownItemValueType0', None]): The attribute's value, or the resource's name when broken
+            down by resource.
         figure (Union[None, float]):
+        resource_uuid (Union[None, UUID]):
+        resource_name (Union[None, str]):
     """
 
     value: Union["MetricBreakdownItemValueType0", None]
     figure: Union[None, float]
+    resource_uuid: Union[None, UUID]
+    resource_name: Union[None, str]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -35,12 +41,23 @@ class MetricBreakdownItem:
         figure: Union[None, float]
         figure = self.figure
 
+        resource_uuid: Union[None, str]
+        if isinstance(self.resource_uuid, UUID):
+            resource_uuid = str(self.resource_uuid)
+        else:
+            resource_uuid = self.resource_uuid
+
+        resource_name: Union[None, str]
+        resource_name = self.resource_name
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "value": value,
                 "figure": figure,
+                "resource_uuid": resource_uuid,
+                "resource_name": resource_name,
             }
         )
 
@@ -74,9 +91,33 @@ class MetricBreakdownItem:
 
         figure = _parse_figure(d.pop("figure"))
 
+        def _parse_resource_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                resource_uuid_type_0 = UUID(data)
+
+                return resource_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        resource_uuid = _parse_resource_uuid(d.pop("resource_uuid"))
+
+        def _parse_resource_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        resource_name = _parse_resource_name(d.pop("resource_name"))
+
         metric_breakdown_item = cls(
             value=value,
             figure=figure,
+            resource_uuid=resource_uuid,
+            resource_name=resource_name,
         )
 
         metric_breakdown_item.additional_properties = d

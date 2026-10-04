@@ -2586,6 +2586,7 @@ from .resource_limit_change_request_requested_limits import ResourceLimitChangeR
 from .resource_limit_period import ResourceLimitPeriod
 from .resource_limit_usage import ResourceLimitUsage
 from .resource_limits import ResourceLimits
+from .resource_metric import ResourceMetric
 from .resource_missing_usage import ResourceMissingUsage
 from .resource_o_enum import ResourceOEnum
 from .resource_offering import ResourceOffering
@@ -5653,6 +5654,7 @@ __all__ = (
     "ResourceLimitPeriod",
     "ResourceLimits",
     "ResourceLimitUsage",
+    "ResourceMetric",
     "ResourceMissingUsage",
     "ResourceOEnum",
     "ResourceOffering",
