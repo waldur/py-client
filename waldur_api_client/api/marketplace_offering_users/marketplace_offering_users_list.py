@@ -23,6 +23,7 @@ def _get_kwargs(
     field: Union[Unset, list[OfferingUserFieldEnum]] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
+    is_provider_backed: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
@@ -37,6 +38,7 @@ def _get_kwargs(
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     runtime_state: Union[Unset, list[RuntimeStateEnum]] = UNSET,
+    service_provider_account_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -66,6 +68,8 @@ def _get_kwargs(
     params["has_complete_profile"] = has_complete_profile
 
     params["has_consent"] = has_consent
+
+    params["is_provider_backed"] = is_provider_backed
 
     params["is_restricted"] = is_restricted
 
@@ -132,6 +136,11 @@ def _get_kwargs(
 
     params["runtime_state"] = json_runtime_state
 
+    json_service_provider_account_uuid: Union[Unset, str] = UNSET
+    if not isinstance(service_provider_account_uuid, Unset):
+        json_service_provider_account_uuid = str(service_provider_account_uuid)
+    params["service_provider_account_uuid"] = json_service_provider_account_uuid
+
     json_state: Union[Unset, list[str]] = UNSET
     if not isinstance(state, Unset):
         json_state = []
@@ -195,6 +204,7 @@ def sync_detailed(
     field: Union[Unset, list[OfferingUserFieldEnum]] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
+    is_provider_backed: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
@@ -209,6 +219,7 @@ def sync_detailed(
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     runtime_state: Union[Unset, list[RuntimeStateEnum]] = UNSET,
+    service_provider_account_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -227,6 +238,7 @@ def sync_detailed(
         field (Union[Unset, list[OfferingUserFieldEnum]]):
         has_complete_profile (Union[Unset, bool]):
         has_consent (Union[Unset, bool]):
+        is_provider_backed (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
@@ -241,6 +253,7 @@ def sync_detailed(
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         runtime_state (Union[Unset, list[RuntimeStateEnum]]):
+        service_provider_account_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
@@ -260,6 +273,7 @@ def sync_detailed(
         field=field,
         has_complete_profile=has_complete_profile,
         has_consent=has_consent,
+        is_provider_backed=is_provider_backed,
         is_restricted=is_restricted,
         modified=modified,
         modified_before=modified_before,
@@ -274,6 +288,7 @@ def sync_detailed(
         provider_uuid=provider_uuid,
         query=query,
         runtime_state=runtime_state,
+        service_provider_account_uuid=service_provider_account_uuid,
         state=state,
         user_username=user_username,
         user_uuid=user_uuid,
@@ -295,6 +310,7 @@ def sync(
     field: Union[Unset, list[OfferingUserFieldEnum]] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
+    is_provider_backed: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
@@ -309,6 +325,7 @@ def sync(
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     runtime_state: Union[Unset, list[RuntimeStateEnum]] = UNSET,
+    service_provider_account_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -327,6 +344,7 @@ def sync(
         field (Union[Unset, list[OfferingUserFieldEnum]]):
         has_complete_profile (Union[Unset, bool]):
         has_consent (Union[Unset, bool]):
+        is_provider_backed (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
@@ -341,6 +359,7 @@ def sync(
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         runtime_state (Union[Unset, list[RuntimeStateEnum]]):
+        service_provider_account_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
@@ -361,6 +380,7 @@ def sync(
         field=field,
         has_complete_profile=has_complete_profile,
         has_consent=has_consent,
+        is_provider_backed=is_provider_backed,
         is_restricted=is_restricted,
         modified=modified,
         modified_before=modified_before,
@@ -375,6 +395,7 @@ def sync(
         provider_uuid=provider_uuid,
         query=query,
         runtime_state=runtime_state,
+        service_provider_account_uuid=service_provider_account_uuid,
         state=state,
         user_username=user_username,
         user_uuid=user_uuid,
@@ -390,6 +411,7 @@ async def asyncio_detailed(
     field: Union[Unset, list[OfferingUserFieldEnum]] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
+    is_provider_backed: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
@@ -404,6 +426,7 @@ async def asyncio_detailed(
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     runtime_state: Union[Unset, list[RuntimeStateEnum]] = UNSET,
+    service_provider_account_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -422,6 +445,7 @@ async def asyncio_detailed(
         field (Union[Unset, list[OfferingUserFieldEnum]]):
         has_complete_profile (Union[Unset, bool]):
         has_consent (Union[Unset, bool]):
+        is_provider_backed (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
@@ -436,6 +460,7 @@ async def asyncio_detailed(
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         runtime_state (Union[Unset, list[RuntimeStateEnum]]):
+        service_provider_account_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
@@ -455,6 +480,7 @@ async def asyncio_detailed(
         field=field,
         has_complete_profile=has_complete_profile,
         has_consent=has_consent,
+        is_provider_backed=is_provider_backed,
         is_restricted=is_restricted,
         modified=modified,
         modified_before=modified_before,
@@ -469,6 +495,7 @@ async def asyncio_detailed(
         provider_uuid=provider_uuid,
         query=query,
         runtime_state=runtime_state,
+        service_provider_account_uuid=service_provider_account_uuid,
         state=state,
         user_username=user_username,
         user_uuid=user_uuid,
@@ -488,6 +515,7 @@ async def asyncio(
     field: Union[Unset, list[OfferingUserFieldEnum]] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
+    is_provider_backed: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
@@ -502,6 +530,7 @@ async def asyncio(
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     runtime_state: Union[Unset, list[RuntimeStateEnum]] = UNSET,
+    service_provider_account_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -520,6 +549,7 @@ async def asyncio(
         field (Union[Unset, list[OfferingUserFieldEnum]]):
         has_complete_profile (Union[Unset, bool]):
         has_consent (Union[Unset, bool]):
+        is_provider_backed (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
@@ -534,6 +564,7 @@ async def asyncio(
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         runtime_state (Union[Unset, list[RuntimeStateEnum]]):
+        service_provider_account_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
@@ -555,6 +586,7 @@ async def asyncio(
             field=field,
             has_complete_profile=has_complete_profile,
             has_consent=has_consent,
+            is_provider_backed=is_provider_backed,
             is_restricted=is_restricted,
             modified=modified,
             modified_before=modified_before,
@@ -569,6 +601,7 @@ async def asyncio(
             provider_uuid=provider_uuid,
             query=query,
             runtime_state=runtime_state,
+            service_provider_account_uuid=service_provider_account_uuid,
             state=state,
             user_username=user_username,
             user_uuid=user_uuid,
@@ -585,6 +618,7 @@ def sync_all(
     field: Union[Unset, list[OfferingUserFieldEnum]] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
+    is_provider_backed: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
@@ -597,6 +631,7 @@ def sync_all(
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     runtime_state: Union[Unset, list[RuntimeStateEnum]] = UNSET,
+    service_provider_account_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -615,6 +650,7 @@ def sync_all(
         field (Union[Unset, list[OfferingUserFieldEnum]]):
         has_complete_profile (Union[Unset, bool]):
         has_consent (Union[Unset, bool]):
+        is_provider_backed (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
@@ -627,6 +663,7 @@ def sync_all(
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         runtime_state (Union[Unset, list[RuntimeStateEnum]]):
+        service_provider_account_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
@@ -650,6 +687,7 @@ def sync_all(
         field=field,
         has_complete_profile=has_complete_profile,
         has_consent=has_consent,
+        is_provider_backed=is_provider_backed,
         is_restricted=is_restricted,
         modified=modified,
         modified_before=modified_before,
@@ -662,6 +700,7 @@ def sync_all(
         provider_uuid=provider_uuid,
         query=query,
         runtime_state=runtime_state,
+        service_provider_account_uuid=service_provider_account_uuid,
         state=state,
         user_username=user_username,
         user_uuid=user_uuid,
@@ -718,6 +757,7 @@ async def asyncio_all(
     field: Union[Unset, list[OfferingUserFieldEnum]] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
+    is_provider_backed: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
@@ -730,6 +770,7 @@ async def asyncio_all(
     provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     runtime_state: Union[Unset, list[RuntimeStateEnum]] = UNSET,
+    service_provider_account_uuid: Union[Unset, UUID] = UNSET,
     state: Union[Unset, list[OfferingUserState]] = UNSET,
     user_username: Union[Unset, str] = UNSET,
     user_uuid: Union[Unset, UUID] = UNSET,
@@ -748,6 +789,7 @@ async def asyncio_all(
         field (Union[Unset, list[OfferingUserFieldEnum]]):
         has_complete_profile (Union[Unset, bool]):
         has_consent (Union[Unset, bool]):
+        is_provider_backed (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
@@ -760,6 +802,7 @@ async def asyncio_all(
         provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         runtime_state (Union[Unset, list[RuntimeStateEnum]]):
+        service_provider_account_uuid (Union[Unset, UUID]):
         state (Union[Unset, list[OfferingUserState]]):
         user_username (Union[Unset, str]):
         user_uuid (Union[Unset, UUID]):
@@ -783,6 +826,7 @@ async def asyncio_all(
         field=field,
         has_complete_profile=has_complete_profile,
         has_consent=has_consent,
+        is_provider_backed=is_provider_backed,
         is_restricted=is_restricted,
         modified=modified,
         modified_before=modified_before,
@@ -795,6 +839,7 @@ async def asyncio_all(
         provider_uuid=provider_uuid,
         query=query,
         runtime_state=runtime_state,
+        service_provider_account_uuid=service_provider_account_uuid,
         state=state,
         user_username=user_username,
         user_uuid=user_uuid,

@@ -1399,13 +1399,13 @@ Module: `waldur_api_client.api.marketplace_offering_user_checklist_completions`
 ## marketplace-offering-users
 Module: `waldur_api_client.api.marketplace_offering_users`
 
-- `marketplace_offering_users_list` GET `/api/marketplace-offering-users/` — List offering users (21 query params)
-- `marketplace_offering_users_count` HEAD `/api/marketplace-offering-users/` — List offering users (20 query params)
+- `marketplace_offering_users_list` GET `/api/marketplace-offering-users/` — List offering users (23 query params)
+- `marketplace_offering_users_count` HEAD `/api/marketplace-offering-users/` — List offering users (22 query params)
 - `marketplace_offering_users_create` POST `/api/marketplace-offering-users/` — Create an offering user (request body)
 - `marketplace_offering_users_checklist_template_retrieve` GET `/api/marketplace-offering-users/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `marketplace_offering_users_checklist_template_count` HEAD `/api/marketplace-offering-users/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
-- `marketplace_offering_users_posix_identities_list` GET `/api/marketplace-offering-users/posix_identities/` — List a user's POSIX identities across all their offerings (20 query params)
-- `marketplace_offering_users_posix_identities_count` HEAD `/api/marketplace-offering-users/posix_identities/` — List a user's POSIX identities across all their offerings (20 query params)
+- `marketplace_offering_users_posix_identities_list` GET `/api/marketplace-offering-users/posix_identities/` — List a user's POSIX identities across all their offerings (22 query params)
+- `marketplace_offering_users_posix_identities_count` HEAD `/api/marketplace-offering-users/posix_identities/` — List a user's POSIX identities across all their offerings (22 query params)
 - `marketplace_offering_users_profile_field_warnings_retrieve` GET `/api/marketplace-offering-users/profile_field_warnings/` — Get profile field warnings (no params)
 - `marketplace_offering_users_profile_field_warnings_count` HEAD `/api/marketplace-offering-users/profile_field_warnings/` — Get profile field warnings (no params)
 - `marketplace_offering_users_retrieve` GET `/api/marketplace-offering-users/{uuid}/` — Retrieve an offering user (path: uuid | 1 query param)
@@ -1417,8 +1417,8 @@ Module: `waldur_api_client.api.marketplace_offering_users`
 - `marketplace_offering_users_checklist_review_retrieve` GET `/api/marketplace-offering-users/{uuid}/checklist_review/` — Get checklist with questions and existing answers including review logic (reviewers only) (path: uuid)
 - `marketplace_offering_users_completion_review_status_retrieve` GET `/api/marketplace-offering-users/{uuid}/completion_review_status/` — Get checklist completion status with review triggers (reviewers only) (path: uuid)
 - `marketplace_offering_users_completion_status_retrieve` GET `/api/marketplace-offering-users/{uuid}/completion_status/` — Get checklist completion status (path: uuid)
-- `marketplace_offering_users_posix_allocations_list` GET `/api/marketplace-offering-users/{uuid}/posix_allocations/` — List POSIX UID/GID allocations of an offering user (path: uuid | 20 query params)
-- `marketplace_offering_users_posix_groups_list` GET `/api/marketplace-offering-users/{uuid}/posix_groups/` — List project group GIDs an offering user belongs to (path: uuid | 20 query params)
+- `marketplace_offering_users_posix_allocations_list` GET `/api/marketplace-offering-users/{uuid}/posix_allocations/` — List POSIX UID/GID allocations of an offering user (path: uuid | 22 query params)
+- `marketplace_offering_users_posix_groups_list` GET `/api/marketplace-offering-users/{uuid}/posix_groups/` — List project group GIDs an offering user belongs to (path: uuid | 22 query params)
 - `marketplace_offering_users_request_deletion` POST `/api/marketplace-offering-users/{uuid}/request_deletion/` — Request deletion of an offering user (path: uuid)
 - `marketplace_offering_users_set_deleted` POST `/api/marketplace-offering-users/{uuid}/set_deleted/` — Set state to Deleted (path: uuid)
 - `marketplace_offering_users_set_deleting` POST `/api/marketplace-offering-users/{uuid}/set_deleting/` — Begin deletion process (path: uuid)

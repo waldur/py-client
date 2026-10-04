@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.21.dev.20261003183418
+# Version: 8.1.3-rc.21.dev.20261004074627
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -7528,12 +7528,13 @@ Path parameters:
 GET /api/marketplace-offering-users/
 Summary: List offering users
 Description: Returns a paginated list of users associated with offerings. The visibility of users depends on the role of the authenticated user. Staff and support can see all users. Service providers can see users of their offerings if the user has consented. Regular users can only see their own offering-user...
-Query parameters (21):
+Query parameters (23):
   - created — Created after
   - created_before — Created before
   - field
   - has_complete_profile — User has complete profile for the offering
   - has_consent — User Has Consent
+  - is_provider_backed — Backed by a service provider account
   - is_restricted — Is restricted
   - modified — Modified after
   - modified_before — Modified before
@@ -7546,6 +7547,7 @@ Query parameters (21):
   - provider_uuid — Provider UUID
   - query — Search by offering name, username, user name, UID or primary GID
   - runtime_state — Offering user runtime state
+  - service_provider_account_uuid — Service provider account UUID
   - state — Offering user state
   - user_username — User username
   - user_uuid — User UUID
@@ -7555,11 +7557,12 @@ Query parameters (21):
 HEAD /api/marketplace-offering-users/
 Summary: List offering users
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (20):
+Query parameters (22):
   - created — Created after
   - created_before — Created before
   - has_complete_profile — User has complete profile for the offering
   - has_consent — User Has Consent
+  - is_provider_backed — Backed by a service provider account
   - is_restricted — Is restricted
   - modified — Modified after
   - modified_before — Modified before
@@ -7572,6 +7575,7 @@ Query parameters (20):
   - provider_uuid — Provider UUID
   - query — Search by offering name, username, user name, UID or primary GID
   - runtime_state — Offering user runtime state
+  - service_provider_account_uuid — Service provider account UUID
   - state — Offering user state
   - user_username — User username
   - user_uuid — User UUID
@@ -7601,11 +7605,12 @@ Query parameters (1):
 GET /api/marketplace-offering-users/posix_identities/
 Summary: List a user's POSIX identities across all their offerings
 Description: Consolidated view of one user's POSIX identifiers (UID, primary GID and project group GIDs), one row per pool and namespace: a UID allocated once for the user is reported once, listing every offering that uses it. An offering with its own pool yields its own row. Scoped to the offering users the ...
-Query parameters (20):
+Query parameters (22):
   - created — Created after
   - created_before — Created before
   - has_complete_profile — User has complete profile for the offering
   - has_consent — User Has Consent
+  - is_provider_backed — Backed by a service provider account
   - is_restricted — Is restricted
   - modified — Modified after
   - modified_before — Modified before
@@ -7618,6 +7623,7 @@ Query parameters (20):
   - provider_uuid — Provider UUID
   - query — Search by offering name, username, user name, UID or primary GID
   - runtime_state — Offering user runtime state
+  - service_provider_account_uuid — Service provider account UUID
   - state — Offering user state
   - user_username — User username
   - user_uuid (required)
@@ -7627,11 +7633,12 @@ Query parameters (20):
 HEAD /api/marketplace-offering-users/posix_identities/
 Summary: List a user's POSIX identities across all their offerings
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (20):
+Query parameters (22):
   - created — Created after
   - created_before — Created before
   - has_complete_profile — User has complete profile for the offering
   - has_consent — User Has Consent
+  - is_provider_backed — Backed by a service provider account
   - is_restricted — Is restricted
   - modified — Modified after
   - modified_before — Modified before
@@ -7644,6 +7651,7 @@ Query parameters (20):
   - provider_uuid — Provider UUID
   - query — Search by offering name, username, user name, UID or primary GID
   - runtime_state — Offering user runtime state
+  - service_provider_account_uuid — Service provider account UUID
   - state — Offering user state
   - user_username — User username
   - user_uuid (required)
@@ -7730,11 +7738,12 @@ Summary: List POSIX UID/GID allocations of an offering user
 Description: Returns the user's POSIX identifiers (UID, primary GID) and, for each, the POSIX ID pool that tracks it plus the user's other offerings that resolve to the same pool and therefore carry the very same value. The pool fields are null when the value is not tracked by a pool.
 Path parameters:
   - uuid
-Query parameters (20):
+Query parameters (22):
   - created — Created after
   - created_before — Created before
   - has_complete_profile — User has complete profile for the offering
   - has_consent — User Has Consent
+  - is_provider_backed — Backed by a service provider account
   - is_restricted — Is restricted
   - modified — Modified after
   - modified_before — Modified before
@@ -7747,6 +7756,7 @@ Query parameters (20):
   - provider_uuid — Provider UUID
   - query — Search by offering name, username, user name, UID or primary GID
   - runtime_state — Offering user runtime state
+  - service_provider_account_uuid — Service provider account UUID
   - state — Offering user state
   - user_username — User username
   - user_uuid — User UUID
@@ -7758,11 +7768,12 @@ Summary: List project group GIDs an offering user belongs to
 Description: Returns the project group GIDs (shared GIDs that appear in the user's GLAuth otherGroups) for this offering user.
 Path parameters:
   - uuid
-Query parameters (20):
+Query parameters (22):
   - created — Created after
   - created_before — Created before
   - has_complete_profile — User has complete profile for the offering
   - has_consent — User Has Consent
+  - is_provider_backed — Backed by a service provider account
   - is_restricted — Is restricted
   - modified — Modified after
   - modified_before — Modified before
@@ -7775,6 +7786,7 @@ Query parameters (20):
   - provider_uuid — Provider UUID
   - query — Search by offering name, username, user name, UID or primary GID
   - runtime_state — Offering user runtime state
+  - service_provider_account_uuid — Service provider account UUID
   - state — Offering user state
   - user_username — User username
   - user_uuid — User UUID
