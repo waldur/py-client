@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.21.dev.20261004115217
+# Version: 8.1.3-rc.21.dev.20261004161433
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -14936,7 +14936,7 @@ Path parameters:
 ### matrix_credentials_retrieve
 GET /api/matrix/credentials/
 Summary: Get Matrix login credentials
-Description: Returns Matrix login credentials for the authenticated user based on the configured login method.
+Description: Returns what an external Matrix client needs to sign the authenticated user in, per MATRIX_EXTERNAL_LOGIN_METHOD: a password only in password mode, and never an access token.
 
 ### matrix_exports_list
 GET /api/matrix/exports/

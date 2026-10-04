@@ -1166,6 +1166,7 @@ from .matrix_credentials import MatrixCredentials
 from .matrix_diagnostic_check import MatrixDiagnosticCheck
 from .matrix_diagnostics_response import MatrixDiagnosticsResponse
 from .matrix_exports_download_retrieve_kind import MatrixExportsDownloadRetrieveKind
+from .matrix_external_login_method_enum import MatrixExternalLoginMethodEnum
 from .matrix_history_export import MatrixHistoryExport
 from .matrix_history_export_state_enum import MatrixHistoryExportStateEnum
 from .matrix_reprovision_response import MatrixReprovisionResponse
@@ -4320,6 +4321,7 @@ __all__ = (
     "MatrixDiagnosticCheck",
     "MatrixDiagnosticsResponse",
     "MatrixExportsDownloadRetrieveKind",
+    "MatrixExternalLoginMethodEnum",
     "MatrixHistoryExport",
     "MatrixHistoryExportStateEnum",
     "MatrixReprovisionResponse",

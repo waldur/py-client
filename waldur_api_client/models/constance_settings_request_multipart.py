@@ -16,6 +16,7 @@ from ..models.fontfamily_enum import FONTFAMILYEnum
 from ..models.loginpagelayout_enum import LOGINPAGELAYOUTEnum
 from ..models.marketplacecardstyle_enum import MARKETPLACECARDSTYLEEnum
 from ..models.marketplacelayoutmode_enum import MARKETPLACELAYOUTMODEEnum
+from ..models.matrix_external_login_method_enum import MatrixExternalLoginMethodEnum
 from ..models.notify_system_enum import NotifySystemEnum
 from ..models.offering_type_enum import OfferingTypeEnum
 from ..models.onboarding_validation_enum import OnboardingValidationEnum
@@ -379,8 +380,7 @@ class ConstanceSettingsRequestMultipart:
         matrix_export_media (Union[Unset, bool]):
         matrix_user_registration_secret (Union[Unset, str]):
         matrix_user_id_format (Union[Unset, str]):
-        matrix_login_method (Union[Unset, str]):
-        matrix_oidc_provider_url (Union[Unset, str]):
+        matrix_external_login_method (Union[Unset, MatrixExternalLoginMethodEnum]):
         matrix_livekit_key (Union[Unset, str]):
         matrix_livekit_secret (Union[Unset, str]):
         matrix_livekit_url (Union[Unset, str]):
@@ -726,8 +726,7 @@ class ConstanceSettingsRequestMultipart:
     matrix_export_media: Union[Unset, bool] = UNSET
     matrix_user_registration_secret: Union[Unset, str] = UNSET
     matrix_user_id_format: Union[Unset, str] = UNSET
-    matrix_login_method: Union[Unset, str] = UNSET
-    matrix_oidc_provider_url: Union[Unset, str] = UNSET
+    matrix_external_login_method: Union[Unset, MatrixExternalLoginMethodEnum] = UNSET
     matrix_livekit_key: Union[Unset, str] = UNSET
     matrix_livekit_secret: Union[Unset, str] = UNSET
     matrix_livekit_url: Union[Unset, str] = UNSET
@@ -1698,9 +1697,9 @@ class ConstanceSettingsRequestMultipart:
 
         matrix_user_id_format = self.matrix_user_id_format
 
-        matrix_login_method = self.matrix_login_method
-
-        matrix_oidc_provider_url = self.matrix_oidc_provider_url
+        matrix_external_login_method: Union[Unset, str] = UNSET
+        if not isinstance(self.matrix_external_login_method, Unset):
+            matrix_external_login_method = self.matrix_external_login_method.value
 
         matrix_livekit_key = self.matrix_livekit_key
 
@@ -2403,10 +2402,8 @@ class ConstanceSettingsRequestMultipart:
             field_dict["MATRIX_USER_REGISTRATION_SECRET"] = matrix_user_registration_secret
         if matrix_user_id_format is not UNSET:
             field_dict["MATRIX_USER_ID_FORMAT"] = matrix_user_id_format
-        if matrix_login_method is not UNSET:
-            field_dict["MATRIX_LOGIN_METHOD"] = matrix_login_method
-        if matrix_oidc_provider_url is not UNSET:
-            field_dict["MATRIX_OIDC_PROVIDER_URL"] = matrix_oidc_provider_url
+        if matrix_external_login_method is not UNSET:
+            field_dict["MATRIX_EXTERNAL_LOGIN_METHOD"] = matrix_external_login_method
         if matrix_livekit_key is not UNSET:
             field_dict["MATRIX_LIVEKIT_KEY"] = matrix_livekit_key
         if matrix_livekit_secret is not UNSET:
@@ -4443,12 +4440,12 @@ class ConstanceSettingsRequestMultipart:
         if not isinstance(self.matrix_user_id_format, Unset):
             files.append(("MATRIX_USER_ID_FORMAT", (None, str(self.matrix_user_id_format).encode(), "text/plain")))
 
-        if not isinstance(self.matrix_login_method, Unset):
-            files.append(("MATRIX_LOGIN_METHOD", (None, str(self.matrix_login_method).encode(), "text/plain")))
-
-        if not isinstance(self.matrix_oidc_provider_url, Unset):
+        if not isinstance(self.matrix_external_login_method, Unset):
             files.append(
-                ("MATRIX_OIDC_PROVIDER_URL", (None, str(self.matrix_oidc_provider_url).encode(), "text/plain"))
+                (
+                    "MATRIX_EXTERNAL_LOGIN_METHOD",
+                    (None, str(self.matrix_external_login_method.value).encode(), "text/plain"),
+                )
             )
 
         if not isinstance(self.matrix_livekit_key, Unset):
@@ -5797,9 +5794,12 @@ class ConstanceSettingsRequestMultipart:
 
         matrix_user_id_format = d.pop("MATRIX_USER_ID_FORMAT", UNSET)
 
-        matrix_login_method = d.pop("MATRIX_LOGIN_METHOD", UNSET)
-
-        matrix_oidc_provider_url = d.pop("MATRIX_OIDC_PROVIDER_URL", UNSET)
+        _matrix_external_login_method = d.pop("MATRIX_EXTERNAL_LOGIN_METHOD", UNSET)
+        matrix_external_login_method: Union[Unset, MatrixExternalLoginMethodEnum]
+        if isinstance(_matrix_external_login_method, Unset):
+            matrix_external_login_method = UNSET
+        else:
+            matrix_external_login_method = MatrixExternalLoginMethodEnum(_matrix_external_login_method)
 
         matrix_livekit_key = d.pop("MATRIX_LIVEKIT_KEY", UNSET)
 
@@ -6154,8 +6154,7 @@ class ConstanceSettingsRequestMultipart:
             matrix_export_media=matrix_export_media,
             matrix_user_registration_secret=matrix_user_registration_secret,
             matrix_user_id_format=matrix_user_id_format,
-            matrix_login_method=matrix_login_method,
-            matrix_oidc_provider_url=matrix_oidc_provider_url,
+            matrix_external_login_method=matrix_external_login_method,
             matrix_livekit_key=matrix_livekit_key,
             matrix_livekit_secret=matrix_livekit_secret,
             matrix_livekit_url=matrix_livekit_url,
