@@ -32,6 +32,8 @@ class CallWorkflowStepNotificationRule:
         days_before (Union[None, Unset, int]): Only for deadline_approaching: how many days before the step's deadline
             the reminder is sent.
         is_enabled (Union[Unset, bool]):
+        notified_proposal_roles (Union[Unset, list[str]]): Only for an applicant audience: names of the proposal roles
+            whose holders are notified. Empty notifies the proposal creator and every member of the proposal team.
     """
 
     url: str
@@ -46,6 +48,7 @@ class CallWorkflowStepNotificationRule:
     recipient: RecipientEnum
     days_before: Union[None, Unset, int] = UNSET
     is_enabled: Union[Unset, bool] = UNSET
+    notified_proposal_roles: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -77,6 +80,10 @@ class CallWorkflowStepNotificationRule:
 
         is_enabled = self.is_enabled
 
+        notified_proposal_roles: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.notified_proposal_roles, Unset):
+            notified_proposal_roles = self.notified_proposal_roles
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -97,6 +104,8 @@ class CallWorkflowStepNotificationRule:
             field_dict["days_before"] = days_before
         if is_enabled is not UNSET:
             field_dict["is_enabled"] = is_enabled
+        if notified_proposal_roles is not UNSET:
+            field_dict["notified_proposal_roles"] = notified_proposal_roles
 
         return field_dict
 
@@ -134,6 +143,8 @@ class CallWorkflowStepNotificationRule:
 
         is_enabled = d.pop("is_enabled", UNSET)
 
+        notified_proposal_roles = cast(list[str], d.pop("notified_proposal_roles", UNSET))
+
         call_workflow_step_notification_rule = cls(
             url=url,
             uuid=uuid,
@@ -147,6 +158,7 @@ class CallWorkflowStepNotificationRule:
             recipient=recipient,
             days_before=days_before,
             is_enabled=is_enabled,
+            notified_proposal_roles=notified_proposal_roles,
         )
 
         call_workflow_step_notification_rule.additional_properties = d

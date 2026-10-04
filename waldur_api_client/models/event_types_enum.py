@@ -238,6 +238,7 @@ class EventTypesEnum(str, Enum):
     PROPOSAL_CANCELED = "proposal_canceled"
     PROPOSAL_DOCUMENT_ADDED = "proposal_document_added"
     PROPOSAL_DOCUMENT_REMOVED = "proposal_document_removed"
+    PROPOSAL_TEAM_CHANGED_AFTER_SUBMISSION = "proposal_team_changed_after_submission"
     PROPOSAL_WORKFLOW_ADVANCED = "proposal_workflow_advanced"
     QUERY_EXECUTED = "query_executed"
     REDUCTION_OF_CUSTOMER_CREDIT = "reduction_of_customer_credit"

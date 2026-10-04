@@ -21,6 +21,7 @@ class CallWorkflowStepNotificationRuleNested:
         days_before (Union[None, int]): Only for deadline_approaching: how many days before the step's deadline the
             reminder is sent.
         is_enabled (bool):
+        notified_proposal_roles (list[str]):
     """
 
     uuid: UUID
@@ -28,6 +29,7 @@ class CallWorkflowStepNotificationRuleNested:
     recipient: RecipientEnum
     days_before: Union[None, int]
     is_enabled: bool
+    notified_proposal_roles: list[str]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,6 +44,8 @@ class CallWorkflowStepNotificationRuleNested:
 
         is_enabled = self.is_enabled
 
+        notified_proposal_roles = self.notified_proposal_roles
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -51,6 +55,7 @@ class CallWorkflowStepNotificationRuleNested:
                 "recipient": recipient,
                 "days_before": days_before,
                 "is_enabled": is_enabled,
+                "notified_proposal_roles": notified_proposal_roles,
             }
         )
 
@@ -74,12 +79,15 @@ class CallWorkflowStepNotificationRuleNested:
 
         is_enabled = d.pop("is_enabled")
 
+        notified_proposal_roles = cast(list[str], d.pop("notified_proposal_roles"))
+
         call_workflow_step_notification_rule_nested = cls(
             uuid=uuid,
             trigger=trigger,
             recipient=recipient,
             days_before=days_before,
             is_enabled=is_enabled,
+            notified_proposal_roles=notified_proposal_roles,
         )
 
         call_workflow_step_notification_rule_nested.additional_properties = d
