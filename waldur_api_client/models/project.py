@@ -89,6 +89,7 @@ class Project:
         project_credit (Union[None, Unset, float]):
         marketplace_resource_count (Union[Unset, ProjectMarketplaceResourceCount]):
         billing_price_estimate (Union[Unset, NestedPriceEstimate]):
+        has_metrics (Union[Unset, bool]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -143,6 +144,7 @@ class Project:
     project_credit: Union[None, Unset, float] = UNSET
     marketplace_resource_count: Union[Unset, "ProjectMarketplaceResourceCount"] = UNSET
     billing_price_estimate: Union[Unset, "NestedPriceEstimate"] = UNSET
+    has_metrics: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -372,6 +374,8 @@ class Project:
         if not isinstance(self.billing_price_estimate, Unset):
             billing_price_estimate = self.billing_price_estimate.to_dict()
 
+        has_metrics = self.has_metrics
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -479,6 +483,8 @@ class Project:
             field_dict["marketplace_resource_count"] = marketplace_resource_count
         if billing_price_estimate is not UNSET:
             field_dict["billing_price_estimate"] = billing_price_estimate
+        if has_metrics is not UNSET:
+            field_dict["has_metrics"] = has_metrics
 
         return field_dict
 
@@ -849,6 +855,8 @@ class Project:
         else:
             billing_price_estimate = NestedPriceEstimate.from_dict(_billing_price_estimate)
 
+        has_metrics = d.pop("has_metrics", UNSET)
+
         project = cls(
             url=url,
             uuid=uuid,
@@ -902,6 +910,7 @@ class Project:
             project_credit=project_credit,
             marketplace_resource_count=marketplace_resource_count,
             billing_price_estimate=billing_price_estimate,
+            has_metrics=has_metrics,
         )
 
         project.additional_properties = d

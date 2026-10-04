@@ -485,6 +485,7 @@ from .coi_type_enum import CoiTypeEnum
 from .comment import Comment
 from .comment_o_enum import CommentOEnum
 from .comment_request import CommentRequest
+from .comparator_enum import ComparatorEnum
 from .complete_workflow_step_request import CompleteWorkflowStepRequest
 from .complete_workflow_step_response import CompleteWorkflowStepResponse
 from .compliance_overview import ComplianceOverview
@@ -894,6 +895,7 @@ from .glauth_tree_user import GlauthTreeUser
 from .global_user_data_access_log import GlobalUserDataAccessLog
 from .global_user_data_access_log_context import GlobalUserDataAccessLogContext
 from .global_user_data_access_log_o_enum import GlobalUserDataAccessLogOEnum
+from .good_direction_enum import GoodDirectionEnum
 from .google_auth_url import GoogleAuthUrl
 from .google_calendar import GoogleCalendar
 from .google_credentials import GoogleCredentials
@@ -1203,6 +1205,24 @@ from .message_state_cache import MessageStateCache
 from .message_state_cache_filter import MessageStateCacheFilter
 from .message_template import MessageTemplate
 from .message_template_request import MessageTemplateRequest
+from .metric_breakdown_item import MetricBreakdownItem
+from .metric_breakdown_item_value_type_0 import MetricBreakdownItemValueType0
+from .metric_definition import MetricDefinition
+from .metric_definition_request import MetricDefinitionRequest
+from .metric_definition_state_enum import MetricDefinitionStateEnum
+from .metric_goal import MetricGoal
+from .metric_goal_period_enum import MetricGoalPeriodEnum
+from .metric_goal_request import MetricGoalRequest
+from .metric_kind_enum import MetricKindEnum
+from .metric_point_request import MetricPointRequest
+from .metric_point_request_attributes import MetricPointRequestAttributes
+from .metric_point_value import MetricPointValue
+from .metric_report_result import MetricReportResult
+from .metric_series_group import MetricSeriesGroup
+from .metric_series_group_attributes import MetricSeriesGroupAttributes
+from .metric_series_response import MetricSeriesResponse
+from .metric_series_response_aggregate_enum import MetricSeriesResponseAggregateEnum
+from .metric_series_response_granularity_enum import MetricSeriesResponseGranularityEnum
 from .migration_create import MigrationCreate
 from .migration_create_request import MigrationCreateRequest
 from .migration_details import MigrationDetails
@@ -1431,6 +1451,9 @@ from .offering_merge_undo_report import OfferingMergeUndoReport
 from .offering_merge_unmatched_component import OfferingMergeUnmatchedComponent
 from .offering_merge_unmatched_plan import OfferingMergeUnmatchedPlan
 from .offering_merge_verification import OfferingMergeVerification
+from .offering_metric import OfferingMetric
+from .offering_metric_request import OfferingMetricRequest
+from .offering_metric_state_enum import OfferingMetricStateEnum
 from .offering_options import OfferingOptions
 from .offering_options_options import OfferingOptionsOptions
 from .offering_options_request import OfferingOptionsRequest
@@ -1770,6 +1793,8 @@ from .organization_group_request import OrganizationGroupRequest
 from .organization_groups_request import OrganizationGroupsRequest
 from .organizational_access import OrganizationalAccess
 from .organizational_user import OrganizationalUser
+from .otlp_v1_metrics_json_body import OtlpV1MetricsJsonBody
+from .otlp_v1_metrics_response_200 import OtlpV1MetricsResponse200
 from .outcome_enum import OutcomeEnum
 from .paid_request import PaidRequest
 from .paid_request_form import PaidRequestForm
@@ -1867,6 +1892,8 @@ from .patched_marketplace_category_request_form import PatchedMarketplaceCategor
 from .patched_marketplace_category_request_multipart import PatchedMarketplaceCategoryRequestMultipart
 from .patched_matching_configuration_request import PatchedMatchingConfigurationRequest
 from .patched_message_template_request import PatchedMessageTemplateRequest
+from .patched_metric_definition_request import PatchedMetricDefinitionRequest
+from .patched_metric_goal_request import PatchedMetricGoalRequest
 from .patched_migration_details_request import PatchedMigrationDetailsRequest
 from .patched_network_rbac_policy_request import PatchedNetworkRBACPolicyRequest
 from .patched_notification_request import PatchedNotificationRequest
@@ -1886,6 +1913,7 @@ from .patched_offering_merge_request_component_mapping_additional_property impor
     PatchedOfferingMergeRequestComponentMappingAdditionalProperty,
 )
 from .patched_offering_merge_request_plan_mapping import PatchedOfferingMergeRequestPlanMapping
+from .patched_offering_metric_request import PatchedOfferingMetricRequest
 from .patched_offering_partition_update_request import PatchedOfferingPartitionUpdateRequest
 from .patched_offering_profile_request import PatchedOfferingProfileRequest
 from .patched_offering_qo_s_update_request import PatchedOfferingQoSUpdateRequest
@@ -1974,6 +2002,7 @@ from .patched_resource_api_key_update_request_limits_type_0 import PatchedResour
 from .patched_resource_project_request import PatchedResourceProjectRequest
 from .patched_resource_project_request_limits import PatchedResourceProjectRequestLimits
 from .patched_resource_update_request import PatchedResourceUpdateRequest
+from .patched_retention_policy_request import PatchedRetentionPolicyRequest
 from .patched_reviewer_affiliation_request import PatchedReviewerAffiliationRequest
 from .patched_reviewer_bid_request import PatchedReviewerBidRequest
 from .patched_reviewer_expertise_request import PatchedReviewerExpertiseRequest
@@ -2095,6 +2124,7 @@ from .project import Project
 from .project_accounting_summary import ProjectAccountingSummary
 from .project_action_enum import ProjectActionEnum
 from .project_affiliation_update_request import ProjectAffiliationUpdateRequest
+from .project_aggregation_enum import ProjectAggregationEnum
 from .project_answer import ProjectAnswer
 from .project_answer_detail import ProjectAnswerDetail
 from .project_answer_detail_answer_data_type_0 import ProjectAnswerDetailAnswerDataType0
@@ -2130,6 +2160,7 @@ from .project_mapping import ProjectMapping
 from .project_mapping_map import ProjectMappingMap
 from .project_marketplace_resource_count import ProjectMarketplaceResourceCount
 from .project_metadata_answer import ProjectMetadataAnswer
+from .project_metric import ProjectMetric
 from .project_order_auto_approval import ProjectOrderAutoApproval
 from .project_order_auto_approval_request import ProjectOrderAutoApprovalRequest
 from .project_permission_log import ProjectPermissionLog
@@ -2435,6 +2466,7 @@ from .reconcile_request_request import ReconcileRequestRequest
 from .reference_number_request import ReferenceNumberRequest
 from .reject_workflow_step_request import RejectWorkflowStepRequest
 from .reject_workflow_step_response import RejectWorkflowStepResponse
+from .rejected_point import RejectedPoint
 from .relationship_type_enum import RelationshipTypeEnum
 from .relevant_when import RelevantWhen
 from .remote_allocation import RemoteAllocation
@@ -2619,6 +2651,8 @@ from .resources_geography_summary import ResourcesGeographySummary
 from .resources_limits import ResourcesLimits
 from .responsible_role_enum import ResponsibleRoleEnum
 from .restrictedofferingvisibilitymode_enum import RESTRICTEDOFFERINGVISIBILITYMODEEnum
+from .retention_policy import RetentionPolicy
+from .retention_policy_request import RetentionPolicyRequest
 from .review_comment_request import ReviewCommentRequest
 from .review_progress_stat import ReviewProgressStat
 from .review_submit_request import ReviewSubmitRequest
@@ -3630,6 +3664,7 @@ __all__ = (
     "Comment",
     "CommentOEnum",
     "CommentRequest",
+    "ComparatorEnum",
     "CompleteWorkflowStepRequest",
     "CompleteWorkflowStepResponse",
     "ComplianceOverview",
@@ -4027,6 +4062,7 @@ __all__ = (
     "GlobalUserDataAccessLog",
     "GlobalUserDataAccessLogContext",
     "GlobalUserDataAccessLogOEnum",
+    "GoodDirectionEnum",
     "GoogleAuthUrl",
     "GoogleCalendar",
     "GoogleCredentials",
@@ -4322,6 +4358,24 @@ __all__ = (
     "MessageStateCacheFilter",
     "MessageTemplate",
     "MessageTemplateRequest",
+    "MetricBreakdownItem",
+    "MetricBreakdownItemValueType0",
+    "MetricDefinition",
+    "MetricDefinitionRequest",
+    "MetricDefinitionStateEnum",
+    "MetricGoal",
+    "MetricGoalPeriodEnum",
+    "MetricGoalRequest",
+    "MetricKindEnum",
+    "MetricPointRequest",
+    "MetricPointRequestAttributes",
+    "MetricPointValue",
+    "MetricReportResult",
+    "MetricSeriesGroup",
+    "MetricSeriesGroupAttributes",
+    "MetricSeriesResponse",
+    "MetricSeriesResponseAggregateEnum",
+    "MetricSeriesResponseGranularityEnum",
     "MigrationCreate",
     "MigrationCreateRequest",
     "MigrationDetails",
@@ -4544,6 +4598,9 @@ __all__ = (
     "OfferingMergeUnmatchedComponent",
     "OfferingMergeUnmatchedPlan",
     "OfferingMergeVerification",
+    "OfferingMetric",
+    "OfferingMetricRequest",
+    "OfferingMetricStateEnum",
     "OfferingOptions",
     "OfferingOptionsOptions",
     "OfferingOptionsRequest",
@@ -4845,6 +4902,8 @@ __all__ = (
     "OrganizationGroup",
     "OrganizationGroupRequest",
     "OrganizationGroupsRequest",
+    "OtlpV1MetricsJsonBody",
+    "OtlpV1MetricsResponse200",
     "OutcomeEnum",
     "PaidRequest",
     "PaidRequestForm",
@@ -4940,6 +4999,8 @@ __all__ = (
     "PatchedMarketplaceCategoryRequestMultipart",
     "PatchedMatchingConfigurationRequest",
     "PatchedMessageTemplateRequest",
+    "PatchedMetricDefinitionRequest",
+    "PatchedMetricGoalRequest",
     "PatchedMigrationDetailsRequest",
     "PatchedNetworkRBACPolicyRequest",
     "PatchedNotificationRequest",
@@ -4955,6 +5016,7 @@ __all__ = (
     "PatchedOfferingMergeRequestComponentMapping",
     "PatchedOfferingMergeRequestComponentMappingAdditionalProperty",
     "PatchedOfferingMergeRequestPlanMapping",
+    "PatchedOfferingMetricRequest",
     "PatchedOfferingPartitionUpdateRequest",
     "PatchedOfferingProfileRequest",
     "PatchedOfferingQoSUpdateRequest",
@@ -5039,6 +5101,7 @@ __all__ = (
     "PatchedResourceProjectRequest",
     "PatchedResourceProjectRequestLimits",
     "PatchedResourceUpdateRequest",
+    "PatchedRetentionPolicyRequest",
     "PatchedReviewerAffiliationRequest",
     "PatchedReviewerBidRequest",
     "PatchedReviewerExpertiseRequest",
@@ -5152,6 +5215,7 @@ __all__ = (
     "ProjectAccountingSummary",
     "ProjectActionEnum",
     "ProjectAffiliationUpdateRequest",
+    "ProjectAggregationEnum",
     "ProjectAnswer",
     "ProjectAnswerDetail",
     "ProjectAnswerDetailAnswerDataType0",
@@ -5187,6 +5251,7 @@ __all__ = (
     "ProjectMappingMap",
     "ProjectMarketplaceResourceCount",
     "ProjectMetadataAnswer",
+    "ProjectMetric",
     "ProjectOrderAutoApproval",
     "ProjectOrderAutoApprovalRequest",
     "ProjectPermissionLog",
@@ -5470,6 +5535,7 @@ __all__ = (
     "RecipientEnum",
     "ReconcileRequestRequest",
     "ReferenceNumberRequest",
+    "RejectedPoint",
     "RejectWorkflowStepRequest",
     "RejectWorkflowStepResponse",
     "RelationshipTypeEnum",
@@ -5652,6 +5718,8 @@ __all__ = (
     "ResourceUsageByOrgType",
     "ResponsibleRoleEnum",
     "RESTRICTEDOFFERINGVISIBILITYMODEEnum",
+    "RetentionPolicy",
+    "RetentionPolicyRequest",
     "ReviewCommentRequest",
     "ReviewerAffiliation",
     "ReviewerAffiliationRequest",

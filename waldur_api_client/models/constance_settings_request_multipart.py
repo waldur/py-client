@@ -348,6 +348,12 @@ class ConstanceSettingsRequestMultipart:
         arrow_consumption_sync_enabled (Union[Unset, bool]):
         arrow_consumption_sync_interval_hours (Union[Unset, int]):
         arrow_billing_check_interval_hours (Union[Unset, int]):
+        metrics_late_data_days (Union[Unset, int]):
+        metrics_max_series_per_resource_metric (Union[Unset, int]):
+        metrics_max_points_per_request (Union[Unset, int]):
+        metrics_max_otlp_body_bytes (Union[Unset, int]):
+        metrics_default_retention_policy (Union[Unset, str]):
+        metrics_archive_grace_days (Union[Unset, int]):
         usage_poll_record_retention_months (Union[Unset, int]):
         slurm_policy_evaluation_log_retention_days (Union[Unset, int]):
         federated_identity_sync_enabled (Union[Unset, bool]):
@@ -689,6 +695,12 @@ class ConstanceSettingsRequestMultipart:
     arrow_consumption_sync_enabled: Union[Unset, bool] = UNSET
     arrow_consumption_sync_interval_hours: Union[Unset, int] = UNSET
     arrow_billing_check_interval_hours: Union[Unset, int] = UNSET
+    metrics_late_data_days: Union[Unset, int] = UNSET
+    metrics_max_series_per_resource_metric: Union[Unset, int] = UNSET
+    metrics_max_points_per_request: Union[Unset, int] = UNSET
+    metrics_max_otlp_body_bytes: Union[Unset, int] = UNSET
+    metrics_default_retention_policy: Union[Unset, str] = UNSET
+    metrics_archive_grace_days: Union[Unset, int] = UNSET
     usage_poll_record_retention_months: Union[Unset, int] = UNSET
     slurm_policy_evaluation_log_retention_days: Union[Unset, int] = UNSET
     federated_identity_sync_enabled: Union[Unset, bool] = UNSET
@@ -1578,6 +1590,18 @@ class ConstanceSettingsRequestMultipart:
 
         arrow_billing_check_interval_hours = self.arrow_billing_check_interval_hours
 
+        metrics_late_data_days = self.metrics_late_data_days
+
+        metrics_max_series_per_resource_metric = self.metrics_max_series_per_resource_metric
+
+        metrics_max_points_per_request = self.metrics_max_points_per_request
+
+        metrics_max_otlp_body_bytes = self.metrics_max_otlp_body_bytes
+
+        metrics_default_retention_policy = self.metrics_default_retention_policy
+
+        metrics_archive_grace_days = self.metrics_archive_grace_days
+
         usage_poll_record_retention_months = self.usage_poll_record_retention_months
 
         slurm_policy_evaluation_log_retention_days = self.slurm_policy_evaluation_log_retention_days
@@ -2317,6 +2341,18 @@ class ConstanceSettingsRequestMultipart:
             field_dict["ARROW_CONSUMPTION_SYNC_INTERVAL_HOURS"] = arrow_consumption_sync_interval_hours
         if arrow_billing_check_interval_hours is not UNSET:
             field_dict["ARROW_BILLING_CHECK_INTERVAL_HOURS"] = arrow_billing_check_interval_hours
+        if metrics_late_data_days is not UNSET:
+            field_dict["METRICS_LATE_DATA_DAYS"] = metrics_late_data_days
+        if metrics_max_series_per_resource_metric is not UNSET:
+            field_dict["METRICS_MAX_SERIES_PER_RESOURCE_METRIC"] = metrics_max_series_per_resource_metric
+        if metrics_max_points_per_request is not UNSET:
+            field_dict["METRICS_MAX_POINTS_PER_REQUEST"] = metrics_max_points_per_request
+        if metrics_max_otlp_body_bytes is not UNSET:
+            field_dict["METRICS_MAX_OTLP_BODY_BYTES"] = metrics_max_otlp_body_bytes
+        if metrics_default_retention_policy is not UNSET:
+            field_dict["METRICS_DEFAULT_RETENTION_POLICY"] = metrics_default_retention_policy
+        if metrics_archive_grace_days is not UNSET:
+            field_dict["METRICS_ARCHIVE_GRACE_DAYS"] = metrics_archive_grace_days
         if usage_poll_record_retention_months is not UNSET:
             field_dict["USAGE_POLL_RECORD_RETENTION_MONTHS"] = usage_poll_record_retention_months
         if slurm_policy_evaluation_log_retention_days is not UNSET:
@@ -4169,6 +4205,43 @@ class ConstanceSettingsRequestMultipart:
                 )
             )
 
+        if not isinstance(self.metrics_late_data_days, Unset):
+            files.append(("METRICS_LATE_DATA_DAYS", (None, str(self.metrics_late_data_days).encode(), "text/plain")))
+
+        if not isinstance(self.metrics_max_series_per_resource_metric, Unset):
+            files.append(
+                (
+                    "METRICS_MAX_SERIES_PER_RESOURCE_METRIC",
+                    (None, str(self.metrics_max_series_per_resource_metric).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.metrics_max_points_per_request, Unset):
+            files.append(
+                (
+                    "METRICS_MAX_POINTS_PER_REQUEST",
+                    (None, str(self.metrics_max_points_per_request).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.metrics_max_otlp_body_bytes, Unset):
+            files.append(
+                ("METRICS_MAX_OTLP_BODY_BYTES", (None, str(self.metrics_max_otlp_body_bytes).encode(), "text/plain"))
+            )
+
+        if not isinstance(self.metrics_default_retention_policy, Unset):
+            files.append(
+                (
+                    "METRICS_DEFAULT_RETENTION_POLICY",
+                    (None, str(self.metrics_default_retention_policy).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.metrics_archive_grace_days, Unset):
+            files.append(
+                ("METRICS_ARCHIVE_GRACE_DAYS", (None, str(self.metrics_archive_grace_days).encode(), "text/plain"))
+            )
+
         if not isinstance(self.usage_poll_record_retention_months, Unset):
             files.append(
                 (
@@ -5565,6 +5638,18 @@ class ConstanceSettingsRequestMultipart:
 
         arrow_billing_check_interval_hours = d.pop("ARROW_BILLING_CHECK_INTERVAL_HOURS", UNSET)
 
+        metrics_late_data_days = d.pop("METRICS_LATE_DATA_DAYS", UNSET)
+
+        metrics_max_series_per_resource_metric = d.pop("METRICS_MAX_SERIES_PER_RESOURCE_METRIC", UNSET)
+
+        metrics_max_points_per_request = d.pop("METRICS_MAX_POINTS_PER_REQUEST", UNSET)
+
+        metrics_max_otlp_body_bytes = d.pop("METRICS_MAX_OTLP_BODY_BYTES", UNSET)
+
+        metrics_default_retention_policy = d.pop("METRICS_DEFAULT_RETENTION_POLICY", UNSET)
+
+        metrics_archive_grace_days = d.pop("METRICS_ARCHIVE_GRACE_DAYS", UNSET)
+
         usage_poll_record_retention_months = d.pop("USAGE_POLL_RECORD_RETENTION_MONTHS", UNSET)
 
         slurm_policy_evaluation_log_retention_days = d.pop("SLURM_POLICY_EVALUATION_LOG_RETENTION_DAYS", UNSET)
@@ -6038,6 +6123,12 @@ class ConstanceSettingsRequestMultipart:
             arrow_consumption_sync_enabled=arrow_consumption_sync_enabled,
             arrow_consumption_sync_interval_hours=arrow_consumption_sync_interval_hours,
             arrow_billing_check_interval_hours=arrow_billing_check_interval_hours,
+            metrics_late_data_days=metrics_late_data_days,
+            metrics_max_series_per_resource_metric=metrics_max_series_per_resource_metric,
+            metrics_max_points_per_request=metrics_max_points_per_request,
+            metrics_max_otlp_body_bytes=metrics_max_otlp_body_bytes,
+            metrics_default_retention_policy=metrics_default_retention_policy,
+            metrics_archive_grace_days=metrics_archive_grace_days,
             usage_poll_record_retention_months=usage_poll_record_retention_months,
             slurm_policy_evaluation_log_retention_days=slurm_policy_evaluation_log_retention_days,
             federated_identity_sync_enabled=federated_identity_sync_enabled,

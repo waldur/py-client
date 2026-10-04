@@ -1261,6 +1261,54 @@ Module: `waldur_api_client.api.marketplace_integration_statuses`
 - `marketplace_integration_statuses_count` HEAD `/api/marketplace-integration-statuses/` — List integration statuses (8 query params)
 - `marketplace_integration_statuses_retrieve` GET `/api/marketplace-integration-statuses/{uuid}/` — Retrieve an integration status (path: uuid)
 
+## marketplace-metric-breakdown
+Module: `waldur_api_client.api.marketplace_metric_breakdown`
+
+- `marketplace_metric_breakdown_list` GET `/api/marketplace-metric-breakdown/` — Break a project's metric figure down by an attribute (5 query params)
+
+## marketplace-metric-definitions
+Module: `waldur_api_client.api.marketplace_metric_definitions`
+
+- `marketplace_metric_definitions_list` GET `/api/marketplace-metric-definitions/` (6 query params)
+- `marketplace_metric_definitions_count` HEAD `/api/marketplace-metric-definitions/` — Get number of items in the collection matching the request parameters (6 query params)
+- `marketplace_metric_definitions_create` POST `/api/marketplace-metric-definitions/` (request body)
+- `marketplace_metric_definitions_retrieve` GET `/api/marketplace-metric-definitions/{uuid}/` (path: uuid)
+- `marketplace_metric_definitions_update` PUT `/api/marketplace-metric-definitions/{uuid}/` (path: uuid | request body)
+- `marketplace_metric_definitions_partial_update` PATCH `/api/marketplace-metric-definitions/{uuid}/` (path: uuid | request body)
+- `marketplace_metric_definitions_destroy` DELETE `/api/marketplace-metric-definitions/{uuid}/` (path: uuid)
+
+## marketplace-metric-goals
+Module: `waldur_api_client.api.marketplace_metric_goals`
+
+- `marketplace_metric_goals_list` GET `/api/marketplace-metric-goals/` (4 query params)
+- `marketplace_metric_goals_count` HEAD `/api/marketplace-metric-goals/` — Get number of items in the collection matching the request parameters (4 query params)
+- `marketplace_metric_goals_create` POST `/api/marketplace-metric-goals/` (request body)
+- `marketplace_metric_goals_retrieve` GET `/api/marketplace-metric-goals/{uuid}/` (path: uuid)
+- `marketplace_metric_goals_update` PUT `/api/marketplace-metric-goals/{uuid}/` (path: uuid | request body)
+- `marketplace_metric_goals_partial_update` PATCH `/api/marketplace-metric-goals/{uuid}/` (path: uuid | request body)
+- `marketplace_metric_goals_destroy` DELETE `/api/marketplace-metric-goals/{uuid}/` (path: uuid)
+
+## marketplace-metric-points
+Module: `waldur_api_client.api.marketplace_metric_points`
+
+- `marketplace_metric_points_create` POST `/api/marketplace-metric-points/` — Report metric points (request body)
+
+## marketplace-metric-retention-policies
+Module: `waldur_api_client.api.marketplace_metric_retention_policies`
+
+- `marketplace_metric_retention_policies_list` GET `/api/marketplace-metric-retention-policies/` (no params)
+- `marketplace_metric_retention_policies_count` HEAD `/api/marketplace-metric-retention-policies/` — Get number of items in the collection matching the request parameters (no params)
+- `marketplace_metric_retention_policies_create` POST `/api/marketplace-metric-retention-policies/` (request body)
+- `marketplace_metric_retention_policies_retrieve` GET `/api/marketplace-metric-retention-policies/{uuid}/` (path: uuid)
+- `marketplace_metric_retention_policies_update` PUT `/api/marketplace-metric-retention-policies/{uuid}/` (path: uuid | request body)
+- `marketplace_metric_retention_policies_partial_update` PATCH `/api/marketplace-metric-retention-policies/{uuid}/` (path: uuid | request body)
+- `marketplace_metric_retention_policies_destroy` DELETE `/api/marketplace-metric-retention-policies/{uuid}/` (path: uuid)
+
+## marketplace-metric-series
+Module: `waldur_api_client.api.marketplace_metric_series`
+
+- `marketplace_metric_series_retrieve` GET `/api/marketplace-metric-series/` — Get metric series (8 query params)
+
 ## marketplace-offering-access-subnets
 Module: `waldur_api_client.api.marketplace_offering_access_subnets`
 
@@ -1319,6 +1367,21 @@ Module: `waldur_api_client.api.marketplace_offering_merges`
 - `marketplace_offering_merges_execute` POST `/api/marketplace-offering-merges/{uuid}/execute/` — Queue a previewed merge for execution (path: uuid | request body)
 - `marketplace_offering_merges_preview` POST `/api/marketplace-offering-merges/{uuid}/preview/` — Compute the merge preview: counts, blockers and warnings (path: uuid)
 - `marketplace_offering_merges_undo` POST `/api/marketplace-offering-merges/{uuid}/undo/` — Queue the undo of a completed merge (path: uuid)
+
+## marketplace-offering-metrics
+Module: `waldur_api_client.api.marketplace_offering_metrics`
+
+- `marketplace_offering_metrics_list` GET `/api/marketplace-offering-metrics/` (4 query params)
+- `marketplace_offering_metrics_count` HEAD `/api/marketplace-offering-metrics/` — Get number of items in the collection matching the request parameters (4 query params)
+- `marketplace_offering_metrics_create` POST `/api/marketplace-offering-metrics/` (request body)
+- `marketplace_offering_metrics_retrieve` GET `/api/marketplace-offering-metrics/{uuid}/` (path: uuid)
+- `marketplace_offering_metrics_update` PUT `/api/marketplace-offering-metrics/{uuid}/` (path: uuid | request body)
+- `marketplace_offering_metrics_partial_update` PATCH `/api/marketplace-offering-metrics/{uuid}/` (path: uuid | request body)
+- `marketplace_offering_metrics_destroy` DELETE `/api/marketplace-offering-metrics/{uuid}/` (path: uuid)
+- `marketplace_offering_metrics_archive` POST `/api/marketplace-offering-metrics/{uuid}/archive/` — Stop collecting and hide the metric from consuming projects (path: uuid)
+- `marketplace_offering_metrics_pause` POST `/api/marketplace-offering-metrics/{uuid}/pause/` — Refuse new points; what was reported stays visible (path: uuid)
+- `marketplace_offering_metrics_purge` POST `/api/marketplace-offering-metrics/{uuid}/purge/` — Delete everything an archived metric collected, then the metric (path: uuid)
+- `marketplace_offering_metrics_resume` POST `/api/marketplace-offering-metrics/{uuid}/resume/` (path: uuid)
 
 ## marketplace-offering-permissions
 Module: `waldur_api_client.api.marketplace_offering_permissions`
@@ -1536,6 +1599,11 @@ Module: `waldur_api_client.api.marketplace_project_estimated_cost_policies`
 - `marketplace_project_estimated_cost_policies_update` PUT `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_project_estimated_cost_policies_partial_update` PATCH `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_project_estimated_cost_policies_destroy` DELETE `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid)
+
+## marketplace-project-metrics
+Module: `waldur_api_client.api.marketplace_project_metrics`
+
+- `marketplace_project_metrics_list` GET `/api/marketplace-project-metrics/` — Get a project's metric figures (1 query param)
 
 ## marketplace-project-order-auto-approvals
 Module: `waldur_api_client.api.marketplace_project_order_auto_approvals`
@@ -3019,6 +3087,11 @@ Module: `waldur_api_client.api.organization_groups`
 - `organization_groups_update` PUT `/api/organization-groups/{uuid}/` (path: uuid | request body)
 - `organization_groups_partial_update` PATCH `/api/organization-groups/{uuid}/` (path: uuid | request body)
 - `organization_groups_destroy` DELETE `/api/organization-groups/{uuid}/` (path: uuid)
+
+## otlp
+Module: `waldur_api_client.api.otlp`
+
+- `otlp_v1_metrics` POST `/api/otlp/v1/metrics/` — Receive OTLP/HTTP metrics (request body)
 
 ## override-settings
 Module: `waldur_api_client.api.override_settings`

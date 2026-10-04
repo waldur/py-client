@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.21.dev.20261004102254
+# Version: 8.1.3-rc.21.dev.20261004111540
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -6817,6 +6817,185 @@ Path parameters:
   - uuid
 
 ============================================================
+## marketplace-metric-breakdown  (module: waldur_api_client.api.marketplace_metric_breakdown)
+============================================================
+
+### marketplace_metric_breakdown_list
+GET /api/marketplace-metric-breakdown/
+Summary: Break a project's metric figure down by an attribute
+Query parameters (5):
+  - end
+  - group_by (required)
+  - offering_metric_uuid (required)
+  - project_uuid (required)
+  - start (required)
+
+============================================================
+## marketplace-metric-definitions  (module: waldur_api_client.api.marketplace_metric_definitions)
+============================================================
+
+### marketplace_metric_definitions_list
+GET /api/marketplace-metric-definitions/
+Query parameters (6):
+  - is_global
+  - key
+  - kind
+  - name
+  - owner_customer_uuid
+  - state
+
+### marketplace_metric_definitions_count
+HEAD /api/marketplace-metric-definitions/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (6):
+  - is_global
+  - key
+  - kind
+  - name
+  - owner_customer_uuid
+  - state
+
+### marketplace_metric_definitions_create
+POST /api/marketplace-metric-definitions/
+Request body: yes
+
+### marketplace_metric_definitions_retrieve
+GET /api/marketplace-metric-definitions/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_metric_definitions_update
+PUT /api/marketplace-metric-definitions/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_metric_definitions_partial_update
+PATCH /api/marketplace-metric-definitions/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_metric_definitions_destroy
+DELETE /api/marketplace-metric-definitions/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
+## marketplace-metric-goals  (module: waldur_api_client.api.marketplace_metric_goals)
+============================================================
+
+### marketplace_metric_goals_list
+GET /api/marketplace-metric-goals/
+Query parameters (4):
+  - is_default
+  - offering_metric_uuid
+  - period
+  - project_uuid
+
+### marketplace_metric_goals_count
+HEAD /api/marketplace-metric-goals/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - is_default
+  - offering_metric_uuid
+  - period
+  - project_uuid
+
+### marketplace_metric_goals_create
+POST /api/marketplace-metric-goals/
+Request body: yes
+
+### marketplace_metric_goals_retrieve
+GET /api/marketplace-metric-goals/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_metric_goals_update
+PUT /api/marketplace-metric-goals/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_metric_goals_partial_update
+PATCH /api/marketplace-metric-goals/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_metric_goals_destroy
+DELETE /api/marketplace-metric-goals/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
+## marketplace-metric-points  (module: waldur_api_client.api.marketplace_metric_points)
+============================================================
+
+### marketplace_metric_points_create
+POST /api/marketplace-metric-points/
+Summary: Report metric points
+Description: Records points for resources against metrics their offerings adopt. Send one point or a list. A point is identified by resource, metric, attributes and timestamp: sending it again replaces the value. The caller must be allowed to report usage for every resource in the request, or nothing is recor...
+Request body: yes
+
+============================================================
+## marketplace-metric-retention-policies  (module: waldur_api_client.api.marketplace_metric_retention_policies)
+============================================================
+
+### marketplace_metric_retention_policies_list
+GET /api/marketplace-metric-retention-policies/
+
+### marketplace_metric_retention_policies_count
+HEAD /api/marketplace-metric-retention-policies/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+
+### marketplace_metric_retention_policies_create
+POST /api/marketplace-metric-retention-policies/
+Request body: yes
+
+### marketplace_metric_retention_policies_retrieve
+GET /api/marketplace-metric-retention-policies/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_metric_retention_policies_update
+PUT /api/marketplace-metric-retention-policies/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_metric_retention_policies_partial_update
+PATCH /api/marketplace-metric-retention-policies/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_metric_retention_policies_destroy
+DELETE /api/marketplace-metric-retention-policies/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
+## marketplace-metric-series  (module: waldur_api_client.api.marketplace_metric_series)
+============================================================
+
+### marketplace_metric_series_retrieve
+GET /api/marketplace-metric-series/
+Summary: Get metric series
+Query parameters (8):
+  - aggregate — How a gauge's points in a bucket combine; counters sum.
+  - end
+  - granularity
+  - group_by — Attribute key to break the figure down by
+  - offering_metric_uuid (required)
+  - project_uuid
+  - resource_uuid
+  - start (required)
+
+============================================================
 ## marketplace-offering-access-subnets  (module: waldur_api_client.api.marketplace_offering_access_subnets)
 ============================================================
 
@@ -7119,6 +7298,80 @@ Description: Queue the undo of a completed merge.
 
 The engine's preconditions are checked first: if the undo would be
 refused, the answer is 400 with the blockers and nothing is queued.
+Path parameters:
+  - uuid
+
+============================================================
+## marketplace-offering-metrics  (module: waldur_api_client.api.marketplace_offering_metrics)
+============================================================
+
+### marketplace_offering_metrics_list
+GET /api/marketplace-offering-metrics/
+Query parameters (4):
+  - definition_uuid
+  - key
+  - offering_uuid
+  - state
+
+### marketplace_offering_metrics_count
+HEAD /api/marketplace-offering-metrics/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - definition_uuid
+  - key
+  - offering_uuid
+  - state
+
+### marketplace_offering_metrics_create
+POST /api/marketplace-offering-metrics/
+Request body: yes
+
+### marketplace_offering_metrics_retrieve
+GET /api/marketplace-offering-metrics/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_offering_metrics_update
+PUT /api/marketplace-offering-metrics/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_offering_metrics_partial_update
+PATCH /api/marketplace-offering-metrics/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_offering_metrics_destroy
+DELETE /api/marketplace-offering-metrics/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_offering_metrics_archive
+POST /api/marketplace-offering-metrics/{uuid}/archive/
+Summary: Stop collecting and hide the metric from consuming projects
+Description: Stop collecting and hide the metric from consuming projects.
+Path parameters:
+  - uuid
+
+### marketplace_offering_metrics_pause
+POST /api/marketplace-offering-metrics/{uuid}/pause/
+Summary: Refuse new points; what was reported stays visible
+Description: Refuse new points; what was reported stays visible.
+Path parameters:
+  - uuid
+
+### marketplace_offering_metrics_purge
+POST /api/marketplace-offering-metrics/{uuid}/purge/
+Summary: Delete everything an archived metric collected, then the metric
+Description: Delete everything an archived metric collected, then the metric.
+Path parameters:
+  - uuid
+
+### marketplace_offering_metrics_resume
+POST /api/marketplace-offering-metrics/{uuid}/resume/
 Path parameters:
   - uuid
 
@@ -8594,6 +8847,16 @@ Request body: yes
 DELETE /api/marketplace-project-estimated-cost-policies/{uuid}/
 Path parameters:
   - uuid
+
+============================================================
+## marketplace-project-metrics  (module: waldur_api_client.api.marketplace_project_metrics)
+============================================================
+
+### marketplace_project_metrics_list
+GET /api/marketplace-project-metrics/
+Summary: Get a project's metric figures
+Query parameters (1):
+  - project_uuid (required)
 
 ============================================================
 ## marketplace-project-order-auto-approvals  (module: waldur_api_client.api.marketplace_project_order_auto_approvals)
@@ -19384,6 +19647,16 @@ Request body: yes
 DELETE /api/organization-groups/{uuid}/
 Path parameters:
   - uuid
+
+============================================================
+## otlp  (module: waldur_api_client.api.otlp)
+============================================================
+
+### otlp_v1_metrics
+POST /api/otlp/v1/metrics/
+Summary: Receive OTLP/HTTP metrics
+Description: Accepts an OpenTelemetry ExportMetricsServiceRequest as JSON or protobuf, optionally gzip-encoded. Each resource must carry the waldur.resource.uuid attribute; a metric's name is the key of a metric the resource's offering adopts. Gauge and Sum (delta or cumulative) are accepted; other types and ...
+Request body: yes
 
 ============================================================
 ## override-settings  (module: waldur_api_client.api.override_settings)
