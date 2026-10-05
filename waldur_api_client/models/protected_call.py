@@ -87,6 +87,8 @@ class ProtectedCall:
             contact. Must hold a role on this call or on the organisation managing it.
         order_author_user_uuid (Union[None, UUID, Unset]):
         order_author_user_name (Union[None, Unset, str]):
+        carry_over_drafts (Union[Unset, bool]): Whether a draft still open when its round's cut-off passes moves on to
+            the call's next round instead of being cancelled. Without a later round the draft is cancelled either way.
     """
 
     url: Union[Unset, str] = UNSET
@@ -136,6 +138,7 @@ class ProtectedCall:
     order_author_user: Union[None, UUID, Unset] = UNSET
     order_author_user_uuid: Union[None, UUID, Unset] = UNSET
     order_author_user_name: Union[None, Unset, str] = UNSET
+    carry_over_drafts: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -348,6 +351,8 @@ class ProtectedCall:
         else:
             order_author_user_name = self.order_author_user_name
 
+        carry_over_drafts = self.carry_over_drafts
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -445,6 +450,8 @@ class ProtectedCall:
             field_dict["order_author_user_uuid"] = order_author_user_uuid
         if order_author_user_name is not UNSET:
             field_dict["order_author_user_name"] = order_author_user_name
+        if carry_over_drafts is not UNSET:
+            field_dict["carry_over_drafts"] = carry_over_drafts
 
         return field_dict
 
@@ -750,6 +757,8 @@ class ProtectedCall:
 
         order_author_user_name = _parse_order_author_user_name(d.pop("order_author_user_name", UNSET))
 
+        carry_over_drafts = d.pop("carry_over_drafts", UNSET)
+
         protected_call = cls(
             url=url,
             uuid=uuid,
@@ -798,6 +807,7 @@ class ProtectedCall:
             order_author_user=order_author_user,
             order_author_user_uuid=order_author_user_uuid,
             order_author_user_name=order_author_user_name,
+            carry_over_drafts=carry_over_drafts,
         )
 
         protected_call.additional_properties = d

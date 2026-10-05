@@ -53,6 +53,8 @@ class PatchedProtectedCallRequest:
         order_author (Union[Unset, OrderAuthorEnum]):
         order_author_user (Union[None, UUID, Unset]): The person orders are attributed to when the author is a named
             contact. Must hold a role on this call or on the organisation managing it.
+        carry_over_drafts (Union[Unset, bool]): Whether a draft still open when its round's cut-off passes moves on to
+            the call's next round instead of being cancelled. Without a later round the draft is cancelled either way.
     """
 
     slug: Union[Unset, str] = UNSET
@@ -79,6 +81,7 @@ class PatchedProtectedCallRequest:
     applicant_visibility_config: Union["CallApplicantVisibilityConfigRequest", None, Unset] = UNSET
     order_author: Union[Unset, OrderAuthorEnum] = UNSET
     order_author_user: Union[None, UUID, Unset] = UNSET
+    carry_over_drafts: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -190,6 +193,8 @@ class PatchedProtectedCallRequest:
         else:
             order_author_user = self.order_author_user
 
+        carry_over_drafts = self.carry_over_drafts
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -241,6 +246,8 @@ class PatchedProtectedCallRequest:
             field_dict["order_author"] = order_author
         if order_author_user is not UNSET:
             field_dict["order_author_user"] = order_author_user
+        if carry_over_drafts is not UNSET:
+            field_dict["carry_over_drafts"] = carry_over_drafts
 
         return field_dict
 
@@ -403,6 +410,8 @@ class PatchedProtectedCallRequest:
 
         order_author_user = _parse_order_author_user(d.pop("order_author_user", UNSET))
 
+        carry_over_drafts = d.pop("carry_over_drafts", UNSET)
+
         patched_protected_call_request = cls(
             slug=slug,
             name=name,
@@ -428,6 +437,7 @@ class PatchedProtectedCallRequest:
             applicant_visibility_config=applicant_visibility_config,
             order_author=order_author,
             order_author_user=order_author_user,
+            carry_over_drafts=carry_over_drafts,
         )
 
         patched_protected_call_request.additional_properties = d

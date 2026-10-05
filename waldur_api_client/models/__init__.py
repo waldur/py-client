@@ -2250,7 +2250,6 @@ from .protected_call_field_enum import ProtectedCallFieldEnum
 from .protected_call_o_enum import ProtectedCallOEnum
 from .protected_call_request import ProtectedCallRequest
 from .protected_proposal_list import ProtectedProposalList
-from .protected_proposal_list_request import ProtectedProposalListRequest
 from .protected_round import ProtectedRound
 from .protected_round_request import ProtectedRoundRequest
 from .provider_account_options import ProviderAccountOptions
@@ -5333,7 +5332,6 @@ __all__ = (
     "ProtectedCallOEnum",
     "ProtectedCallRequest",
     "ProtectedProposalList",
-    "ProtectedProposalListRequest",
     "ProtectedRound",
     "ProtectedRoundRequest",
     "ProviderAccountOptions",

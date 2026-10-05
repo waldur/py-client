@@ -4,6 +4,7 @@ from enum import Enum
 class ProtectedCallFieldEnum(str, Enum):
     APPLICANT_VISIBILITY_CONFIG = "applicant_visibility_config"
     BACKEND_ID = "backend_id"
+    CARRY_OVER_DRAFTS = "carry_over_drafts"
     COMPLIANCE_CHECKLIST = "compliance_checklist"
     COMPLIANCE_CHECKLIST_NAME = "compliance_checklist_name"
     CREATED = "created"

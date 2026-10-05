@@ -82,7 +82,7 @@ class OpenStackInstance:
         floating_ips (Union[Unset, list['OpenStackNestedFloatingIP']]):
         ports (Union[Unset, list['OpenStackNestedPort']]):
         availability_zone (Union[None, Unset, str]): Availability zone where this instance is located
-        availability_zone_name (Union[Unset, str]): Name of the availability zone where instance is located
+        availability_zone_name (Union[None, Unset, str]): Name of the availability zone where instance is located
         connect_directly_to_external_network (Union[Unset, bool]): If True, instance will be connected directly to
             external network
         config_drive (Union[None, Unset, bool]): Force config drive on or off for this instance. If null, the tenant-
@@ -158,7 +158,7 @@ class OpenStackInstance:
     floating_ips: Union[Unset, list["OpenStackNestedFloatingIP"]] = UNSET
     ports: Union[Unset, list["OpenStackNestedPort"]] = UNSET
     availability_zone: Union[None, Unset, str] = UNSET
-    availability_zone_name: Union[Unset, str] = UNSET
+    availability_zone_name: Union[None, Unset, str] = UNSET
     connect_directly_to_external_network: Union[Unset, bool] = UNSET
     config_drive: Union[None, Unset, bool] = UNSET
     runtime_state: Union[Unset, str] = UNSET
@@ -354,7 +354,11 @@ class OpenStackInstance:
         else:
             availability_zone = self.availability_zone
 
-        availability_zone_name = self.availability_zone_name
+        availability_zone_name: Union[None, Unset, str]
+        if isinstance(self.availability_zone_name, Unset):
+            availability_zone_name = UNSET
+        else:
+            availability_zone_name = self.availability_zone_name
 
         connect_directly_to_external_network = self.connect_directly_to_external_network
 
@@ -839,7 +843,14 @@ class OpenStackInstance:
 
         availability_zone = _parse_availability_zone(d.pop("availability_zone", UNSET))
 
-        availability_zone_name = d.pop("availability_zone_name", UNSET)
+        def _parse_availability_zone_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        availability_zone_name = _parse_availability_zone_name(d.pop("availability_zone_name", UNSET))
 
         connect_directly_to_external_network = d.pop("connect_directly_to_external_network", UNSET)
 
