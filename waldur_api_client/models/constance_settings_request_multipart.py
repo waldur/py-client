@@ -378,6 +378,7 @@ class ConstanceSettingsRequestMultipart:
         matrix_appservice_sender_localpart (Union[Unset, str]):
         matrix_history_export_enabled (Union[Unset, bool]):
         matrix_export_media (Union[Unset, bool]):
+        matrix_history_export_retention_days (Union[Unset, int]):
         matrix_user_registration_secret (Union[Unset, str]):
         matrix_user_id_format (Union[Unset, str]):
         matrix_external_login_method (Union[Unset, MatrixExternalLoginMethodEnum]):
@@ -724,6 +725,7 @@ class ConstanceSettingsRequestMultipart:
     matrix_appservice_sender_localpart: Union[Unset, str] = UNSET
     matrix_history_export_enabled: Union[Unset, bool] = UNSET
     matrix_export_media: Union[Unset, bool] = UNSET
+    matrix_history_export_retention_days: Union[Unset, int] = UNSET
     matrix_user_registration_secret: Union[Unset, str] = UNSET
     matrix_user_id_format: Union[Unset, str] = UNSET
     matrix_external_login_method: Union[Unset, MatrixExternalLoginMethodEnum] = UNSET
@@ -1693,6 +1695,8 @@ class ConstanceSettingsRequestMultipart:
 
         matrix_export_media = self.matrix_export_media
 
+        matrix_history_export_retention_days = self.matrix_history_export_retention_days
+
         matrix_user_registration_secret = self.matrix_user_registration_secret
 
         matrix_user_id_format = self.matrix_user_id_format
@@ -2398,6 +2402,8 @@ class ConstanceSettingsRequestMultipart:
             field_dict["MATRIX_HISTORY_EXPORT_ENABLED"] = matrix_history_export_enabled
         if matrix_export_media is not UNSET:
             field_dict["MATRIX_EXPORT_MEDIA"] = matrix_export_media
+        if matrix_history_export_retention_days is not UNSET:
+            field_dict["MATRIX_HISTORY_EXPORT_RETENTION_DAYS"] = matrix_history_export_retention_days
         if matrix_user_registration_secret is not UNSET:
             field_dict["MATRIX_USER_REGISTRATION_SECRET"] = matrix_user_registration_secret
         if matrix_user_id_format is not UNSET:
@@ -4429,6 +4435,14 @@ class ConstanceSettingsRequestMultipart:
         if not isinstance(self.matrix_export_media, Unset):
             files.append(("MATRIX_EXPORT_MEDIA", (None, str(self.matrix_export_media).encode(), "text/plain")))
 
+        if not isinstance(self.matrix_history_export_retention_days, Unset):
+            files.append(
+                (
+                    "MATRIX_HISTORY_EXPORT_RETENTION_DAYS",
+                    (None, str(self.matrix_history_export_retention_days).encode(), "text/plain"),
+                )
+            )
+
         if not isinstance(self.matrix_user_registration_secret, Unset):
             files.append(
                 (
@@ -5790,6 +5804,8 @@ class ConstanceSettingsRequestMultipart:
 
         matrix_export_media = d.pop("MATRIX_EXPORT_MEDIA", UNSET)
 
+        matrix_history_export_retention_days = d.pop("MATRIX_HISTORY_EXPORT_RETENTION_DAYS", UNSET)
+
         matrix_user_registration_secret = d.pop("MATRIX_USER_REGISTRATION_SECRET", UNSET)
 
         matrix_user_id_format = d.pop("MATRIX_USER_ID_FORMAT", UNSET)
@@ -6152,6 +6168,7 @@ class ConstanceSettingsRequestMultipart:
             matrix_appservice_sender_localpart=matrix_appservice_sender_localpart,
             matrix_history_export_enabled=matrix_history_export_enabled,
             matrix_export_media=matrix_export_media,
+            matrix_history_export_retention_days=matrix_history_export_retention_days,
             matrix_user_registration_secret=matrix_user_registration_secret,
             matrix_user_id_format=matrix_user_id_format,
             matrix_external_login_method=matrix_external_login_method,
