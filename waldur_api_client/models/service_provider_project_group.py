@@ -31,6 +31,7 @@ class ServiceProviderProjectGroup:
         project_slug (Union[None, str]):
         customer_uuid (Union[None, UUID]):
         customer_name (Union[None, str]):
+        customer_slug (Union[None, str]):
         offerings (list['ServiceProviderProjectGroupOffering']): The provider's offerings where the project has a non-
             terminated resource.
         members (list[str]): Sorted usernames of the live accounts at the provider of the users holding an active role
@@ -51,6 +52,7 @@ class ServiceProviderProjectGroup:
     project_slug: Union[None, str]
     customer_uuid: Union[None, UUID]
     customer_name: Union[None, str]
+    customer_slug: Union[None, str]
     offerings: list["ServiceProviderProjectGroupOffering"]
     members: list[str]
     created: datetime.datetime
@@ -94,6 +96,9 @@ class ServiceProviderProjectGroup:
         customer_name: Union[None, str]
         customer_name = self.customer_name
 
+        customer_slug: Union[None, str]
+        customer_slug = self.customer_slug
+
         offerings = []
         for offerings_item_data in self.offerings:
             offerings_item = offerings_item_data.to_dict()
@@ -121,6 +126,7 @@ class ServiceProviderProjectGroup:
                 "project_slug": project_slug,
                 "customer_uuid": customer_uuid,
                 "customer_name": customer_name,
+                "customer_slug": customer_slug,
                 "offerings": offerings,
                 "members": members,
                 "created": created,
@@ -205,6 +211,13 @@ class ServiceProviderProjectGroup:
 
         customer_name = _parse_customer_name(d.pop("customer_name"))
 
+        def _parse_customer_slug(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        customer_slug = _parse_customer_slug(d.pop("customer_slug"))
+
         offerings = []
         _offerings = d.pop("offerings")
         for offerings_item_data in _offerings:
@@ -231,6 +244,7 @@ class ServiceProviderProjectGroup:
             project_slug=project_slug,
             customer_uuid=customer_uuid,
             customer_name=customer_name,
+            customer_slug=customer_slug,
             offerings=offerings,
             members=members,
             created=created,
