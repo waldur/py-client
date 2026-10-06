@@ -19,6 +19,7 @@ class PublicCallFieldEnum(str, Enum):
     NAME = "name"
     OFFERINGS = "offerings"
     PROPOSAL_FIELD_CONFIG = "proposal_field_config"
+    PUBLISH_RESULTS = "publish_results"
     RESOURCE_TEMPLATES = "resource_templates"
     REVIEWER_IDENTITY_VISIBLE_TO_SUBMITTERS = "reviewer_identity_visible_to_submitters"
     REVIEWS_VISIBLE_TO_SUBMITTERS = "reviews_visible_to_submitters"

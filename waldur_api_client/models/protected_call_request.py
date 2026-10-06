@@ -7,6 +7,8 @@ from attrs import field as _attrs_field
 
 from ..models.evaluation_start_enum import EvaluationStartEnum
 from ..models.order_author_enum import OrderAuthorEnum
+from ..models.publish_results_enum import PublishResultsEnum
+from ..models.undecided_at_round_completion_enum import UndecidedAtRoundCompletionEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -34,6 +36,7 @@ class ProtectedCallRequest:
             scores
         proposal_field_config (Union[Unset, CallProposalFieldConfigRequest]):
         evaluation_start (Union[Unset, EvaluationStartEnum]):
+        publish_results (Union[Unset, PublishResultsEnum]):
         created_by (Union[None, Unset, str]):
         reference_code (Union[Unset, str]):
         compliance_checklist (Union[None, UUID, Unset]): Compliance checklist that proposals must complete before
@@ -56,6 +59,7 @@ class ProtectedCallRequest:
             contact. Must hold a role on this call or on the organisation managing it.
         carry_over_drafts (Union[Unset, bool]): Whether a draft still open when its round's cut-off passes moves on to
             the call's next round instead of being cancelled. Without a later round the draft is cancelled either way.
+        undecided_at_round_completion (Union[Unset, UndecidedAtRoundCompletionEnum]):
     """
 
     name: str
@@ -69,6 +73,7 @@ class ProtectedCallRequest:
     reviews_visible_to_submitters: Union[Unset, bool] = UNSET
     proposal_field_config: Union[Unset, "CallProposalFieldConfigRequest"] = UNSET
     evaluation_start: Union[Unset, EvaluationStartEnum] = UNSET
+    publish_results: Union[Unset, PublishResultsEnum] = UNSET
     created_by: Union[None, Unset, str] = UNSET
     reference_code: Union[Unset, str] = UNSET
     compliance_checklist: Union[None, UUID, Unset] = UNSET
@@ -84,6 +89,7 @@ class ProtectedCallRequest:
     order_author: Union[Unset, OrderAuthorEnum] = UNSET
     order_author_user: Union[None, UUID, Unset] = UNSET
     carry_over_drafts: Union[Unset, bool] = UNSET
+    undecided_at_round_completion: Union[Unset, UndecidedAtRoundCompletionEnum] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -122,6 +128,10 @@ class ProtectedCallRequest:
         evaluation_start: Union[Unset, str] = UNSET
         if not isinstance(self.evaluation_start, Unset):
             evaluation_start = self.evaluation_start.value
+
+        publish_results: Union[Unset, str] = UNSET
+        if not isinstance(self.publish_results, Unset):
+            publish_results = self.publish_results.value
 
         created_by: Union[None, Unset, str]
         if isinstance(self.created_by, Unset):
@@ -199,6 +209,10 @@ class ProtectedCallRequest:
 
         carry_over_drafts = self.carry_over_drafts
 
+        undecided_at_round_completion: Union[Unset, str] = UNSET
+        if not isinstance(self.undecided_at_round_completion, Unset):
+            undecided_at_round_completion = self.undecided_at_round_completion.value
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -225,6 +239,8 @@ class ProtectedCallRequest:
             field_dict["proposal_field_config"] = proposal_field_config
         if evaluation_start is not UNSET:
             field_dict["evaluation_start"] = evaluation_start
+        if publish_results is not UNSET:
+            field_dict["publish_results"] = publish_results
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if reference_code is not UNSET:
@@ -255,6 +271,8 @@ class ProtectedCallRequest:
             field_dict["order_author_user"] = order_author_user
         if carry_over_drafts is not UNSET:
             field_dict["carry_over_drafts"] = carry_over_drafts
+        if undecided_at_round_completion is not UNSET:
+            field_dict["undecided_at_round_completion"] = undecided_at_round_completion
 
         return field_dict
 
@@ -309,6 +327,13 @@ class ProtectedCallRequest:
             evaluation_start = UNSET
         else:
             evaluation_start = EvaluationStartEnum(_evaluation_start)
+
+        _publish_results = d.pop("publish_results", UNSET)
+        publish_results: Union[Unset, PublishResultsEnum]
+        if isinstance(_publish_results, Unset):
+            publish_results = UNSET
+        else:
+            publish_results = PublishResultsEnum(_publish_results)
 
         def _parse_created_by(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -421,6 +446,13 @@ class ProtectedCallRequest:
 
         carry_over_drafts = d.pop("carry_over_drafts", UNSET)
 
+        _undecided_at_round_completion = d.pop("undecided_at_round_completion", UNSET)
+        undecided_at_round_completion: Union[Unset, UndecidedAtRoundCompletionEnum]
+        if isinstance(_undecided_at_round_completion, Unset):
+            undecided_at_round_completion = UNSET
+        else:
+            undecided_at_round_completion = UndecidedAtRoundCompletionEnum(_undecided_at_round_completion)
+
         protected_call_request = cls(
             name=name,
             manager=manager,
@@ -433,6 +465,7 @@ class ProtectedCallRequest:
             reviews_visible_to_submitters=reviews_visible_to_submitters,
             proposal_field_config=proposal_field_config,
             evaluation_start=evaluation_start,
+            publish_results=publish_results,
             created_by=created_by,
             reference_code=reference_code,
             compliance_checklist=compliance_checklist,
@@ -448,6 +481,7 @@ class ProtectedCallRequest:
             order_author=order_author,
             order_author_user=order_author_user,
             carry_over_drafts=carry_over_drafts,
+            undecided_at_round_completion=undecided_at_round_completion,
         )
 
         protected_call_request.additional_properties = d

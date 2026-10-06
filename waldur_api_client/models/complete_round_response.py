@@ -15,13 +15,14 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.protected_proposal_list import ProtectedProposalList
+    from ..models.publish_round_results_failure import PublishRoundResultsFailure
 
 
-T = TypeVar("T", bound="ProtectedRound")
+T = TypeVar("T", bound="CompleteRoundResponse")
 
 
 @_attrs_define
-class ProtectedRound:
+class CompleteRoundResponse:
     """
     Attributes:
         uuid (UUID):
@@ -49,6 +50,10 @@ class ProtectedRound:
         adopted_at (Union[None, datetime.date]): When the round's results were adopted.
         adoption_note (Union[None, str]):
         adoption_document (Union[None, str]):
+        rejected_proposals (list['PublishRoundResultsFailure']): Proposals without a decision that completing the round
+            rejected.
+        failed_proposals (list['PublishRoundResultsFailure']): Proposals without a decision whose rejection failed. The
+            round stays open; completing it again retries them.
         allocation_date (Union[None, Unset, datetime.datetime]):
         review_duration_in_days (Union[Unset, int]):
         undecided_at_round_completion (Union[BlankEnum, None, UndecidedAtRoundCompletionEnum, Unset]): Overrides the
@@ -75,6 +80,8 @@ class ProtectedRound:
     adopted_at: Union[None, datetime.date]
     adoption_note: Union[None, str]
     adoption_document: Union[None, str]
+    rejected_proposals: list["PublishRoundResultsFailure"]
+    failed_proposals: list["PublishRoundResultsFailure"]
     allocation_date: Union[None, Unset, datetime.datetime] = UNSET
     review_duration_in_days: Union[Unset, int] = UNSET
     undecided_at_round_completion: Union[BlankEnum, None, UndecidedAtRoundCompletionEnum, Unset] = UNSET
@@ -153,6 +160,16 @@ class ProtectedRound:
         adoption_document: Union[None, str]
         adoption_document = self.adoption_document
 
+        rejected_proposals = []
+        for rejected_proposals_item_data in self.rejected_proposals:
+            rejected_proposals_item = rejected_proposals_item_data.to_dict()
+            rejected_proposals.append(rejected_proposals_item)
+
+        failed_proposals = []
+        for failed_proposals_item_data in self.failed_proposals:
+            failed_proposals_item = failed_proposals_item_data.to_dict()
+            failed_proposals.append(failed_proposals_item)
+
         allocation_date: Union[None, Unset, str]
         if isinstance(self.allocation_date, Unset):
             allocation_date = UNSET
@@ -197,6 +214,8 @@ class ProtectedRound:
                 "adopted_at": adopted_at,
                 "adoption_note": adoption_note,
                 "adoption_document": adoption_document,
+                "rejected_proposals": rejected_proposals,
+                "failed_proposals": failed_proposals,
             }
         )
         if allocation_date is not UNSET:
@@ -211,6 +230,7 @@ class ProtectedRound:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.protected_proposal_list import ProtectedProposalList
+        from ..models.publish_round_results_failure import PublishRoundResultsFailure
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -361,6 +381,20 @@ class ProtectedRound:
 
         adoption_document = _parse_adoption_document(d.pop("adoption_document"))
 
+        rejected_proposals = []
+        _rejected_proposals = d.pop("rejected_proposals")
+        for rejected_proposals_item_data in _rejected_proposals:
+            rejected_proposals_item = PublishRoundResultsFailure.from_dict(rejected_proposals_item_data)
+
+            rejected_proposals.append(rejected_proposals_item)
+
+        failed_proposals = []
+        _failed_proposals = d.pop("failed_proposals")
+        for failed_proposals_item_data in _failed_proposals:
+            failed_proposals_item = PublishRoundResultsFailure.from_dict(failed_proposals_item_data)
+
+            failed_proposals.append(failed_proposals_item)
+
         def _parse_allocation_date(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
                 return data
@@ -409,7 +443,7 @@ class ProtectedRound:
             d.pop("undecided_at_round_completion", UNSET)
         )
 
-        protected_round = cls(
+        complete_round_response = cls(
             uuid=uuid,
             slug=slug,
             name=name,
@@ -430,13 +464,15 @@ class ProtectedRound:
             adopted_at=adopted_at,
             adoption_note=adoption_note,
             adoption_document=adoption_document,
+            rejected_proposals=rejected_proposals,
+            failed_proposals=failed_proposals,
             allocation_date=allocation_date,
             review_duration_in_days=review_duration_in_days,
             undecided_at_round_completion=undecided_at_round_completion,
         )
 
-        protected_round.additional_properties = d
-        return protected_round
+        complete_round_response.additional_properties = d
+        return complete_round_response
 
     @property
     def additional_keys(self) -> list[str]:

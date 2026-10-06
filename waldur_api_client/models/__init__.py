@@ -227,6 +227,12 @@ from .available_scope import AvailableScope
 from .award_details import AwardDetails
 from .award_details_breakdown import AwardDetailsBreakdown
 from .award_details_members_type_0 import AwardDetailsMembersType0
+from .awarded_resource import AwardedResource
+from .awarded_resource_attributes import AwardedResourceAttributes
+from .awarded_resource_limits import AwardedResourceLimits
+from .awarded_resource_request import AwardedResourceRequest
+from .awarded_resource_request_attributes import AwardedResourceRequestAttributes
+from .awarded_resource_request_limits import AwardedResourceRequestLimits
 from .aws_image import AwsImage
 from .aws_instance import AwsInstance
 from .aws_instance_field_enum import AwsInstanceFieldEnum
@@ -486,6 +492,8 @@ from .comment import Comment
 from .comment_o_enum import CommentOEnum
 from .comment_request import CommentRequest
 from .comparator_enum import ComparatorEnum
+from .complete_round_refusal import CompleteRoundRefusal
+from .complete_round_response import CompleteRoundResponse
 from .complete_workflow_step_request import CompleteWorkflowStepRequest
 from .complete_workflow_step_response import CompleteWorkflowStepResponse
 from .compliance_overview import ComplianceOverview
@@ -1057,6 +1065,7 @@ from .lexis_link import LexisLink
 from .lexis_link_create_request import LexisLinkCreateRequest
 from .lexis_link_request import LexisLinkRequest
 from .license_suggestion import LicenseSuggestion
+from .lifecycle_state_enum import LifecycleStateEnum
 from .likert_scale_length_enum import LikertScaleLengthEnum
 from .limit_period_enum import LimitPeriodEnum
 from .limit_type_enum import LimitTypeEnum
@@ -1830,6 +1839,9 @@ from .patched_assignment_item_request import PatchedAssignmentItemRequest
 from .patched_attribute_option_request import PatchedAttributeOptionRequest
 from .patched_attribute_request import PatchedAttributeRequest
 from .patched_attribute_request_default_type_0 import PatchedAttributeRequestDefaultType0
+from .patched_awarded_resource_request import PatchedAwardedResourceRequest
+from .patched_awarded_resource_request_attributes import PatchedAwardedResourceRequestAttributes
+from .patched_awarded_resource_request_limits import PatchedAwardedResourceRequestLimits
 from .patched_aws_instance_request import PatchedAwsInstanceRequest
 from .patched_broadcast_message_request import PatchedBroadcastMessageRequest
 from .patched_call_assignment_configuration_request import PatchedCallAssignmentConfigurationRequest
@@ -2327,6 +2339,11 @@ from .public_offering_details_backend_metadata import PublicOfferingDetailsBacke
 from .public_offering_details_billing_mode_components import PublicOfferingDetailsBillingModeComponents
 from .public_offering_details_billing_period_applies import PublicOfferingDetailsBillingPeriodApplies
 from .public_offering_details_field_enum import PublicOfferingDetailsFieldEnum
+from .publish_results_enum import PublishResultsEnum
+from .publish_round_results_failure import PublishRoundResultsFailure
+from .publish_round_results_refusal import PublishRoundResultsRefusal
+from .publish_round_results_request import PublishRoundResultsRequest
+from .publish_round_results_response import PublishRoundResultsResponse
 from .publishing_metrics import PublishingMetrics
 from .pubsub_circuit_breaker_summary import PubsubCircuitBreakerSummary
 from .pubsub_metrics_summary import PubsubMetricsSummary
@@ -2507,6 +2524,7 @@ from .renewal_estimate_component import RenewalEstimateComponent
 from .renewal_estimate_request_request import RenewalEstimateRequestRequest
 from .renewal_estimate_request_request_limits import RenewalEstimateRequestRequestLimits
 from .renewal_estimate_response import RenewalEstimateResponse
+from .reopen_decision_request import ReopenDecisionRequest
 from .replication_stats import ReplicationStats
 from .report_section import ReportSection
 from .report_section_request import ReportSectionRequest
@@ -2730,6 +2748,7 @@ from .role_modify_request_permissions import RoleModifyRequestPermissions
 from .role_template import RoleTemplate
 from .role_template_o_enum import RoleTemplateOEnum
 from .role_type import RoleType
+from .round_adoption_request import RoundAdoptionRequest
 from .round_reviewer import RoundReviewer
 from .round_status import RoundStatus
 from .route_to_provider_request import RouteToProviderRequest
@@ -3021,6 +3040,7 @@ from .trigger_coi_detection_request import TriggerCOIDetectionRequest
 from .trigger_consumption_sync_request_request import TriggerConsumptionSyncRequestRequest
 from .trigger_enum import TriggerEnum
 from .trigger_sync_request_request import TriggerSyncRequestRequest
+from .undecided_at_round_completion_enum import UndecidedAtRoundCompletionEnum
 from .update_actions_request import UpdateActionsRequest
 from .update_actions_response import UpdateActionsResponse
 from .update_health_monitor import UpdateHealthMonitor
@@ -3409,6 +3429,12 @@ __all__ = (
     "AwardDetails",
     "AwardDetailsBreakdown",
     "AwardDetailsMembersType0",
+    "AwardedResource",
+    "AwardedResourceAttributes",
+    "AwardedResourceLimits",
+    "AwardedResourceRequest",
+    "AwardedResourceRequestAttributes",
+    "AwardedResourceRequestLimits",
     "AwsImage",
     "AwsInstance",
     "AwsInstanceFieldEnum",
@@ -3666,6 +3692,8 @@ __all__ = (
     "CommentOEnum",
     "CommentRequest",
     "ComparatorEnum",
+    "CompleteRoundRefusal",
+    "CompleteRoundResponse",
     "CompleteWorkflowStepRequest",
     "CompleteWorkflowStepResponse",
     "ComplianceOverview",
@@ -4223,6 +4251,7 @@ __all__ = (
     "LexisLinkCreateRequest",
     "LexisLinkRequest",
     "LicenseSuggestion",
+    "LifecycleStateEnum",
     "LikertScaleLengthEnum",
     "LimitPeriodEnum",
     "LimitTypeEnum",
@@ -4940,6 +4969,9 @@ __all__ = (
     "PatchedAttributeOptionRequest",
     "PatchedAttributeRequest",
     "PatchedAttributeRequestDefaultType0",
+    "PatchedAwardedResourceRequest",
+    "PatchedAwardedResourceRequestAttributes",
+    "PatchedAwardedResourceRequestLimits",
     "PatchedAwsInstanceRequest",
     "PatchedBroadcastMessageRequest",
     "PatchedCallAssignmentConfigurationRequest",
@@ -5410,6 +5442,11 @@ __all__ = (
     "PublicOfferingDetailsBillingPeriodApplies",
     "PublicOfferingDetailsFieldEnum",
     "PublishingMetrics",
+    "PublishResultsEnum",
+    "PublishRoundResultsFailure",
+    "PublishRoundResultsRefusal",
+    "PublishRoundResultsRequest",
+    "PublishRoundResultsResponse",
     "PubsubCircuitBreakerSummary",
     "PubsubMetricsSummary",
     "PubsubOverview",
@@ -5577,6 +5614,7 @@ __all__ = (
     "RenewalEstimateRequestRequest",
     "RenewalEstimateRequestRequestLimits",
     "RenewalEstimateResponse",
+    "ReopenDecisionRequest",
     "ReplicationStats",
     "ReportSection",
     "ReportSectionRequest",
@@ -5798,6 +5836,7 @@ __all__ = (
     "RoleTemplate",
     "RoleTemplateOEnum",
     "RoleType",
+    "RoundAdoptionRequest",
     "RoundReviewer",
     "RoundStatus",
     "RouteToProviderRequest",
@@ -6089,6 +6128,7 @@ __all__ = (
     "TriggerConsumptionSyncRequestRequest",
     "TriggerEnum",
     "TriggerSyncRequestRequest",
+    "UndecidedAtRoundCompletionEnum",
     "UpdateActionsRequest",
     "UpdateActionsResponse",
     "UpdateHealthMonitor",

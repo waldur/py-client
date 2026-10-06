@@ -80,6 +80,7 @@ class Proposal:
         compliance_status (Union['ProposalComplianceStatus', None]):
         can_submit (ProposalCanSubmitResponse):
         awaiting_manual_advance (bool):
+        decision_held (Union[None, bool]):
         workflow_step (Union[None, StepEnum]): Current active workflow step for this proposal.
         description (Union[Unset, str]):
         project_summary (Union[Unset, str]):
@@ -139,6 +140,7 @@ class Proposal:
     compliance_status: Union["ProposalComplianceStatus", None]
     can_submit: "ProposalCanSubmitResponse"
     awaiting_manual_advance: bool
+    decision_held: Union[None, bool]
     workflow_step: Union[None, StepEnum]
     description: Union[Unset, str] = UNSET
     project_summary: Union[Unset, str] = UNSET
@@ -276,6 +278,9 @@ class Proposal:
 
         awaiting_manual_advance = self.awaiting_manual_advance
 
+        decision_held: Union[None, bool]
+        decision_held = self.decision_held
+
         workflow_step: Union[None, str]
         if isinstance(self.workflow_step, StepEnum):
             workflow_step = self.workflow_step.value
@@ -360,6 +365,7 @@ class Proposal:
                 "compliance_status": compliance_status,
                 "can_submit": can_submit,
                 "awaiting_manual_advance": awaiting_manual_advance,
+                "decision_held": decision_held,
                 "workflow_step": workflow_step,
             }
         )
@@ -568,6 +574,13 @@ class Proposal:
 
         awaiting_manual_advance = d.pop("awaiting_manual_advance")
 
+        def _parse_decision_held(data: object) -> Union[None, bool]:
+            if data is None:
+                return data
+            return cast(Union[None, bool], data)
+
+        decision_held = _parse_decision_held(d.pop("decision_held"))
+
         def _parse_workflow_step(data: object) -> Union[None, StepEnum]:
             if data is None:
                 return data
@@ -682,6 +695,7 @@ class Proposal:
             compliance_status=compliance_status,
             can_submit=can_submit,
             awaiting_manual_advance=awaiting_manual_advance,
+            decision_held=decision_held,
             workflow_step=workflow_step,
             description=description,
             project_summary=project_summary,
