@@ -55,6 +55,7 @@ class OpenStackSubNetFieldEnum(str, Enum):
     SKIP_ROUTER_CONNECTION = "skip_router_connection"
     STATE = "state"
     TENANT = "tenant"
+    TENANT_IS_MANAGED = "tenant_is_managed"
     TENANT_NAME = "tenant_name"
     URL = "url"
     UUID = "uuid"

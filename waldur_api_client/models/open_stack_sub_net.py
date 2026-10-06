@@ -53,6 +53,8 @@ class OpenStackSubNet:
         access_url (Union[None, Unset, list[str], str]):
         tenant (Union[Unset, str]):
         tenant_name (Union[Unset, str]):
+        tenant_is_managed (Union[Unset, bool]): False when the subnet's network belongs to an OpenStack project that
+            Waldur does not manage and only reaches tenants through an RBAC share.
         network (Union[Unset, str]): Network to which this subnet belongs
         network_name (Union[Unset, str]):
         cidr (Union[Unset, str]):
@@ -114,6 +116,7 @@ class OpenStackSubNet:
     access_url: Union[None, Unset, list[str], str] = UNSET
     tenant: Union[Unset, str] = UNSET
     tenant_name: Union[Unset, str] = UNSET
+    tenant_is_managed: Union[Unset, bool] = UNSET
     network: Union[Unset, str] = UNSET
     network_name: Union[Unset, str] = UNSET
     cidr: Union[Unset, str] = UNSET
@@ -225,6 +228,8 @@ class OpenStackSubNet:
         tenant = self.tenant
 
         tenant_name = self.tenant_name
+
+        tenant_is_managed = self.tenant_is_managed
 
         network = self.network
 
@@ -431,6 +436,8 @@ class OpenStackSubNet:
             field_dict["tenant"] = tenant
         if tenant_name is not UNSET:
             field_dict["tenant_name"] = tenant_name
+        if tenant_is_managed is not UNSET:
+            field_dict["tenant_is_managed"] = tenant_is_managed
         if network is not UNSET:
             field_dict["network"] = network
         if network_name is not UNSET:
@@ -602,6 +609,8 @@ class OpenStackSubNet:
         tenant = d.pop("tenant", UNSET)
 
         tenant_name = d.pop("tenant_name", UNSET)
+
+        tenant_is_managed = d.pop("tenant_is_managed", UNSET)
 
         network = d.pop("network", UNSET)
 
@@ -863,6 +872,7 @@ class OpenStackSubNet:
             access_url=access_url,
             tenant=tenant,
             tenant_name=tenant_name,
+            tenant_is_managed=tenant_is_managed,
             network=network,
             network_name=network_name,
             cidr=cidr,
