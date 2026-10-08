@@ -2360,6 +2360,7 @@ Module: `waldur_api_client.api.marketplace_user_offering_consents`
 Module: `waldur_api_client.api.matrix`
 
 - `matrix_credentials_retrieve` GET `/api/matrix/credentials/` — Get Matrix login credentials (no params)
+- `matrix_credentials_password` POST `/api/matrix/credentials/password/` — Generate a Matrix password (no params)
 - `matrix_exports_list` GET `/api/matrix/exports/` (3 query params)
 - `matrix_exports_count` HEAD `/api/matrix/exports/` — Get number of items in the collection matching the request parameters (3 query params)
 - `matrix_exports_retrieve` GET `/api/matrix/exports/{uuid}/` (path: uuid)

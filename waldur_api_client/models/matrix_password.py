@@ -4,39 +4,37 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.matrix_external_login_method_enum import MatrixExternalLoginMethodEnum
-
-T = TypeVar("T", bound="MatrixCredentials")
+T = TypeVar("T", bound="MatrixPassword")
 
 
 @_attrs_define
-class MatrixCredentials:
+class MatrixPassword:
     """
     Attributes:
-        method (MatrixExternalLoginMethodEnum):
         homeserver_url (str):
         matrix_user_id (str):
+        password (str):
     """
 
-    method: MatrixExternalLoginMethodEnum
     homeserver_url: str
     matrix_user_id: str
+    password: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        method = self.method.value
-
         homeserver_url = self.homeserver_url
 
         matrix_user_id = self.matrix_user_id
+
+        password = self.password
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "method": method,
                 "homeserver_url": homeserver_url,
                 "matrix_user_id": matrix_user_id,
+                "password": password,
             }
         )
 
@@ -45,20 +43,20 @@ class MatrixCredentials:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        method = MatrixExternalLoginMethodEnum(d.pop("method"))
-
         homeserver_url = d.pop("homeserver_url")
 
         matrix_user_id = d.pop("matrix_user_id")
 
-        matrix_credentials = cls(
-            method=method,
+        password = d.pop("password")
+
+        matrix_password = cls(
             homeserver_url=homeserver_url,
             matrix_user_id=matrix_user_id,
+            password=password,
         )
 
-        matrix_credentials.additional_properties = d
-        return matrix_credentials
+        matrix_password.additional_properties = d
+        return matrix_password
 
     @property
     def additional_keys(self) -> list[str]:

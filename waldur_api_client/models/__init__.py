@@ -1178,6 +1178,7 @@ from .matrix_exports_download_retrieve_kind import MatrixExportsDownloadRetrieve
 from .matrix_external_login_method_enum import MatrixExternalLoginMethodEnum
 from .matrix_history_export import MatrixHistoryExport
 from .matrix_history_export_state_enum import MatrixHistoryExportStateEnum
+from .matrix_password import MatrixPassword
 from .matrix_reprovision_response import MatrixReprovisionResponse
 from .matrix_room import MatrixRoom
 from .matrix_room_create_request import MatrixRoomCreateRequest
@@ -4352,6 +4353,7 @@ __all__ = (
     "MatrixExternalLoginMethodEnum",
     "MatrixHistoryExport",
     "MatrixHistoryExportStateEnum",
+    "MatrixPassword",
     "MatrixReprovisionResponse",
     "MatrixRoom",
     "MatrixRoomCreateRequest",

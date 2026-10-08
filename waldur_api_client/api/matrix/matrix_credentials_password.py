@@ -1,36 +1,50 @@
 from http import HTTPStatus
-from typing import Any, Union
+from typing import Any, Union, cast
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.matrix_credentials import MatrixCredentials
+from ...models.matrix_password import MatrixPassword
 from ...types import Response
 
 
 def _get_kwargs() -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
-        "method": "get",
-        "url": "/api/matrix/credentials/",
+        "method": "post",
+        "url": "/api/matrix/credentials/password/",
     }
 
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> MatrixCredentials:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Union[Any, MatrixPassword]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = MatrixCredentials.from_dict(response.json())
+        response_200 = MatrixPassword.from_dict(response.json())
 
         return response_200
+    if response.status_code == 403:
+        response_403 = cast(Any, None)
+        return response_403
+    if response.status_code == 404:
+        response_404 = cast(Any, None)
+        return response_404
+    if response.status_code == 409:
+        response_409 = cast(Any, None)
+        return response_409
+    if response.status_code == 503:
+        response_503 = cast(Any, None)
+        return response_503
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[MatrixCredentials]:
+) -> Response[Union[Any, MatrixPassword]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -42,19 +56,18 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[MatrixCredentials]:
-    """Get Matrix login credentials
+) -> Response[Union[Any, MatrixPassword]]:
+    """Generate a Matrix password
 
-     Returns what an external Matrix client needs to sign the authenticated user in, per
-    MATRIX_EXTERNAL_LOGIN_METHOD. Never a password or an access token: in password mode the user
-    generates a password with POST /api/matrix/credentials/password/.
+     Sets a new random password on the authenticated user's Matrix account and returns it. It is not
+    stored, so it is shown only in this response; generating again replaces it. Only in password mode.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MatrixCredentials]
+        Response[Union[Any, MatrixPassword]]
     """
 
     kwargs = _get_kwargs()
@@ -69,19 +82,18 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> MatrixCredentials:
-    """Get Matrix login credentials
+) -> Union[Any, MatrixPassword]:
+    """Generate a Matrix password
 
-     Returns what an external Matrix client needs to sign the authenticated user in, per
-    MATRIX_EXTERNAL_LOGIN_METHOD. Never a password or an access token: in password mode the user
-    generates a password with POST /api/matrix/credentials/password/.
+     Sets a new random password on the authenticated user's Matrix account and returns it. It is not
+    stored, so it is shown only in this response; generating again replaces it. Only in password mode.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        MatrixCredentials
+        Union[Any, MatrixPassword]
     """
 
     return sync_detailed(
@@ -92,19 +104,18 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[MatrixCredentials]:
-    """Get Matrix login credentials
+) -> Response[Union[Any, MatrixPassword]]:
+    """Generate a Matrix password
 
-     Returns what an external Matrix client needs to sign the authenticated user in, per
-    MATRIX_EXTERNAL_LOGIN_METHOD. Never a password or an access token: in password mode the user
-    generates a password with POST /api/matrix/credentials/password/.
+     Sets a new random password on the authenticated user's Matrix account and returns it. It is not
+    stored, so it is shown only in this response; generating again replaces it. Only in password mode.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[MatrixCredentials]
+        Response[Union[Any, MatrixPassword]]
     """
 
     kwargs = _get_kwargs()
@@ -117,19 +128,18 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> MatrixCredentials:
-    """Get Matrix login credentials
+) -> Union[Any, MatrixPassword]:
+    """Generate a Matrix password
 
-     Returns what an external Matrix client needs to sign the authenticated user in, per
-    MATRIX_EXTERNAL_LOGIN_METHOD. Never a password or an access token: in password mode the user
-    generates a password with POST /api/matrix/credentials/password/.
+     Sets a new random password on the authenticated user's Matrix account and returns it. It is not
+    stored, so it is shown only in this response; generating again replaces it. Only in password mode.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        MatrixCredentials
+        Union[Any, MatrixPassword]
     """
 
     return (

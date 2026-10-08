@@ -128,6 +128,7 @@ class EventMetadataResponseEventGroupsAdditionalPropertyItem(str, Enum):
     MARKETPLACE_RESOURCE_UPDATE_LIMITS_SUCCEEDED = "marketplace_resource_update_limits_succeeded"
     MARKETPLACE_RESOURCE_UPDATE_REQUESTED = "marketplace_resource_update_requested"
     MARKETPLACE_RESOURCE_UPDATE_SUCCEEDED = "marketplace_resource_update_succeeded"
+    MATRIX_PASSWORD_GENERATED = "matrix_password_generated"
     NOTIFY_EXTERNAL_USER = "notify_external_user"
     NOTIFY_ORGANIZATION_OWNERS = "notify_organization_owners"
     NOTIFY_PROJECT_TEAM = "notify_project_team"
