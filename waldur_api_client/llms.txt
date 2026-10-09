@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.1.3-rc.23.dev.20261009193706).
+> Auto-generated Python SDK for the Waldur API (version 8.1.3-rc.23.dev.20261009221900).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -35,7 +35,7 @@ waldur_api_client/
 
 ## API Domains
 
-- **_matrix** (1 endpoint)
+- **_matrix** (2 endpoints)
 - **access-subnets** (9 endpoints)
 - **admin** (68 endpoints)
 - **admin-announcements** (7 endpoints)

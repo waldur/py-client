@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.23.dev.20261009193706
+# Version: 8.1.3-rc.23.dev.20261009221900
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -11,6 +11,11 @@
 ============================================================
 ## _matrix  (module: waldur_api_client.api._matrix)
 ============================================================
+
+### _matrix_app_v1_ping
+POST /_matrix/app/v1/ping
+Summary: Matrix Application Service ping
+Description: Called by the homeserver when Waldur asks it to ping the appservice (MSC2659). Authenticated via hs_token in the Authorization header.
 
 ### _matrix_app_v1_transactions_update
 PUT /_matrix/app/v1/transactions/{txn_id}
@@ -570,7 +575,7 @@ Path parameters:
 ### admin_matrix_appservice_setup
 POST /api/admin/matrix-appservice/setup/
 Summary: Setup Matrix appservice registration
-Description: Generates fresh appservice tokens (rotating any existing ones), enables the appservice, and returns registration YAML.
+Description: Generates fresh appservice tokens (rotating any existing ones), enables the appservice, and returns registration YAML. Returns 409 when the deployment owns the tokens; see MATRIX_TOKENS_MANAGED_BY.
 Request body: yes
 
 ### admin_matrix_appservice_status_retrieve
@@ -598,7 +603,7 @@ Query parameters (1):
 ### admin_matrix_reprovision
 POST /api/admin/matrix/reprovision/
 Summary: Reprovision all active Matrix rooms on a new homeserver
-Description: Resets all active rooms to 'creating' state and re-queues them for provisioning. Also resets all user profiles. Staff only.
+Description: Resets all active rooms to 'creating' state and re-queues them for provisioning. Also resets all user profiles. Only for moving to a new homeserver: on the same homeserver, every old room stays behind with its history next to a new, empty one. Staff only.
 
 ============================================================
 ## admin-announcements  (module: waldur_api_client.api.admin_announcements)

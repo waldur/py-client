@@ -371,12 +371,14 @@ class ConstanceSettings:
         matrix_appservice_as_token (Union[Unset, str]):
         matrix_appservice_hs_token (Union[Unset, str]):
         matrix_appservice_sender_localpart (Union[Unset, str]):
+        matrix_tokens_managed_by (Union[Unset, str]):
         matrix_history_export_enabled (Union[Unset, bool]):
         matrix_export_media (Union[Unset, bool]):
         matrix_history_export_retention_days (Union[Unset, int]):
         matrix_user_registration_secret (Union[Unset, str]):
         matrix_user_id_format (Union[Unset, str]):
         matrix_external_login_method (Union[Unset, MatrixExternalLoginMethodEnum]):
+        matrix_sso_registration_method (Union[Unset, str]):
         matrix_livekit_key (Union[Unset, str]):
         matrix_livekit_secret (Union[Unset, str]):
         matrix_livekit_url (Union[Unset, str]):
@@ -719,12 +721,14 @@ class ConstanceSettings:
     matrix_appservice_as_token: Union[Unset, str] = UNSET
     matrix_appservice_hs_token: Union[Unset, str] = UNSET
     matrix_appservice_sender_localpart: Union[Unset, str] = UNSET
+    matrix_tokens_managed_by: Union[Unset, str] = UNSET
     matrix_history_export_enabled: Union[Unset, bool] = UNSET
     matrix_export_media: Union[Unset, bool] = UNSET
     matrix_history_export_retention_days: Union[Unset, int] = UNSET
     matrix_user_registration_secret: Union[Unset, str] = UNSET
     matrix_user_id_format: Union[Unset, str] = UNSET
     matrix_external_login_method: Union[Unset, MatrixExternalLoginMethodEnum] = UNSET
+    matrix_sso_registration_method: Union[Unset, str] = UNSET
     matrix_livekit_key: Union[Unset, str] = UNSET
     matrix_livekit_secret: Union[Unset, str] = UNSET
     matrix_livekit_url: Union[Unset, str] = UNSET
@@ -1652,6 +1656,8 @@ class ConstanceSettings:
 
         matrix_appservice_sender_localpart = self.matrix_appservice_sender_localpart
 
+        matrix_tokens_managed_by = self.matrix_tokens_managed_by
+
         matrix_history_export_enabled = self.matrix_history_export_enabled
 
         matrix_export_media = self.matrix_export_media
@@ -1665,6 +1671,8 @@ class ConstanceSettings:
         matrix_external_login_method: Union[Unset, str] = UNSET
         if not isinstance(self.matrix_external_login_method, Unset):
             matrix_external_login_method = self.matrix_external_login_method.value
+
+        matrix_sso_registration_method = self.matrix_sso_registration_method
 
         matrix_livekit_key = self.matrix_livekit_key
 
@@ -2361,6 +2369,8 @@ class ConstanceSettings:
             field_dict["MATRIX_APPSERVICE_HS_TOKEN"] = matrix_appservice_hs_token
         if matrix_appservice_sender_localpart is not UNSET:
             field_dict["MATRIX_APPSERVICE_SENDER_LOCALPART"] = matrix_appservice_sender_localpart
+        if matrix_tokens_managed_by is not UNSET:
+            field_dict["MATRIX_TOKENS_MANAGED_BY"] = matrix_tokens_managed_by
         if matrix_history_export_enabled is not UNSET:
             field_dict["MATRIX_HISTORY_EXPORT_ENABLED"] = matrix_history_export_enabled
         if matrix_export_media is not UNSET:
@@ -2373,6 +2383,8 @@ class ConstanceSettings:
             field_dict["MATRIX_USER_ID_FORMAT"] = matrix_user_id_format
         if matrix_external_login_method is not UNSET:
             field_dict["MATRIX_EXTERNAL_LOGIN_METHOD"] = matrix_external_login_method
+        if matrix_sso_registration_method is not UNSET:
+            field_dict["MATRIX_SSO_REGISTRATION_METHOD"] = matrix_sso_registration_method
         if matrix_livekit_key is not UNSET:
             field_dict["MATRIX_LIVEKIT_KEY"] = matrix_livekit_key
         if matrix_livekit_secret is not UNSET:
@@ -3592,6 +3604,8 @@ class ConstanceSettings:
 
         matrix_appservice_sender_localpart = d.pop("MATRIX_APPSERVICE_SENDER_LOCALPART", UNSET)
 
+        matrix_tokens_managed_by = d.pop("MATRIX_TOKENS_MANAGED_BY", UNSET)
+
         matrix_history_export_enabled = d.pop("MATRIX_HISTORY_EXPORT_ENABLED", UNSET)
 
         matrix_export_media = d.pop("MATRIX_EXPORT_MEDIA", UNSET)
@@ -3608,6 +3622,8 @@ class ConstanceSettings:
             matrix_external_login_method = UNSET
         else:
             matrix_external_login_method = MatrixExternalLoginMethodEnum(_matrix_external_login_method)
+
+        matrix_sso_registration_method = d.pop("MATRIX_SSO_REGISTRATION_METHOD", UNSET)
 
         matrix_livekit_key = d.pop("MATRIX_LIVEKIT_KEY", UNSET)
 
@@ -3960,12 +3976,14 @@ class ConstanceSettings:
             matrix_appservice_as_token=matrix_appservice_as_token,
             matrix_appservice_hs_token=matrix_appservice_hs_token,
             matrix_appservice_sender_localpart=matrix_appservice_sender_localpart,
+            matrix_tokens_managed_by=matrix_tokens_managed_by,
             matrix_history_export_enabled=matrix_history_export_enabled,
             matrix_export_media=matrix_export_media,
             matrix_history_export_retention_days=matrix_history_export_retention_days,
             matrix_user_registration_secret=matrix_user_registration_secret,
             matrix_user_id_format=matrix_user_id_format,
             matrix_external_login_method=matrix_external_login_method,
+            matrix_sso_registration_method=matrix_sso_registration_method,
             matrix_livekit_key=matrix_livekit_key,
             matrix_livekit_secret=matrix_livekit_secret,
             matrix_livekit_url=matrix_livekit_url,

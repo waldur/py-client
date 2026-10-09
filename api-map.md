@@ -8,6 +8,7 @@ Endpoints organized by domain. Each endpoint is available as:
 ## _matrix
 Module: `waldur_api_client.api._matrix`
 
+- `_matrix_app_v1_ping` POST `/_matrix/app/v1/ping` — Matrix Application Service ping (no params)
 - `_matrix_app_v1_transactions_update` PUT `/_matrix/app/v1/transactions/{txn_id}` — Matrix Application Service transaction webhook (path: txn_id)
 
 ## access-subnets
