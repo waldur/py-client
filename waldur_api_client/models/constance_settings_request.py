@@ -382,6 +382,7 @@ class ConstanceSettingsRequest:
         matrix_livekit_key (Union[Unset, str]):
         matrix_livekit_secret (Union[Unset, str]):
         matrix_livekit_url (Union[Unset, str]):
+        matrix_livekit_public_url (Union[Unset, str]):
         site_agent_log_max_rows_per_identity (Union[Unset, int]):
         pat_enabled (Union[Unset, bool]):
         pat_max_lifetime_days (Union[Unset, int]):
@@ -729,6 +730,7 @@ class ConstanceSettingsRequest:
     matrix_livekit_key: Union[Unset, str] = UNSET
     matrix_livekit_secret: Union[Unset, str] = UNSET
     matrix_livekit_url: Union[Unset, str] = UNSET
+    matrix_livekit_public_url: Union[Unset, str] = UNSET
     site_agent_log_max_rows_per_identity: Union[Unset, int] = UNSET
     pat_enabled: Union[Unset, bool] = UNSET
     pat_max_lifetime_days: Union[Unset, int] = UNSET
@@ -1708,6 +1710,8 @@ class ConstanceSettingsRequest:
 
         matrix_livekit_url = self.matrix_livekit_url
 
+        matrix_livekit_public_url = self.matrix_livekit_public_url
+
         site_agent_log_max_rows_per_identity = self.site_agent_log_max_rows_per_identity
 
         pat_enabled = self.pat_enabled
@@ -2413,6 +2417,8 @@ class ConstanceSettingsRequest:
             field_dict["MATRIX_LIVEKIT_SECRET"] = matrix_livekit_secret
         if matrix_livekit_url is not UNSET:
             field_dict["MATRIX_LIVEKIT_URL"] = matrix_livekit_url
+        if matrix_livekit_public_url is not UNSET:
+            field_dict["MATRIX_LIVEKIT_PUBLIC_URL"] = matrix_livekit_public_url
         if site_agent_log_max_rows_per_identity is not UNSET:
             field_dict["SITE_AGENT_LOG_MAX_ROWS_PER_IDENTITY"] = site_agent_log_max_rows_per_identity
         if pat_enabled is not UNSET:
@@ -3745,6 +3751,8 @@ class ConstanceSettingsRequest:
 
         matrix_livekit_url = d.pop("MATRIX_LIVEKIT_URL", UNSET)
 
+        matrix_livekit_public_url = d.pop("MATRIX_LIVEKIT_PUBLIC_URL", UNSET)
+
         site_agent_log_max_rows_per_identity = d.pop("SITE_AGENT_LOG_MAX_ROWS_PER_IDENTITY", UNSET)
 
         pat_enabled = d.pop("PAT_ENABLED", UNSET)
@@ -4097,6 +4105,7 @@ class ConstanceSettingsRequest:
             matrix_livekit_key=matrix_livekit_key,
             matrix_livekit_secret=matrix_livekit_secret,
             matrix_livekit_url=matrix_livekit_url,
+            matrix_livekit_public_url=matrix_livekit_public_url,
             site_agent_log_max_rows_per_identity=site_agent_log_max_rows_per_identity,
             pat_enabled=pat_enabled,
             pat_max_lifetime_days=pat_max_lifetime_days,
