@@ -2361,6 +2361,9 @@ Module: `waldur_api_client.api.matrix`
 
 - `matrix_credentials_retrieve` GET `/api/matrix/credentials/` — Get Matrix login credentials (no params)
 - `matrix_credentials_password` POST `/api/matrix/credentials/password/` — Generate a Matrix password (no params)
+- `matrix_crypto_escrow` POST `/api/matrix/crypto/escrow/` — Escrow the recovery key of chat encryption (request body)
+- `matrix_crypto_lease` POST `/api/matrix/crypto/lease/` — Take the lease to set up or reset chat encryption (request body)
+- `matrix_crypto_lease_release` POST `/api/matrix/crypto/lease/release/` — Release the lease to set up or reset chat encryption (request body)
 - `matrix_exports_list` GET `/api/matrix/exports/` (3 query params)
 - `matrix_exports_count` HEAD `/api/matrix/exports/` — Get number of items in the collection matching the request parameters (3 query params)
 - `matrix_exports_retrieve` GET `/api/matrix/exports/{uuid}/` (path: uuid)

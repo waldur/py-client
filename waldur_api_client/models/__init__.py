@@ -1172,6 +1172,13 @@ from .matrix_appservice_setup_request import MatrixAppserviceSetupRequest
 from .matrix_appservice_setup_response import MatrixAppserviceSetupResponse
 from .matrix_appservice_status import MatrixAppserviceStatus
 from .matrix_credentials import MatrixCredentials
+from .matrix_crypto_conflict import MatrixCryptoConflict
+from .matrix_crypto_conflict_state_enum import MatrixCryptoConflictStateEnum
+from .matrix_crypto_escrow_request import MatrixCryptoEscrowRequest
+from .matrix_crypto_lease import MatrixCryptoLease
+from .matrix_crypto_lease_release_request import MatrixCryptoLeaseReleaseRequest
+from .matrix_crypto_lease_request_kind_enum import MatrixCryptoLeaseRequestKindEnum
+from .matrix_crypto_lease_request_request import MatrixCryptoLeaseRequestRequest
 from .matrix_diagnostic_check import MatrixDiagnosticCheck
 from .matrix_diagnostics_response import MatrixDiagnosticsResponse
 from .matrix_exports_download_retrieve_kind import MatrixExportsDownloadRetrieveKind
@@ -4347,6 +4354,13 @@ __all__ = (
     "MatrixAppserviceSetupResponse",
     "MatrixAppserviceStatus",
     "MatrixCredentials",
+    "MatrixCryptoConflict",
+    "MatrixCryptoConflictStateEnum",
+    "MatrixCryptoEscrowRequest",
+    "MatrixCryptoLease",
+    "MatrixCryptoLeaseReleaseRequest",
+    "MatrixCryptoLeaseRequestKindEnum",
+    "MatrixCryptoLeaseRequestRequest",
     "MatrixDiagnosticCheck",
     "MatrixDiagnosticsResponse",
     "MatrixExportsDownloadRetrieveKind",

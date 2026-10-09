@@ -17,6 +17,8 @@ class MatrixSession:
         access_token (str):
         refresh_token (Union[None, str]):
         expires_in_ms (Union[None, int]):
+        recovery_key (Union[None, str]): The user's secret-storage recovery key, or null before encryption is set up.
+            Only ever returned to its owner.
     """
 
     homeserver_url: str
@@ -25,6 +27,7 @@ class MatrixSession:
     access_token: str
     refresh_token: Union[None, str]
     expires_in_ms: Union[None, int]
+    recovery_key: Union[None, str]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -42,6 +45,9 @@ class MatrixSession:
         expires_in_ms: Union[None, int]
         expires_in_ms = self.expires_in_ms
 
+        recovery_key: Union[None, str]
+        recovery_key = self.recovery_key
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -52,6 +58,7 @@ class MatrixSession:
                 "access_token": access_token,
                 "refresh_token": refresh_token,
                 "expires_in_ms": expires_in_ms,
+                "recovery_key": recovery_key,
             }
         )
 
@@ -82,6 +89,13 @@ class MatrixSession:
 
         expires_in_ms = _parse_expires_in_ms(d.pop("expires_in_ms"))
 
+        def _parse_recovery_key(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        recovery_key = _parse_recovery_key(d.pop("recovery_key"))
+
         matrix_session = cls(
             homeserver_url=homeserver_url,
             matrix_user_id=matrix_user_id,
@@ -89,6 +103,7 @@ class MatrixSession:
             access_token=access_token,
             refresh_token=refresh_token,
             expires_in_ms=expires_in_ms,
+            recovery_key=recovery_key,
         )
 
         matrix_session.additional_properties = d

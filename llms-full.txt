@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.23.dev.20261008171135
+# Version: 8.1.3-rc.23.dev.20261009075715
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -14942,6 +14942,24 @@ Description: Returns what an external Matrix client needs to sign the authentica
 POST /api/matrix/credentials/password/
 Summary: Generate a Matrix password
 Description: Sets a new random password on the authenticated user's Matrix account and returns it. It is not stored, so it is shown only in this response; generating again replaces it. Only in password mode.
+
+### matrix_crypto_escrow
+POST /api/matrix/crypto/escrow/
+Summary: Escrow the recovery key of chat encryption
+Description: Stores the caller's new secret-storage recovery key. Only the holder of a current lease may; the drawer calls this before it uploads any key, so Waldur never loses a key the homeserver depends on.
+Request body: yes
+
+### matrix_crypto_lease
+POST /api/matrix/crypto/lease/
+Summary: Take the lease to set up or reset chat encryption
+Description: Admits one browser at a time to setting up the caller's end-to-end encryption (`bootstrap`), or to replacing an identity Waldur can't unlock (`reset`). A reset also returns a temporary password for the homeserver's interactive auth; it is replaced once the new recovery key is escrowed, or when th...
+Request body: yes
+
+### matrix_crypto_lease_release
+POST /api/matrix/crypto/lease/release/
+Summary: Release the lease to set up or reset chat encryption
+Description: Ends the caller's lease once its setup or reset is done, or has failed, so another window need not wait for it to run out. A lease that is no longer held is ignored.
+Request body: yes
 
 ### matrix_exports_list
 GET /api/matrix/exports/
