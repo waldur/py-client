@@ -1180,12 +1180,14 @@ from .matrix_crypto_lease_release_request import MatrixCryptoLeaseReleaseRequest
 from .matrix_crypto_lease_request_kind_enum import MatrixCryptoLeaseRequestKindEnum
 from .matrix_crypto_lease_request_request import MatrixCryptoLeaseRequestRequest
 from .matrix_diagnostic_check import MatrixDiagnosticCheck
+from .matrix_diagnostic_check_metrics import MatrixDiagnosticCheckMetrics
 from .matrix_diagnostics_response import MatrixDiagnosticsResponse
 from .matrix_exports_download_retrieve_kind import MatrixExportsDownloadRetrieveKind
 from .matrix_external_login_method_enum import MatrixExternalLoginMethodEnum
 from .matrix_history_export import MatrixHistoryExport
 from .matrix_history_export_state_enum import MatrixHistoryExportStateEnum
 from .matrix_password import MatrixPassword
+from .matrix_recovery_key import MatrixRecoveryKey
 from .matrix_reprovision_response import MatrixReprovisionResponse
 from .matrix_room import MatrixRoom
 from .matrix_room_create_request import MatrixRoomCreateRequest
@@ -4363,12 +4365,14 @@ __all__ = (
     "MatrixCryptoLeaseRequestKindEnum",
     "MatrixCryptoLeaseRequestRequest",
     "MatrixDiagnosticCheck",
+    "MatrixDiagnosticCheckMetrics",
     "MatrixDiagnosticsResponse",
     "MatrixExportsDownloadRetrieveKind",
     "MatrixExternalLoginMethodEnum",
     "MatrixHistoryExport",
     "MatrixHistoryExportStateEnum",
     "MatrixPassword",
+    "MatrixRecoveryKey",
     "MatrixReprovisionResponse",
     "MatrixRoom",
     "MatrixRoomCreateRequest",

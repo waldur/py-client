@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.23.dev.20261010084617
+# Version: 8.1.3-rc.23.dev.20261010154940
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -14947,6 +14947,11 @@ Description: Returns what an external Matrix client needs to sign the authentica
 POST /api/matrix/credentials/password/
 Summary: Generate a Matrix password
 Description: Sets a new random password on the authenticated user's Matrix account and returns it. It is not stored, so it is shown only in this response; generating again replaces it. Only in password mode.
+
+### matrix_credentials_recovery_key
+POST /api/matrix/credentials/recovery-key/
+Summary: Show the recovery key of chat encryption
+Description: Returns the caller's escrowed recovery key, so that another Matrix client, such as Element, can unlock their encrypted history. Only a key that opens the user's secret storage on the homeserver is returned; null otherwise. A POST, as each reveal is recorded in the user's event log.
 
 ### matrix_crypto_escrow
 POST /api/matrix/crypto/escrow/
