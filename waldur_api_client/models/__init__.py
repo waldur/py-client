@@ -2334,6 +2334,7 @@ from .provider_ticket import ProviderTicket
 from .provider_ticket_o_enum import ProviderTicketOEnum
 from .provider_ticket_request import ProviderTicketRequest
 from .provider_user import ProviderUser
+from .provider_user_role_details import ProviderUserRoleDetails
 from .provider_username_candidate import ProviderUsernameCandidate
 from .provider_username_conflict import ProviderUsernameConflict
 from .public_call import PublicCall
@@ -5446,6 +5447,7 @@ __all__ = (
     "ProviderUser",
     "ProviderUsernameCandidate",
     "ProviderUsernameConflict",
+    "ProviderUserRoleDetails",
     "PublicCall",
     "PublicCallFieldEnum",
     "PublicInvitation",
