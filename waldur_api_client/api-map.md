@@ -674,7 +674,7 @@ Module: `waldur_api_client.api.customers`
 - `customers_project_digest_config_preview` POST `/api/customers/{uuid}/project-digest-config/preview/` — Preview digest for a project (path: uuid | request body)
 - `customers_project_digest_config_send_test` POST `/api/customers/{uuid}/project-digest-config/send-test/` — Send a test digest email (path: uuid)
 - `customers_providers_list` GET `/api/customers/{uuid}/providers/` — List service providers serving this customer (path: uuid | 24 query params)
-- `customers_stats_retrieve` GET `/api/customers/{uuid}/stats/` — Get customer resource usage statistics (path: uuid | 1 query param)
+- `customers_stats_retrieve` GET `/api/customers/{uuid}/stats/` — Get customer resource usage statistics (path: uuid | 2 query params)
 - `customers_update_project_digest_config_update` PUT `/api/customers/{uuid}/update-project-digest-config/` — Update project digest configuration (path: uuid | request body)
 - `customers_update_project_digest_config_partial_update` PATCH `/api/customers/{uuid}/update-project-digest-config/` — Update project digest configuration (path: uuid | request body)
 - `customers_update_default_affiliations` POST `/api/customers/{uuid}/update_default_affiliations/` — Update default affiliations for an organization (path: uuid | request body)
@@ -1237,9 +1237,9 @@ Module: `waldur_api_client.api.marketplace_customer_service_accounts`
 ## marketplace-customer-usage
 Module: `waldur_api_client.api.marketplace_customer_usage`
 
-- `marketplace_customer_usage_components_usage_by_project_retrieve` GET `/api/marketplace-customer-usage/{uuid}/components-usage-by-project/` — Get per-project usage breakdown for a single offering (path: uuid | 3 query params)
-- `marketplace_customer_usage_components_usage_timeseries_retrieve` GET `/api/marketplace-customer-usage/{uuid}/components-usage-timeseries/` — Get monthly usage buckets for a single offering (path: uuid | 3 query params)
-- `marketplace_customer_usage_components_usage_retrieve` GET `/api/marketplace-customer-usage/{uuid}/components-usage/` — Get resource usage statistics broken down per offering (path: uuid)
+- `marketplace_customer_usage_components_usage_by_project_retrieve` GET `/api/marketplace-customer-usage/{uuid}/components-usage-by-project/` — Get per-project usage breakdown for a single offering (path: uuid | 4 query params)
+- `marketplace_customer_usage_components_usage_timeseries_retrieve` GET `/api/marketplace-customer-usage/{uuid}/components-usage-timeseries/` — Get monthly usage buckets for a single offering (path: uuid | 4 query params)
+- `marketplace_customer_usage_components_usage_retrieve` GET `/api/marketplace-customer-usage/{uuid}/components-usage/` — Get resource usage statistics broken down per offering (path: uuid | 1 query param)
 
 ## marketplace-demo-presets
 Module: `waldur_api_client.api.marketplace_demo_presets`
@@ -1647,8 +1647,8 @@ Module: `waldur_api_client.api.marketplace_project_update_requests`
 ## marketplace-project-usage
 Module: `waldur_api_client.api.marketplace_project_usage`
 
-- `marketplace_project_usage_components_usage_timeseries_retrieve` GET `/api/marketplace-project-usage/{uuid}/components-usage-timeseries/` — Get monthly usage buckets for a single offering (path: uuid | 3 query params)
-- `marketplace_project_usage_components_usage_retrieve` GET `/api/marketplace-project-usage/{uuid}/components-usage/` — Get resource usage statistics broken down per offering (path: uuid)
+- `marketplace_project_usage_components_usage_timeseries_retrieve` GET `/api/marketplace-project-usage/{uuid}/components-usage-timeseries/` — Get monthly usage buckets for a single offering (path: uuid | 4 query params)
+- `marketplace_project_usage_components_usage_retrieve` GET `/api/marketplace-project-usage/{uuid}/components-usage/` — Get resource usage statistics broken down per offering (path: uuid | 1 query param)
 
 ## marketplace-provider-offerings
 Module: `waldur_api_client.api.marketplace_provider_offerings`
@@ -2666,7 +2666,7 @@ Module: `waldur_api_client.api.openportal_unmanaged_projects`
 - `openportal_unmanaged_projects_list_users_count` HEAD `/api/openportal-unmanaged-projects/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `openportal_unmanaged_projects_move_project` POST `/api/openportal-unmanaged-projects/{uuid}/move_project/` — Move project to another customer (path: uuid | request body)
 - `openportal_unmanaged_projects_recover` POST `/api/openportal-unmanaged-projects/{uuid}/recover/` — Recover a soft-deleted project (path: uuid | request body)
-- `openportal_unmanaged_projects_stats_retrieve` GET `/api/openportal-unmanaged-projects/{uuid}/stats/` — Get project resource usage statistics (path: uuid | 1 query param)
+- `openportal_unmanaged_projects_stats_retrieve` GET `/api/openportal-unmanaged-projects/{uuid}/stats/` — Get project resource usage statistics (path: uuid | 2 query params)
 - `openportal_unmanaged_projects_submit_answers` POST `/api/openportal-unmanaged-projects/{uuid}/submit_answers/` — Submit checklist answers (path: uuid | request body)
 - `openportal_unmanaged_projects_update_affiliation` POST `/api/openportal-unmanaged-projects/{uuid}/update_affiliation/` — Update affiliation for a project (path: uuid | request body)
 - `openportal_unmanaged_projects_update_user` POST `/api/openportal-unmanaged-projects/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
@@ -3231,7 +3231,7 @@ Module: `waldur_api_client.api.projects`
 - `projects_list_users_count` HEAD `/api/projects/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `projects_move_project` POST `/api/projects/{uuid}/move_project/` — Move project to another customer (path: uuid | request body)
 - `projects_recover` POST `/api/projects/{uuid}/recover/` — Recover a soft-deleted project (path: uuid | request body)
-- `projects_stats_retrieve` GET `/api/projects/{uuid}/stats/` — Get project resource usage statistics (path: uuid | 1 query param)
+- `projects_stats_retrieve` GET `/api/projects/{uuid}/stats/` — Get project resource usage statistics (path: uuid | 2 query params)
 - `projects_submit_answers` POST `/api/projects/{uuid}/submit_answers/` — Submit checklist answers (path: uuid | request body)
 - `projects_sync_user_roles` POST `/api/projects/{uuid}/sync_user_roles/` — Trigger user role sync for this project (path: uuid)
 - `projects_update_affiliation` POST `/api/projects/{uuid}/update_affiliation/` — Update affiliation for a project (path: uuid | request body)
