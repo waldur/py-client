@@ -20,13 +20,14 @@ class MergedSecretOptions:
     """
     Attributes:
         order_notification_emails (Union[Unset, list[str]]): Email addresses notified about every new order for this
-            offering, regardless of whether the order needs approval. Intended for provider-side mailboxes which do not
-            belong to a Waldur user, so these addresses are notified even if a user with the same address disabled
-            notifications. At most 10 addresses.
+            offering, once the consumer side has approved it, or when it is placed if it needs no consumer approval.
+            Provider approval is not awaited. Intended for provider-side mailboxes which do not belong to a Waldur user, so
+            these addresses are notified even if a user with the same address disabled notifications. At most 10 addresses.
         order_notification_roles (Union[Unset, list[str]]): List of organization or offering role names (e.g.
-            'CUSTOMER.OWNER', 'OFFERING.MANAGER') whose holders are notified about every new order for this offering,
-            regardless of whether the order needs approval. Names are resolved on the provider organization and on the
-            offering itself. Users who disabled notifications in their profile are skipped. At most 10 names.
+            'CUSTOMER.OWNER', 'OFFERING.MANAGER') whose holders are notified about every new order for this offering, once
+            the consumer side has approved it, or when it is placed if it needs no consumer approval. Provider approval is
+            not awaited. Names are resolved on the provider organization and on the offering itself. Users who disabled
+            notifications in their profile are skipped. At most 10 names.
         heappe_cluster_password (Union[None, Unset, str]): HEAppE cluster password
         heappe_password (Union[None, Unset, str]): HEAppE password
         ipv4_external_ip_mapping (Union[Unset, list['IPMapping']]): OpenStack IPv4 external IP mapping

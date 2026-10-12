@@ -101,8 +101,12 @@ class MergedPluginOptions:
             team views show whether each role grant has propagated to the provider backend, and providers can trigger a
             resync.
         enable_scim_entitlements (Union[Unset, bool]): Include this offering in outbound SCIM user entitlement sync.
-            When unset or false, SSH access endpoints on this offering are not pushed to the remote SCIM service even if
-            SCIM_MEMBERSHIP_SYNC_ENABLED is on.
+            Login hosts are read from scim_login_nodes. When unset or false, this offering is not pushed to the remote SCIM
+            service even if SCIM_MEMBERSHIP_SYNC_ENABLED is on.
+        scim_login_nodes (Union[Unset, list[str]]): Bare hostnames of login nodes included in outbound SCIM entitlements
+            when enable_scim_entitlements is set. Each entry is a DNS hostname only (for example login.example.org): stored
+            lowercased, with no ssh:// URL, user@host, or host:port. These are not access links and do not appear in the
+            resource access dropdown.
         enable_resource_access_subnets (Union[Unset, bool]): If set to True, an Access subnets tab is shown on resource
             detail pages, letting consumers curate the IPs allowed to reach the backend entity. The list is advisory data
             for external firewalls.
@@ -276,6 +280,7 @@ class MergedPluginOptions:
     enable_resource_projects: Union[Unset, bool] = UNSET
     enable_membership_sync_status: Union[Unset, bool] = UNSET
     enable_scim_entitlements: Union[Unset, bool] = UNSET
+    scim_login_nodes: Union[Unset, list[str]] = UNSET
     enable_resource_access_subnets: Union[Unset, bool] = UNSET
     conceal_subnet_restricted_resources: Union[Unset, bool] = UNSET
     resource_projects_limit_policy: Union[BlankEnum, None, ResourceProjectsLimitPolicyEnum, Unset] = UNSET
@@ -446,6 +451,10 @@ class MergedPluginOptions:
         enable_membership_sync_status = self.enable_membership_sync_status
 
         enable_scim_entitlements = self.enable_scim_entitlements
+
+        scim_login_nodes: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.scim_login_nodes, Unset):
+            scim_login_nodes = self.scim_login_nodes
 
         enable_resource_access_subnets = self.enable_resource_access_subnets
 
@@ -734,6 +743,8 @@ class MergedPluginOptions:
             field_dict["enable_membership_sync_status"] = enable_membership_sync_status
         if enable_scim_entitlements is not UNSET:
             field_dict["enable_scim_entitlements"] = enable_scim_entitlements
+        if scim_login_nodes is not UNSET:
+            field_dict["scim_login_nodes"] = scim_login_nodes
         if enable_resource_access_subnets is not UNSET:
             field_dict["enable_resource_access_subnets"] = enable_resource_access_subnets
         if conceal_subnet_restricted_resources is not UNSET:
@@ -1033,6 +1044,8 @@ class MergedPluginOptions:
         enable_membership_sync_status = d.pop("enable_membership_sync_status", UNSET)
 
         enable_scim_entitlements = d.pop("enable_scim_entitlements", UNSET)
+
+        scim_login_nodes = cast(list[str], d.pop("scim_login_nodes", UNSET))
 
         enable_resource_access_subnets = d.pop("enable_resource_access_subnets", UNSET)
 
@@ -1369,6 +1382,7 @@ class MergedPluginOptions:
             enable_resource_projects=enable_resource_projects,
             enable_membership_sync_status=enable_membership_sync_status,
             enable_scim_entitlements=enable_scim_entitlements,
+            scim_login_nodes=scim_login_nodes,
             enable_resource_access_subnets=enable_resource_access_subnets,
             conceal_subnet_restricted_resources=conceal_subnet_restricted_resources,
             resource_projects_limit_policy=resource_projects_limit_policy,

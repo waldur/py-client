@@ -41,7 +41,8 @@ class OrderCreateRequest:
         callback_url (Union[None, Unset, str]):
         request_comment (Union[None, Unset, str]):
         start_date (Union[None, Unset, datetime.date]): Enables delayed processing of resource provisioning order.
-        slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
+        slug (Union[Unset, str]): Slug of the new resource. Used when the caller is staff or holds RESOURCE.SET_SLUG on
+            the project, the offering or their organizations; otherwise ignored.
     """
 
     offering: str

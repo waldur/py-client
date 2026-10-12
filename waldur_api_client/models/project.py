@@ -30,7 +30,8 @@ class Project:
         url (Union[Unset, str]):
         uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
-        slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
+        slug (Union[Unset, str]): URL-friendly identifier. Editable by staff; on create also by holders of
+            PROJECT.SET_SLUG on the organization, otherwise ignored.
         customer (Union[Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         customer_name (Union[Unset, str]):

@@ -2198,6 +2198,7 @@ from .project_request_form import ProjectRequestForm
 from .project_request_multipart import ProjectRequestMultipart
 from .project_service_account import ProjectServiceAccount
 from .project_service_account_request import ProjectServiceAccountRequest
+from .project_slug_request import ProjectSlugRequest
 from .project_storage_report import ProjectStorageReport
 from .project_storage_report_daily_reports import ProjectStorageReportDailyReports
 from .project_storage_report_project_quotas import ProjectStorageReportProjectQuotas
@@ -5327,6 +5328,7 @@ __all__ = (
     "ProjectsLimitsGroupedByOecd",
     "ProjectsLimitsGroupedByOecdLimits",
     "ProjectsLimitsGroupedByOecdLimitsAdditionalProperty",
+    "ProjectSlugRequest",
     "ProjectStorageReport",
     "ProjectStorageReportDailyReports",
     "ProjectStorageReportProjectQuotas",
