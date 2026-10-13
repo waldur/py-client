@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-rc.24.dev.20261012192633
+# Version: 8.1.3
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -19727,12 +19727,12 @@ Request body: yes
 ### override_settings_retrieve
 GET /api/override-settings/
 Summary: Get all overridable settings
-Description: Returns all settings that can be overridden in the database via the Constance backend. Requires admin permissions.
+Description: Returns all settings that can be overridden in the database via the Constance backend. Staff receive every value. Support users receive the same keys, with secret_field values blanked.
 
 ### override_settings
 POST /api/override-settings/
 Summary: Update overridable settings
-Description: Updates one or more settings in the database via the Constance backend. Requires admin permissions.
+Description: Updates one or more settings in the database via the Constance backend. Requires staff permissions. Support users cannot update settings.
 Request body: yes
 
 ============================================================
