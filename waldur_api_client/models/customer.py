@@ -36,6 +36,11 @@ class Customer:
         archived (Union[Unset, bool]):
         display_billing_info_in_projects (Union[Unset, bool]):
         default_tax_percent (Union[Unset, str]):
+        is_private_person (Union[Unset, bool]): Organization represents a private person rather than a legal entity.
+            Used for EU VAT calculation.
+        vat_code_verified (Union[Unset, bool]): Whether the EU VIES service confirmed the current VAT number.
+        vat_percent (Union[None, Unset, str]): VAT percent calculated from EU VAT rules, when VAT taxation is on.
+        vat_rule (Union[None, Unset, str]): Which EU VAT rule picked vat_percent, or why it cannot be calculated.
         accounting_start_date (Union[Unset, datetime.datetime]):
         projects_count (Union[Unset, int]): Number of projects in this organization
         users_count (Union[Unset, int]): Number of users with access to this organization
@@ -108,6 +113,10 @@ class Customer:
     archived: Union[Unset, bool] = UNSET
     display_billing_info_in_projects: Union[Unset, bool] = UNSET
     default_tax_percent: Union[Unset, str] = UNSET
+    is_private_person: Union[Unset, bool] = UNSET
+    vat_code_verified: Union[Unset, bool] = UNSET
+    vat_percent: Union[None, Unset, str] = UNSET
+    vat_rule: Union[None, Unset, str] = UNSET
     accounting_start_date: Union[Unset, datetime.datetime] = UNSET
     projects_count: Union[Unset, int] = UNSET
     users_count: Union[Unset, int] = UNSET
@@ -198,6 +207,22 @@ class Customer:
         display_billing_info_in_projects = self.display_billing_info_in_projects
 
         default_tax_percent = self.default_tax_percent
+
+        is_private_person = self.is_private_person
+
+        vat_code_verified = self.vat_code_verified
+
+        vat_percent: Union[None, Unset, str]
+        if isinstance(self.vat_percent, Unset):
+            vat_percent = UNSET
+        else:
+            vat_percent = self.vat_percent
+
+        vat_rule: Union[None, Unset, str]
+        if isinstance(self.vat_rule, Unset):
+            vat_rule = UNSET
+        else:
+            vat_rule = self.vat_rule
 
         accounting_start_date: Union[Unset, str] = UNSET
         if not isinstance(self.accounting_start_date, Unset):
@@ -408,6 +433,14 @@ class Customer:
             field_dict["display_billing_info_in_projects"] = display_billing_info_in_projects
         if default_tax_percent is not UNSET:
             field_dict["default_tax_percent"] = default_tax_percent
+        if is_private_person is not UNSET:
+            field_dict["is_private_person"] = is_private_person
+        if vat_code_verified is not UNSET:
+            field_dict["vat_code_verified"] = vat_code_verified
+        if vat_percent is not UNSET:
+            field_dict["vat_percent"] = vat_percent
+        if vat_rule is not UNSET:
+            field_dict["vat_rule"] = vat_rule
         if accounting_start_date is not UNSET:
             field_dict["accounting_start_date"] = accounting_start_date
         if projects_count is not UNSET:
@@ -568,6 +601,28 @@ class Customer:
         display_billing_info_in_projects = d.pop("display_billing_info_in_projects", UNSET)
 
         default_tax_percent = d.pop("default_tax_percent", UNSET)
+
+        is_private_person = d.pop("is_private_person", UNSET)
+
+        vat_code_verified = d.pop("vat_code_verified", UNSET)
+
+        def _parse_vat_percent(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        vat_percent = _parse_vat_percent(d.pop("vat_percent", UNSET))
+
+        def _parse_vat_rule(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        vat_rule = _parse_vat_rule(d.pop("vat_rule", UNSET))
 
         _accounting_start_date = d.pop("accounting_start_date", UNSET)
         accounting_start_date: Union[Unset, datetime.datetime]
@@ -826,6 +881,10 @@ class Customer:
             archived=archived,
             display_billing_info_in_projects=display_billing_info_in_projects,
             default_tax_percent=default_tax_percent,
+            is_private_person=is_private_person,
+            vat_code_verified=vat_code_verified,
+            vat_percent=vat_percent,
+            vat_rule=vat_rule,
             accounting_start_date=accounting_start_date,
             projects_count=projects_count,
             users_count=users_count,

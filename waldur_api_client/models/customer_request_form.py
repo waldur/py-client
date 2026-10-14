@@ -27,6 +27,8 @@ class CustomerRequestForm:
         archived (Union[Unset, bool]):
         display_billing_info_in_projects (Union[Unset, bool]):
         default_tax_percent (Union[Unset, str]):
+        is_private_person (Union[Unset, bool]): Organization represents a private person rather than a legal entity.
+            Used for EU VAT calculation.
         accounting_start_date (Union[Unset, datetime.datetime]):
         sponsor_number (Union[None, Unset, int]): External ID of the sponsor covering the costs
         max_service_accounts (Union[None, Unset, int]): Maximum number of service accounts allowed
@@ -77,6 +79,7 @@ class CustomerRequestForm:
     archived: Union[Unset, bool] = UNSET
     display_billing_info_in_projects: Union[Unset, bool] = UNSET
     default_tax_percent: Union[Unset, str] = UNSET
+    is_private_person: Union[Unset, bool] = UNSET
     accounting_start_date: Union[Unset, datetime.datetime] = UNSET
     sponsor_number: Union[None, Unset, int] = UNSET
     max_service_accounts: Union[None, Unset, int] = UNSET
@@ -137,6 +140,8 @@ class CustomerRequestForm:
         display_billing_info_in_projects = self.display_billing_info_in_projects
 
         default_tax_percent = self.default_tax_percent
+
+        is_private_person = self.is_private_person
 
         accounting_start_date: Union[Unset, str] = UNSET
         if not isinstance(self.accounting_start_date, Unset):
@@ -275,6 +280,8 @@ class CustomerRequestForm:
             field_dict["display_billing_info_in_projects"] = display_billing_info_in_projects
         if default_tax_percent is not UNSET:
             field_dict["default_tax_percent"] = default_tax_percent
+        if is_private_person is not UNSET:
+            field_dict["is_private_person"] = is_private_person
         if accounting_start_date is not UNSET:
             field_dict["accounting_start_date"] = accounting_start_date
         if sponsor_number is not UNSET:
@@ -383,6 +390,8 @@ class CustomerRequestForm:
         display_billing_info_in_projects = d.pop("display_billing_info_in_projects", UNSET)
 
         default_tax_percent = d.pop("default_tax_percent", UNSET)
+
+        is_private_person = d.pop("is_private_person", UNSET)
 
         _accounting_start_date = d.pop("accounting_start_date", UNSET)
         accounting_start_date: Union[Unset, datetime.datetime]
@@ -545,6 +554,7 @@ class CustomerRequestForm:
             archived=archived,
             display_billing_info_in_projects=display_billing_info_in_projects,
             default_tax_percent=default_tax_percent,
+            is_private_person=is_private_person,
             accounting_start_date=accounting_start_date,
             sponsor_number=sponsor_number,
             max_service_accounts=max_service_accounts,

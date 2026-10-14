@@ -367,6 +367,8 @@ class ConstanceSettingsRequestForm:
         enabled_reporting_screens (Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]]):
         posix_id_pool_utilization_threshold (Union[Unset, int]):
         affiliates_enabled (Union[Unset, bool]):
+        vat_taxation_enabled (Union[Unset, bool]):
+        vat_oss_enabled (Union[Unset, bool]):
         matrix_enabled (Union[Unset, bool]):
         matrix_auto_create_project_rooms (Union[Unset, bool]):
         matrix_homeserver_url (Union[Unset, str]):
@@ -717,6 +719,8 @@ class ConstanceSettingsRequestForm:
     enabled_reporting_screens: Union[Unset, list[Union[BlankEnum, ENABLEDREPORTINGSCREENSEnum]]] = UNSET
     posix_id_pool_utilization_threshold: Union[Unset, int] = UNSET
     affiliates_enabled: Union[Unset, bool] = UNSET
+    vat_taxation_enabled: Union[Unset, bool] = UNSET
+    vat_oss_enabled: Union[Unset, bool] = UNSET
     matrix_enabled: Union[Unset, bool] = UNSET
     matrix_auto_create_project_rooms: Union[Unset, bool] = UNSET
     matrix_homeserver_url: Union[Unset, str] = UNSET
@@ -1680,6 +1684,10 @@ class ConstanceSettingsRequestForm:
 
         affiliates_enabled = self.affiliates_enabled
 
+        vat_taxation_enabled = self.vat_taxation_enabled
+
+        vat_oss_enabled = self.vat_oss_enabled
+
         matrix_enabled = self.matrix_enabled
 
         matrix_auto_create_project_rooms = self.matrix_auto_create_project_rooms
@@ -2393,6 +2401,10 @@ class ConstanceSettingsRequestForm:
             field_dict["POSIX_ID_POOL_UTILIZATION_THRESHOLD"] = posix_id_pool_utilization_threshold
         if affiliates_enabled is not UNSET:
             field_dict["AFFILIATES_ENABLED"] = affiliates_enabled
+        if vat_taxation_enabled is not UNSET:
+            field_dict["VAT_TAXATION_ENABLED"] = vat_taxation_enabled
+        if vat_oss_enabled is not UNSET:
+            field_dict["VAT_OSS_ENABLED"] = vat_oss_enabled
         if matrix_enabled is not UNSET:
             field_dict["MATRIX_ENABLED"] = matrix_enabled
         if matrix_auto_create_project_rooms is not UNSET:
@@ -3728,6 +3740,10 @@ class ConstanceSettingsRequestForm:
 
         affiliates_enabled = d.pop("AFFILIATES_ENABLED", UNSET)
 
+        vat_taxation_enabled = d.pop("VAT_TAXATION_ENABLED", UNSET)
+
+        vat_oss_enabled = d.pop("VAT_OSS_ENABLED", UNSET)
+
         matrix_enabled = d.pop("MATRIX_ENABLED", UNSET)
 
         matrix_auto_create_project_rooms = d.pop("MATRIX_AUTO_CREATE_PROJECT_ROOMS", UNSET)
@@ -4108,6 +4124,8 @@ class ConstanceSettingsRequestForm:
             enabled_reporting_screens=enabled_reporting_screens,
             posix_id_pool_utilization_threshold=posix_id_pool_utilization_threshold,
             affiliates_enabled=affiliates_enabled,
+            vat_taxation_enabled=vat_taxation_enabled,
+            vat_oss_enabled=vat_oss_enabled,
             matrix_enabled=matrix_enabled,
             matrix_auto_create_project_rooms=matrix_auto_create_project_rooms,
             matrix_homeserver_url=matrix_homeserver_url,
