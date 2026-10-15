@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ..models.backend_metadata import BackendMetadata
     from ..models.booking_resource_attributes import BookingResourceAttributes
     from ..models.booking_resource_current_usages import BookingResourceCurrentUsages
+    from ..models.booking_resource_display_limits import BookingResourceDisplayLimits
     from ..models.booking_resource_limit_usage import BookingResourceLimitUsage
     from ..models.booking_resource_limits import BookingResourceLimits
     from ..models.booking_resource_offering_plugin_options import BookingResourceOfferingPluginOptions
@@ -143,6 +144,8 @@ class BookingResource:
         has_api_keys (Union[Unset, bool]): Whether the resource owns any API keys, so the portal can offer key
             management without knowing which backend serves the resource.
         offering_account_settings (Union[Unset, OfferingAccountSettings]):
+        display_limits (Union[Unset, BookingResourceDisplayLimits]): Resource option values shown as the limits of
+            usage-based components. Display only: not stored in limits, billed or enforced.
         created_by (Union[Unset, str]):
         created_by_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and
             @/./+/-/_ characters
@@ -242,6 +245,7 @@ class BookingResource:
     offering_components: Union[Unset, list["OfferingComponent"]] = UNSET
     has_api_keys: Union[Unset, bool] = UNSET
     offering_account_settings: Union[Unset, "OfferingAccountSettings"] = UNSET
+    display_limits: Union[Unset, "BookingResourceDisplayLimits"] = UNSET
     created_by: Union[Unset, str] = UNSET
     created_by_username: Union[Unset, str] = UNSET
     created_by_full_name: Union[Unset, str] = UNSET
@@ -599,6 +603,10 @@ class BookingResource:
         if not isinstance(self.offering_account_settings, Unset):
             offering_account_settings = self.offering_account_settings.to_dict()
 
+        display_limits: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.display_limits, Unset):
+            display_limits = self.display_limits.to_dict()
+
         created_by = self.created_by
 
         created_by_username = self.created_by_username
@@ -797,6 +805,8 @@ class BookingResource:
             field_dict["has_api_keys"] = has_api_keys
         if offering_account_settings is not UNSET:
             field_dict["offering_account_settings"] = offering_account_settings
+        if display_limits is not UNSET:
+            field_dict["display_limits"] = display_limits
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if created_by_username is not UNSET:
@@ -819,6 +829,7 @@ class BookingResource:
         from ..models.backend_metadata import BackendMetadata
         from ..models.booking_resource_attributes import BookingResourceAttributes
         from ..models.booking_resource_current_usages import BookingResourceCurrentUsages
+        from ..models.booking_resource_display_limits import BookingResourceDisplayLimits
         from ..models.booking_resource_limit_usage import BookingResourceLimitUsage
         from ..models.booking_resource_limits import BookingResourceLimits
         from ..models.booking_resource_offering_plugin_options import BookingResourceOfferingPluginOptions
@@ -1384,6 +1395,13 @@ class BookingResource:
         else:
             offering_account_settings = OfferingAccountSettings.from_dict(_offering_account_settings)
 
+        _display_limits = d.pop("display_limits", UNSET)
+        display_limits: Union[Unset, BookingResourceDisplayLimits]
+        if isinstance(_display_limits, Unset):
+            display_limits = UNSET
+        else:
+            display_limits = BookingResourceDisplayLimits.from_dict(_display_limits)
+
         created_by = d.pop("created_by", UNSET)
 
         created_by_username = d.pop("created_by_username", UNSET)
@@ -1492,6 +1510,7 @@ class BookingResource:
             offering_components=offering_components,
             has_api_keys=has_api_keys,
             offering_account_settings=offering_account_settings,
+            display_limits=display_limits,
             created_by=created_by,
             created_by_username=created_by_username,
             created_by_full_name=created_by_full_name,

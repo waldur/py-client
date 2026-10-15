@@ -4205,7 +4205,7 @@ Module: `waldur_api_client.api.user_invitations`
 - `user_invitations_update` PUT `/api/user-invitations/{uuid}/` — Update user invitation (path: uuid | request body)
 - `user_invitations_partial_update` PATCH `/api/user-invitations/{uuid}/` — Partially update user invitation (path: uuid | request body)
 - `user_invitations_destroy` DELETE `/api/user-invitations/{uuid}/` — Delete user invitation (path: uuid)
-- `user_invitations_accept` POST `/api/user-invitations/{uuid}/accept/` — Accept an invitation (path: uuid)
+- `user_invitations_accept` POST `/api/user-invitations/{uuid}/accept/` — Accept an invitation (path: uuid | request body)
 - `user_invitations_cancel` POST `/api/user-invitations/{uuid}/cancel/` — Cancel an invitation (path: uuid)
 - `user_invitations_check` POST `/api/user-invitations/{uuid}/check/` — Check invitation validity (path: uuid)
 - `user_invitations_delete` POST `/api/user-invitations/{uuid}/delete/` — Delete an invitation (staff only) (path: uuid)

@@ -23,6 +23,7 @@ class BookingResourceFieldEnum(str, Enum):
     CUSTOMER_SLUG = "customer_slug"
     CUSTOMER_UUID = "customer_uuid"
     DESCRIPTION = "description"
+    DISPLAY_LIMITS = "display_limits"
     DOWNSCALED = "downscaled"
     EFFECTIVE_ID = "effective_id"
     ENDPOINTS = "endpoints"
