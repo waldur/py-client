@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-dev.20261014185432
+# Version: 8.1.3-dev.20261015030335
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -20619,7 +20619,7 @@ Path parameters:
 
 ### proposal_proposals_list
 GET /api/proposal-proposals/
-Query parameters (11):
+Query parameters (12):
   - as_role — Only proposals the current user holds this role on
   - call_uuid
   - created_by_uuid
@@ -20631,12 +20631,13 @@ Query parameters (11):
   - round_uuid
   - slug — Slug
   - state
+  - workflow_step — Current workflow step
 
 ### proposal_proposals_count
 HEAD /api/proposal-proposals/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (11):
+Query parameters (12):
   - as_role — Only proposals the current user holds this role on
   - call_uuid
   - created_by_uuid
@@ -20648,6 +20649,7 @@ Query parameters (11):
   - round_uuid
   - slug — Slug
   - state
+  - workflow_step — Current workflow step
 
 ### proposal_proposals_create
 POST /api/proposal-proposals/
@@ -20924,7 +20926,7 @@ Summary: List a workflow step's checklist answers grouped by reviewer, for the t
 Description: List a workflow step's checklist answers grouped by reviewer, for the threaded technical-assessment view. Each technical reviewer (offering manager) answers the same checklist; this returns every reviewer's decision and comment.
 Path parameters:
   - uuid
-Query parameters (12):
+Query parameters (13):
   - as_role — Only proposals the current user holds this role on
   - call_uuid
   - created_by_uuid
@@ -20937,6 +20939,7 @@ Query parameters (12):
   - slug — Slug
   - state
   - step (required) — Workflow step key (e.g. technical_assessment).
+  - workflow_step — Current workflow step
 
 ### proposal_proposals_step_checklist_retrieve
 GET /api/proposal-proposals/{uuid}/step-checklist/
@@ -20995,7 +20998,7 @@ Summary: List all workflow step instances for this proposal
 Description: List all workflow step instances for this proposal.
 Path parameters:
   - uuid
-Query parameters (11):
+Query parameters (12):
   - as_role — Only proposals the current user holds this role on
   - call_uuid
   - created_by_uuid
@@ -21007,6 +21010,7 @@ Query parameters (11):
   - round_uuid
   - slug — Slug
   - state
+  - workflow_step — Current workflow step
 
 ============================================================
 ## proposal-protected-calls  (module: waldur_api_client.api.proposal_protected_calls)
@@ -21668,6 +21672,13 @@ Request body: yes
 POST /api/proposal-protected-calls/{uuid}/send-invitations/
 Summary: Send invitations to all confirmed suggestions
 Description: Send invitations to all confirmed suggestions.
+Path parameters:
+  - uuid
+
+### proposal_protected_calls_stats_retrieve
+GET /api/proposal-protected-calls/{uuid}/stats/
+Summary: Proposal, review and workflow step counts per call and round
+Description: Proposal, review and workflow step counts per call and round.
 Path parameters:
   - uuid
 
