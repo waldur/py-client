@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-dev.20261016120126
+# Version: 8.1.3-dev.20261016150023
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -4224,7 +4224,8 @@ Path parameters:
 
 ### event_consumers_list
 GET /api/event-consumers/
-Query parameters (4):
+Query parameters (5):
+  - delivery
   - is_global — Consumer is bound to no scope and therefore receives every event
   - o — Ordering
   - user_username
@@ -4234,7 +4235,8 @@ Query parameters (4):
 HEAD /api/event-consumers/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (4):
+Query parameters (5):
+  - delivery
   - is_global — Consumer is bound to no scope and therefore receives every event
   - o — Ordering
   - user_username
@@ -4246,10 +4248,31 @@ Summary: Register (or refresh) an event-consumer queue for the calling user
 Description: Register (or refresh) an event-consumer queue for the calling user. Pass `scopes` to bind the queue to entities you hold a role on; an EMPTY `scopes` list requests a GLOBAL queue (all events, including all-user PII) and requires staff/support. Idempotent per binding set.
 Request body: yes
 
+### event_consumers_register_webhook
+POST /api/event-consumers/register_webhook/
+Summary: Create a webhook event consumer: the same messages a queue consumer receives are POSTed as JSON to `webhook_url` instead
+Description: Create a webhook event consumer: the same messages a queue consumer receives are POSTed as JSON to `webhook_url` instead. Staff only. An EMPTY `scopes` list makes it global (all events, including all-user PII). Use `payload_filters` to narrow delivery, e.g. to one role, and `resync` to send the c...
+Request body: yes
+
 ### event_consumers_destroy
 DELETE /api/event-consumers/{uuid}/
 Path parameters:
   - uuid
+
+### event_consumers_resync
+POST /api/event-consumers/{uuid}/resync/
+Summary: Replay the current state to a global consumer, through its own transport and filters, so a receiver that starts late can seed itself
+Description: Replay the current state to a global consumer, through its own transport and filters, so a receiver that starts late can seed itself. Every active role grant is sent as a `user_role` message with `event_type` `role_snapshot`. Runs asynchronously. Staff/support only.
+Path parameters:
+  - uuid
+
+### event_consumers_update_webhook
+POST /api/event-consumers/{uuid}/update_webhook/
+Summary: Change a webhook consumer's destination URL, object types or payload filters
+Description: Change a webhook consumer's destination URL, object types or payload filters. Staff only. Omitted fields are left unchanged.
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## event-subscription-queues  (module: waldur_api_client.api.event_subscription_queues)

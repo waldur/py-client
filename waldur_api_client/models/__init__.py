@@ -706,6 +706,7 @@ from .dead_letter_queue import DeadLetterQueue
 from .default_permission_enum import DefaultPermissionEnum
 from .defaultidp_enum import DEFAULTIDPEnum
 from .delete_attachments_request import DeleteAttachmentsRequest
+from .delivery_enum import DeliveryEnum
 from .demo_preset import DemoPreset
 from .demo_preset_entity_counts import DemoPresetEntityCounts
 from .demo_preset_load_request_request import DemoPresetLoadRequestRequest
@@ -791,10 +792,16 @@ from .ethertype_enum import EthertypeEnum
 from .evaluation_start_enum import EvaluationStartEnum
 from .event import Event
 from .event_consumer import EventConsumer
+from .event_consumer_payload_filters import EventConsumerPayloadFilters
 from .event_consumer_registration_request import EventConsumerRegistrationRequest
 from .event_consumer_registration_response import EventConsumerRegistrationResponse
+from .event_consumer_resync_response import EventConsumerResyncResponse
 from .event_consumer_scope_input_request import EventConsumerScopeInputRequest
 from .event_consumer_scope_output import EventConsumerScopeOutput
+from .event_consumer_webhook_request import EventConsumerWebhookRequest
+from .event_consumer_webhook_request_payload_filters import EventConsumerWebhookRequestPayloadFilters
+from .event_consumer_webhook_update_request import EventConsumerWebhookUpdateRequest
+from .event_consumer_webhook_update_request_payload_filters import EventConsumerWebhookUpdateRequestPayloadFilters
 from .event_context import EventContext
 from .event_count import EventCount
 from .event_field_enum import EventFieldEnum
@@ -3933,6 +3940,7 @@ __all__ = (
     "DEFAULTIDPEnum",
     "DefaultPermissionEnum",
     "DeleteAttachmentsRequest",
+    "DeliveryEnum",
     "DemoPreset",
     "DemoPresetEntityCounts",
     "DemoPresetLoadRequestRequest",
@@ -4016,10 +4024,16 @@ __all__ = (
     "EvaluationStartEnum",
     "Event",
     "EventConsumer",
+    "EventConsumerPayloadFilters",
     "EventConsumerRegistrationRequest",
     "EventConsumerRegistrationResponse",
+    "EventConsumerResyncResponse",
     "EventConsumerScopeInputRequest",
     "EventConsumerScopeOutput",
+    "EventConsumerWebhookRequest",
+    "EventConsumerWebhookRequestPayloadFilters",
+    "EventConsumerWebhookUpdateRequest",
+    "EventConsumerWebhookUpdateRequestPayloadFilters",
     "EventContext",
     "EventCount",
     "EventFieldEnum",

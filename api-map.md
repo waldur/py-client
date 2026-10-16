@@ -764,10 +764,13 @@ Module: `waldur_api_client.api.email_logs`
 ## event-consumers
 Module: `waldur_api_client.api.event_consumers`
 
-- `event_consumers_list` GET `/api/event-consumers/` (4 query params)
-- `event_consumers_count` HEAD `/api/event-consumers/` — Get number of items in the collection matching the request parameters (4 query params)
+- `event_consumers_list` GET `/api/event-consumers/` (5 query params)
+- `event_consumers_count` HEAD `/api/event-consumers/` — Get number of items in the collection matching the request parameters (5 query params)
 - `event_consumers_register` POST `/api/event-consumers/register/` — Register (or refresh) an event-consumer queue for the calling user (request body)
+- `event_consumers_register_webhook` POST `/api/event-consumers/register_webhook/` — Create a webhook event consumer: the same messages a queue consumer receives are POSTed as JSON to `webhook_url` instead (request body)
 - `event_consumers_destroy` DELETE `/api/event-consumers/{uuid}/` (path: uuid)
+- `event_consumers_resync` POST `/api/event-consumers/{uuid}/resync/` — Replay the current state to a global consumer, through its own transport and filters, so a receiver that starts late can seed itself (path: uuid)
+- `event_consumers_update_webhook` POST `/api/event-consumers/{uuid}/update_webhook/` — Change a webhook consumer's destination URL, object types or payload filters (path: uuid | request body)
 
 ## event-subscription-queues
 Module: `waldur_api_client.api.event_subscription_queues`
