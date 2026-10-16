@@ -61,6 +61,8 @@ class PatchedCustomerRequest:
         bank_account (Union[Unset, str]):
         country (Union[BlankEnum, CountryEnum, Unset]): Country code (ISO 3166-1 alpha-2)
         notification_emails (Union[Unset, str]): Comma-separated list of notification email addresses
+        invoice_emails (Union[Unset, str]): Comma-separated list of email addresses that receive invoice notifications
+            instead of the organization owners
         city (Union[Unset, str]):
         state (Union[Unset, str]):
         parish (Union[Unset, str]):
@@ -109,6 +111,7 @@ class PatchedCustomerRequest:
     bank_account: Union[Unset, str] = UNSET
     country: Union[BlankEnum, CountryEnum, Unset] = UNSET
     notification_emails: Union[Unset, str] = UNSET
+    invoice_emails: Union[Unset, str] = UNSET
     city: Union[Unset, str] = UNSET
     state: Union[Unset, str] = UNSET
     parish: Union[Unset, str] = UNSET
@@ -241,6 +244,8 @@ class PatchedCustomerRequest:
 
         notification_emails = self.notification_emails
 
+        invoice_emails = self.invoice_emails
+
         city = self.city
 
         state = self.state
@@ -338,6 +343,8 @@ class PatchedCustomerRequest:
             field_dict["country"] = country
         if notification_emails is not UNSET:
             field_dict["notification_emails"] = notification_emails
+        if invoice_emails is not UNSET:
+            field_dict["invoice_emails"] = invoice_emails
         if city is not UNSET:
             field_dict["city"] = city
         if state is not UNSET:
@@ -521,6 +528,8 @@ class PatchedCustomerRequest:
 
         notification_emails = d.pop("notification_emails", UNSET)
 
+        invoice_emails = d.pop("invoice_emails", UNSET)
+
         city = d.pop("city", UNSET)
 
         state = d.pop("state", UNSET)
@@ -582,6 +591,7 @@ class PatchedCustomerRequest:
             bank_account=bank_account,
             country=country,
             notification_emails=notification_emails,
+            invoice_emails=invoice_emails,
             city=city,
             state=state,
             parish=parish,

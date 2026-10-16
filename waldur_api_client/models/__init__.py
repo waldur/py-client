@@ -314,6 +314,8 @@ from .call_applicant_visibility_config_request import CallApplicantVisibilityCon
 from .call_assignment_configuration import CallAssignmentConfiguration
 from .call_assignment_configuration_request import CallAssignmentConfigurationRequest
 from .call_attach_documents_request import CallAttachDocumentsRequest
+from .call_attach_documents_request_form import CallAttachDocumentsRequestForm
+from .call_attach_documents_request_multipart import CallAttachDocumentsRequestMultipart
 from .call_coi_configuration import CallCOIConfiguration
 from .call_compliance_checklist_info import CallComplianceChecklistInfo
 from .call_compliance_overview import CallComplianceOverview
@@ -588,6 +590,8 @@ from .course_account_request import CourseAccountRequest
 from .course_account_state_enum import CourseAccountStateEnum
 from .course_accounts_bulk_create_request import CourseAccountsBulkCreateRequest
 from .create_attachments_request import CreateAttachmentsRequest
+from .create_attachments_request_form import CreateAttachmentsRequestForm
+from .create_attachments_request_multipart import CreateAttachmentsRequestMultipart
 from .create_customer_affiliate import CreateCustomerAffiliate
 from .create_customer_affiliate_request import CreateCustomerAffiliateRequest
 from .create_customer_credit import CreateCustomerCredit
@@ -3544,6 +3548,8 @@ __all__ = (
     "CallAssignmentConfiguration",
     "CallAssignmentConfigurationRequest",
     "CallAttachDocumentsRequest",
+    "CallAttachDocumentsRequestForm",
+    "CallAttachDocumentsRequestMultipart",
     "CallCOIConfiguration",
     "CallComplianceChecklistInfo",
     "CallComplianceOverview",
@@ -3812,6 +3818,8 @@ __all__ = (
     "CourseAccountsBulkCreateRequest",
     "CourseAccountStateEnum",
     "CreateAttachmentsRequest",
+    "CreateAttachmentsRequestForm",
+    "CreateAttachmentsRequestMultipart",
     "CreateCustomerAffiliate",
     "CreateCustomerAffiliateRequest",
     "CreateCustomerCredit",

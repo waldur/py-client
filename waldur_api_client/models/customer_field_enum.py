@@ -36,6 +36,7 @@ class CustomerFieldEnum(str, Enum):
     HOUSEHOLD = "household"
     HOUSE_NR = "house_nr"
     IMAGE = "image"
+    INVOICE_EMAILS = "invoice_emails"
     IS_PRIVATE_PERSON = "is_private_person"
     IS_SERVICE_PROVIDER = "is_service_provider"
     IS_SERVICE_PROVIDER_MANAGER_ONLY = "is_service_provider_manager_only"
