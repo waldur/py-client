@@ -3074,6 +3074,7 @@ from .trigger_sync_request_request import TriggerSyncRequestRequest
 from .undecided_at_round_completion_enum import UndecidedAtRoundCompletionEnum
 from .update_actions_request import UpdateActionsRequest
 from .update_actions_response import UpdateActionsResponse
+from .update_endpoint_request import UpdateEndpointRequest
 from .update_health_monitor import UpdateHealthMonitor
 from .update_health_monitor_request import UpdateHealthMonitorRequest
 from .update_listener import UpdateListener
@@ -6194,6 +6195,7 @@ __all__ = (
     "UndecidedAtRoundCompletionEnum",
     "UpdateActionsRequest",
     "UpdateActionsResponse",
+    "UpdateEndpointRequest",
     "UpdateHealthMonitor",
     "UpdateHealthMonitorRequest",
     "UpdateListener",

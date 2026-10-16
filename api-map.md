@@ -1728,6 +1728,7 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_update_backend_id_rules` POST `/api/marketplace-provider-offerings/{uuid}/update_backend_id_rules/` — Update offering backend_id rules (path: uuid | request body)
 - `marketplace_provider_offerings_update_compliance_checklist` POST `/api/marketplace-provider-offerings/{uuid}/update_compliance_checklist/` — Update offering compliance checklist (path: uuid | request body)
 - `marketplace_provider_offerings_update_description` POST `/api/marketplace-provider-offerings/{uuid}/update_description/` — Update offering category (path: uuid | request body)
+- `marketplace_provider_offerings_update_endpoint` POST `/api/marketplace-provider-offerings/{uuid}/update_endpoint/` — Update an access endpoint of an offering (path: uuid | request body)
 - `marketplace_provider_offerings_update_image` POST `/api/marketplace-provider-offerings/{uuid}/update_image/` — Update offering image (path: uuid | request body)
 - `marketplace_provider_offerings_update_integration` POST `/api/marketplace-provider-offerings/{uuid}/update_integration/` — Update offering integration settings (path: uuid | request body)
 - `marketplace_provider_offerings_update_location` POST `/api/marketplace-provider-offerings/{uuid}/update_location/` — Update offering location (path: uuid | request body)
