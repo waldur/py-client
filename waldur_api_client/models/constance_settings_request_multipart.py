@@ -381,6 +381,8 @@ class ConstanceSettingsRequestMultipart:
         matrix_tokens_managed_by (Union[Unset, str]):
         matrix_history_export_enabled (Union[Unset, bool]):
         matrix_export_media (Union[Unset, bool]):
+        matrix_ticket_context_messages (Union[Unset, int]):
+        matrix_ticket_draft_ttl_minutes (Union[Unset, int]):
         matrix_history_export_retention_days (Union[Unset, int]):
         matrix_user_registration_secret (Union[Unset, str]):
         matrix_user_id_format (Union[Unset, str]):
@@ -733,6 +735,8 @@ class ConstanceSettingsRequestMultipart:
     matrix_tokens_managed_by: Union[Unset, str] = UNSET
     matrix_history_export_enabled: Union[Unset, bool] = UNSET
     matrix_export_media: Union[Unset, bool] = UNSET
+    matrix_ticket_context_messages: Union[Unset, int] = UNSET
+    matrix_ticket_draft_ttl_minutes: Union[Unset, int] = UNSET
     matrix_history_export_retention_days: Union[Unset, int] = UNSET
     matrix_user_registration_secret: Union[Unset, str] = UNSET
     matrix_user_id_format: Union[Unset, str] = UNSET
@@ -1711,6 +1715,10 @@ class ConstanceSettingsRequestMultipart:
 
         matrix_export_media = self.matrix_export_media
 
+        matrix_ticket_context_messages = self.matrix_ticket_context_messages
+
+        matrix_ticket_draft_ttl_minutes = self.matrix_ticket_draft_ttl_minutes
+
         matrix_history_export_retention_days = self.matrix_history_export_retention_days
 
         matrix_user_registration_secret = self.matrix_user_registration_secret
@@ -2428,6 +2436,10 @@ class ConstanceSettingsRequestMultipart:
             field_dict["MATRIX_HISTORY_EXPORT_ENABLED"] = matrix_history_export_enabled
         if matrix_export_media is not UNSET:
             field_dict["MATRIX_EXPORT_MEDIA"] = matrix_export_media
+        if matrix_ticket_context_messages is not UNSET:
+            field_dict["MATRIX_TICKET_CONTEXT_MESSAGES"] = matrix_ticket_context_messages
+        if matrix_ticket_draft_ttl_minutes is not UNSET:
+            field_dict["MATRIX_TICKET_DRAFT_TTL_MINUTES"] = matrix_ticket_draft_ttl_minutes
         if matrix_history_export_retention_days is not UNSET:
             field_dict["MATRIX_HISTORY_EXPORT_RETENTION_DAYS"] = matrix_history_export_retention_days
         if matrix_user_registration_secret is not UNSET:
@@ -4476,6 +4488,22 @@ class ConstanceSettingsRequestMultipart:
         if not isinstance(self.matrix_export_media, Unset):
             files.append(("MATRIX_EXPORT_MEDIA", (None, str(self.matrix_export_media).encode(), "text/plain")))
 
+        if not isinstance(self.matrix_ticket_context_messages, Unset):
+            files.append(
+                (
+                    "MATRIX_TICKET_CONTEXT_MESSAGES",
+                    (None, str(self.matrix_ticket_context_messages).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.matrix_ticket_draft_ttl_minutes, Unset):
+            files.append(
+                (
+                    "MATRIX_TICKET_DRAFT_TTL_MINUTES",
+                    (None, str(self.matrix_ticket_draft_ttl_minutes).encode(), "text/plain"),
+                )
+            )
+
         if not isinstance(self.matrix_history_export_retention_days, Unset):
             files.append(
                 (
@@ -5864,6 +5892,10 @@ class ConstanceSettingsRequestMultipart:
 
         matrix_export_media = d.pop("MATRIX_EXPORT_MEDIA", UNSET)
 
+        matrix_ticket_context_messages = d.pop("MATRIX_TICKET_CONTEXT_MESSAGES", UNSET)
+
+        matrix_ticket_draft_ttl_minutes = d.pop("MATRIX_TICKET_DRAFT_TTL_MINUTES", UNSET)
+
         matrix_history_export_retention_days = d.pop("MATRIX_HISTORY_EXPORT_RETENTION_DAYS", UNSET)
 
         matrix_user_registration_secret = d.pop("MATRIX_USER_REGISTRATION_SECRET", UNSET)
@@ -6235,6 +6267,8 @@ class ConstanceSettingsRequestMultipart:
             matrix_tokens_managed_by=matrix_tokens_managed_by,
             matrix_history_export_enabled=matrix_history_export_enabled,
             matrix_export_media=matrix_export_media,
+            matrix_ticket_context_messages=matrix_ticket_context_messages,
+            matrix_ticket_draft_ttl_minutes=matrix_ticket_draft_ttl_minutes,
             matrix_history_export_retention_days=matrix_history_export_retention_days,
             matrix_user_registration_secret=matrix_user_registration_secret,
             matrix_user_id_format=matrix_user_id_format,

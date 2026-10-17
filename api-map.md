@@ -2381,6 +2381,7 @@ Module: `waldur_api_client.api.matrix`
 - `matrix_rooms_eligible_projects_count` HEAD `/api/matrix/rooms/eligible_projects/` — List projects the caller can create a Matrix room for (4 query params)
 - `matrix_rooms_retrieve` GET `/api/matrix/rooms/{uuid}/` (path: uuid)
 - `matrix_rooms_destroy` DELETE `/api/matrix/rooms/{uuid}/` (path: uuid)
+- `matrix_rooms_commands_list` GET `/api/matrix/rooms/{uuid}/commands/` — List the bot commands the caller can use in the room (path: uuid | 3 query params)
 - `matrix_rooms_disable` POST `/api/matrix/rooms/{uuid}/disable/` — Disable an active chat room (path: uuid | request body)
 - `matrix_rooms_export_history` POST `/api/matrix/rooms/{uuid}/export_history/` — Trigger manual history export (path: uuid)
 - `matrix_rooms_join` POST `/api/matrix/rooms/{uuid}/join/` — Join a chat room as staff (path: uuid)
@@ -2391,6 +2392,9 @@ Module: `waldur_api_client.api.matrix`
 - `matrix_rooms_retry` POST `/api/matrix/rooms/{uuid}/retry/` — Retry a stuck or failed room operation (path: uuid)
 - `matrix_rooms_sync_members` POST `/api/matrix/rooms/{uuid}/sync_members/` — Force sync room membership with project members (path: uuid)
 - `matrix_session` POST `/api/matrix/session/` — Start a Matrix web chat session (no params)
+- `matrix_ticket_drafts_retrieve` GET `/api/matrix/ticket-drafts/{uuid}/` (path: uuid)
+- `matrix_ticket_drafts_cancel` POST `/api/matrix/ticket-drafts/{uuid}/cancel/` — Cancel the draft (path: uuid)
+- `matrix_ticket_drafts_create_issue` POST `/api/matrix/ticket-drafts/{uuid}/create_issue/` — Create the draft's support ticket (path: uuid | request body)
 
 ## media
 Module: `waldur_api_client.api.media`

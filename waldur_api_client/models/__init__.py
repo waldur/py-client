@@ -1193,6 +1193,7 @@ from .matching_configuration import MatchingConfiguration
 from .matrix_appservice_setup_request import MatrixAppserviceSetupRequest
 from .matrix_appservice_setup_response import MatrixAppserviceSetupResponse
 from .matrix_appservice_status import MatrixAppserviceStatus
+from .matrix_bot_command import MatrixBotCommand
 from .matrix_credentials import MatrixCredentials
 from .matrix_crypto_conflict import MatrixCryptoConflict
 from .matrix_crypto_conflict_state_enum import MatrixCryptoConflictStateEnum
@@ -1219,6 +1220,10 @@ from .matrix_room_member_summary import MatrixRoomMemberSummary
 from .matrix_room_open import MatrixRoomOpen
 from .matrix_room_state_enum import MatrixRoomStateEnum
 from .matrix_session import MatrixSession
+from .matrix_ticket_draft import MatrixTicketDraft
+from .matrix_ticket_draft_create_issue_request import MatrixTicketDraftCreateIssueRequest
+from .matrix_ticket_draft_issue import MatrixTicketDraftIssue
+from .matrix_ticket_draft_state_enum import MatrixTicketDraftStateEnum
 from .me_permission import MePermission
 from .member_sync_status_entry_request import MemberSyncStatusEntryRequest
 from .member_sync_status_entry_scope_type_enum import MemberSyncStatusEntryScopeTypeEnum
@@ -4407,6 +4412,7 @@ __all__ = (
     "MatrixAppserviceSetupRequest",
     "MatrixAppserviceSetupResponse",
     "MatrixAppserviceStatus",
+    "MatrixBotCommand",
     "MatrixCredentials",
     "MatrixCryptoConflict",
     "MatrixCryptoConflictStateEnum",
@@ -4433,6 +4439,10 @@ __all__ = (
     "MatrixRoomOpen",
     "MatrixRoomStateEnum",
     "MatrixSession",
+    "MatrixTicketDraft",
+    "MatrixTicketDraftCreateIssueRequest",
+    "MatrixTicketDraftIssue",
+    "MatrixTicketDraftStateEnum",
     "MembershipControlEnum",
     "MembershipStateEnum",
     "MemberSyncStatusEntryRequest",

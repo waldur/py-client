@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-dev.20261016150023
+# Version: 8.1.3-dev.20261017201513
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -15089,6 +15089,17 @@ DELETE /api/matrix/rooms/{uuid}/
 Path parameters:
   - uuid
 
+### matrix_rooms_commands_list
+GET /api/matrix/rooms/{uuid}/commands/
+Summary: List the bot commands the caller can use in the room
+Description: Every bot command, and whether the caller can use it in this room now; where not, a short reason. The bot refuses with the same checks. `!ticket send` and `!ticket cancel` are available only while the caller has an open ticket draft in the room.
+Path parameters:
+  - uuid
+Query parameters (3):
+  - member — Only rooms the current user is a member of
+  - project_uuid — Project UUID
+  - state
+
 ### matrix_rooms_disable
 POST /api/matrix/rooms/{uuid}/disable/
 Summary: Disable an active chat room
@@ -15155,6 +15166,25 @@ Path parameters:
 POST /api/matrix/session/
 Summary: Start a Matrix web chat session
 Description: Signs the caller in to Matrix on a new web device and returns short-lived tokens for the chat drawer. The tokens are not stored.
+
+### matrix_ticket_drafts_retrieve
+GET /api/matrix/ticket-drafts/{uuid}/
+Path parameters:
+  - uuid
+
+### matrix_ticket_drafts_cancel
+POST /api/matrix/ticket-drafts/{uuid}/cancel/
+Summary: Cancel the draft
+Path parameters:
+  - uuid
+
+### matrix_ticket_drafts_create_issue
+POST /api/matrix/ticket-drafts/{uuid}/create_issue/
+Summary: Create the draft's support ticket
+Description: Create the pending draft's ticket as its requester, through the support API, and post its key in the room's thread. The draft is then sent: a second call, or one for a cancelled or expired draft, gets 404.
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## media  (module: waldur_api_client.api.media)
