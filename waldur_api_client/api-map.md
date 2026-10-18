@@ -372,7 +372,7 @@ Module: `waldur_api_client.api.call_managing_organisations`
 - `call_managing_organisations_delete_user` POST `/api/call-managing-organisations/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `call_managing_organisations_list_users_list` GET `/api/call-managing-organisations/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
 - `call_managing_organisations_list_users_count` HEAD `/api/call-managing-organisations/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 10 query params)
-- `call_managing_organisations_stats_retrieve` GET `/api/call-managing-organisations/{uuid}/stats/` — Return statistics for call managing organisation (path: uuid)
+- `call_managing_organisations_stats_retrieve` GET `/api/call-managing-organisations/{uuid}/stats/` — Return statistics for call managing organization (path: uuid)
 - `call_managing_organisations_update_user` POST `/api/call-managing-organisations/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 
 ## call-proposal-project-role-mappings

@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.3-dev.20261017201513
+# Version: 8.1.3-dev.20261018082125
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -843,7 +843,7 @@ Query parameters (9):
 ### anonymous_chat_interactions_conversations_list
 GET /api/anonymous-chat-interactions/conversations/
 Summary: Conversations grouped by session
-Description: One row per anonymous conversation (``session_id``) with aggregate counters, mirroring the authenticated threads table. Honours the same filters as the list endpoint. Read a conversation's transcript via ``by-session/{session_id}``.
+Description: One row per anonymous conversation (``session_id``) with aggregate counters, mirroring the authenticated threads table. Honors the same filters as the list endpoint. Read a conversation's transcript via ``by-session/{session_id}``.
 Query parameters (18):
   - created_after
   - created_before
@@ -867,7 +867,7 @@ Query parameters (18):
 ### anonymous_chat_interactions_kpi_retrieve
 GET /api/anonymous-chat-interactions/kpi/
 Summary: Aggregate KPI roll-up
-Description: Returns aggregate counters and rates for the anonymous chat flow. Filters are honoured (date range etc.) so the same parameters work as on the list endpoint.
+Description: Returns aggregate counters and rates for the anonymous chat flow. Filters are honored (date range etc.) so the same parameters work as on the list endpoint.
 Query parameters (18):
   - created_after
   - created_before
@@ -2141,8 +2141,8 @@ Query parameters (10):
 
 ### call_managing_organisations_stats_retrieve
 GET /api/call-managing-organisations/{uuid}/stats/
-Summary: Return statistics for call managing organisation
-Description: Return statistics for call managing organisation.
+Summary: Return statistics for call managing organization
+Description: Return statistics for call managing organization.
 Path parameters:
   - uuid
 
@@ -15181,7 +15181,7 @@ Path parameters:
 ### matrix_ticket_drafts_create_issue
 POST /api/matrix/ticket-drafts/{uuid}/create_issue/
 Summary: Create the draft's support ticket
-Description: Create the pending draft's ticket as its requester, through the support API, and post its key in the room's thread. The draft is then sent: a second call, or one for a cancelled or expired draft, gets 404.
+Description: Create the pending draft's ticket as its requester, through the support API, and post its key in the room's thread. The draft is then sent: a second call, or one for a canceled or expired draft, gets 404.
 Path parameters:
   - uuid
 Request body: yes
@@ -20771,7 +20771,7 @@ Request body: yes
 ### proposal_proposals_awarded_resources_list
 GET /api/proposal-proposals/{uuid}/awarded_resources/
 Summary: List what the allocation decision awards the proposal
-Description: List what the allocation decision awards the proposal. Staff, support, the call's managers and organisers, and the managers of the offerings involved see it at any time; the applicant team once the decision is released.
+Description: List what the allocation decision awards the proposal. Staff, support, the call's managers and organizers, and the managers of the offerings involved see it at any time; the applicant team once the decision is released.
 Path parameters:
   - uuid
 
@@ -21158,7 +21158,7 @@ Description: Returns counts for the call manager dashboard: pending assessments,
 ### proposal_protected_calls_import_call
 POST /api/proposal-protected-calls/import_call/
 Summary: Import call configuration
-Description: Create a draft call under the given call managing organisation from a document produced by export_call. References that cannot be resolved by name on this portal are skipped and reported in warnings. The import is atomic.
+Description: Create a draft call under the given call managing organization from a document produced by export_call. References that cannot be resolved by name on this portal are skipped and reported in warnings. The import is atomic.
 Request body: yes
 
 ### proposal_protected_calls_step_checklists_list

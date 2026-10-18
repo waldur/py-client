@@ -56,9 +56,9 @@ class ProtectedCallRequest:
         applicant_visibility_config (Union['CallApplicantVisibilityConfigRequest', None, Unset]):
         order_author (Union[Unset, OrderAuthorEnum]):
         order_author_user (Union[None, UUID, Unset]): The person orders are attributed to when the author is a named
-            contact. Must hold a role on this call or on the organisation managing it.
+            contact. Must hold a role on this call or on the organization managing it.
         carry_over_drafts (Union[Unset, bool]): Whether a draft still open when its round's cut-off passes moves on to
-            the call's next round instead of being cancelled. Without a later round the draft is cancelled either way.
+            the call's next round instead of being canceled. Without a later round the draft is canceled either way.
         undecided_at_round_completion (Union[Unset, UndecidedAtRoundCompletionEnum]):
     """
 
