@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.1
+# Version: 8.1.4-rc.1.dev.20261019175116
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -16635,6 +16635,52 @@ Path parameters:
   - uuid
 Request body: yes
 
+### openportal_unmanaged_projects_history_list
+GET /api/openportal-unmanaged-projects/{uuid}/history/
+Summary: Get version history
+Description: Returns the version history for this object. Only accessible by staff and support users.
+Path parameters:
+  - uuid
+Query parameters (29):
+  - accounting_is_running — Filter by whether accounting is running.
+  - affiliation_name — Affiliation name
+  - affiliation_uuid — Affiliation UUID
+  - backend_id
+  - can_admin — Return a list of projects where current user is admin.
+  - can_manage — Return a list of projects where current user is manager or a customer owner.
+  - conceal_finished_projects — Conceal finished projects
+  - created — Created after
+  - created_after — Filter versions created after this timestamp (ISO 8601)
+  - created_before — Filter versions created before this timestamp (ISO 8601)
+  - current_user_has_role — Multiple values may be separated by commas.
+  - customer — Multiple values may be separated by commas.
+  - customer_abbreviation — Customer abbreviation
+  - customer_name — Customer name
+  - customer_native_name — Customer native name
+  - description — Description
+  - has_affiliation — Filter projects that have an affiliation.
+  - is_removed — Is removed
+  - modified — Modified after
+  - modified_before — Modified before
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Ordering
+  - query — Filter by name, slug, UUID, backend ID or resource effective ID
+  - science_domain_uuid — Science domain UUID
+  - science_sub_domain_uuid — Science sub-domain UUID
+  - slug — Slug
+  - user_uuid — Filter by user UUID.
+  - user_uuid_with_active_role — Filter projects where the given user has a role.
+
+### openportal_unmanaged_projects_history_at_retrieve
+GET /api/openportal-unmanaged-projects/{uuid}/history/at/
+Summary: Get object state at a specific timestamp
+Description: Returns the state of the object as it was at the specified timestamp. Only accessible by staff and support users.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - timestamp (required) — ISO 8601 timestamp to query the object state at
+
 ### openportal_unmanaged_projects_list_users_list
 GET /api/openportal-unmanaged-projects/{uuid}/list_users/
 Summary: List users and their roles in a scope
@@ -20447,6 +20493,52 @@ Description: Removes a specific role from a user within the current scope. This 
 Path parameters:
   - uuid
 Request body: yes
+
+### projects_history_list
+GET /api/projects/{uuid}/history/
+Summary: Get version history
+Description: Returns the version history for this object. Only accessible by staff and support users.
+Path parameters:
+  - uuid
+Query parameters (29):
+  - accounting_is_running — Filter by whether accounting is running.
+  - affiliation_name — Affiliation name
+  - affiliation_uuid — Affiliation UUID
+  - backend_id
+  - can_admin — Return a list of projects where current user is admin.
+  - can_manage — Return a list of projects where current user is manager or a customer owner.
+  - conceal_finished_projects — Conceal finished projects
+  - created — Created after
+  - created_after — Filter versions created after this timestamp (ISO 8601)
+  - created_before — Filter versions created before this timestamp (ISO 8601)
+  - current_user_has_role — Multiple values may be separated by commas.
+  - customer — Multiple values may be separated by commas.
+  - customer_abbreviation — Customer abbreviation
+  - customer_name — Customer name
+  - customer_native_name — Customer native name
+  - description — Description
+  - has_affiliation — Filter projects that have an affiliation.
+  - is_removed — Is removed
+  - modified — Modified after
+  - modified_before — Modified before
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Ordering
+  - query — Filter by name, slug, UUID, backend ID or resource effective ID
+  - science_domain_uuid — Science domain UUID
+  - science_sub_domain_uuid — Science sub-domain UUID
+  - slug — Slug
+  - user_uuid — Filter by user UUID.
+  - user_uuid_with_active_role — Filter projects where the given user has a role.
+
+### projects_history_at_retrieve
+GET /api/projects/{uuid}/history/at/
+Summary: Get object state at a specific timestamp
+Description: Returns the state of the object as it was at the specified timestamp. Only accessible by staff and support users.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - timestamp (required) — ISO 8601 timestamp to query the object state at
 
 ### projects_list_users_list
 GET /api/projects/{uuid}/list_users/

@@ -1782,6 +1782,12 @@ from .open_stack_volume_type import OpenStackVolumeType
 from .openportal_remote_projects_total_usage_retrieve_response_200 import (
     OpenportalRemoteProjectsTotalUsageRetrieveResponse200,
 )
+from .openportal_unmanaged_projects_history_at_retrieve_response_400 import (
+    OpenportalUnmanagedProjectsHistoryAtRetrieveResponse400,
+)
+from .openportal_unmanaged_projects_history_at_retrieve_response_404 import (
+    OpenportalUnmanagedProjectsHistoryAtRetrieveResponse404,
+)
 from .openportalmembershipsyncmode_enum import OPENPORTALMEMBERSHIPSYNCMODEEnum
 from .openstack_flavors_usage_stats_retrieve_response_200 import OpenstackFlavorsUsageStatsRetrieveResponse200
 from .openstack_tenants_set_quotas_body import OpenstackTenantsSetQuotasBody
@@ -2250,6 +2256,8 @@ from .project_usage_report import ProjectUsageReport
 from .project_usage_report_reports import ProjectUsageReportReports
 from .project_usage_report_users import ProjectUsageReportUsers
 from .project_user import ProjectUser
+from .projects_history_at_retrieve_response_400 import ProjectsHistoryAtRetrieveResponse400
+from .projects_history_at_retrieve_response_404 import ProjectsHistoryAtRetrieveResponse404
 from .projects_limits_grouped_by_industry_flag import ProjectsLimitsGroupedByIndustryFlag
 from .projects_limits_grouped_by_industry_flag_limits import ProjectsLimitsGroupedByIndustryFlagLimits
 from .projects_limits_grouped_by_industry_flag_limits_additional_property import (
@@ -4811,6 +4819,8 @@ __all__ = (
     "OPENPORTALMEMBERSHIPSYNCMODEEnum",
     "OpenPortalQuota",
     "OpenportalRemoteProjectsTotalUsageRetrieveResponse200",
+    "OpenportalUnmanagedProjectsHistoryAtRetrieveResponse400",
+    "OpenportalUnmanagedProjectsHistoryAtRetrieveResponse404",
     "OpenStackAllowedAddressPair",
     "OpenStackAllowedAddressPairRequest",
     "OpenStackBackendInstance",
@@ -5385,6 +5395,8 @@ __all__ = (
     "ProjectRequestMultipart",
     "ProjectServiceAccount",
     "ProjectServiceAccountRequest",
+    "ProjectsHistoryAtRetrieveResponse400",
+    "ProjectsHistoryAtRetrieveResponse404",
     "ProjectsLimitsGroupedByIndustryFlag",
     "ProjectsLimitsGroupedByIndustryFlagLimits",
     "ProjectsLimitsGroupedByIndustryFlagLimitsAdditionalProperty",
