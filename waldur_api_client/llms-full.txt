@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.1.dev.20261019175116
+# Version: 8.1.4-rc.1.dev.20261020140359
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -15218,7 +15218,7 @@ Description: Retrieves metadata about roles, permissions, and their descriptions
 ### metadata_settings_retrieve
 GET /api/metadata/settings/
 Summary: Get overridable settings metadata
-Description: Retrieves metadata for all settings that can be configured via the Constance backend. This includes setting keys, human-readable descriptions, default values, and types. This endpoint is publicly accessible.
+Description: Retrieves metadata for all settings that can be changed at runtime. This includes setting keys, human-readable descriptions, default values, and types. This endpoint is publicly accessible.
 
 ============================================================
 ## my-assignment-batches  (module: waldur_api_client.api.my_assignment_batches)
@@ -19834,12 +19834,12 @@ Request body: yes
 ### override_settings_retrieve
 GET /api/override-settings/
 Summary: Get all overridable settings
-Description: Returns all settings that can be overridden in the database via the Constance backend. Staff receive every value. Support users receive the same keys, with secret_field values blanked.
+Description: Returns all settings that can be overridden in the database. Staff receive every value. Support users receive the same keys, with secret_field values blanked.
 
 ### override_settings
 POST /api/override-settings/
 Summary: Update overridable settings
-Description: Updates one or more settings in the database via the Constance backend. Requires staff permissions. Support users cannot update settings.
+Description: Updates one or more settings in the database. Requires staff permissions. Support users cannot update settings.
 Request body: yes
 
 ============================================================
