@@ -23,12 +23,13 @@ class PatchedResourceApiKeyUpdateRequest:
         user (Union[None, UUID, Unset]): Assignee. When set, only this user can reveal the key.
         limits (Union['PatchedResourceApiKeyUpdateRequestLimitsType0', None, Unset]): Limits per component type; zero or
             absent means no limit.
-        allowed_models (Union[None, Unset, list[str]]): Models the key may call; empty or absent allows every model.
+        allowed_models (Union[Unset, list[str]]): Models the key may call: ["*"] for every model, an empty list for
+            none. Absent, a new key gets none and an edited one keeps its list.
     """
 
     user: Union[None, UUID, Unset] = UNSET
     limits: Union["PatchedResourceApiKeyUpdateRequestLimitsType0", None, Unset] = UNSET
-    allowed_models: Union[None, Unset, list[str]] = UNSET
+    allowed_models: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -52,13 +53,8 @@ class PatchedResourceApiKeyUpdateRequest:
         else:
             limits = self.limits
 
-        allowed_models: Union[None, Unset, list[str]]
-        if isinstance(self.allowed_models, Unset):
-            allowed_models = UNSET
-        elif isinstance(self.allowed_models, list):
-            allowed_models = self.allowed_models
-
-        else:
+        allowed_models: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.allowed_models, Unset):
             allowed_models = self.allowed_models
 
         field_dict: dict[str, Any] = {}
@@ -115,22 +111,7 @@ class PatchedResourceApiKeyUpdateRequest:
 
         limits = _parse_limits(d.pop("limits", UNSET))
 
-        def _parse_allowed_models(data: object) -> Union[None, Unset, list[str]]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, list):
-                    raise TypeError()
-                allowed_models_type_0 = cast(list[str], data)
-
-                return allowed_models_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, Unset, list[str]], data)
-
-        allowed_models = _parse_allowed_models(d.pop("allowed_models", UNSET))
+        allowed_models = cast(list[str], d.pop("allowed_models", UNSET))
 
         patched_resource_api_key_update_request = cls(
             user=user,

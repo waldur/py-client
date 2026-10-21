@@ -32,7 +32,9 @@ class ResourceApiKeyStatus:
         user_uuid (Union[None, UUID]):
         user_full_name (Union[None, str]):
         limits (Union['ResourceApiKeyStatusLimitsType0', None]):
-        allowed_models (Union[None, list[str]]):
+        allowed_models (Union[None, list[str]]): The key's own model list, as chosen.
+        effective_models (Union[None, list[str]]): The models the key can call: the resource's selection, then the key's
+            list. The site agent applies this one.
         current_usages (Union['ResourceApiKeyStatusCurrentUsagesType0', None]):
         usage_period (Union[None, datetime.date]):
         paused_by_limit (Union[None, bool]):
@@ -52,6 +54,7 @@ class ResourceApiKeyStatus:
     user_full_name: Union[None, str]
     limits: Union["ResourceApiKeyStatusLimitsType0", None]
     allowed_models: Union[None, list[str]]
+    effective_models: Union[None, list[str]]
     current_usages: Union["ResourceApiKeyStatusCurrentUsagesType0", None]
     usage_period: Union[None, datetime.date]
     paused_by_limit: Union[None, bool]
@@ -101,6 +104,13 @@ class ResourceApiKeyStatus:
         else:
             allowed_models = self.allowed_models
 
+        effective_models: Union[None, list[str]]
+        if isinstance(self.effective_models, list):
+            effective_models = self.effective_models
+
+        else:
+            effective_models = self.effective_models
+
         current_usages: Union[None, dict[str, Any]]
         if isinstance(self.current_usages, ResourceApiKeyStatusCurrentUsagesType0):
             current_usages = self.current_usages.to_dict()
@@ -145,6 +155,7 @@ class ResourceApiKeyStatus:
                 "user_full_name": user_full_name,
                 "limits": limits,
                 "allowed_models": allowed_models,
+                "effective_models": effective_models,
                 "current_usages": current_usages,
                 "usage_period": usage_period,
                 "paused_by_limit": paused_by_limit,
@@ -244,6 +255,21 @@ class ResourceApiKeyStatus:
 
         allowed_models = _parse_allowed_models(d.pop("allowed_models"))
 
+        def _parse_effective_models(data: object) -> Union[None, list[str]]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                effective_models_type_0 = cast(list[str], data)
+
+                return effective_models_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, list[str]], data)
+
+        effective_models = _parse_effective_models(d.pop("effective_models"))
+
         def _parse_current_usages(data: object) -> Union["ResourceApiKeyStatusCurrentUsagesType0", None]:
             if data is None:
                 return data
@@ -319,6 +345,7 @@ class ResourceApiKeyStatus:
             user_full_name=user_full_name,
             limits=limits,
             allowed_models=allowed_models,
+            effective_models=effective_models,
             current_usages=current_usages,
             usage_period=usage_period,
             paused_by_limit=paused_by_limit,

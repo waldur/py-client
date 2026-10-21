@@ -61,8 +61,11 @@ def sync_detailed(
     r"""Edit an API key
 
      Changes the key's assignee, limits or model allowlist. A change to limits or models is sent to the
-    site agent as an update command, unless the key is paused: resuming it applies them. Only on
-    offerings with enable_api_key_provisioning, except for unassigning the key ({\"user\": null}).
+    site agent as an update command, unless the key is paused: resuming it applies them. A change of
+    assignee (setting, changing or clearing it) on a key that holds a secret rotates the key instead,
+    carrying any limits and models set with it: the old secret stops working and the new assignee
+    reveals the new one. A paused key, or one with another command pending or failed, refuses it. Only
+    on offerings with enable_api_key_provisioning, except for unassigning the key ({\"user\": null}).
 
     Args:
         uuid (UUID):
@@ -97,8 +100,11 @@ def sync(
     r"""Edit an API key
 
      Changes the key's assignee, limits or model allowlist. A change to limits or models is sent to the
-    site agent as an update command, unless the key is paused: resuming it applies them. Only on
-    offerings with enable_api_key_provisioning, except for unassigning the key ({\"user\": null}).
+    site agent as an update command, unless the key is paused: resuming it applies them. A change of
+    assignee (setting, changing or clearing it) on a key that holds a secret rotates the key instead,
+    carrying any limits and models set with it: the old secret stops working and the new assignee
+    reveals the new one. A paused key, or one with another command pending or failed, refuses it. Only
+    on offerings with enable_api_key_provisioning, except for unassigning the key ({\"user\": null}).
 
     Args:
         uuid (UUID):
@@ -128,8 +134,11 @@ async def asyncio_detailed(
     r"""Edit an API key
 
      Changes the key's assignee, limits or model allowlist. A change to limits or models is sent to the
-    site agent as an update command, unless the key is paused: resuming it applies them. Only on
-    offerings with enable_api_key_provisioning, except for unassigning the key ({\"user\": null}).
+    site agent as an update command, unless the key is paused: resuming it applies them. A change of
+    assignee (setting, changing or clearing it) on a key that holds a secret rotates the key instead,
+    carrying any limits and models set with it: the old secret stops working and the new assignee
+    reveals the new one. A paused key, or one with another command pending or failed, refuses it. Only
+    on offerings with enable_api_key_provisioning, except for unassigning the key ({\"user\": null}).
 
     Args:
         uuid (UUID):
@@ -162,8 +171,11 @@ async def asyncio(
     r"""Edit an API key
 
      Changes the key's assignee, limits or model allowlist. A change to limits or models is sent to the
-    site agent as an update command, unless the key is paused: resuming it applies them. Only on
-    offerings with enable_api_key_provisioning, except for unassigning the key ({\"user\": null}).
+    site agent as an update command, unless the key is paused: resuming it applies them. A change of
+    assignee (setting, changing or clearing it) on a key that holds a secret rotates the key instead,
+    carrying any limits and models set with it: the old secret stops working and the new assignee
+    reveals the new one. A paused key, or one with another command pending or failed, refuses it. Only
+    on offerings with enable_api_key_provisioning, except for unassigning the key ({\"user\": null}).
 
     Args:
         uuid (UUID):
