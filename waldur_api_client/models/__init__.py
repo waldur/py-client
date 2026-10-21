@@ -1147,12 +1147,30 @@ from .marketplace_category_field_enum import MarketplaceCategoryFieldEnum
 from .marketplace_category_request import MarketplaceCategoryRequest
 from .marketplace_category_request_form import MarketplaceCategoryRequestForm
 from .marketplace_category_request_multipart import MarketplaceCategoryRequestMultipart
+from .marketplace_customer_estimated_cost_policies_history_at_retrieve_response_400 import (
+    MarketplaceCustomerEstimatedCostPoliciesHistoryAtRetrieveResponse400,
+)
+from .marketplace_customer_estimated_cost_policies_history_at_retrieve_response_404 import (
+    MarketplaceCustomerEstimatedCostPoliciesHistoryAtRetrieveResponse404,
+)
 from .marketplace_customer_stats import MarketplaceCustomerStats
 from .marketplace_global_categories_retrieve_response_200 import MarketplaceGlobalCategoriesRetrieveResponse200
+from .marketplace_offering_estimated_cost_policies_history_at_retrieve_response_400 import (
+    MarketplaceOfferingEstimatedCostPoliciesHistoryAtRetrieveResponse400,
+)
+from .marketplace_offering_estimated_cost_policies_history_at_retrieve_response_404 import (
+    MarketplaceOfferingEstimatedCostPoliciesHistoryAtRetrieveResponse404,
+)
 from .marketplace_open_portal_create_order_attributes import MarketplaceOpenPortalCreateOrderAttributes
 from .marketplace_open_portal_remote_create_order_attributes import MarketplaceOpenPortalRemoteCreateOrderAttributes
 from .marketplace_plans_history_at_retrieve_response_400 import MarketplacePlansHistoryAtRetrieveResponse400
 from .marketplace_plans_history_at_retrieve_response_404 import MarketplacePlansHistoryAtRetrieveResponse404
+from .marketplace_project_estimated_cost_policies_history_at_retrieve_response_400 import (
+    MarketplaceProjectEstimatedCostPoliciesHistoryAtRetrieveResponse400,
+)
+from .marketplace_project_estimated_cost_policies_history_at_retrieve_response_404 import (
+    MarketplaceProjectEstimatedCostPoliciesHistoryAtRetrieveResponse404,
+)
 from .marketplace_provider_customer import MarketplaceProviderCustomer
 from .marketplace_provider_customer_field_enum import MarketplaceProviderCustomerFieldEnum
 from .marketplace_provider_customer_project import MarketplaceProviderCustomerProject
@@ -4387,13 +4405,19 @@ __all__ = (
     "MarketplaceCategoryRequest",
     "MarketplaceCategoryRequestForm",
     "MarketplaceCategoryRequestMultipart",
+    "MarketplaceCustomerEstimatedCostPoliciesHistoryAtRetrieveResponse400",
+    "MarketplaceCustomerEstimatedCostPoliciesHistoryAtRetrieveResponse404",
     "MarketplaceCustomerStats",
     "MarketplaceGlobalCategoriesRetrieveResponse200",
     "MARKETPLACELAYOUTMODEEnum",
+    "MarketplaceOfferingEstimatedCostPoliciesHistoryAtRetrieveResponse400",
+    "MarketplaceOfferingEstimatedCostPoliciesHistoryAtRetrieveResponse404",
     "MarketplaceOpenPortalCreateOrderAttributes",
     "MarketplaceOpenPortalRemoteCreateOrderAttributes",
     "MarketplacePlansHistoryAtRetrieveResponse400",
     "MarketplacePlansHistoryAtRetrieveResponse404",
+    "MarketplaceProjectEstimatedCostPoliciesHistoryAtRetrieveResponse400",
+    "MarketplaceProjectEstimatedCostPoliciesHistoryAtRetrieveResponse404",
     "MarketplaceProviderCustomer",
     "MarketplaceProviderCustomerFieldEnum",
     "MarketplaceProviderCustomerProject",

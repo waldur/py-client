@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.1.dev.20261021161701
+# Version: 8.1.4-rc.1.dev.20261021183510
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -6656,6 +6656,29 @@ DELETE /api/marketplace-customer-estimated-cost-policies/{uuid}/
 Path parameters:
   - uuid
 
+### marketplace_customer_estimated_cost_policies_history_list
+GET /api/marketplace-customer-estimated-cost-policies/{uuid}/history/
+Summary: Get version history
+Description: Returns the version history for this object. Only accessible by staff and support users.
+Path parameters:
+  - uuid
+Query parameters (6):
+  - created_after — Filter versions created after this timestamp (ISO 8601)
+  - created_before — Filter versions created before this timestamp (ISO 8601)
+  - customer
+  - customer_uuid
+  - scope
+  - scope_uuid
+
+### marketplace_customer_estimated_cost_policies_history_at_retrieve
+GET /api/marketplace-customer-estimated-cost-policies/{uuid}/history/at/
+Summary: Get object state at a specific timestamp
+Description: Returns the state of the object as it was at the specified timestamp. Only accessible by staff and support users.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - timestamp (required) — ISO 8601 timestamp to query the object state at
+
 ============================================================
 ## marketplace-customer-service-accounts  (module: waldur_api_client.api.marketplace_customer_service_accounts)
 ============================================================
@@ -7140,6 +7163,27 @@ Request body: yes
 DELETE /api/marketplace-offering-estimated-cost-policies/{uuid}/
 Path parameters:
   - uuid
+
+### marketplace_offering_estimated_cost_policies_history_list
+GET /api/marketplace-offering-estimated-cost-policies/{uuid}/history/
+Summary: Get version history
+Description: Returns the version history for this object. Only accessible by staff and support users.
+Path parameters:
+  - uuid
+Query parameters (4):
+  - created_after — Filter versions created after this timestamp (ISO 8601)
+  - created_before — Filter versions created before this timestamp (ISO 8601)
+  - scope
+  - scope_uuid
+
+### marketplace_offering_estimated_cost_policies_history_at_retrieve
+GET /api/marketplace-offering-estimated-cost-policies/{uuid}/history/at/
+Summary: Get object state at a specific timestamp
+Description: Returns the state of the object as it was at the specified timestamp. Only accessible by staff and support users.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - timestamp (required) — ISO 8601 timestamp to query the object state at
 
 ============================================================
 ## marketplace-offering-files  (module: waldur_api_client.api.marketplace_offering_files)
@@ -8881,6 +8925,35 @@ Request body: yes
 DELETE /api/marketplace-project-estimated-cost-policies/{uuid}/
 Path parameters:
   - uuid
+
+### marketplace_project_estimated_cost_policies_history_list
+GET /api/marketplace-project-estimated-cost-policies/{uuid}/history/
+Summary: Get version history
+Description: Returns the version history for this object. Only accessible by staff and support users.
+Path parameters:
+  - uuid
+Query parameters (12):
+  - created_after — Filter versions created after this timestamp (ISO 8601)
+  - created_before — Filter versions created before this timestamp (ISO 8601)
+  - customer
+  - customer_uuid
+  - has_resource
+  - project
+  - project_uuid
+  - query
+  - resource
+  - resource_uuid
+  - scope
+  - scope_uuid
+
+### marketplace_project_estimated_cost_policies_history_at_retrieve
+GET /api/marketplace-project-estimated-cost-policies/{uuid}/history/at/
+Summary: Get object state at a specific timestamp
+Description: Returns the state of the object as it was at the specified timestamp. Only accessible by staff and support users.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - timestamp (required) — ISO 8601 timestamp to query the object state at
 
 ============================================================
 ## marketplace-project-metrics  (module: waldur_api_client.api.marketplace_project_metrics)

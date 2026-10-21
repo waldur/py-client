@@ -1224,6 +1224,8 @@ Module: `waldur_api_client.api.marketplace_customer_estimated_cost_policies`
 - `marketplace_customer_estimated_cost_policies_update` PUT `/api/marketplace-customer-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_customer_estimated_cost_policies_partial_update` PATCH `/api/marketplace-customer-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_customer_estimated_cost_policies_destroy` DELETE `/api/marketplace-customer-estimated-cost-policies/{uuid}/` (path: uuid)
+- `marketplace_customer_estimated_cost_policies_history_list` GET `/api/marketplace-customer-estimated-cost-policies/{uuid}/history/` — Get version history (path: uuid | 6 query params)
+- `marketplace_customer_estimated_cost_policies_history_at_retrieve` GET `/api/marketplace-customer-estimated-cost-policies/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 
 ## marketplace-customer-service-accounts
 Module: `waldur_api_client.api.marketplace_customer_service_accounts`
@@ -1336,6 +1338,8 @@ Module: `waldur_api_client.api.marketplace_offering_estimated_cost_policies`
 - `marketplace_offering_estimated_cost_policies_update` PUT `/api/marketplace-offering-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_offering_estimated_cost_policies_partial_update` PATCH `/api/marketplace-offering-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_offering_estimated_cost_policies_destroy` DELETE `/api/marketplace-offering-estimated-cost-policies/{uuid}/` (path: uuid)
+- `marketplace_offering_estimated_cost_policies_history_list` GET `/api/marketplace-offering-estimated-cost-policies/{uuid}/history/` — Get version history (path: uuid | 4 query params)
+- `marketplace_offering_estimated_cost_policies_history_at_retrieve` GET `/api/marketplace-offering-estimated-cost-policies/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 
 ## marketplace-offering-files
 Module: `waldur_api_client.api.marketplace_offering_files`
@@ -1603,6 +1607,8 @@ Module: `waldur_api_client.api.marketplace_project_estimated_cost_policies`
 - `marketplace_project_estimated_cost_policies_update` PUT `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_project_estimated_cost_policies_partial_update` PATCH `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid | request body)
 - `marketplace_project_estimated_cost_policies_destroy` DELETE `/api/marketplace-project-estimated-cost-policies/{uuid}/` (path: uuid)
+- `marketplace_project_estimated_cost_policies_history_list` GET `/api/marketplace-project-estimated-cost-policies/{uuid}/history/` — Get version history (path: uuid | 12 query params)
+- `marketplace_project_estimated_cost_policies_history_at_retrieve` GET `/api/marketplace-project-estimated-cost-policies/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 
 ## marketplace-project-metrics
 Module: `waldur_api_client.api.marketplace_project_metrics`
