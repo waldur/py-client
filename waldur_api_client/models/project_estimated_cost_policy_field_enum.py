@@ -24,6 +24,7 @@ class ProjectEstimatedCostPolicyFieldEnum(str, Enum):
     SCOPE = "scope"
     SCOPE_NAME = "scope_name"
     SCOPE_UUID = "scope_uuid"
+    TRIGGER_STATUS = "trigger_status"
     URL = "url"
     USE_CREDIT = "use_credit"
     UUID = "uuid"

@@ -12,6 +12,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.offering_estimated_cost_policy_options import OfferingEstimatedCostPolicyOptions
+    from ..models.policy_trigger_status import PolicyTriggerStatus
 
 
 T = TypeVar("T", bound="OfferingEstimatedCostPolicy")
@@ -50,6 +51,7 @@ class OfferingEstimatedCostPolicy:
             — so a policy far over its cap can still report a future date or null.
         eta_date (Union[None, Unset, datetime.date]): eta_days as a calendar date, so clients do not each re-derive it.
             Null whenever eta_days is null; today when eta_days is 0.
+        trigger_status (Union[Unset, PolicyTriggerStatus]):
         organization_groups (Union[Unset, list[str]]):
         apply_to_all (Union[Unset, bool]): If True, policy applies to all customers. Mutually exclusive with
             organization_groups.
@@ -74,6 +76,7 @@ class OfferingEstimatedCostPolicy:
     current_cost: Union[Unset, str] = UNSET
     eta_days: Union[None, Unset, int] = UNSET
     eta_date: Union[None, Unset, datetime.date] = UNSET
+    trigger_status: Union[Unset, "PolicyTriggerStatus"] = UNSET
     organization_groups: Union[Unset, list[str]] = UNSET
     apply_to_all: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -139,6 +142,10 @@ class OfferingEstimatedCostPolicy:
         else:
             eta_date = self.eta_date
 
+        trigger_status: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.trigger_status, Unset):
+            trigger_status = self.trigger_status.to_dict()
+
         organization_groups: Union[Unset, list[str]] = UNSET
         if not isinstance(self.organization_groups, Unset):
             organization_groups = self.organization_groups
@@ -186,6 +193,8 @@ class OfferingEstimatedCostPolicy:
             field_dict["eta_days"] = eta_days
         if eta_date is not UNSET:
             field_dict["eta_date"] = eta_date
+        if trigger_status is not UNSET:
+            field_dict["trigger_status"] = trigger_status
         if organization_groups is not UNSET:
             field_dict["organization_groups"] = organization_groups
         if apply_to_all is not UNSET:
@@ -196,6 +205,7 @@ class OfferingEstimatedCostPolicy:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.offering_estimated_cost_policy_options import OfferingEstimatedCostPolicyOptions
+        from ..models.policy_trigger_status import PolicyTriggerStatus
 
         d = dict(src_dict)
         _uuid = d.pop("uuid", UNSET)
@@ -288,6 +298,13 @@ class OfferingEstimatedCostPolicy:
 
         eta_date = _parse_eta_date(d.pop("eta_date", UNSET))
 
+        _trigger_status = d.pop("trigger_status", UNSET)
+        trigger_status: Union[Unset, PolicyTriggerStatus]
+        if isinstance(_trigger_status, Unset):
+            trigger_status = UNSET
+        else:
+            trigger_status = PolicyTriggerStatus.from_dict(_trigger_status)
+
         organization_groups = cast(list[str], d.pop("organization_groups", UNSET))
 
         apply_to_all = d.pop("apply_to_all", UNSET)
@@ -312,6 +329,7 @@ class OfferingEstimatedCostPolicy:
             current_cost=current_cost,
             eta_days=eta_days,
             eta_date=eta_date,
+            trigger_status=trigger_status,
             organization_groups=organization_groups,
             apply_to_all=apply_to_all,
         )

@@ -21,6 +21,7 @@ class CustomerEstimatedCostPolicyFieldEnum(str, Enum):
     SCOPE = "scope"
     SCOPE_NAME = "scope_name"
     SCOPE_UUID = "scope_uuid"
+    TRIGGER_STATUS = "trigger_status"
     URL = "url"
     UUID = "uuid"
 

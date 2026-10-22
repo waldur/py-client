@@ -13,6 +13,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.customer_estimated_cost_policy_options import CustomerEstimatedCostPolicyOptions
     from ..models.nested_price_estimate import NestedPriceEstimate
+    from ..models.policy_trigger_status import PolicyTriggerStatus
 
 
 T = TypeVar("T", bound="CustomerEstimatedCostPolicy")
@@ -51,6 +52,7 @@ class CustomerEstimatedCostPolicy:
             — so a policy far over its cap can still report a future date or null.
         eta_date (Union[None, Unset, datetime.date]): eta_days as a calendar date, so clients do not each re-derive it.
             Null whenever eta_days is null; today when eta_days is 0.
+        trigger_status (Union[Unset, PolicyTriggerStatus]):
         customer_credit (Union[None, Unset, str]):
         billing_price_estimate (Union[Unset, NestedPriceEstimate]):
     """
@@ -74,6 +76,7 @@ class CustomerEstimatedCostPolicy:
     current_cost: Union[Unset, str] = UNSET
     eta_days: Union[None, Unset, int] = UNSET
     eta_date: Union[None, Unset, datetime.date] = UNSET
+    trigger_status: Union[Unset, "PolicyTriggerStatus"] = UNSET
     customer_credit: Union[None, Unset, str] = UNSET
     billing_price_estimate: Union[Unset, "NestedPriceEstimate"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -139,6 +142,10 @@ class CustomerEstimatedCostPolicy:
         else:
             eta_date = self.eta_date
 
+        trigger_status: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.trigger_status, Unset):
+            trigger_status = self.trigger_status.to_dict()
+
         customer_credit: Union[None, Unset, str]
         if isinstance(self.customer_credit, Unset):
             customer_credit = UNSET
@@ -190,6 +197,8 @@ class CustomerEstimatedCostPolicy:
             field_dict["eta_days"] = eta_days
         if eta_date is not UNSET:
             field_dict["eta_date"] = eta_date
+        if trigger_status is not UNSET:
+            field_dict["trigger_status"] = trigger_status
         if customer_credit is not UNSET:
             field_dict["customer_credit"] = customer_credit
         if billing_price_estimate is not UNSET:
@@ -201,6 +210,7 @@ class CustomerEstimatedCostPolicy:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.customer_estimated_cost_policy_options import CustomerEstimatedCostPolicyOptions
         from ..models.nested_price_estimate import NestedPriceEstimate
+        from ..models.policy_trigger_status import PolicyTriggerStatus
 
         d = dict(src_dict)
         _uuid = d.pop("uuid", UNSET)
@@ -293,6 +303,13 @@ class CustomerEstimatedCostPolicy:
 
         eta_date = _parse_eta_date(d.pop("eta_date", UNSET))
 
+        _trigger_status = d.pop("trigger_status", UNSET)
+        trigger_status: Union[Unset, PolicyTriggerStatus]
+        if isinstance(_trigger_status, Unset):
+            trigger_status = UNSET
+        else:
+            trigger_status = PolicyTriggerStatus.from_dict(_trigger_status)
+
         def _parse_customer_credit(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -329,6 +346,7 @@ class CustomerEstimatedCostPolicy:
             current_cost=current_cost,
             eta_days=eta_days,
             eta_date=eta_date,
+            trigger_status=trigger_status,
             customer_credit=customer_credit,
             billing_price_estimate=billing_price_estimate,
         )

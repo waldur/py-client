@@ -2171,7 +2171,9 @@ from .plan_usage_response import PlanUsageResponse
 from .plugin_component import PluginComponent
 from .plugin_offering_type import PluginOfferingType
 from .policy_enum import PolicyEnum
+from .policy_gate_enum import PolicyGateEnum
 from .policy_period_enum import PolicyPeriodEnum
+from .policy_trigger_status import PolicyTriggerStatus
 from .policy_type_enum import PolicyTypeEnum
 from .posix_id_pool import PosixIdPool
 from .posix_id_pool_field_enum import PosixIdPoolFieldEnum
@@ -5338,7 +5340,9 @@ __all__ = (
     "PluginComponent",
     "PluginOfferingType",
     "PolicyEnum",
+    "PolicyGateEnum",
     "PolicyPeriodEnum",
+    "PolicyTriggerStatus",
     "PolicyTypeEnum",
     "PosixIdentity",
     "PosixIdentityConsumerTypeEnum",
