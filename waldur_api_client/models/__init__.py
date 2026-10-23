@@ -294,6 +294,10 @@ from .booking_resource_o_enum import BookingResourceOEnum
 from .booking_resource_offering_plugin_options import BookingResourceOfferingPluginOptions
 from .booking_resource_options_type_0 import BookingResourceOptionsType0
 from .booking_resource_renewal_date_type_0 import BookingResourceRenewalDateType0
+from .booking_resource_spending_limits import BookingResourceSpendingLimits
+from .booking_resource_spending_limits_additional_property_type_0 import (
+    BookingResourceSpendingLimitsAdditionalPropertyType0,
+)
 from .booking_slot import BookingSlot
 from .broadcast_message import BroadcastMessage
 from .broadcast_message_create_request import BroadcastMessageCreateRequest
@@ -509,6 +513,7 @@ from .complete_workflow_step_request import CompleteWorkflowStepRequest
 from .complete_workflow_step_response import CompleteWorkflowStepResponse
 from .compliance_overview import ComplianceOverview
 from .component_activity import ComponentActivity
+from .component_daily_usage_item_request import ComponentDailyUsageItemRequest
 from .component_formula_config import ComponentFormulaConfig
 from .component_formula_config_request import ComponentFormulaConfigRequest
 from .component_formula_target import ComponentFormulaTarget
@@ -1408,6 +1413,8 @@ from .offering_compliance_checklist_update_request import OfferingComplianceChec
 from .offering_component import OfferingComponent
 from .offering_component_limit_request import OfferingComponentLimitRequest
 from .offering_component_request import OfferingComponentRequest
+from .offering_component_request_spending_limit_periods import OfferingComponentRequestSpendingLimitPeriods
+from .offering_component_spending_limit_periods import OfferingComponentSpendingLimitPeriods
 from .offering_component_stat import OfferingComponentStat
 from .offering_cost import OfferingCost
 from .offering_costs_summary import OfferingCostsSummary
@@ -1837,6 +1844,10 @@ from .order_consumer_info_request_form import OrderConsumerInfoRequestForm
 from .order_consumer_info_request_multipart import OrderConsumerInfoRequestMultipart
 from .order_create_request import OrderCreateRequest
 from .order_create_request_limits import OrderCreateRequestLimits
+from .order_create_request_spending_limits import OrderCreateRequestSpendingLimits
+from .order_create_request_spending_limits_additional_property_type_0 import (
+    OrderCreateRequestSpendingLimitsAdditionalPropertyType0,
+)
 from .order_details import OrderDetails
 from .order_details_attributes import OrderDetailsAttributes
 from .order_details_field_enum import OrderDetailsFieldEnum
@@ -2076,6 +2087,12 @@ from .patched_requested_resource_request_attributes import PatchedRequestedResou
 from .patched_requested_resource_request_limits import PatchedRequestedResourceRequestLimits
 from .patched_resource_api_key_update_request import PatchedResourceApiKeyUpdateRequest
 from .patched_resource_api_key_update_request_limits_type_0 import PatchedResourceApiKeyUpdateRequestLimitsType0
+from .patched_resource_api_key_update_request_spending_limits_type_0 import (
+    PatchedResourceApiKeyUpdateRequestSpendingLimitsType0,
+)
+from .patched_resource_api_key_update_request_spending_limits_type_0_additional_property_type_0 import (
+    PatchedResourceApiKeyUpdateRequestSpendingLimitsType0AdditionalPropertyType0,
+)
 from .patched_resource_project_request import PatchedResourceProjectRequest
 from .patched_resource_project_request_limits import PatchedResourceProjectRequestLimits
 from .patched_resource_update_request import PatchedResourceUpdateRequest
@@ -2620,35 +2637,43 @@ from .requested_resource_request import RequestedResourceRequest
 from .requested_resource_request_attributes import RequestedResourceRequestAttributes
 from .requested_resource_request_limits import RequestedResourceRequestLimits
 from .reserved_agent_task import ReservedAgentTask
-from .resource import Resource
 from .resource_api_key import ResourceApiKey
 from .resource_api_key_action import ResourceApiKeyAction
 from .resource_api_key_create_request import ResourceApiKeyCreateRequest
 from .resource_api_key_create_request_limits_type_0 import ResourceApiKeyCreateRequestLimitsType0
+from .resource_api_key_create_request_spending_limits_type_0 import ResourceApiKeyCreateRequestSpendingLimitsType0
+from .resource_api_key_create_request_spending_limits_type_0_additional_property_type_0 import (
+    ResourceApiKeyCreateRequestSpendingLimitsType0AdditionalPropertyType0,
+)
 from .resource_api_key_current_usages_type_0 import ResourceApiKeyCurrentUsagesType0
 from .resource_api_key_limits_type_0 import ResourceApiKeyLimitsType0
 from .resource_api_key_report_created_request import ResourceApiKeyReportCreatedRequest
 from .resource_api_key_set_erred_request import ResourceApiKeySetErredRequest
 from .resource_api_key_set_key_request import ResourceApiKeySetKeyRequest
+from .resource_api_key_spending_limits_type_0 import ResourceApiKeySpendingLimitsType0
+from .resource_api_key_spending_limits_type_0_additional_property_type_0 import (
+    ResourceApiKeySpendingLimitsType0AdditionalPropertyType0,
+)
 from .resource_api_key_state import ResourceApiKeyState
 from .resource_api_key_status import ResourceApiKeyStatus
 from .resource_api_key_status_current_usages_type_0 import ResourceApiKeyStatusCurrentUsagesType0
 from .resource_api_key_status_limits_type_0 import ResourceApiKeyStatusLimitsType0
+from .resource_api_key_status_spending_limits_type_0 import ResourceApiKeyStatusSpendingLimitsType0
+from .resource_api_key_status_spending_limits_type_0_additional_property_type_0 import (
+    ResourceApiKeyStatusSpendingLimitsType0AdditionalPropertyType0,
+)
 from .resource_api_key_usage_request import ResourceApiKeyUsageRequest
 from .resource_api_key_usage_request_usages import ResourceApiKeyUsageRequestUsages
 from .resource_api_key_usage_totals import ResourceApiKeyUsageTotals
 from .resource_api_key_usage_totals_usages import ResourceApiKeyUsageTotalsUsages
-from .resource_attributes import ResourceAttributes
 from .resource_backend_id_request import ResourceBackendIDRequest
 from .resource_backend_metadata_request import ResourceBackendMetadataRequest
 from .resource_backend_metadata_request_backend_metadata import ResourceBackendMetadataRequestBackendMetadata
 from .resource_class_summary import ResourceClassSummary
 from .resource_context import ResourceContext
-from .resource_current_usages import ResourceCurrentUsages
 from .resource_demand_stat import ResourceDemandStat
 from .resource_demand_stat_total_approved_limits import ResourceDemandStatTotalApprovedLimits
 from .resource_demand_stat_total_requested_limits import ResourceDemandStatTotalRequestedLimits
-from .resource_display_limits import ResourceDisplayLimits
 from .resource_downscaled_request import ResourceDownscaledRequest
 from .resource_effective_id_request import ResourceEffectiveIDRequest
 from .resource_end_date_by_provider_request import ResourceEndDateByProviderRequest
@@ -2673,17 +2698,13 @@ from .resource_limit_change_request_request import ResourceLimitChangeRequestReq
 from .resource_limit_change_request_request_requested_limits import ResourceLimitChangeRequestRequestRequestedLimits
 from .resource_limit_change_request_requested_limits import ResourceLimitChangeRequestRequestedLimits
 from .resource_limit_period import ResourceLimitPeriod
-from .resource_limit_usage import ResourceLimitUsage
-from .resource_limits import ResourceLimits
 from .resource_metric import ResourceMetric
 from .resource_missing_usage import ResourceMissingUsage
 from .resource_o_enum import ResourceOEnum
 from .resource_offering import ResourceOffering
-from .resource_offering_plugin_options import ResourceOfferingPluginOptions
 from .resource_offering_request import ResourceOfferingRequest
 from .resource_options_request import ResourceOptionsRequest
 from .resource_options_request_options_type_0 import ResourceOptionsRequestOptionsType0
-from .resource_options_type_0 import ResourceOptionsType0
 from .resource_paused_request import ResourcePausedRequest
 from .resource_plan_period import ResourcePlanPeriod
 from .resource_project import ResourceProject
@@ -2708,7 +2729,6 @@ from .resource_renew_request_form_limits import ResourceRenewRequestFormLimits
 from .resource_renew_request_limits import ResourceRenewRequestLimits
 from .resource_renew_request_multipart import ResourceRenewRequestMultipart
 from .resource_renew_request_multipart_limits import ResourceRenewRequestMultipartLimits
-from .resource_renewal_date_type_0 import ResourceRenewalDateType0
 from .resource_report_request import ResourceReportRequest
 from .resource_request import ResourceRequest
 from .resource_restrict_member_access_request import ResourceRestrictMemberAccessRequest
@@ -2716,6 +2736,15 @@ from .resource_set_limits_request import ResourceSetLimitsRequest
 from .resource_set_limits_request_limits import ResourceSetLimitsRequestLimits
 from .resource_set_state_erred_request import ResourceSetStateErredRequest
 from .resource_slug_request import ResourceSlugRequest
+from .resource_spending_limits_request import ResourceSpendingLimitsRequest
+from .resource_spending_limits_request_spending_limits import ResourceSpendingLimitsRequestSpendingLimits
+from .resource_spending_limits_request_spending_limits_additional_property_type_0 import (
+    ResourceSpendingLimitsRequestSpendingLimitsAdditionalPropertyType0,
+)
+from .resource_spending_limits_spending_limits import ResourceSpendingLimitsSpendingLimits
+from .resource_spending_limits_spending_limits_additional_property_type_0 import (
+    ResourceSpendingLimitsSpendingLimitsAdditionalPropertyType0,
+)
 from .resource_state import ResourceState
 from .resource_suggest_name_request import ResourceSuggestNameRequest
 from .resource_suggest_name_request_attributes import ResourceSuggestNameRequestAttributes
@@ -2997,6 +3026,11 @@ from .software_version_dependencies import SoftwareVersionDependencies
 from .software_version_metadata import SoftwareVersionMetadata
 from .software_version_o_enum import SoftwareVersionOEnum
 from .source_type_enum import SourceTypeEnum
+from .spending_limit_bounds import SpendingLimitBounds
+from .spending_limit_bounds_request import SpendingLimitBoundsRequest
+from .spending_limit_period_enum import SpendingLimitPeriodEnum
+from .spending_limit_status import SpendingLimitStatus
+from .spending_limit_usage import SpendingLimitUsage
 from .sram_group import SramGroup
 from .sram_group_kind_enum import SramGroupKindEnum
 from .sram_project_rule import SramProjectRule
@@ -3122,6 +3156,7 @@ from .update_listener_request import UpdateListenerRequest
 from .update_load_balancer import UpdateLoadBalancer
 from .update_load_balancer_request import UpdateLoadBalancerRequest
 from .update_offering_component_request import UpdateOfferingComponentRequest
+from .update_offering_component_request_spending_limit_periods import UpdateOfferingComponentRequestSpendingLimitPeriods
 from .update_pool import UpdatePool
 from .update_pool_member import UpdatePoolMember
 from .update_pool_member_request import UpdatePoolMemberRequest
@@ -3569,6 +3604,8 @@ __all__ = (
     "BookingResourceOfferingPluginOptions",
     "BookingResourceOptionsType0",
     "BookingResourceRenewalDateType0",
+    "BookingResourceSpendingLimits",
+    "BookingResourceSpendingLimitsAdditionalPropertyType0",
     "BookingSlot",
     "BroadcastMessage",
     "BroadcastMessageCreateRequest",
@@ -3782,6 +3819,7 @@ __all__ = (
     "CompleteWorkflowStepResponse",
     "ComplianceOverview",
     "ComponentActivity",
+    "ComponentDailyUsageItemRequest",
     "ComponentFormulaConfig",
     "ComponentFormulaConfigRequest",
     "ComponentFormulaTarget",
@@ -4643,6 +4681,8 @@ __all__ = (
     "OfferingComponent",
     "OfferingComponentLimitRequest",
     "OfferingComponentRequest",
+    "OfferingComponentRequestSpendingLimitPeriods",
+    "OfferingComponentSpendingLimitPeriods",
     "OfferingComponentStat",
     "OfferingCost",
     "OfferingCostsSummary",
@@ -5024,6 +5064,8 @@ __all__ = (
     "OrderConsumerInfoRequestMultipart",
     "OrderCreateRequest",
     "OrderCreateRequestLimits",
+    "OrderCreateRequestSpendingLimits",
+    "OrderCreateRequestSpendingLimitsAdditionalPropertyType0",
     "OrderDetails",
     "OrderDetailsAttributes",
     "OrderDetailsFieldEnum",
@@ -5253,6 +5295,8 @@ __all__ = (
     "PatchedRequestTypeAdminRequest",
     "PatchedResourceApiKeyUpdateRequest",
     "PatchedResourceApiKeyUpdateRequestLimitsType0",
+    "PatchedResourceApiKeyUpdateRequestSpendingLimitsType0",
+    "PatchedResourceApiKeyUpdateRequestSpendingLimitsType0AdditionalPropertyType0",
     "PatchedResourceProjectRequest",
     "PatchedResourceProjectRequestLimits",
     "PatchedResourceUpdateRequest",
@@ -5767,35 +5811,37 @@ __all__ = (
     "RequestTypeReorderRequest",
     "RequestTypes",
     "ReservedAgentTask",
-    "Resource",
     "ResourceApiKey",
     "ResourceApiKeyAction",
     "ResourceApiKeyCreateRequest",
     "ResourceApiKeyCreateRequestLimitsType0",
+    "ResourceApiKeyCreateRequestSpendingLimitsType0",
+    "ResourceApiKeyCreateRequestSpendingLimitsType0AdditionalPropertyType0",
     "ResourceApiKeyCurrentUsagesType0",
     "ResourceApiKeyLimitsType0",
     "ResourceApiKeyReportCreatedRequest",
     "ResourceApiKeySetErredRequest",
     "ResourceApiKeySetKeyRequest",
+    "ResourceApiKeySpendingLimitsType0",
+    "ResourceApiKeySpendingLimitsType0AdditionalPropertyType0",
     "ResourceApiKeyState",
     "ResourceApiKeyStatus",
     "ResourceApiKeyStatusCurrentUsagesType0",
     "ResourceApiKeyStatusLimitsType0",
+    "ResourceApiKeyStatusSpendingLimitsType0",
+    "ResourceApiKeyStatusSpendingLimitsType0AdditionalPropertyType0",
     "ResourceApiKeyUsageRequest",
     "ResourceApiKeyUsageRequestUsages",
     "ResourceApiKeyUsageTotals",
     "ResourceApiKeyUsageTotalsUsages",
-    "ResourceAttributes",
     "ResourceBackendIDRequest",
     "ResourceBackendMetadataRequest",
     "ResourceBackendMetadataRequestBackendMetadata",
     "ResourceClassSummary",
     "ResourceContext",
-    "ResourceCurrentUsages",
     "ResourceDemandStat",
     "ResourceDemandStatTotalApprovedLimits",
     "ResourceDemandStatTotalRequestedLimits",
-    "ResourceDisplayLimits",
     "ResourceDownscaledRequest",
     "ResourceEffectiveIDRequest",
     "ResourceEndDateByProviderRequest",
@@ -5818,17 +5864,13 @@ __all__ = (
     "ResourceLimitChangeRequestRequestedLimits",
     "ResourceLimitChangeRequestRequestRequestedLimits",
     "ResourceLimitPeriod",
-    "ResourceLimits",
-    "ResourceLimitUsage",
     "ResourceMetric",
     "ResourceMissingUsage",
     "ResourceOEnum",
     "ResourceOffering",
-    "ResourceOfferingPluginOptions",
     "ResourceOfferingRequest",
     "ResourceOptionsRequest",
     "ResourceOptionsRequestOptionsType0",
-    "ResourceOptionsType0",
     "ResourcePausedRequest",
     "ResourcePlanPeriod",
     "ResourceProject",
@@ -5847,7 +5889,6 @@ __all__ = (
     "ResourceReallocateLimitsResponse",
     "ResourceReallocateTargetRequest",
     "ResourceReallocateTargetRequestAllocatedLimits",
-    "ResourceRenewalDateType0",
     "ResourceRenewRequest",
     "ResourceRenewRequestForm",
     "ResourceRenewRequestFormLimits",
@@ -5863,6 +5904,11 @@ __all__ = (
     "ResourcesGeographySummary",
     "ResourcesLimits",
     "ResourceSlugRequest",
+    "ResourceSpendingLimitsRequest",
+    "ResourceSpendingLimitsRequestSpendingLimits",
+    "ResourceSpendingLimitsRequestSpendingLimitsAdditionalPropertyType0",
+    "ResourceSpendingLimitsSpendingLimits",
+    "ResourceSpendingLimitsSpendingLimitsAdditionalPropertyType0",
     "ResourceState",
     "ResourceSuggestNameRequest",
     "ResourceSuggestNameRequestAttributes",
@@ -6142,6 +6188,11 @@ __all__ = (
     "SoftwareVersionMetadata",
     "SoftwareVersionOEnum",
     "SourceTypeEnum",
+    "SpendingLimitBounds",
+    "SpendingLimitBoundsRequest",
+    "SpendingLimitPeriodEnum",
+    "SpendingLimitStatus",
+    "SpendingLimitUsage",
     "SramGroup",
     "SramGroupKindEnum",
     "SramProjectRule",
@@ -6267,6 +6318,7 @@ __all__ = (
     "UpdateLoadBalancer",
     "UpdateLoadBalancerRequest",
     "UpdateOfferingComponentRequest",
+    "UpdateOfferingComponentRequestSpendingLimitPeriods",
     "UpdatePool",
     "UpdatePoolMember",
     "UpdatePoolMemberRequest",

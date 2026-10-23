@@ -24,12 +24,14 @@ if TYPE_CHECKING:
     from ..models.booking_resource_offering_plugin_options import BookingResourceOfferingPluginOptions
     from ..models.booking_resource_options_type_0 import BookingResourceOptionsType0
     from ..models.booking_resource_renewal_date_type_0 import BookingResourceRenewalDateType0
+    from ..models.booking_resource_spending_limits import BookingResourceSpendingLimits
     from ..models.booking_slot import BookingSlot
     from ..models.nested_endpoint import NestedEndpoint
     from ..models.offering_account_settings import OfferingAccountSettings
     from ..models.offering_component import OfferingComponent
     from ..models.order_details import OrderDetails
     from ..models.report_section import ReportSection
+    from ..models.spending_limit_status import SpendingLimitStatus
 
 
 T = TypeVar("T", bound="BookingResource")
@@ -125,6 +127,12 @@ class BookingResource:
         usage_limit_restriction (Union[BlankEnum, Unset, UsageLimitRestrictionEnum]): Which restriction (paused or
             downscaled) was automatically applied because reported usage reached a component limit. Empty when no such
             restriction is active. Used so the automatic lift never clears a restriction that was set for another reason.
+        usage_limit_resumes_at (Union[None, Unset, datetime.datetime]): When the spending limits that restrict the
+            resource reset and the restriction lifts. Empty when no spending limit restricts the resource, or when a limit-
+            based component's limit does too.
+        spending_limits (Union[Unset, BookingResourceSpendingLimits]): Spending limits on usage-based components, per
+            period. Changed with the set_spending_limits action.
+        spending_limit_status (Union[Unset, list['SpendingLimitStatus']]):
         endpoints (Union[Unset, list['NestedEndpoint']]):
         error_message (Union[Unset, str]):
         error_traceback (Union[Unset, str]):
@@ -228,6 +236,9 @@ class BookingResource:
     restrict_member_access: Union[Unset, bool] = UNSET
     paused: Union[Unset, bool] = UNSET
     usage_limit_restriction: Union[BlankEnum, Unset, UsageLimitRestrictionEnum] = UNSET
+    usage_limit_resumes_at: Union[None, Unset, datetime.datetime] = UNSET
+    spending_limits: Union[Unset, "BookingResourceSpendingLimits"] = UNSET
+    spending_limit_status: Union[Unset, list["SpendingLimitStatus"]] = UNSET
     endpoints: Union[Unset, list["NestedEndpoint"]] = UNSET
     error_message: Union[Unset, str] = UNSET
     error_traceback: Union[Unset, str] = UNSET
@@ -525,6 +536,25 @@ class BookingResource:
         else:
             usage_limit_restriction = self.usage_limit_restriction.value
 
+        usage_limit_resumes_at: Union[None, Unset, str]
+        if isinstance(self.usage_limit_resumes_at, Unset):
+            usage_limit_resumes_at = UNSET
+        elif isinstance(self.usage_limit_resumes_at, datetime.datetime):
+            usage_limit_resumes_at = self.usage_limit_resumes_at.isoformat()
+        else:
+            usage_limit_resumes_at = self.usage_limit_resumes_at
+
+        spending_limits: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.spending_limits, Unset):
+            spending_limits = self.spending_limits.to_dict()
+
+        spending_limit_status: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.spending_limit_status, Unset):
+            spending_limit_status = []
+            for spending_limit_status_item_data in self.spending_limit_status:
+                spending_limit_status_item = spending_limit_status_item_data.to_dict()
+                spending_limit_status.append(spending_limit_status_item)
+
         endpoints: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.endpoints, Unset):
             endpoints = []
@@ -771,6 +801,12 @@ class BookingResource:
             field_dict["paused"] = paused
         if usage_limit_restriction is not UNSET:
             field_dict["usage_limit_restriction"] = usage_limit_restriction
+        if usage_limit_resumes_at is not UNSET:
+            field_dict["usage_limit_resumes_at"] = usage_limit_resumes_at
+        if spending_limits is not UNSET:
+            field_dict["spending_limits"] = spending_limits
+        if spending_limit_status is not UNSET:
+            field_dict["spending_limit_status"] = spending_limit_status
         if endpoints is not UNSET:
             field_dict["endpoints"] = endpoints
         if error_message is not UNSET:
@@ -835,12 +871,14 @@ class BookingResource:
         from ..models.booking_resource_offering_plugin_options import BookingResourceOfferingPluginOptions
         from ..models.booking_resource_options_type_0 import BookingResourceOptionsType0
         from ..models.booking_resource_renewal_date_type_0 import BookingResourceRenewalDateType0
+        from ..models.booking_resource_spending_limits import BookingResourceSpendingLimits
         from ..models.booking_slot import BookingSlot
         from ..models.nested_endpoint import NestedEndpoint
         from ..models.offering_account_settings import OfferingAccountSettings
         from ..models.offering_component import OfferingComponent
         from ..models.order_details import OrderDetails
         from ..models.report_section import ReportSection
+        from ..models.spending_limit_status import SpendingLimitStatus
 
         d = dict(src_dict)
         offering = d.pop("offering", UNSET)
@@ -1271,6 +1309,37 @@ class BookingResource:
 
         usage_limit_restriction = _parse_usage_limit_restriction(d.pop("usage_limit_restriction", UNSET))
 
+        def _parse_usage_limit_resumes_at(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                usage_limit_resumes_at_type_0 = isoparse(data)
+
+                return usage_limit_resumes_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        usage_limit_resumes_at = _parse_usage_limit_resumes_at(d.pop("usage_limit_resumes_at", UNSET))
+
+        _spending_limits = d.pop("spending_limits", UNSET)
+        spending_limits: Union[Unset, BookingResourceSpendingLimits]
+        if isinstance(_spending_limits, Unset):
+            spending_limits = UNSET
+        else:
+            spending_limits = BookingResourceSpendingLimits.from_dict(_spending_limits)
+
+        spending_limit_status = []
+        _spending_limit_status = d.pop("spending_limit_status", UNSET)
+        for spending_limit_status_item_data in _spending_limit_status or []:
+            spending_limit_status_item = SpendingLimitStatus.from_dict(spending_limit_status_item_data)
+
+            spending_limit_status.append(spending_limit_status_item)
+
         endpoints = []
         _endpoints = d.pop("endpoints", UNSET)
         for endpoints_item_data in _endpoints or []:
@@ -1493,6 +1562,9 @@ class BookingResource:
             restrict_member_access=restrict_member_access,
             paused=paused,
             usage_limit_restriction=usage_limit_restriction,
+            usage_limit_resumes_at=usage_limit_resumes_at,
+            spending_limits=spending_limits,
+            spending_limit_status=spending_limit_status,
             endpoints=endpoints,
             error_message=error_message,
             error_traceback=error_traceback,

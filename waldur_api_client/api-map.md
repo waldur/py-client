@@ -1965,6 +1965,7 @@ Module: `waldur_api_client.api.marketplace_resources`
 - `marketplace_resources_set_paused` POST `/api/marketplace-resources/{uuid}/set_paused/` — Set paused flag for resource (path: uuid | request body)
 - `marketplace_resources_set_restrict_member_access` POST `/api/marketplace-resources/{uuid}/set_restrict_member_access/` — Set restrict member access flag (path: uuid | request body)
 - `marketplace_resources_set_slug` POST `/api/marketplace-resources/{uuid}/set_slug/` — Set resource slug (path: uuid | request body)
+- `marketplace_resources_set_spending_limits` POST `/api/marketplace-resources/{uuid}/set_spending_limits/` — Set resource spending limits (path: uuid | request body)
 - `marketplace_resources_switch_plan` POST `/api/marketplace-resources/{uuid}/switch_plan/` — Switch resource plan (path: uuid | request body)
 - `marketplace_resources_team_list` GET `/api/marketplace-resources/{uuid}/team/` — Get resource team (path: uuid | 1 query param)
 - `marketplace_resources_team_members_list` GET `/api/marketplace-resources/{uuid}/team_members/` — List team members of a resource (path: uuid | 47 query params)

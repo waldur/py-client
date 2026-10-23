@@ -27,7 +27,7 @@ class RancherServiceCreateRequest:
         backend_id (Union[Unset, str]):
         runtime_state (Union[Unset, str]):
         namespace (Union[Unset, str]):
-        cluster_ip (Union[None, Unset, str]): An IPv4 or IPv6 address.
+        cluster_ip (Union[None, Unset, str]):
         selector (Union['RancherServiceCreateRequestSelectorType0', None, Unset]):
         target_workloads (Union[Unset, list['RancherWorkloadCreateRequest']]):
     """

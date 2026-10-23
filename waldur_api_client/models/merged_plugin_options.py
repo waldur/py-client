@@ -228,6 +228,13 @@ class MergedPluginOptions:
             by one: request, assign, limit, pause, resume and delete them. Without it a resource's keys can only be revealed
             and rotated. Nothing checks the claim: turn it on only if the agent's backend supports per-key commands (such as
             the Envoy AI Gateway); on one that does not (such as Ceph S3) every such command errs.
+        api_key_limits (Union[Unset, bool]): Lets consumers set spending limits on API keys one by one. On unless set to
+            false; needs enable_api_key_provisioning. Turned off, no new key limit is accepted, and limits keys already hold
+            stay until cleared.
+        api_key_daily_usage (Union[Unset, bool]): Declares that the site agent reports each API key's usage per day.
+            Only then are keys offered limits other than month: the day and week periods, and the quarter and year, that a
+            component offers to resources. Off unless set; needs enable_api_key_provisioning. Nothing checks the claim: turn
+            it on only if the agent reports per-key daily usage, or those limits are never reached.
         auto_approve_marketplace_script (Union[Unset, bool]): If set to False, all orders require manual provider
             approval, including for service provider owners and staff Default: True.
         highlight_backend_id_display (Union[Unset, bool]): Defines if backend_id should be shown more prominently by the
@@ -343,6 +350,8 @@ class MergedPluginOptions:
     slurm_periodic_policy_enabled: Union[Unset, bool] = False
     enforce_qos: Union[Unset, bool] = False
     enable_api_key_provisioning: Union[Unset, bool] = UNSET
+    api_key_limits: Union[Unset, bool] = UNSET
+    api_key_daily_usage: Union[Unset, bool] = UNSET
     auto_approve_marketplace_script: Union[Unset, bool] = True
     highlight_backend_id_display: Union[Unset, bool] = False
     backend_id_display_label: Union[Unset, str] = "Backend ID"
@@ -652,6 +661,10 @@ class MergedPluginOptions:
 
         enable_api_key_provisioning = self.enable_api_key_provisioning
 
+        api_key_limits = self.api_key_limits
+
+        api_key_daily_usage = self.api_key_daily_usage
+
         auto_approve_marketplace_script = self.auto_approve_marketplace_script
 
         highlight_backend_id_display = self.highlight_backend_id_display
@@ -883,6 +896,10 @@ class MergedPluginOptions:
             field_dict["enforce_qos"] = enforce_qos
         if enable_api_key_provisioning is not UNSET:
             field_dict["enable_api_key_provisioning"] = enable_api_key_provisioning
+        if api_key_limits is not UNSET:
+            field_dict["api_key_limits"] = api_key_limits
+        if api_key_daily_usage is not UNSET:
+            field_dict["api_key_daily_usage"] = api_key_daily_usage
         if auto_approve_marketplace_script is not UNSET:
             field_dict["auto_approve_marketplace_script"] = auto_approve_marketplace_script
         if highlight_backend_id_display is not UNSET:
@@ -1330,6 +1347,10 @@ class MergedPluginOptions:
 
         enable_api_key_provisioning = d.pop("enable_api_key_provisioning", UNSET)
 
+        api_key_limits = d.pop("api_key_limits", UNSET)
+
+        api_key_daily_usage = d.pop("api_key_daily_usage", UNSET)
+
         auto_approve_marketplace_script = d.pop("auto_approve_marketplace_script", UNSET)
 
         highlight_backend_id_display = d.pop("highlight_backend_id_display", UNSET)
@@ -1445,6 +1466,8 @@ class MergedPluginOptions:
             slurm_periodic_policy_enabled=slurm_periodic_policy_enabled,
             enforce_qos=enforce_qos,
             enable_api_key_provisioning=enable_api_key_provisioning,
+            api_key_limits=api_key_limits,
+            api_key_daily_usage=api_key_daily_usage,
             auto_approve_marketplace_script=auto_approve_marketplace_script,
             highlight_backend_id_display=highlight_backend_id_display,
             backend_id_display_label=backend_id_display_label,

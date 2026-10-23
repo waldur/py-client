@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.2.dev.20261022194127
+# Version: 8.1.4-rc.2.dev.20261023104814
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -928,7 +928,7 @@ Summary: Redirect user to OIDC authorization endpoint
 ### api_auth_logout
 POST /api-auth/logout/
 Summary: Log out
-Description: Logs out the current user by deleting their authentication token. If single logout (SLO) is supported for the current authentication method (e.g., SAML2 or OIDC), this endpoint may return a logout URL to which the user should be redirected to complete the logout process on the identity provider s...
+Description: Logs out the current user by deleting their authentication token and revoking the identity provider tokens Waldur keeps for them. If single logout (SLO) is supported for the current authentication method (e.g., SAML2 or OIDC), this endpoint may return a logout URL to which the user should be redi...
 
 ### api_auth_password
 POST /api-auth/password/
@@ -11323,7 +11323,7 @@ Path parameters:
 ### marketplace_resource_api_keys_partial_update
 PATCH /api/marketplace-resource-api-keys/{uuid}/
 Summary: Edit an API key
-Description: Changes the key's assignee, limits or model allowlist. A change to limits or models is sent to the site agent as an update command, unless the key is paused: resuming it applies them. A change of assignee (setting, changing or clearing it) on a key that holds a secret rotates the key instead, car...
+Description: Changes the key's limits or model allowlist. A change is sent to the site agent as an update command, unless the key is paused: resuming it applies them. The key's assignee is set when the key is requested and cannot be changed: an edit that names user, null included, is refused with 400. To hand...
 Path parameters:
   - uuid
 Request body: yes
@@ -11345,7 +11345,7 @@ Path parameters:
 ### marketplace_resource_api_keys_report_usage
 POST /api/marketplace-resource-api-keys/{uuid}/report_usage/
 Summary: Report API key usage
-Description: Used by the site agent to report a key's usage so far in a month, per component type. Merged into the key's usage for that month; a later month replaces it, and an earlier one is refused. A key whose usage reaches its limit is paused, and a key paused for its limit is resumed once under it again....
+Description: Used by the site agent to report a key's usage so far in a month, per component type, and its usage per day. A month report is merged into the key's usage for that month; a later month replaces it, and an earlier one is refused. A date reported again replaces its amount, and the month's usage of ...
 Path parameters:
   - uuid
 Request body: yes
@@ -11367,14 +11367,14 @@ Path parameters:
 ### marketplace_resource_api_keys_reveal_retrieve
 GET /api/marketplace-resource-api-keys/{uuid}/reveal/
 Summary: Reveal an API key
-Description: Returns the decrypted key value. Available to users with resource access (except minimal-visibility viewers); a key with an assignee only to the assignee. Staff and support always. Audit-logged.
+Description: Returns the decrypted key value. Available to members of the resource's project or organization (except minimal-visibility viewers); a key with an assignee only to the assignee. Staff and support are no exception: staff reveal a key by impersonating a user who may. Audit-logged; under impersonati...
 Path parameters:
   - uuid
 
 ### marketplace_resource_api_keys_rotate
 POST /api/marketplace-resource-api-keys/{uuid}/rotate/
 Summary: Rotate an API key
-Description: Asks the site agent to replace this key's value at the backend. The other keys are untouched (zero downtime). Available to whoever manages the resource's users and to the key's assignee.
+Description: Asks the site agent to replace this key's value at the backend. The other keys are untouched (zero downtime). Available to whoever manages the resource's API keys and to the key's assignee.
 Path parameters:
   - uuid
 
@@ -12075,6 +12075,14 @@ Request body: yes
 POST /api/marketplace-resources/{uuid}/set_slug/
 Summary: Set resource slug
 Description: Updates the slug of a resource. Requires staff or the RESOURCE.SET_SLUG permission, which no role holds unless the deployment grants it. Other than staff, a holder cannot change the slug once the resource's creation order is executing or the resource exists in the backend.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resources_set_spending_limits
+POST /api/marketplace-resources/{uuid}/set_spending_limits/
+Summary: Set resource spending limits
+Description: Replaces the spending limits of the resource's usage-based components at once, with no order or provider approval. Each value must be within the provider's maximum. The usage-limit restriction is re-evaluated immediately.
 Path parameters:
   - uuid
 Request body: yes
