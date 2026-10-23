@@ -251,6 +251,9 @@ class MergedPluginOptions:
         show_ssh_key_loss_warning (Union[Unset, bool]): Show a warning about unrecoverable loss of the SSH private key
             on the OpenStack instance order form. Default: False.
         hide_api_keys_tab (Union[Unset, bool]): Hide the API keys tab on resources of this offering.
+        display_prepaid_limits_as_total (Union[Unset, bool]): If set to True, the UI shows each prepaid component as the
+            total for the whole subscription (the monthly amount times the months ordered) instead of a monthly amount, and
+            the resource's limit_usage sums its usage over the whole subscription. Ordering and billing do not change.
     """
 
     account_scope: Union[AccountScope, BlankEnum, Unset] = UNSET
@@ -361,6 +364,7 @@ class MergedPluginOptions:
     disabled_resource_actions: Union[Unset, list[str]] = UNSET
     show_ssh_key_loss_warning: Union[Unset, bool] = False
     hide_api_keys_tab: Union[Unset, bool] = UNSET
+    display_prepaid_limits_as_total: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -684,6 +688,8 @@ class MergedPluginOptions:
 
         hide_api_keys_tab = self.hide_api_keys_tab
 
+        display_prepaid_limits_as_total = self.display_prepaid_limits_as_total
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -917,6 +923,8 @@ class MergedPluginOptions:
             field_dict["show_ssh_key_loss_warning"] = show_ssh_key_loss_warning
         if hide_api_keys_tab is not UNSET:
             field_dict["hide_api_keys_tab"] = hide_api_keys_tab
+        if display_prepaid_limits_as_total is not UNSET:
+            field_dict["display_prepaid_limits_as_total"] = display_prepaid_limits_as_total
 
         return field_dict
 
@@ -1368,6 +1376,8 @@ class MergedPluginOptions:
 
         hide_api_keys_tab = d.pop("hide_api_keys_tab", UNSET)
 
+        display_prepaid_limits_as_total = d.pop("display_prepaid_limits_as_total", UNSET)
+
         merged_plugin_options = cls(
             account_scope=account_scope,
             username_generation_policy=username_generation_policy,
@@ -1477,6 +1487,7 @@ class MergedPluginOptions:
             disabled_resource_actions=disabled_resource_actions,
             show_ssh_key_loss_warning=show_ssh_key_loss_warning,
             hide_api_keys_tab=hide_api_keys_tab,
+            display_prepaid_limits_as_total=display_prepaid_limits_as_total,
         )
 
         merged_plugin_options.additional_properties = d

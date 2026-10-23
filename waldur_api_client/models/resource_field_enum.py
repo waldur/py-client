@@ -62,6 +62,7 @@ class ResourceFieldEnum(str, Enum):
     PLAN_NAME = "plan_name"
     PLAN_UNIT = "plan_unit"
     PLAN_UUID = "plan_uuid"
+    PREPAID_TOTAL_COMPONENT_TYPES = "prepaid_total_component_types"
     PROJECT = "project"
     PROJECT_DESCRIPTION = "project_description"
     PROJECT_EFFECTIVE_END_DATE = "project_effective_end_date"

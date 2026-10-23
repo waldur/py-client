@@ -121,6 +121,9 @@ class BookingResource:
             consumed usage. Sums the ComponentUsage rows of the component's current period (the monthly billing period
             unless the component defines a longer limit_period), i.e. the period's high-watermark rather than the
             instantaneous current_usages value.
+        prepaid_total_component_types (Union[Unset, list[str]]): Component types whose limit_usage covers the whole
+            subscription, so the UI shows their limit as the monthly limit times the months ordered. Empty unless the
+            offering shows prepaid limits as a total (display_prepaid_limits_as_total).
         downscaled (Union[Unset, bool]):
         restrict_member_access (Union[Unset, bool]):
         paused (Union[Unset, bool]):
@@ -233,6 +236,7 @@ class BookingResource:
     end_date_updated_at: Union[None, Unset, datetime.datetime] = UNSET
     username: Union[None, Unset, str] = UNSET
     limit_usage: Union[Unset, "BookingResourceLimitUsage"] = UNSET
+    prepaid_total_component_types: Union[Unset, list[str]] = UNSET
     downscaled: Union[Unset, bool] = UNSET
     restrict_member_access: Union[Unset, bool] = UNSET
     paused: Union[Unset, bool] = UNSET
@@ -523,6 +527,10 @@ class BookingResource:
         if not isinstance(self.limit_usage, Unset):
             limit_usage = self.limit_usage.to_dict()
 
+        prepaid_total_component_types: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.prepaid_total_component_types, Unset):
+            prepaid_total_component_types = self.prepaid_total_component_types
+
         downscaled = self.downscaled
 
         restrict_member_access = self.restrict_member_access
@@ -794,6 +802,8 @@ class BookingResource:
             field_dict["username"] = username
         if limit_usage is not UNSET:
             field_dict["limit_usage"] = limit_usage
+        if prepaid_total_component_types is not UNSET:
+            field_dict["prepaid_total_component_types"] = prepaid_total_component_types
         if downscaled is not UNSET:
             field_dict["downscaled"] = downscaled
         if restrict_member_access is not UNSET:
@@ -1285,6 +1295,8 @@ class BookingResource:
         else:
             limit_usage = BookingResourceLimitUsage.from_dict(_limit_usage)
 
+        prepaid_total_component_types = cast(list[str], d.pop("prepaid_total_component_types", UNSET))
+
         downscaled = d.pop("downscaled", UNSET)
 
         restrict_member_access = d.pop("restrict_member_access", UNSET)
@@ -1559,6 +1571,7 @@ class BookingResource:
             end_date_updated_at=end_date_updated_at,
             username=username,
             limit_usage=limit_usage,
+            prepaid_total_component_types=prepaid_total_component_types,
             downscaled=downscaled,
             restrict_member_access=restrict_member_access,
             paused=paused,

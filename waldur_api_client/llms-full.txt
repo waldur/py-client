@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.2.dev.20261023165735
+# Version: 8.1.4-rc.2.dev.20261023185034
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2109,12 +2109,13 @@ Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -2127,12 +2128,13 @@ Summary: List users and their roles in a scope
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -3659,12 +3661,13 @@ Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -3677,12 +3680,13 @@ Summary: List users and their roles in a scope
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -10003,12 +10007,13 @@ Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -10021,12 +10026,13 @@ Summary: List users and their roles in a scope
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -10470,12 +10476,13 @@ Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -10488,12 +10495,13 @@ Summary: List users and their roles in a scope
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -10775,12 +10783,13 @@ Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -10793,12 +10802,13 @@ Summary: List users and their roles in a scope
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -11632,12 +11642,13 @@ Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -11650,12 +11661,13 @@ Summary: List users and their roles in a scope
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -11941,12 +11953,13 @@ Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -11959,12 +11972,13 @@ Summary: List users and their roles in a scope
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -13525,12 +13539,13 @@ Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -13543,12 +13558,13 @@ Summary: List users and their roles in a scope
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -16768,12 +16784,13 @@ Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -16786,12 +16803,13 @@ Summary: List users and their roles in a scope
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -20634,12 +20652,13 @@ Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -20652,12 +20671,13 @@ Summary: List users and their roles in a scope
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -21057,12 +21077,13 @@ Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -21075,12 +21096,13 @@ Summary: List users and their roles in a scope
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -21596,12 +21618,13 @@ Summary: List users and their roles in a scope
 Description: Retrieves a list of users who have a role within a specific scope (e.g., a project or an organization). The list can be filtered by user details or role.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
@@ -21614,12 +21637,13 @@ Summary: List users and their roles in a scope
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - uuid
-Query parameters (10):
+Query parameters (11):
   - field — Fields to include in response
   - full_name — User full name
   - native_name — User native name
   - o — Ordering fields
   - role — Role UUID or name. Repeat to filter by several roles.
+  - role_template — Role name. Matches that role and organization copies of it. Repeat to match several. Omit to leave the role filter unchanged.
   - search_string — Search string for user
   - user — User UUID
   - user_slug — User slug
