@@ -27,9 +27,8 @@ class ResourceApiKeyCreateRequest:
             together with spending_limits.
         spending_limits (Union['ResourceApiKeyCreateRequestSpendingLimitsType0', None, Unset]): Limits per component
             type and period, replacing the key's limits; a null amount clears that period's limit. Only where the offering's
-            api_key_limits is not off, and not on a component the plan prices at zero. A period other than month must be
-            offered on the component and needs the offering's api_key_daily_usage. A limit may not exceed the resource's
-            spending limit for the same period.
+            api_key_limits is not off. A period other than month must be offered on the component and needs the offering's
+            api_key_daily_usage. A limit may not exceed the resource's spending limit for the same period.
         allowed_models (Union[Unset, list[str]]): Models the key may call: ["*"] for every model, an empty list for
             none. Absent, a new key gets none and an edited one keeps its list.
         user (Union[None, UUID, Unset]): Assignee. When set, only this user can reveal the key. It is held until the key

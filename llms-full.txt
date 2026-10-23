@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.2.dev.20261023104814
+# Version: 8.1.4-rc.2.dev.20261023132234
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -17755,6 +17755,13 @@ Request body: yes
 GET /api/openstack-instances/{uuid}/floating_ips/
 Summary: List instance floating IPs
 Description: Get a list of instance floating IPs
+Path parameters:
+  - uuid
+
+### openstack_instances_hard_reboot
+POST /api/openstack-instances/{uuid}/hard_reboot/
+Summary: Hard reboot instance
+Description: Power-cycle the instance without waiting for the guest OS to shut down. Unlike restart, it also recovers an instance that is in ERROR, paused, suspended or stuck in a soft reboot.
 Path parameters:
   - uuid
 

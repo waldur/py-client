@@ -16,9 +16,8 @@ T = TypeVar("T", bound="ResourceApiKeyCreateRequestSpendingLimitsType0")
 @_attrs_define
 class ResourceApiKeyCreateRequestSpendingLimitsType0:
     """Limits per component type and period, replacing the key's limits; a null amount clears that period's limit. Only
-    where the offering's api_key_limits is not off, and not on a component the plan prices at zero. A period other than
-    month must be offered on the component and needs the offering's api_key_daily_usage. A limit may not exceed the
-    resource's spending limit for the same period.
+    where the offering's api_key_limits is not off. A period other than month must be offered on the component and needs
+    the offering's api_key_daily_usage. A limit may not exceed the resource's spending limit for the same period.
 
     """
 

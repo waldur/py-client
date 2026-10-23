@@ -2827,6 +2827,7 @@ Module: `waldur_api_client.api.openstack_instances`
 - `openstack_instances_console_log` POST `/api/openstack-instances/{uuid}/console_log/` — Get console log (path: uuid | request body)
 - `openstack_instances_diagnose_connectivity` POST `/api/openstack-instances/{uuid}/diagnose_connectivity/` — Diagnose connectivity (path: uuid | request body)
 - `openstack_instances_floating_ips_list` GET `/api/openstack-instances/{uuid}/floating_ips/` — List instance floating IPs (path: uuid)
+- `openstack_instances_hard_reboot` POST `/api/openstack-instances/{uuid}/hard_reboot/` — Hard reboot instance (path: uuid)
 - `openstack_instances_placement_allocations_list` GET `/api/openstack-instances/{uuid}/placement_allocations/` — Get Placement allocations for the instance (path: uuid)
 - `openstack_instances_ports_list` GET `/api/openstack-instances/{uuid}/ports/` — List instance ports (path: uuid)
 - `openstack_instances_pull` POST `/api/openstack-instances/{uuid}/pull/` — Synchronize resource state (path: uuid)
