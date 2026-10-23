@@ -9,8 +9,8 @@ T = TypeVar("T", bound="ResourceApiKeyUsageRequestUsages")
 
 @_attrs_define
 class ResourceApiKeyUsageRequestUsages:
-    """The key's usage so far in billing_period, per component type. Rejected for a component that has daily amounts in
-    that month.
+    """The key's usage so far in billing_period, per component type. A figure never drops: one lower than the key holds for
+    the month leaves the higher one. Rejected for a component that has daily amounts in that month.
 
     """
 

@@ -128,8 +128,9 @@ class BookingResource:
             downscaled) was automatically applied because reported usage reached a component limit. Empty when no such
             restriction is active. Used so the automatic lift never clears a restriction that was set for another reason.
         usage_limit_resumes_at (Union[None, Unset, datetime.datetime]): When the spending limits that restrict the
-            resource reset and the restriction lifts. Empty when no spending limit restricts the resource, or when a limit-
-            based component's limit does too.
+            resource reset and the restriction lifts. Empty when no spending limit restricts the resource, when a limit-
+            based component's limit does too, or while a reached total limit holds it: a total never resets, so the
+            restriction lifts only when that limit is raised or cleared.
         spending_limits (Union[Unset, BookingResourceSpendingLimits]): Spending limits on usage-based components, per
             period. Changed with the set_spending_limits action.
         spending_limit_status (Union[Unset, list['SpendingLimitStatus']]):

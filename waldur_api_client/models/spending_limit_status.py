@@ -20,7 +20,8 @@ class SpendingLimitStatus:
         period (Union[Unset, SpendingLimitPeriodEnum]):
         limit (Union[Unset, float]):
         used (Union[Unset, float]): Usage reported in the current period.
-        resets_at (Union[Unset, datetime.datetime]): When the current period ends and its usage starts from zero.
+        resets_at (Union[None, Unset, datetime.datetime]): When the current period ends and its usage starts from zero.
+            Null for total, which never resets.
         reached (Union[Unset, bool]):
         last_reported_at (Union[None, Unset, datetime.datetime]): When usage of the component was last reported.
     """
@@ -29,7 +30,7 @@ class SpendingLimitStatus:
     period: Union[Unset, SpendingLimitPeriodEnum] = UNSET
     limit: Union[Unset, float] = UNSET
     used: Union[Unset, float] = UNSET
-    resets_at: Union[Unset, datetime.datetime] = UNSET
+    resets_at: Union[None, Unset, datetime.datetime] = UNSET
     reached: Union[Unset, bool] = UNSET
     last_reported_at: Union[None, Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -45,9 +46,13 @@ class SpendingLimitStatus:
 
         used = self.used
 
-        resets_at: Union[Unset, str] = UNSET
-        if not isinstance(self.resets_at, Unset):
+        resets_at: Union[None, Unset, str]
+        if isinstance(self.resets_at, Unset):
+            resets_at = UNSET
+        elif isinstance(self.resets_at, datetime.datetime):
             resets_at = self.resets_at.isoformat()
+        else:
+            resets_at = self.resets_at
 
         reached = self.reached
 
@@ -95,12 +100,22 @@ class SpendingLimitStatus:
 
         used = d.pop("used", UNSET)
 
-        _resets_at = d.pop("resets_at", UNSET)
-        resets_at: Union[Unset, datetime.datetime]
-        if isinstance(_resets_at, Unset):
-            resets_at = UNSET
-        else:
-            resets_at = isoparse(_resets_at)
+        def _parse_resets_at(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                resets_at_type_0 = isoparse(data)
+
+                return resets_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        resets_at = _parse_resets_at(d.pop("resets_at", UNSET))
 
         reached = d.pop("reached", UNSET)
 

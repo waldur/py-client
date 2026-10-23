@@ -232,9 +232,10 @@ class MergedPluginOptions:
             false; needs enable_api_key_provisioning. Turned off, no new key limit is accepted, and limits keys already hold
             stay until cleared.
         api_key_daily_usage (Union[Unset, bool]): Declares that the site agent reports each API key's usage per day.
-            Only then are keys offered limits other than month: the day and week periods, and the quarter and year, that a
-            component offers to resources. Off unless set; needs enable_api_key_provisioning. Nothing checks the claim: turn
-            it on only if the agent reports per-key daily usage, or those limits are never reached.
+            Only then are keys offered the day and week periods, and the quarter and year, that a component offers to
+            resources; month, and total where the component offers it, are offered without it, as they need no usage per
+            day. Off unless set; needs enable_api_key_provisioning. Nothing checks the claim: turn it on only if the agent
+            reports per-key daily usage, or those limits are never reached.
         auto_approve_marketplace_script (Union[Unset, bool]): If set to False, all orders require manual provider
             approval, including for service provider owners and staff Default: True.
         highlight_backend_id_display (Union[Unset, bool]): Defines if backend_id should be shown more prominently by the

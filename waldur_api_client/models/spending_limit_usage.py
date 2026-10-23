@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -19,7 +19,8 @@ class SpendingLimitUsage:
         period (SpendingLimitPeriodEnum):
         limit (float):
         used (float): Usage reported in the current period.
-        resets_at (datetime.datetime): When the current period ends and its usage starts from zero.
+        resets_at (Union[None, datetime.datetime]): When the current period ends and its usage starts from zero. Null
+            for total, which never resets.
         reached (bool):
     """
 
@@ -27,7 +28,7 @@ class SpendingLimitUsage:
     period: SpendingLimitPeriodEnum
     limit: float
     used: float
-    resets_at: datetime.datetime
+    resets_at: Union[None, datetime.datetime]
     reached: bool
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -40,7 +41,11 @@ class SpendingLimitUsage:
 
         used = self.used
 
-        resets_at = self.resets_at.isoformat()
+        resets_at: Union[None, str]
+        if isinstance(self.resets_at, datetime.datetime):
+            resets_at = self.resets_at.isoformat()
+        else:
+            resets_at = self.resets_at
 
         reached = self.reached
 
@@ -70,7 +75,20 @@ class SpendingLimitUsage:
 
         used = d.pop("used")
 
-        resets_at = isoparse(d.pop("resets_at"))
+        def _parse_resets_at(data: object) -> Union[None, datetime.datetime]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                resets_at_type_0 = isoparse(data)
+
+                return resets_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, datetime.datetime], data)
+
+        resets_at = _parse_resets_at(d.pop("resets_at"))
 
         reached = d.pop("reached")
 

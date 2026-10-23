@@ -21,13 +21,17 @@ class ResourceApiKeyUsageRequest:
     """
     Attributes:
         usages (Union[Unset, ResourceApiKeyUsageRequestUsages]): The key's usage so far in billing_period, per component
-            type. Rejected for a component that has daily amounts in that month.
+            type. A figure never drops: one lower than the key holds for the month leaves the higher one. Rejected for a
+            component that has daily amounts in that month.
         daily_usages (Union[Unset, list['ComponentDailyUsageItemRequest']]): The key's usage per UTC date and component
             type; a date reported again replaces its amount. The month's usage of a component with daily amounts is their
-            sum. Needed for limits other than month. At most 1000 items, dated from the start of the current year, or of the
-            previous month when that is earlier.
+            sum. Needed for limits other than month and total. Days of a month before the one the key holds raise that
+            month's figure for a total. At most 1000 items, dated from the start of the current year, or of the previous
+            month when that is earlier.
         billing_period (Union[Unset, datetime.date]): Any day of the month usages belongs to; the current month when
-            omitted. Only the latest month is kept, so a later month starts afresh.
+            omitted. A later month than the key holds starts afresh. An earlier one, from the start of the current year or
+            of the previous month when that is earlier, raises that month's figure for a total limit; older ones are
+            refused.
     """
 
     usages: Union[Unset, "ResourceApiKeyUsageRequestUsages"] = UNSET

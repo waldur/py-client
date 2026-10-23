@@ -37,8 +37,9 @@ class OfferingComponentRequest:
         is_boolean (Union[Unset, bool]):
         default_limit (Union[None, Unset, float]):
         spending_limit_periods (Union[Unset, OfferingComponentRequestSpendingLimitPeriods]): Periods (day, week, month,
-            quarter, year) for which customers can set a spending limit on this usage-based component. Day and week need the
-            integration to report usage per day. Empty when customers cannot set spending limits.
+            quarter, year, total) for which customers can set a spending limit on this usage-based component; total counts
+            all the usage since the resource started and never resets. Day and week need the integration to report usage per
+            day. Empty when customers cannot set spending limits.
         is_prepaid (Union[Unset, bool]):
         overage_component (Union[None, UUID, Unset]):
         min_prepaid_duration (Union[None, Unset, int]):

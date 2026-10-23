@@ -13,9 +13,9 @@ T = TypeVar("T", bound="UpdateOfferingComponentRequestSpendingLimitPeriods")
 
 @_attrs_define
 class UpdateOfferingComponentRequestSpendingLimitPeriods:
-    """Periods (day, week, month, quarter, year) for which customers can set a spending limit on this usage-based
-    component. Day and week need the integration to report usage per day. Empty when customers cannot set spending
-    limits.
+    """Periods (day, week, month, quarter, year, total) for which customers can set a spending limit on this usage-based
+    component; total counts all the usage since the resource started and never resets. Day and week need the integration
+    to report usage per day. Empty when customers cannot set spending limits.
 
     """
 

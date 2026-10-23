@@ -5,6 +5,7 @@ class SpendingLimitPeriodEnum(str, Enum):
     DAY = "day"
     MONTH = "month"
     QUARTER = "quarter"
+    TOTAL = "total"
     WEEK = "week"
     YEAR = "year"
 

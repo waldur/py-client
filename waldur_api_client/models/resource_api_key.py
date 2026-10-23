@@ -42,8 +42,12 @@ class ResourceApiKey:
             list. The site agent applies this one.
         current_usages (Union['ResourceApiKeyCurrentUsagesType0', None]):
         usage_period (Union[None, datetime.date]):
-        paused_by_limit (Union[None, bool]):
-        limit_resumes_at (Union[None, datetime.datetime]):
+        paused_by_limit (Union[None, bool]): Waldur paused the key because its usage reached a limit. Such a key is
+            resumed automatically once its usage is under its limits again: when the period of the limit resets, or when a
+            limit is raised. A total limit never resets, so only raising or clearing it does.
+        limit_resumes_at (Union[None, datetime.datetime]): When every limit that paused the key has reset, so that it
+            resumes without a new usage report. Empty while a reached total limit holds the key: a total never resets, so
+            the key resumes only when that limit is raised or cleared.
         api_key (str):
         client_id (Union[Unset, str]):
         state (Union[Unset, ResourceApiKeyState]):
