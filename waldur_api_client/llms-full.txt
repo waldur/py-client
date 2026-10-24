@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.2.dev.20261023185034
+# Version: 8.1.4-rc.3.dev.20261024192340
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -1696,21 +1696,6 @@ Path parameters:
   - uuid
 Query parameters (1):
   - field
-
-### booking_offerings_google_calendar_sync
-POST /api/booking-offerings/{uuid}/google_calendar_sync/
-Path parameters:
-  - uuid
-
-### booking_offerings_share_google_calendar
-POST /api/booking-offerings/{uuid}/share_google_calendar/
-Path parameters:
-  - uuid
-
-### booking_offerings_unshare_google_calendar
-POST /api/booking-offerings/{uuid}/unshare_google_calendar/
-Path parameters:
-  - uuid
 
 ============================================================
 ## booking-resources  (module: waldur_api_client.api.booking_resources)
@@ -4488,6 +4473,16 @@ Path parameters:
   - uuid
 
 ============================================================
+## export-pdf  (module: waldur_api_client.api.export_pdf)
+============================================================
+
+### export_pdf
+POST /api/export-pdf/
+Summary: Export a table or chart as PDF
+Description: Renders the title with either a table (columns and rows of text) or a chart (a base64-encoded PNG) as a PDF. Nothing is read from the database: the PDF holds only what the request sends. A table may have at most 10000 rows, 100 columns, 50000 cells and 1000000 characters; an image at most 5 MB an...
+Request body: yes
+
+============================================================
 ## external-links  (module: waldur_api_client.api.external_links)
 ============================================================
 
@@ -4656,51 +4651,6 @@ Path parameters:
 POST /api/freeipa-profiles/{uuid}/update_ssh_keys/
 Summary: Update SSH keys for profile
 Description: Update SSH keys for profile.
-Path parameters:
-  - uuid
-
-============================================================
-## google-auth  (module: waldur_api_client.api.google_auth)
-============================================================
-
-### google_auth_list
-GET /api/google-auth/
-Query parameters (2):
-  - field
-  - has_credentials — has_credentials
-
-### google_auth_count
-HEAD /api/google-auth/
-Summary: Get number of items in the collection matching the request parameters
-Description: Get number of items in the collection matching the request parameters.
-Query parameters (1):
-  - has_credentials — has_credentials
-
-### google_auth_callback_retrieve
-GET /api/google-auth/callback/
-Summary: Callback endpoint for Google authorization
-Description: Callback endpoint for Google authorization.
-Query parameters (2):
-  - code (required) — Authorization code
-  - state (required) — Service provider UUID
-
-### google_auth_callback_count
-HEAD /api/google-auth/callback/
-Summary: Get number of items in the collection matching the request parameters
-Description: Get number of items in the collection matching the request parameters.
-Query parameters (2):
-  - code (required) — Authorization code
-  - state (required) — Service provider UUID
-
-### google_auth_retrieve
-GET /api/google-auth/{uuid}/
-Path parameters:
-  - uuid
-Query parameters (1):
-  - field
-
-### google_auth_authorize_retrieve
-GET /api/google-auth/{uuid}/authorize/
 Path parameters:
   - uuid
 

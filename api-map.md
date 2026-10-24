@@ -303,9 +303,6 @@ Module: `waldur_api_client.api.booking_offerings`
 - `booking_offerings_list` GET `/api/booking-offerings/` (1 query param)
 - `booking_offerings_count` HEAD `/api/booking-offerings/` — Get number of items in the collection matching the request parameters (no params)
 - `booking_offerings_retrieve` GET `/api/booking-offerings/{uuid}/` (path: uuid | 1 query param)
-- `booking_offerings_google_calendar_sync` POST `/api/booking-offerings/{uuid}/google_calendar_sync/` (path: uuid)
-- `booking_offerings_share_google_calendar` POST `/api/booking-offerings/{uuid}/share_google_calendar/` (path: uuid)
-- `booking_offerings_unshare_google_calendar` POST `/api/booking-offerings/{uuid}/unshare_google_calendar/` (path: uuid)
 
 ## booking-resources
 Module: `waldur_api_client.api.booking_resources`
@@ -816,6 +813,11 @@ Module: `waldur_api_client.api.expertise_categories`
 - `expertise_categories_count` HEAD `/api/expertise-categories/` — Get number of items in the collection matching the request parameters (5 query params)
 - `expertise_categories_retrieve` GET `/api/expertise-categories/{uuid}/` (path: uuid)
 
+## export-pdf
+Module: `waldur_api_client.api.export_pdf`
+
+- `export_pdf` POST `/api/export-pdf/` — Export a table or chart as PDF (request body)
+
 ## external-links
 Module: `waldur_api_client.api.external_links`
 
@@ -849,16 +851,6 @@ Module: `waldur_api_client.api.freeipa_profiles`
 - `freeipa_profiles_update` PUT `/api/freeipa-profiles/{uuid}/` (path: uuid | request body)
 - `freeipa_profiles_partial_update` PATCH `/api/freeipa-profiles/{uuid}/` (path: uuid)
 - `freeipa_profiles_update_ssh_keys` POST `/api/freeipa-profiles/{uuid}/update_ssh_keys/` — Update SSH keys for profile (path: uuid)
-
-## google-auth
-Module: `waldur_api_client.api.google_auth`
-
-- `google_auth_list` GET `/api/google-auth/` (2 query params)
-- `google_auth_count` HEAD `/api/google-auth/` — Get number of items in the collection matching the request parameters (1 query param)
-- `google_auth_callback_retrieve` GET `/api/google-auth/callback/` — Callback endpoint for Google authorization (2 query params)
-- `google_auth_callback_count` HEAD `/api/google-auth/callback/` — Get number of items in the collection matching the request parameters (2 query params)
-- `google_auth_retrieve` GET `/api/google-auth/{uuid}/` (path: uuid | 1 query param)
-- `google_auth_authorize_retrieve` GET `/api/google-auth/{uuid}/authorize/` (path: uuid)
 
 ## helpdesk-health
 Module: `waldur_api_client.api.helpdesk_health`
