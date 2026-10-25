@@ -852,6 +852,15 @@ Module: `waldur_api_client.api.freeipa_profiles`
 - `freeipa_profiles_partial_update` PATCH `/api/freeipa-profiles/{uuid}/` (path: uuid)
 - `freeipa_profiles_update_ssh_keys` POST `/api/freeipa-profiles/{uuid}/update_ssh_keys/` — Update SSH keys for profile (path: uuid)
 
+## global-user-roles
+Module: `waldur_api_client.api.global_user_roles`
+
+- `global_user_roles_list` GET `/api/global-user-roles/` (no params)
+- `global_user_roles_count` HEAD `/api/global-user-roles/` — Get number of items in the collection matching the request parameters (no params)
+- `global_user_roles_create` POST `/api/global-user-roles/` — Grant a site-wide role (request body)
+- `global_user_roles_retrieve` GET `/api/global-user-roles/{uuid}/` (path: uuid)
+- `global_user_roles_destroy` DELETE `/api/global-user-roles/{uuid}/` (path: uuid)
+
 ## helpdesk-health
 Module: `waldur_api_client.api.helpdesk_health`
 

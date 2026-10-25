@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.3.dev.20261024201758
+# Version: 8.1.4-rc.3.dev.20261025154640
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -4651,6 +4651,34 @@ Path parameters:
 POST /api/freeipa-profiles/{uuid}/update_ssh_keys/
 Summary: Update SSH keys for profile
 Description: Update SSH keys for profile.
+Path parameters:
+  - uuid
+
+============================================================
+## global-user-roles  (module: waldur_api_client.api.global_user_roles)
+============================================================
+
+### global_user_roles_list
+GET /api/global-user-roles/
+
+### global_user_roles_count
+HEAD /api/global-user-roles/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+
+### global_user_roles_create
+POST /api/global-user-roles/
+Summary: Grant a site-wide role
+Description: Staff assigns a global role to a user. The role's content type must be global. An optional expiration time can be set.
+Request body: yes
+
+### global_user_roles_retrieve
+GET /api/global-user-roles/{uuid}/
+Path parameters:
+  - uuid
+
+### global_user_roles_destroy
+DELETE /api/global-user-roles/{uuid}/
 Path parameters:
   - uuid
 
@@ -20098,12 +20126,12 @@ Request body: yes
 ### personal_access_tokens_available_binding_targets_list
 GET /api/personal-access-tokens/available_binding_targets/
 Summary: List entity types the caller can bind each permission to
-Description: For each permission, which TYPE_MAP keys the caller could bind a PAT to.
+Description: For each permission, which scope types the caller could bind a PAT to.
 
 Drives the create-PAT frontend's type picker. For staff users every
 type is offered for every permission (they bypass UserRole checks).
 For other users we return only types where they hold an active role
-granting the permis...
+granting the permissi...
 
 ### personal_access_tokens_available_binding_targets_count
 HEAD /api/personal-access-tokens/available_binding_targets/

@@ -931,6 +931,7 @@ from .glauth_tree_user import GlauthTreeUser
 from .global_user_data_access_log import GlobalUserDataAccessLog
 from .global_user_data_access_log_context import GlobalUserDataAccessLogContext
 from .global_user_data_access_log_o_enum import GlobalUserDataAccessLogOEnum
+from .global_user_role_create_request import GlobalUserRoleCreateRequest
 from .good_direction_enum import GoodDirectionEnum
 from .group_invitation import GroupInvitation
 from .group_invitation_request import GroupInvitationRequest
@@ -4222,6 +4223,7 @@ __all__ = (
     "GlobalUserDataAccessLog",
     "GlobalUserDataAccessLogContext",
     "GlobalUserDataAccessLogOEnum",
+    "GlobalUserRoleCreateRequest",
     "GoodDirectionEnum",
     "GroupInvitation",
     "GroupInvitationRequest",
