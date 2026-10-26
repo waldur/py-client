@@ -388,6 +388,7 @@ class ConstanceSettings:
         matrix_livekit_url (Union[Unset, str]):
         matrix_livekit_public_url (Union[Unset, str]):
         site_agent_log_max_rows_per_identity (Union[Unset, int]):
+        api_token_max_lifetime_minutes (Union[Unset, int]):
         pat_enabled (Union[Unset, bool]):
         pat_max_lifetime_days (Union[Unset, int]):
         pat_max_tokens_per_user (Union[Unset, int]):
@@ -743,6 +744,7 @@ class ConstanceSettings:
     matrix_livekit_url: Union[Unset, str] = UNSET
     matrix_livekit_public_url: Union[Unset, str] = UNSET
     site_agent_log_max_rows_per_identity: Union[Unset, int] = UNSET
+    api_token_max_lifetime_minutes: Union[Unset, int] = UNSET
     pat_enabled: Union[Unset, bool] = UNSET
     pat_max_lifetime_days: Union[Unset, int] = UNSET
     pat_max_tokens_per_user: Union[Unset, int] = UNSET
@@ -1702,6 +1704,8 @@ class ConstanceSettings:
 
         site_agent_log_max_rows_per_identity = self.site_agent_log_max_rows_per_identity
 
+        api_token_max_lifetime_minutes = self.api_token_max_lifetime_minutes
+
         pat_enabled = self.pat_enabled
 
         pat_max_lifetime_days = self.pat_max_lifetime_days
@@ -2423,6 +2427,8 @@ class ConstanceSettings:
             field_dict["MATRIX_LIVEKIT_PUBLIC_URL"] = matrix_livekit_public_url
         if site_agent_log_max_rows_per_identity is not UNSET:
             field_dict["SITE_AGENT_LOG_MAX_ROWS_PER_IDENTITY"] = site_agent_log_max_rows_per_identity
+        if api_token_max_lifetime_minutes is not UNSET:
+            field_dict["API_TOKEN_MAX_LIFETIME_MINUTES"] = api_token_max_lifetime_minutes
         if pat_enabled is not UNSET:
             field_dict["PAT_ENABLED"] = pat_enabled
         if pat_max_lifetime_days is not UNSET:
@@ -3673,6 +3679,8 @@ class ConstanceSettings:
 
         site_agent_log_max_rows_per_identity = d.pop("SITE_AGENT_LOG_MAX_ROWS_PER_IDENTITY", UNSET)
 
+        api_token_max_lifetime_minutes = d.pop("API_TOKEN_MAX_LIFETIME_MINUTES", UNSET)
+
         pat_enabled = d.pop("PAT_ENABLED", UNSET)
 
         pat_max_lifetime_days = d.pop("PAT_MAX_LIFETIME_DAYS", UNSET)
@@ -4033,6 +4041,7 @@ class ConstanceSettings:
             matrix_livekit_url=matrix_livekit_url,
             matrix_livekit_public_url=matrix_livekit_public_url,
             site_agent_log_max_rows_per_identity=site_agent_log_max_rows_per_identity,
+            api_token_max_lifetime_minutes=api_token_max_lifetime_minutes,
             pat_enabled=pat_enabled,
             pat_max_lifetime_days=pat_max_lifetime_days,
             pat_max_tokens_per_user=pat_max_tokens_per_user,

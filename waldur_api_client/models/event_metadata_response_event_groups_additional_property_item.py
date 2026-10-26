@@ -409,6 +409,7 @@ class EventMetadataResponseEventGroupsAdditionalPropertyItem(str, Enum):
     USER_PASSWORD_REMOVED_BY_STAFF = "user_password_removed_by_staff"
     USER_PASSWORD_UPDATED = "user_password_updated"
     USER_PASSWORD_UPDATED_BY_STAFF = "user_password_updated_by_staff"
+    USER_TERMS_OF_SERVICE_ACCEPTED = "user_terms_of_service_accepted"
     USER_UPDATE_SUCCEEDED = "user_update_succeeded"
 
     def __str__(self) -> str:
