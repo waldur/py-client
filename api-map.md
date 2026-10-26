@@ -1510,6 +1510,14 @@ Module: `waldur_api_client.api.marketplace_openstack_duplicate_offerings`
 - `marketplace_openstack_duplicate_offerings_list` GET `/api/marketplace-openstack-duplicate-offerings/` (no params)
 - `marketplace_openstack_duplicate_offerings_count` HEAD `/api/marketplace-openstack-duplicate-offerings/` — Get number of items in the collection matching the request parameters (no params)
 
+## marketplace-openstack-instance-metrics
+Module: `waldur_api_client.api.marketplace_openstack_instance_metrics`
+
+- `marketplace_openstack_instance_metrics_retrieve` GET `/api/marketplace-openstack-instance-metrics/{uuid}/` — Get how often an instance's or volume's metrics are read (path: uuid)
+- `marketplace_openstack_instance_metrics_faster_updates` POST `/api/marketplace-openstack-instance-metrics/{uuid}/faster_updates/` — Read an instance's metrics faster for a while (path: uuid | request body)
+- `marketplace_openstack_instance_metrics_normal_updates` POST `/api/marketplace-openstack-instance-metrics/{uuid}/normal_updates/` — Return an instance to the provider's interval (path: uuid)
+- `marketplace_openstack_instance_metrics_update_now` POST `/api/marketplace-openstack-instance-metrics/{uuid}/update_now/` — Read an instance's metrics now (path: uuid)
+
 ## marketplace-orders
 Module: `waldur_api_client.api.marketplace_orders`
 

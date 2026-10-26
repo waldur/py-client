@@ -10,6 +10,7 @@ from ..models.action_on_usage_limit_enum import ActionOnUsageLimitEnum
 from ..models.billing_source_enum import BillingSourceEnum
 from ..models.blank_enum import BlankEnum
 from ..models.deployment_mode_enum import DeploymentModeEnum
+from ..models.instance_metrics_enum import InstanceMetricsEnum
 from ..models.posix_id_source_enum import PosixIdSourceEnum
 from ..models.resource_projects_limit_policy_enum import ResourceProjectsLimitPolicyEnum
 from ..models.storage_mode_enum import StorageModeEnum
@@ -156,6 +157,12 @@ class MergedPluginOptionsRequest:
             tenants from this offering.
         usage_poll_interval_minutes (Union[Unset, int]): Interval in minutes between usage polling for this offering
             (default: 60)
+        instance_metrics_enabled (Union[Unset, bool]): Collect custom metrics of the instances in tenants of this
+            offering and show them to their projects.
+        instance_metrics (Union[Unset, list[InstanceMetricsEnum]]): Instance and volume metrics shown to projects; empty
+            shows all of them.
+        instance_metrics_poll_interval_minutes (Union[Unset, int]): Minutes between custom metrics polls of each
+            instance in tenants of this offering (default: 360).
         billing_source (Union[Unset, BillingSourceEnum]):
         heappe_cluster_id (Union[None, Unset, str]): HEAppE cluster id
         heappe_local_base_path (Union[None, Unset, str]): HEAppE local base path
@@ -315,6 +322,9 @@ class MergedPluginOptionsRequest:
     snapshot_size_limit_gb: Union[Unset, int] = UNSET
     lbaas_enabled: Union[Unset, bool] = UNSET
     usage_poll_interval_minutes: Union[Unset, int] = UNSET
+    instance_metrics_enabled: Union[Unset, bool] = UNSET
+    instance_metrics: Union[Unset, list[InstanceMetricsEnum]] = UNSET
+    instance_metrics_poll_interval_minutes: Union[Unset, int] = UNSET
     billing_source: Union[Unset, BillingSourceEnum] = UNSET
     heappe_cluster_id: Union[None, Unset, str] = UNSET
     heappe_local_base_path: Union[None, Unset, str] = UNSET
@@ -535,6 +545,17 @@ class MergedPluginOptionsRequest:
         lbaas_enabled = self.lbaas_enabled
 
         usage_poll_interval_minutes = self.usage_poll_interval_minutes
+
+        instance_metrics_enabled = self.instance_metrics_enabled
+
+        instance_metrics: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.instance_metrics, Unset):
+            instance_metrics = []
+            for instance_metrics_item_data in self.instance_metrics:
+                instance_metrics_item = instance_metrics_item_data.value
+                instance_metrics.append(instance_metrics_item)
+
+        instance_metrics_poll_interval_minutes = self.instance_metrics_poll_interval_minutes
 
         billing_source: Union[Unset, str] = UNSET
         if not isinstance(self.billing_source, Unset):
@@ -809,6 +830,12 @@ class MergedPluginOptionsRequest:
             field_dict["lbaas_enabled"] = lbaas_enabled
         if usage_poll_interval_minutes is not UNSET:
             field_dict["usage_poll_interval_minutes"] = usage_poll_interval_minutes
+        if instance_metrics_enabled is not UNSET:
+            field_dict["instance_metrics_enabled"] = instance_metrics_enabled
+        if instance_metrics is not UNSET:
+            field_dict["instance_metrics"] = instance_metrics
+        if instance_metrics_poll_interval_minutes is not UNSET:
+            field_dict["instance_metrics_poll_interval_minutes"] = instance_metrics_poll_interval_minutes
         if billing_source is not UNSET:
             field_dict["billing_source"] = billing_source
         if heappe_cluster_id is not UNSET:
@@ -1172,6 +1199,17 @@ class MergedPluginOptionsRequest:
 
         usage_poll_interval_minutes = d.pop("usage_poll_interval_minutes", UNSET)
 
+        instance_metrics_enabled = d.pop("instance_metrics_enabled", UNSET)
+
+        instance_metrics = []
+        _instance_metrics = d.pop("instance_metrics", UNSET)
+        for instance_metrics_item_data in _instance_metrics or []:
+            instance_metrics_item = InstanceMetricsEnum(instance_metrics_item_data)
+
+            instance_metrics.append(instance_metrics_item)
+
+        instance_metrics_poll_interval_minutes = d.pop("instance_metrics_poll_interval_minutes", UNSET)
+
         _billing_source = d.pop("billing_source", UNSET)
         billing_source: Union[Unset, BillingSourceEnum]
         if isinstance(_billing_source, Unset):
@@ -1442,6 +1480,9 @@ class MergedPluginOptionsRequest:
             snapshot_size_limit_gb=snapshot_size_limit_gb,
             lbaas_enabled=lbaas_enabled,
             usage_poll_interval_minutes=usage_poll_interval_minutes,
+            instance_metrics_enabled=instance_metrics_enabled,
+            instance_metrics=instance_metrics,
+            instance_metrics_poll_interval_minutes=instance_metrics_poll_interval_minutes,
             billing_source=billing_source,
             heappe_cluster_id=heappe_cluster_id,
             heappe_local_base_path=heappe_local_base_path,

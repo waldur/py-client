@@ -987,6 +987,9 @@ from .importable_resource import ImportableResource
 from .inherited_account_setting import InheritedAccountSetting
 from .injection_severity_enum import InjectionSeverityEnum
 from .instance_flavor_change_request import InstanceFlavorChangeRequest
+from .instance_metrics_enum import InstanceMetricsEnum
+from .instance_metrics_faster_updates_request import InstanceMetricsFasterUpdatesRequest
+from .instance_metrics_polling import InstanceMetricsPolling
 from .instance_placement_allocation import InstancePlacementAllocation
 from .instance_placement_allocation_resources import InstancePlacementAllocationResources
 from .instance_rescue_request import InstanceRescueRequest
@@ -996,6 +999,7 @@ from .integration_status import IntegrationStatus
 from .integration_status_details import IntegrationStatusDetails
 from .integration_status_details_o_enum import IntegrationStatusDetailsOEnum
 from .integration_status_details_status_enum import IntegrationStatusDetailsStatusEnum
+from .interval_minutes_enum import IntervalMinutesEnum
 from .invitation import Invitation
 from .invitation_accept_error import InvitationAcceptError
 from .invitation_accept_request import InvitationAcceptRequest
@@ -4277,6 +4281,9 @@ __all__ = (
     "InheritedAccountSetting",
     "InjectionSeverityEnum",
     "InstanceFlavorChangeRequest",
+    "InstanceMetricsEnum",
+    "InstanceMetricsFasterUpdatesRequest",
+    "InstanceMetricsPolling",
     "InstancePlacementAllocation",
     "InstancePlacementAllocationResources",
     "InstanceRescueRequest",
@@ -4286,6 +4293,7 @@ __all__ = (
     "IntegrationStatusDetails",
     "IntegrationStatusDetailsOEnum",
     "IntegrationStatusDetailsStatusEnum",
+    "IntervalMinutesEnum",
     "Invitation",
     "InvitationAcceptError",
     "InvitationAcceptRequest",

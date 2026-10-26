@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.3.dev.20261026203835
+# Version: 8.1.4-rc.3.dev.20261026214427
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -8209,6 +8209,37 @@ GET /api/marketplace-openstack-duplicate-offerings/
 HEAD /api/marketplace-openstack-duplicate-offerings/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
+
+============================================================
+## marketplace-openstack-instance-metrics  (module: waldur_api_client.api.marketplace_openstack_instance_metrics)
+============================================================
+
+### marketplace_openstack_instance_metrics_retrieve
+GET /api/marketplace-openstack-instance-metrics/{uuid}/
+Summary: Get how often an instance's or volume's metrics are read
+Path parameters:
+  - uuid — UUID of the instance or volume resource.
+
+### marketplace_openstack_instance_metrics_faster_updates
+POST /api/marketplace-openstack-instance-metrics/{uuid}/faster_updates/
+Summary: Read an instance's metrics faster for a while
+Description: Reads the instance now, then every interval_minutes for the given hours, after which the provider's interval applies again. Asked on a volume, it applies to the instance the volume is attached to.
+Path parameters:
+  - uuid — UUID of the instance or volume resource.
+Request body: yes
+
+### marketplace_openstack_instance_metrics_normal_updates
+POST /api/marketplace-openstack-instance-metrics/{uuid}/normal_updates/
+Summary: Return an instance to the provider's interval
+Path parameters:
+  - uuid — UUID of the instance or volume resource.
+
+### marketplace_openstack_instance_metrics_update_now
+POST /api/marketplace-openstack-instance-metrics/{uuid}/update_now/
+Summary: Read an instance's metrics now
+Description: Refused while the last read, or the last one asked for, is less than five minutes old.
+Path parameters:
+  - uuid — UUID of the instance or volume resource.
 
 ============================================================
 ## marketplace-orders  (module: waldur_api_client.api.marketplace_orders)
