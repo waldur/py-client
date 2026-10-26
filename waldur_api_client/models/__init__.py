@@ -1965,7 +1965,6 @@ from .patched_issue_link_request import PatchedIssueLinkRequest
 from .patched_issue_request import PatchedIssueRequest
 from .patched_issue_status_request import PatchedIssueStatusRequest
 from .patched_issue_tag_request import PatchedIssueTagRequest
-from .patched_keycloak_user_group_membership_request import PatchedKeycloakUserGroupMembershipRequest
 from .patched_lexis_link_request import PatchedLexisLinkRequest
 from .patched_maintenance_announcement_offering_request import PatchedMaintenanceAnnouncementOfferingRequest
 from .patched_maintenance_announcement_offering_template_request import (
@@ -2749,6 +2748,7 @@ from .resource_suggest_name_request_attributes import ResourceSuggestNameRequest
 from .resource_switch_plan_request import ResourceSwitchPlanRequest
 from .resource_team_member import ResourceTeamMember
 from .resource_team_member_field_enum import ResourceTeamMemberFieldEnum
+from .resource_template_selection_mode_enum import ResourceTemplateSelectionModeEnum
 from .resource_terminate_request import ResourceTerminateRequest
 from .resource_terminate_request_termination_attributes import ResourceTerminateRequestTerminationAttributes
 from .resource_update import ResourceUpdate
@@ -5181,7 +5181,6 @@ __all__ = (
     "PatchedIssueRequest",
     "PatchedIssueStatusRequest",
     "PatchedIssueTagRequest",
-    "PatchedKeycloakUserGroupMembershipRequest",
     "PatchedLexisLinkRequest",
     "PatchedMaintenanceAnnouncementOfferingRequest",
     "PatchedMaintenanceAnnouncementOfferingTemplateRequest",
@@ -5911,6 +5910,7 @@ __all__ = (
     "ResourceSwitchPlanRequest",
     "ResourceTeamMember",
     "ResourceTeamMemberFieldEnum",
+    "ResourceTemplateSelectionModeEnum",
     "ResourceTerminateRequest",
     "ResourceTerminateRequestTerminationAttributes",
     "ResourceUpdate",

@@ -979,8 +979,6 @@ Module: `waldur_api_client.api.keycloak_user_group_memberships`
 - `keycloak_user_group_memberships_count` HEAD `/api/keycloak-user-group-memberships/` — Get number of items in the collection matching the request parameters (9 query params)
 - `keycloak_user_group_memberships_create` POST `/api/keycloak-user-group-memberships/` (request body)
 - `keycloak_user_group_memberships_retrieve` GET `/api/keycloak-user-group-memberships/{uuid}/` (path: uuid)
-- `keycloak_user_group_memberships_update` PUT `/api/keycloak-user-group-memberships/{uuid}/` (path: uuid | request body)
-- `keycloak_user_group_memberships_partial_update` PATCH `/api/keycloak-user-group-memberships/{uuid}/` (path: uuid | request body)
 - `keycloak_user_group_memberships_destroy` DELETE `/api/keycloak-user-group-memberships/{uuid}/` (path: uuid)
 
 ## keys

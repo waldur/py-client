@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.3.dev.20261025154640
+# Version: 8.1.4-rc.3.dev.20261026100800
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -5326,18 +5326,6 @@ GET /api/keycloak-user-group-memberships/{uuid}/
 Path parameters:
   - uuid
 
-### keycloak_user_group_memberships_update
-PUT /api/keycloak-user-group-memberships/{uuid}/
-Path parameters:
-  - uuid
-Request body: yes
-
-### keycloak_user_group_memberships_partial_update
-PATCH /api/keycloak-user-group-memberships/{uuid}/
-Path parameters:
-  - uuid
-Request body: yes
-
 ### keycloak_user_group_memberships_destroy
 DELETE /api/keycloak-user-group-memberships/{uuid}/
 Path parameters:
@@ -7456,7 +7444,7 @@ Query parameters (20):
   - role_name — Role name contains
   - role_uuid — Role UUID
   - scope_name — Scope name
-  - scope_type — Scope type
+  - scope_type — Scope type, as returned in scope_type: customer, project, offering, service_provider, call_organizer, call, proposal, resource, resource_project or global. A content type model name also matches.
   - scope_uuid — Scope UUID
   - user
   - user_slug — User slug contains
@@ -7482,7 +7470,7 @@ Query parameters (20):
   - role_name — Role name contains
   - role_uuid — Role UUID
   - scope_name — Scope name
-  - scope_type — Scope type
+  - scope_type — Scope type, as returned in scope_type: customer, project, offering, service_provider, call_organizer, call, proposal, resource, resource_project or global. A content type model name also matches.
   - scope_uuid — Scope UUID
   - user
   - user_slug — User slug contains
@@ -7515,7 +7503,7 @@ Query parameters (20):
   - role_name — Role name contains
   - role_uuid — Role UUID
   - scope_name — Scope name
-  - scope_type — Scope type
+  - scope_type — Scope type, as returned in scope_type: customer, project, offering, service_provider, call_organizer, call, proposal, resource, resource_project or global. A content type model name also matches.
   - scope_uuid — Scope UUID
   - user
   - user_slug — User slug contains
@@ -7541,7 +7529,7 @@ Query parameters (20):
   - role_name — Role name contains
   - role_uuid — Role UUID
   - scope_name — Scope name
-  - scope_type — Scope type
+  - scope_type — Scope type, as returned in scope_type: customer, project, offering, service_provider, call_organizer, call, proposal, resource, resource_project or global. A content type model name also matches.
   - scope_uuid — Scope UUID
   - user
   - user_slug — User slug contains
@@ -13155,7 +13143,7 @@ Query parameters (20):
   - role_name — Role name contains
   - role_uuid — Role UUID
   - scope_name — Scope name
-  - scope_type — Scope type
+  - scope_type — Scope type, as returned in scope_type: customer, project, offering, service_provider, call_organizer, call, proposal, resource, resource_project or global. A content type model name also matches.
   - scope_uuid — Scope UUID
   - user
   - user_slug — User slug contains
@@ -13182,7 +13170,7 @@ Query parameters (19):
   - role_name — Role name contains
   - role_uuid — Role UUID
   - scope_name — Scope name
-  - scope_type — Scope type
+  - scope_type — Scope type, as returned in scope_type: customer, project, offering, service_provider, call_organizer, call, proposal, resource, resource_project or global. A content type model name also matches.
   - scope_uuid — Scope UUID
   - user
   - user_slug — User slug contains
@@ -24178,7 +24166,7 @@ Query parameters (4):
   - object_id — Scope object id
   - role_name — Role name contains
   - role_uuid — Role UUID
-  - scope_type — Scope content type (e.g. 'offering', 'customer')
+  - scope_type — Scope type, as returned in scope_type: customer, project, offering, service_provider, call_organizer, call, proposal, resource, resource_project or global. A content type model name also matches.
 
 ### role_availabilities_count
 HEAD /api/role-availabilities/
@@ -24188,7 +24176,7 @@ Query parameters (4):
   - object_id — Scope object id
   - role_name — Role name contains
   - role_uuid — Role UUID
-  - scope_type — Scope content type (e.g. 'offering', 'customer')
+  - scope_type — Scope type, as returned in scope_type: customer, project, offering, service_provider, call_organizer, call, proposal, resource, resource_project or global. A content type model name also matches.
 
 ### role_availabilities_retrieve
 GET /api/role-availabilities/{uuid}/
@@ -26122,7 +26110,7 @@ Query parameters (20):
   - role_name — Role name contains
   - role_uuid — Role UUID
   - scope_name — Scope name
-  - scope_type — Scope type
+  - scope_type — Scope type, as returned in scope_type: customer, project, offering, service_provider, call_organizer, call, proposal, resource, resource_project or global. A content type model name also matches.
   - scope_uuid — Scope UUID
   - show_inactive — Staff/support only. Include revoked (inactive) role grants in addition to active ones. Ignored for other users, who only ever see their own active roles.
   - user
@@ -26148,7 +26136,7 @@ Query parameters (20):
   - role_name — Role name contains
   - role_uuid — Role UUID
   - scope_name — Scope name
-  - scope_type — Scope type
+  - scope_type — Scope type, as returned in scope_type: customer, project, offering, service_provider, call_organizer, call, proposal, resource, resource_project or global. A content type model name also matches.
   - scope_uuid — Scope UUID
   - show_inactive — Staff/support only. Include revoked (inactive) role grants in addition to active ones. Ignored for other users, who only ever see their own active roles.
   - user
