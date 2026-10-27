@@ -48,6 +48,7 @@ class EventMetadataResponseEventGroupsAdditionalPropertyItem(str, Enum):
     EVENT_CONSUMER_REGISTERED_WITH_BROAD_CREDENTIAL = "event_consumer_registered_with_broad_credential"
     EVENT_CONSUMER_RESYNC_REQUESTED = "event_consumer_resync_requested"
     EVENT_CONSUMER_WEBHOOK_UPDATED = "event_consumer_webhook_updated"
+    FEEDBACK_SURVEY_ANSWERED = "feedback_survey_answered"
     FREEIPA_PROFILE_CREATED = "freeipa_profile_created"
     FREEIPA_PROFILE_DELETED = "freeipa_profile_deleted"
     FREEIPA_PROFILE_DISABLED = "freeipa_profile_disabled"

@@ -304,6 +304,7 @@ from .broadcast_message_create_request import BroadcastMessageCreateRequest
 from .broadcast_message_emails import BroadcastMessageEmails
 from .broadcast_message_field_enum import BroadcastMessageFieldEnum
 from .broadcast_message_o_enum import BroadcastMessageOEnum
+from .broadcast_message_query import BroadcastMessageQuery
 from .broadcast_message_query_request import BroadcastMessageQueryRequest
 from .broadcast_message_state_enum import BroadcastMessageStateEnum
 from .bulk_round_create_request_request import BulkRoundCreateRequestRequest
@@ -883,6 +884,17 @@ from .feature_values_body import FeatureValuesBody
 from .federatedidentitydeactivationpolicy_enum import FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum
 from .feedback import Feedback
 from .feedback_category_enum import FeedbackCategoryEnum
+from .feedback_distribution_item import FeedbackDistributionItem
+from .feedback_prompt import FeedbackPrompt
+from .feedback_question_summary import FeedbackQuestionSummary
+from .feedback_request import FeedbackRequest
+from .feedback_request_o_enum import FeedbackRequestOEnum
+from .feedback_state_enum import FeedbackStateEnum
+from .feedback_survey import FeedbackSurvey
+from .feedback_survey_o_enum import FeedbackSurveyOEnum
+from .feedback_survey_public import FeedbackSurveyPublic
+from .feedback_survey_request import FeedbackSurveyRequest
+from .feedback_survey_summary import FeedbackSurveySummary
 from .fetch_billing_export_request_request import FetchBillingExportRequestRequest
 from .fetch_billing_export_response import FetchBillingExportResponse
 from .fetch_billing_export_response_data_item import FetchBillingExportResponseDataItem
@@ -1959,6 +1971,7 @@ from .patched_email_hook_request import PatchedEmailHookRequest
 from .patched_external_link_request import PatchedExternalLinkRequest
 from .patched_external_link_request_form import PatchedExternalLinkRequestForm
 from .patched_external_link_request_multipart import PatchedExternalLinkRequestMultipart
+from .patched_feedback_survey_request import PatchedFeedbackSurveyRequest
 from .patched_firecrest_job_request import PatchedFirecrestJobRequest
 from .patched_group_invitation_update_request import PatchedGroupInvitationUpdateRequest
 from .patched_identity_provider_request import PatchedIdentityProviderRequest
@@ -3614,6 +3627,7 @@ __all__ = (
     "BroadcastMessageEmails",
     "BroadcastMessageFieldEnum",
     "BroadcastMessageOEnum",
+    "BroadcastMessageQuery",
     "BroadcastMessageQueryRequest",
     "BroadcastMessageStateEnum",
     "BulkRoundCreateRequestRequest",
@@ -4179,6 +4193,17 @@ __all__ = (
     "FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum",
     "Feedback",
     "FeedbackCategoryEnum",
+    "FeedbackDistributionItem",
+    "FeedbackPrompt",
+    "FeedbackQuestionSummary",
+    "FeedbackRequest",
+    "FeedbackRequestOEnum",
+    "FeedbackStateEnum",
+    "FeedbackSurvey",
+    "FeedbackSurveyOEnum",
+    "FeedbackSurveyPublic",
+    "FeedbackSurveyRequest",
+    "FeedbackSurveySummary",
     "FetchBillingExportRequestRequest",
     "FetchBillingExportResponse",
     "FetchBillingExportResponseDataItem",
@@ -5179,6 +5204,7 @@ __all__ = (
     "PatchedExternalLinkRequest",
     "PatchedExternalLinkRequestForm",
     "PatchedExternalLinkRequestMultipart",
+    "PatchedFeedbackSurveyRequest",
     "PatchedFirecrestJobRequest",
     "PatchedGroupInvitationUpdateRequest",
     "PatchedIdentityProviderRequest",

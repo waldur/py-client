@@ -834,6 +834,31 @@ Module: `waldur_api_client.api.feature_values`
 
 - `feature_values` POST `/api/feature-values/` — Update feature flags (request body)
 
+## feedback-requests
+Module: `waldur_api_client.api.feedback_requests`
+
+- `feedback_requests_list` GET `/api/feedback-requests/` (6 query params)
+- `feedback_requests_count` HEAD `/api/feedback-requests/` — Get number of items in the collection matching the request parameters (6 query params)
+- `feedback_requests_retrieve` GET `/api/feedback-requests/{uuid}/` (path: uuid)
+- `feedback_requests_checklist_retrieve` GET `/api/feedback-requests/{uuid}/checklist/` — Get checklist with questions and existing answers (path: uuid | 1 query param)
+- `feedback_requests_completion_status_retrieve` GET `/api/feedback-requests/{uuid}/completion_status/` — Get checklist completion status (path: uuid)
+- `feedback_requests_dismiss` POST `/api/feedback-requests/{uuid}/dismiss/` (path: uuid)
+- `feedback_requests_later` POST `/api/feedback-requests/{uuid}/later/` — Postpone the prompt (path: uuid | request body)
+- `feedback_requests_submit_answers` POST `/api/feedback-requests/{uuid}/submit_answers/` — Submit answers (path: uuid | request body)
+
+## feedback-surveys
+Module: `waldur_api_client.api.feedback_surveys`
+
+- `feedback_surveys_list` GET `/api/feedback-surveys/` (2 query params)
+- `feedback_surveys_count` HEAD `/api/feedback-surveys/` — Get number of items in the collection matching the request parameters (2 query params)
+- `feedback_surveys_create` POST `/api/feedback-surveys/` (request body)
+- `feedback_surveys_prompt` POST `/api/feedback-surveys/prompt/` — Return the survey to show the current user now, if any, and count it as a prompt (no params)
+- `feedback_surveys_retrieve` GET `/api/feedback-surveys/{uuid}/` (path: uuid)
+- `feedback_surveys_update` PUT `/api/feedback-surveys/{uuid}/` (path: uuid | request body)
+- `feedback_surveys_partial_update` PATCH `/api/feedback-surveys/{uuid}/` (path: uuid | request body)
+- `feedback_surveys_destroy` DELETE `/api/feedback-surveys/{uuid}/` (path: uuid)
+- `feedback_surveys_summary_retrieve` GET `/api/feedback-surveys/{uuid}/summary/` (path: uuid)
+
 ## financial-reports
 Module: `waldur_api_client.api.financial_reports`
 

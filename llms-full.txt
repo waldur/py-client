@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.3.dev.20261026214427
+# Version: 8.1.4-rc.4.dev.20261027115744
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -4547,6 +4547,128 @@ POST /api/feature-values/
 Summary: Update feature flags
 Description: Allows administrators to enable or disable specific feature flags in the system. The request should be a dictionary where keys are feature sections and values are dictionaries of feature keys and their boolean state.
 Request body: yes
+
+============================================================
+## feedback-requests  (module: waldur_api_client.api.feedback_requests)
+============================================================
+
+### feedback_requests_list
+GET /api/feedback-requests/
+Query parameters (6):
+  - answered_after
+  - answered_before
+  - customer_uuid
+  - o — Ordering
+  - state
+  - survey_uuid
+
+### feedback_requests_count
+HEAD /api/feedback-requests/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (6):
+  - answered_after
+  - answered_before
+  - customer_uuid
+  - o — Ordering
+  - state
+  - survey_uuid
+
+### feedback_requests_retrieve
+GET /api/feedback-requests/{uuid}/
+Path parameters:
+  - uuid
+
+### feedback_requests_checklist_retrieve
+GET /api/feedback-requests/{uuid}/checklist/
+Summary: Get checklist with questions and existing answers
+Description: Get checklist with questions and existing answers.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - include_all — If true, returns all questions including hidden ones (for dynamic form visibility). Default: false.
+
+### feedback_requests_completion_status_retrieve
+GET /api/feedback-requests/{uuid}/completion_status/
+Summary: Get checklist completion status
+Description: Get checklist completion status.
+Path parameters:
+  - uuid
+
+### feedback_requests_dismiss
+POST /api/feedback-requests/{uuid}/dismiss/
+Path parameters:
+  - uuid
+
+### feedback_requests_later
+POST /api/feedback-requests/{uuid}/later/
+Summary: Postpone the prompt
+Description: Postpone the prompt. Answers given so far are kept as a draft, leaving out any that are not valid; the request stays pending.
+Path parameters:
+  - uuid
+Request body: yes
+
+### feedback_requests_submit_answers
+POST /api/feedback-requests/{uuid}/submit_answers/
+Summary: Submit answers
+Description: Submit answers. A complete submission marks the request answered.
+Path parameters:
+  - uuid
+Request body: yes
+
+============================================================
+## feedback-surveys  (module: waldur_api_client.api.feedback_surveys)
+============================================================
+
+### feedback_surveys_list
+GET /api/feedback-surveys/
+Query parameters (2):
+  - name
+  - o — Ordering
+
+### feedback_surveys_count
+HEAD /api/feedback-surveys/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (2):
+  - name
+  - o — Ordering
+
+### feedback_surveys_create
+POST /api/feedback-surveys/
+Request body: yes
+
+### feedback_surveys_prompt
+POST /api/feedback-surveys/prompt/
+Summary: Return the survey to show the current user now, if any, and count it as a prompt
+Description: Return the survey to show the current user now, if any, and count it as a prompt.
+
+### feedback_surveys_retrieve
+GET /api/feedback-surveys/{uuid}/
+Path parameters:
+  - uuid
+
+### feedback_surveys_update
+PUT /api/feedback-surveys/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### feedback_surveys_partial_update
+PATCH /api/feedback-surveys/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### feedback_surveys_destroy
+DELETE /api/feedback-surveys/{uuid}/
+Path parameters:
+  - uuid
+
+### feedback_surveys_summary_retrieve
+GET /api/feedback-surveys/{uuid}/summary/
+Path parameters:
+  - uuid
 
 ============================================================
 ## financial-reports  (module: waldur_api_client.api.financial_reports)
