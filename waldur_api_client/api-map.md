@@ -3227,6 +3227,8 @@ Module: `waldur_api_client.api.project_credits`
 - `project_credits_update` PUT `/api/project-credits/{uuid}/` (path: uuid | request body)
 - `project_credits_partial_update` PATCH `/api/project-credits/{uuid}/` (path: uuid | request body)
 - `project_credits_destroy` DELETE `/api/project-credits/{uuid}/` (path: uuid)
+- `project_credits_earlier_invoices_retrieve` GET `/api/project-credits/{uuid}/earlier_invoices/` — Earlier invoices of the project and what credit paid of them (path: uuid | 2 query params)
+- `project_credits_pay_earlier_invoices` POST `/api/project-credits/{uuid}/pay_earlier_invoices/` — Pay earlier invoices from the project credit (path: uuid | request body)
 
 ## project-end-date-change-requests
 Module: `waldur_api_client.api.project_end_date_change_requests`

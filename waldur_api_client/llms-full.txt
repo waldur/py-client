@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.4.dev.20261027115744
+# Version: 8.1.4-rc.4.dev.20261027194226
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -20376,6 +20376,24 @@ Request body: yes
 DELETE /api/project-credits/{uuid}/
 Path parameters:
   - uuid
+
+### project_credits_earlier_invoices_retrieve
+GET /api/project-credits/{uuid}/earlier_invoices/
+Summary: Earlier invoices of the project and what credit paid of them
+Description: Per closed month of the project, the cost the credit could pay and how much of it credit paid, either on the month's own invoice or later. This is the cost a period-Total cost policy keeps counting. Every closed month is listed; in_period marks those the credit pays, by its earlier_invoices_from ...
+Path parameters:
+  - uuid
+Query parameters (2):
+  - earlier_invoices_from — First month the credit pays, as its first day, to preview other bounds. Defaults to the credit's own.
+  - earlier_invoices_until — Last month the credit pays, as its first day, to preview other bounds. Defaults to the credit's own.
+
+### project_credits_pay_earlier_invoices
+POST /api/project-credits/{uuid}/pay_earlier_invoices/
+Summary: Pay earlier invoices from the project credit
+Description: Pays the uncovered cost of the project's earlier, closed invoices from what is left of the credit after this month's usage so far, and turns on pay_earlier_invoices so that each month end pays more. With dry_run, returns the compensations it would write and the balances before and after, and chan...
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## project-end-date-change-requests  (module: waldur_api_client.api.project_end_date_change_requests)

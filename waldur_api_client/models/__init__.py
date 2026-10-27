@@ -508,6 +508,7 @@ from .comment import Comment
 from .comment_o_enum import CommentOEnum
 from .comment_request import CommentRequest
 from .comparator_enum import ComparatorEnum
+from .compensate_in_enum import CompensateInEnum
 from .complete_round_refusal import CompleteRoundRefusal
 from .complete_round_response import CompleteRoundResponse
 from .complete_workflow_step_request import CompleteWorkflowStepRequest
@@ -773,6 +774,8 @@ from .dry_run_type_enum import DryRunTypeEnum
 from .duplicate_call_request_request import DuplicateCallRequestRequest
 from .duplicate_offering_candidate import DuplicateOfferingCandidate
 from .duplicate_offering_group import DuplicateOfferingGroup
+from .earlier_invoice_month import EarlierInvoiceMonth
+from .earlier_invoice_payment import EarlierInvoicePayment
 from .effective_route import EffectiveRoute
 from .effective_route_source_enum import EffectiveRouteSourceEnum
 from .effective_routes_response import EffectiveRoutesResponse
@@ -2160,6 +2163,8 @@ from .patched_user_request_form import PatchedUserRequestForm
 from .patched_user_request_multipart import PatchedUserRequestMultipart
 from .patched_vmware_virtual_machine_request import PatchedVmwareVirtualMachineRequest
 from .patched_web_hook_request import PatchedWebHookRequest
+from .pay_earlier_invoices import PayEarlierInvoices
+from .pay_earlier_invoices_request_request import PayEarlierInvoicesRequestRequest
 from .payment import Payment
 from .payment_profile import PaymentProfile
 from .payment_profile_attributes import PaymentProfileAttributes
@@ -2201,6 +2206,7 @@ from .plan_component import PlanComponent
 from .plan_usage_response import PlanUsageResponse
 from .plugin_component import PluginComponent
 from .plugin_offering_type import PluginOfferingType
+from .policy_cost_breakdown import PolicyCostBreakdown
 from .policy_enum import PolicyEnum
 from .policy_gate_enum import PolicyGateEnum
 from .policy_period_enum import PolicyPeriodEnum
@@ -2242,6 +2248,7 @@ from .project_attach_request import ProjectAttachRequest
 from .project_classification_summary import ProjectClassificationSummary
 from .project_creation_trend import ProjectCreationTrend
 from .project_credit import ProjectCredit
+from .project_credit_earlier_invoices import ProjectCreditEarlierInvoices
 from .project_credit_o_enum import ProjectCreditOEnum
 from .project_credit_request import ProjectCreditRequest
 from .project_detail import ProjectDetail
@@ -3829,6 +3836,7 @@ __all__ = (
     "CommentOEnum",
     "CommentRequest",
     "ComparatorEnum",
+    "CompensateInEnum",
     "CompleteRoundRefusal",
     "CompleteRoundResponse",
     "CompleteWorkflowStepRequest",
@@ -4086,6 +4094,8 @@ __all__ = (
     "DuplicateCallRequestRequest",
     "DuplicateOfferingCandidate",
     "DuplicateOfferingGroup",
+    "EarlierInvoiceMonth",
+    "EarlierInvoicePayment",
     "EffectiveRoute",
     "EffectiveRouteSourceEnum",
     "EffectiveRoutesResponse",
@@ -5377,6 +5387,8 @@ __all__ = (
     "PatchedUserRequestMultipart",
     "PatchedVmwareVirtualMachineRequest",
     "PatchedWebHookRequest",
+    "PayEarlierInvoices",
+    "PayEarlierInvoicesRequestRequest",
     "Payment",
     "PaymentProfile",
     "PaymentProfileAttributes",
@@ -5412,6 +5424,7 @@ __all__ = (
     "PlanUsageResponse",
     "PluginComponent",
     "PluginOfferingType",
+    "PolicyCostBreakdown",
     "PolicyEnum",
     "PolicyGateEnum",
     "PolicyPeriodEnum",
@@ -5453,6 +5466,7 @@ __all__ = (
     "ProjectClassificationSummary",
     "ProjectCreationTrend",
     "ProjectCredit",
+    "ProjectCreditEarlierInvoices",
     "ProjectCreditOEnum",
     "ProjectCreditRequest",
     "ProjectDetail",

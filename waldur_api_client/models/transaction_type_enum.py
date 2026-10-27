@@ -6,6 +6,7 @@ class TransactionTypeEnum(str, Enum):
     AFFILIATE_FEE = "affiliate_fee"
     COMPENSATION = "compensation"
     EXPIRY = "expiry"
+    HISTORICAL_COMPENSATION = "historical_compensation"
     MINIMAL_DRAW = "minimal_draw"
     PAYOUT = "payout"
     ROLLBACK = "rollback"

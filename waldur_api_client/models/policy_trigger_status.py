@@ -18,9 +18,8 @@ class PolicyTriggerStatus:
         triggered (Union[Unset, bool]): Whether the policy fires on the current figures. This is the evaluation now;
             has_fired is the stored state of the last evaluation that ran its actions, and the two can differ until the next
             one.
-        credit_value_compared (Union[None, Unset, str]): The live credit balance compared against limit_cost; null when
-            the credit was not checked (cost_below_limit, no_credit, credit_ignored), and on a project policy when it is the
-            organization's balance and the user may not view the organization's accounting.
+        credit_value_compared (Union[None, Unset, str]): Deprecated: always null. The policy no longer compares the
+            credit balance with limit_cost.
     """
 
     gate: Union[Unset, PolicyGateEnum] = UNSET
