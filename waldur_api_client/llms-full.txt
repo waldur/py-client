@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.4.dev.20261027201709
+# Version: 8.1.4-rc.5.dev.20261028203120
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -12916,7 +12916,7 @@ Summary: List customer projects of a service provider
 Description: Returns a paginated list of projects belonging to a specific customer that have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (28):
+Query parameters (29):
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
   - backend_id
@@ -12944,6 +12944,7 @@ Query parameters (28):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
 
 ### marketplace_service_providers_customer_projects_count
@@ -12952,7 +12953,7 @@ Summary: List customer projects of a service provider
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - service_provider_uuid
-Query parameters (27):
+Query parameters (28):
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
   - backend_id
@@ -12979,6 +12980,7 @@ Query parameters (27):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
 
 ### marketplace_service_providers_customers_list
@@ -13366,7 +13368,7 @@ Summary: List projects of a service provider
 Description: Returns a paginated list of all projects that have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (27):
+Query parameters (28):
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
   - backend_id
@@ -13393,6 +13395,7 @@ Query parameters (27):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
 
 ### marketplace_service_providers_projects_count
@@ -13401,7 +13404,7 @@ Summary: List projects of a service provider
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - service_provider_uuid
-Query parameters (26):
+Query parameters (27):
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
   - backend_id
@@ -13427,6 +13430,7 @@ Query parameters (26):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
 
 ### marketplace_service_providers_user_customers_list
@@ -16700,7 +16704,7 @@ Path parameters:
 GET /api/openportal-unmanaged-projects/
 Summary: List projects
 Description: Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only active projects are shown.
-Query parameters (30):
+Query parameters (31):
   - accounting_is_running — Filter by whether accounting is running.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
@@ -16729,6 +16733,7 @@ Query parameters (30):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role.
   - user_uuid — Filter by user UUID.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
 
@@ -16736,7 +16741,7 @@ Query parameters (30):
 HEAD /api/openportal-unmanaged-projects/
 Summary: List projects
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (29):
+Query parameters (30):
   - accounting_is_running — Filter by whether accounting is running.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
@@ -16764,6 +16769,7 @@ Query parameters (29):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role.
   - user_uuid — Filter by user UUID.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
 
@@ -16857,7 +16863,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (29):
+Query parameters (30):
   - accounting_is_running — Filter by whether accounting is running.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
@@ -16885,6 +16891,7 @@ Query parameters (29):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role.
   - user_uuid — Filter by user UUID.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
 
@@ -20538,7 +20545,7 @@ Path parameters:
 GET /api/projects/
 Summary: List projects
 Description: Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only active projects are shown.
-Query parameters (30):
+Query parameters (31):
   - accounting_is_running — Filter by whether accounting is running.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
@@ -20567,6 +20574,7 @@ Query parameters (30):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role.
   - user_uuid — Filter by user UUID.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
 
@@ -20574,7 +20582,7 @@ Query parameters (30):
 HEAD /api/projects/
 Summary: List projects
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (29):
+Query parameters (30):
   - accounting_is_running — Filter by whether accounting is running.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
@@ -20602,6 +20610,7 @@ Query parameters (29):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role.
   - user_uuid — Filter by user UUID.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
 
@@ -20743,7 +20752,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (29):
+Query parameters (30):
   - accounting_is_running — Filter by whether accounting is running.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
@@ -20771,6 +20780,7 @@ Query parameters (29):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role.
   - user_uuid — Filter by user UUID.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
 
