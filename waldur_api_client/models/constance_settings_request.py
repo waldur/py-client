@@ -397,6 +397,7 @@ class ConstanceSettingsRequest:
         pat_max_acl_entries (Union[Unset, int]):
         pat_max_audit_events_per_hour (Union[Unset, int]):
         mcp_enabled (Union[Unset, bool]):
+        mcp_resource_urls (Union[Unset, str]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -753,6 +754,7 @@ class ConstanceSettingsRequest:
     pat_max_acl_entries: Union[Unset, int] = UNSET
     pat_max_audit_events_per_hour: Union[Unset, int] = UNSET
     mcp_enabled: Union[Unset, bool] = UNSET
+    mcp_resource_urls: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -1756,6 +1758,8 @@ class ConstanceSettingsRequest:
 
         mcp_enabled = self.mcp_enabled
 
+        mcp_resource_urls = self.mcp_resource_urls
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -2479,6 +2483,8 @@ class ConstanceSettingsRequest:
             field_dict["PAT_MAX_AUDIT_EVENTS_PER_HOUR"] = pat_max_audit_events_per_hour
         if mcp_enabled is not UNSET:
             field_dict["MCP_ENABLED"] = mcp_enabled
+        if mcp_resource_urls is not UNSET:
+            field_dict["MCP_RESOURCE_URLS"] = mcp_resource_urls
 
         return field_dict
 
@@ -3829,6 +3835,8 @@ class ConstanceSettingsRequest:
 
         mcp_enabled = d.pop("MCP_ENABLED", UNSET)
 
+        mcp_resource_urls = d.pop("MCP_RESOURCE_URLS", UNSET)
+
         constance_settings_request = cls(
             site_name=site_name,
             site_description=site_description,
@@ -4184,6 +4192,7 @@ class ConstanceSettingsRequest:
             pat_max_acl_entries=pat_max_acl_entries,
             pat_max_audit_events_per_hour=pat_max_audit_events_per_hour,
             mcp_enabled=mcp_enabled,
+            mcp_resource_urls=mcp_resource_urls,
         )
 
         constance_settings_request.additional_properties = d

@@ -2000,7 +2000,6 @@ from .patched_message_template_request import PatchedMessageTemplateRequest
 from .patched_metric_definition_request import PatchedMetricDefinitionRequest
 from .patched_metric_goal_request import PatchedMetricGoalRequest
 from .patched_migration_details_request import PatchedMigrationDetailsRequest
-from .patched_network_rbac_policy_request import PatchedNetworkRBACPolicyRequest
 from .patched_notification_request import PatchedNotificationRequest
 from .patched_notification_template_detail_serializers_request import (
     PatchedNotificationTemplateDetailSerializersRequest,
@@ -5238,7 +5237,6 @@ __all__ = (
     "PatchedMetricDefinitionRequest",
     "PatchedMetricGoalRequest",
     "PatchedMigrationDetailsRequest",
-    "PatchedNetworkRBACPolicyRequest",
     "PatchedNotificationRequest",
     "PatchedNotificationTemplateDetailSerializersRequest",
     "PatchedOfferingAccessSubnetRequest",

@@ -2932,8 +2932,6 @@ Module: `waldur_api_client.api.openstack_network_rbac_policies`
 - `openstack_network_rbac_policies_count` HEAD `/api/openstack-network-rbac-policies/` — List network RBAC policies (8 query params)
 - `openstack_network_rbac_policies_create` POST `/api/openstack-network-rbac-policies/` — Create RBAC policy (request body)
 - `openstack_network_rbac_policies_retrieve` GET `/api/openstack-network-rbac-policies/{uuid}/` — Get network RBAC policy details (path: uuid)
-- `openstack_network_rbac_policies_update` PUT `/api/openstack-network-rbac-policies/{uuid}/` (path: uuid | request body)
-- `openstack_network_rbac_policies_partial_update` PATCH `/api/openstack-network-rbac-policies/{uuid}/` (path: uuid | request body)
 - `openstack_network_rbac_policies_destroy` DELETE `/api/openstack-network-rbac-policies/{uuid}/` — Delete RBAC policy (path: uuid)
 
 ## openstack-networks

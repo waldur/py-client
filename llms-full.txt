@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.5.dev.20261029102514
+# Version: 8.1.4-rc.5.dev.20261029161208
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -18360,18 +18360,6 @@ Summary: Get network RBAC policy details
 Description: Retrieve details of a specific network RBAC policy.
 Path parameters:
   - uuid
-
-### openstack_network_rbac_policies_update
-PUT /api/openstack-network-rbac-policies/{uuid}/
-Path parameters:
-  - uuid
-Request body: yes
-
-### openstack_network_rbac_policies_partial_update
-PATCH /api/openstack-network-rbac-policies/{uuid}/
-Path parameters:
-  - uuid
-Request body: yes
 
 ### openstack_network_rbac_policies_destroy
 DELETE /api/openstack-network-rbac-policies/{uuid}/
