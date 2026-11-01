@@ -116,6 +116,10 @@ class BookingResource:
             for termination.
         end_date_requested_by (Union[None, Unset, str]):
         end_date_updated_at (Union[None, Unset, datetime.datetime]): Timestamp of the last end_date change.
+        terminated_at (Union[None, Unset, datetime.datetime]): When the resource was terminated. Unlike end_date, which
+            is the planned date, this is the moment it happened. It stays set during a restore and is cleared once the
+            resource is OK again, so check the state before reading it as the end of a live resource. Empty if the date is
+            not known.
         username (Union[None, Unset, str]):
         limit_usage (Union[Unset, BookingResourceLimitUsage]): Dictionary mapping limit-based component types to their
             consumed usage. Sums the ComponentUsage rows of the component's current period (the monthly billing period
@@ -234,6 +238,7 @@ class BookingResource:
     end_date: Union[None, Unset, datetime.date] = UNSET
     end_date_requested_by: Union[None, Unset, str] = UNSET
     end_date_updated_at: Union[None, Unset, datetime.datetime] = UNSET
+    terminated_at: Union[None, Unset, datetime.datetime] = UNSET
     username: Union[None, Unset, str] = UNSET
     limit_usage: Union[Unset, "BookingResourceLimitUsage"] = UNSET
     prepaid_total_component_types: Union[Unset, list[str]] = UNSET
@@ -517,6 +522,14 @@ class BookingResource:
         else:
             end_date_updated_at = self.end_date_updated_at
 
+        terminated_at: Union[None, Unset, str]
+        if isinstance(self.terminated_at, Unset):
+            terminated_at = UNSET
+        elif isinstance(self.terminated_at, datetime.datetime):
+            terminated_at = self.terminated_at.isoformat()
+        else:
+            terminated_at = self.terminated_at
+
         username: Union[None, Unset, str]
         if isinstance(self.username, Unset):
             username = UNSET
@@ -798,6 +811,8 @@ class BookingResource:
             field_dict["end_date_requested_by"] = end_date_requested_by
         if end_date_updated_at is not UNSET:
             field_dict["end_date_updated_at"] = end_date_updated_at
+        if terminated_at is not UNSET:
+            field_dict["terminated_at"] = terminated_at
         if username is not UNSET:
             field_dict["username"] = username
         if limit_usage is not UNSET:
@@ -1279,6 +1294,23 @@ class BookingResource:
 
         end_date_updated_at = _parse_end_date_updated_at(d.pop("end_date_updated_at", UNSET))
 
+        def _parse_terminated_at(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                terminated_at_type_0 = isoparse(data)
+
+                return terminated_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        terminated_at = _parse_terminated_at(d.pop("terminated_at", UNSET))
+
         def _parse_username(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -1569,6 +1601,7 @@ class BookingResource:
             end_date=end_date,
             end_date_requested_by=end_date_requested_by,
             end_date_updated_at=end_date_updated_at,
+            terminated_at=terminated_at,
             username=username,
             limit_usage=limit_usage,
             prepaid_total_component_types=prepaid_total_component_types,

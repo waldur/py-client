@@ -96,6 +96,7 @@ class BookingResourceFieldEnum(str, Enum):
     SPENDING_LIMITS = "spending_limits"
     SPENDING_LIMIT_STATUS = "spending_limit_status"
     STATE = "state"
+    TERMINATED_AT = "terminated_at"
     URL = "url"
     USAGE_LIMIT_RESTRICTION = "usage_limit_restriction"
     USAGE_LIMIT_RESUMES_AT = "usage_limit_resumes_at"
