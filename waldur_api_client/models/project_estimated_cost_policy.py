@@ -42,9 +42,9 @@ class ProjectEstimatedCostPolicy:
         period (Union[Unset, PolicyPeriodEnum]):
         period_name (Union[Unset, str]):
         current_cost (Union[Unset, str]): The cost this policy compares against limit_cost right now: the period's
-            invoice total, less the credit already applied and the credit still to be drawn. Do not re-derive it — only the
-            server can simulate the pending draw, and a figure computed from the invoice alone will not match what the
-            policy evaluates.
+            invoice total, less the credit already applied and the credit still to be drawn, or the full cost for a policy
+            that does not take credit into account. Do not re-derive it — only the server can simulate the pending draw, and
+            a figure computed from the invoice alone will not match what the policy evaluates.
         cost_breakdown (Union[Unset, PolicyCostBreakdown]):
         eta_days (Union[None, Unset, int]): Days until the policy fires, or null when no projection exists. 0 means the
             threshold is already crossed and the policy is triggered — measured, not projected. Null must be rendered as no

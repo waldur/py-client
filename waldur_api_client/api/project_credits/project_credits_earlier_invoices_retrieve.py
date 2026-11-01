@@ -73,9 +73,10 @@ def sync_detailed(
     """Earlier invoices of the project and what credit paid of them
 
      Per closed month of the project, the cost the credit could pay and how much of it credit paid,
-    either on the month's own invoice or later. This is the cost a period-Total cost policy keeps
-    counting. Every closed month is listed; in_period marks those the credit pays, by its
-    earlier_invoices_from / earlier_invoices_until, which can be previewed with other bounds.
+    either on the month's own invoice or later. This is the cost a period-Total cost policy that takes
+    credit into account keeps counting. Every closed month is listed; in_period marks those the credit
+    pays, by its earlier_invoices_from / earlier_invoices_until, which can be previewed with other
+    bounds.
 
     Args:
         uuid (UUID):
@@ -113,9 +114,10 @@ def sync(
     """Earlier invoices of the project and what credit paid of them
 
      Per closed month of the project, the cost the credit could pay and how much of it credit paid,
-    either on the month's own invoice or later. This is the cost a period-Total cost policy keeps
-    counting. Every closed month is listed; in_period marks those the credit pays, by its
-    earlier_invoices_from / earlier_invoices_until, which can be previewed with other bounds.
+    either on the month's own invoice or later. This is the cost a period-Total cost policy that takes
+    credit into account keeps counting. Every closed month is listed; in_period marks those the credit
+    pays, by its earlier_invoices_from / earlier_invoices_until, which can be previewed with other
+    bounds.
 
     Args:
         uuid (UUID):
@@ -148,9 +150,10 @@ async def asyncio_detailed(
     """Earlier invoices of the project and what credit paid of them
 
      Per closed month of the project, the cost the credit could pay and how much of it credit paid,
-    either on the month's own invoice or later. This is the cost a period-Total cost policy keeps
-    counting. Every closed month is listed; in_period marks those the credit pays, by its
-    earlier_invoices_from / earlier_invoices_until, which can be previewed with other bounds.
+    either on the month's own invoice or later. This is the cost a period-Total cost policy that takes
+    credit into account keeps counting. Every closed month is listed; in_period marks those the credit
+    pays, by its earlier_invoices_from / earlier_invoices_until, which can be previewed with other
+    bounds.
 
     Args:
         uuid (UUID):
@@ -186,9 +189,10 @@ async def asyncio(
     """Earlier invoices of the project and what credit paid of them
 
      Per closed month of the project, the cost the credit could pay and how much of it credit paid,
-    either on the month's own invoice or later. This is the cost a period-Total cost policy keeps
-    counting. Every closed month is listed; in_period marks those the credit pays, by its
-    earlier_invoices_from / earlier_invoices_until, which can be previewed with other bounds.
+    either on the month's own invoice or later. This is the cost a period-Total cost policy that takes
+    credit into account keeps counting. Every closed month is listed; in_period marks those the credit
+    pays, by its earlier_invoices_from / earlier_invoices_until, which can be previewed with other
+    bounds.
 
     Args:
         uuid (UUID):

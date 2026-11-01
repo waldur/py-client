@@ -16,7 +16,8 @@ class ProjectCreditEarlierInvoices:
     """
     Attributes:
         months (list['EarlierInvoiceMonth']):
-        uncovered (str): Uncovered cost of every month listed: what a period-Total cost policy counts of them.
+        uncovered (str): Uncovered cost of every month listed: what a period-Total cost policy that takes credit into
+            account counts of them.
         uncovered_in_period (str): Uncovered cost of the months the credit pays.
         payable_now (str): What the allocation would pay now: the uncovered cost of the months it pays, capped by what
             is left of the allocation and of the organization credit after this month's usage so far.
