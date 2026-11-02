@@ -51,7 +51,8 @@ def sync_detailed(
 ) -> Response[EventConsumerResyncResponse]:
     """Replay the current state to a global consumer, through its own transport and filters, so a receiver
     that starts late can seed itself. Every active role grant is sent as a `user_role` message with
-    `event_type` `role_snapshot`. Runs asynchronously. Staff/support only.
+    `event_type` `role_snapshot`. Runs asynchronously. Staff, or support for its own consumers: support
+    is read-only, so another user's consumer is not found.
 
     Args:
         uuid (UUID):
@@ -82,7 +83,8 @@ def sync(
 ) -> EventConsumerResyncResponse:
     """Replay the current state to a global consumer, through its own transport and filters, so a receiver
     that starts late can seed itself. Every active role grant is sent as a `user_role` message with
-    `event_type` `role_snapshot`. Runs asynchronously. Staff/support only.
+    `event_type` `role_snapshot`. Runs asynchronously. Staff, or support for its own consumers: support
+    is read-only, so another user's consumer is not found.
 
     Args:
         uuid (UUID):
@@ -108,7 +110,8 @@ async def asyncio_detailed(
 ) -> Response[EventConsumerResyncResponse]:
     """Replay the current state to a global consumer, through its own transport and filters, so a receiver
     that starts late can seed itself. Every active role grant is sent as a `user_role` message with
-    `event_type` `role_snapshot`. Runs asynchronously. Staff/support only.
+    `event_type` `role_snapshot`. Runs asynchronously. Staff, or support for its own consumers: support
+    is read-only, so another user's consumer is not found.
 
     Args:
         uuid (UUID):
@@ -137,7 +140,8 @@ async def asyncio(
 ) -> EventConsumerResyncResponse:
     """Replay the current state to a global consumer, through its own transport and filters, so a receiver
     that starts late can seed itself. Every active role grant is sent as a `user_role` message with
-    `event_type` `role_snapshot`. Runs asynchronously. Staff/support only.
+    `event_type` `role_snapshot`. Runs asynchronously. Staff, or support for its own consumers: support
+    is read-only, so another user's consumer is not found.
 
     Args:
         uuid (UUID):

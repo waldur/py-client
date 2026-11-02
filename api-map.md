@@ -1975,8 +1975,6 @@ Module: `waldur_api_client.api.marketplace_resources`
 - `marketplace_resources_delete_user` POST `/api/marketplace-resources/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `marketplace_resources_details_retrieve` GET `/api/marketplace-resources/{uuid}/details/` — Get resource details (path: uuid)
 - `marketplace_resources_estimate_renewal` POST `/api/marketplace-resources/{uuid}/estimate_renewal/` — Estimate renewal cost breakdown (path: uuid | request body)
-- `marketplace_resources_glauth_tree_retrieve` GET `/api/marketplace-resources/{uuid}/glauth_tree/` — Get structured GLauth tree for a resource (path: uuid)
-- `marketplace_resources_glauth_users_config_retrieve` GET `/api/marketplace-resources/{uuid}/glauth_users_config/` — Get GLauth user configuration for a resource (path: uuid)
 - `marketplace_resources_history_list` GET `/api/marketplace-resources/{uuid}/history/` — Get version history (path: uuid | 47 query params)
 - `marketplace_resources_history_at_retrieve` GET `/api/marketplace-resources/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 - `marketplace_resources_list_users_list` GET `/api/marketplace-resources/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 11 query params)

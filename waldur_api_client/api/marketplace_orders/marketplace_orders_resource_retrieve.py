@@ -60,7 +60,8 @@ def sync_detailed(
 ) -> Response[Any]:
     """Get resource details
 
-     Returns details of the resource connected to the requested object.
+     Returns details of the resource connected to the requested object, if the consumer or provider
+    resource view shows it to the caller; otherwise 404.
 
     Args:
         uuid (UUID):
@@ -94,7 +95,8 @@ async def asyncio_detailed(
 ) -> Response[Any]:
     """Get resource details
 
-     Returns details of the resource connected to the requested object.
+     Returns details of the resource connected to the requested object, if the consumer or provider
+    resource view shows it to the caller; otherwise 404.
 
     Args:
         uuid (UUID):
