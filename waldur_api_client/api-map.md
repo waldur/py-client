@@ -1024,8 +1024,6 @@ Module: `waldur_api_client.api.lexis_links`
 - `lexis_links_count` HEAD `/api/lexis-links/` — Get number of items in the collection matching the request parameters (5 query params)
 - `lexis_links_create` POST `/api/lexis-links/` (request body)
 - `lexis_links_retrieve` GET `/api/lexis-links/{uuid}/` (path: uuid)
-- `lexis_links_update` PUT `/api/lexis-links/{uuid}/` (path: uuid | request body)
-- `lexis_links_partial_update` PATCH `/api/lexis-links/{uuid}/` (path: uuid | request body)
 - `lexis_links_destroy` DELETE `/api/lexis-links/{uuid}/` (path: uuid)
 
 ## maintenance-announcement-offerings
@@ -3036,7 +3034,6 @@ Module: `waldur_api_client.api.openstack_server_groups`
 
 - `openstack_server_groups_list` GET `/api/openstack-server-groups/` — List server groups (20 query params)
 - `openstack_server_groups_count` HEAD `/api/openstack-server-groups/` — List server groups (19 query params)
-- `openstack_server_groups_create` POST `/api/openstack-server-groups/` (request body)
 - `openstack_server_groups_retrieve` GET `/api/openstack-server-groups/{uuid}/` — Get server group details (path: uuid | 1 query param)
 - `openstack_server_groups_destroy` DELETE `/api/openstack-server-groups/{uuid}/` — Delete server group (path: uuid)
 - `openstack_server_groups_pull` POST `/api/openstack-server-groups/{uuid}/pull/` — Synchronize resource state (path: uuid)

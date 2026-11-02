@@ -1107,7 +1107,6 @@ from .lb_algorithm_enum import LbAlgorithmEnum
 from .level_enum import LevelEnum
 from .lexis_link import LexisLink
 from .lexis_link_create_request import LexisLinkCreateRequest
-from .lexis_link_request import LexisLinkRequest
 from .license_suggestion import LicenseSuggestion
 from .lifecycle_state_enum import LifecycleStateEnum
 from .likert_scale_length_enum import LikertScaleLengthEnum
@@ -1985,7 +1984,6 @@ from .patched_issue_link_request import PatchedIssueLinkRequest
 from .patched_issue_request import PatchedIssueRequest
 from .patched_issue_status_request import PatchedIssueStatusRequest
 from .patched_issue_tag_request import PatchedIssueTagRequest
-from .patched_lexis_link_request import PatchedLexisLinkRequest
 from .patched_maintenance_announcement_offering_request import PatchedMaintenanceAnnouncementOfferingRequest
 from .patched_maintenance_announcement_offering_template_request import (
     PatchedMaintenanceAnnouncementOfferingTemplateRequest,
@@ -4420,7 +4418,6 @@ __all__ = (
     "LevelEnum",
     "LexisLink",
     "LexisLinkCreateRequest",
-    "LexisLinkRequest",
     "LicenseSuggestion",
     "LifecycleStateEnum",
     "LikertScaleLengthEnum",
@@ -5224,7 +5221,6 @@ __all__ = (
     "PatchedIssueRequest",
     "PatchedIssueStatusRequest",
     "PatchedIssueTagRequest",
-    "PatchedLexisLinkRequest",
     "PatchedMaintenanceAnnouncementOfferingRequest",
     "PatchedMaintenanceAnnouncementOfferingTemplateRequest",
     "PatchedMaintenanceAnnouncementRequest",
