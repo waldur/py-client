@@ -152,6 +152,8 @@ class EventTypesEnum(str, Enum):
     OFFERING_ACCESS_SUBNET_CREATION_SUCCEEDED = "offering_access_subnet_creation_succeeded"
     OFFERING_ACCESS_SUBNET_DELETION_SUCCEEDED = "offering_access_subnet_deletion_succeeded"
     OFFERING_ACCESS_SUBNET_UPDATE_SUCCEEDED = "offering_access_subnet_update_succeeded"
+    OIDC_TOKEN_REFRESH_FAILED = "oidc_token_refresh_failed"
+    OIDC_TOKEN_REVOKED = "oidc_token_revoked"
     ONBOARDING_VERIFICATION_DELETED = "onboarding_verification_deleted"
     ONBOARDING_VERIFICATION_DELETED_BY_TASK = "onboarding_verification_deleted_by_task"
     OPENSTACK_FLOATING_IP_ATTACHED = "openstack_floating_ip_attached"

@@ -456,6 +456,14 @@ from .changelog_release_list import ChangelogReleaseList
 from .changelog_release_summary import ChangelogReleaseSummary
 from .changelog_release_summary_status_enum import ChangelogReleaseSummaryStatusEnum
 from .changelog_upgrade_report import ChangelogUpgradeReport
+from .chart_annotation import ChartAnnotation
+from .chart_annotation_type_enum import ChartAnnotationTypeEnum
+from .chart_axis import ChartAxis
+from .chart_axis_type_enum import ChartAxisTypeEnum
+from .chart_link import ChartLink
+from .chart_series import ChartSeries
+from .chart_spec import ChartSpec
+from .chart_type_enum import ChartTypeEnum
 from .chat_request_mode_enum import ChatRequestModeEnum
 from .chat_request_request import ChatRequestRequest
 from .chat_response import ChatResponse
@@ -914,12 +922,6 @@ from .filter_check_result_user_value_type_0 import FilterCheckResultUserValueTyp
 from .financial_report import FinancialReport
 from .financial_report_email_request import FinancialReportEmailRequest
 from .fingerprint import Fingerprint
-from .firecrest_job import FirecrestJob
-from .firecrest_job_field_enum import FirecrestJobFieldEnum
-from .firecrest_job_job_output import FirecrestJobJobOutput
-from .firecrest_job_request import FirecrestJobRequest
-from .firecrest_job_request_form import FirecrestJobRequestForm
-from .firecrest_job_request_multipart import FirecrestJobRequestMultipart
 from .flavor_response import FlavorResponse
 from .fontfamily_enum import FONTFAMILYEnum
 from .force_accept_pool_request import ForceAcceptPoolRequest
@@ -959,6 +961,43 @@ from .helpdesk_health import HelpdeskHealth
 from .helpdesk_stats import HelpdeskStats
 from .helpdesk_stats_by_priority import HelpdeskStatsByPriority
 from .helpdesk_stats_by_status import HelpdeskStatsByStatus
+from .hpc_allocation_usage import HpcAllocationUsage
+from .hpc_cluster_load import HpcClusterLoad
+from .hpc_component_usage import HpcComponentUsage
+from .hpc_file import HpcFile
+from .hpc_file_content import HpcFileContent
+from .hpc_job import HpcJob
+from .hpc_job_failure import HpcJobFailure
+from .hpc_job_output import HpcJobOutput
+from .hpc_job_performance import HpcJobPerformance
+from .hpc_job_performance_summary import HpcJobPerformanceSummary
+from .hpc_job_process import HpcJobProcess
+from .hpc_job_spec_request import HpcJobSpecRequest
+from .hpc_job_spec_request_environment import HpcJobSpecRequestEnvironment
+from .hpc_job_stats import HpcJobStats
+from .hpc_job_stream import HpcJobStream
+from .hpc_job_submit_response import HpcJobSubmitResponse
+from .hpc_job_time_window_enum import HpcJobTimeWindowEnum
+from .hpc_job_totals import HpcJobTotals
+from .hpc_maintenance_announcement import HpcMaintenanceAnnouncement
+from .hpc_monthly_usage import HpcMonthlyUsage
+from .hpc_node import HpcNode
+from .hpc_output_series import HpcOutputSeries
+from .hpc_output_series_kind_enum import HpcOutputSeriesKindEnum
+from .hpc_output_series_summary import HpcOutputSeriesSummary
+from .hpc_partition import HpcPartition
+from .hpc_partition_load import HpcPartitionLoad
+from .hpc_partition_wait import HpcPartitionWait
+from .hpc_reservation import HpcReservation
+from .hpc_script_preview import HpcScriptPreview
+from .hpc_service_health import HpcServiceHealth
+from .hpc_software import HpcSoftware
+from .hpc_suggestion import HpcSuggestion
+from .hpc_suggestion_kind_enum import HpcSuggestionKindEnum
+from .hpc_usage_point import HpcUsagePoint
+from .hpc_user_usage import HpcUserUsage
+from .hpc_workspace import HpcWorkspace
+from .hpc_workspace_overview import HpcWorkspaceOverview
 from .hypervisor import Hypervisor
 from .hypervisor_inventory import HypervisorInventory
 from .hypervisor_summary import HypervisorSummary
@@ -1146,6 +1185,10 @@ from .maintenance_announcement_template import MaintenanceAnnouncementTemplate
 from .maintenance_announcement_template_o_enum import MaintenanceAnnouncementTemplateOEnum
 from .maintenance_announcement_template_request import MaintenanceAnnouncementTemplateRequest
 from .maintenance_provider_stats import MaintenanceProviderStats
+from .maintenance_reservation import MaintenanceReservation
+from .maintenance_reservation_import_request import MaintenanceReservationImportRequest
+from .maintenance_reservation_import_result import MaintenanceReservationImportResult
+from .maintenance_reservation_list import MaintenanceReservationList
 from .maintenance_stats import MaintenanceStats
 from .maintenance_stats_response import MaintenanceStatsResponse
 from .maintenance_stats_response_by_impact_level import MaintenanceStatsResponseByImpactLevel
@@ -1974,7 +2017,6 @@ from .patched_external_link_request import PatchedExternalLinkRequest
 from .patched_external_link_request_form import PatchedExternalLinkRequestForm
 from .patched_external_link_request_multipart import PatchedExternalLinkRequestMultipart
 from .patched_feedback_survey_request import PatchedFeedbackSurveyRequest
-from .patched_firecrest_job_request import PatchedFirecrestJobRequest
 from .patched_group_invitation_update_request import PatchedGroupInvitationUpdateRequest
 from .patched_identity_provider_request import PatchedIdentityProviderRequest
 from .patched_identity_provider_request_attribute_mapping import PatchedIdentityProviderRequestAttributeMapping
@@ -2988,6 +3030,7 @@ from .silence_action_response import SilenceActionResponse
 from .site_agent_config_generation_request import SiteAgentConfigGenerationRequest
 from .site_agent_log import SiteAgentLog
 from .site_agent_log_create_request import SiteAgentLogCreateRequest
+from .site_maintenance_reservation_request import SiteMaintenanceReservationRequest
 from .skipped_proposal import SkippedProposal
 from .slurm_command import SlurmCommand
 from .slurm_command_history import SlurmCommandHistory
@@ -3074,6 +3117,7 @@ from .storage_data_type_request import StorageDataTypeRequest
 from .storage_folder_config import StorageFolderConfig
 from .storage_folder_config_request import StorageFolderConfigRequest
 from .storage_mode_enum import StorageModeEnum
+from .style_enum import StyleEnum
 from .sub_net_mapping import SubNetMapping
 from .sub_net_mapping_request import SubNetMappingRequest
 from .submit_request_request import SubmitRequestRequest
@@ -3142,6 +3186,7 @@ from .to_s_consent_dashboard import ToSConsentDashboard
 from .token_exchange_request import TokenExchangeRequest
 from .token_quota_usage_response import TokenQuotaUsageResponse
 from .token_request import TokenRequest
+from .tone_enum import ToneEnum
 from .tool_execute_request import ToolExecuteRequest
 from .tool_execute_request_arguments import ToolExecuteRequestArguments
 from .top_queue import TopQueue
@@ -3326,6 +3371,7 @@ from .withdrawable_adjustment_request import WithdrawableAdjustmentRequest
 from .workflow_criterion import WorkflowCriterion
 from .workflow_criterion_request import WorkflowCriterionRequest
 from .workflow_step_responsible_user import WorkflowStepResponsibleUser
+from .y_axis_enum import YAxisEnum
 from .zammadarticletype_enum import ZAMMADARTICLETYPEEnum
 
 __all__ = (
@@ -3779,6 +3825,14 @@ __all__ = (
     "ChangelogReleaseSummary",
     "ChangelogReleaseSummaryStatusEnum",
     "ChangelogUpgradeReport",
+    "ChartAnnotation",
+    "ChartAnnotationTypeEnum",
+    "ChartAxis",
+    "ChartAxisTypeEnum",
+    "ChartLink",
+    "ChartSeries",
+    "ChartSpec",
+    "ChartTypeEnum",
     "ChatRequestModeEnum",
     "ChatRequestRequest",
     "ChatResponse",
@@ -4225,12 +4279,6 @@ __all__ = (
     "FinancialReport",
     "FinancialReportEmailRequest",
     "Fingerprint",
-    "FirecrestJob",
-    "FirecrestJobFieldEnum",
-    "FirecrestJobJobOutput",
-    "FirecrestJobRequest",
-    "FirecrestJobRequestForm",
-    "FirecrestJobRequestMultipart",
     "FlavorResponse",
     "FONTFAMILYEnum",
     "ForceAcceptPoolRequest",
@@ -4270,6 +4318,43 @@ __all__ = (
     "HelpdeskStats",
     "HelpdeskStatsByPriority",
     "HelpdeskStatsByStatus",
+    "HpcAllocationUsage",
+    "HpcClusterLoad",
+    "HpcComponentUsage",
+    "HpcFile",
+    "HpcFileContent",
+    "HpcJob",
+    "HpcJobFailure",
+    "HpcJobOutput",
+    "HpcJobPerformance",
+    "HpcJobPerformanceSummary",
+    "HpcJobProcess",
+    "HpcJobSpecRequest",
+    "HpcJobSpecRequestEnvironment",
+    "HpcJobStats",
+    "HpcJobStream",
+    "HpcJobSubmitResponse",
+    "HpcJobTimeWindowEnum",
+    "HpcJobTotals",
+    "HpcMaintenanceAnnouncement",
+    "HpcMonthlyUsage",
+    "HpcNode",
+    "HpcOutputSeries",
+    "HpcOutputSeriesKindEnum",
+    "HpcOutputSeriesSummary",
+    "HpcPartition",
+    "HpcPartitionLoad",
+    "HpcPartitionWait",
+    "HpcReservation",
+    "HpcScriptPreview",
+    "HpcServiceHealth",
+    "HpcSoftware",
+    "HpcSuggestion",
+    "HpcSuggestionKindEnum",
+    "HpcUsagePoint",
+    "HpcUserUsage",
+    "HpcWorkspace",
+    "HpcWorkspaceOverview",
     "Hypervisor",
     "HypervisorInventory",
     "HypervisorSummary",
@@ -4455,6 +4540,10 @@ __all__ = (
     "MaintenanceAnnouncementTemplateOEnum",
     "MaintenanceAnnouncementTemplateRequest",
     "MaintenanceProviderStats",
+    "MaintenanceReservation",
+    "MaintenanceReservationImportRequest",
+    "MaintenanceReservationImportResult",
+    "MaintenanceReservationList",
     "MaintenanceStats",
     "MaintenanceStatsResponse",
     "MaintenanceStatsResponseByImpactLevel",
@@ -5209,7 +5298,6 @@ __all__ = (
     "PatchedExternalLinkRequestForm",
     "PatchedExternalLinkRequestMultipart",
     "PatchedFeedbackSurveyRequest",
-    "PatchedFirecrestJobRequest",
     "PatchedGroupInvitationUpdateRequest",
     "PatchedIdentityProviderRequest",
     "PatchedIdentityProviderRequestAttributeMapping",
@@ -6167,6 +6255,7 @@ __all__ = (
     "SiteAgentConfigGenerationRequest",
     "SiteAgentLog",
     "SiteAgentLogCreateRequest",
+    "SiteMaintenanceReservationRequest",
     "SkippedProposal",
     "SlurmCommand",
     "SlurmCommandHistory",
@@ -6253,6 +6342,7 @@ __all__ = (
     "StorageFolderConfig",
     "StorageFolderConfigRequest",
     "StorageModeEnum",
+    "StyleEnum",
     "SubmitRequestRequest",
     "SubmitRequestResponse",
     "SubNetMapping",
@@ -6320,6 +6410,7 @@ __all__ = (
     "TokenExchangeRequest",
     "TokenQuotaUsageResponse",
     "TokenRequest",
+    "ToneEnum",
     "ToolExecuteRequest",
     "ToolExecuteRequestArguments",
     "TopologyEdge",
@@ -6497,5 +6588,6 @@ __all__ = (
     "WorkflowCriterion",
     "WorkflowCriterionRequest",
     "WorkflowStepResponsibleUser",
+    "YAxisEnum",
     "ZAMMADARTICLETYPEEnum",
 )

@@ -354,6 +354,9 @@ class ConstanceSettingsRequest:
         metrics_archive_grace_days (Union[Unset, int]):
         usage_poll_record_retention_months (Union[Unset, int]):
         slurm_policy_evaluation_log_retention_days (Union[Unset, int]):
+        firecrest_allowed_api_urls (Union[Unset, str]):
+        slurm_monitor_allowed_api_urls (Union[Unset, str]):
+        oidc_token_max_idle_days (Union[Unset, int]):
         federated_identity_sync_enabled (Union[Unset, bool]):
         federated_identity_sync_allowed_attributes (Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]]):
         federated_identity_authoritative_isd (Union[Unset, str]):
@@ -711,6 +714,9 @@ class ConstanceSettingsRequest:
     metrics_archive_grace_days: Union[Unset, int] = UNSET
     usage_poll_record_retention_months: Union[Unset, int] = UNSET
     slurm_policy_evaluation_log_retention_days: Union[Unset, int] = UNSET
+    firecrest_allowed_api_urls: Union[Unset, str] = UNSET
+    slurm_monitor_allowed_api_urls: Union[Unset, str] = UNSET
+    oidc_token_max_idle_days: Union[Unset, int] = UNSET
     federated_identity_sync_enabled: Union[Unset, bool] = UNSET
     federated_identity_sync_allowed_attributes: Union[Unset, list[Union[BlankEnum, UserAttributeEnum]]] = UNSET
     federated_identity_authoritative_isd: Union[Unset, str] = UNSET
@@ -1624,6 +1630,12 @@ class ConstanceSettingsRequest:
 
         slurm_policy_evaluation_log_retention_days = self.slurm_policy_evaluation_log_retention_days
 
+        firecrest_allowed_api_urls = self.firecrest_allowed_api_urls
+
+        slurm_monitor_allowed_api_urls = self.slurm_monitor_allowed_api_urls
+
+        oidc_token_max_idle_days = self.oidc_token_max_idle_days
+
         federated_identity_sync_enabled = self.federated_identity_sync_enabled
 
         federated_identity_sync_allowed_attributes: Union[Unset, list[str]] = UNSET
@@ -2397,6 +2409,12 @@ class ConstanceSettingsRequest:
             field_dict["USAGE_POLL_RECORD_RETENTION_MONTHS"] = usage_poll_record_retention_months
         if slurm_policy_evaluation_log_retention_days is not UNSET:
             field_dict["SLURM_POLICY_EVALUATION_LOG_RETENTION_DAYS"] = slurm_policy_evaluation_log_retention_days
+        if firecrest_allowed_api_urls is not UNSET:
+            field_dict["FIRECREST_ALLOWED_API_URLS"] = firecrest_allowed_api_urls
+        if slurm_monitor_allowed_api_urls is not UNSET:
+            field_dict["SLURM_MONITOR_ALLOWED_API_URLS"] = slurm_monitor_allowed_api_urls
+        if oidc_token_max_idle_days is not UNSET:
+            field_dict["OIDC_TOKEN_MAX_IDLE_DAYS"] = oidc_token_max_idle_days
         if federated_identity_sync_enabled is not UNSET:
             field_dict["FEDERATED_IDENTITY_SYNC_ENABLED"] = federated_identity_sync_enabled
         if federated_identity_sync_allowed_attributes is not UNSET:
@@ -3647,6 +3665,12 @@ class ConstanceSettingsRequest:
 
         slurm_policy_evaluation_log_retention_days = d.pop("SLURM_POLICY_EVALUATION_LOG_RETENTION_DAYS", UNSET)
 
+        firecrest_allowed_api_urls = d.pop("FIRECREST_ALLOWED_API_URLS", UNSET)
+
+        slurm_monitor_allowed_api_urls = d.pop("SLURM_MONITOR_ALLOWED_API_URLS", UNSET)
+
+        oidc_token_max_idle_days = d.pop("OIDC_TOKEN_MAX_IDLE_DAYS", UNSET)
+
         federated_identity_sync_enabled = d.pop("FEDERATED_IDENTITY_SYNC_ENABLED", UNSET)
 
         federated_identity_sync_allowed_attributes = []
@@ -4149,6 +4173,9 @@ class ConstanceSettingsRequest:
             metrics_archive_grace_days=metrics_archive_grace_days,
             usage_poll_record_retention_months=usage_poll_record_retention_months,
             slurm_policy_evaluation_log_retention_days=slurm_policy_evaluation_log_retention_days,
+            firecrest_allowed_api_urls=firecrest_allowed_api_urls,
+            slurm_monitor_allowed_api_urls=slurm_monitor_allowed_api_urls,
+            oidc_token_max_idle_days=oidc_token_max_idle_days,
             federated_identity_sync_enabled=federated_identity_sync_enabled,
             federated_identity_sync_allowed_attributes=federated_identity_sync_allowed_attributes,
             federated_identity_authoritative_isd=federated_identity_authoritative_isd,

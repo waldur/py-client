@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.1.4-rc.6.dev.20261103172322).
+> Auto-generated Python SDK for the Waldur API (version 8.1.4-rc.6.dev.20261103193846).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -96,7 +96,7 @@ waldur_api_client/
 - **daily-quotas** (1 endpoint)
 - **data-access-logs** (4 endpoints)
 - **database-stats** (1 endpoint)
-- **debug** (11 endpoints)
+- **debug** (18 endpoints)
 - **digitalocean-droplets** (15 endpoints)
 - **digitalocean-images** (3 endpoints)
 - **digitalocean-regions** (3 endpoints)
@@ -121,6 +121,7 @@ waldur_api_client/
 - **hooks** (2 endpoints)
 - **hooks-email** (7 endpoints)
 - **hooks-web** (7 endpoints)
+- **hpc-workspaces** (19 endpoints)
 - **identity-bridge** (4 endpoints)
 - **identity-providers** (9 endpoints)
 - **invoice** (1 endpoint)
@@ -193,7 +194,7 @@ waldur_api_client/
 - **marketplace-project-service-accounts** (8 endpoints)
 - **marketplace-project-update-requests** (5 endpoints)
 - **marketplace-project-usage** (2 endpoints)
-- **marketplace-provider-offerings** (94 endpoints)
+- **marketplace-provider-offerings** (96 endpoints)
 - **marketplace-provider-resource-projects** (13 endpoints)
 - **marketplace-provider-resources** (47 endpoints)
 - **marketplace-public-api** (2 endpoints)
@@ -348,7 +349,6 @@ waldur_api_client/
 - **science-domains** (10 endpoints)
 - **science-sub-domains** (7 endpoints)
 - **service-settings** (3 endpoints)
-- **slurm-jobs** (11 endpoints)
 - **sram-groups** (3 endpoints)
 - **sram-project-rules** (8 endpoints)
 - **staff-passkeys** (3 endpoints)

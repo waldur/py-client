@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.6.dev.20261103172322
+# Version: 8.1.4-rc.6.dev.20261103193846
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2462,7 +2462,7 @@ Description: Get current token quota and usage for the requesting user.
         - usage: Tokens used in current period
         - remainin...
 Query parameters (1):
-  - user_uuid (required) — UUID of user to view quota for (staff/support only). Omit to view your own quota.
+  - user_uuid — UUID of user to view quota for (staff/support only). Omit to view your own quota.
 
 ============================================================
 ## chat-sessions  (module: waldur_api_client.api.chat_sessions)
@@ -3791,7 +3791,7 @@ GET /api/daily-quotas/
 Query parameters (4):
   - end — End date in format YYYY-MM-DD
   - quota_names — List of quota names
-  - scope — UUID of the scope object
+  - scope (required) — URL of the project or organization
   - start — Start date in format YYYY-MM-DD
 
 ============================================================
@@ -3858,6 +3858,11 @@ Reads settings only — no connection is opened and no message is sent.
 Covers the two independent halves of email delivery: a usable SMTP relay,
 and at least one enabled notification type. Requires staff permissions.
 
+### debug_email_config_count
+HEAD /api/debug/email/config/
+Summary: Audit the outgoing email configuration
+Description: Get number of items in the collection matching the request parameters.
+
 ### debug_email_probe
 POST /api/debug/email/probe/
 Summary: Test the SMTP connection
@@ -3887,6 +3892,11 @@ Returns:
 - last_failure_time: Timestamp of last failure
 - last_state_change: When state last c...
 
+### debug_pubsub_circuit_breaker_count
+HEAD /api/debug/pubsub/circuit_breaker/
+Summary: Get circuit breaker state
+Description: Get number of items in the collection matching the request parameters.
+
 ### debug_pubsub_circuit_breaker_reset
 POST /api/debug/pubsub/circuit_breaker_reset/
 Summary: Reset circuit breaker
@@ -3909,6 +3919,11 @@ for queues with 'dlq' in the name.
 
 Requires staff permissi...
 
+### debug_pubsub_dead_letter_queue_count
+HEAD /api/debug/pubsub/dead_letter_queue/
+Summary: Get dead letter queue status
+Description: Get number of items in the collection matching the request parameters.
+
 ### debug_pubsub_message_state_cache_retrieve
 GET /api/debug/pubsub/message_state_cache/
 Summary: Get message state cache statistics
@@ -3921,6 +3936,11 @@ Query params:
 - resource_uuid: Filter by specific resource
 - message_type: Filter by message ty...
 
+### debug_pubsub_message_state_cache_count
+HEAD /api/debug/pubsub/message_state_cache/
+Summary: Get message state cache statistics
+Description: Get number of items in the collection matching the request parameters.
+
 ### debug_pubsub_metrics_retrieve
 GET /api/debug/pubsub/metrics/
 Summary: Get publishing metrics
@@ -3932,6 +3952,11 @@ Returns:
 - messages_retried: Messages that required retry
 - messages_skipped: Messages skipped due to circuit breaker
 - circuit_breaker_trips: Number ...
+
+### debug_pubsub_metrics_count
+HEAD /api/debug/pubsub/metrics/
+Summary: Get publishing metrics
+Description: Get number of items in the collection matching the request parameters.
 
 ### debug_pubsub_metrics_reset
 POST /api/debug/pubsub/metrics_reset/
@@ -3950,6 +3975,11 @@ into a single response suitable for monitoring dashboards.
 
 Requires staff permissions.
 
+### debug_pubsub_overview_count
+HEAD /api/debug/pubsub/overview/
+Summary: Get pubsub system health overview
+Description: Get number of items in the collection matching the request parameters.
+
 ### debug_pubsub_queues_retrieve
 GET /api/debug/pubsub/queues/
 Summary: Get subscription queues overview
@@ -3961,6 +3991,11 @@ message counts and queue statistics.
 Note: For detailed queue management, use /api/rabbitmq-stats/ endpoint.
 
 Requires staff permissions.
+
+### debug_pubsub_queues_count
+HEAD /api/debug/pubsub/queues/
+Summary: Get subscription queues overview
+Description: Get number of items in the collection matching the request parameters.
 
 ============================================================
 ## digitalocean-droplets  (module: waldur_api_client.api.digitalocean_droplets)
@@ -4971,6 +5006,159 @@ Path parameters:
   - uuid
 
 ============================================================
+## hpc-workspaces  (module: waldur_api_client.api.hpc_workspaces)
+============================================================
+
+### hpc_workspaces_list
+GET /api/hpc-workspaces/
+Summary: List HPC workspaces
+Description: SLURM allocations visible to the user whose offering is connected to FirecREST.
+
+### hpc_workspaces_count
+HEAD /api/hpc-workspaces/
+Summary: List HPC workspaces
+Description: Get number of items in the collection matching the request parameters.
+
+### hpc_workspaces_retrieve
+GET /api/hpc-workspaces/{uuid}/
+Summary: HPC workspace overview
+Description: Allocation, the user's cluster identity and FirecREST system health. Problems reaching FirecREST are reported in 'error' rather than failing the request; 'sign_in_provider' names the identity provider to sign in through again when that is the remedy.
+Path parameters:
+  - uuid
+
+### hpc_workspaces_cluster_load_retrieve
+GET /api/hpc-workspaces/{uuid}/cluster_load/
+Summary: Node load and reservations of the cluster
+Description: Every node with its state, CPU load and partitions, a summary per partition and the upcoming reservations and maintenance windows.
+Path parameters:
+  - uuid
+
+### hpc_workspaces_file_content_retrieve
+GET /api/hpc-workspaces/{uuid}/file_content/
+Summary: View a file on the cluster
+Description: Content of a small text file (bounded by FirecREST's operation size limit).
+Path parameters:
+  - uuid
+Query parameters (1):
+  - path (required)
+
+### hpc_workspaces_files_list
+GET /api/hpc-workspaces/{uuid}/files/
+Summary: List a directory on the cluster
+Path parameters:
+  - uuid
+Query parameters (2):
+  - path — Directory to list; defaults to home.
+  - show_hidden
+
+### hpc_workspaces_job_stats_retrieve
+GET /api/hpc-workspaces/{uuid}/job_stats/
+Summary: Job statistics of the allocation
+Description: Outcomes per day, failures by exit code, time limit fit, CPU and memory efficiency, queue waits by partition and right-sizing suggestions over the last days, with chart specs for each figure.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - days — Days of job history, up to FirecREST's longest window (7 days).
+
+### hpc_workspaces_jobs_list
+GET /api/hpc-workspaces/{uuid}/jobs/
+Summary: List jobs of the allocation
+Path parameters:
+  - uuid
+Query parameters (1):
+  - time_window — How far back to look for finished jobs (default 24h).
+
+### hpc_workspaces_jobs
+POST /api/hpc-workspaces/{uuid}/jobs/
+Summary: Submit a job to the allocation
+Description: Renders the batch script from the parameters, checks them against the published partition and QoS limits and submits it under the allocation's account.
+Path parameters:
+  - uuid
+Request body: yes
+
+### hpc_workspaces_jobs_retrieve
+GET /api/hpc-workspaces/{uuid}/jobs/{job_id}/
+Summary: Get a job of the allocation
+Path parameters:
+  - job_id — Slurm job ID
+  - uuid
+
+### hpc_workspaces_jobs_cancel
+POST /api/hpc-workspaces/{uuid}/jobs/{job_id}/cancel/
+Summary: Cancel a job of the allocation
+Path parameters:
+  - job_id — Slurm job ID
+  - uuid
+
+### hpc_workspaces_jobs_output_retrieve
+GET /api/hpc-workspaces/{uuid}/jobs/{job_id}/output/
+Summary: Get the script and output of a job
+Description: The batch script and the last lines of standard output and error.
+Path parameters:
+  - job_id — Slurm job ID
+  - uuid
+Query parameters (1):
+  - lines
+
+### hpc_workspaces_jobs_performance_retrieve
+GET /api/hpc-workspaces/{uuid}/jobs/{job_id}/performance/
+Summary: Get the performance of a job over its run
+Description: Per-GPU use, GPU memory and power, CPU cores and host memory over the job's run, and its busiest processes, from the cluster monitor (slurm-monitor with Sonar probes) as the signed-in user.
+Path parameters:
+  - job_id — Slurm job ID
+  - uuid
+
+### hpc_workspaces_jobs_performance_pdf_retrieve
+GET /api/hpc-workspaces/{uuid}/jobs/{job_id}/performance_pdf/
+Summary: Download the performance report of a job as PDF
+Description: The job's accounting, summary figures, charts and processes from the cluster monitor, as one PDF. Without monitor samples the report keeps the accounting and says why.
+Path parameters:
+  - job_id — Slurm job ID
+  - uuid
+
+### hpc_workspaces_output_series_retrieve
+GET /api/hpc-workspaces/{uuid}/output_series/
+Summary: Plot a job output file
+Description: Reads a GROMACS .xvg, a CSV/TSV table or a WRF rsl log from the cluster and returns its series as a chart spec, with a short summary.
+Path parameters:
+  - uuid
+Query parameters (2):
+  - forecast_hours — WRF only: forecast length, if namelist.input next to the log does not say.
+  - path (required)
+
+### hpc_workspaces_partitions_list
+GET /api/hpc-workspaces/{uuid}/partitions/
+Summary: Partitions of the cluster
+Description: Partitions the provider publishes in Waldur (limits, QoS, architecture) merged with what the cluster reports live through FirecREST (node counts).
+Path parameters:
+  - uuid
+
+### hpc_workspaces_preview_script
+POST /api/hpc-workspaces/{uuid}/preview_script/
+Summary: Preview a batch script
+Description: Renders the batch script for the parameters and validates them, without submitting.
+Path parameters:
+  - uuid
+Request body: yes
+
+### hpc_workspaces_software_list
+GET /api/hpc-workspaces/{uuid}/software/
+Summary: Find software available on the cluster
+Description: Searches the offering's software catalogs (EESSI, Spack, ...); with a partition, only builds for its CPU architecture. Returns the lines a batch script needs.
+Path parameters:
+  - uuid
+Query parameters (2):
+  - partition
+  - query
+
+### hpc_workspaces_usage_retrieve
+GET /api/hpc-workspaces/{uuid}/usage/
+Summary: Usage of the allocation against its limits
+Description: Consumption of each limited component in the current limit period from Waldur's usage records, per user, with a run-out forecast at the recent pace.
+Path parameters:
+  - uuid
+
+============================================================
 ## identity-bridge  (module: waldur_api_client.api.identity_bridge)
 ============================================================
 
@@ -5696,9 +5884,10 @@ Path parameters:
 GET /api/maintenance-announcements/
 Summary: List maintenance announcements
 Description: Returns a paginated list of maintenance announcements.
-Query parameters (9):
+Query parameters (10):
   - maintenance_type — Maintenance type
   - o — Ordering
+  - offering_uuid — Affected offering UUID
   - scheduled_end_after — Scheduled end after
   - scheduled_end_before — Scheduled end before
   - scheduled_start_after — Scheduled start after
@@ -5711,9 +5900,10 @@ Query parameters (9):
 HEAD /api/maintenance-announcements/
 Summary: List maintenance announcements
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (9):
+Query parameters (10):
   - maintenance_type — Maintenance type
   - o — Ordering
+  - offering_uuid — Affected offering UUID
   - scheduled_end_after — Scheduled end after
   - scheduled_end_before — Scheduled end before
   - scheduled_start_after — Scheduled start after
@@ -9919,6 +10109,14 @@ Path parameters:
 Query parameters (1):
   - timestamp (required) — ISO 8601 timestamp to query the object state at
 
+### marketplace_provider_offerings_import_maintenance_reservations
+POST /api/marketplace-provider-offerings/{uuid}/import_maintenance_reservations/
+Summary: Import the cluster's maintenance reservations as drafts
+Description: Site agents report the MAINT reservations made on the cluster; each becomes a draft maintenance announcement for the provider to review and publish. Reservations named with the Waldur prefix are ignored. Only when maintenance sync is enabled on the offering.
+Path parameters:
+  - uuid
+Request body: yes
+
 ### marketplace_provider_offerings_import_resource
 POST /api/marketplace-provider-offerings/{uuid}/import_resource/
 Summary: Import a resource
@@ -10145,6 +10343,13 @@ Query parameters (11):
   - user_slug — User slug
   - user_url — User URL
   - username — User username
+
+### marketplace_provider_offerings_maintenance_reservations_retrieve
+GET /api/marketplace-provider-offerings/{uuid}/maintenance_reservations/
+Summary: Maintenance reservations the cluster should hold
+Description: For site agents with maintenance sync enabled on the offering (plugin option slurm_maintenance_sync_enabled): the Slurm MAINT reservations that published maintenance announcements call for. The agent creates, updates and removes reservations named with `prefix` to match this list and leaves every...
+Path parameters:
+  - uuid
 
 ### marketplace_provider_offerings_make_available
 POST /api/marketplace-provider-offerings/{uuid}/make_available/
@@ -22638,9 +22843,10 @@ Path parameters:
 GET /api/public-maintenance-announcements/
 Summary: List public maintenance announcements
 Description: Returns a paginated list of public maintenance announcements. Only announcements that are 'Scheduled', 'In progress', or 'Completed' are visible. This endpoint is accessible to unauthenticated users.
-Query parameters (9):
+Query parameters (10):
   - maintenance_type — Maintenance type
   - o — Ordering
+  - offering_uuid — Affected offering UUID
   - scheduled_end_after — Scheduled end after
   - scheduled_end_before — Scheduled end before
   - scheduled_start_after — Scheduled start after
@@ -22653,9 +22859,10 @@ Query parameters (9):
 HEAD /api/public-maintenance-announcements/
 Summary: List public maintenance announcements
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (9):
+Query parameters (10):
   - maintenance_type — Maintenance type
   - o — Ordering
+  - offering_uuid — Affected offering UUID
   - scheduled_end_after — Scheduled end after
   - scheduled_end_before — Scheduled end before
   - scheduled_start_after — Scheduled start after
@@ -24594,79 +24801,6 @@ Path parameters:
   - uuid
 Query parameters (1):
   - field
-
-============================================================
-## slurm-jobs  (module: waldur_api_client.api.slurm_jobs)
-============================================================
-
-### slurm_jobs_list
-GET /api/slurm-jobs/
-Query parameters (1):
-  - field
-
-### slurm_jobs_count
-HEAD /api/slurm-jobs/
-Summary: Get number of items in the collection matching the request parameters
-Description: Get number of items in the collection matching the request parameters.
-
-### slurm_jobs_create
-POST /api/slurm-jobs/
-Request body: yes
-
-### slurm_jobs_retrieve
-GET /api/slurm-jobs/{uuid}/
-Path parameters:
-  - uuid
-Query parameters (1):
-  - field
-
-### slurm_jobs_update
-PUT /api/slurm-jobs/{uuid}/
-Path parameters:
-  - uuid
-Request body: yes
-
-### slurm_jobs_partial_update
-PATCH /api/slurm-jobs/{uuid}/
-Path parameters:
-  - uuid
-Request body: yes
-
-### slurm_jobs_destroy
-DELETE /api/slurm-jobs/{uuid}/
-Path parameters:
-  - uuid
-
-### slurm_jobs_pull
-POST /api/slurm-jobs/{uuid}/pull/
-Summary: Synchronize resource state
-Description: Schedule an asynchronous pull operation to synchronize resource state from the backend. Returns 202 if the pull was scheduled successfully, or 409 if the pull operation is not implemented for this resource type.
-Path parameters:
-  - uuid
-
-### slurm_jobs_set_erred
-POST /api/slurm-jobs/{uuid}/set_erred/
-Summary: Mark resource as ERRED
-Description: Manually transition the resource to ERRED state. This is useful for resources stuck in transitional states (CREATING, UPDATING, DELETING) that cannot be synced via pull. Staff-only operation.
-Path parameters:
-  - uuid
-Request body: yes
-
-### slurm_jobs_set_ok
-POST /api/slurm-jobs/{uuid}/set_ok/
-Summary: Mark resource as OK
-Description: Manually transition the resource to OK state and clear error fields. Staff-only operation.
-Path parameters:
-  - uuid
-
-### slurm_jobs_unlink
-POST /api/slurm-jobs/{uuid}/unlink/
-Summary: Unlink resource
-Description: Delete resource from the database without scheduling operations on backend
-        and without checking current state of the resource. It is intended to be used
-        for removing resource stuck in transitioning state.
-Path parameters:
-  - uuid
 
 ============================================================
 ## sram-groups  (module: waldur_api_client.api.sram_groups)

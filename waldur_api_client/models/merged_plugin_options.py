@@ -227,6 +227,10 @@ class MergedPluginOptions:
         slurm_periodic_policy_enabled (Union[Unset, bool]): Enable SLURM periodic usage policy configuration. When
             enabled, allows configuring QoS-based threshold enforcement, carryover logic, and fairshare decay for site-agent
             managed SLURM offerings. Default: False.
+        slurm_maintenance_sync_enabled (Union[Unset, bool]): When enabled, the site agent turns published maintenance
+            announcements for this offering into Slurm MAINT reservations (full outage: all nodes; partial outage: the named
+            partitions), so the scheduler holds back jobs that would run into them, and imports maintenance reservations
+            made on the cluster as draft announcements. Default: False.
         enforce_qos (Union[Unset, bool]): When enabled, the site agent enforces the offering's QoS selection by granting
             the chosen QoS on the SLURM association (QosLevel/DefaultQOS). When disabled (default), QoS is informational
             only — profiles are shown and the selection is recorded on the resource, but the agent does not touch SLURM QoS.
@@ -243,6 +247,15 @@ class MergedPluginOptions:
             resources; month, and total where the component offers it, are offered without it, as they need no usage per
             day. Off unless set; needs enable_api_key_provisioning. Nothing checks the claim: turn it on only if the agent
             reports per-key daily usage, or those limits are never reached.
+        firecrest_api_url (Union[None, Unset, str]): FirecREST v2 API URL users of this SLURM offering work through
+            (jobs, files, cluster status). Must also be listed in the FIRECREST_ALLOWED_API_URLS setting. Leave empty to
+            disable the HPC workspace.
+        firecrest_system_name (Union[None, Unset, str]): Name of the cluster in FirecREST's systems list.
+        slurm_monitor_api_url (Union[None, Unset, str]): slurm-monitor API URL (ending in /api/v2) with the cluster's
+            per-job samples (GPU, CPU, memory over time). Must also be listed in the SLURM_MONITOR_ALLOWED_API_URLS setting.
+            Leave empty to hide job performance.
+        slurm_monitor_cluster_name (Union[None, Unset, str]): Name of the cluster in slurm-monitor (Sonar's cluster
+            name).
         auto_approve_marketplace_script (Union[Unset, bool]): If set to False, all orders require manual provider
             approval, including for service provider owners and staff Default: True.
         highlight_backend_id_display (Union[Unset, bool]): Defines if backend_id should be shown more prominently by the
@@ -362,10 +375,15 @@ class MergedPluginOptions:
     account_name_generation_policy: Union[AccountNameGenerationPolicyEnum, None, Unset] = UNSET
     enable_display_of_order_actions_for_service_provider: Union[Unset, bool] = True
     slurm_periodic_policy_enabled: Union[Unset, bool] = False
+    slurm_maintenance_sync_enabled: Union[Unset, bool] = False
     enforce_qos: Union[Unset, bool] = False
     enable_api_key_provisioning: Union[Unset, bool] = UNSET
     api_key_limits: Union[Unset, bool] = UNSET
     api_key_daily_usage: Union[Unset, bool] = UNSET
+    firecrest_api_url: Union[None, Unset, str] = UNSET
+    firecrest_system_name: Union[None, Unset, str] = UNSET
+    slurm_monitor_api_url: Union[None, Unset, str] = UNSET
+    slurm_monitor_cluster_name: Union[None, Unset, str] = UNSET
     auto_approve_marketplace_script: Union[Unset, bool] = True
     highlight_backend_id_display: Union[Unset, bool] = False
     backend_id_display_label: Union[Unset, str] = "Backend ID"
@@ -683,6 +701,8 @@ class MergedPluginOptions:
 
         slurm_periodic_policy_enabled = self.slurm_periodic_policy_enabled
 
+        slurm_maintenance_sync_enabled = self.slurm_maintenance_sync_enabled
+
         enforce_qos = self.enforce_qos
 
         enable_api_key_provisioning = self.enable_api_key_provisioning
@@ -690,6 +710,30 @@ class MergedPluginOptions:
         api_key_limits = self.api_key_limits
 
         api_key_daily_usage = self.api_key_daily_usage
+
+        firecrest_api_url: Union[None, Unset, str]
+        if isinstance(self.firecrest_api_url, Unset):
+            firecrest_api_url = UNSET
+        else:
+            firecrest_api_url = self.firecrest_api_url
+
+        firecrest_system_name: Union[None, Unset, str]
+        if isinstance(self.firecrest_system_name, Unset):
+            firecrest_system_name = UNSET
+        else:
+            firecrest_system_name = self.firecrest_system_name
+
+        slurm_monitor_api_url: Union[None, Unset, str]
+        if isinstance(self.slurm_monitor_api_url, Unset):
+            slurm_monitor_api_url = UNSET
+        else:
+            slurm_monitor_api_url = self.slurm_monitor_api_url
+
+        slurm_monitor_cluster_name: Union[None, Unset, str]
+        if isinstance(self.slurm_monitor_cluster_name, Unset):
+            slurm_monitor_cluster_name = UNSET
+        else:
+            slurm_monitor_cluster_name = self.slurm_monitor_cluster_name
 
         auto_approve_marketplace_script = self.auto_approve_marketplace_script
 
@@ -926,6 +970,8 @@ class MergedPluginOptions:
             )
         if slurm_periodic_policy_enabled is not UNSET:
             field_dict["slurm_periodic_policy_enabled"] = slurm_periodic_policy_enabled
+        if slurm_maintenance_sync_enabled is not UNSET:
+            field_dict["slurm_maintenance_sync_enabled"] = slurm_maintenance_sync_enabled
         if enforce_qos is not UNSET:
             field_dict["enforce_qos"] = enforce_qos
         if enable_api_key_provisioning is not UNSET:
@@ -934,6 +980,14 @@ class MergedPluginOptions:
             field_dict["api_key_limits"] = api_key_limits
         if api_key_daily_usage is not UNSET:
             field_dict["api_key_daily_usage"] = api_key_daily_usage
+        if firecrest_api_url is not UNSET:
+            field_dict["firecrest_api_url"] = firecrest_api_url
+        if firecrest_system_name is not UNSET:
+            field_dict["firecrest_system_name"] = firecrest_system_name
+        if slurm_monitor_api_url is not UNSET:
+            field_dict["slurm_monitor_api_url"] = slurm_monitor_api_url
+        if slurm_monitor_cluster_name is not UNSET:
+            field_dict["slurm_monitor_cluster_name"] = slurm_monitor_cluster_name
         if auto_approve_marketplace_script is not UNSET:
             field_dict["auto_approve_marketplace_script"] = auto_approve_marketplace_script
         if highlight_backend_id_display is not UNSET:
@@ -1390,6 +1444,8 @@ class MergedPluginOptions:
 
         slurm_periodic_policy_enabled = d.pop("slurm_periodic_policy_enabled", UNSET)
 
+        slurm_maintenance_sync_enabled = d.pop("slurm_maintenance_sync_enabled", UNSET)
+
         enforce_qos = d.pop("enforce_qos", UNSET)
 
         enable_api_key_provisioning = d.pop("enable_api_key_provisioning", UNSET)
@@ -1397,6 +1453,42 @@ class MergedPluginOptions:
         api_key_limits = d.pop("api_key_limits", UNSET)
 
         api_key_daily_usage = d.pop("api_key_daily_usage", UNSET)
+
+        def _parse_firecrest_api_url(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        firecrest_api_url = _parse_firecrest_api_url(d.pop("firecrest_api_url", UNSET))
+
+        def _parse_firecrest_system_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        firecrest_system_name = _parse_firecrest_system_name(d.pop("firecrest_system_name", UNSET))
+
+        def _parse_slurm_monitor_api_url(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        slurm_monitor_api_url = _parse_slurm_monitor_api_url(d.pop("slurm_monitor_api_url", UNSET))
+
+        def _parse_slurm_monitor_cluster_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        slurm_monitor_cluster_name = _parse_slurm_monitor_cluster_name(d.pop("slurm_monitor_cluster_name", UNSET))
 
         auto_approve_marketplace_script = d.pop("auto_approve_marketplace_script", UNSET)
 
@@ -1516,10 +1608,15 @@ class MergedPluginOptions:
             account_name_generation_policy=account_name_generation_policy,
             enable_display_of_order_actions_for_service_provider=enable_display_of_order_actions_for_service_provider,
             slurm_periodic_policy_enabled=slurm_periodic_policy_enabled,
+            slurm_maintenance_sync_enabled=slurm_maintenance_sync_enabled,
             enforce_qos=enforce_qos,
             enable_api_key_provisioning=enable_api_key_provisioning,
             api_key_limits=api_key_limits,
             api_key_daily_usage=api_key_daily_usage,
+            firecrest_api_url=firecrest_api_url,
+            firecrest_system_name=firecrest_system_name,
+            slurm_monitor_api_url=slurm_monitor_api_url,
+            slurm_monitor_cluster_name=slurm_monitor_cluster_name,
             auto_approve_marketplace_script=auto_approve_marketplace_script,
             highlight_backend_id_display=highlight_backend_id_display,
             backend_id_display_label=backend_id_display_label,

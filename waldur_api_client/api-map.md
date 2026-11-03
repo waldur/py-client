@@ -700,16 +700,23 @@ Module: `waldur_api_client.api.database_stats`
 Module: `waldur_api_client.api.debug`
 
 - `debug_email_config_retrieve` GET `/api/debug/email/config/` — Audit the outgoing email configuration (no params)
+- `debug_email_config_count` HEAD `/api/debug/email/config/` — Audit the outgoing email configuration (no params)
 - `debug_email_probe` POST `/api/debug/email/probe/` — Test the SMTP connection (no params)
 - `debug_email_send_test` POST `/api/debug/email/send_test/` — Send a test email (request body)
 - `debug_pubsub_circuit_breaker_retrieve` GET `/api/debug/pubsub/circuit_breaker/` — Get circuit breaker state (no params)
+- `debug_pubsub_circuit_breaker_count` HEAD `/api/debug/pubsub/circuit_breaker/` — Get circuit breaker state (no params)
 - `debug_pubsub_circuit_breaker_reset` POST `/api/debug/pubsub/circuit_breaker_reset/` — Reset circuit breaker (no params)
 - `debug_pubsub_dead_letter_queue_retrieve` GET `/api/debug/pubsub/dead_letter_queue/` — Get dead letter queue status (no params)
+- `debug_pubsub_dead_letter_queue_count` HEAD `/api/debug/pubsub/dead_letter_queue/` — Get dead letter queue status (no params)
 - `debug_pubsub_message_state_cache_retrieve` GET `/api/debug/pubsub/message_state_cache/` — Get message state cache statistics (no params)
+- `debug_pubsub_message_state_cache_count` HEAD `/api/debug/pubsub/message_state_cache/` — Get message state cache statistics (no params)
 - `debug_pubsub_metrics_retrieve` GET `/api/debug/pubsub/metrics/` — Get publishing metrics (no params)
+- `debug_pubsub_metrics_count` HEAD `/api/debug/pubsub/metrics/` — Get publishing metrics (no params)
 - `debug_pubsub_metrics_reset` POST `/api/debug/pubsub/metrics_reset/` — Reset publishing metrics (no params)
 - `debug_pubsub_overview_retrieve` GET `/api/debug/pubsub/overview/` — Get pubsub system health overview (no params)
+- `debug_pubsub_overview_count` HEAD `/api/debug/pubsub/overview/` — Get pubsub system health overview (no params)
 - `debug_pubsub_queues_retrieve` GET `/api/debug/pubsub/queues/` — Get subscription queues overview (no params)
+- `debug_pubsub_queues_count` HEAD `/api/debug/pubsub/queues/` — Get subscription queues overview (no params)
 
 ## digitalocean-droplets
 Module: `waldur_api_client.api.digitalocean_droplets`
@@ -924,6 +931,29 @@ Module: `waldur_api_client.api.hooks_web`
 - `hooks_web_partial_update` PATCH `/api/hooks-web/{uuid}/` (path: uuid | request body)
 - `hooks_web_destroy` DELETE `/api/hooks-web/{uuid}/` (path: uuid)
 
+## hpc-workspaces
+Module: `waldur_api_client.api.hpc_workspaces`
+
+- `hpc_workspaces_list` GET `/api/hpc-workspaces/` — List HPC workspaces (no params)
+- `hpc_workspaces_count` HEAD `/api/hpc-workspaces/` — List HPC workspaces (no params)
+- `hpc_workspaces_retrieve` GET `/api/hpc-workspaces/{uuid}/` — HPC workspace overview (path: uuid)
+- `hpc_workspaces_cluster_load_retrieve` GET `/api/hpc-workspaces/{uuid}/cluster_load/` — Node load and reservations of the cluster (path: uuid)
+- `hpc_workspaces_file_content_retrieve` GET `/api/hpc-workspaces/{uuid}/file_content/` — View a file on the cluster (path: uuid | 1 query param)
+- `hpc_workspaces_files_list` GET `/api/hpc-workspaces/{uuid}/files/` — List a directory on the cluster (path: uuid | 2 query params)
+- `hpc_workspaces_job_stats_retrieve` GET `/api/hpc-workspaces/{uuid}/job_stats/` — Job statistics of the allocation (path: uuid | 1 query param)
+- `hpc_workspaces_jobs_list` GET `/api/hpc-workspaces/{uuid}/jobs/` — List jobs of the allocation (path: uuid | 1 query param)
+- `hpc_workspaces_jobs` POST `/api/hpc-workspaces/{uuid}/jobs/` — Submit a job to the allocation (path: uuid | request body)
+- `hpc_workspaces_jobs_retrieve` GET `/api/hpc-workspaces/{uuid}/jobs/{job_id}/` — Get a job of the allocation (path: job_id, uuid)
+- `hpc_workspaces_jobs_cancel` POST `/api/hpc-workspaces/{uuid}/jobs/{job_id}/cancel/` — Cancel a job of the allocation (path: job_id, uuid)
+- `hpc_workspaces_jobs_output_retrieve` GET `/api/hpc-workspaces/{uuid}/jobs/{job_id}/output/` — Get the script and output of a job (path: job_id, uuid | 1 query param)
+- `hpc_workspaces_jobs_performance_retrieve` GET `/api/hpc-workspaces/{uuid}/jobs/{job_id}/performance/` — Get the performance of a job over its run (path: job_id, uuid)
+- `hpc_workspaces_jobs_performance_pdf_retrieve` GET `/api/hpc-workspaces/{uuid}/jobs/{job_id}/performance_pdf/` — Download the performance report of a job as PDF (path: job_id, uuid)
+- `hpc_workspaces_output_series_retrieve` GET `/api/hpc-workspaces/{uuid}/output_series/` — Plot a job output file (path: uuid | 2 query params)
+- `hpc_workspaces_partitions_list` GET `/api/hpc-workspaces/{uuid}/partitions/` — Partitions of the cluster (path: uuid)
+- `hpc_workspaces_preview_script` POST `/api/hpc-workspaces/{uuid}/preview_script/` — Preview a batch script (path: uuid | request body)
+- `hpc_workspaces_software_list` GET `/api/hpc-workspaces/{uuid}/software/` — Find software available on the cluster (path: uuid | 2 query params)
+- `hpc_workspaces_usage_retrieve` GET `/api/hpc-workspaces/{uuid}/usage/` — Usage of the allocation against its limits (path: uuid)
+
 ## identity-bridge
 Module: `waldur_api_client.api.identity_bridge`
 
@@ -1051,8 +1081,8 @@ Module: `waldur_api_client.api.maintenance_announcement_template_offerings`
 ## maintenance-announcements
 Module: `waldur_api_client.api.maintenance_announcements`
 
-- `maintenance_announcements_list` GET `/api/maintenance-announcements/` — List maintenance announcements (9 query params)
-- `maintenance_announcements_count` HEAD `/api/maintenance-announcements/` — List maintenance announcements (9 query params)
+- `maintenance_announcements_list` GET `/api/maintenance-announcements/` — List maintenance announcements (10 query params)
+- `maintenance_announcements_count` HEAD `/api/maintenance-announcements/` — List maintenance announcements (10 query params)
 - `maintenance_announcements_create` POST `/api/maintenance-announcements/` — Create a maintenance announcement (request body)
 - `maintenance_announcements_maintenance_stats_retrieve` GET `/api/maintenance-announcements/maintenance_stats/` — Get maintenance announcement statistics (3 query params)
 - `maintenance_announcements_maintenance_stats_count` HEAD `/api/maintenance-announcements/maintenance_stats/` — Get maintenance announcement statistics (3 query params)
@@ -1729,6 +1759,7 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_glauth_users_config_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/glauth_users_config/` — Get GLauth user configuration (path: uuid)
 - `marketplace_provider_offerings_history_list` GET `/api/marketplace-provider-offerings/{uuid}/history/` — Get version history (path: uuid | 45 query params)
 - `marketplace_provider_offerings_history_at_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
+- `marketplace_provider_offerings_import_maintenance_reservations` POST `/api/marketplace-provider-offerings/{uuid}/import_maintenance_reservations/` — Import the cluster's maintenance reservations as drafts (path: uuid | request body)
 - `marketplace_provider_offerings_import_resource` POST `/api/marketplace-provider-offerings/{uuid}/import_resource/` — Import a resource (path: uuid | request body)
 - `marketplace_provider_offerings_importable_resources_list` GET `/api/marketplace-provider-offerings/{uuid}/importable_resources/` — List importable resources (path: uuid)
 - `marketplace_provider_offerings_list_course_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_course_accounts/` — List course accounts for an offering (path: uuid | 44 query params)
@@ -1738,6 +1769,7 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_list_project_service_accounts_list` GET `/api/marketplace-provider-offerings/{uuid}/list_project_service_accounts/` — List project service accounts for an offering (path: uuid | 44 query params)
 - `marketplace_provider_offerings_list_users_list` GET `/api/marketplace-provider-offerings/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 11 query params)
 - `marketplace_provider_offerings_list_users_count` HEAD `/api/marketplace-provider-offerings/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 11 query params)
+- `marketplace_provider_offerings_maintenance_reservations_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/maintenance_reservations/` — Maintenance reservations the cluster should hold (path: uuid)
 - `marketplace_provider_offerings_make_available` POST `/api/marketplace-provider-offerings/{uuid}/make_available/` — Mark an offering as available (path: uuid)
 - `marketplace_provider_offerings_make_unavailable` POST `/api/marketplace-provider-offerings/{uuid}/make_unavailable/` — Mark an offering as unavailable (path: uuid)
 - `marketplace_provider_offerings_move_offering` POST `/api/marketplace-provider-offerings/{uuid}/move_offering/` — Move an offering (path: uuid | request body)
@@ -3539,8 +3571,8 @@ Module: `waldur_api_client.api.provider_tickets`
 ## public-maintenance-announcements
 Module: `waldur_api_client.api.public_maintenance_announcements`
 
-- `public_maintenance_announcements_list` GET `/api/public-maintenance-announcements/` — List public maintenance announcements (9 query params)
-- `public_maintenance_announcements_count` HEAD `/api/public-maintenance-announcements/` — List public maintenance announcements (9 query params)
+- `public_maintenance_announcements_list` GET `/api/public-maintenance-announcements/` — List public maintenance announcements (10 query params)
+- `public_maintenance_announcements_count` HEAD `/api/public-maintenance-announcements/` — List public maintenance announcements (10 query params)
 - `public_maintenance_announcements_retrieve` GET `/api/public-maintenance-announcements/{uuid}/` — Retrieve a public maintenance announcement (path: uuid)
 
 ## query
@@ -3909,21 +3941,6 @@ Module: `waldur_api_client.api.service_settings`
 - `service_settings_list` GET `/api/service-settings/` (11 query params)
 - `service_settings_count` HEAD `/api/service-settings/` — Get number of items in the collection matching the request parameters (10 query params)
 - `service_settings_retrieve` GET `/api/service-settings/{uuid}/` (path: uuid | 1 query param)
-
-## slurm-jobs
-Module: `waldur_api_client.api.slurm_jobs`
-
-- `slurm_jobs_list` GET `/api/slurm-jobs/` (1 query param)
-- `slurm_jobs_count` HEAD `/api/slurm-jobs/` — Get number of items in the collection matching the request parameters (no params)
-- `slurm_jobs_create` POST `/api/slurm-jobs/` (request body)
-- `slurm_jobs_retrieve` GET `/api/slurm-jobs/{uuid}/` (path: uuid | 1 query param)
-- `slurm_jobs_update` PUT `/api/slurm-jobs/{uuid}/` (path: uuid | request body)
-- `slurm_jobs_partial_update` PATCH `/api/slurm-jobs/{uuid}/` (path: uuid | request body)
-- `slurm_jobs_destroy` DELETE `/api/slurm-jobs/{uuid}/` (path: uuid)
-- `slurm_jobs_pull` POST `/api/slurm-jobs/{uuid}/pull/` — Synchronize resource state (path: uuid)
-- `slurm_jobs_set_erred` POST `/api/slurm-jobs/{uuid}/set_erred/` — Mark resource as ERRED (path: uuid | request body)
-- `slurm_jobs_set_ok` POST `/api/slurm-jobs/{uuid}/set_ok/` — Mark resource as OK (path: uuid)
-- `slurm_jobs_unlink` POST `/api/slurm-jobs/{uuid}/unlink/` — Unlink resource (path: uuid)
 
 ## sram-groups
 Module: `waldur_api_client.api.sram_groups`
