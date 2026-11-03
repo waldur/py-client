@@ -3528,10 +3528,10 @@ Module: `waldur_api_client.api.provider_tickets`
 - `provider_tickets_stats_retrieve` GET `/api/provider-tickets/stats/` — Get statistics for provider tickets (1 query param)
 - `provider_tickets_stats_count` HEAD `/api/provider-tickets/stats/` — Get statistics for provider tickets (1 query param)
 - `provider_tickets_retrieve` GET `/api/provider-tickets/{uuid}/` (path: uuid)
-- `provider_tickets_update` PUT `/api/provider-tickets/{uuid}/` (path: uuid | request body)
-- `provider_tickets_partial_update` PATCH `/api/provider-tickets/{uuid}/` (path: uuid | request body)
+- `provider_tickets_update` PUT `/api/provider-tickets/{uuid}/` (path: uuid)
+- `provider_tickets_partial_update` PATCH `/api/provider-tickets/{uuid}/` (path: uuid)
 - `provider_tickets_assign` POST `/api/provider-tickets/{uuid}/assign/` (path: uuid | request body)
-- `provider_tickets_claim` POST `/api/provider-tickets/{uuid}/claim/` (path: uuid | request body)
+- `provider_tickets_claim` POST `/api/provider-tickets/{uuid}/claim/` (path: uuid)
 - `provider_tickets_comment` POST `/api/provider-tickets/{uuid}/comment/` (path: uuid | request body)
 - `provider_tickets_customer_context_retrieve` GET `/api/provider-tickets/{uuid}/customer_context/` — Get customer context for this ticket (path: uuid)
 - `provider_tickets_resolve` POST `/api/provider-tickets/{uuid}/resolve/` (path: uuid)
@@ -3963,8 +3963,6 @@ Module: `waldur_api_client.api.stats`
 ## support
 Module: `waldur_api_client.api.support`
 
-- `support_settings_atlassian_list` GET `/api/support/settings/atlassian/` (no params)
-- `support_settings_atlassian_create` POST `/api/support/settings/atlassian/` (no params)
 - `support_settings_atlassian_current_settings_retrieve` GET `/api/support/settings/atlassian/current_settings/` — Get current Atlassian settings (masked secrets) (no params)
 - `support_settings_atlassian_discover_custom_fields` POST `/api/support/settings/atlassian/discover_custom_fields/` — Discover available custom fields (request body)
 - `support_settings_atlassian_discover_priorities` POST `/api/support/settings/atlassian/discover_priorities/` — Discover available priorities (request body)
@@ -3973,10 +3971,6 @@ Module: `waldur_api_client.api.support`
 - `support_settings_atlassian_preview_settings` POST `/api/support/settings/atlassian/preview_settings/` — Generate preview of settings to be saved (request body)
 - `support_settings_atlassian_save_settings` POST `/api/support/settings/atlassian/save_settings/` — Save selected settings to constance (request body)
 - `support_settings_atlassian_validate_credentials` POST `/api/support/settings/atlassian/validate_credentials/` — Validate Atlassian credentials without saving them (request body)
-- `support_settings_atlassian_retrieve` GET `/api/support/settings/atlassian/{id}/` (path: id)
-- `support_settings_atlassian_update` PUT `/api/support/settings/atlassian/{id}/` (path: id)
-- `support_settings_atlassian_partial_update` PATCH `/api/support/settings/atlassian/{id}/` (path: id)
-- `support_settings_atlassian_destroy` DELETE `/api/support/settings/atlassian/{id}/` (path: id)
 
 ## support-attachments
 Module: `waldur_api_client.api.support_attachments`

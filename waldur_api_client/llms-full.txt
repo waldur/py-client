@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.6.dev.20261103094528
+# Version: 8.1.4-rc.6.dev.20261103153728
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -22595,13 +22595,11 @@ Path parameters:
 PUT /api/provider-tickets/{uuid}/
 Path parameters:
   - uuid
-Request body: yes
 
 ### provider_tickets_partial_update
 PATCH /api/provider-tickets/{uuid}/
 Path parameters:
   - uuid
-Request body: yes
 
 ### provider_tickets_assign
 POST /api/provider-tickets/{uuid}/assign/
@@ -22613,7 +22611,6 @@ Request body: yes
 POST /api/provider-tickets/{uuid}/claim/
 Path parameters:
   - uuid
-Request body: yes
 
 ### provider_tickets_comment
 POST /api/provider-tickets/{uuid}/comment/
@@ -22624,6 +22621,7 @@ Request body: yes
 ### provider_tickets_customer_context_retrieve
 GET /api/provider-tickets/{uuid}/customer_context/
 Summary: Get customer context for this ticket
+Description: The original ticket's caller (full name, email and organization), its resource, and the caller's five latest other tickets among those the provider ticket list shows the requester: tickets routed to a helpdesk they speak for, as an owner of the service provider's organization or as an active agen...
 Path parameters:
   - uuid
 
@@ -24823,12 +24821,6 @@ Description: Triggers the sample_table_sizes Celery task to collect current tabl
 ## support  (module: waldur_api_client.api.support)
 ============================================================
 
-### support_settings_atlassian_list
-GET /api/support/settings/atlassian/
-
-### support_settings_atlassian_create
-POST /api/support/settings/atlassian/
-
 ### support_settings_atlassian_current_settings_retrieve
 GET /api/support/settings/atlassian/current_settings/
 Summary: Get current Atlassian settings (masked secrets)
@@ -24875,26 +24867,6 @@ POST /api/support/settings/atlassian/validate_credentials/
 Summary: Validate Atlassian credentials without saving them
 Description: Validate Atlassian credentials without saving them.
 Request body: yes
-
-### support_settings_atlassian_retrieve
-GET /api/support/settings/atlassian/{id}/
-Path parameters:
-  - id — A unique integer value identifying this issue.
-
-### support_settings_atlassian_update
-PUT /api/support/settings/atlassian/{id}/
-Path parameters:
-  - id — A unique integer value identifying this issue.
-
-### support_settings_atlassian_partial_update
-PATCH /api/support/settings/atlassian/{id}/
-Path parameters:
-  - id — A unique integer value identifying this issue.
-
-### support_settings_atlassian_destroy
-DELETE /api/support/settings/atlassian/{id}/
-Path parameters:
-  - id — A unique integer value identifying this issue.
 
 ============================================================
 ## support-attachments  (module: waldur_api_client.api.support_attachments)

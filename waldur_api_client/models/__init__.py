@@ -2074,7 +2074,6 @@ from .patched_provider_helpdesk_request import PatchedProviderHelpdeskRequest
 from .patched_provider_helpdesk_request_settings import PatchedProviderHelpdeskRequestSettings
 from .patched_provider_plan_details_request import PatchedProviderPlanDetailsRequest
 from .patched_provider_support_user_request import PatchedProviderSupportUserRequest
-from .patched_provider_ticket_request import PatchedProviderTicketRequest
 from .patched_question_admin_request import PatchedQuestionAdminRequest
 from .patched_question_admin_request_guidance_answer_value_type_0 import (
     PatchedQuestionAdminRequestGuidanceAnswerValueType0,
@@ -2428,7 +2427,6 @@ from .provider_support_user_role_enum import ProviderSupportUserRoleEnum
 from .provider_team_user import ProviderTeamUser
 from .provider_ticket import ProviderTicket
 from .provider_ticket_o_enum import ProviderTicketOEnum
-from .provider_ticket_request import ProviderTicketRequest
 from .provider_user import ProviderUser
 from .provider_user_role_details import ProviderUserRoleDetails
 from .provider_username_candidate import ProviderUsernameCandidate
@@ -5303,7 +5301,6 @@ __all__ = (
     "PatchedProviderHelpdeskRequestSettings",
     "PatchedProviderPlanDetailsRequest",
     "PatchedProviderSupportUserRequest",
-    "PatchedProviderTicketRequest",
     "PatchedQuestionAdminRequest",
     "PatchedQuestionAdminRequestGuidanceAnswerValueType0",
     "PatchedQuestionDependencyRequest",
@@ -5633,7 +5630,6 @@ __all__ = (
     "ProviderTeamUser",
     "ProviderTicket",
     "ProviderTicketOEnum",
-    "ProviderTicketRequest",
     "ProviderUser",
     "ProviderUsernameCandidate",
     "ProviderUsernameConflict",

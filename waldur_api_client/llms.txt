@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.1.4-rc.6.dev.20261103094528).
+> Auto-generated Python SDK for the Waldur API (version 8.1.4-rc.6.dev.20261103153728).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -353,7 +353,7 @@ waldur_api_client/
 - **sram-project-rules** (8 endpoints)
 - **staff-passkeys** (3 endpoints)
 - **stats** (5 endpoints)
-- **support** (14 endpoints)
+- **support** (8 endpoints)
 - **support-attachments** (5 endpoints)
 - **support-canned-responses** (8 endpoints)
 - **support-comments** (6 endpoints)
