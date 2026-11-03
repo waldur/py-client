@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.6.dev.20261103153728
+# Version: 8.1.4-rc.6.dev.20261103172322
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -3133,8 +3133,8 @@ Query parameters (6):
 
 ### customer_affiliates_earnings_retrieve
 GET /api/customer-affiliates/{uuid}/earnings/
-Summary: Earnings summary of this affiliate link: lifetime total, per-month series and the affiliate organization's withdrawable credit balance
-Description: Earnings summary of this affiliate link: lifetime total, per-month series and the affiliate organization's withdrawable credit balance.
+Summary: Earnings summary of this affiliate link: lifetime total, per-month series, the affiliate organization's withdrawable credit balance and the fee the current month is expected to earn
+Description: Earnings summary of this affiliate link: lifetime total, per-month series, the affiliate organization's withdrawable credit balance and the fee the current month is expected to earn.
 Path parameters:
   - uuid
 

@@ -598,7 +598,7 @@ Module: `waldur_api_client.api.customer_affiliates`
 - `customer_affiliates_partial_update` PATCH `/api/customer-affiliates/{uuid}/` (path: uuid | request body)
 - `customer_affiliates_destroy` DELETE `/api/customer-affiliates/{uuid}/` (path: uuid)
 - `customer_affiliates_accruals_list` GET `/api/customer-affiliates/{uuid}/accruals/` — List fees accrued from this affiliate link (path: uuid | 6 query params)
-- `customer_affiliates_earnings_retrieve` GET `/api/customer-affiliates/{uuid}/earnings/` — Earnings summary of this affiliate link: lifetime total, per-month series and the affiliate organization's withdrawable credit balance (path: uuid)
+- `customer_affiliates_earnings_retrieve` GET `/api/customer-affiliates/{uuid}/earnings/` — Earnings summary of this affiliate link: lifetime total, per-month series, the affiliate organization's withdrawable credit balance and the fee the current month is expected to earn (path: uuid)
 
 ## customer-credits
 Module: `waldur_api_client.api.customer_credits`
