@@ -3263,7 +3263,7 @@ Module: `waldur_api_client.api.projects`
 - `projects_create` POST `/api/projects/` — Create a new project (request body)
 - `projects_checklist_template_retrieve` GET `/api/projects/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `projects_checklist_template_count` HEAD `/api/projects/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
-- `projects_other_users_list` GET `/api/projects/{project_uuid}/other_users/` — A list of users which can be added to the current project from other projects of the same customer (path: project_uuid | 16 query params)
+- `projects_other_users_list` GET `/api/projects/{project_uuid}/other_users/` — Users with a role in the caller's other projects of the same organization, whom the caller may add to the current project (path: project_uuid | 16 query params)
 - `projects_other_users_count` HEAD `/api/projects/{project_uuid}/other_users/` — Get number of items in the collection matching the request parameters (path: project_uuid | 16 query params)
 - `projects_retrieve` GET `/api/projects/{uuid}/` — Retrieve project details (path: uuid | 1 query param)
 - `projects_update` PUT `/api/projects/{uuid}/` — Update project details (path: uuid | request body)
