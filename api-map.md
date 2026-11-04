@@ -614,6 +614,8 @@ Module: `waldur_api_client.api.customer_credits`
 - `customer_credits_apply_compensations` POST `/api/customer-credits/{uuid}/apply_compensations/` (path: uuid)
 - `customer_credits_clear_compensations` POST `/api/customer-credits/{uuid}/clear_compensations/` (path: uuid)
 - `customer_credits_consumptions_list` GET `/api/customer-credits/{uuid}/consumptions/` — Get credit consumption history grouped by month (path: uuid | 5 query params)
+- `customer_credits_reclassify` POST `/api/customer-credits/{uuid}/reclassify/` — Mark part of the granted credit as paid, e (path: uuid | request body)
+- `customer_credits_top_up` POST `/api/customer-credits/{uuid}/top_up/` — Record a customer prepayment as paid credit (path: uuid | request body)
 
 ## customer-permissions-reviews
 Module: `waldur_api_client.api.customer_permissions_reviews`

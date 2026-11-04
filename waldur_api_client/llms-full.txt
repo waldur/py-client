@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.6.dev.20261104180538
+# Version: 8.1.4-rc.6.dev.20261104202352
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -3218,6 +3218,22 @@ Query parameters (5):
   - customer_uuid
   - o — Ordering
   - query
+
+### customer_credits_reclassify
+POST /api/customer-credits/{uuid}/reclassify/
+Summary: Mark part of the granted credit as paid, e
+Description: Mark part of the granted credit as paid, e.g. a prepayment that was recorded as a plain credit grant. The credit value does not change; the ledger records the move with the comment.
+Path parameters:
+  - uuid
+Request body: yes
+
+### customer_credits_top_up
+POST /api/customer-credits/{uuid}/top_up/
+Summary: Record a customer prepayment as paid credit
+Description: Record a customer prepayment as paid credit. Raises the credit value and writes a top-up ledger entry with the comment. Unlike granted credit, invoices paid from it count towards the affiliate fee, and it does not expire. A negative amount reverses a top-up, e.g. a bounced payment, and draws on p...
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## customer-permissions-reviews  (module: waldur_api_client.api.customer_permissions_reviews)

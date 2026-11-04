@@ -19,8 +19,9 @@ class AffiliateEarnings:
         withdrawable_balance (str):
         per_month (list['AffiliateEarningsMonth']):
         upcoming (Union['AffiliateEarningsMonth', None]): Fee the current month is expected to earn from the referred
-            customer's open invoice, after its estimated volume discounts and credit compensation. Null when the month will
-            earn nothing on this link. Not yet accrued: the amount changes until month close.
+            customer's open invoice, on the base an accrual uses: the net price after estimated volume discounts and credit
+            compensation, plus what paid credit covers. Null when the month will earn nothing on this link. Not yet accrued:
+            the amount changes until month close.
     """
 
     total_earned: str
