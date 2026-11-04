@@ -22,6 +22,8 @@ class HpcWorkspace:
         customer_name (str):
         system_name (str):
         state (str):
+        firecrest_enabled (bool): Jobs can be submitted and canceled and files opened through FirecREST. Without it the
+            workspace is read-only, from the cluster monitor.
         monitoring_enabled (bool): Jobs have per-run performance samples from the cluster monitor.
     """
 
@@ -35,6 +37,7 @@ class HpcWorkspace:
     customer_name: str
     system_name: str
     state: str
+    firecrest_enabled: bool
     monitoring_enabled: bool
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -59,6 +62,8 @@ class HpcWorkspace:
 
         state = self.state
 
+        firecrest_enabled = self.firecrest_enabled
+
         monitoring_enabled = self.monitoring_enabled
 
         field_dict: dict[str, Any] = {}
@@ -75,6 +80,7 @@ class HpcWorkspace:
                 "customer_name": customer_name,
                 "system_name": system_name,
                 "state": state,
+                "firecrest_enabled": firecrest_enabled,
                 "monitoring_enabled": monitoring_enabled,
             }
         )
@@ -104,6 +110,8 @@ class HpcWorkspace:
 
         state = d.pop("state")
 
+        firecrest_enabled = d.pop("firecrest_enabled")
+
         monitoring_enabled = d.pop("monitoring_enabled")
 
         hpc_workspace = cls(
@@ -117,6 +125,7 @@ class HpcWorkspace:
             customer_name=customer_name,
             system_name=system_name,
             state=state,
+            firecrest_enabled=firecrest_enabled,
             monitoring_enabled=monitoring_enabled,
         )
 

@@ -250,12 +250,13 @@ class MergedPluginOptionsRequest:
             day. Off unless set; needs enable_api_key_provisioning. Nothing checks the claim: turn it on only if the agent
             reports per-key daily usage, or those limits are never reached.
         firecrest_api_url (Union[None, Unset, str]): FirecREST v2 API URL users of this SLURM offering work through
-            (jobs, files, cluster status). Must also be listed in the FIRECREST_ALLOWED_API_URLS setting. Leave empty to
-            disable the HPC workspace.
+            (jobs, files, cluster status). Must also be listed in the FIRECREST_ALLOWED_API_URLS setting. Leave empty to run
+            no jobs through Waldur; with a slurm-monitor URL the workspace is then read-only.
         firecrest_system_name (Union[None, Unset, str]): Name of the cluster in FirecREST's systems list.
         slurm_monitor_api_url (Union[None, Unset, str]): slurm-monitor API URL (ending in /api/v2) with the cluster's
             per-job samples (GPU, CPU, memory over time). Must also be listed in the SLURM_MONITOR_ALLOWED_API_URLS setting.
-            Leave empty to hide job performance.
+            Leave empty to hide job performance. Without FirecREST, the allocations get a read-only workspace from it: jobs,
+            their performance, job statistics and software.
         slurm_monitor_cluster_name (Union[None, Unset, str]): Name of the cluster in slurm-monitor (Sonar's cluster
             name).
         auto_approve_marketplace_script (Union[Unset, bool]): If set to False, all orders require manual provider

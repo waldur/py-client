@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
@@ -12,12 +13,18 @@ def _get_kwargs(
     *,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
     params["page"] = page
 
     params["page_size"] = page_size
+
+    json_resource_uuid: Union[Unset, str] = UNSET
+    if not isinstance(resource_uuid, Unset):
+        json_resource_uuid = str(resource_uuid)
+    params["resource_uuid"] = json_resource_uuid
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -61,6 +68,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
     """List HPC workspaces
 
@@ -69,6 +77,7 @@ def sync_detailed(
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        resource_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -81,6 +90,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         page=page,
         page_size=page_size,
+        resource_uuid=resource_uuid,
     )
 
     response = client.get_httpx_client().request(
@@ -95,6 +105,7 @@ def sync(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
     """List HPC workspaces
 
@@ -103,6 +114,7 @@ def sync(
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        resource_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -116,6 +128,7 @@ def sync(
         client=client,
         page=page,
         page_size=page_size,
+        resource_uuid=resource_uuid,
     ).parsed
 
 
@@ -124,6 +137,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[int]:
     """List HPC workspaces
 
@@ -132,6 +146,7 @@ async def asyncio_detailed(
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        resource_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -144,6 +159,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         page=page,
         page_size=page_size,
+        resource_uuid=resource_uuid,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -156,6 +172,7 @@ async def asyncio(
     client: AuthenticatedClient,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> int:
     """List HPC workspaces
 
@@ -164,6 +181,7 @@ async def asyncio(
     Args:
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        resource_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -178,5 +196,6 @@ async def asyncio(
             client=client,
             page=page,
             page_size=page_size,
+            resource_uuid=resource_uuid,
         )
     ).parsed

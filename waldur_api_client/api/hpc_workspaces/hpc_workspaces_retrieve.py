@@ -51,7 +51,8 @@ def sync_detailed(
 
      Allocation, the user's cluster identity and FirecREST system health. Problems reaching FirecREST are
     reported in 'error' rather than failing the request; 'sign_in_provider' names the identity provider
-    to sign in through again when that is the remedy.
+    to sign in through again when that is the remedy. Without FirecREST ('firecrest_enabled' false) the
+    health is left out.
 
     Args:
         uuid (UUID):
@@ -84,7 +85,8 @@ def sync(
 
      Allocation, the user's cluster identity and FirecREST system health. Problems reaching FirecREST are
     reported in 'error' rather than failing the request; 'sign_in_provider' names the identity provider
-    to sign in through again when that is the remedy.
+    to sign in through again when that is the remedy. Without FirecREST ('firecrest_enabled' false) the
+    health is left out.
 
     Args:
         uuid (UUID):
@@ -112,7 +114,8 @@ async def asyncio_detailed(
 
      Allocation, the user's cluster identity and FirecREST system health. Problems reaching FirecREST are
     reported in 'error' rather than failing the request; 'sign_in_provider' names the identity provider
-    to sign in through again when that is the remedy.
+    to sign in through again when that is the remedy. Without FirecREST ('firecrest_enabled' false) the
+    health is left out.
 
     Args:
         uuid (UUID):
@@ -143,7 +146,8 @@ async def asyncio(
 
      Allocation, the user's cluster identity and FirecREST system health. Problems reaching FirecREST are
     reported in 'error' rather than failing the request; 'sign_in_provider' names the identity provider
-    to sign in through again when that is the remedy.
+    to sign in through again when that is the remedy. Without FirecREST ('firecrest_enabled' false) the
+    health is left out.
 
     Args:
         uuid (UUID):

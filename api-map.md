@@ -934,8 +934,8 @@ Module: `waldur_api_client.api.hooks_web`
 ## hpc-workspaces
 Module: `waldur_api_client.api.hpc_workspaces`
 
-- `hpc_workspaces_list` GET `/api/hpc-workspaces/` — List HPC workspaces (no params)
-- `hpc_workspaces_count` HEAD `/api/hpc-workspaces/` — List HPC workspaces (no params)
+- `hpc_workspaces_list` GET `/api/hpc-workspaces/` — List HPC workspaces (1 query param)
+- `hpc_workspaces_count` HEAD `/api/hpc-workspaces/` — List HPC workspaces (1 query param)
 - `hpc_workspaces_retrieve` GET `/api/hpc-workspaces/{uuid}/` — HPC workspace overview (path: uuid)
 - `hpc_workspaces_cluster_load_retrieve` GET `/api/hpc-workspaces/{uuid}/cluster_load/` — Node load and reservations of the cluster (path: uuid)
 - `hpc_workspaces_file_content_retrieve` GET `/api/hpc-workspaces/{uuid}/file_content/` — View a file on the cluster (path: uuid | 1 query param)
@@ -4210,7 +4210,7 @@ Module: `waldur_api_client.api.user_actions`
 - `user_actions_bulk_silence` POST `/api/user-actions/bulk_silence/` — Bulk silence actions by filters (request body)
 - `user_actions_summary_retrieve` GET `/api/user-actions/summary/` — Get action summary counts (no params)
 - `user_actions_summary_count` HEAD `/api/user-actions/summary/` — Get number of items in the collection matching the request parameters (no params)
-- `user_actions_update_actions` POST `/api/user-actions/update_actions/` — Trigger update of user actions (request body)
+- `user_actions_update_actions` POST `/api/user-actions/update_actions/` — Staff-only action to trigger recalculation of the actions of every user (request body)
 - `user_actions_retrieve` GET `/api/user-actions/{uuid}/` (path: uuid)
 - `user_actions_execute_action` POST `/api/user-actions/{uuid}/execute_action/` — Execute a corrective action (path: uuid | request body)
 - `user_actions_silence` POST `/api/user-actions/{uuid}/silence/` — Silence an action temporarily or permanently (path: uuid | request body)

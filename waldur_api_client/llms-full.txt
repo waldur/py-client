@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.6.dev.20261104160010
+# Version: 8.1.4-rc.6.dev.20261104180538
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -5012,17 +5012,21 @@ Path parameters:
 ### hpc_workspaces_list
 GET /api/hpc-workspaces/
 Summary: List HPC workspaces
-Description: SLURM allocations visible to the user whose offering is connected to FirecREST.
+Description: SLURM allocations visible to the user whose offering is connected to FirecREST or a cluster monitor.
+Query parameters (1):
+  - resource_uuid — Only the workspace of this resource, e.g. to tell whether a resource page has one.
 
 ### hpc_workspaces_count
 HEAD /api/hpc-workspaces/
 Summary: List HPC workspaces
 Description: Get number of items in the collection matching the request parameters.
+Query parameters (1):
+  - resource_uuid — Only the workspace of this resource, e.g. to tell whether a resource page has one.
 
 ### hpc_workspaces_retrieve
 GET /api/hpc-workspaces/{uuid}/
 Summary: HPC workspace overview
-Description: Allocation, the user's cluster identity and FirecREST system health. Problems reaching FirecREST are reported in 'error' rather than failing the request; 'sign_in_provider' names the identity provider to sign in through again when that is the remedy.
+Description: Allocation, the user's cluster identity and FirecREST system health. Problems reaching FirecREST are reported in 'error' rather than failing the request; 'sign_in_provider' names the identity provider to sign in through again when that is the remedy. Without FirecREST ('firecrest_enabled' false) ...
 Path parameters:
   - uuid
 
@@ -25907,7 +25911,8 @@ Description: Get number of items in the collection matching the request paramete
 
 ### user_actions_update_actions
 POST /api/user-actions/update_actions/
-Summary: Trigger update of user actions
+Summary: Staff-only action to trigger recalculation of the actions of every user
+Description: Staff-only action to trigger recalculation of the actions of every user.
 Request body: yes
 
 ### user_actions_retrieve

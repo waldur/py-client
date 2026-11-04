@@ -26,6 +26,8 @@ class HpcWorkspaceOverview:
         customer_name (str):
         system_name (str):
         state (str):
+        firecrest_enabled (bool): Jobs can be submitted and canceled and files opened through FirecREST. Without it the
+            workspace is read-only, from the cluster monitor.
         monitoring_enabled (bool): Jobs have per-run performance samples from the cluster monitor.
         username (Union[None, str]):
         home_directory (Union[None, str]):
@@ -46,6 +48,7 @@ class HpcWorkspaceOverview:
     customer_name: str
     system_name: str
     state: str
+    firecrest_enabled: bool
     monitoring_enabled: bool
     username: Union[None, str]
     home_directory: Union[None, str]
@@ -75,6 +78,8 @@ class HpcWorkspaceOverview:
         system_name = self.system_name
 
         state = self.state
+
+        firecrest_enabled = self.firecrest_enabled
 
         monitoring_enabled = self.monitoring_enabled
 
@@ -117,6 +122,7 @@ class HpcWorkspaceOverview:
                 "customer_name": customer_name,
                 "system_name": system_name,
                 "state": state,
+                "firecrest_enabled": firecrest_enabled,
                 "monitoring_enabled": monitoring_enabled,
                 "username": username,
                 "home_directory": home_directory,
@@ -153,6 +159,8 @@ class HpcWorkspaceOverview:
         system_name = d.pop("system_name")
 
         state = d.pop("state")
+
+        firecrest_enabled = d.pop("firecrest_enabled")
 
         monitoring_enabled = d.pop("monitoring_enabled")
 
@@ -222,6 +230,7 @@ class HpcWorkspaceOverview:
             customer_name=customer_name,
             system_name=system_name,
             state=state,
+            firecrest_enabled=firecrest_enabled,
             monitoring_enabled=monitoring_enabled,
             username=username,
             home_directory=home_directory,
