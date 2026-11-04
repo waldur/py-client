@@ -46,6 +46,10 @@ class EventConsumer:
         last_delivered_at (Union[None, datetime.datetime]):
         last_error (str):
         last_error_at (Union[None, datetime.datetime]):
+        ephemeral (bool): Registered by a short-lived client (a browser tab). Deleted automatically once its queue has
+            had no reader for EVENT_CONSUMER_EPHEMERAL_IDLE_HOURS.
+        unread_since (Union[None, datetime.datetime]): When the sweep first saw this ephemeral consumer's queue without
+            a reader. Cleared when a reader returns or the client re-registers.
         created (datetime.datetime):
         modified (datetime.datetime):
     """
@@ -71,6 +75,8 @@ class EventConsumer:
     last_delivered_at: Union[None, datetime.datetime]
     last_error: str
     last_error_at: Union[None, datetime.datetime]
+    ephemeral: bool
+    unread_since: Union[None, datetime.datetime]
     created: datetime.datetime
     modified: datetime.datetime
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -139,6 +145,14 @@ class EventConsumer:
         else:
             last_error_at = self.last_error_at
 
+        ephemeral = self.ephemeral
+
+        unread_since: Union[None, str]
+        if isinstance(self.unread_since, datetime.datetime):
+            unread_since = self.unread_since.isoformat()
+        else:
+            unread_since = self.unread_since
+
         created = self.created.isoformat()
 
         modified = self.modified.isoformat()
@@ -168,6 +182,8 @@ class EventConsumer:
                 "last_delivered_at": last_delivered_at,
                 "last_error": last_error,
                 "last_error_at": last_error_at,
+                "ephemeral": ephemeral,
+                "unread_since": unread_since,
                 "created": created,
                 "modified": modified,
             }
@@ -294,6 +310,23 @@ class EventConsumer:
 
         last_error_at = _parse_last_error_at(d.pop("last_error_at"))
 
+        ephemeral = d.pop("ephemeral")
+
+        def _parse_unread_since(data: object) -> Union[None, datetime.datetime]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                unread_since_type_0 = isoparse(data)
+
+                return unread_since_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, datetime.datetime], data)
+
+        unread_since = _parse_unread_since(d.pop("unread_since"))
+
         created = isoparse(d.pop("created"))
 
         modified = isoparse(d.pop("modified"))
@@ -320,6 +353,8 @@ class EventConsumer:
             last_delivered_at=last_delivered_at,
             last_error=last_error,
             last_error_at=last_error_at,
+            ephemeral=ephemeral,
+            unread_since=unread_since,
             created=created,
             modified=modified,
         )

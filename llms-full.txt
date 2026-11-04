@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.6.dev.20261104071043
+# Version: 8.1.4-rc.6.dev.20261104160010
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -8828,7 +8828,7 @@ Request body: yes
 ### marketplace_plan_components_list
 GET /api/marketplace-plan-components/
 Summary: List plan components
-Description: Returns a paginated list of all plan components. A plan component defines the pricing and quotas for an offering component within a billing plan. The list is filtered based on the current user's access permissions and organization group memberships.
+Description: Returns a paginated list of plan components. A plan component defines the pricing and quotas for an offering component within a billing plan. The list shows the components of plans of offerings the caller sees in public or provider offerings, narrowed by the plans' organization groups.
 Query parameters (4):
   - archived — Archived
   - offering_uuid — Offering UUID
@@ -9579,7 +9579,7 @@ Query parameters (2):
 ### marketplace_provider_offerings_groups_list
 GET /api/marketplace-provider-offerings/groups/
 Summary: List offerings grouped by provider
-Description: Returns a paginated list of active, shared offerings grouped by their service provider.
+Description: Returns a paginated list of active, shared offerings grouped by their service provider. Only offerings the caller may see in the public offerings list are included.
 Query parameters (43):
   - accessible — Only offerings the current user can order
   - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
@@ -15767,10 +15767,6 @@ Query parameters (5):
   - validation_decision — Review decision
   - verification_uuid — Verification UUID
 
-### onboarding_justifications_create
-POST /api/onboarding-justifications/
-Request body: yes
-
 ### onboarding_justifications_create_justification
 POST /api/onboarding-justifications/create_justification/
 Summary: Create justification for failed verification
@@ -15903,10 +15899,6 @@ Query parameters (8):
   - user_uuid — User UUID
   - validation_method — Validation method
 
-### onboarding_verifications_create
-POST /api/onboarding-verifications/
-Request body: yes
-
 ### onboarding_verifications_available_checklists_retrieve
 GET /api/onboarding-verifications/available_checklists/
 Summary: Get available onboarding checklists (customer and intent) for preview
@@ -15920,20 +15912,6 @@ Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
 Query parameters (1):
   - checklist_type — Type of checklist to retrieve (customer, intent, or all). Defaults to all.
-
-### onboarding_verifications_checklist_template_retrieve
-GET /api/onboarding-verifications/checklist-template/
-Summary: Get checklist template for creating new objects
-Description: Get checklist template for creating new objects.
-Query parameters (1):
-  - parent_uuid (required) — UUID of the parent object (e.g., customer UUID for new projects)
-
-### onboarding_verifications_checklist_template_count
-HEAD /api/onboarding-verifications/checklist-template/
-Summary: Get number of items in the collection matching the request parameters
-Description: Get number of items in the collection matching the request parameters.
-Query parameters (1):
-  - parent_uuid (required) — UUID of the parent object (e.g., customer UUID for new projects)
 
 ### onboarding_verifications_start_verification
 POST /api/onboarding-verifications/start_verification/

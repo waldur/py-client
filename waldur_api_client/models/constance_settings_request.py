@@ -401,6 +401,7 @@ class ConstanceSettingsRequest:
         pat_max_audit_events_per_hour (Union[Unset, int]):
         mcp_enabled (Union[Unset, bool]):
         mcp_resource_urls (Union[Unset, str]):
+        event_consumer_ephemeral_idle_hours (Union[Unset, int]):
     """
 
     site_name: Union[Unset, str] = UNSET
@@ -761,6 +762,7 @@ class ConstanceSettingsRequest:
     pat_max_audit_events_per_hour: Union[Unset, int] = UNSET
     mcp_enabled: Union[Unset, bool] = UNSET
     mcp_resource_urls: Union[Unset, str] = UNSET
+    event_consumer_ephemeral_idle_hours: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -1772,6 +1774,8 @@ class ConstanceSettingsRequest:
 
         mcp_resource_urls = self.mcp_resource_urls
 
+        event_consumer_ephemeral_idle_hours = self.event_consumer_ephemeral_idle_hours
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -2503,6 +2507,8 @@ class ConstanceSettingsRequest:
             field_dict["MCP_ENABLED"] = mcp_enabled
         if mcp_resource_urls is not UNSET:
             field_dict["MCP_RESOURCE_URLS"] = mcp_resource_urls
+        if event_consumer_ephemeral_idle_hours is not UNSET:
+            field_dict["EVENT_CONSUMER_EPHEMERAL_IDLE_HOURS"] = event_consumer_ephemeral_idle_hours
 
         return field_dict
 
@@ -3861,6 +3867,8 @@ class ConstanceSettingsRequest:
 
         mcp_resource_urls = d.pop("MCP_RESOURCE_URLS", UNSET)
 
+        event_consumer_ephemeral_idle_hours = d.pop("EVENT_CONSUMER_EPHEMERAL_IDLE_HOURS", UNSET)
+
         constance_settings_request = cls(
             site_name=site_name,
             site_description=site_description,
@@ -4220,6 +4228,7 @@ class ConstanceSettingsRequest:
             pat_max_audit_events_per_hour=pat_max_audit_events_per_hour,
             mcp_enabled=mcp_enabled,
             mcp_resource_urls=mcp_resource_urls,
+            event_consumer_ephemeral_idle_hours=event_consumer_ephemeral_idle_hours,
         )
 
         constance_settings_request.additional_properties = d

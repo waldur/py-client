@@ -2514,7 +2514,6 @@ Module: `waldur_api_client.api.onboarding_justifications`
 
 - `onboarding_justifications_list` GET `/api/onboarding-justifications/` (5 query params)
 - `onboarding_justifications_count` HEAD `/api/onboarding-justifications/` — Get number of items in the collection matching the request parameters (5 query params)
-- `onboarding_justifications_create` POST `/api/onboarding-justifications/` (request body)
 - `onboarding_justifications_create_justification` POST `/api/onboarding-justifications/create_justification/` — Create justification for failed verification (request body)
 - `onboarding_justifications_retrieve` GET `/api/onboarding-justifications/{uuid}/` (path: uuid)
 - `onboarding_justifications_update` PUT `/api/onboarding-justifications/{uuid}/` (path: uuid | request body)
@@ -2540,11 +2539,8 @@ Module: `waldur_api_client.api.onboarding_verifications`
 
 - `onboarding_verifications_list` GET `/api/onboarding-verifications/` (8 query params)
 - `onboarding_verifications_count` HEAD `/api/onboarding-verifications/` — Get number of items in the collection matching the request parameters (8 query params)
-- `onboarding_verifications_create` POST `/api/onboarding-verifications/` (request body)
 - `onboarding_verifications_available_checklists_retrieve` GET `/api/onboarding-verifications/available_checklists/` — Get available onboarding checklists (customer and intent) for preview (1 query param)
 - `onboarding_verifications_available_checklists_count` HEAD `/api/onboarding-verifications/available_checklists/` — Get number of items in the collection matching the request parameters (1 query param)
-- `onboarding_verifications_checklist_template_retrieve` GET `/api/onboarding-verifications/checklist-template/` — Get checklist template for creating new objects (1 query param)
-- `onboarding_verifications_checklist_template_count` HEAD `/api/onboarding-verifications/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
 - `onboarding_verifications_start_verification` POST `/api/onboarding-verifications/start_verification/` — Start company validation process by creating a verification record (request body)
 - `onboarding_verifications_retrieve` GET `/api/onboarding-verifications/{uuid}/` (path: uuid)
 - `onboarding_verifications_update` PUT `/api/onboarding-verifications/{uuid}/` (path: uuid | request body)
