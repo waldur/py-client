@@ -1525,8 +1525,6 @@ Module: `waldur_api_client.api.marketplace_offering_users`
 - `marketplace_offering_users_list` GET `/api/marketplace-offering-users/` — List offering users (23 query params)
 - `marketplace_offering_users_count` HEAD `/api/marketplace-offering-users/` — List offering users (22 query params)
 - `marketplace_offering_users_create` POST `/api/marketplace-offering-users/` — Create an offering user (request body)
-- `marketplace_offering_users_checklist_template_retrieve` GET `/api/marketplace-offering-users/checklist-template/` — Get checklist template for creating new objects (1 query param)
-- `marketplace_offering_users_checklist_template_count` HEAD `/api/marketplace-offering-users/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
 - `marketplace_offering_users_posix_identities_list` GET `/api/marketplace-offering-users/posix_identities/` — List a user's POSIX identities across all their offerings (22 query params)
 - `marketplace_offering_users_posix_identities_count` HEAD `/api/marketplace-offering-users/posix_identities/` — List a user's POSIX identities across all their offerings (22 query params)
 - `marketplace_offering_users_profile_field_warnings_retrieve` GET `/api/marketplace-offering-users/profile_field_warnings/` — Get profile field warnings (no params)
@@ -1951,7 +1949,7 @@ Module: `waldur_api_client.api.marketplace_resource_end_date_change_requests`
 - `marketplace_resource_end_date_change_requests_create` POST `/api/marketplace-resource-end-date-change-requests/` (request body)
 - `marketplace_resource_end_date_change_requests_retrieve` GET `/api/marketplace-resource-end-date-change-requests/{uuid}/` (path: uuid)
 - `marketplace_resource_end_date_change_requests_approve` POST `/api/marketplace-resource-end-date-change-requests/{uuid}/approve/` — Approve resource end date change request and apply the date to the resource (path: uuid | request body)
-- `marketplace_resource_end_date_change_requests_cancel` POST `/api/marketplace-resource-end-date-change-requests/{uuid}/cancel/` — Cancel resource end date change request (path: uuid | request body)
+- `marketplace_resource_end_date_change_requests_cancel` POST `/api/marketplace-resource-end-date-change-requests/{uuid}/cancel/` — Cancel resource end date change request (path: uuid)
 - `marketplace_resource_end_date_change_requests_reject` POST `/api/marketplace-resource-end-date-change-requests/{uuid}/reject/` — Reject resource end date change request (path: uuid | request body)
 - `marketplace_resource_end_date_change_requests_set_backend_id` POST `/api/marketplace-resource-end-date-change-requests/{uuid}/set_backend_id/` — Set end date change request backend ID (path: uuid | request body)
 
@@ -1963,7 +1961,7 @@ Module: `waldur_api_client.api.marketplace_resource_limit_change_requests`
 - `marketplace_resource_limit_change_requests_create` POST `/api/marketplace-resource-limit-change-requests/` (request body)
 - `marketplace_resource_limit_change_requests_retrieve` GET `/api/marketplace-resource-limit-change-requests/{uuid}/` (path: uuid)
 - `marketplace_resource_limit_change_requests_approve` POST `/api/marketplace-resource-limit-change-requests/{uuid}/approve/` — Approve resource limit change request and apply limits via marketplace order (path: uuid | request body)
-- `marketplace_resource_limit_change_requests_cancel` POST `/api/marketplace-resource-limit-change-requests/{uuid}/cancel/` — Cancel resource limit change request (path: uuid | request body)
+- `marketplace_resource_limit_change_requests_cancel` POST `/api/marketplace-resource-limit-change-requests/{uuid}/cancel/` — Cancel resource limit change request (path: uuid)
 - `marketplace_resource_limit_change_requests_reject` POST `/api/marketplace-resource-limit-change-requests/{uuid}/reject/` — Reject resource limit change request (path: uuid | request body)
 
 ## marketplace-resource-metrics
@@ -2423,9 +2421,6 @@ Module: `waldur_api_client.api.marketplace_user_offering_consents`
 - `marketplace_user_offering_consents_count` HEAD `/api/marketplace-user-offering-consents/` — List user offering consents (8 query params)
 - `marketplace_user_offering_consents_create` POST `/api/marketplace-user-offering-consents/` — Grant consent to an offering's Terms of Service (request body)
 - `marketplace_user_offering_consents_retrieve` GET `/api/marketplace-user-offering-consents/{uuid}/` — Retrieve a user offering consent (path: uuid)
-- `marketplace_user_offering_consents_update` PUT `/api/marketplace-user-offering-consents/{uuid}/` (path: uuid | request body)
-- `marketplace_user_offering_consents_partial_update` PATCH `/api/marketplace-user-offering-consents/{uuid}/` (path: uuid | request body)
-- `marketplace_user_offering_consents_destroy` DELETE `/api/marketplace-user-offering-consents/{uuid}/` (path: uuid)
 - `marketplace_user_offering_consents_revoke` POST `/api/marketplace-user-offering-consents/{uuid}/revoke/` — Revoke consent to Terms of Service (path: uuid)
 
 ## matrix

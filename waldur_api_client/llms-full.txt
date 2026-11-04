@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.6.dev.20261103201247
+# Version: 8.1.4-rc.6.dev.20261104071043
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -8188,20 +8188,6 @@ Summary: Create an offering user
 Description: Associates a user with a specific offering, creating an offering-specific user account. This is typically done by a service provider.
 Request body: yes
 
-### marketplace_offering_users_checklist_template_retrieve
-GET /api/marketplace-offering-users/checklist-template/
-Summary: Get checklist template for creating new objects
-Description: Get checklist template for creating new objects.
-Query parameters (1):
-  - parent_uuid (required) — UUID of the parent object (e.g., customer UUID for new projects)
-
-### marketplace_offering_users_checklist_template_count
-HEAD /api/marketplace-offering-users/checklist-template/
-Summary: Get number of items in the collection matching the request parameters
-Description: Get number of items in the collection matching the request parameters.
-Query parameters (1):
-  - parent_uuid (required) — UUID of the parent object (e.g., customer UUID for new projects)
-
 ### marketplace_offering_users_posix_identities_list
 GET /api/marketplace-offering-users/posix_identities/
 Summary: List a user's POSIX identities across all their offerings
@@ -11786,7 +11772,6 @@ Summary: Cancel resource end date change request
 Description: Cancel resource end date change request. Only the creator can cancel.
 Path parameters:
   - uuid
-Request body: yes
 
 ### marketplace_resource_end_date_change_requests_reject
 POST /api/marketplace-resource-end-date-change-requests/{uuid}/reject/
@@ -11851,7 +11836,6 @@ Summary: Cancel resource limit change request
 Description: Cancel resource limit change request. Only the creator can cancel.
 Path parameters:
   - uuid
-Request body: yes
 
 ### marketplace_resource_limit_change_requests_reject
 POST /api/marketplace-resource-limit-change-requests/{uuid}/reject/
@@ -15344,23 +15328,6 @@ Request body: yes
 GET /api/marketplace-user-offering-consents/{uuid}/
 Summary: Retrieve a user offering consent
 Description: Returns the details of a specific consent record.
-Path parameters:
-  - uuid
-
-### marketplace_user_offering_consents_update
-PUT /api/marketplace-user-offering-consents/{uuid}/
-Path parameters:
-  - uuid
-Request body: yes
-
-### marketplace_user_offering_consents_partial_update
-PATCH /api/marketplace-user-offering-consents/{uuid}/
-Path parameters:
-  - uuid
-Request body: yes
-
-### marketplace_user_offering_consents_destroy
-DELETE /api/marketplace-user-offering-consents/{uuid}/
 Path parameters:
   - uuid
 

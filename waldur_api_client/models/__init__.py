@@ -2195,7 +2195,6 @@ from .patched_update_pool_member_request import PatchedUpdatePoolMemberRequest
 from .patched_update_pool_request import PatchedUpdatePoolRequest
 from .patched_user_agreement_request import PatchedUserAgreementRequest
 from .patched_user_info_request import PatchedUserInfoRequest
-from .patched_user_offering_consent_request import PatchedUserOfferingConsentRequest
 from .patched_user_request import PatchedUserRequest
 from .patched_user_request_form import PatchedUserRequestForm
 from .patched_user_request_multipart import PatchedUserRequestMultipart
@@ -2739,7 +2738,6 @@ from .resource_end_date_change_request import ResourceEndDateChangeRequest
 from .resource_end_date_change_request_backend_id_request import ResourceEndDateChangeRequestBackendIDRequest
 from .resource_end_date_change_request_create import ResourceEndDateChangeRequestCreate
 from .resource_end_date_change_request_create_request import ResourceEndDateChangeRequestCreateRequest
-from .resource_end_date_change_request_request import ResourceEndDateChangeRequestRequest
 from .resource_end_date_request import ResourceEndDateRequest
 from .resource_endpoint_request import ResourceEndpointRequest
 from .resource_endpoints_request import ResourceEndpointsRequest
@@ -2752,8 +2750,6 @@ from .resource_limit_change_request_create_request_requested_limits import (
 )
 from .resource_limit_change_request_create_requested_limits import ResourceLimitChangeRequestCreateRequestedLimits
 from .resource_limit_change_request_current_limits import ResourceLimitChangeRequestCurrentLimits
-from .resource_limit_change_request_request import ResourceLimitChangeRequestRequest
-from .resource_limit_change_request_request_requested_limits import ResourceLimitChangeRequestRequestRequestedLimits
 from .resource_limit_change_request_requested_limits import ResourceLimitChangeRequestRequestedLimits
 from .resource_limit_period import ResourceLimitPeriod
 from .resource_metric import ResourceMetric
@@ -3273,7 +3269,6 @@ from .user_offering_consent import UserOfferingConsent
 from .user_offering_consent_create import UserOfferingConsentCreate
 from .user_offering_consent_create_request import UserOfferingConsentCreateRequest
 from .user_offering_consent_o_enum import UserOfferingConsentOEnum
-from .user_offering_consent_request import UserOfferingConsentRequest
 from .user_organization_count import UserOrganizationCount
 from .user_organization_type_count import UserOrganizationTypeCount
 from .user_posix_identity import UserPosixIdentity
@@ -5460,7 +5455,6 @@ __all__ = (
     "PatchedUpdatePoolRequest",
     "PatchedUserAgreementRequest",
     "PatchedUserInfoRequest",
-    "PatchedUserOfferingConsentRequest",
     "PatchedUserRequest",
     "PatchedUserRequestForm",
     "PatchedUserRequestMultipart",
@@ -5970,7 +5964,6 @@ __all__ = (
     "ResourceEndDateChangeRequestBackendIDRequest",
     "ResourceEndDateChangeRequestCreate",
     "ResourceEndDateChangeRequestCreateRequest",
-    "ResourceEndDateChangeRequestRequest",
     "ResourceEndDateRequest",
     "ResourceEndpointRequest",
     "ResourceEndpointsRequest",
@@ -5981,9 +5974,7 @@ __all__ = (
     "ResourceLimitChangeRequestCreateRequestedLimits",
     "ResourceLimitChangeRequestCreateRequestRequestedLimits",
     "ResourceLimitChangeRequestCurrentLimits",
-    "ResourceLimitChangeRequestRequest",
     "ResourceLimitChangeRequestRequestedLimits",
-    "ResourceLimitChangeRequestRequestRequestedLimits",
     "ResourceLimitPeriod",
     "ResourceMetric",
     "ResourceMissingUsage",
@@ -6499,7 +6490,6 @@ __all__ = (
     "UserOfferingConsentCreate",
     "UserOfferingConsentCreateRequest",
     "UserOfferingConsentOEnum",
-    "UserOfferingConsentRequest",
     "UserOrganizationCount",
     "UserOrganizationTypeCount",
     "UserPosixIdentity",
