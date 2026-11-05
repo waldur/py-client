@@ -50,6 +50,7 @@ class ResourceApiKey:
             the key resumes only when that limit is raised or cleared.
         api_key (str):
         client_id (Union[Unset, str]):
+        description (Union[Unset, str]):
         state (Union[Unset, ResourceApiKeyState]):
         issued_at (Union[None, Unset, datetime.datetime]): When the agent last stored a value for this key: its creation
             or its latest rotation. Unlike modified, a pause or an edit leaves it alone.
@@ -74,6 +75,7 @@ class ResourceApiKey:
     limit_resumes_at: Union[None, datetime.datetime]
     api_key: str
     client_id: Union[Unset, str] = UNSET
+    description: Union[Unset, str] = UNSET
     state: Union[Unset, ResourceApiKeyState] = UNSET
     issued_at: Union[None, Unset, datetime.datetime] = UNSET
     error_message: Union[Unset, str] = UNSET
@@ -168,6 +170,8 @@ class ResourceApiKey:
 
         client_id = self.client_id
 
+        description = self.description
+
         state: Union[Unset, str] = UNSET
         if not isinstance(self.state, Unset):
             state = self.state.value
@@ -207,6 +211,8 @@ class ResourceApiKey:
         )
         if client_id is not UNSET:
             field_dict["client_id"] = client_id
+        if description is not UNSET:
+            field_dict["description"] = description
         if state is not UNSET:
             field_dict["state"] = state
         if issued_at is not UNSET:
@@ -409,6 +415,8 @@ class ResourceApiKey:
 
         client_id = d.pop("client_id", UNSET)
 
+        description = d.pop("description", UNSET)
+
         _state = d.pop("state", UNSET)
         state: Union[Unset, ResourceApiKeyState]
         if isinstance(_state, Unset):
@@ -454,6 +462,7 @@ class ResourceApiKey:
             limit_resumes_at=limit_resumes_at,
             api_key=api_key,
             client_id=client_id,
+            description=description,
             state=state,
             issued_at=issued_at,
             error_message=error_message,

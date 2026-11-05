@@ -22,6 +22,9 @@ T = TypeVar("T", bound="PatchedResourceApiKeyUpdateRequest")
 class PatchedResourceApiKeyUpdateRequest:
     """
     Attributes:
+        description (Union[Unset, str]): A note telling the key apart from the resource's other keys, such as the
+            environment that uses it. No command to the site agent carries it, so changing it alone issues none and needs no
+            enable_api_key_provisioning. Everyone who can list the key reads it, the provider included.
         limits (Union['PatchedResourceApiKeyUpdateRequestLimitsType0', None, Unset]): Month limits per component type;
             zero or absent means no month limit. Replaces the month limits of spending_limits and keeps the other periods.
             Not together with spending_limits.
@@ -33,6 +36,7 @@ class PatchedResourceApiKeyUpdateRequest:
             none. Absent, a new key gets none and an edited one keeps its list.
     """
 
+    description: Union[Unset, str] = UNSET
     limits: Union["PatchedResourceApiKeyUpdateRequestLimitsType0", None, Unset] = UNSET
     spending_limits: Union["PatchedResourceApiKeyUpdateRequestSpendingLimitsType0", None, Unset] = UNSET
     allowed_models: Union[Unset, list[str]] = UNSET
@@ -45,6 +49,8 @@ class PatchedResourceApiKeyUpdateRequest:
         from ..models.patched_resource_api_key_update_request_spending_limits_type_0 import (
             PatchedResourceApiKeyUpdateRequestSpendingLimitsType0,
         )
+
+        description = self.description
 
         limits: Union[None, Unset, dict[str, Any]]
         if isinstance(self.limits, Unset):
@@ -69,6 +75,8 @@ class PatchedResourceApiKeyUpdateRequest:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
+        if description is not UNSET:
+            field_dict["description"] = description
         if limits is not UNSET:
             field_dict["limits"] = limits
         if spending_limits is not UNSET:
@@ -88,6 +96,7 @@ class PatchedResourceApiKeyUpdateRequest:
         )
 
         d = dict(src_dict)
+        description = d.pop("description", UNSET)
 
         def _parse_limits(data: object) -> Union["PatchedResourceApiKeyUpdateRequestLimitsType0", None, Unset]:
             if data is None:
@@ -128,6 +137,7 @@ class PatchedResourceApiKeyUpdateRequest:
         allowed_models = cast(list[str], d.pop("allowed_models", UNSET))
 
         patched_resource_api_key_update_request = cls(
+            description=description,
             limits=limits,
             spending_limits=spending_limits,
             allowed_models=allowed_models,

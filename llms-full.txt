@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.6.dev.20261105100434
+# Version: 8.1.4-rc.6.dev.20261105115649
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -11620,7 +11620,7 @@ Query parameters (7):
 ### marketplace_resource_api_keys_create
 POST /api/marketplace-resource-api-keys/
 Summary: Request an API key
-Description: Asks the site agent to create a key for the resource. Waldur generates nothing: the key appears as Creating and turns OK once the agent reports it. Only on offerings with enable_api_key_provisioning.
+Description: Asks the site agent to create a key for the resource. Waldur generates nothing: the key appears as Creating and turns OK once the agent reports it. Only on offerings with enable_api_key_provisioning, and refused with 409 until the agent has created the resource (it has no backend_id yet).
 Request body: yes
 
 ### marketplace_resource_api_keys_report_created
@@ -11651,7 +11651,7 @@ Path parameters:
 ### marketplace_resource_api_keys_partial_update
 PATCH /api/marketplace-resource-api-keys/{uuid}/
 Summary: Edit an API key
-Description: Changes the key's limits or model allowlist. A change is sent to the site agent as an update command, unless the key is paused: resuming it applies them. The key's assignee is set when the key is requested and cannot be changed: an edit that names user, null included, is refused with 400. To hand...
+Description: Changes the key's limits, model allowlist or description. A change of limits or models is sent to the site agent as an update command, unless the key is paused: resuming it applies them. The key's assignee is set when the key is requested and cannot be changed: an edit that names user, null inclu...
 Path parameters:
   - uuid
 Request body: yes

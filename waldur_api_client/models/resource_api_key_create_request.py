@@ -22,6 +22,9 @@ class ResourceApiKeyCreateRequest:
     """
     Attributes:
         resource (UUID):
+        description (Union[Unset, str]): A note telling the key apart from the resource's other keys, such as the
+            environment that uses it. No command to the site agent carries it, so changing it alone issues none and needs no
+            enable_api_key_provisioning. Everyone who can list the key reads it, the provider included.
         limits (Union['ResourceApiKeyCreateRequestLimitsType0', None, Unset]): Month limits per component type; zero or
             absent means no month limit. Replaces the month limits of spending_limits and keeps the other periods. Not
             together with spending_limits.
@@ -36,6 +39,7 @@ class ResourceApiKeyCreateRequest:
     """
 
     resource: UUID
+    description: Union[Unset, str] = UNSET
     limits: Union["ResourceApiKeyCreateRequestLimitsType0", None, Unset] = UNSET
     spending_limits: Union["ResourceApiKeyCreateRequestSpendingLimitsType0", None, Unset] = UNSET
     allowed_models: Union[Unset, list[str]] = UNSET
@@ -49,6 +53,8 @@ class ResourceApiKeyCreateRequest:
         )
 
         resource = str(self.resource)
+
+        description = self.description
 
         limits: Union[None, Unset, dict[str, Any]]
         if isinstance(self.limits, Unset):
@@ -85,6 +91,8 @@ class ResourceApiKeyCreateRequest:
                 "resource": resource,
             }
         )
+        if description is not UNSET:
+            field_dict["description"] = description
         if limits is not UNSET:
             field_dict["limits"] = limits
         if spending_limits is not UNSET:
@@ -105,6 +113,8 @@ class ResourceApiKeyCreateRequest:
 
         d = dict(src_dict)
         resource = UUID(d.pop("resource"))
+
+        description = d.pop("description", UNSET)
 
         def _parse_limits(data: object) -> Union["ResourceApiKeyCreateRequestLimitsType0", None, Unset]:
             if data is None:
@@ -163,6 +173,7 @@ class ResourceApiKeyCreateRequest:
 
         resource_api_key_create_request = cls(
             resource=resource,
+            description=description,
             limits=limits,
             spending_limits=spending_limits,
             allowed_models=allowed_models,
