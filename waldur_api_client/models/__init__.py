@@ -970,6 +970,7 @@ from .hpc_file import HpcFile
 from .hpc_file_content import HpcFileContent
 from .hpc_job import HpcJob
 from .hpc_job_failure import HpcJobFailure
+from .hpc_job_file_request import HpcJobFileRequest
 from .hpc_job_output import HpcJobOutput
 from .hpc_job_performance import HpcJobPerformance
 from .hpc_job_performance_summary import HpcJobPerformanceSummary
@@ -1357,7 +1358,6 @@ from .metric_series_response_granularity_enum import MetricSeriesResponseGranula
 from .migration_create import MigrationCreate
 from .migration_create_request import MigrationCreateRequest
 from .migration_details import MigrationDetails
-from .migration_details_request import MigrationDetailsRequest
 from .minimal_consumption_logic_enum import MinimalConsumptionLogicEnum
 from .missing_usage_policy_enum import MissingUsagePolicyEnum
 from .move_offering_request import MoveOfferingRequest
@@ -2041,7 +2041,6 @@ from .patched_matching_configuration_request import PatchedMatchingConfiguration
 from .patched_message_template_request import PatchedMessageTemplateRequest
 from .patched_metric_definition_request import PatchedMetricDefinitionRequest
 from .patched_metric_goal_request import PatchedMetricGoalRequest
-from .patched_migration_details_request import PatchedMigrationDetailsRequest
 from .patched_notification_request import PatchedNotificationRequest
 from .patched_notification_template_detail_serializers_request import (
     PatchedNotificationTemplateDetailSerializersRequest,
@@ -2126,7 +2125,7 @@ from .patched_question_dependency_request import PatchedQuestionDependencyReques
 from .patched_question_options_admin_request import PatchedQuestionOptionsAdminRequest
 from .patched_rancher_application_request import PatchedRancherApplicationRequest
 from .patched_rancher_application_request_answers import PatchedRancherApplicationRequestAnswers
-from .patched_rancher_catalog_request import PatchedRancherCatalogRequest
+from .patched_rancher_catalog_update_request import PatchedRancherCatalogUpdateRequest
 from .patched_rancher_cluster_request import PatchedRancherClusterRequest
 from .patched_rancher_hpa_request import PatchedRancherHPARequest
 from .patched_rancher_ingress_request import PatchedRancherIngressRequest
@@ -4324,6 +4323,7 @@ __all__ = (
     "HpcFileContent",
     "HpcJob",
     "HpcJobFailure",
+    "HpcJobFileRequest",
     "HpcJobOutput",
     "HpcJobPerformance",
     "HpcJobPerformanceSummary",
@@ -4685,7 +4685,6 @@ __all__ = (
     "MigrationCreate",
     "MigrationCreateRequest",
     "MigrationDetails",
-    "MigrationDetailsRequest",
     "MinimalConsumptionLogicEnum",
     "MissingUsagePolicyEnum",
     "MoveOfferingRequest",
@@ -5317,7 +5316,6 @@ __all__ = (
     "PatchedMessageTemplateRequest",
     "PatchedMetricDefinitionRequest",
     "PatchedMetricGoalRequest",
-    "PatchedMigrationDetailsRequest",
     "PatchedNotificationRequest",
     "PatchedNotificationTemplateDetailSerializersRequest",
     "PatchedOfferingAccessSubnetRequest",
@@ -5394,7 +5392,7 @@ __all__ = (
     "PatchedQuestionOptionsAdminRequest",
     "PatchedRancherApplicationRequest",
     "PatchedRancherApplicationRequestAnswers",
-    "PatchedRancherCatalogRequest",
+    "PatchedRancherCatalogUpdateRequest",
     "PatchedRancherClusterRequest",
     "PatchedRancherHPARequest",
     "PatchedRancherIngressRequest",

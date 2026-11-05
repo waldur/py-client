@@ -2759,8 +2759,6 @@ Module: `waldur_api_client.api.openportal_userinfo`
 ## openstack
 Module: `waldur_api_client.api.openstack`
 
-- `openstack_discovery_list` GET `/api/openstack/discovery/` (no params)
-- `openstack_discovery_create` POST `/api/openstack/discovery/` (no params)
 - `openstack_discovery_discover_external_networks` POST `/api/openstack/discovery/discover_external_networks/` — Discover available external networks (request body)
 - `openstack_discovery_discover_flavors` POST `/api/openstack/discovery/discover_flavors/` — Discover available flavors (request body)
 - `openstack_discovery_discover_instance_availability_zones` POST `/api/openstack/discovery/discover_instance_availability_zones/` — Discover available Nova instance availability zones (request body)
@@ -2768,10 +2766,6 @@ Module: `waldur_api_client.api.openstack`
 - `openstack_discovery_discover_volume_types` POST `/api/openstack/discovery/discover_volume_types/` — Discover available volume types (request body)
 - `openstack_discovery_preview_service_attributes` POST `/api/openstack/discovery/preview_service_attributes/` — Build service_attributes and plugin_options from selected values (request body)
 - `openstack_discovery_validate_credentials` POST `/api/openstack/discovery/validate_credentials/` — Validate OpenStack credentials without saving them (request body)
-- `openstack_discovery_retrieve` GET `/api/openstack/discovery/{id}/` (path: id)
-- `openstack_discovery_update` PUT `/api/openstack/discovery/{id}/` (path: id)
-- `openstack_discovery_partial_update` PATCH `/api/openstack/discovery/{id}/` (path: id)
-- `openstack_discovery_destroy` DELETE `/api/openstack/discovery/{id}/` (path: id)
 
 ## openstack-backups
 Module: `waldur_api_client.api.openstack_backups`
@@ -2942,8 +2936,6 @@ Module: `waldur_api_client.api.openstack_migrations`
 - `openstack_migrations_count` HEAD `/api/openstack-migrations/` — Get number of items in the collection matching the request parameters (2 query params)
 - `openstack_migrations_create` POST `/api/openstack-migrations/` (request body)
 - `openstack_migrations_retrieve` GET `/api/openstack-migrations/{uuid}/` (path: uuid)
-- `openstack_migrations_update` PUT `/api/openstack-migrations/{uuid}/` (path: uuid | request body)
-- `openstack_migrations_partial_update` PATCH `/api/openstack-migrations/{uuid}/` (path: uuid | request body)
 - `openstack_migrations_destroy` DELETE `/api/openstack-migrations/{uuid}/` (path: uuid)
 
 ## openstack-network-rbac-policies

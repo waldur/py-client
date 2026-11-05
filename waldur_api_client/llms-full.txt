@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.6.dev.20261104202352
+# Version: 8.1.4-rc.6.dev.20261105095440
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -5185,7 +5185,7 @@ Path parameters:
 ### identity_bridge
 POST /api/identity-bridge/
 Summary: Push user attributes from an ISD
-Description: Allows Identity Service Domains (ISDs) to push user attributes to Waldur. Creates or updates a user based on username (CUID). Requires FEDERATED_IDENTITY_SYNC_ENABLED to be True. Caller must be staff or an identity manager with the declared source in managed_isds.
+Description: Allows Identity Service Domains (ISDs) to push user attributes to Waldur. Creates or updates a user based on username (CUID). Requires FEDERATED_IDENTITY_SYNC_ENABLED to be True. Caller must be staff or an identity manager with the declared source in managed_isds. Only staff may push staff, suppo...
 Request body: yes
 
 ### identity_bridge_allowed_fields_retrieve
@@ -17207,12 +17207,6 @@ Request body: yes
 ## openstack  (module: waldur_api_client.api.openstack)
 ============================================================
 
-### openstack_discovery_list
-GET /api/openstack/discovery/
-
-### openstack_discovery_create
-POST /api/openstack/discovery/
-
 ### openstack_discovery_discover_external_networks
 POST /api/openstack/discovery/discover_external_networks/
 Summary: Discover available external networks
@@ -17254,26 +17248,6 @@ POST /api/openstack/discovery/validate_credentials/
 Summary: Validate OpenStack credentials without saving them
 Description: Validate OpenStack credentials without saving them.
 Request body: yes
-
-### openstack_discovery_retrieve
-GET /api/openstack/discovery/{id}/
-Path parameters:
-  - id — A unique integer value identifying this Service provider.
-
-### openstack_discovery_update
-PUT /api/openstack/discovery/{id}/
-Path parameters:
-  - id — A unique integer value identifying this Service provider.
-
-### openstack_discovery_partial_update
-PATCH /api/openstack/discovery/{id}/
-Path parameters:
-  - id — A unique integer value identifying this Service provider.
-
-### openstack_discovery_destroy
-DELETE /api/openstack/discovery/{id}/
-Path parameters:
-  - id — A unique integer value identifying this Service provider.
 
 ============================================================
 ## openstack-backups  (module: waldur_api_client.api.openstack_backups)
@@ -18441,18 +18415,6 @@ Request body: yes
 GET /api/openstack-migrations/{uuid}/
 Path parameters:
   - uuid
-
-### openstack_migrations_update
-PUT /api/openstack-migrations/{uuid}/
-Path parameters:
-  - uuid
-Request body: yes
-
-### openstack_migrations_partial_update
-PATCH /api/openstack-migrations/{uuid}/
-Path parameters:
-  - uuid
-Request body: yes
 
 ### openstack_migrations_destroy
 DELETE /api/openstack-migrations/{uuid}/

@@ -7,6 +7,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.hpc_job_file_request import HpcJobFileRequest
     from ..models.hpc_job_spec_request_environment import HpcJobSpecRequestEnvironment
 
 
@@ -30,6 +31,8 @@ class HpcJobSpecRequest:
         modules (Union[Unset, list[str]]): Setup lines, e.g. 'module load GROMACS/2024.1-foss-2023b'.
         working_directory (Union[Unset, str]):  Default: ''.
         environment (Union[Unset, HpcJobSpecRequestEnvironment]):
+        files (Union[Unset, list['HpcJobFileRequest']]): Files written into the working directory before the commands
+            run, such as the program the job runs.
     """
 
     name: str
@@ -45,6 +48,7 @@ class HpcJobSpecRequest:
     modules: Union[Unset, list[str]] = UNSET
     working_directory: Union[Unset, str] = ""
     environment: Union[Unset, "HpcJobSpecRequestEnvironment"] = UNSET
+    files: Union[Unset, list["HpcJobFileRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -82,6 +86,13 @@ class HpcJobSpecRequest:
         if not isinstance(self.environment, Unset):
             environment = self.environment.to_dict()
 
+        files: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.files, Unset):
+            files = []
+            for files_item_data in self.files:
+                files_item = files_item_data.to_dict()
+                files.append(files_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -112,11 +123,14 @@ class HpcJobSpecRequest:
             field_dict["working_directory"] = working_directory
         if environment is not UNSET:
             field_dict["environment"] = environment
+        if files is not UNSET:
+            field_dict["files"] = files
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.hpc_job_file_request import HpcJobFileRequest
         from ..models.hpc_job_spec_request_environment import HpcJobSpecRequestEnvironment
 
         d = dict(src_dict)
@@ -158,6 +172,13 @@ class HpcJobSpecRequest:
         else:
             environment = HpcJobSpecRequestEnvironment.from_dict(_environment)
 
+        files = []
+        _files = d.pop("files", UNSET)
+        for files_item_data in _files or []:
+            files_item = HpcJobFileRequest.from_dict(files_item_data)
+
+            files.append(files_item)
+
         hpc_job_spec_request = cls(
             name=name,
             commands=commands,
@@ -172,6 +193,7 @@ class HpcJobSpecRequest:
             modules=modules,
             working_directory=working_directory,
             environment=environment,
+            files=files,
         )
 
         hpc_job_spec_request.additional_properties = d
