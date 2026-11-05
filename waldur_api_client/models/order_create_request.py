@@ -39,7 +39,9 @@ class OrderCreateRequest:
             specified in the parent object. Can also be a generic object for offerings without a specific attributes schema.
         limits (Union[Unset, OrderCreateRequestLimits]):
         accepting_terms_of_service (Union[Unset, bool]):
-        callback_url (Union[None, Unset, str]):
+        callback_url (Union[None, Unset, str]): Sent by a Waldur that orders from this one through a remote offering:
+            its public order pull endpoint (.../api/remote-waldur-api/pull_order/<its order uuid>). No other URL is
+            accepted. Not stored: order callbacks are off.
         request_comment (Union[None, Unset, str]):
         start_date (Union[None, Unset, datetime.date]): Enables delayed processing of resource provisioning order.
         slug (Union[Unset, str]): Slug of the new resource. Used when the caller is staff or holds RESOURCE.SET_SLUG on
