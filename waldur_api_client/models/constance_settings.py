@@ -74,6 +74,7 @@ class ConstanceSettings:
         telemetry_version (Union[Unset, int]):
         telemetry_deployment_id (Union[Unset, str]):
         check_for_updates (Union[Unset, bool]):
+        version_update_notification_emails (Union[Unset, str]):
         script_run_mode (Union[Unset, SCRIPTRUNMODEEnum]):
         docker_client (Union[Unset, str]):
         docker_run_options (Union[Unset, str]):
@@ -435,6 +436,7 @@ class ConstanceSettings:
     telemetry_version: Union[Unset, int] = UNSET
     telemetry_deployment_id: Union[Unset, str] = UNSET
     check_for_updates: Union[Unset, bool] = UNSET
+    version_update_notification_emails: Union[Unset, str] = UNSET
     script_run_mode: Union[Unset, SCRIPTRUNMODEEnum] = UNSET
     docker_client: Union[Unset, str] = UNSET
     docker_run_options: Union[Unset, str] = UNSET
@@ -839,6 +841,8 @@ class ConstanceSettings:
         telemetry_deployment_id = self.telemetry_deployment_id
 
         check_for_updates = self.check_for_updates
+
+        version_update_notification_emails = self.version_update_notification_emails
 
         script_run_mode: Union[Unset, str] = UNSET
         if not isinstance(self.script_run_mode, Unset):
@@ -1809,6 +1813,8 @@ class ConstanceSettings:
             field_dict["TELEMETRY_DEPLOYMENT_ID"] = telemetry_deployment_id
         if check_for_updates is not UNSET:
             field_dict["CHECK_FOR_UPDATES"] = check_for_updates
+        if version_update_notification_emails is not UNSET:
+            field_dict["VERSION_UPDATE_NOTIFICATION_EMAILS"] = version_update_notification_emails
         if script_run_mode is not UNSET:
             field_dict["SCRIPT_RUN_MODE"] = script_run_mode
         if docker_client is not UNSET:
@@ -2573,6 +2579,8 @@ class ConstanceSettings:
         telemetry_deployment_id = d.pop("TELEMETRY_DEPLOYMENT_ID", UNSET)
 
         check_for_updates = d.pop("CHECK_FOR_UPDATES", UNSET)
+
+        version_update_notification_emails = d.pop("VERSION_UPDATE_NOTIFICATION_EMAILS", UNSET)
 
         _script_run_mode = d.pop("SCRIPT_RUN_MODE", UNSET)
         script_run_mode: Union[Unset, SCRIPTRUNMODEEnum]
@@ -3767,6 +3775,7 @@ class ConstanceSettings:
             telemetry_version=telemetry_version,
             telemetry_deployment_id=telemetry_deployment_id,
             check_for_updates=check_for_updates,
+            version_update_notification_emails=version_update_notification_emails,
             script_run_mode=script_run_mode,
             docker_client=docker_client,
             docker_run_options=docker_run_options,

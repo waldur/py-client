@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4
+# Version: 8.1.4-dev.20261106185036
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -5391,21 +5391,6 @@ Request body: yes
 DELETE /api/invoice-items/{uuid}/
 Path parameters:
   - uuid
-
-### invoice_items_consumptions_list
-GET /api/invoice-items/{uuid}/consumptions/
-Path parameters:
-  - uuid
-Query parameters (9):
-  - credit_uuid
-  - customer_uuid
-  - month
-  - offering_uuid
-  - project_uuid
-  - resource_uuid
-  - start_month — Start month
-  - start_year — Start year
-  - year
 
 ### invoice_items_create_compensation
 POST /api/invoice-items/{uuid}/create_compensation/
@@ -19913,7 +19898,7 @@ Query parameters (7):
 ### openstack_volume_types_names_retrieve
 GET /api/openstack-volume-types/names/
 Summary: List unique volume type names
-Description: Return a list of unique volume type names.
+Description: Return the distinct names of the volume types the caller can see.
 
 ### openstack_volume_types_names_count
 HEAD /api/openstack-volume-types/names/

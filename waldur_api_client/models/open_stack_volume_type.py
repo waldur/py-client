@@ -19,6 +19,8 @@ class OpenStackVolumeType:
         name (str):
         settings (str):
         description (Union[Unset, str]):
+        is_public (Union[Unset, bool]): Whether every project of the cloud may use the volume type. Cinder gives a
+            private type only to the projects it is assigned to.
     """
 
     url: str
@@ -26,6 +28,7 @@ class OpenStackVolumeType:
     name: str
     settings: str
     description: Union[Unset, str] = UNSET
+    is_public: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -39,6 +42,8 @@ class OpenStackVolumeType:
 
         description = self.description
 
+        is_public = self.is_public
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -51,6 +56,8 @@ class OpenStackVolumeType:
         )
         if description is not UNSET:
             field_dict["description"] = description
+        if is_public is not UNSET:
+            field_dict["is_public"] = is_public
 
         return field_dict
 
@@ -67,12 +74,15 @@ class OpenStackVolumeType:
 
         description = d.pop("description", UNSET)
 
+        is_public = d.pop("is_public", UNSET)
+
         open_stack_volume_type = cls(
             url=url,
             uuid=uuid,
             name=name,
             settings=settings,
             description=description,
+            is_public=is_public,
         )
 
         open_stack_volume_type.additional_properties = d

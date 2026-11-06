@@ -649,7 +649,6 @@ from .customer_contact_update_request import CustomerContactUpdateRequest
 from .customer_context import CustomerContext
 from .customer_credit import CustomerCredit
 from .customer_credit_consumption import CustomerCreditConsumption
-from .customer_credit_consumption_by_month import CustomerCreditConsumptionByMonth
 from .customer_credit_o_enum import CustomerCreditOEnum
 from .customer_default_affiliations_update_request import CustomerDefaultAffiliationsUpdateRequest
 from .customer_details import CustomerDetails
@@ -4012,7 +4011,6 @@ __all__ = (
     "CustomerContext",
     "CustomerCredit",
     "CustomerCreditConsumption",
-    "CustomerCreditConsumptionByMonth",
     "CustomerCreditOEnum",
     "CustomerDefaultAffiliationsUpdateRequest",
     "CustomerDetails",

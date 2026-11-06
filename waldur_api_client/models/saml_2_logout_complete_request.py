@@ -15,16 +15,28 @@ class Saml2LogoutCompleteRequest:
     Attributes:
         saml_response (Union[Unset, str]):
         saml_request (Union[Unset, str]):
+        relay_state (Union[Unset, str]):
+        sig_alg (Union[Unset, str]):
+        signature (Union[Unset, str]):
     """
 
     saml_response: Union[Unset, str] = UNSET
     saml_request: Union[Unset, str] = UNSET
+    relay_state: Union[Unset, str] = UNSET
+    sig_alg: Union[Unset, str] = UNSET
+    signature: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         saml_response = self.saml_response
 
         saml_request = self.saml_request
+
+        relay_state = self.relay_state
+
+        sig_alg = self.sig_alg
+
+        signature = self.signature
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -33,6 +45,12 @@ class Saml2LogoutCompleteRequest:
             field_dict["SAMLResponse"] = saml_response
         if saml_request is not UNSET:
             field_dict["SAMLRequest"] = saml_request
+        if relay_state is not UNSET:
+            field_dict["RelayState"] = relay_state
+        if sig_alg is not UNSET:
+            field_dict["SigAlg"] = sig_alg
+        if signature is not UNSET:
+            field_dict["Signature"] = signature
 
         return field_dict
 
@@ -43,9 +61,18 @@ class Saml2LogoutCompleteRequest:
 
         saml_request = d.pop("SAMLRequest", UNSET)
 
+        relay_state = d.pop("RelayState", UNSET)
+
+        sig_alg = d.pop("SigAlg", UNSET)
+
+        signature = d.pop("Signature", UNSET)
+
         saml_2_logout_complete_request = cls(
             saml_response=saml_response,
             saml_request=saml_request,
+            relay_state=relay_state,
+            sig_alg=sig_alg,
+            signature=signature,
         )
 
         saml_2_logout_complete_request.additional_properties = d

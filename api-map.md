@@ -999,7 +999,6 @@ Module: `waldur_api_client.api.invoice_items`
 - `invoice_items_update` PUT `/api/invoice-items/{uuid}/` (path: uuid | request body)
 - `invoice_items_partial_update` PATCH `/api/invoice-items/{uuid}/` (path: uuid | request body)
 - `invoice_items_destroy` DELETE `/api/invoice-items/{uuid}/` (path: uuid)
-- `invoice_items_consumptions_list` GET `/api/invoice-items/{uuid}/consumptions/` (path: uuid | 9 query params)
 - `invoice_items_create_compensation` POST `/api/invoice-items/{uuid}/create_compensation/` — Create compensation invoice item for selected invoice item (path: uuid | request body)
 - `invoice_items_migrate_to` POST `/api/invoice-items/{uuid}/migrate_to/` — Move invoice item from one invoice to another one (path: uuid | request body)
 
