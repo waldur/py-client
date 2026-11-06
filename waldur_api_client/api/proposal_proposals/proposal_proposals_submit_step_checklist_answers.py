@@ -8,20 +8,32 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.answer_submit_request import AnswerSubmitRequest
 from ...models.proposal_checklist_answer_submit_response import ProposalChecklistAnswerSubmitResponse
-from ...types import UNSET, Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
     body: list["AnswerSubmitRequest"],
-    step: str,
+    contribution_uuid: Union[Unset, UUID] = UNSET,
+    step: Union[Unset, str] = UNSET,
+    step_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
     params: dict[str, Any] = {}
 
+    json_contribution_uuid: Union[Unset, str] = UNSET
+    if not isinstance(contribution_uuid, Unset):
+        json_contribution_uuid = str(contribution_uuid)
+    params["contribution_uuid"] = json_contribution_uuid
+
     params["step"] = step
+
+    json_step_uuid: Union[Unset, str] = UNSET
+    if not isinstance(step_uuid, Unset):
+        json_step_uuid = str(step_uuid)
+    params["step_uuid"] = json_step_uuid
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -73,13 +85,17 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: list["AnswerSubmitRequest"],
-    step: str,
+    contribution_uuid: Union[Unset, UUID] = UNSET,
+    step: Union[Unset, str] = UNSET,
+    step_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[Union[Any, ProposalChecklistAnswerSubmitResponse]]:
     """Submit answers to a workflow step's checklist.
 
     Args:
         uuid (UUID):
-        step (str):
+        contribution_uuid (Union[Unset, UUID]):
+        step (Union[Unset, str]):
+        step_uuid (Union[Unset, UUID]):
         body (list['AnswerSubmitRequest']):
 
     Raises:
@@ -93,7 +109,9 @@ def sync_detailed(
     kwargs = _get_kwargs(
         uuid=uuid,
         body=body,
+        contribution_uuid=contribution_uuid,
         step=step,
+        step_uuid=step_uuid,
     )
 
     response = client.get_httpx_client().request(
@@ -108,13 +126,17 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: list["AnswerSubmitRequest"],
-    step: str,
+    contribution_uuid: Union[Unset, UUID] = UNSET,
+    step: Union[Unset, str] = UNSET,
+    step_uuid: Union[Unset, UUID] = UNSET,
 ) -> Union[Any, ProposalChecklistAnswerSubmitResponse]:
     """Submit answers to a workflow step's checklist.
 
     Args:
         uuid (UUID):
-        step (str):
+        contribution_uuid (Union[Unset, UUID]):
+        step (Union[Unset, str]):
+        step_uuid (Union[Unset, UUID]):
         body (list['AnswerSubmitRequest']):
 
     Raises:
@@ -129,7 +151,9 @@ def sync(
         uuid=uuid,
         client=client,
         body=body,
+        contribution_uuid=contribution_uuid,
         step=step,
+        step_uuid=step_uuid,
     ).parsed
 
 
@@ -138,13 +162,17 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: list["AnswerSubmitRequest"],
-    step: str,
+    contribution_uuid: Union[Unset, UUID] = UNSET,
+    step: Union[Unset, str] = UNSET,
+    step_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[Union[Any, ProposalChecklistAnswerSubmitResponse]]:
     """Submit answers to a workflow step's checklist.
 
     Args:
         uuid (UUID):
-        step (str):
+        contribution_uuid (Union[Unset, UUID]):
+        step (Union[Unset, str]):
+        step_uuid (Union[Unset, UUID]):
         body (list['AnswerSubmitRequest']):
 
     Raises:
@@ -158,7 +186,9 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         uuid=uuid,
         body=body,
+        contribution_uuid=contribution_uuid,
         step=step,
+        step_uuid=step_uuid,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -171,13 +201,17 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: list["AnswerSubmitRequest"],
-    step: str,
+    contribution_uuid: Union[Unset, UUID] = UNSET,
+    step: Union[Unset, str] = UNSET,
+    step_uuid: Union[Unset, UUID] = UNSET,
 ) -> Union[Any, ProposalChecklistAnswerSubmitResponse]:
     """Submit answers to a workflow step's checklist.
 
     Args:
         uuid (UUID):
-        step (str):
+        contribution_uuid (Union[Unset, UUID]):
+        step (Union[Unset, str]):
+        step_uuid (Union[Unset, UUID]):
         body (list['AnswerSubmitRequest']):
 
     Raises:
@@ -193,6 +227,8 @@ async def asyncio(
             uuid=uuid,
             client=client,
             body=body,
+            contribution_uuid=contribution_uuid,
             step=step,
+            step_uuid=step_uuid,
         )
     ).parsed

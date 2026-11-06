@@ -18,17 +18,20 @@ class PatchedProtectedRoundRequest:
     """
     Attributes:
         start_time (Union[Unset, datetime.datetime]):
-        cutoff_time (Union[Unset, datetime.datetime]):
+        cutoff_time (Union[None, Unset, datetime.datetime]): When submission closes. Empty: the round stays open until a
+            call manager closes it.
         allocation_date (Union[None, Unset, datetime.datetime]):
-        review_duration_in_days (Union[Unset, int]):
+        review_duration_in_days (Union[None, Unset, int]): Deprecated: a review is due when the step it contributes to
+            is (see the round's step due dates). Only a review whose step has no deadline is still due this many days after
+            it was created.
         undecided_at_round_completion (Union[BlankEnum, None, UndecidedAtRoundCompletionEnum, Unset]): Overrides the
             call's rule for proposals still without a decision when the round is completed. Empty: the call's rule applies.
     """
 
     start_time: Union[Unset, datetime.datetime] = UNSET
-    cutoff_time: Union[Unset, datetime.datetime] = UNSET
+    cutoff_time: Union[None, Unset, datetime.datetime] = UNSET
     allocation_date: Union[None, Unset, datetime.datetime] = UNSET
-    review_duration_in_days: Union[Unset, int] = UNSET
+    review_duration_in_days: Union[None, Unset, int] = UNSET
     undecided_at_round_completion: Union[BlankEnum, None, UndecidedAtRoundCompletionEnum, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -37,9 +40,13 @@ class PatchedProtectedRoundRequest:
         if not isinstance(self.start_time, Unset):
             start_time = self.start_time.isoformat()
 
-        cutoff_time: Union[Unset, str] = UNSET
-        if not isinstance(self.cutoff_time, Unset):
+        cutoff_time: Union[None, Unset, str]
+        if isinstance(self.cutoff_time, Unset):
+            cutoff_time = UNSET
+        elif isinstance(self.cutoff_time, datetime.datetime):
             cutoff_time = self.cutoff_time.isoformat()
+        else:
+            cutoff_time = self.cutoff_time
 
         allocation_date: Union[None, Unset, str]
         if isinstance(self.allocation_date, Unset):
@@ -49,7 +56,11 @@ class PatchedProtectedRoundRequest:
         else:
             allocation_date = self.allocation_date
 
-        review_duration_in_days = self.review_duration_in_days
+        review_duration_in_days: Union[None, Unset, int]
+        if isinstance(self.review_duration_in_days, Unset):
+            review_duration_in_days = UNSET
+        else:
+            review_duration_in_days = self.review_duration_in_days
 
         undecided_at_round_completion: Union[None, Unset, str]
         if isinstance(self.undecided_at_round_completion, Unset):
@@ -87,12 +98,22 @@ class PatchedProtectedRoundRequest:
         else:
             start_time = isoparse(_start_time)
 
-        _cutoff_time = d.pop("cutoff_time", UNSET)
-        cutoff_time: Union[Unset, datetime.datetime]
-        if isinstance(_cutoff_time, Unset):
-            cutoff_time = UNSET
-        else:
-            cutoff_time = isoparse(_cutoff_time)
+        def _parse_cutoff_time(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                cutoff_time_type_0 = isoparse(data)
+
+                return cutoff_time_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        cutoff_time = _parse_cutoff_time(d.pop("cutoff_time", UNSET))
 
         def _parse_allocation_date(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
@@ -111,7 +132,14 @@ class PatchedProtectedRoundRequest:
 
         allocation_date = _parse_allocation_date(d.pop("allocation_date", UNSET))
 
-        review_duration_in_days = d.pop("review_duration_in_days", UNSET)
+        def _parse_review_duration_in_days(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        review_duration_in_days = _parse_review_duration_in_days(d.pop("review_duration_in_days", UNSET))
 
         def _parse_undecided_at_round_completion(
             data: object,

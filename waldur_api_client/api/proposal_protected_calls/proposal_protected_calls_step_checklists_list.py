@@ -139,7 +139,8 @@ def sync_detailed(
 ) -> Response[list["ChecklistShort"]]:
     """List checklists that can be attached to a workflow step (WORKFLOW_STEP-typed). Available to call
     managers so the workflow config UI can populate its checklist picker without staff-only access to
-    the checklist admin API.
+    the checklist admin API. Lists the forms the whole portal shares and those of the organizations
+    whose calls the user configures; staff and support see every form.
 
     Args:
         customer (Union[Unset, str]):
@@ -206,7 +207,8 @@ def sync(
 ) -> list["ChecklistShort"]:
     """List checklists that can be attached to a workflow step (WORKFLOW_STEP-typed). Available to call
     managers so the workflow config UI can populate its checklist picker without staff-only access to
-    the checklist admin API.
+    the checklist admin API. Lists the forms the whole portal shares and those of the organizations
+    whose calls the user configures; staff and support see every form.
 
     Args:
         customer (Union[Unset, str]):
@@ -268,7 +270,8 @@ async def asyncio_detailed(
 ) -> Response[list["ChecklistShort"]]:
     """List checklists that can be attached to a workflow step (WORKFLOW_STEP-typed). Available to call
     managers so the workflow config UI can populate its checklist picker without staff-only access to
-    the checklist admin API.
+    the checklist admin API. Lists the forms the whole portal shares and those of the organizations
+    whose calls the user configures; staff and support see every form.
 
     Args:
         customer (Union[Unset, str]):
@@ -333,7 +336,8 @@ async def asyncio(
 ) -> list["ChecklistShort"]:
     """List checklists that can be attached to a workflow step (WORKFLOW_STEP-typed). Available to call
     managers so the workflow config UI can populate its checklist picker without staff-only access to
-    the checklist admin API.
+    the checklist admin API. Lists the forms the whole portal shares and those of the organizations
+    whose calls the user configures; staff and support see every form.
 
     Args:
         customer (Union[Unset, str]):

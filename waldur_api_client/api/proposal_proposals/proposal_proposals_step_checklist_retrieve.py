@@ -13,14 +13,26 @@ from ...types import UNSET, Response, Unset
 def _get_kwargs(
     uuid: UUID,
     *,
+    contribution_uuid: Union[Unset, UUID] = UNSET,
     include_all: Union[Unset, str] = UNSET,
-    step: str,
+    step: Union[Unset, str] = UNSET,
+    step_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    json_contribution_uuid: Union[Unset, str] = UNSET
+    if not isinstance(contribution_uuid, Unset):
+        json_contribution_uuid = str(contribution_uuid)
+    params["contribution_uuid"] = json_contribution_uuid
 
     params["include_all"] = include_all
 
     params["step"] = step
+
+    json_step_uuid: Union[Unset, str] = UNSET
+    if not isinstance(step_uuid, Unset):
+        json_step_uuid = str(step_uuid)
+    params["step_uuid"] = json_step_uuid
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -63,15 +75,19 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    contribution_uuid: Union[Unset, UUID] = UNSET,
     include_all: Union[Unset, str] = UNSET,
-    step: str,
+    step: Union[Unset, str] = UNSET,
+    step_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[Union[Any, ChecklistResponse]]:
     """Get a workflow step's checklist with questions and answers.
 
     Args:
         uuid (UUID):
+        contribution_uuid (Union[Unset, UUID]):
         include_all (Union[Unset, str]):
-        step (str):
+        step (Union[Unset, str]):
+        step_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -83,8 +99,10 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        contribution_uuid=contribution_uuid,
         include_all=include_all,
         step=step,
+        step_uuid=step_uuid,
     )
 
     response = client.get_httpx_client().request(
@@ -98,15 +116,19 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    contribution_uuid: Union[Unset, UUID] = UNSET,
     include_all: Union[Unset, str] = UNSET,
-    step: str,
+    step: Union[Unset, str] = UNSET,
+    step_uuid: Union[Unset, UUID] = UNSET,
 ) -> Union[Any, ChecklistResponse]:
     """Get a workflow step's checklist with questions and answers.
 
     Args:
         uuid (UUID):
+        contribution_uuid (Union[Unset, UUID]):
         include_all (Union[Unset, str]):
-        step (str):
+        step (Union[Unset, str]):
+        step_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -119,8 +141,10 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
+        contribution_uuid=contribution_uuid,
         include_all=include_all,
         step=step,
+        step_uuid=step_uuid,
     ).parsed
 
 
@@ -128,15 +152,19 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    contribution_uuid: Union[Unset, UUID] = UNSET,
     include_all: Union[Unset, str] = UNSET,
-    step: str,
+    step: Union[Unset, str] = UNSET,
+    step_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[Union[Any, ChecklistResponse]]:
     """Get a workflow step's checklist with questions and answers.
 
     Args:
         uuid (UUID):
+        contribution_uuid (Union[Unset, UUID]):
         include_all (Union[Unset, str]):
-        step (str):
+        step (Union[Unset, str]):
+        step_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -148,8 +176,10 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        contribution_uuid=contribution_uuid,
         include_all=include_all,
         step=step,
+        step_uuid=step_uuid,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -161,15 +191,19 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    contribution_uuid: Union[Unset, UUID] = UNSET,
     include_all: Union[Unset, str] = UNSET,
-    step: str,
+    step: Union[Unset, str] = UNSET,
+    step_uuid: Union[Unset, UUID] = UNSET,
 ) -> Union[Any, ChecklistResponse]:
     """Get a workflow step's checklist with questions and answers.
 
     Args:
         uuid (UUID):
+        contribution_uuid (Union[Unset, UUID]):
         include_all (Union[Unset, str]):
-        step (str):
+        step (Union[Unset, str]):
+        step_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -183,7 +217,9 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
+            contribution_uuid=contribution_uuid,
             include_all=include_all,
             step=step,
+            step_uuid=step_uuid,
         )
     ).parsed

@@ -59,7 +59,8 @@ def sync_detailed(
 
      Create a draft call under the given call managing organization from a document produced by
     export_call. References that cannot be resolved by name on this portal are skipped and reported in
-    warnings. The import is atomic.
+    warnings. The import is atomic. A document's lists are bounded (at most 100 workflow steps, 50
+    notification rules a step, and so on), and imports are throttled per user.
 
     Args:
         body (CallImportParametersRequest):
@@ -92,7 +93,8 @@ def sync(
 
      Create a draft call under the given call managing organization from a document produced by
     export_call. References that cannot be resolved by name on this portal are skipped and reported in
-    warnings. The import is atomic.
+    warnings. The import is atomic. A document's lists are bounded (at most 100 workflow steps, 50
+    notification rules a step, and so on), and imports are throttled per user.
 
     Args:
         body (CallImportParametersRequest):
@@ -120,7 +122,8 @@ async def asyncio_detailed(
 
      Create a draft call under the given call managing organization from a document produced by
     export_call. References that cannot be resolved by name on this portal are skipped and reported in
-    warnings. The import is atomic.
+    warnings. The import is atomic. A document's lists are bounded (at most 100 workflow steps, 50
+    notification rules a step, and so on), and imports are throttled per user.
 
     Args:
         body (CallImportParametersRequest):
@@ -151,7 +154,8 @@ async def asyncio(
 
      Create a draft call under the given call managing organization from a document produced by
     export_call. References that cannot be resolved by name on this portal are skipped and reported in
-    warnings. The import is atomic.
+    warnings. The import is atomic. A document's lists are bounded (at most 100 workflow steps, 50
+    notification rules a step, and so on), and imports are throttled per user.
 
     Args:
         body (CallImportParametersRequest):

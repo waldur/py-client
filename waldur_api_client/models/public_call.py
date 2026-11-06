@@ -15,6 +15,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.call_document import CallDocument
+    from ..models.call_offering_component_bounds import CallOfferingComponentBounds
     from ..models.call_proposal_field_config import CallProposalFieldConfig
     from ..models.call_resource_template import CallResourceTemplate
     from ..models.nested_requested_offering import NestedRequestedOffering
@@ -32,7 +33,7 @@ class PublicCall:
         uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         start_date (Union[Unset, datetime.datetime]):
-        end_date (Union[Unset, datetime.datetime]):
+        end_date (Union[None, Unset, datetime.datetime]):
         slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         name (Union[Unset, str]):
         description (Union[Unset, str]):
@@ -45,8 +46,12 @@ class PublicCall:
         rounds (Union[Unset, list['NestedRound']]):
         documents (Union[Unset, list['CallDocument']]):
         resource_templates (Union[Unset, list['CallResourceTemplate']]):
+        component_rules (Union[Unset, list['CallOfferingComponentBounds']]): What a proposal may request of each
+            component of the call's accepted offerings, in the component's unit and per its limit period.
         fixed_duration_in_days (Union[None, Unset, int]): Fixed duration in days that applies to all proposals in this
             call
+        allowed_duration_months (Union[Unset, list[int]]): Durations, in months, the applicant chooses the project's
+            length from; empty when the call offers no choice.
         max_prepaid_duration_months (Union[None, Unset, int]): The longest prepaid subscription, in whole months, that
             fits inside fixed_duration_in_days measured from today; null when the call fixes no duration.
         backend_id (Union[Unset, str]):
@@ -54,7 +59,8 @@ class PublicCall:
         reviewer_identity_visible_to_submitters (Union[Unset, bool]): Whether proposal applicants can see reviewer
             identities. If False, reviewers appear as 'Reviewer 1', 'Reviewer 2', etc.
         reviews_visible_to_submitters (Union[Unset, bool]): Whether proposal applicants can see review comments and
-            scores. If False, applicants only see final approval/rejection status.
+            scores. Applicants still see what an applicant step lists as its input steps, such as the reviews they respond
+            to.
         has_eligibility_restrictions (Union[Unset, bool]): Check if call has any eligibility restrictions configured.
         proposal_field_config (Union[Unset, CallProposalFieldConfig]):
         evaluation_start (Union[Unset, EvaluationStartEnum]):
@@ -66,7 +72,7 @@ class PublicCall:
     uuid: Union[Unset, UUID] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     start_date: Union[Unset, datetime.datetime] = UNSET
-    end_date: Union[Unset, datetime.datetime] = UNSET
+    end_date: Union[None, Unset, datetime.datetime] = UNSET
     slug: Union[Unset, str] = UNSET
     name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
@@ -79,7 +85,9 @@ class PublicCall:
     rounds: Union[Unset, list["NestedRound"]] = UNSET
     documents: Union[Unset, list["CallDocument"]] = UNSET
     resource_templates: Union[Unset, list["CallResourceTemplate"]] = UNSET
+    component_rules: Union[Unset, list["CallOfferingComponentBounds"]] = UNSET
     fixed_duration_in_days: Union[None, Unset, int] = UNSET
+    allowed_duration_months: Union[Unset, list[int]] = UNSET
     max_prepaid_duration_months: Union[None, Unset, int] = UNSET
     backend_id: Union[Unset, str] = UNSET
     external_url: Union[None, Unset, str] = UNSET
@@ -107,9 +115,13 @@ class PublicCall:
         if not isinstance(self.start_date, Unset):
             start_date = self.start_date.isoformat()
 
-        end_date: Union[Unset, str] = UNSET
-        if not isinstance(self.end_date, Unset):
+        end_date: Union[None, Unset, str]
+        if isinstance(self.end_date, Unset):
+            end_date = UNSET
+        elif isinstance(self.end_date, datetime.datetime):
             end_date = self.end_date.isoformat()
+        else:
+            end_date = self.end_date
 
         slug = self.slug
 
@@ -161,11 +173,22 @@ class PublicCall:
                 resource_templates_item = resource_templates_item_data.to_dict()
                 resource_templates.append(resource_templates_item)
 
+        component_rules: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.component_rules, Unset):
+            component_rules = []
+            for component_rules_item_data in self.component_rules:
+                component_rules_item = component_rules_item_data.to_dict()
+                component_rules.append(component_rules_item)
+
         fixed_duration_in_days: Union[None, Unset, int]
         if isinstance(self.fixed_duration_in_days, Unset):
             fixed_duration_in_days = UNSET
         else:
             fixed_duration_in_days = self.fixed_duration_in_days
+
+        allowed_duration_months: Union[Unset, list[int]] = UNSET
+        if not isinstance(self.allowed_duration_months, Unset):
+            allowed_duration_months = self.allowed_duration_months
 
         max_prepaid_duration_months: Union[None, Unset, int]
         if isinstance(self.max_prepaid_duration_months, Unset):
@@ -240,8 +263,12 @@ class PublicCall:
             field_dict["documents"] = documents
         if resource_templates is not UNSET:
             field_dict["resource_templates"] = resource_templates
+        if component_rules is not UNSET:
+            field_dict["component_rules"] = component_rules
         if fixed_duration_in_days is not UNSET:
             field_dict["fixed_duration_in_days"] = fixed_duration_in_days
+        if allowed_duration_months is not UNSET:
+            field_dict["allowed_duration_months"] = allowed_duration_months
         if max_prepaid_duration_months is not UNSET:
             field_dict["max_prepaid_duration_months"] = max_prepaid_duration_months
         if backend_id is not UNSET:
@@ -268,6 +295,7 @@ class PublicCall:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.call_document import CallDocument
+        from ..models.call_offering_component_bounds import CallOfferingComponentBounds
         from ..models.call_proposal_field_config import CallProposalFieldConfig
         from ..models.call_resource_template import CallResourceTemplate
         from ..models.nested_requested_offering import NestedRequestedOffering
@@ -297,12 +325,22 @@ class PublicCall:
         else:
             start_date = isoparse(_start_date)
 
-        _end_date = d.pop("end_date", UNSET)
-        end_date: Union[Unset, datetime.datetime]
-        if isinstance(_end_date, Unset):
-            end_date = UNSET
-        else:
-            end_date = isoparse(_end_date)
+        def _parse_end_date(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                end_date_type_0 = isoparse(data)
+
+                return end_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        end_date = _parse_end_date(d.pop("end_date", UNSET))
 
         slug = d.pop("slug", UNSET)
 
@@ -363,6 +401,13 @@ class PublicCall:
 
             resource_templates.append(resource_templates_item)
 
+        component_rules = []
+        _component_rules = d.pop("component_rules", UNSET)
+        for component_rules_item_data in _component_rules or []:
+            component_rules_item = CallOfferingComponentBounds.from_dict(component_rules_item_data)
+
+            component_rules.append(component_rules_item)
+
         def _parse_fixed_duration_in_days(data: object) -> Union[None, Unset, int]:
             if data is None:
                 return data
@@ -371,6 +416,8 @@ class PublicCall:
             return cast(Union[None, Unset, int], data)
 
         fixed_duration_in_days = _parse_fixed_duration_in_days(d.pop("fixed_duration_in_days", UNSET))
+
+        allowed_duration_months = cast(list[int], d.pop("allowed_duration_months", UNSET))
 
         def _parse_max_prepaid_duration_months(data: object) -> Union[None, Unset, int]:
             if data is None:
@@ -444,7 +491,9 @@ class PublicCall:
             rounds=rounds,
             documents=documents,
             resource_templates=resource_templates,
+            component_rules=component_rules,
             fixed_duration_in_days=fixed_duration_in_days,
+            allowed_duration_months=allowed_duration_months,
             max_prepaid_duration_months=max_prepaid_duration_months,
             backend_id=backend_id,
             external_url=external_url,

@@ -355,12 +355,11 @@ Module: `waldur_api_client.api.call_managing_organisations`
 - `call_managing_organisations_list` GET `/api/call-managing-organisations/` (4 query params)
 - `call_managing_organisations_count` HEAD `/api/call-managing-organisations/` — Get number of items in the collection matching the request parameters (4 query params)
 - `call_managing_organisations_create` POST `/api/call-managing-organisations/` (request body)
-- `call_managing_organisations_global_stats_performance_list` GET `/api/call-managing-organisations/global_stats_performance/` — Get call performance statistics across all calls (4 query params)
-- `call_managing_organisations_global_stats_performance_count` HEAD `/api/call-managing-organisations/global_stats_performance/` — Get number of items in the collection matching the request parameters (4 query params)
-- `call_managing_organisations_global_stats_resource_demand_list` GET `/api/call-managing-organisations/global_stats_resource_demand/` — Get resource demand statistics across all calls and offerings (4 query params)
-- `call_managing_organisations_global_stats_resource_demand_count` HEAD `/api/call-managing-organisations/global_stats_resource_demand/` — Get number of items in the collection matching the request parameters (4 query params)
-- `call_managing_organisations_global_stats_review_progress_list` GET `/api/call-managing-organisations/global_stats_review_progress/` — Get review progress statistics across all reviewers (4 query params)
-- `call_managing_organisations_global_stats_review_progress_count` HEAD `/api/call-managing-organisations/global_stats_review_progress/` — Get number of items in the collection matching the request parameters (4 query params)
+- `call_managing_organisations_reports_budgets_global_retrieve` GET `/api/call-managing-organisations/reports/budgets/` — Per resource pool, and per component awarded or asked for without one: what it offers, what was requested, awarded and remains, and what proposals still waiting for their decision ask of it (5 query params)
+- `call_managing_organisations_reports_portfolio_global_retrieve` GET `/api/call-managing-organisations/reports/portfolio/` — Per call and round: proposals submitted, the outcome mix, the success rate (accepted out of decided) and the mean overall score of the submitted reviews; with submissions per month (5 query params)
+- `call_managing_organisations_reports_reviewers_global_retrieve` GET `/api/call-managing-organisations/reports/reviewers/` — Per reviewer of the proposals: assignments sent and how they were answered, reviews by state and overdue, the median days to answer and to review, and the mean score given (5 query params)
+- `call_managing_organisations_reports_rounds_global_retrieve` GET `/api/call-managing-organisations/reports/rounds/` — Per round: the days from its cut-off to the evaluation, deciding, the results' publication and their adoption, and how late the results came against its allocation date (5 query params)
+- `call_managing_organisations_reports_workflow_global_retrieve` GET `/api/call-managing-organisations/reports/workflow/` — Per workflow step, summed over the calls by step key: proposals waiting at it, overdue there, completed late, and the median and 90th percentile days it took; with each call's own figures (5 query params)
 - `call_managing_organisations_retrieve` GET `/api/call-managing-organisations/{uuid}/` (path: uuid)
 - `call_managing_organisations_update` PUT `/api/call-managing-organisations/{uuid}/` (path: uuid | request body)
 - `call_managing_organisations_partial_update` PATCH `/api/call-managing-organisations/{uuid}/` (path: uuid | request body)
@@ -369,6 +368,11 @@ Module: `waldur_api_client.api.call_managing_organisations`
 - `call_managing_organisations_delete_user` POST `/api/call-managing-organisations/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `call_managing_organisations_list_users_list` GET `/api/call-managing-organisations/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 11 query params)
 - `call_managing_organisations_list_users_count` HEAD `/api/call-managing-organisations/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 11 query params)
+- `call_managing_organisations_reports_budgets_retrieve` GET `/api/call-managing-organisations/{uuid}/reports/budgets/` — Per resource pool, and per component awarded or asked for without one: what it offers, what was requested, awarded and remains, and what proposals still waiting for their decision ask of it (path: uuid | 4 query params)
+- `call_managing_organisations_reports_portfolio_retrieve` GET `/api/call-managing-organisations/{uuid}/reports/portfolio/` — Per call and round: proposals submitted, the outcome mix, the success rate (accepted out of decided) and the mean overall score of the submitted reviews; with submissions per month (path: uuid | 4 query params)
+- `call_managing_organisations_reports_reviewers_retrieve` GET `/api/call-managing-organisations/{uuid}/reports/reviewers/` — Per reviewer of the proposals: assignments sent and how they were answered, reviews by state and overdue, the median days to answer and to review, and the mean score given (path: uuid | 4 query params)
+- `call_managing_organisations_reports_rounds_retrieve` GET `/api/call-managing-organisations/{uuid}/reports/rounds/` — Per round: the days from its cut-off to the evaluation, deciding, the results' publication and their adoption, and how late the results came against its allocation date (path: uuid | 4 query params)
+- `call_managing_organisations_reports_workflow_retrieve` GET `/api/call-managing-organisations/{uuid}/reports/workflow/` — Per workflow step, summed over the calls by step key: proposals waiting at it, overdue there, completed late, and the median and 90th percentile days it took; with each call's own figures (path: uuid | 4 query params)
 - `call_managing_organisations_stats_retrieve` GET `/api/call-managing-organisations/{uuid}/stats/` — Return statistics for call managing organization (path: uuid)
 - `call_managing_organisations_update_user` POST `/api/call-managing-organisations/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 
@@ -404,6 +408,25 @@ Module: `waldur_api_client.api.call_rounds`
 - `call_rounds_dashboard_deadlines_count` HEAD `/api/call-rounds/dashboard-deadlines/` — Get upcoming round deadlines for the call manager dashboard (no params)
 - `call_rounds_retrieve` GET `/api/call-rounds/{uuid}/` (path: uuid)
 - `call_rounds_reviewers_list` GET `/api/call-rounds/{uuid}/reviewers/` — Return list of reviewers for round (path: uuid)
+
+## call-templates
+Module: `waldur_api_client.api.call_templates`
+
+- `call_templates_list` GET `/api/call-templates/` (3 query params)
+- `call_templates_count` HEAD `/api/call-templates/` — Get number of items in the collection matching the request parameters (3 query params)
+- `call_templates_create` POST `/api/call-templates/` (request body)
+- `call_templates_load_preset` POST `/api/call-templates/load_preset/` — Load call template presets (request body)
+- `call_templates_presets_list` GET `/api/call-templates/presets/` — List the call template presets (no params)
+- `call_templates_presets_count` HEAD `/api/call-templates/presets/` — List the call template presets (no params)
+- `call_templates_retrieve` GET `/api/call-templates/{uuid}/` (path: uuid)
+- `call_templates_update` PUT `/api/call-templates/{uuid}/` (path: uuid | request body)
+- `call_templates_partial_update` PATCH `/api/call-templates/{uuid}/` (path: uuid | request body)
+- `call_templates_destroy` DELETE `/api/call-templates/{uuid}/` (path: uuid)
+- `call_templates_workflow_check_retrieve` GET `/api/call-templates/{uuid}/workflow-check/` — Check the template's workflow (path: uuid)
+- `call_templates_workflow_description_retrieve` GET `/api/call-templates/{uuid}/workflow-description/` — Describe the template's workflow (path: uuid)
+- `call_templates_workflow_diff_retrieve` GET `/api/call-templates/{uuid}/workflow-diff/` — Compare two versions of the template (path: uuid | 2 query params)
+- `call_templates_workflow_versions_list` GET `/api/call-templates/{uuid}/workflow-versions/` — List the template's versions (path: uuid | 3 query params)
+- `call_templates_workflow_versions_retrieve` GET `/api/call-templates/{uuid}/workflow-versions/{number}/` — Get one version of the template (path: number, uuid)
 
 ## call-workflow-step-notification-rules
 Module: `waldur_api_client.api.call_workflow_step_notification_rules`
@@ -495,14 +518,14 @@ Module: `waldur_api_client.api.chat_tools`
 ## checklists-admin
 Module: `waldur_api_client.api.checklists_admin`
 
-- `checklists_admin_list` GET `/api/checklists-admin/` (2 query params)
-- `checklists_admin_count` HEAD `/api/checklists-admin/` — Get number of items in the collection matching the request parameters (2 query params)
+- `checklists_admin_list` GET `/api/checklists-admin/` (4 query params)
+- `checklists_admin_count` HEAD `/api/checklists-admin/` — Get number of items in the collection matching the request parameters (4 query params)
 - `checklists_admin_create` POST `/api/checklists-admin/` (request body)
 - `checklists_admin_retrieve` GET `/api/checklists-admin/{uuid}/` (path: uuid)
 - `checklists_admin_update` PUT `/api/checklists-admin/{uuid}/` (path: uuid | request body)
 - `checklists_admin_partial_update` PATCH `/api/checklists-admin/{uuid}/` (path: uuid | request body)
 - `checklists_admin_destroy` DELETE `/api/checklists-admin/{uuid}/` (path: uuid)
-- `checklists_admin_checklist_questions` GET `/api/checklists-admin/{uuid}/questions/` — Return checklist questions (path: uuid | 2 query params)
+- `checklists_admin_checklist_questions` GET `/api/checklists-admin/{uuid}/questions/` — Return checklist questions (path: uuid | 4 query params)
 
 ## checklists-admin-question-dependencies
 Module: `waldur_api_client.api.checklists_admin_question_dependencies`
@@ -576,9 +599,9 @@ Module: `waldur_api_client.api.conflicts_of_interest`
 - `conflicts_of_interest_retrieve` GET `/api/conflicts-of-interest/{uuid}/` (path: uuid)
 - `conflicts_of_interest_update` PUT `/api/conflicts-of-interest/{uuid}/` (path: uuid | request body)
 - `conflicts_of_interest_partial_update` PATCH `/api/conflicts-of-interest/{uuid}/` (path: uuid | request body)
-- `conflicts_of_interest_dismiss` POST `/api/conflicts-of-interest/{uuid}/dismiss/` — Dismiss a conflict of interest (not a real conflict) (path: uuid | request body)
-- `conflicts_of_interest_recuse` POST `/api/conflicts-of-interest/{uuid}/recuse/` — Recuse reviewer from the proposal (path: uuid | request body)
-- `conflicts_of_interest_waive` POST `/api/conflicts-of-interest/{uuid}/waive/` — Waive a conflict with a management plan (path: uuid | request body)
+- `conflicts_of_interest_dismiss` POST `/api/conflicts-of-interest/{uuid}/dismiss/` — Dismiss a pending conflict of interest (not a real conflict) (path: uuid | request body)
+- `conflicts_of_interest_recuse` POST `/api/conflicts-of-interest/{uuid}/recuse/` — Recuse the reviewer from the proposal over a pending conflict (path: uuid | request body)
+- `conflicts_of_interest_waive` POST `/api/conflicts-of-interest/{uuid}/waive/` — Waive a pending conflict with a management plan (path: uuid | request body)
 
 ## credit-transactions
 Module: `waldur_api_client.api.credit_transactions`
@@ -1751,6 +1774,7 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_delete_tags` POST `/api/marketplace-provider-offerings/{uuid}/delete_tags/` — Delete tags for offering (path: uuid)
 - `marketplace_provider_offerings_delete_thumbnail` POST `/api/marketplace-provider-offerings/{uuid}/delete_thumbnail/` — Delete offering thumbnail (path: uuid)
 - `marketplace_provider_offerings_delete_user` POST `/api/marketplace-provider-offerings/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
+- `marketplace_provider_offerings_dependents_list` GET `/api/marketplace-provider-offerings/{uuid}/dependents/` — What depends on an offering (path: uuid | 3 query params)
 - `marketplace_provider_offerings_draft` POST `/api/marketplace-provider-offerings/{uuid}/draft/` — Move an offering to draft (path: uuid)
 - `marketplace_provider_offerings_effective_posix_id_pool_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/effective_posix_id_pool/` — Effective POSIX ID pool (path: uuid | 1 query param)
 - `marketplace_provider_offerings_export_offering` POST `/api/marketplace-provider-offerings/{uuid}/export_offering/` — Export offering data (path: uuid | request body)
@@ -2475,8 +2499,8 @@ Module: `waldur_api_client.api.metadata`
 ## my-assignment-batches
 Module: `waldur_api_client.api.my_assignment_batches`
 
-- `my_assignment_batches_list` GET `/api/my-assignment-batches/` — List all pending assignment batches for the authenticated reviewer (no params)
-- `my_assignment_batches_count` HEAD `/api/my-assignment-batches/` — Get number of items in the collection matching the request parameters (no params)
+- `my_assignment_batches_list` GET `/api/my-assignment-batches/` — List the authenticated reviewer's assignment batches (1 query param)
+- `my_assignment_batches_count` HEAD `/api/my-assignment-batches/` — Get number of items in the collection matching the request parameters (1 query param)
 - `my_assignment_batches_retrieve` GET `/api/my-assignment-batches/{uuid}/` — Get details of a specific assignment batch with items (path: uuid)
 
 ## notification-messages
@@ -3320,21 +3344,35 @@ Module: `waldur_api_client.api.promotions_campaigns`
 ## proposal-my-requested-resources
 Module: `waldur_api_client.api.proposal_my_requested_resources`
 
-- `proposal_my_requested_resources_list` GET `/api/proposal-my-requested-resources/` (11 query params)
-- `proposal_my_requested_resources_count` HEAD `/api/proposal-my-requested-resources/` — Get number of items in the collection matching the request parameters (11 query params)
+- `proposal_my_requested_resources_list` GET `/api/proposal-my-requested-resources/` (14 query params)
+- `proposal_my_requested_resources_count` HEAD `/api/proposal-my-requested-resources/` — Get number of items in the collection matching the request parameters (14 query params)
 - `proposal_my_requested_resources_retrieve` GET `/api/proposal-my-requested-resources/{uuid}/` (path: uuid)
+
+## proposal-my-tasks
+Module: `waldur_api_client.api.proposal_my_tasks`
+
+- `proposal_my_tasks_list` GET `/api/proposal-my-tasks/` (3 query params)
+- `proposal_my_tasks_count` HEAD `/api/proposal-my-tasks/` — Get number of items in the collection matching the request parameters (3 query params)
+- `proposal_my_tasks_summary_retrieve` GET `/api/proposal-my-tasks/summary/` — Summarise the current user's open tasks (no params)
+
+## proposal-offering-demand
+Module: `waldur_api_client.api.proposal_offering_demand`
+
+- `proposal_offering_demand_list` GET `/api/proposal-offering-demand/` (5 query params)
+- `proposal_offering_demand_count` HEAD `/api/proposal-offering-demand/` — Get number of items in the collection matching the request parameters (5 query params)
 
 ## proposal-proposals
 Module: `waldur_api_client.api.proposal_proposals`
 
-- `proposal_proposals_list` GET `/api/proposal-proposals/` (12 query params)
-- `proposal_proposals_count` HEAD `/api/proposal-proposals/` — Get number of items in the collection matching the request parameters (12 query params)
+- `proposal_proposals_list` GET `/api/proposal-proposals/` (19 query params)
+- `proposal_proposals_count` HEAD `/api/proposal-proposals/` — Get number of items in the collection matching the request parameters (19 query params)
 - `proposal_proposals_create` POST `/api/proposal-proposals/` (request body)
 - `proposal_proposals_checklist_template_retrieve` GET `/api/proposal-proposals/checklist-template/` — Get checklist template for creating new objects (1 query param)
 - `proposal_proposals_checklist_template_count` HEAD `/api/proposal-proposals/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
 - `proposal_proposals_dashboard_stats_retrieve` GET `/api/proposal-proposals/dashboard-stats/` — Get submitter dashboard stats (no params)
 - `proposal_proposals_retrieve` GET `/api/proposal-proposals/{uuid}/` (path: uuid)
 - `proposal_proposals_destroy` DELETE `/api/proposal-proposals/{uuid}/` (path: uuid)
+- `proposal_proposals_accept_contribution` POST `/api/proposal-proposals/{uuid}/accept_contribution/` — Take over a contribution slot handed to the caller (path: uuid | request body)
 - `proposal_proposals_add_user` POST `/api/proposal-proposals/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
 - `proposal_proposals_advance_workflow_step` POST `/api/proposal-proposals/{uuid}/advance_workflow_step/` — Manually advance a workflow that is awaiting call-manager confirmation (path: uuid)
 - `proposal_proposals_attach_document` POST `/api/proposal-proposals/{uuid}/attach_document/` — Attach document to proposal (path: uuid | request body)
@@ -3344,17 +3382,37 @@ Module: `waldur_api_client.api.proposal_proposals`
 - `proposal_proposals_awarded_resources_update` PUT `/api/proposal-proposals/{uuid}/awarded_resources/{obj_uuid}/` — Read, change or remove an item of the award (path: obj_uuid, uuid | request body)
 - `proposal_proposals_awarded_resources_partial_update` PATCH `/api/proposal-proposals/{uuid}/awarded_resources/{obj_uuid}/` — Read, change or remove an item of the award (path: obj_uuid, uuid | request body)
 - `proposal_proposals_awarded_resources_destroy` DELETE `/api/proposal-proposals/{uuid}/awarded_resources/{obj_uuid}/` — Read, change or remove an item of the award (path: obj_uuid, uuid)
+- `proposal_proposals_budget_retrieve` GET `/api/proposal-proposals/{uuid}/budget/` — Where the proposal's award stands against the call's budgets for its round: per budget row, the offered total, what the other proposals were awarded, what remains, this award and whether it fits (path: uuid)
+- `proposal_proposals_cancel_change_request` POST `/api/proposal-proposals/{uuid}/cancel_change_request/` — Call off an open request for changes to the applicant: the step is its actor's again, with its full duration (path: uuid | request body)
+- `proposal_proposals_change_requests_list` GET `/api/proposal-proposals/{uuid}/change_requests/` — The requests for changes made on the proposal, open and closed, oldest first: the rounds of changes asked of its applicant, and the contributions reopened (path: uuid | 19 query params)
 - `proposal_proposals_checklist_retrieve` GET `/api/proposal-proposals/{uuid}/checklist/` — Get checklist with questions and existing answers (path: uuid | 1 query param)
 - `proposal_proposals_checklist_review_retrieve` GET `/api/proposal-proposals/{uuid}/checklist_review/` — Get checklist with questions and existing answers including review logic (reviewers only) (path: uuid)
-- `proposal_proposals_complete_workflow_step` POST `/api/proposal-proposals/{uuid}/complete_workflow_step/` — Complete the current workflow step with an outcome (path: uuid | request body)
+- `proposal_proposals_complete_workflow_step` POST `/api/proposal-proposals/{uuid}/complete_workflow_step/` — Complete an active workflow step with an outcome: the one step_uuid names, as several steps of a stage may be active at once (path: uuid | request body)
 - `proposal_proposals_completion_review_status_retrieve` GET `/api/proposal-proposals/{uuid}/completion_review_status/` — Get checklist completion status with review triggers (reviewers only) (path: uuid)
 - `proposal_proposals_completion_status_retrieve` GET `/api/proposal-proposals/{uuid}/completion_status/` — Get checklist completion status (path: uuid)
+- `proposal_proposals_contributions_list` GET `/api/proposal-proposals/{uuid}/contributions/` — List the contributions to the proposal's workflow steps the caller may read: one per person or per requested offering, with status, outcome and conditions (path: uuid | 20 query params)
+- `proposal_proposals_decline_contribution` POST `/api/proposal-proposals/{uuid}/decline_contribution/` — Decline a contribution of one's own, or, as a call manager, withdraw an open contribution from the step's work (path: uuid | request body)
+- `proposal_proposals_delegate_contribution` POST `/api/proposal-proposals/{uuid}/delegate_contribution/` — Hand a contribution slot to someone the step's delegable_to allows -- an offering manager of the slot's offering, or a holder of an evaluator role on the proposal -- or take it back with a null user_uuid (path: uuid | request body)
 - `proposal_proposals_delete_user` POST `/api/proposal-proposals/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `proposal_proposals_detach_documents` POST `/api/proposal-proposals/{uuid}/detach_documents/` — Detach documents from proposal (path: uuid | request body)
+- `proposal_proposals_discard_suggested_reviewers` POST `/api/proposal-proposals/{uuid}/discard_suggested_reviewers/` — Set suggested reviewers aside, unless already invited (path: uuid | 19 query params | request body)
+- `proposal_proposals_invite_suggested_reviewers` POST `/api/proposal-proposals/{uuid}/invite_suggested_reviewers/` — Invite suggested reviewers to the call's reviewer pool, as an invitation by e-mail is sent: the call's response window and the invitation e-mail apply (path: uuid | request body)
 - `proposal_proposals_list_users_list` GET `/api/proposal-proposals/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 11 query params)
 - `proposal_proposals_list_users_count` HEAD `/api/proposal-proposals/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 11 query params)
-- `proposal_proposals_reject_workflow_step` POST `/api/proposal-proposals/{uuid}/reject_workflow_step/` — Reject the proposal at the current workflow step (path: uuid | request body)
+- `proposal_proposals_my_reviewer_suggestions_list` GET `/api/proposal-proposals/{uuid}/my_reviewer_suggestions/` — The reviewers the caller suggested for the proposal, with where each stands (path: uuid)
+- `proposal_proposals_my_reviewer_suggestions_create` POST `/api/proposal-proposals/{uuid}/my_reviewer_suggestions/` — Suggest a reviewer for the proposal: an existing user or an e-mail address, with a note (path: uuid | request body)
+- `proposal_proposals_offering_assessments_list` GET `/api/proposal-proposals/{uuid}/offering_assessments/` — What the proposal's per-offering assessments concluded about each requested offering -- accepted, conditionally accepted with its conditions, or rejected -- for the allocation decision (path: uuid | 19 query params)
+- `proposal_proposals_open_final_report` POST `/api/proposal-proposals/{uuid}/open_final_report/` — Open an accepted proposal's final report ahead of its due date, or for a project without an end date (path: uuid)
+- `proposal_proposals_preview_as` POST `/api/proposal-proposals/{uuid}/preview-as/` — Preview the proposal as a role of its call (path: uuid | request body)
+- `proposal_proposals_preview_roles_list` GET `/api/proposal-proposals/{uuid}/preview-roles/` — The roles the proposal may be previewed as (path: uuid)
+- `proposal_proposals_provision_awarded_item` POST `/api/proposal-proposals/{uuid}/provision_awarded_item/` — Order an item of an allocated proposal's award again: one that allocation could not order (see its provision_error) or whose order the provider refused (path: uuid | request body)
+- `proposal_proposals_reject_workflow_step` POST `/api/proposal-proposals/{uuid}/reject_workflow_step/` — Reject the proposal at an active workflow step: the one step_uuid names (path: uuid | request body)
+- `proposal_proposals_release_step_report` POST `/api/proposal-proposals/{uuid}/release_step_report/` — Release the report of a completed assessment step configured to be released, such as a consolidated report or final feedback, to the applicant -- optionally as an edited text (path: uuid | request body)
+- `proposal_proposals_released_reports_list` GET `/api/proposal-proposals/{uuid}/released_reports/` — The reports of the proposal's steps released to the applicant, such as the consolidated report or final feedback (path: uuid | 19 query params)
+- `proposal_proposals_reopen_contribution` POST `/api/proposal-proposals/{uuid}/reopen_contribution/` — Reopen a submitted contribution -- one offering's technical assessment, say -- for its contributor to revise and submit again (path: uuid | request body)
 - `proposal_proposals_reopen_decision` POST `/api/proposal-proposals/{uuid}/reopen_decision/` — Reopen an allocation decision held for the round's publication: the decision step becomes active again with its outcome cleared, and the proposal counts as undecided until it is decided anew (path: uuid | request body)
+- `proposal_proposals_request_changes` POST `/api/proposal-proposals/{uuid}/request_changes/` — Send a proposal in review back to its applicant to change the parts named, at a step that allows it (path: uuid | request body)
+- `proposal_proposals_request_extension` POST `/api/proposal-proposals/{uuid}/request_extension/` — Request an extension of an accepted proposal's allocation: opens an extension run on the call's extension steps (path: uuid | request body)
 - `proposal_proposals_resources_list` GET `/api/proposal-proposals/{uuid}/resources/` — List resources for a proposal (path: uuid)
 - `proposal_proposals_resources_set` POST `/api/proposal-proposals/{uuid}/resources/` — Create resource for a proposal (path: uuid | request body)
 - `proposal_proposals_resources_retrieve` GET `/api/proposal-proposals/{uuid}/resources/{obj_uuid}/` (path: obj_uuid, uuid)
@@ -3363,14 +3421,35 @@ Module: `waldur_api_client.api.proposal_proposals`
 - `proposal_proposals_resources_destroy` DELETE `/api/proposal-proposals/{uuid}/resources/{obj_uuid}/` (path: obj_uuid, uuid)
 - `proposal_proposals_resource_purchase_order_set` POST `/api/proposal-proposals/{uuid}/resources/{obj_uuid}/purchase_order/` — Upload or replace the purchase order of a requested resource (path: obj_uuid, uuid | request body)
 - `proposal_proposals_resource_purchase_order_delete` DELETE `/api/proposal-proposals/{uuid}/resources/{obj_uuid}/purchase_order/` — Remove the purchase order of a requested resource (path: obj_uuid, uuid)
-- `proposal_proposals_step_checklist_responses_list` GET `/api/proposal-proposals/{uuid}/step-checklist-responses/` — List a workflow step's checklist answers grouped by reviewer, for the threaded technical-assessment view (path: uuid | 13 query params)
-- `proposal_proposals_step_checklist_retrieve` GET `/api/proposal-proposals/{uuid}/step-checklist/` — Get a workflow step's checklist with questions and answers (path: uuid | 2 query params)
-- `proposal_proposals_submit_step_checklist_answers` POST `/api/proposal-proposals/{uuid}/submit-step-checklist-answers/` — Submit answers to a workflow step's checklist (path: uuid | 1 query param | request body)
+- `proposal_proposals_reviewer_suggestion_candidates_list` GET `/api/proposal-proposals/{uuid}/reviewer_suggestion_candidates/` — Registered users the caller may suggest as reviewers: those with a published reviewer profile and those in the call's reviewer pool, at most 20, never with their e-mail address (path: uuid | 1 query param)
+- `proposal_proposals_revoke_role_assignment` POST `/api/proposal-proposals/{uuid}/revoke_role_assignment/` — Take an evaluator role away (path: uuid | request body)
+- `proposal_proposals_role_assignment_candidates_list` GET `/api/proposal-proposals/{uuid}/role_assignment_candidates/` — Users who may hold the role on the proposal by its eligibility, at most 50 (10 for a role any user may hold), with whether they can be assigned: a conflict of interest on record or another evaluator role on the proposal rules them out (path: uuid | 2 query params)
+- `proposal_proposals_role_assignments_list` GET `/api/proposal-proposals/{uuid}/role_assignments/` — Who holds the call's evaluator roles on the proposal (path: uuid | 1 query param)
+- `proposal_proposals_role_assignments_set` POST `/api/proposal-proposals/{uuid}/role_assignments/` — Assign an evaluator role on the proposal (path: uuid | request body)
+- `proposal_proposals_runs_list` GET `/api/proposal-proposals/{uuid}/runs/` — The accepted proposal's extension requests and final report, oldest first (path: uuid)
+- `proposal_proposals_runs_retrieve` GET `/api/proposal-proposals/{uuid}/runs/{obj_uuid}/` — Read an extension request or final report, or change what an open extension asks for -- the proposal's team, while its request step runs -- or grants: whoever completes its decision, while that runs (path: obj_uuid, uuid)
+- `proposal_proposals_runs_partial_update` PATCH `/api/proposal-proposals/{uuid}/runs/{obj_uuid}/` — Read an extension request or final report, or change what an open extension asks for -- the proposal's team, while its request step runs -- or grants: whoever completes its decision, while that runs (path: obj_uuid, uuid | request body)
+- `proposal_proposals_set_awarded_duration` POST `/api/proposal-proposals/{uuid}/set_awarded_duration/` — Set the project length the award grants, from the call's allowed_duration_months (path: uuid | request body)
+- `proposal_proposals_set_panel` POST `/api/proposal-proposals/{uuid}/set_panel/` — Move the proposal to another panel of its call, or off any panel (path: uuid | request body)
+- `proposal_proposals_set_role_lead` POST `/api/proposal-proposals/{uuid}/set_role_lead/` — Mark a holder as the lead of their role, in place of any other (path: uuid | request body)
+- `proposal_proposals_step_checklist_responses_list` GET `/api/proposal-proposals/{uuid}/step-checklist-responses/` — List the contributions to a workflow step with their checklist answers, for the threaded view of the step: one entry per contribution (per person or per requested offering) the caller may read (path: uuid | 21 query params)
+- `proposal_proposals_step_checklist_retrieve` GET `/api/proposal-proposals/{uuid}/step-checklist/` — Get a workflow step's checklist with questions and answers (path: uuid | 4 query params)
+- `proposal_proposals_step_inputs_list` GET `/api/proposal-proposals/{uuid}/step_inputs/` — What the input steps of one of the proposal's workflow steps produced: their contributions with answers, reviews and outcome (path: uuid | 20 query params)
+- `proposal_proposals_submit_step_checklist_answers` POST `/api/proposal-proposals/{uuid}/submit-step-checklist-answers/` — Submit answers to a workflow step's checklist (path: uuid | 3 query params | request body)
 - `proposal_proposals_submit` POST `/api/proposal-proposals/{uuid}/submit/` — Submit a proposal (path: uuid)
 - `proposal_proposals_submit_answers` POST `/api/proposal-proposals/{uuid}/submit_answers/` — Submit checklist answers (path: uuid | request body)
+- `proposal_proposals_submit_changes` POST `/api/proposal-proposals/{uuid}/submit_changes/` — Submit the changes requested of the applicant, every open request at once: several steps of a stage may each have asked (path: uuid | 19 query params)
+- `proposal_proposals_submit_contribution` POST `/api/proposal-proposals/{uuid}/submit_contribution/` — Submit a contribution to a workflow step with its outcome (path: uuid | request body)
+- `proposal_proposals_suggested_reviewers_list` GET `/api/proposal-proposals/{uuid}/suggested_reviewers/` — The reviewers the proposal's evaluators suggested, merged per suggested person, with who suggested them, where each stands and the conflicts of interest known (path: uuid)
+- `proposal_proposals_unlockable_parts_retrieve` GET `/api/proposal-proposals/{uuid}/unlockable_parts/` — The parts of the proposal a request for changes may unlock: the Project details fields the call collects, and its documents, requested resources, team and compliance answers (path: uuid | 1 query param)
 - `proposal_proposals_update_project_details` POST `/api/proposal-proposals/{uuid}/update_project_details/` — Update project details of a proposal (path: uuid | request body)
 - `proposal_proposals_update_user` POST `/api/proposal-proposals/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
-- `proposal_proposals_workflow_states_list` GET `/api/proposal-proposals/{uuid}/workflow_states/` — List all workflow step instances for this proposal (path: uuid | 12 query params)
+- `proposal_proposals_withdraw` POST `/api/proposal-proposals/{uuid}/withdraw/` — Withdraw a submitted proposal from evaluation, at its applicant's request (path: uuid | request body)
+- `proposal_proposals_withdraw_reviewer_suggestion` POST `/api/proposal-proposals/{uuid}/withdraw_reviewer_suggestion/` — Take back one's own reviewer suggestion while it is pending and the step collecting it is active (path: uuid | request body)
+- `proposal_proposals_withdraw_run` POST `/api/proposal-proposals/{uuid}/withdraw_run/` — Call off the open extension request or final report (path: uuid | request body)
+- `proposal_proposals_workflow_mails_list` GET `/api/proposal-proposals/{uuid}/workflow-mails/` — Workflow mail of the proposal, as sent (path: uuid | 1 query param)
+- `proposal_proposals_workflow_timeline_retrieve` GET `/api/proposal-proposals/{uuid}/workflow-timeline/` — Timeline of the proposal's workflow (path: uuid)
+- `proposal_proposals_workflow_states_list` GET `/api/proposal-proposals/{uuid}/workflow_states/` — List all workflow step instances for this proposal (path: uuid | 19 query params)
 
 ## proposal-protected-calls
 Module: `waldur_api_client.api.proposal_protected_calls`
@@ -3384,6 +3463,8 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_import_call` POST `/api/proposal-protected-calls/import_call/` — Import call configuration (request body)
 - `proposal_protected_calls_step_checklists_list` GET `/api/proposal-protected-calls/step_checklists/` — List checklists that can be attached to a workflow step (WORKFLOW_STEP-typed) (11 query params)
 - `proposal_protected_calls_step_checklists_count` HEAD `/api/proposal-protected-calls/step_checklists/` — Get number of items in the collection matching the request parameters (11 query params)
+- `proposal_protected_calls_workflow_step_kinds_list` GET `/api/proposal-protected-calls/workflow_step_kinds/` — List the kinds a call's workflow steps are made of: their outcome sets, default completer and the step fields that apply to them (11 query params)
+- `proposal_protected_calls_workflow_step_kinds_count` HEAD `/api/proposal-protected-calls/workflow_step_kinds/` — Get number of items in the collection matching the request parameters (11 query params)
 - `proposal_protected_calls_retrieve` GET `/api/proposal-protected-calls/{uuid}/` (path: uuid | 1 query param)
 - `proposal_protected_calls_update` PUT `/api/proposal-protected-calls/{uuid}/` (path: uuid | request body)
 - `proposal_protected_calls_partial_update` PATCH `/api/proposal-protected-calls/{uuid}/` (path: uuid | request body)
@@ -3391,7 +3472,9 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_activate` POST `/api/proposal-protected-calls/{uuid}/activate/` — Activate a call (path: uuid)
 - `proposal_protected_calls_add_user` POST `/api/proposal-protected-calls/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
 - `proposal_protected_calls_affinity_matrix_retrieve` GET `/api/proposal-protected-calls/{uuid}/affinity-matrix/` — Get affinity matrix for reviewer-proposal matching (path: uuid | 1 query param)
-- `proposal_protected_calls_archive` POST `/api/proposal-protected-calls/{uuid}/archive/` — Archive a call (path: uuid)
+- `proposal_protected_calls_archive` POST `/api/proposal-protected-calls/{uuid}/archive/` — Archive a call (path: uuid | request body)
+- `proposal_protected_calls_assignment_configuration_retrieve` GET `/api/proposal-protected-calls/{uuid}/assignment-configuration/` — Get or update the call's assignment settings: the response window of review assignments, reminders and reassignment (path: uuid)
+- `proposal_protected_calls_assignment_configuration_partial_update` PATCH `/api/proposal-protected-calls/{uuid}/assignment-configuration/` — Get or update the call's assignment settings: the response window of review assignments, reminders and reassignment (path: uuid | request body)
 - `proposal_protected_calls_attach_documents` POST `/api/proposal-protected-calls/{uuid}/attach_documents/` — Attach documents to call (path: uuid | request body)
 - `proposal_protected_calls_coi_configuration_retrieve` GET `/api/proposal-protected-calls/{uuid}/coi-configuration/` — Get COI configuration for this call (path: uuid)
 - `proposal_protected_calls_coi_configuration_partial_update` PATCH `/api/proposal-protected-calls/{uuid}/coi-configuration/` — Get COI configuration for this call (path: uuid | request body)
@@ -3404,7 +3487,7 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_detach_documents` POST `/api/proposal-protected-calls/{uuid}/detach_documents/` — Detach documents from call (path: uuid | request body)
 - `proposal_protected_calls_detect_conflicts` POST `/api/proposal-protected-calls/{uuid}/detect-conflicts/` — Trigger automated COI detection for all reviewer-proposal pairs (path: uuid | request body)
 - `proposal_protected_calls_duplicate` POST `/api/proposal-protected-calls/{uuid}/duplicate/` — Duplicate a call (path: uuid | request body)
-- `proposal_protected_calls_export_proposals` GET `/api/proposal-protected-calls/{uuid}/export-proposals/` — Download the call's proposals as CSV, one row per proposal, with one column per requested offering component (path: uuid | 4 query params)
+- `proposal_protected_calls_export_proposals` GET `/api/proposal-protected-calls/{uuid}/export-proposals/` — Download the call's proposals as CSV, one row per proposal, with one column per requested offering component (path: uuid | 5 query params)
 - `proposal_protected_calls_export_reviews` GET `/api/proposal-protected-calls/{uuid}/export-reviews/` — Download the call's reviews as CSV, one row per review (path: uuid | 5 query params)
 - `proposal_protected_calls_export_call` POST `/api/proposal-protected-calls/{uuid}/export_call/` — Export call configuration (path: uuid | request body)
 - `proposal_protected_calls_generate_assignments` POST `/api/proposal-protected-calls/{uuid}/generate-assignments/` — Generate assignment batches for reviewers (path: uuid | request body)
@@ -3414,14 +3497,54 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_list_users_count` HEAD `/api/proposal-protected-calls/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 11 query params)
 - `proposal_protected_calls_matching_configuration_retrieve` GET `/api/proposal-protected-calls/{uuid}/matching-configuration/` — Get or update matching configuration for this call (path: uuid)
 - `proposal_protected_calls_matching_configuration_partial_update` PATCH `/api/proposal-protected-calls/{uuid}/matching-configuration/` — Get or update matching configuration for this call (path: uuid | request body)
+- `proposal_protected_calls_notification_mail_types_list` GET `/api/proposal-protected-calls/{uuid}/notification_mail_types/` — Mail types the call may word itself (path: uuid)
+- `proposal_protected_calls_notification_overrides_list` GET `/api/proposal-protected-calls/{uuid}/notification_overrides/` — The call's own wording of the mail it sends (path: uuid)
+- `proposal_protected_calls_notification_overrides_set` POST `/api/proposal-protected-calls/{uuid}/notification_overrides/` — Word a mail of the call itself: subject, text body and HTML body, replacing the portal's wording for that mail on this call (path: uuid | request body)
+- `proposal_protected_calls_notification_overrides_retrieve` GET `/api/proposal-protected-calls/{uuid}/notification_overrides/{obj_uuid}/` (path: obj_uuid, uuid)
+- `proposal_protected_calls_notification_overrides_update` PUT `/api/proposal-protected-calls/{uuid}/notification_overrides/{obj_uuid}/` (path: obj_uuid, uuid | request body)
+- `proposal_protected_calls_notification_overrides_partial_update` PATCH `/api/proposal-protected-calls/{uuid}/notification_overrides/{obj_uuid}/` (path: obj_uuid, uuid | request body)
+- `proposal_protected_calls_notification_overrides_destroy` DELETE `/api/proposal-protected-calls/{uuid}/notification_overrides/{obj_uuid}/` (path: obj_uuid, uuid)
+- `proposal_protected_calls_notification_preview_retrieve` GET `/api/proposal-protected-calls/{uuid}/notification_preview/` — Preview a mail of the call (path: uuid | 6 query params)
+- `proposal_protected_calls_notification_preview_draft` POST `/api/proposal-protected-calls/{uuid}/notification_preview_draft/` — Preview a draft of the call's wording of a mail (path: uuid | request body)
+- `proposal_protected_calls_notify_proposals` POST `/api/proposal-protected-calls/{uuid}/notify-proposals/` — Email the applicants of selected proposals of this call (path: uuid | request body)
+- `proposal_protected_calls_offering_components_list` GET `/api/proposal-protected-calls/{uuid}/offering_components/` — List the call's component rules: per component of a call offering, what a proposal may request of it (path: uuid)
+- `proposal_protected_calls_offering_components_set` POST `/api/proposal-protected-calls/{uuid}/offering_components/` — Set what a proposal may request of a component of a call offering: one billed by its limit that the offering's plan prices (path: uuid | request body)
+- `proposal_protected_calls_offering_components_retrieve` GET `/api/proposal-protected-calls/{uuid}/offering_components/{obj_uuid}/` (path: obj_uuid, uuid)
+- `proposal_protected_calls_offering_components_update` PUT `/api/proposal-protected-calls/{uuid}/offering_components/{obj_uuid}/` (path: obj_uuid, uuid | request body)
+- `proposal_protected_calls_offering_components_partial_update` PATCH `/api/proposal-protected-calls/{uuid}/offering_components/{obj_uuid}/` (path: obj_uuid, uuid | request body)
+- `proposal_protected_calls_offering_components_destroy` DELETE `/api/proposal-protected-calls/{uuid}/offering_components/{obj_uuid}/` (path: obj_uuid, uuid)
 - `proposal_protected_calls_offerings_list` GET `/api/proposal-protected-calls/{uuid}/offerings/` — List offerings for a call (path: uuid | 1 query param)
 - `proposal_protected_calls_offerings_set` POST `/api/proposal-protected-calls/{uuid}/offerings/` — Create offering for a call (path: uuid | request body)
 - `proposal_protected_calls_offerings_retrieve` GET `/api/proposal-protected-calls/{uuid}/offerings/{obj_uuid}/` (path: obj_uuid, uuid)
 - `proposal_protected_calls_offerings_update` PUT `/api/proposal-protected-calls/{uuid}/offerings/{obj_uuid}/` (path: obj_uuid, uuid | request body)
 - `proposal_protected_calls_offerings_partial_update` PATCH `/api/proposal-protected-calls/{uuid}/offerings/{obj_uuid}/` (path: obj_uuid, uuid | request body)
 - `proposal_protected_calls_offerings_destroy` DELETE `/api/proposal-protected-calls/{uuid}/offerings/{obj_uuid}/` (path: obj_uuid, uuid)
+- `proposal_protected_calls_panels_list` GET `/api/proposal-protected-calls/{uuid}/panels/` — List the call's panels: the science domains each covers, its chair and members (path: uuid)
+- `proposal_protected_calls_panels_set` POST `/api/proposal-protected-calls/{uuid}/panels/` — Add a panel to the call (path: uuid | request body)
+- `proposal_protected_calls_panels_retrieve` GET `/api/proposal-protected-calls/{uuid}/panels/{obj_uuid}/` (path: obj_uuid, uuid)
+- `proposal_protected_calls_panels_update` PUT `/api/proposal-protected-calls/{uuid}/panels/{obj_uuid}/` (path: obj_uuid, uuid | request body)
+- `proposal_protected_calls_panels_partial_update` PATCH `/api/proposal-protected-calls/{uuid}/panels/{obj_uuid}/` (path: obj_uuid, uuid | request body)
+- `proposal_protected_calls_panels_destroy` DELETE `/api/proposal-protected-calls/{uuid}/panels/{obj_uuid}/` (path: obj_uuid, uuid)
+- `proposal_protected_calls_proposal_roles_list` GET `/api/proposal-protected-calls/{uuid}/proposal_roles/` — List the evaluator roles the call gives on its proposals, such as a lead and a second rapporteur (path: uuid)
+- `proposal_protected_calls_proposal_roles_set` POST `/api/proposal-protected-calls/{uuid}/proposal_roles/` — Add an evaluator role to the call (path: uuid | request body)
+- `proposal_protected_calls_proposal_roles_retrieve` GET `/api/proposal-protected-calls/{uuid}/proposal_roles/{obj_uuid}/` (path: obj_uuid, uuid)
+- `proposal_protected_calls_proposal_roles_update` PUT `/api/proposal-protected-calls/{uuid}/proposal_roles/{obj_uuid}/` (path: obj_uuid, uuid | request body)
+- `proposal_protected_calls_proposal_roles_partial_update` PATCH `/api/proposal-protected-calls/{uuid}/proposal_roles/{obj_uuid}/` (path: obj_uuid, uuid | request body)
+- `proposal_protected_calls_proposal_roles_destroy` DELETE `/api/proposal-protected-calls/{uuid}/proposal_roles/{obj_uuid}/` (path: obj_uuid, uuid)
 - `proposal_protected_calls_proposals_compliance_answers_list` GET `/api/proposal-protected-calls/{uuid}/proposals/{proposal_uuid}/compliance-answers/` — Get detailed compliance answers for a specific proposal (call managers only) (path: proposal_uuid, uuid | 11 query params)
 - `proposal_protected_calls_proposed_assignments_list` GET `/api/proposal-protected-calls/{uuid}/proposed-assignments/` — Get proposed reviewer-proposal assignments (path: uuid | 11 query params)
+- `proposal_protected_calls_reports_budgets_retrieve` GET `/api/proposal-protected-calls/{uuid}/reports/budgets/` — Per resource pool, and per component awarded or asked for without one: what it offers, what was requested, awarded and remains, and what proposals still waiting for their decision ask of it (path: uuid | 3 query params)
+- `proposal_protected_calls_reports_portfolio_retrieve` GET `/api/proposal-protected-calls/{uuid}/reports/portfolio/` — Per call and round: proposals submitted, the outcome mix, the success rate (accepted out of decided) and the mean overall score of the submitted reviews; with submissions per month (path: uuid | 3 query params)
+- `proposal_protected_calls_reports_reviewers_retrieve` GET `/api/proposal-protected-calls/{uuid}/reports/reviewers/` — Per reviewer of the proposals: assignments sent and how they were answered, reviews by state and overdue, the median days to answer and to review, and the mean score given (path: uuid | 3 query params)
+- `proposal_protected_calls_reports_rounds_retrieve` GET `/api/proposal-protected-calls/{uuid}/reports/rounds/` — Per round: the days from its cut-off to the evaluation, deciding, the results' publication and their adoption, and how late the results came against its allocation date (path: uuid | 3 query params)
+- `proposal_protected_calls_reports_workflow_retrieve` GET `/api/proposal-protected-calls/{uuid}/reports/workflow/` — Per workflow step, summed over the calls by step key: proposals waiting at it, overdue there, completed late, and the median and 90th percentile days it took; with each call's own figures (path: uuid | 3 query params)
+- `proposal_protected_calls_resource_pool_usage_list` GET `/api/proposal-protected-calls/{uuid}/resource_pool_usage/` — The call's resource pools as a matrix: per component rule, a cell for the whole call and one per round, each with what its pool offers and what was requested, awarded and remains (path: uuid)
+- `proposal_protected_calls_resource_pools_list` GET `/api/proposal-protected-calls/{uuid}/resource_pools/` — List the call's resource pools: per component rule, how much the call awards over the whole call or one round (path: uuid)
+- `proposal_protected_calls_resource_pools_set` POST `/api/proposal-protected-calls/{uuid}/resource_pools/` — Add a resource pool to a component rule of the call: for the whole call (no round) or one round (path: uuid | request body)
+- `proposal_protected_calls_resource_pools_retrieve` GET `/api/proposal-protected-calls/{uuid}/resource_pools/{obj_uuid}/` (path: obj_uuid, uuid)
+- `proposal_protected_calls_resource_pools_update` PUT `/api/proposal-protected-calls/{uuid}/resource_pools/{obj_uuid}/` (path: obj_uuid, uuid | request body)
+- `proposal_protected_calls_resource_pools_partial_update` PATCH `/api/proposal-protected-calls/{uuid}/resource_pools/{obj_uuid}/` (path: obj_uuid, uuid | request body)
+- `proposal_protected_calls_resource_pools_destroy` DELETE `/api/proposal-protected-calls/{uuid}/resource_pools/{obj_uuid}/` (path: obj_uuid, uuid)
 - `proposal_protected_calls_resource_templates_list` GET `/api/proposal-protected-calls/{uuid}/resource_templates/` — List resource templates for a call (path: uuid)
 - `proposal_protected_calls_resource_templates_set` POST `/api/proposal-protected-calls/{uuid}/resource_templates/` — Create resource template for a call (path: uuid | request body)
 - `proposal_protected_calls_resource_templates_retrieve` GET `/api/proposal-protected-calls/{uuid}/resource_templates/{obj_uuid}/` (path: obj_uuid, uuid)
@@ -3438,16 +3561,33 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_rounds_update` PUT `/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/` (path: obj_uuid, uuid | request body)
 - `proposal_protected_calls_rounds_partial_update` PATCH `/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/` (path: obj_uuid, uuid | request body)
 - `proposal_protected_calls_rounds_destroy` DELETE `/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/` (path: obj_uuid, uuid)
+- `proposal_protected_calls_rounds_advance_workflow_step` POST `/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/advance_workflow_step/` — Move on every proposal of the round parked on a completed step of manual transition, named by step_uuid or its key, as the manual advance on each proposal would (path: obj_uuid, uuid | request body)
+- `proposal_protected_calls_rounds_allocate_in_submission_order` POST `/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/allocate_in_submission_order/` — Take the allocation decision of every proposal of an ended round at it, first come first served: in submission order, approve each while its award fits what remains of every budget it draws on; decline those below the decision's quality threshold, and those that no longer fit (or leave them, on_depleted=leave) -- a later, smaller proposal still gets its chance (path: obj_uuid, uuid | request body)
 - `proposal_protected_calls_rounds_close` POST `/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/close/` (path: obj_uuid, uuid | request body)
 - `proposal_protected_calls_rounds_complete` POST `/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/complete/` — Close a round whose results have been published (path: obj_uuid, uuid)
+- `proposal_protected_calls_rounds_complete_workflow_step` POST `/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/complete_workflow_step/` — Complete a call step -- named by step_uuid or its key -- with one outcome for every proposal of the round where that step is active, each as if completed on the proposal: same gates, notifications and ledger (path: obj_uuid, uuid | request body)
+- `proposal_protected_calls_rounds_open_workflow_step` POST `/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/open_workflow_step/` — Open a step run once per round (round_scoped) for the round, named by step_uuid or its key (path: obj_uuid, uuid | request body)
 - `proposal_protected_calls_rounds_publish_results` POST `/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/publish_results/` — Publish all allocation decisions of an ended round at once: announce every held decision to its applicant and carry it out (path: obj_uuid, uuid | request body)
 - `proposal_protected_calls_rounds_record_adoption` POST `/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/record_adoption/` — Record that the round's results were adopted: the date, a note and optionally the adopting document (path: obj_uuid, uuid | request body)
+- `proposal_protected_calls_rounds_set_workflow_step_due_date` POST `/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/set_workflow_step_due_date/` — Set when a step of the call is due in this round, for every proposal of it, or clear it (null) to count the step's duration again (path: obj_uuid, uuid | 11 query params | request body)
 - `proposal_protected_calls_rounds_start_deciding` POST `/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/start_deciding/` — Move an ended round from evaluating to deciding: its proposals have been evaluated and go to the decision body (path: obj_uuid, uuid)
+- `proposal_protected_calls_run_workflow_scenarios` POST `/api/proposal-protected-calls/{uuid}/run-workflow-scenarios/` — Run the call's saved scenarios (path: uuid)
+- `proposal_protected_calls_save_as_template` POST `/api/proposal-protected-calls/{uuid}/save_as_template/` — Save call configuration as a template (path: uuid | request body)
 - `proposal_protected_calls_send_all_assignments` POST `/api/proposal-protected-calls/{uuid}/send-all-assignments/` — Send all draft assignment batches for this call (path: uuid | request body)
 - `proposal_protected_calls_send_invitations` POST `/api/proposal-protected-calls/{uuid}/send-invitations/` — Send invitations to all confirmed suggestions (path: uuid)
 - `proposal_protected_calls_stats_retrieve` GET `/api/proposal-protected-calls/{uuid}/stats/` — Proposal, review and workflow step counts per call and round (path: uuid)
 - `proposal_protected_calls_suggestions_list` GET `/api/proposal-protected-calls/{uuid}/suggestions/` — List all reviewer suggestions for this call with affinity scores (path: uuid | 11 query params)
 - `proposal_protected_calls_update_user` POST `/api/proposal-protected-calls/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
+- `proposal_protected_calls_workflow_check_retrieve` GET `/api/proposal-protected-calls/{uuid}/workflow-check/` — Check the call's workflow (path: uuid)
+- `proposal_protected_calls_workflow_description_retrieve` GET `/api/proposal-protected-calls/{uuid}/workflow-description/` — Describe the call's workflow (path: uuid)
+- `proposal_protected_calls_workflow_diff_retrieve` GET `/api/proposal-protected-calls/{uuid}/workflow-diff/` — Compare two workflow versions of the call (path: uuid | 2 query params)
+- `proposal_protected_calls_workflow_dry_run` POST `/api/proposal-protected-calls/{uuid}/workflow-dry-run/` — Dry-run the call's workflow (path: uuid | request body)
+- `proposal_protected_calls_workflow_paths_retrieve` GET `/api/proposal-protected-calls/{uuid}/workflow-paths/` — Paths the call's proposals took through its workflow (path: uuid | 1 query param)
+- `proposal_protected_calls_workflow_progress_retrieve` GET `/api/proposal-protected-calls/{uuid}/workflow-progress/` — Workflow progress of the call's proposals (path: uuid | 1 query param)
+- `proposal_protected_calls_workflow_report_retrieve` GET `/api/proposal-protected-calls/{uuid}/workflow-report/` — Download the call's workflow validation as PDF (path: uuid)
+- `proposal_protected_calls_workflow_scenarios_retrieve` GET `/api/proposal-protected-calls/{uuid}/workflow-scenarios/` — The call's saved scenarios and their last results (path: uuid)
+- `proposal_protected_calls_workflow_versions_list` GET `/api/proposal-protected-calls/{uuid}/workflow-versions/` — List the call's workflow versions (path: uuid | 11 query params)
+- `proposal_protected_calls_workflow_versions_retrieve` GET `/api/proposal-protected-calls/{uuid}/workflow-versions/{number}/` — Get one workflow version of the call (path: number, uuid)
 - `proposal_protected_calls_workflow_steps_list` GET `/api/proposal-protected-calls/{uuid}/workflow_steps/` — List workflow steps for a call (path: uuid)
 - `proposal_protected_calls_workflow_steps_set` POST `/api/proposal-protected-calls/{uuid}/workflow_steps/` — Create or update a workflow step for a call (path: uuid | request body)
 - `proposal_protected_calls_workflow_steps_retrieve` GET `/api/proposal-protected-calls/{uuid}/workflow_steps/{obj_uuid}/` (path: obj_uuid, uuid)
@@ -3463,20 +3603,39 @@ Module: `waldur_api_client.api.proposal_public_calls`
 - `proposal_public_calls_retrieve` GET `/api/proposal-public-calls/{uuid}/` (path: uuid | 1 query param)
 - `proposal_public_calls_check_eligibility_retrieve` GET `/api/proposal-public-calls/{uuid}/check_eligibility/` — Check if the current user is eligible to submit proposals to this call (path: uuid)
 
+## proposal-rankings
+Module: `waldur_api_client.api.proposal_rankings`
+
+- `proposal_rankings_list` GET `/api/proposal-rankings/` (6 query params)
+- `proposal_rankings_count` HEAD `/api/proposal-rankings/` — Get number of items in the collection matching the request parameters (6 query params)
+- `proposal_rankings_create` POST `/api/proposal-rankings/` (request body)
+- `proposal_rankings_export_csv_retrieve` GET `/api/proposal-rankings/export_csv/` — The round's ranking as CSV: one row per ranked proposal, with a recommended:<requested offering uuid>:<component type> column per offering component of the call (2 query params)
+- `proposal_rankings_import_csv` POST `/api/proposal-rankings/import_csv/` — Create or update the round's ranking from a CSV in the export's format (request body)
+- `proposal_rankings_retrieve` GET `/api/proposal-rankings/{uuid}/` (path: uuid)
+- `proposal_rankings_partial_update` PATCH `/api/proposal-rankings/{uuid}/` (path: uuid | request body)
+- `proposal_rankings_destroy` DELETE `/api/proposal-rankings/{uuid}/` (path: uuid)
+
 ## proposal-requested-offerings
 Module: `waldur_api_client.api.proposal_requested_offerings`
 
-- `proposal_requested_offerings_list` GET `/api/proposal-requested-offerings/` (8 query params)
-- `proposal_requested_offerings_count` HEAD `/api/proposal-requested-offerings/` — Get number of items in the collection matching the request parameters (8 query params)
+- `proposal_requested_offerings_list` GET `/api/proposal-requested-offerings/` (9 query params)
+- `proposal_requested_offerings_count` HEAD `/api/proposal-requested-offerings/` — Get number of items in the collection matching the request parameters (9 query params)
+- `proposal_requested_offerings_team_slots_list` GET `/api/proposal-requested-offerings/team_slots/` — The open slots of the teams of every offering the caller sees here -- their colleagues' and delegates' as well as their own -- across the calls (9 query params)
+- `proposal_requested_offerings_team_slots_count` HEAD `/api/proposal-requested-offerings/team_slots/` — Get number of items in the collection matching the request parameters (9 query params)
 - `proposal_requested_offerings_retrieve` GET `/api/proposal-requested-offerings/{uuid}/` (path: uuid)
 - `proposal_requested_offerings_accept` POST `/api/proposal-requested-offerings/{uuid}/accept/` — Accept a requested offering (path: uuid)
-- `proposal_requested_offerings_cancel` POST `/api/proposal-requested-offerings/{uuid}/cancel/` — Cancel a requested offering (path: uuid)
+- `proposal_requested_offerings_cancel` POST `/api/proposal-requested-offerings/{uuid}/cancel/` — Decline the request: the offering does not take part in the call (path: uuid | request body)
+- `proposal_requested_offerings_delegate_slots` POST `/api/proposal-requested-offerings/{uuid}/delegate_slots/` — Hand several of the team's open slots to one person, or take them back with a null user_uuid (path: uuid | request body)
+- `proposal_requested_offerings_set_default_delegate` POST `/api/proposal-requested-offerings/{uuid}/set_default_delegate/` — Name who the offering's slots are handed to as they open, on steps whose slots may be handed within the team, or nobody with a null user_uuid (path: uuid | request body)
+- `proposal_requested_offerings_team_retrieve` GET `/api/proposal-requested-offerings/{uuid}/team/` — The offering's team by name: its managers, who do the team's part of each step, and everyone else with a role on the offering, whom a slot may be handed to (path: uuid)
+- `proposal_requested_offerings_team_step_slots_list` GET `/api/proposal-requested-offerings/{uuid}/team_step_slots/` — The team's open slots in the call: per proposal at a step the team has a part in, who holds it and when it is due (path: uuid)
+- `proposal_requested_offerings_team_steps_list` GET `/api/proposal-requested-offerings/{uuid}/team_steps/` — The steps of the call's workflow the offering's team acts in: those its offering managers complete, and those each requested offering's team contributes to (path: uuid)
 
 ## proposal-requested-resources
 Module: `waldur_api_client.api.proposal_requested_resources`
 
-- `proposal_requested_resources_list` GET `/api/proposal-requested-resources/` (10 query params)
-- `proposal_requested_resources_count` HEAD `/api/proposal-requested-resources/` — Get number of items in the collection matching the request parameters (10 query params)
+- `proposal_requested_resources_list` GET `/api/proposal-requested-resources/` (13 query params)
+- `proposal_requested_resources_count` HEAD `/api/proposal-requested-resources/` — Get number of items in the collection matching the request parameters (13 query params)
 - `proposal_requested_resources_retrieve` GET `/api/proposal-requested-resources/{uuid}/` (path: uuid)
 
 ## proposal-reviews
@@ -3492,6 +3651,14 @@ Module: `waldur_api_client.api.proposal_reviews`
 - `proposal_reviews_destroy` DELETE `/api/proposal-reviews/{uuid}/` (path: uuid)
 - `proposal_reviews_reject` POST `/api/proposal-reviews/{uuid}/reject/` — Reject a review, changing its state to REJECTED (path: uuid)
 - `proposal_reviews_submit` POST `/api/proposal-reviews/{uuid}/submit/` — Submit a review, changing its state to SUBMITTED (path: uuid | request body)
+
+## proposal-role-assignments
+Module: `waldur_api_client.api.proposal_role_assignments`
+
+- `proposal_role_assignments_list` GET `/api/proposal-role-assignments/` (4 query params)
+- `proposal_role_assignments_count` HEAD `/api/proposal-role-assignments/` — Get number of items in the collection matching the request parameters (4 query params)
+- `proposal_role_assignments_retrieve` GET `/api/proposal-role-assignments/{uuid}/` (path: uuid)
+- `proposal_role_assignments_confirm_no_conflict` POST `/api/proposal-role-assignments/{uuid}/confirm_no_conflict/` — Confirm having no conflict of interest with the proposal, as the holder of the role (path: uuid)
 
 ## provider-canned-responses
 Module: `waldur_api_client.api.provider_canned_responses`
@@ -3860,6 +4027,16 @@ Module: `waldur_api_client.api.reviewer_profiles`
 - `reviewer_profiles_import_publications` POST `/api/reviewer-profiles/{uuid}/import-publications/` — Import publications from ORCID or other sources (path: uuid | request body)
 - `reviewer_profiles_sync_orcid` POST `/api/reviewer-profiles/{uuid}/sync-orcid/` — Sync profile data from ORCID (path: uuid | request body)
 
+## reviewer-registry
+Module: `waldur_api_client.api.reviewer_registry`
+
+- `reviewer_registry_list` GET `/api/reviewer-registry/` (4 query params)
+- `reviewer_registry_count` HEAD `/api/reviewer-registry/` — Get number of items in the collection matching the request parameters (4 query params)
+- `reviewer_registry_retrieve` GET `/api/reviewer-registry/{uuid}/` (path: uuid)
+- `reviewer_registry_approve_publication` POST `/api/reviewer-registry/{uuid}/approve-publication/` — Approve the reviewer's pending request to publish their profile (path: uuid | request body)
+- `reviewer_registry_reject_publication` POST `/api/reviewer-registry/{uuid}/reject-publication/` — Reject the reviewer's pending request to publish their profile; the comment is shown to the reviewer (path: uuid | request body)
+- `reviewer_registry_set_standing` POST `/api/reviewer-registry/{uuid}/set-standing/` — Set the reviewer's standing (path: uuid | request body)
+
 ## reviewer-suggestions
 Module: `waldur_api_client.api.reviewer_suggestions`
 
@@ -3894,6 +4071,21 @@ Module: `waldur_api_client.api.roles`
 - `roles_disable` POST `/api/roles/{uuid}/disable/` — Disable a role (path: uuid)
 - `roles_enable` POST `/api/roles/{uuid}/enable/` — Enable a role (path: uuid)
 - `roles_update_descriptions_update` PUT `/api/roles/{uuid}/update_descriptions/` — Update role descriptions (path: uuid | request body)
+
+## round-meeting-notes
+Module: `waldur_api_client.api.round_meeting_notes`
+
+- `round_meeting_notes_list` GET `/api/round-meeting-notes/` (4 query params)
+- `round_meeting_notes_count` HEAD `/api/round-meeting-notes/` — Get number of items in the collection matching the request parameters (4 query params)
+- `round_meeting_notes_create` POST `/api/round-meeting-notes/` (request body)
+- `round_meeting_notes_retrieve` GET `/api/round-meeting-notes/{uuid}/` (path: uuid)
+- `round_meeting_notes_partial_update` PATCH `/api/round-meeting-notes/{uuid}/` (path: uuid | request body)
+- `round_meeting_notes_destroy` DELETE `/api/round-meeting-notes/{uuid}/` (path: uuid)
+- `round_meeting_notes_checklist_retrieve` GET `/api/round-meeting-notes/{uuid}/checklist/` — Get checklist with questions and existing answers (path: uuid | 1 query param)
+- `round_meeting_notes_completion_status_retrieve` GET `/api/round-meeting-notes/{uuid}/completion_status/` — Get checklist completion status (path: uuid)
+- `round_meeting_notes_reopen` POST `/api/round-meeting-notes/{uuid}/reopen/` — Hand a submitted round report back to its author, for the call's managers, while proposals stand at its step: a proposal that reached the step after the report was submitted then joins it (path: uuid)
+- `round_meeting_notes_submit` POST `/api/round-meeting-notes/{uuid}/submit/` — Submit a round report, as its author (path: uuid)
+- `round_meeting_notes_submit_answers` POST `/api/round-meeting-notes/{uuid}/submit_answers/` — Answer the round report's form, as its author, until the report is submitted (path: uuid | request body)
 
 ## science-domains
 Module: `waldur_api_client.api.science_domains`

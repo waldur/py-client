@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.order_state import OrderState
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -29,8 +30,15 @@ class AwardedResource:
         plan_name (Union[None, str]):
         resource (Union[None, UUID]):
         resource_name (Union[None, str]):
+        order_state (Union[None, OrderState]): State of the order that provisions the item's resource; null while
+            nothing has been provisioned for it.
+        order_rejection_comment (Union[None, str]): Why the order was refused, for a viewer who may read the order; null
+            otherwise.
+        provision_error (str): Why allocation could not order the item -- the offering stopped taking orders, its plan
+            was archived, its limits no longer fit. Empty once it is provisioned.
         created_by (Union[None, UUID]):
         created_by_name (Union[None, str]):
+        modified_by_name (Union[None, str]): Who last changed the item; null if nobody did since it was made.
         created (datetime.datetime):
         modified (datetime.datetime):
         plan (Union[None, UUID, Unset]): Plan of the awarded offering. Read back as the plan the item is provisioned on:
@@ -48,8 +56,12 @@ class AwardedResource:
     plan_name: Union[None, str]
     resource: Union[None, UUID]
     resource_name: Union[None, str]
+    order_state: Union[None, OrderState]
+    order_rejection_comment: Union[None, str]
+    provision_error: str
     created_by: Union[None, UUID]
     created_by_name: Union[None, str]
+    modified_by_name: Union[None, str]
     created: datetime.datetime
     modified: datetime.datetime
     plan: Union[None, UUID, Unset] = UNSET
@@ -83,6 +95,17 @@ class AwardedResource:
         resource_name: Union[None, str]
         resource_name = self.resource_name
 
+        order_state: Union[None, str]
+        if isinstance(self.order_state, OrderState):
+            order_state = self.order_state.value
+        else:
+            order_state = self.order_state
+
+        order_rejection_comment: Union[None, str]
+        order_rejection_comment = self.order_rejection_comment
+
+        provision_error = self.provision_error
+
         created_by: Union[None, str]
         if isinstance(self.created_by, UUID):
             created_by = str(self.created_by)
@@ -91,6 +114,9 @@ class AwardedResource:
 
         created_by_name: Union[None, str]
         created_by_name = self.created_by_name
+
+        modified_by_name: Union[None, str]
+        modified_by_name = self.modified_by_name
 
         created = self.created.isoformat()
 
@@ -125,8 +151,12 @@ class AwardedResource:
                 "plan_name": plan_name,
                 "resource": resource,
                 "resource_name": resource_name,
+                "order_state": order_state,
+                "order_rejection_comment": order_rejection_comment,
+                "provision_error": provision_error,
                 "created_by": created_by,
                 "created_by_name": created_by_name,
+                "modified_by_name": modified_by_name,
                 "created": created,
                 "modified": modified,
             }
@@ -199,6 +229,30 @@ class AwardedResource:
 
         resource_name = _parse_resource_name(d.pop("resource_name"))
 
+        def _parse_order_state(data: object) -> Union[None, OrderState]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                order_state_type_0 = OrderState(data)
+
+                return order_state_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, OrderState], data)
+
+        order_state = _parse_order_state(d.pop("order_state"))
+
+        def _parse_order_rejection_comment(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        order_rejection_comment = _parse_order_rejection_comment(d.pop("order_rejection_comment"))
+
+        provision_error = d.pop("provision_error")
+
         def _parse_created_by(data: object) -> Union[None, UUID]:
             if data is None:
                 return data
@@ -220,6 +274,13 @@ class AwardedResource:
             return cast(Union[None, str], data)
 
         created_by_name = _parse_created_by_name(d.pop("created_by_name"))
+
+        def _parse_modified_by_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        modified_by_name = _parse_modified_by_name(d.pop("modified_by_name"))
 
         created = isoparse(d.pop("created"))
 
@@ -266,8 +327,12 @@ class AwardedResource:
             plan_name=plan_name,
             resource=resource,
             resource_name=resource_name,
+            order_state=order_state,
+            order_rejection_comment=order_rejection_comment,
+            provision_error=provision_error,
             created_by=created_by,
             created_by_name=created_by_name,
+            modified_by_name=modified_by_name,
             created=created,
             modified=modified,
             plan=plan,

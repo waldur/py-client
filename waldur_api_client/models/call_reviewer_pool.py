@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.invitation_status_enum import InvitationStatusEnum
+from ..models.reviewer_standing_enum import ReviewerStandingEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -28,9 +29,13 @@ class CallReviewerPool:
         call_name (str):
         reviewer (Union[None, str]):
         reviewer_uuid (Union[None, str]): Get reviewer profile UUID if available.
+        reviewer_user_uuid (Union[None, UUID]): The reviewer's user: the profile's, else the invited user's. Reviews
+            name the reviewer by it.
         reviewer_name (Union[None, str]): Get reviewer name from profile or invited_user.
         reviewer_email (Union[None, str]): Get email from profile, invited_user, or invited_email.
         has_profile (bool): Check if reviewer has a profile.
+        reviewer_standing (Union[None, ReviewerStandingEnum]): The reviewer's standing with the platform operator; only
+            an active reviewer takes on new review work. Empty without a profile.
         invited_email (str): Email address for direct invitations Default: ''.
         invited_user (Union[None, str]): Waldur user if email matches existing account
         invited_user_name (str):
@@ -44,6 +49,7 @@ class CallReviewerPool:
         invited_by_name (str):
         invitation_link (Union[None, str]):
         invitation_expires_at (Union[None, datetime.datetime]):
+        is_expired (bool): Whether the invitation can no longer be answered because its deadline has passed.
         created (datetime.datetime):
         coi_count (int): Count total COIs for this reviewer in this call.
         coi_by_severity (CallReviewerPoolCoiBySeverity): Count COIs by severity level.
@@ -68,9 +74,11 @@ class CallReviewerPool:
     call_name: str
     reviewer: Union[None, str]
     reviewer_uuid: Union[None, str]
+    reviewer_user_uuid: Union[None, UUID]
     reviewer_name: Union[None, str]
     reviewer_email: Union[None, str]
     has_profile: bool
+    reviewer_standing: Union[None, ReviewerStandingEnum]
     invited_user: Union[None, str]
     invited_user_name: str
     invited_at: datetime.datetime
@@ -82,6 +90,7 @@ class CallReviewerPool:
     invited_by_name: str
     invitation_link: Union[None, str]
     invitation_expires_at: Union[None, datetime.datetime]
+    is_expired: bool
     created: datetime.datetime
     coi_count: int
     coi_by_severity: "CallReviewerPoolCoiBySeverity"
@@ -113,6 +122,12 @@ class CallReviewerPool:
         reviewer_uuid: Union[None, str]
         reviewer_uuid = self.reviewer_uuid
 
+        reviewer_user_uuid: Union[None, str]
+        if isinstance(self.reviewer_user_uuid, UUID):
+            reviewer_user_uuid = str(self.reviewer_user_uuid)
+        else:
+            reviewer_user_uuid = self.reviewer_user_uuid
+
         reviewer_name: Union[None, str]
         reviewer_name = self.reviewer_name
 
@@ -120,6 +135,12 @@ class CallReviewerPool:
         reviewer_email = self.reviewer_email
 
         has_profile = self.has_profile
+
+        reviewer_standing: Union[None, str]
+        if isinstance(self.reviewer_standing, ReviewerStandingEnum):
+            reviewer_standing = self.reviewer_standing.value
+        else:
+            reviewer_standing = self.reviewer_standing
 
         invited_email = self.invited_email
 
@@ -154,6 +175,8 @@ class CallReviewerPool:
             invitation_expires_at = self.invitation_expires_at.isoformat()
         else:
             invitation_expires_at = self.invitation_expires_at
+
+        is_expired = self.is_expired
 
         created = self.created.isoformat()
 
@@ -196,9 +219,11 @@ class CallReviewerPool:
                 "call_name": call_name,
                 "reviewer": reviewer,
                 "reviewer_uuid": reviewer_uuid,
+                "reviewer_user_uuid": reviewer_user_uuid,
                 "reviewer_name": reviewer_name,
                 "reviewer_email": reviewer_email,
                 "has_profile": has_profile,
+                "reviewer_standing": reviewer_standing,
                 "invited_email": invited_email,
                 "invited_user": invited_user,
                 "invited_user_name": invited_user_name,
@@ -211,6 +236,7 @@ class CallReviewerPool:
                 "invited_by_name": invited_by_name,
                 "invitation_link": invitation_link,
                 "invitation_expires_at": invitation_expires_at,
+                "is_expired": is_expired,
                 "created": created,
                 "coi_count": coi_count,
                 "coi_by_severity": coi_by_severity,
@@ -258,6 +284,21 @@ class CallReviewerPool:
 
         reviewer_uuid = _parse_reviewer_uuid(d.pop("reviewer_uuid"))
 
+        def _parse_reviewer_user_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                reviewer_user_uuid_type_0 = UUID(data)
+
+                return reviewer_user_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        reviewer_user_uuid = _parse_reviewer_user_uuid(d.pop("reviewer_user_uuid"))
+
         def _parse_reviewer_name(data: object) -> Union[None, str]:
             if data is None:
                 return data
@@ -273,6 +314,21 @@ class CallReviewerPool:
         reviewer_email = _parse_reviewer_email(d.pop("reviewer_email"))
 
         has_profile = d.pop("has_profile")
+
+        def _parse_reviewer_standing(data: object) -> Union[None, ReviewerStandingEnum]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                reviewer_standing_type_0 = ReviewerStandingEnum(data)
+
+                return reviewer_standing_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, ReviewerStandingEnum], data)
+
+        reviewer_standing = _parse_reviewer_standing(d.pop("reviewer_standing"))
 
         invited_email = d.pop("invited_email")
 
@@ -334,6 +390,8 @@ class CallReviewerPool:
 
         invitation_expires_at = _parse_invitation_expires_at(d.pop("invitation_expires_at"))
 
+        is_expired = d.pop("is_expired")
+
         created = isoparse(d.pop("created"))
 
         coi_count = d.pop("coi_count")
@@ -384,9 +442,11 @@ class CallReviewerPool:
             call_name=call_name,
             reviewer=reviewer,
             reviewer_uuid=reviewer_uuid,
+            reviewer_user_uuid=reviewer_user_uuid,
             reviewer_name=reviewer_name,
             reviewer_email=reviewer_email,
             has_profile=has_profile,
+            reviewer_standing=reviewer_standing,
             invited_email=invited_email,
             invited_user=invited_user,
             invited_user_name=invited_user_name,
@@ -399,6 +459,7 @@ class CallReviewerPool:
             invited_by_name=invited_by_name,
             invitation_link=invitation_link,
             invitation_expires_at=invitation_expires_at,
+            is_expired=is_expired,
             created=created,
             coi_count=coi_count,
             coi_by_severity=coi_by_severity,

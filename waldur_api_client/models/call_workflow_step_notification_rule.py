@@ -8,7 +8,6 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.recipient_enum import RecipientEnum
-from ..models.step_enum import StepEnum
 from ..models.trigger_enum import TriggerEnum
 from ..types import UNSET, Unset
 
@@ -25,15 +24,19 @@ class CallWorkflowStepNotificationRule:
         modified (datetime.datetime):
         workflow_step (UUID):
         workflow_step_uuid (UUID):
-        step (StepEnum):
+        step (str): Identifier of the step within its call. Steps the call was seeded with keep the keys of the former
+            step catalog.
         call_uuid (UUID):
         trigger (TriggerEnum):
         recipient (RecipientEnum):
+        proposal_role_name (Union[None, str]):
         days_before (Union[None, Unset, int]): Only for deadline_approaching: how many days before the step's deadline
             the reminder is sent.
         is_enabled (Union[Unset, bool]):
         notified_proposal_roles (Union[Unset, list[str]]): Only for an applicant audience: names of the proposal roles
             whose holders are notified. Empty notifies the proposal creator and every member of the proposal team.
+        proposal_role (Union[None, UUID, Unset]): Only for the proposal_role audience: the call's evaluator role whose
+            holders are notified.
     """
 
     url: str
@@ -42,13 +45,15 @@ class CallWorkflowStepNotificationRule:
     modified: datetime.datetime
     workflow_step: UUID
     workflow_step_uuid: UUID
-    step: StepEnum
+    step: str
     call_uuid: UUID
     trigger: TriggerEnum
     recipient: RecipientEnum
+    proposal_role_name: Union[None, str]
     days_before: Union[None, Unset, int] = UNSET
     is_enabled: Union[Unset, bool] = UNSET
     notified_proposal_roles: Union[Unset, list[str]] = UNSET
+    proposal_role: Union[None, UUID, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -64,13 +69,16 @@ class CallWorkflowStepNotificationRule:
 
         workflow_step_uuid = str(self.workflow_step_uuid)
 
-        step = self.step.value
+        step = self.step
 
         call_uuid = str(self.call_uuid)
 
         trigger = self.trigger.value
 
         recipient = self.recipient.value
+
+        proposal_role_name: Union[None, str]
+        proposal_role_name = self.proposal_role_name
 
         days_before: Union[None, Unset, int]
         if isinstance(self.days_before, Unset):
@@ -83,6 +91,14 @@ class CallWorkflowStepNotificationRule:
         notified_proposal_roles: Union[Unset, list[str]] = UNSET
         if not isinstance(self.notified_proposal_roles, Unset):
             notified_proposal_roles = self.notified_proposal_roles
+
+        proposal_role: Union[None, Unset, str]
+        if isinstance(self.proposal_role, Unset):
+            proposal_role = UNSET
+        elif isinstance(self.proposal_role, UUID):
+            proposal_role = str(self.proposal_role)
+        else:
+            proposal_role = self.proposal_role
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -98,6 +114,7 @@ class CallWorkflowStepNotificationRule:
                 "call_uuid": call_uuid,
                 "trigger": trigger,
                 "recipient": recipient,
+                "proposal_role_name": proposal_role_name,
             }
         )
         if days_before is not UNSET:
@@ -106,6 +123,8 @@ class CallWorkflowStepNotificationRule:
             field_dict["is_enabled"] = is_enabled
         if notified_proposal_roles is not UNSET:
             field_dict["notified_proposal_roles"] = notified_proposal_roles
+        if proposal_role is not UNSET:
+            field_dict["proposal_role"] = proposal_role
 
         return field_dict
 
@@ -124,13 +143,20 @@ class CallWorkflowStepNotificationRule:
 
         workflow_step_uuid = UUID(d.pop("workflow_step_uuid"))
 
-        step = StepEnum(d.pop("step"))
+        step = d.pop("step")
 
         call_uuid = UUID(d.pop("call_uuid"))
 
         trigger = TriggerEnum(d.pop("trigger"))
 
         recipient = RecipientEnum(d.pop("recipient"))
+
+        def _parse_proposal_role_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        proposal_role_name = _parse_proposal_role_name(d.pop("proposal_role_name"))
 
         def _parse_days_before(data: object) -> Union[None, Unset, int]:
             if data is None:
@@ -145,6 +171,23 @@ class CallWorkflowStepNotificationRule:
 
         notified_proposal_roles = cast(list[str], d.pop("notified_proposal_roles", UNSET))
 
+        def _parse_proposal_role(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                proposal_role_type_0 = UUID(data)
+
+                return proposal_role_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        proposal_role = _parse_proposal_role(d.pop("proposal_role", UNSET))
+
         call_workflow_step_notification_rule = cls(
             url=url,
             uuid=uuid,
@@ -156,9 +199,11 @@ class CallWorkflowStepNotificationRule:
             call_uuid=call_uuid,
             trigger=trigger,
             recipient=recipient,
+            proposal_role_name=proposal_role_name,
             days_before=days_before,
             is_enabled=is_enabled,
             notified_proposal_roles=notified_proposal_roles,
+            proposal_role=proposal_role,
         )
 
         call_workflow_step_notification_rule.additional_properties = d

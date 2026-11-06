@@ -208,6 +208,7 @@ class ConstanceSettingsRequestMultipart:
         semantic_scholar_api_key (Union[Unset, str]):
         crossref_mailto (Union[Unset, str]):
         reviewer_profiles_enabled (Union[Unset, bool]):
+        reviewer_publication_requires_approval (Union[Unset, bool]):
         coi_detection_enabled (Union[Unset, bool]):
         coi_disclosure_required (Union[Unset, bool]):
         automated_matching_enabled (Union[Unset, bool]):
@@ -570,6 +571,7 @@ class ConstanceSettingsRequestMultipart:
     semantic_scholar_api_key: Union[Unset, str] = UNSET
     crossref_mailto: Union[Unset, str] = UNSET
     reviewer_profiles_enabled: Union[Unset, bool] = UNSET
+    reviewer_publication_requires_approval: Union[Unset, bool] = UNSET
     coi_detection_enabled: Union[Unset, bool] = UNSET
     coi_disclosure_required: Union[Unset, bool] = UNSET
     automated_matching_enabled: Union[Unset, bool] = UNSET
@@ -1207,6 +1209,8 @@ class ConstanceSettingsRequestMultipart:
         crossref_mailto = self.crossref_mailto
 
         reviewer_profiles_enabled = self.reviewer_profiles_enabled
+
+        reviewer_publication_requires_approval = self.reviewer_publication_requires_approval
 
         coi_detection_enabled = self.coi_detection_enabled
 
@@ -2114,6 +2118,8 @@ class ConstanceSettingsRequestMultipart:
             field_dict["CROSSREF_MAILTO"] = crossref_mailto
         if reviewer_profiles_enabled is not UNSET:
             field_dict["REVIEWER_PROFILES_ENABLED"] = reviewer_profiles_enabled
+        if reviewer_publication_requires_approval is not UNSET:
+            field_dict["REVIEWER_PUBLICATION_REQUIRES_APPROVAL"] = reviewer_publication_requires_approval
         if coi_detection_enabled is not UNSET:
             field_dict["COI_DETECTION_ENABLED"] = coi_detection_enabled
         if coi_disclosure_required is not UNSET:
@@ -3303,6 +3309,14 @@ class ConstanceSettingsRequestMultipart:
         if not isinstance(self.reviewer_profiles_enabled, Unset):
             files.append(
                 ("REVIEWER_PROFILES_ENABLED", (None, str(self.reviewer_profiles_enabled).encode(), "text/plain"))
+            )
+
+        if not isinstance(self.reviewer_publication_requires_approval, Unset):
+            files.append(
+                (
+                    "REVIEWER_PUBLICATION_REQUIRES_APPROVAL",
+                    (None, str(self.reviewer_publication_requires_approval).encode(), "text/plain"),
+                )
             )
 
         if not isinstance(self.coi_detection_enabled, Unset):
@@ -5263,6 +5277,8 @@ class ConstanceSettingsRequestMultipart:
 
         reviewer_profiles_enabled = d.pop("REVIEWER_PROFILES_ENABLED", UNSET)
 
+        reviewer_publication_requires_approval = d.pop("REVIEWER_PUBLICATION_REQUIRES_APPROVAL", UNSET)
+
         coi_detection_enabled = d.pop("COI_DETECTION_ENABLED", UNSET)
 
         coi_disclosure_required = d.pop("COI_DISCLOSURE_REQUIRED", UNSET)
@@ -6206,6 +6222,7 @@ class ConstanceSettingsRequestMultipart:
             semantic_scholar_api_key=semantic_scholar_api_key,
             crossref_mailto=crossref_mailto,
             reviewer_profiles_enabled=reviewer_profiles_enabled,
+            reviewer_publication_requires_approval=reviewer_publication_requires_approval,
             coi_detection_enabled=coi_detection_enabled,
             coi_disclosure_required=coi_disclosure_required,
             automated_matching_enabled=automated_matching_enabled,

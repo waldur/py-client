@@ -14,8 +14,10 @@ from ...types import UNSET, Response, Unset
 
 def _get_kwargs(
     *,
+    call_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     include_closed: Union[Unset, bool] = UNSET,
+    involved: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[UserRequestedResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
@@ -24,11 +26,17 @@ def _get_kwargs(
     proposal: Union[Unset, str] = UNSET,
     proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    json_call_uuid: Union[Unset, str] = UNSET
+    if not isinstance(call_uuid, Unset):
+        json_call_uuid = str(call_uuid)
+    params["call_uuid"] = json_call_uuid
 
     json_created: Union[Unset, str] = UNSET
     if not isinstance(created, Unset):
@@ -36,6 +44,8 @@ def _get_kwargs(
     params["created"] = json_created
 
     params["include_closed"] = include_closed
+
+    params["involved"] = involved
 
     json_o: Union[Unset, list[str]] = UNSET
     if not isinstance(o, Unset):
@@ -72,6 +82,11 @@ def _get_kwargs(
     if not isinstance(proposal_uuid, Unset):
         json_proposal_uuid = str(proposal_uuid)
     params["proposal_uuid"] = json_proposal_uuid
+
+    json_provider_uuid: Union[Unset, str] = UNSET
+    if not isinstance(provider_uuid, Unset):
+        json_provider_uuid = str(provider_uuid)
+    params["provider_uuid"] = json_provider_uuid
 
     params["query"] = query
 
@@ -122,8 +137,10 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    call_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     include_closed: Union[Unset, bool] = UNSET,
+    involved: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[UserRequestedResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
@@ -132,6 +149,7 @@ def sync_detailed(
     proposal: Union[Unset, str] = UNSET,
     proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
@@ -139,8 +157,10 @@ def sync_detailed(
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        call_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         include_closed (Union[Unset, bool]):
+        involved (Union[Unset, bool]):
         o (Union[Unset, list[UserRequestedResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
@@ -149,6 +169,7 @@ def sync_detailed(
         proposal (Union[Unset, str]):
         proposal_state (Union[Unset, list[ProposalStates]]):
         proposal_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
@@ -162,8 +183,10 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        call_uuid=call_uuid,
         created=created,
         include_closed=include_closed,
+        involved=involved,
         o=o,
         offering=offering,
         offering_uuid=offering_uuid,
@@ -172,6 +195,7 @@ def sync_detailed(
         proposal=proposal,
         proposal_state=proposal_state,
         proposal_uuid=proposal_uuid,
+        provider_uuid=provider_uuid,
         query=query,
         resource=resource,
         resource_uuid=resource_uuid,
@@ -187,8 +211,10 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    call_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     include_closed: Union[Unset, bool] = UNSET,
+    involved: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[UserRequestedResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
@@ -197,6 +223,7 @@ def sync(
     proposal: Union[Unset, str] = UNSET,
     proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
@@ -204,8 +231,10 @@ def sync(
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        call_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         include_closed (Union[Unset, bool]):
+        involved (Union[Unset, bool]):
         o (Union[Unset, list[UserRequestedResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
@@ -214,6 +243,7 @@ def sync(
         proposal (Union[Unset, str]):
         proposal_state (Union[Unset, list[ProposalStates]]):
         proposal_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
@@ -228,8 +258,10 @@ def sync(
 
     return sync_detailed(
         client=client,
+        call_uuid=call_uuid,
         created=created,
         include_closed=include_closed,
+        involved=involved,
         o=o,
         offering=offering,
         offering_uuid=offering_uuid,
@@ -238,6 +270,7 @@ def sync(
         proposal=proposal,
         proposal_state=proposal_state,
         proposal_uuid=proposal_uuid,
+        provider_uuid=provider_uuid,
         query=query,
         resource=resource,
         resource_uuid=resource_uuid,
@@ -247,8 +280,10 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    call_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     include_closed: Union[Unset, bool] = UNSET,
+    involved: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[UserRequestedResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
@@ -257,6 +292,7 @@ async def asyncio_detailed(
     proposal: Union[Unset, str] = UNSET,
     proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
@@ -264,8 +300,10 @@ async def asyncio_detailed(
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        call_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         include_closed (Union[Unset, bool]):
+        involved (Union[Unset, bool]):
         o (Union[Unset, list[UserRequestedResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
@@ -274,6 +312,7 @@ async def asyncio_detailed(
         proposal (Union[Unset, str]):
         proposal_state (Union[Unset, list[ProposalStates]]):
         proposal_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
@@ -287,8 +326,10 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        call_uuid=call_uuid,
         created=created,
         include_closed=include_closed,
+        involved=involved,
         o=o,
         offering=offering,
         offering_uuid=offering_uuid,
@@ -297,6 +338,7 @@ async def asyncio_detailed(
         proposal=proposal,
         proposal_state=proposal_state,
         proposal_uuid=proposal_uuid,
+        provider_uuid=provider_uuid,
         query=query,
         resource=resource,
         resource_uuid=resource_uuid,
@@ -310,8 +352,10 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    call_uuid: Union[Unset, UUID] = UNSET,
     created: Union[Unset, datetime.datetime] = UNSET,
     include_closed: Union[Unset, bool] = UNSET,
+    involved: Union[Unset, bool] = UNSET,
     o: Union[Unset, list[UserRequestedResourceOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
     offering_uuid: Union[Unset, UUID] = UNSET,
@@ -320,6 +364,7 @@ async def asyncio(
     proposal: Union[Unset, str] = UNSET,
     proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
     proposal_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
     query: Union[Unset, str] = UNSET,
     resource: Union[Unset, str] = UNSET,
     resource_uuid: Union[Unset, UUID] = UNSET,
@@ -327,8 +372,10 @@ async def asyncio(
     """Get number of items in the collection matching the request parameters.
 
     Args:
+        call_uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         include_closed (Union[Unset, bool]):
+        involved (Union[Unset, bool]):
         o (Union[Unset, list[UserRequestedResourceOEnum]]):
         offering (Union[Unset, str]):
         offering_uuid (Union[Unset, UUID]):
@@ -337,6 +384,7 @@ async def asyncio(
         proposal (Union[Unset, str]):
         proposal_state (Union[Unset, list[ProposalStates]]):
         proposal_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
         query (Union[Unset, str]):
         resource (Union[Unset, str]):
         resource_uuid (Union[Unset, UUID]):
@@ -352,8 +400,10 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            call_uuid=call_uuid,
             created=created,
             include_closed=include_closed,
+            involved=involved,
             o=o,
             offering=offering,
             offering_uuid=offering_uuid,
@@ -362,6 +412,7 @@ async def asyncio(
             proposal=proposal,
             proposal_state=proposal_state,
             proposal_uuid=proposal_uuid,
+            provider_uuid=provider_uuid,
             query=query,
             resource=resource,
             resource_uuid=resource_uuid,

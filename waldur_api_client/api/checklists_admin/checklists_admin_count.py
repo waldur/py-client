@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
@@ -13,6 +14,8 @@ def _get_kwargs(
     *,
     checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
     checklist_type_in: Union[Unset, list[ChecklistTypeEnum]] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    is_shared: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
@@ -32,6 +35,13 @@ def _get_kwargs(
             json_checklist_type_in.append(checklist_type_in_item)
 
     params["checklist_type__in"] = json_checklist_type_in
+
+    json_customer_uuid: Union[Unset, str] = UNSET
+    if not isinstance(customer_uuid, Unset):
+        json_customer_uuid = str(customer_uuid)
+    params["customer_uuid"] = json_customer_uuid
+
+    params["is_shared"] = is_shared
 
     params["page"] = page
 
@@ -79,6 +89,8 @@ def sync_detailed(
     client: AuthenticatedClient,
     checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
     checklist_type_in: Union[Unset, list[ChecklistTypeEnum]] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    is_shared: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
@@ -87,6 +99,8 @@ def sync_detailed(
     Args:
         checklist_type (Union[Unset, ChecklistTypeEnum]):
         checklist_type_in (Union[Unset, list[ChecklistTypeEnum]]):
+        customer_uuid (Union[Unset, UUID]):
+        is_shared (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -101,6 +115,8 @@ def sync_detailed(
     kwargs = _get_kwargs(
         checklist_type=checklist_type,
         checklist_type_in=checklist_type_in,
+        customer_uuid=customer_uuid,
+        is_shared=is_shared,
         page=page,
         page_size=page_size,
     )
@@ -117,6 +133,8 @@ def sync(
     client: AuthenticatedClient,
     checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
     checklist_type_in: Union[Unset, list[ChecklistTypeEnum]] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    is_shared: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
@@ -125,6 +143,8 @@ def sync(
     Args:
         checklist_type (Union[Unset, ChecklistTypeEnum]):
         checklist_type_in (Union[Unset, list[ChecklistTypeEnum]]):
+        customer_uuid (Union[Unset, UUID]):
+        is_shared (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -140,6 +160,8 @@ def sync(
         client=client,
         checklist_type=checklist_type,
         checklist_type_in=checklist_type_in,
+        customer_uuid=customer_uuid,
+        is_shared=is_shared,
         page=page,
         page_size=page_size,
     ).parsed
@@ -150,6 +172,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
     checklist_type_in: Union[Unset, list[ChecklistTypeEnum]] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    is_shared: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[int]:
@@ -158,6 +182,8 @@ async def asyncio_detailed(
     Args:
         checklist_type (Union[Unset, ChecklistTypeEnum]):
         checklist_type_in (Union[Unset, list[ChecklistTypeEnum]]):
+        customer_uuid (Union[Unset, UUID]):
+        is_shared (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -172,6 +198,8 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         checklist_type=checklist_type,
         checklist_type_in=checklist_type_in,
+        customer_uuid=customer_uuid,
+        is_shared=is_shared,
         page=page,
         page_size=page_size,
     )
@@ -186,6 +214,8 @@ async def asyncio(
     client: AuthenticatedClient,
     checklist_type: Union[Unset, ChecklistTypeEnum] = UNSET,
     checklist_type_in: Union[Unset, list[ChecklistTypeEnum]] = UNSET,
+    customer_uuid: Union[Unset, UUID] = UNSET,
+    is_shared: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> int:
@@ -194,6 +224,8 @@ async def asyncio(
     Args:
         checklist_type (Union[Unset, ChecklistTypeEnum]):
         checklist_type_in (Union[Unset, list[ChecklistTypeEnum]]):
+        customer_uuid (Union[Unset, UUID]):
+        is_shared (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -210,6 +242,8 @@ async def asyncio(
             client=client,
             checklist_type=checklist_type,
             checklist_type_in=checklist_type_in,
+            customer_uuid=customer_uuid,
+            is_shared=is_shared,
             page=page,
             page_size=page_size,
         )

@@ -15,7 +15,7 @@ def _get_kwargs(
     uuid: UUID,
     *,
     proposal_name: Union[Unset, str] = UNSET,
-    proposal_uuid: Union[Unset, UUID] = UNSET,
+    proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     review_state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
@@ -24,9 +24,13 @@ def _get_kwargs(
 
     params["proposal_name"] = proposal_name
 
-    json_proposal_uuid: Union[Unset, str] = UNSET
+    json_proposal_uuid: Union[Unset, list[str]] = UNSET
     if not isinstance(proposal_uuid, Unset):
-        json_proposal_uuid = str(proposal_uuid)
+        json_proposal_uuid = []
+        for proposal_uuid_item_data in proposal_uuid:
+            proposal_uuid_item = str(proposal_uuid_item_data)
+            json_proposal_uuid.append(proposal_uuid_item)
+
     params["proposal_uuid"] = json_proposal_uuid
 
     json_review_state: Union[Unset, list[str]] = UNSET
@@ -83,7 +87,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     proposal_name: Union[Unset, str] = UNSET,
-    proposal_uuid: Union[Unset, UUID] = UNSET,
+    proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     review_state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
@@ -94,7 +98,7 @@ def sync_detailed(
     Args:
         uuid (UUID):
         proposal_name (Union[Unset, str]):
-        proposal_uuid (Union[Unset, UUID]):
+        proposal_uuid (Union[Unset, list[UUID]]):
         review_state (Union[Unset, list[ProposalReviewStateEnum]]):
         reviewer_uuid (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
@@ -128,7 +132,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     proposal_name: Union[Unset, str] = UNSET,
-    proposal_uuid: Union[Unset, UUID] = UNSET,
+    proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     review_state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
@@ -139,7 +143,7 @@ def sync(
     Args:
         uuid (UUID):
         proposal_name (Union[Unset, str]):
-        proposal_uuid (Union[Unset, UUID]):
+        proposal_uuid (Union[Unset, list[UUID]]):
         review_state (Union[Unset, list[ProposalReviewStateEnum]]):
         reviewer_uuid (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
@@ -168,7 +172,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     proposal_name: Union[Unset, str] = UNSET,
-    proposal_uuid: Union[Unset, UUID] = UNSET,
+    proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     review_state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
@@ -179,7 +183,7 @@ async def asyncio_detailed(
     Args:
         uuid (UUID):
         proposal_name (Union[Unset, str]):
-        proposal_uuid (Union[Unset, UUID]):
+        proposal_uuid (Union[Unset, list[UUID]]):
         review_state (Union[Unset, list[ProposalReviewStateEnum]]):
         reviewer_uuid (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
@@ -211,7 +215,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     proposal_name: Union[Unset, str] = UNSET,
-    proposal_uuid: Union[Unset, UUID] = UNSET,
+    proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     review_state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
@@ -222,7 +226,7 @@ async def asyncio(
     Args:
         uuid (UUID):
         proposal_name (Union[Unset, str]):
-        proposal_uuid (Union[Unset, UUID]):
+        proposal_uuid (Union[Unset, list[UUID]]):
         review_state (Union[Unset, list[ProposalReviewStateEnum]]):
         reviewer_uuid (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):

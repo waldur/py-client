@@ -1,5 +1,6 @@
 """Contains all the data models used in inputs/outputs"""
 
+from .accept_step_contribution_request import AcceptStepContributionRequest
 from .access_project import AccessProject
 from .access_resource import AccessResource
 from .access_response import AccessResponse
@@ -45,6 +46,8 @@ from .adopt_provider_accounts_request import AdoptProviderAccountsRequest
 from .adopt_provider_accounts_request_resolutions import AdoptProviderAccountsRequestResolutions
 from .adopt_provider_accounts_response import AdoptProviderAccountsResponse
 from .adoptable_project import AdoptableProject
+from .advance_round_workflow_step_request import AdvanceRoundWorkflowStepRequest
+from .advance_round_workflow_step_response import AdvanceRoundWorkflowStepResponse
 from .affiliate_earnings import AffiliateEarnings
 from .affiliate_earnings_month import AffiliateEarningsMonth
 from .affiliate_fee_accrual import AffiliateFeeAccrual
@@ -99,11 +102,16 @@ from .aggregated_access_subnets import AggregatedAccessSubnets
 from .aggregated_usage_trend import AggregatedUsageTrend
 from .agreement_type_enum import AgreementTypeEnum
 from .aiassistantenabledroles_enum import AIASSISTANTENABLEDROLESEnum
+from .allocate_in_submission_order_request import AllocateInSubmissionOrderRequest
+from .allocate_in_submission_order_response import AllocateInSubmissionOrderResponse
 from .allocation import Allocation
 from .allocation_candidates_response import AllocationCandidatesResponse
 from .allocation_candidates_response_provider_summaries import AllocationCandidatesResponseProviderSummaries
 from .allocation_field_enum import AllocationFieldEnum
 from .allocation_marketplace_offering_plugin_options_type_0 import AllocationMarketplaceOfferingPluginOptionsType0
+from .allocation_plan_award import AllocationPlanAward
+from .allocation_plan_budget import AllocationPlanBudget
+from .allocation_plan_row import AllocationPlanRow
 from .allocation_request import AllocationRequest
 from .allocation_set_limits_request import AllocationSetLimitsRequest
 from .allocation_time_enum import AllocationTimeEnum
@@ -134,6 +142,7 @@ from .answer_answer_data import AnswerAnswerData
 from .answer_submit_request import AnswerSubmitRequest
 from .answer_submit_response import AnswerSubmitResponse
 from .api_auth_token_exchange_response_400 import ApiAuthTokenExchangeResponse400
+from .archive_call_request import ArchiveCallRequest
 from .arrow_billing_line import ArrowBillingLine
 from .arrow_billing_sync import ArrowBillingSync
 from .arrow_billing_sync_item import ArrowBillingSyncItem
@@ -227,6 +236,7 @@ from .available_scope import AvailableScope
 from .award_details import AwardDetails
 from .award_details_breakdown import AwardDetailsBreakdown
 from .award_details_members_type_0 import AwardDetailsMembersType0
+from .awarded_proposal import AwardedProposal
 from .awarded_resource import AwardedResource
 from .awarded_resource_attributes import AwardedResourceAttributes
 from .awarded_resource_limits import AwardedResourceLimits
@@ -307,6 +317,10 @@ from .broadcast_message_o_enum import BroadcastMessageOEnum
 from .broadcast_message_query import BroadcastMessageQuery
 from .broadcast_message_query_request import BroadcastMessageQueryRequest
 from .broadcast_message_state_enum import BroadcastMessageStateEnum
+from .budget_enforcement_enum import BudgetEnforcementEnum
+from .budget_report import BudgetReport
+from .budget_report_pool import BudgetReportPool
+from .budget_report_totals import BudgetReportTotals
 from .bulk_round_create_request_request import BulkRoundCreateRequestRequest
 from .bulk_silence_response import BulkSilenceResponse
 from .bulk_update_issue_request import BulkUpdateIssueRequest
@@ -314,6 +328,7 @@ from .cache_performance import CachePerformance
 from .cached_project_storage_report import CachedProjectStorageReport
 from .cached_project_usage_report import CachedProjectUsageReport
 from .cadence_enum import CadenceEnum
+from .call_activation_refused import CallActivationRefused
 from .call_applicant_visibility_config import CallApplicantVisibilityConfig
 from .call_applicant_visibility_config_request import CallApplicantVisibilityConfigRequest
 from .call_assignment_configuration import CallAssignmentConfiguration
@@ -347,20 +362,38 @@ from .call_managing_organisation_request import CallManagingOrganisationRequest
 from .call_managing_organisation_request_form import CallManagingOrganisationRequestForm
 from .call_managing_organisation_request_multipart import CallManagingOrganisationRequestMultipart
 from .call_managing_organisation_stat import CallManagingOrganisationStat
-from .call_performance_stat import CallPerformanceStat
+from .call_notification_mail_type import CallNotificationMailType
+from .call_notification_override import CallNotificationOverride
+from .call_notification_override_request import CallNotificationOverrideRequest
+from .call_offering_component import CallOfferingComponent
+from .call_offering_component_bounds import CallOfferingComponentBounds
+from .call_offering_component_request import CallOfferingComponentRequest
+from .call_panel import CallPanel
+from .call_panel_domain import CallPanelDomain
+from .call_panel_person import CallPanelPerson
+from .call_panel_request import CallPanelRequest
+from .call_pool_summary import CallPoolSummary
 from .call_proposal_field_config import CallProposalFieldConfig
 from .call_proposal_field_config_request import CallProposalFieldConfigRequest
+from .call_proposal_role import CallProposalRole
+from .call_proposal_role_request import CallProposalRoleRequest
+from .call_resource_pool import CallResourcePool
+from .call_resource_pool_request import CallResourcePoolRequest
 from .call_resource_template import CallResourceTemplate
 from .call_resource_template_attributes import CallResourceTemplateAttributes
 from .call_resource_template_limits import CallResourceTemplateLimits
 from .call_resource_template_request import CallResourceTemplateRequest
 from .call_resource_template_request_attributes import CallResourceTemplateRequestAttributes
 from .call_resource_template_request_limits import CallResourceTemplateRequestLimits
+from .call_reviewer_eligibility import CallReviewerEligibility
+from .call_reviewer_eligibility_request import CallReviewerEligibilityRequest
 from .call_reviewer_pool import CallReviewerPool
 from .call_reviewer_pool_coi_by_severity import CallReviewerPoolCoiBySeverity
 from .call_reviewer_pool_o_enum import CallReviewerPoolOEnum
 from .call_reviewer_pool_update import CallReviewerPoolUpdate
 from .call_round import CallRound
+from .call_save_as_template_request import CallSaveAsTemplateRequest
+from .call_scenario_summary import CallScenarioSummary
 from .call_states import CallStates
 from .call_stats import CallStats
 from .call_stats_block import CallStatsBlock
@@ -370,6 +403,22 @@ from .call_stats_round import CallStatsRound
 from .call_stats_round_proposals import CallStatsRoundProposals
 from .call_stats_round_reviews import CallStatsRoundReviews
 from .call_stats_step import CallStatsStep
+from .call_step_kind_enum import CallStepKindEnum
+from .call_template import CallTemplate
+from .call_template_document import CallTemplateDocument
+from .call_template_o_enum import CallTemplateOEnum
+from .call_template_origin import CallTemplateOrigin
+from .call_template_preset import CallTemplatePreset
+from .call_template_preset_info import CallTemplatePresetInfo
+from .call_template_preset_info_category_enum import CallTemplatePresetInfoCategoryEnum
+from .call_template_programme import CallTemplateProgramme
+from .call_template_reference import CallTemplateReference
+from .call_template_request import CallTemplateRequest
+from .call_template_request_document import CallTemplateRequestDocument
+from .call_template_request_scenarios_item import CallTemplateRequestScenariosItem
+from .call_template_scenarios_item import CallTemplateScenariosItem
+from .call_template_step import CallTemplateStep
+from .call_workflow_scenarios import CallWorkflowScenarios
 from .call_workflow_step import CallWorkflowStep
 from .call_workflow_step_notification_rule import CallWorkflowStepNotificationRule
 from .call_workflow_step_notification_rule_nested import CallWorkflowStepNotificationRuleNested
@@ -381,6 +430,7 @@ from .campaign_o_enum import CampaignOEnum
 from .campaign_offering import CampaignOffering
 from .campaign_request import CampaignRequest
 from .campaign_state_enum import CampaignStateEnum
+from .cancel_change_request_request import CancelChangeRequestRequest
 from .cancel_request_response import CancelRequestResponse
 from .canned_response import CannedResponse
 from .canned_response_render_request import CannedResponseRenderRequest
@@ -472,6 +522,7 @@ from .chat_session import ChatSession
 from .chat_session_field_enum import ChatSessionFieldEnum
 from .chat_thread_stats_response import ChatThreadStatsResponse
 from .chat_tools_execute_response_200 import ChatToolsExecuteResponse200
+from .check_run_status_enum import CheckRunStatusEnum
 from .check_unique_backend_id_request import CheckUniqueBackendIDRequest
 from .check_unique_backend_id_response import CheckUniqueBackendIDResponse
 from .checklist import Checklist
@@ -519,6 +570,8 @@ from .comparator_enum import ComparatorEnum
 from .compensate_in_enum import CompensateInEnum
 from .complete_round_refusal import CompleteRoundRefusal
 from .complete_round_response import CompleteRoundResponse
+from .complete_round_workflow_step_request import CompleteRoundWorkflowStepRequest
+from .complete_round_workflow_step_response import CompleteRoundWorkflowStepResponse
 from .complete_workflow_step_request import CompleteWorkflowStepRequest
 from .complete_workflow_step_response import CompleteWorkflowStepResponse
 from .compliance_overview import ComplianceOverview
@@ -581,6 +634,8 @@ from .consumption_statistics_response import ConsumptionStatisticsResponse
 from .consumption_status_response import ConsumptionStatusResponse
 from .container_format_enum import ContainerFormatEnum
 from .content_type_input_enum import ContentTypeInputEnum
+from .contribution_delegation_candidate import ContributionDelegationCandidate
+from .contribution_outcome_enum import ContributionOutcomeEnum
 from .core_auth_token import CoreAuthToken
 from .core_states import CoreStates
 from .corrective_action import CorrectiveAction
@@ -633,6 +688,7 @@ from .credit_top_up_request import CreditTopUpRequest
 from .credit_transaction import CreditTransaction
 from .credit_transaction_o_enum import CreditTransactionOEnum
 from .current_qos_status_enum import CurrentQosStatusEnum
+from .current_stage_enum import CurrentStageEnum
 from .customer import Customer
 from .customer_affiliate import CustomerAffiliate
 from .customer_affiliate_o_enum import CustomerAffiliateOEnum
@@ -719,8 +775,13 @@ from .data_volume_request import DataVolumeRequest
 from .database_size_stats import DatabaseSizeStats
 from .database_stats_response import DatabaseStatsResponse
 from .dead_letter_queue import DeadLetterQueue
+from .decline_step_contribution_request import DeclineStepContributionRequest
 from .default_permission_enum import DefaultPermissionEnum
 from .defaultidp_enum import DEFAULTIDPEnum
+from .delegate_step_contribution_request import DelegateStepContributionRequest
+from .delegate_team_slots_request import DelegateTeamSlotsRequest
+from .delegate_team_slots_result import DelegateTeamSlotsResult
+from .delegate_team_slots_result_skipped import DelegateTeamSlotsResultSkipped
 from .delete_attachments_request import DeleteAttachmentsRequest
 from .delivery_enum import DeliveryEnum
 from .demo_preset import DemoPreset
@@ -775,11 +836,35 @@ from .display_limit_config import DisplayLimitConfig
 from .display_limit_config_request import DisplayLimitConfigRequest
 from .dlq_queue import DLQQueue
 from .dry_run import DryRun
+from .dry_run_action_request import DryRunActionRequest
+from .dry_run_audience import DryRunAudience
+from .dry_run_contribution_request import DryRunContributionRequest
+from .dry_run_contribution_state import DryRunContributionState
+from .dry_run_coverage import DryRunCoverage
+from .dry_run_coverage_contribution_outcomes import DryRunCoverageContributionOutcomes
+from .dry_run_coverage_outcomes import DryRunCoverageOutcomes
+from .dry_run_log_entry import DryRunLogEntry
+from .dry_run_message import DryRunMessage
+from .dry_run_next import DryRunNext
+from .dry_run_next_step import DryRunNextStep
 from .dry_run_order_attributes import DryRunOrderAttributes
+from .dry_run_outcome_coverage import DryRunOutcomeCoverage
+from .dry_run_read import DryRunRead
+from .dry_run_read_data_type_0 import DryRunReadDataType0
 from .dry_run_request import DryRunRequest
 from .dry_run_request_attributes import DryRunRequestAttributes
+from .dry_run_requested_offering import DryRunRequestedOffering
+from .dry_run_slot_request import DryRunSlotRequest
 from .dry_run_state_enum import DryRunStateEnum
+from .dry_run_step_state import DryRunStepState
+from .dry_run_step_state_condition_type_0 import DryRunStepStateConditionType0
+from .dry_run_step_state_extra import DryRunStepStateExtra
 from .dry_run_type_enum import DryRunTypeEnum
+from .dry_run_view_as_request import DryRunViewAsRequest
+from .dry_run_view_as_result import DryRunViewAsResult
+from .dry_run_view_as_result_responses import DryRunViewAsResultResponses
+from .dry_run_viewer import DryRunViewer
+from .dry_run_viewer_permissions_item import DryRunViewerPermissionsItem
 from .duplicate_call_request_request import DuplicateCallRequestRequest
 from .duplicate_offering_candidate import DuplicateOfferingCandidate
 from .duplicate_offering_group import DuplicateOfferingGroup
@@ -789,6 +874,7 @@ from .effective_route import EffectiveRoute
 from .effective_route_source_enum import EffectiveRouteSourceEnum
 from .effective_routes_response import EffectiveRoutesResponse
 from .eligibility_check import EligibilityCheck
+from .eligible_from_enum import EligibleFromEnum
 from .eligible_project import EligibleProject
 from .email_config import EmailConfig
 from .email_diagnostics import EmailDiagnostics
@@ -1079,6 +1165,7 @@ from .invitation_state_enum import InvitationStateEnum
 from .invitation_status_enum import InvitationStatusEnum
 from .invitation_update import InvitationUpdate
 from .invitation_update_request import InvitationUpdateRequest
+from .invite_suggested_reviewers_response import InviteSuggestedReviewersResponse
 from .invoice import Invoice
 from .invoice_cost import InvoiceCost
 from .invoice_cost_item import InvoiceCostItem
@@ -1144,6 +1231,8 @@ from .keycloak_user_group_membership_state import KeycloakUserGroupMembershipSta
 from .keys_history_at_retrieve_response_400 import KeysHistoryAtRetrieveResponse400
 from .keys_history_at_retrieve_response_404 import KeysHistoryAtRetrieveResponse404
 from .keyword_search_mode_enum import KeywordSearchModeEnum
+from .label_kind_enum import LabelKindEnum
+from .lagging_proposals_refusal import LaggingProposalsRefusal
 from .lb_algorithm_enum import LbAlgorithmEnum
 from .level_enum import LevelEnum
 from .lexis_link import LexisLink
@@ -1169,6 +1258,8 @@ from .load_balancer_attach_floating_ip_request import LoadBalancerAttachFloating
 from .load_balancer_mode_enum import LoadBalancerModeEnum
 from .load_balancer_protocol_enum import LoadBalancerProtocolEnum
 from .load_balancer_set_security_groups_request import LoadBalancerSetSecurityGroupsRequest
+from .load_call_template_preset_request import LoadCallTemplatePresetRequest
+from .load_call_template_preset_response import LoadCallTemplatePresetResponse
 from .load_science_domain_preset_request import LoadScienceDomainPresetRequest
 from .load_science_domain_preset_response import LoadScienceDomainPresetResponse
 from .lock_stats import LockStats
@@ -1364,9 +1455,14 @@ from .move_project_request import MoveProjectRequest
 from .move_resource_request import MoveResourceRequest
 from .my_assignment_batch import MyAssignmentBatch
 from .my_assignment_batch_detail import MyAssignmentBatchDetail
+from .my_assignment_batch_status_enum import MyAssignmentBatchStatusEnum
 from .my_assignment_item import MyAssignmentItem
+from .my_task import MyTask
+from .my_task_due_enum import MyTaskDueEnum
+from .my_task_summary import MyTaskSummary
 from .name_enum import NameEnum
 from .name_uuid import NameUUID
+from .needed_enum import NeededEnum
 from .nested_agent_processor import NestedAgentProcessor
 from .nested_agent_service import NestedAgentService
 from .nested_agent_service_request import NestedAgentServiceRequest
@@ -1442,6 +1538,9 @@ from .node_disk_driver_enum import NodeDiskDriverEnum
 from .note import Note
 from .notification import Notification
 from .notification_context_schema import NotificationContextSchema
+from .notification_preview import NotificationPreview
+from .notification_preview_draft_request import NotificationPreviewDraftRequest
+from .notification_preview_source_enum import NotificationPreviewSourceEnum
 from .notification_recipient import NotificationRecipient
 from .notification_recipient_customer import NotificationRecipientCustomer
 from .notification_recipient_offering import NotificationRecipientOffering
@@ -1449,6 +1548,10 @@ from .notification_request import NotificationRequest
 from .notification_template_detail_serializers import NotificationTemplateDetailSerializers
 from .notification_template_detail_serializers_request import NotificationTemplateDetailSerializersRequest
 from .notification_template_update_serializers_request import NotificationTemplateUpdateSerializersRequest
+from .notification_variable import NotificationVariable
+from .notification_wording import NotificationWording
+from .notify_proposals_request import NotifyProposalsRequest
+from .notify_proposals_response import NotifyProposalsResponse
 from .notify_system_enum import NotifySystemEnum
 from .observable_object_type_enum import ObservableObjectTypeEnum
 from .obtain_auth_token_request import ObtainAuthTokenRequest
@@ -1460,6 +1563,7 @@ from .offering_access_subnet_request import OfferingAccessSubnetRequest
 from .offering_access_subnets import OfferingAccessSubnets
 from .offering_account_preview import OfferingAccountPreview
 from .offering_account_settings import OfferingAccountSettings
+from .offering_assessment import OfferingAssessment
 from .offering_attributes import OfferingAttributes
 from .offering_backend_id_rules_update_request import OfferingBackendIdRulesUpdateRequest
 from .offering_backend_id_rules_update_request_backend_id_rules import OfferingBackendIdRulesUpdateRequestBackendIdRules
@@ -1495,6 +1599,11 @@ from .offering_create_request_multipart_backend_id_rules import OfferingCreateRe
 from .offering_create_request_multipart_backend_metadata import OfferingCreateRequestMultipartBackendMetadata
 from .offering_create_request_multipart_limits import OfferingCreateRequestMultipartLimits
 from .offering_default_access_subnet_row import OfferingDefaultAccessSubnetRow
+from .offering_demand import OfferingDemand
+from .offering_demand_component import OfferingDemandComponent
+from .offering_demand_pool import OfferingDemandPool
+from .offering_dependent import OfferingDependent
+from .offering_dependent_change_enum import OfferingDependentChangeEnum
 from .offering_description_update_request import OfferingDescriptionUpdateRequest
 from .offering_estimated_cost_policy import OfferingEstimatedCostPolicy
 from .offering_estimated_cost_policy_field_enum import OfferingEstimatedCostPolicyFieldEnum
@@ -1617,6 +1726,11 @@ from .offering_state_counter import OfferingStateCounter
 from .offering_state_counters import OfferingStateCounters
 from .offering_stats import OfferingStats
 from .offering_stats_counter import OfferingStatsCounter
+from .offering_team import OfferingTeam
+from .offering_team_person import OfferingTeamPerson
+from .offering_team_provider import OfferingTeamProvider
+from .offering_team_slot import OfferingTeamSlot
+from .offering_team_step import OfferingTeamStep
 from .offering_terms_of_service import OfferingTermsOfService
 from .offering_terms_of_service_create import OfferingTermsOfServiceCreate
 from .offering_terms_of_service_create_request import OfferingTermsOfServiceCreateRequest
@@ -1652,6 +1766,8 @@ from .offering_user_state_transition_request import OfferingUserStateTransitionR
 from .offering_user_update_restriction_request import OfferingUserUpdateRestrictionRequest
 from .offering_user_update_runtime_state_request import OfferingUserUpdateRuntimeStateRequest
 from .oidc_endpoints import OidcEndpoints
+from .on_depleted_enum import OnDepletedEnum
+from .on_negative_enum import OnNegativeEnum
 from .onboarding_company_validation_request_request import OnboardingCompanyValidationRequestRequest
 from .onboarding_justification import OnboardingJustification
 from .onboarding_justification_create_request import OnboardingJustificationCreateRequest
@@ -1683,6 +1799,8 @@ from .onboarding_verification_validation_method_enum import OnboardingVerificati
 from .onboarding_verification_verified_company_data import OnboardingVerificationVerifiedCompanyData
 from .onboarding_verification_verified_user_roles import OnboardingVerificationVerifiedUserRoles
 from .open_portal_quota import OpenPortalQuota
+from .open_round_workflow_step_request import OpenRoundWorkflowStepRequest
+from .open_round_workflow_step_response import OpenRoundWorkflowStepResponse
 from .open_stack_allowed_address_pair import OpenStackAllowedAddressPair
 from .open_stack_allowed_address_pair_request import OpenStackAllowedAddressPairRequest
 from .open_stack_backend_instance import OpenStackBackendInstance
@@ -1898,6 +2016,9 @@ from .order_attachment_request import OrderAttachmentRequest
 from .order_attachment_request_form import OrderAttachmentRequestForm
 from .order_attachment_request_multipart import OrderAttachmentRequestMultipart
 from .order_author_enum import OrderAuthorEnum
+from .order_award import OrderAward
+from .order_award_awarded_limits import OrderAwardAwardedLimits
+from .order_award_requested_limits_type_0 import OrderAwardRequestedLimitsType0
 from .order_backend_id_request import OrderBackendIDRequest
 from .order_consumer_info_request import OrderConsumerInfoRequest
 from .order_consumer_info_request_form import OrderConsumerInfoRequestForm
@@ -1941,6 +2062,7 @@ from .organizational_user import OrganizationalUser
 from .otlp_v1_metrics_json_body import OtlpV1MetricsJsonBody
 from .otlp_v1_metrics_response_200 import OtlpV1MetricsResponse200
 from .outcome_enum import OutcomeEnum
+from .outcome_set_enum import OutcomeSetEnum
 from .paid_request import PaidRequest
 from .paid_request_form import PaidRequestForm
 from .paid_request_multipart import PaidRequestMultipart
@@ -1984,10 +2106,18 @@ from .patched_call_coi_configuration_request import PatchedCallCOIConfigurationR
 from .patched_call_managing_organisation_request import PatchedCallManagingOrganisationRequest
 from .patched_call_managing_organisation_request_form import PatchedCallManagingOrganisationRequestForm
 from .patched_call_managing_organisation_request_multipart import PatchedCallManagingOrganisationRequestMultipart
+from .patched_call_notification_override_request import PatchedCallNotificationOverrideRequest
+from .patched_call_offering_component_request import PatchedCallOfferingComponentRequest
+from .patched_call_panel_request import PatchedCallPanelRequest
+from .patched_call_proposal_role_request import PatchedCallProposalRoleRequest
+from .patched_call_resource_pool_request import PatchedCallResourcePoolRequest
 from .patched_call_resource_template_request import PatchedCallResourceTemplateRequest
 from .patched_call_resource_template_request_attributes import PatchedCallResourceTemplateRequestAttributes
 from .patched_call_resource_template_request_limits import PatchedCallResourceTemplateRequestLimits
 from .patched_call_reviewer_pool_update_request import PatchedCallReviewerPoolUpdateRequest
+from .patched_call_template_request import PatchedCallTemplateRequest
+from .patched_call_template_request_document import PatchedCallTemplateRequestDocument
+from .patched_call_template_request_scenarios_item import PatchedCallTemplateRequestScenariosItem
 from .patched_call_workflow_step_notification_rule_request import PatchedCallWorkflowStepNotificationRuleRequest
 from .patched_call_workflow_step_request import PatchedCallWorkflowStepRequest
 from .patched_canned_response_request import PatchedCannedResponseRequest
@@ -2108,7 +2238,13 @@ from .patched_project_template_request_allocation_units_mapping import (
 )
 from .patched_project_template_request_role_mapping import PatchedProjectTemplateRequestRoleMapping
 from .patched_proposal_project_role_mapping_request import PatchedProposalProjectRoleMappingRequest
+from .patched_proposal_ranking_request import PatchedProposalRankingRequest
+from .patched_proposal_ranking_request_recommended_resources import PatchedProposalRankingRequestRecommendedResources
 from .patched_proposal_review_request import PatchedProposalReviewRequest
+from .patched_proposal_review_request_criteria_scores import PatchedProposalReviewRequestCriteriaScores
+from .patched_proposal_run_update_request import PatchedProposalRunUpdateRequest
+from .patched_proposal_run_update_request_granted_limits import PatchedProposalRunUpdateRequestGrantedLimits
+from .patched_proposal_run_update_request_requested_limits import PatchedProposalRunUpdateRequestRequestedLimits
 from .patched_protected_call_request import PatchedProtectedCallRequest
 from .patched_protected_round_request import PatchedProtectedRoundRequest
 from .patched_provider_canned_response_request import PatchedProviderCannedResponseRequest
@@ -2161,6 +2297,7 @@ from .patched_reviewer_publication_request import PatchedReviewerPublicationRequ
 from .patched_reviewer_publication_request_external_ids import PatchedReviewerPublicationRequestExternalIds
 from .patched_robot_account_request import PatchedRobotAccountRequest
 from .patched_role_details_request import PatchedRoleDetailsRequest
+from .patched_round_meeting_note_request import PatchedRoundMeetingNoteRequest
 from .patched_rule_request import PatchedRuleRequest
 from .patched_rule_request_plan_attributes import PatchedRuleRequestPlanAttributes
 from .patched_rule_request_plan_limits import PatchedRuleRequestPlanLimits
@@ -2241,14 +2378,22 @@ from .personal_access_token_network_acl_request import PersonalAccessTokenNetwor
 from .plan_billing_mode import PlanBillingMode
 from .plan_component import PlanComponent
 from .plan_usage_response import PlanUsageResponse
+from .planned_outcome_enum import PlannedOutcomeEnum
 from .plugin_component import PluginComponent
 from .plugin_offering_type import PluginOfferingType
+from .polarity_enum import PolarityEnum
 from .policy_cost_breakdown import PolicyCostBreakdown
 from .policy_enum import PolicyEnum
 from .policy_gate_enum import PolicyGateEnum
 from .policy_period_enum import PolicyPeriodEnum
 from .policy_trigger_status import PolicyTriggerStatus
 from .policy_type_enum import PolicyTypeEnum
+from .pool_status_enum import PoolStatusEnum
+from .portfolio_report import PortfolioReport
+from .portfolio_report_block import PortfolioReportBlock
+from .portfolio_report_call import PortfolioReportCall
+from .portfolio_report_month import PortfolioReportMonth
+from .portfolio_report_round import PortfolioReportRound
 from .posix_id_pool import PosixIdPool
 from .posix_id_pool_field_enum import PosixIdPoolFieldEnum
 from .posix_id_pool_left_behind_consumer import PosixIdPoolLeftBehindConsumer
@@ -2263,6 +2408,7 @@ from .posix_identity import PosixIdentity
 from .posix_identity_consumer_type_enum import PosixIdentityConsumerTypeEnum
 from .posix_identity_o_enum import PosixIdentityOEnum
 from .posix_sharing_offering import PosixSharingOffering
+from .post_award_status_enum import PostAwardStatusEnum
 from .preset_enum import PresetEnum
 from .preview_period import PreviewPeriod
 from .preview_service_attributes_request_request import PreviewServiceAttributesRequestRequest
@@ -2374,7 +2520,12 @@ from .projects_usages_grouped_by_oecd_usages_additional_property import (
     ProjectsUsagesGroupedByOecdUsagesAdditionalProperty,
 )
 from .proposal import Proposal
+from .proposal_awarded_duration import ProposalAwardedDuration
+from .proposal_awarded_duration_request import ProposalAwardedDurationRequest
+from .proposal_budget import ProposalBudget
+from .proposal_budget_entry import ProposalBudgetEntry
 from .proposal_can_submit_response import ProposalCanSubmitResponse
+from .proposal_change_request import ProposalChangeRequest
 from .proposal_checklist_answer_submit_response import ProposalChecklistAnswerSubmitResponse
 from .proposal_compliance_status import ProposalComplianceStatus
 from .proposal_configurable_field_enum import ProposalConfigurableFieldEnum
@@ -2383,21 +2534,48 @@ from .proposal_documentation import ProposalDocumentation
 from .proposal_documentation_request import ProposalDocumentationRequest
 from .proposal_documentation_request_form import ProposalDocumentationRequestForm
 from .proposal_documentation_request_multipart import ProposalDocumentationRequestMultipart
+from .proposal_feedback_request import ProposalFeedbackRequest
 from .proposal_field_metadata import ProposalFieldMetadata
 from .proposal_field_state_enum import ProposalFieldStateEnum
 from .proposal_o_enum import ProposalOEnum
+from .proposal_preview_as_request import ProposalPreviewAsRequest
+from .proposal_preview_role import ProposalPreviewRole
 from .proposal_project_role_mapping import ProposalProjectRoleMapping
 from .proposal_project_role_mapping_request import ProposalProjectRoleMappingRequest
 from .proposal_protected_calls_review_proposal_compliance_response_200 import (
     ProposalProtectedCallsReviewProposalComplianceResponse200,
 )
+from .proposal_ranking import ProposalRanking
+from .proposal_ranking_o_enum import ProposalRankingOEnum
+from .proposal_ranking_recommended_resources import ProposalRankingRecommendedResources
+from .proposal_ranking_request import ProposalRankingRequest
+from .proposal_ranking_request_recommended_resources import ProposalRankingRequestRecommendedResources
 from .proposal_request import ProposalRequest
 from .proposal_review import ProposalReview
+from .proposal_review_criteria_scores import ProposalReviewCriteriaScores
 from .proposal_review_o_enum import ProposalReviewOEnum
 from .proposal_review_request import ProposalReviewRequest
+from .proposal_review_request_criteria_scores import ProposalReviewRequestCriteriaScores
 from .proposal_review_state_enum import ProposalReviewStateEnum
+from .proposal_reviewer_suggestion import ProposalReviewerSuggestion
+from .proposal_reviewer_suggestion_create_request import ProposalReviewerSuggestionCreateRequest
+from .proposal_reviewer_suggestion_status import ProposalReviewerSuggestionStatus
+from .proposal_reviewer_suggestion_withdraw_request import ProposalReviewerSuggestionWithdrawRequest
+from .proposal_role_assign_request import ProposalRoleAssignRequest
+from .proposal_role_assignment import ProposalRoleAssignment
+from .proposal_role_assignment_action_request import ProposalRoleAssignmentActionRequest
+from .proposal_role_candidate import ProposalRoleCandidate
+from .proposal_run import ProposalRun
+from .proposal_run_applied_changes import ProposalRunAppliedChanges
+from .proposal_run_granted_limits import ProposalRunGrantedLimits
+from .proposal_run_phase_enum import ProposalRunPhaseEnum
+from .proposal_run_requested_limits import ProposalRunRequestedLimits
+from .proposal_run_state_enum import ProposalRunStateEnum
+from .proposal_set_panel_request import ProposalSetPanelRequest
 from .proposal_states import ProposalStates
+from .proposal_status_label import ProposalStatusLabel
 from .proposal_update_project_details_request import ProposalUpdateProjectDetailsRequest
+from .proposal_withdraw_request import ProposalWithdrawRequest
 from .proposal_workflow_step_instance import ProposalWorkflowStepInstance
 from .proposal_workflow_step_instance_status_enum import ProposalWorkflowStepInstanceStatusEnum
 from .proposed_assignment import ProposedAssignment
@@ -2472,8 +2650,10 @@ from .provider_user import ProviderUser
 from .provider_user_role_details import ProviderUserRoleDetails
 from .provider_username_candidate import ProviderUsernameCandidate
 from .provider_username_conflict import ProviderUsernameConflict
+from .provision_awarded_item_request import ProvisionAwardedItemRequest
 from .public_call import PublicCall
 from .public_call_field_enum import PublicCallFieldEnum
+from .public_call_state_enum import PublicCallStateEnum
 from .public_invitation import PublicInvitation
 from .public_maintenance_announcement import PublicMaintenanceAnnouncement
 from .public_maintenance_announcement_state_enum import PublicMaintenanceAnnouncementStateEnum
@@ -2618,17 +2798,25 @@ from .rancher_workload_create import RancherWorkloadCreate
 from .rancher_workload_create_request import RancherWorkloadCreateRequest
 from .rancher_workload_o_enum import RancherWorkloadOEnum
 from .rancher_workload_request import RancherWorkloadRequest
+from .ranking_import_request import RankingImportRequest
+from .ranking_import_response import RankingImportResponse
 from .rbac_policy_direction_enum import RbacPolicyDirectionEnum
 from .reassign_item_request import ReassignItemRequest
 from .reassign_item_response import ReassignItemResponse
 from .recent_ticket import RecentTicket
 from .recipient_enum import RecipientEnum
+from .recipients_enum import RecipientsEnum
+from .recommended_component import RecommendedComponent
+from .recommended_offering import RecommendedOffering
 from .reconcile_request_request import ReconcileRequestRequest
 from .reference_number_request import ReferenceNumberRequest
+from .reject_requested_offering_request import RejectRequestedOfferingRequest
 from .reject_workflow_step_request import RejectWorkflowStepRequest
 from .reject_workflow_step_response import RejectWorkflowStepResponse
 from .rejected_point import RejectedPoint
 from .relationship_type_enum import RelationshipTypeEnum
+from .release_step_report_request import ReleaseStepReportRequest
+from .released_report import ReleasedReport
 from .relevant_when import RelevantWhen
 from .remote_allocation import RemoteAllocation
 from .remote_allocation_field_enum import RemoteAllocationFieldEnum
@@ -2668,16 +2856,21 @@ from .renewal_estimate_component import RenewalEstimateComponent
 from .renewal_estimate_request_request import RenewalEstimateRequestRequest
 from .renewal_estimate_request_request_limits import RenewalEstimateRequestRequestLimits
 from .renewal_estimate_response import RenewalEstimateResponse
+from .reopen_contribution_request import ReopenContributionRequest
 from .reopen_decision_request import ReopenDecisionRequest
 from .replication_stats import ReplicationStats
 from .report_section import ReportSection
 from .report_section_request import ReportSectionRequest
+from .request_changes_request import RequestChangesRequest
+from .request_extension_request import RequestExtensionRequest
+from .request_extension_request_requested_limits import RequestExtensionRequestRequestedLimits
 from .request_type import RequestType
 from .request_type_admin import RequestTypeAdmin
 from .request_type_admin_request import RequestTypeAdminRequest
 from .request_type_reorder_item_request import RequestTypeReorderItemRequest
 from .request_type_reorder_request import RequestTypeReorderRequest
 from .request_types import RequestTypes
+from .requestable_component import RequestableComponent
 from .requested_offering import RequestedOffering
 from .requested_offering_attributes import RequestedOfferingAttributes
 from .requested_offering_request import RequestedOfferingRequest
@@ -2694,6 +2887,7 @@ from .requested_resource_request import RequestedResourceRequest
 from .requested_resource_request_attributes import RequestedResourceRequestAttributes
 from .requested_resource_request_limits import RequestedResourceRequestLimits
 from .reserved_agent_task import ReservedAgentTask
+from .resolution_enum import ResolutionEnum
 from .resource_api_key import ResourceApiKey
 from .resource_api_key_action import ResourceApiKeyAction
 from .resource_api_key_create_request import ResourceApiKeyCreateRequest
@@ -2728,9 +2922,6 @@ from .resource_backend_metadata_request import ResourceBackendMetadataRequest
 from .resource_backend_metadata_request_backend_metadata import ResourceBackendMetadataRequestBackendMetadata
 from .resource_class_summary import ResourceClassSummary
 from .resource_context import ResourceContext
-from .resource_demand_stat import ResourceDemandStat
-from .resource_demand_stat_total_approved_limits import ResourceDemandStatTotalApprovedLimits
-from .resource_demand_stat_total_requested_limits import ResourceDemandStatTotalRequestedLimits
 from .resource_downscaled_request import ResourceDownscaledRequest
 from .resource_effective_id_request import ResourceEffectiveIDRequest
 from .resource_end_date_by_provider_request import ResourceEndDateByProviderRequest
@@ -2761,6 +2952,8 @@ from .resource_options_request import ResourceOptionsRequest
 from .resource_options_request_options_type_0 import ResourceOptionsRequestOptionsType0
 from .resource_paused_request import ResourcePausedRequest
 from .resource_plan_period import ResourcePlanPeriod
+from .resource_pool_cell import ResourcePoolCell
+from .resource_pool_usage import ResourcePoolUsage
 from .resource_project import ResourceProject
 from .resource_project_backend_id_request import ResourceProjectBackendIdRequest
 from .resource_project_current_usages import ResourceProjectCurrentUsages
@@ -2828,8 +3021,9 @@ from .restrictedofferingvisibilitymode_enum import RESTRICTEDOFFERINGVISIBILITYM
 from .retention_policy import RetentionPolicy
 from .retention_policy_request import RetentionPolicyRequest
 from .review_comment_request import ReviewCommentRequest
-from .review_progress_stat import ReviewProgressStat
+from .review_criterion import ReviewCriterion
 from .review_submit_request import ReviewSubmitRequest
+from .review_submit_request_criteria_scores import ReviewSubmitRequestCriteriaScores
 from .reviewer_affiliation import ReviewerAffiliation
 from .reviewer_affiliation_request import ReviewerAffiliationRequest
 from .reviewer_bid import ReviewerBid
@@ -2851,11 +3045,22 @@ from .reviewer_profiles_import_publications_response_200 import ReviewerProfiles
 from .reviewer_profiles_publish_response_200 import ReviewerProfilesPublishResponse200
 from .reviewer_profiles_unpublish_response_200 import ReviewerProfilesUnpublishResponse200
 from .reviewer_publication import ReviewerPublication
+from .reviewer_publication_approval import ReviewerPublicationApproval
 from .reviewer_publication_external_ids import ReviewerPublicationExternalIds
 from .reviewer_publication_request import ReviewerPublicationRequest
 from .reviewer_publication_request_external_ids import ReviewerPublicationRequestExternalIds
+from .reviewer_registry import ReviewerRegistry
+from .reviewer_registry_o_enum import ReviewerRegistryOEnum
+from .reviewer_registry_pool import ReviewerRegistryPool
+from .reviewer_report import ReviewerReport
+from .reviewer_report_row import ReviewerReportRow
+from .reviewer_report_totals import ReviewerReportTotals
+from .reviewer_standing_enum import ReviewerStandingEnum
+from .reviewer_standing_request import ReviewerStandingRequest
 from .reviewer_stats import ReviewerStats
 from .reviewer_suggestion import ReviewerSuggestion
+from .reviewer_suggestion_candidate import ReviewerSuggestionCandidate
+from .reviewer_suggestion_entry import ReviewerSuggestionEntry
 from .reviewer_suggestion_item import ReviewerSuggestionItem
 from .reviewer_suggestion_o_enum import ReviewerSuggestionOEnum
 from .reviewer_suggestion_request import ReviewerSuggestionRequest
@@ -2904,8 +3109,20 @@ from .role_template import RoleTemplate
 from .role_template_o_enum import RoleTemplateOEnum
 from .role_type import RoleType
 from .round_adoption_request import RoundAdoptionRequest
+from .round_meeting_note import RoundMeetingNote
+from .round_meeting_note_document import RoundMeetingNoteDocument
+from .round_meeting_note_request import RoundMeetingNoteRequest
+from .round_report import RoundReport
+from .round_report_proposal import RoundReportProposal
+from .round_report_row import RoundReportRow
+from .round_report_row_status_enum import RoundReportRowStatusEnum
+from .round_report_totals import RoundReportTotals
 from .round_reviewer import RoundReviewer
 from .round_status import RoundStatus
+from .round_status_enum import RoundStatusEnum
+from .round_step import RoundStep
+from .round_step_proposal_result import RoundStepProposalResult
+from .round_workflow_step_due_date_request import RoundWorkflowStepDueDateRequest
 from .route_to_provider_request import RouteToProviderRequest
 from .rule import Rule
 from .rule_plan_attributes import RulePlanAttributes
@@ -2933,6 +3150,13 @@ from .saved_filter import SavedFilter
 from .saved_filter_filter_params import SavedFilterFilterParams
 from .saved_filter_request import SavedFilterRequest
 from .saved_filter_request_filter_params import SavedFilterRequestFilterParams
+from .scenario_assertion_result import ScenarioAssertionResult
+from .scenario_assertion_result_actual_type_0 import ScenarioAssertionResultActualType0
+from .scenario_assertion_result_assertion import ScenarioAssertionResultAssertion
+from .scenario_coverage import ScenarioCoverage
+from .scenario_coverage_untried_outcomes import ScenarioCoverageUntriedOutcomes
+from .scenario_result import ScenarioResult
+from .scenario_totals import ScenarioTotals
 from .scheduled_agent_task import ScheduledAgentTask
 from .science_domain import ScienceDomain
 from .science_domain_o_enum import ScienceDomainOEnum
@@ -3001,6 +3225,8 @@ from .service_settings_state_enum import ServiceSettingsStateEnum
 from .serviceaccessmode_enum import SERVICEACCESSMODEEnum
 from .set_allowed_address_pairs_request import SetAllowedAddressPairsRequest
 from .set_allowed_domains_request import SetAllowedDomainsRequest
+from .set_default_delegate import SetDefaultDelegate
+from .set_default_delegate_request import SetDefaultDelegateRequest
 from .set_earliest_approve_request import SetEarliestApproveRequest
 from .set_erred_request import SetErredRequest
 from .set_external_gateway_fixed_ip_request import SetExternalGatewayFixedIPRequest
@@ -3030,6 +3256,7 @@ from .site_agent_log import SiteAgentLog
 from .site_agent_log_create_request import SiteAgentLogCreateRequest
 from .site_maintenance_reservation_request import SiteMaintenanceReservationRequest
 from .skipped_proposal import SkippedProposal
+from .skipped_reason_enum import SkippedReasonEnum
 from .slurm_command import SlurmCommand
 from .slurm_command_history import SlurmCommandHistory
 from .slurm_command_history_parameters import SlurmCommandHistoryParameters
@@ -3105,11 +3332,26 @@ from .ssh_key_o_enum import SshKeyOEnum
 from .ssh_key_request import SshKeyRequest
 from .sshkeyallowedtypes_enum import SSHKEYALLOWEDTYPESEnum
 from .stage_enum import StageEnum
+from .state_group_enum import StateGroupEnum
 from .state_transition_error import StateTransitionError
 from .status import Status
-from .step_checklist_response_group import StepChecklistResponseGroup
+from .step_audience_status_labels import StepAudienceStatusLabels
+from .step_audience_status_labels_outcomes import StepAudienceStatusLabelsOutcomes
+from .step_audience_status_labels_request import StepAudienceStatusLabelsRequest
+from .step_audience_status_labels_request_outcomes import StepAudienceStatusLabelsRequestOutcomes
 from .step_checklist_status import StepChecklistStatus
-from .step_enum import StepEnum
+from .step_contribution import StepContribution
+from .step_contribution_status import StepContributionStatus
+from .step_contribution_with_answers import StepContributionWithAnswers
+from .step_input import StepInput
+from .step_kind import StepKind
+from .step_kind_notification_rule import StepKindNotificationRule
+from .step_outcome_set import StepOutcomeSet
+from .step_run_condition import StepRunCondition
+from .step_run_condition_request import StepRunConditionRequest
+from .step_score_gate import StepScoreGate
+from .step_status_labels import StepStatusLabels
+from .step_status_labels_request import StepStatusLabelsRequest
 from .storage_data_type import StorageDataType
 from .storage_data_type_request import StorageDataTypeRequest
 from .storage_folder_config import StorageFolderConfig
@@ -3120,8 +3362,16 @@ from .sub_net_mapping import SubNetMapping
 from .sub_net_mapping_request import SubNetMappingRequest
 from .submit_request_request import SubmitRequestRequest
 from .submit_request_response import SubmitRequestResponse
+from .submit_round_report_response import SubmitRoundReportResponse
+from .submit_step_contribution_request import SubmitStepContributionRequest
+from .submit_step_contribution_response import SubmitStepContributionResponse
 from .subresource_offering import SubresourceOffering
 from .suggest_alternative_reviewers import SuggestAlternativeReviewers
+from .suggested_reviewer import SuggestedReviewer
+from .suggested_reviewer_conflict import SuggestedReviewerConflict
+from .suggested_reviewer_invitation import SuggestedReviewerInvitation
+from .suggested_reviewer_invitation_outcome_enum import SuggestedReviewerInvitationOutcomeEnum
+from .suggested_reviewers_action_request import SuggestedReviewersActionRequest
 from .suggestion_reject_request import SuggestionRejectRequest
 from .support_stats import SupportStats
 from .support_user import SupportUser
@@ -3160,7 +3410,9 @@ from .table_size import TableSize
 from .tag import Tag
 from .tag_request import TagRequest
 from .tags_request import TagsRequest
+from .target_enum import TargetEnum
 from .target_user import TargetUser
+from .team_part_enum import TeamPartEnum
 from .team_workload import TeamWorkload
 from .technical_assessment_answer import TechnicalAssessmentAnswer
 from .technical_assessment_answer_answer_data import TechnicalAssessmentAnswerAnswerData
@@ -3206,6 +3458,7 @@ from .trigger_consumption_sync_request_request import TriggerConsumptionSyncRequ
 from .trigger_enum import TriggerEnum
 from .trigger_sync_request_request import TriggerSyncRequestRequest
 from .undecided_at_round_completion_enum import UndecidedAtRoundCompletionEnum
+from .unlockable_parts import UnlockableParts
 from .update_actions_request import UpdateActionsRequest
 from .update_actions_response import UpdateActionsResponse
 from .update_endpoint_request import UpdateEndpointRequest
@@ -3316,6 +3569,7 @@ from .version_changelog_summary import VersionChangelogSummary
 from .version_history import VersionHistory
 from .version_history_revision_user_type_0 import VersionHistoryRevisionUserType0
 from .version_history_serialized_data import VersionHistorySerializedData
+from .view_enum import ViewEnum
 from .visibility_enum import VisibilityEnum
 from .visible_invitation_details import VisibleInvitationDetails
 from .vmware_cluster import VmwareCluster
@@ -3364,14 +3618,91 @@ from .web_shell_ticket import WebShellTicket
 from .webhook_payload import WebhookPayload
 from .webhook_payload_request import WebhookPayloadRequest
 from .widget_enum import WidgetEnum
+from .withdraw_run_request import WithdrawRunRequest
 from .withdrawable_adjustment_request import WithdrawableAdjustmentRequest
+from .workflow_change_kind import WorkflowChangeKind
+from .workflow_change_type import WorkflowChangeType
+from .workflow_changes import WorkflowChanges
+from .workflow_check import WorkflowCheck
+from .workflow_check_finding import WorkflowCheckFinding
+from .workflow_check_severity import WorkflowCheckSeverity
+from .workflow_check_summary import WorkflowCheckSummary
 from .workflow_criterion import WorkflowCriterion
 from .workflow_criterion_request import WorkflowCriterionRequest
+from .workflow_description import WorkflowDescription
+from .workflow_description_actor import WorkflowDescriptionActor
+from .workflow_description_actor_kind_enum import WorkflowDescriptionActorKindEnum
+from .workflow_description_always_sent import WorkflowDescriptionAlwaysSent
+from .workflow_description_applicant import WorkflowDescriptionApplicant
+from .workflow_description_call import WorkflowDescriptionCall
+from .workflow_description_call_extra import WorkflowDescriptionCallExtra
+from .workflow_description_call_settings import WorkflowDescriptionCallSettings
+from .workflow_description_checklist import WorkflowDescriptionChecklist
+from .workflow_description_coi_declaration import WorkflowDescriptionCoiDeclaration
+from .workflow_description_coi_declaration_source_enum import WorkflowDescriptionCoiDeclarationSourceEnum
+from .workflow_description_contributors import WorkflowDescriptionContributors
+from .workflow_description_delegation import WorkflowDescriptionDelegation
+from .workflow_description_flag import WorkflowDescriptionFlag
+from .workflow_description_flag_cell import WorkflowDescriptionFlagCell
+from .workflow_description_flag_kind_enum import WorkflowDescriptionFlagKindEnum
+from .workflow_description_flag_severity_enum import WorkflowDescriptionFlagSeverityEnum
+from .workflow_description_issues_structural_item import WorkflowDescriptionIssuesStructuralItem
+from .workflow_description_notifications import WorkflowDescriptionNotifications
+from .workflow_description_notified_cell import WorkflowDescriptionNotifiedCell
+from .workflow_description_outcome import WorkflowDescriptionOutcome
+from .workflow_description_planned_step import WorkflowDescriptionPlannedStep
+from .workflow_description_post_award_schedule import WorkflowDescriptionPostAwardSchedule
+from .workflow_description_ref import WorkflowDescriptionRef
+from .workflow_description_ref_source_enum import WorkflowDescriptionRefSourceEnum
+from .workflow_description_role_cell import WorkflowDescriptionRoleCell
+from .workflow_description_round import WorkflowDescriptionRound
+from .workflow_description_rule import WorkflowDescriptionRule
+from .workflow_description_run_condition import WorkflowDescriptionRunCondition
+from .workflow_description_schedule import WorkflowDescriptionSchedule
+from .workflow_description_stage import WorkflowDescriptionStage
+from .workflow_description_step import WorkflowDescriptionStep
+from .workflow_description_step_extra import WorkflowDescriptionStepExtra
+from .workflow_description_trigger import WorkflowDescriptionTrigger
+from .workflow_diff import WorkflowDiff
+from .workflow_diff_template import WorkflowDiffTemplate
+from .workflow_dry_run import WorkflowDryRun
+from .workflow_dry_run_parameters_request import WorkflowDryRunParametersRequest
+from .workflow_dry_run_scenario_draft import WorkflowDryRunScenarioDraft
+from .workflow_entity_change import WorkflowEntityChange
+from .workflow_field_change import WorkflowFieldChange
+from .workflow_field_change_added_item import WorkflowFieldChangeAddedItem
+from .workflow_field_change_new_type_0 import WorkflowFieldChangeNewType0
+from .workflow_field_change_old_type_0 import WorkflowFieldChangeOldType0
+from .workflow_field_change_removed_item import WorkflowFieldChangeRemovedItem
+from .workflow_mail import WorkflowMail
+from .workflow_path import WorkflowPath
+from .workflow_path_step import WorkflowPathStep
+from .workflow_paths import WorkflowPaths
+from .workflow_phase_enum import WorkflowPhaseEnum
+from .workflow_progress import WorkflowProgress
+from .workflow_progress_outcome import WorkflowProgressOutcome
+from .workflow_progress_round import WorkflowProgressRound
+from .workflow_progress_round_step import WorkflowProgressRoundStep
+from .workflow_progress_step import WorkflowProgressStep
+from .workflow_report import WorkflowReport
+from .workflow_report_call_step import WorkflowReportCallStep
+from .workflow_report_step import WorkflowReportStep
+from .workflow_scenario_status import WorkflowScenarioStatus
 from .workflow_step_responsible_user import WorkflowStepResponsibleUser
+from .workflow_step_user_offering import WorkflowStepUserOffering
+from .workflow_timeline import WorkflowTimeline
+from .workflow_timeline_notification import WorkflowTimelineNotification
+from .workflow_timeline_step import WorkflowTimelineStep
+from .workflow_version import WorkflowVersion
+from .workflow_version_detail import WorkflowVersionDetail
+from .workflow_version_detail_document import WorkflowVersionDetailDocument
+from .workflow_version_reason import WorkflowVersionReason
+from .workflow_version_summary import WorkflowVersionSummary
 from .y_axis_enum import YAxisEnum
 from .zammadarticletype_enum import ZAMMADARTICLETYPEEnum
 
 __all__ = (
+    "AcceptStepContributionRequest",
     "AccessorTypeEnum",
     "AccessorUser",
     "AccessProject",
@@ -3417,6 +3748,8 @@ __all__ = (
     "AdoptProviderAccountsRequest",
     "AdoptProviderAccountsRequestResolutions",
     "AdoptProviderAccountsResponse",
+    "AdvanceRoundWorkflowStepRequest",
+    "AdvanceRoundWorkflowStepResponse",
     "AffiliatedOrganization",
     "AffiliatedOrganizationFieldEnum",
     "AffiliatedOrganizationReportRow",
@@ -3469,11 +3802,16 @@ __all__ = (
     "AggregatedUsageTrend",
     "AgreementTypeEnum",
     "AIASSISTANTENABLEDROLESEnum",
+    "AllocateInSubmissionOrderRequest",
+    "AllocateInSubmissionOrderResponse",
     "Allocation",
     "AllocationCandidatesResponse",
     "AllocationCandidatesResponseProviderSummaries",
     "AllocationFieldEnum",
     "AllocationMarketplaceOfferingPluginOptionsType0",
+    "AllocationPlanAward",
+    "AllocationPlanBudget",
+    "AllocationPlanRow",
     "AllocationRequest",
     "AllocationSetLimitsRequest",
     "AllocationTimeEnum",
@@ -3504,6 +3842,7 @@ __all__ = (
     "AnswerSubmitRequest",
     "AnswerSubmitResponse",
     "ApiAuthTokenExchangeResponse400",
+    "ArchiveCallRequest",
     "ArrowBillingLine",
     "ArrowBillingSync",
     "ArrowBillingSyncItem",
@@ -3597,6 +3936,7 @@ __all__ = (
     "AwardDetails",
     "AwardDetailsBreakdown",
     "AwardDetailsMembersType0",
+    "AwardedProposal",
     "AwardedResource",
     "AwardedResourceAttributes",
     "AwardedResourceLimits",
@@ -3675,6 +4015,10 @@ __all__ = (
     "BroadcastMessageQuery",
     "BroadcastMessageQueryRequest",
     "BroadcastMessageStateEnum",
+    "BudgetEnforcementEnum",
+    "BudgetReport",
+    "BudgetReportPool",
+    "BudgetReportTotals",
     "BulkRoundCreateRequestRequest",
     "BulkSilenceResponse",
     "BulkUpdateIssueRequest",
@@ -3682,6 +4026,7 @@ __all__ = (
     "CachedProjectUsageReport",
     "CachePerformance",
     "CadenceEnum",
+    "CallActivationRefused",
     "CallApplicantVisibilityConfig",
     "CallApplicantVisibilityConfigRequest",
     "CallAssignmentConfiguration",
@@ -3714,20 +4059,38 @@ __all__ = (
     "CallManagingOrganisationRequestForm",
     "CallManagingOrganisationRequestMultipart",
     "CallManagingOrganisationStat",
-    "CallPerformanceStat",
+    "CallNotificationMailType",
+    "CallNotificationOverride",
+    "CallNotificationOverrideRequest",
+    "CallOfferingComponent",
+    "CallOfferingComponentBounds",
+    "CallOfferingComponentRequest",
+    "CallPanel",
+    "CallPanelDomain",
+    "CallPanelPerson",
+    "CallPanelRequest",
+    "CallPoolSummary",
     "CallProposalFieldConfig",
     "CallProposalFieldConfigRequest",
+    "CallProposalRole",
+    "CallProposalRoleRequest",
+    "CallResourcePool",
+    "CallResourcePoolRequest",
     "CallResourceTemplate",
     "CallResourceTemplateAttributes",
     "CallResourceTemplateLimits",
     "CallResourceTemplateRequest",
     "CallResourceTemplateRequestAttributes",
     "CallResourceTemplateRequestLimits",
+    "CallReviewerEligibility",
+    "CallReviewerEligibilityRequest",
     "CallReviewerPool",
     "CallReviewerPoolCoiBySeverity",
     "CallReviewerPoolOEnum",
     "CallReviewerPoolUpdate",
     "CallRound",
+    "CallSaveAsTemplateRequest",
+    "CallScenarioSummary",
     "CallStates",
     "CallStats",
     "CallStatsBlock",
@@ -3737,6 +4100,22 @@ __all__ = (
     "CallStatsRoundProposals",
     "CallStatsRoundReviews",
     "CallStatsStep",
+    "CallStepKindEnum",
+    "CallTemplate",
+    "CallTemplateDocument",
+    "CallTemplateOEnum",
+    "CallTemplateOrigin",
+    "CallTemplatePreset",
+    "CallTemplatePresetInfo",
+    "CallTemplatePresetInfoCategoryEnum",
+    "CallTemplateProgramme",
+    "CallTemplateReference",
+    "CallTemplateRequest",
+    "CallTemplateRequestDocument",
+    "CallTemplateRequestScenariosItem",
+    "CallTemplateScenariosItem",
+    "CallTemplateStep",
+    "CallWorkflowScenarios",
     "CallWorkflowStep",
     "CallWorkflowStepNotificationRule",
     "CallWorkflowStepNotificationRuleNested",
@@ -3747,6 +4126,7 @@ __all__ = (
     "CampaignOffering",
     "CampaignRequest",
     "CampaignStateEnum",
+    "CancelChangeRequestRequest",
     "CancelRequestResponse",
     "CannedResponse",
     "CannedResponseRenderRequest",
@@ -3850,6 +4230,7 @@ __all__ = (
     "ChecklistShort",
     "ChecklistTemplate",
     "ChecklistTypeEnum",
+    "CheckRunStatusEnum",
     "CheckUniqueBackendIDRequest",
     "CheckUniqueBackendIDResponse",
     "CircuitBreakerConfig",
@@ -3885,6 +4266,8 @@ __all__ = (
     "CompensateInEnum",
     "CompleteRoundRefusal",
     "CompleteRoundResponse",
+    "CompleteRoundWorkflowStepRequest",
+    "CompleteRoundWorkflowStepResponse",
     "CompleteWorkflowStepRequest",
     "CompleteWorkflowStepResponse",
     "ComplianceOverview",
@@ -3945,6 +4328,8 @@ __all__ = (
     "ConsumptionStatusResponse",
     "ContainerFormatEnum",
     "ContentTypeInputEnum",
+    "ContributionDelegationCandidate",
+    "ContributionOutcomeEnum",
     "CoreAuthToken",
     "CoreStates",
     "CorrectiveAction",
@@ -3995,6 +4380,7 @@ __all__ = (
     "CreditTransaction",
     "CreditTransactionOEnum",
     "CurrentQosStatusEnum",
+    "CurrentStageEnum",
     "Customer",
     "CustomerAffiliate",
     "CustomerAffiliateOEnum",
@@ -4079,8 +4465,13 @@ __all__ = (
     "DataVolume",
     "DataVolumeRequest",
     "DeadLetterQueue",
+    "DeclineStepContributionRequest",
     "DEFAULTIDPEnum",
     "DefaultPermissionEnum",
+    "DelegateStepContributionRequest",
+    "DelegateTeamSlotsRequest",
+    "DelegateTeamSlotsResult",
+    "DelegateTeamSlotsResultSkipped",
     "DeleteAttachmentsRequest",
     "DeliveryEnum",
     "DemoPreset",
@@ -4133,11 +4524,35 @@ __all__ = (
     "DisplayLimitConfigRequest",
     "DLQQueue",
     "DryRun",
+    "DryRunActionRequest",
+    "DryRunAudience",
+    "DryRunContributionRequest",
+    "DryRunContributionState",
+    "DryRunCoverage",
+    "DryRunCoverageContributionOutcomes",
+    "DryRunCoverageOutcomes",
+    "DryRunLogEntry",
+    "DryRunMessage",
+    "DryRunNext",
+    "DryRunNextStep",
     "DryRunOrderAttributes",
+    "DryRunOutcomeCoverage",
+    "DryRunRead",
+    "DryRunReadDataType0",
     "DryRunRequest",
     "DryRunRequestAttributes",
+    "DryRunRequestedOffering",
+    "DryRunSlotRequest",
     "DryRunStateEnum",
+    "DryRunStepState",
+    "DryRunStepStateConditionType0",
+    "DryRunStepStateExtra",
     "DryRunTypeEnum",
+    "DryRunViewAsRequest",
+    "DryRunViewAsResult",
+    "DryRunViewAsResultResponses",
+    "DryRunViewer",
+    "DryRunViewerPermissionsItem",
     "DuplicateCallRequestRequest",
     "DuplicateOfferingCandidate",
     "DuplicateOfferingGroup",
@@ -4147,6 +4562,7 @@ __all__ = (
     "EffectiveRouteSourceEnum",
     "EffectiveRoutesResponse",
     "EligibilityCheck",
+    "EligibleFromEnum",
     "EligibleProject",
     "EmailConfig",
     "EmailDiagnostics",
@@ -4431,6 +4847,7 @@ __all__ = (
     "InvitationStatusEnum",
     "InvitationUpdate",
     "InvitationUpdateRequest",
+    "InviteSuggestedReviewersResponse",
     "Invoice",
     "InvoiceCost",
     "InvoiceCostItem",
@@ -4496,6 +4913,8 @@ __all__ = (
     "KeysHistoryAtRetrieveResponse400",
     "KeysHistoryAtRetrieveResponse404",
     "KeywordSearchModeEnum",
+    "LabelKindEnum",
+    "LaggingProposalsRefusal",
     "LbAlgorithmEnum",
     "LevelEnum",
     "LexisLink",
@@ -4521,6 +4940,8 @@ __all__ = (
     "LoadBalancerModeEnum",
     "LoadBalancerProtocolEnum",
     "LoadBalancerSetSecurityGroupsRequest",
+    "LoadCallTemplatePresetRequest",
+    "LoadCallTemplatePresetResponse",
     "LoadScienceDomainPresetRequest",
     "LoadScienceDomainPresetResponse",
     "LockStats",
@@ -4692,9 +5113,14 @@ __all__ = (
     "MoveResourceRequest",
     "MyAssignmentBatch",
     "MyAssignmentBatchDetail",
+    "MyAssignmentBatchStatusEnum",
     "MyAssignmentItem",
+    "MyTask",
+    "MyTaskDueEnum",
+    "MyTaskSummary",
     "NameEnum",
     "NameUUID",
+    "NeededEnum",
     "NestedAgentProcessor",
     "NestedAgentService",
     "NestedAgentServiceRequest",
@@ -4770,6 +5196,9 @@ __all__ = (
     "Note",
     "Notification",
     "NotificationContextSchema",
+    "NotificationPreview",
+    "NotificationPreviewDraftRequest",
+    "NotificationPreviewSourceEnum",
     "NotificationRecipient",
     "NotificationRecipientCustomer",
     "NotificationRecipientOffering",
@@ -4777,6 +5206,10 @@ __all__ = (
     "NotificationTemplateDetailSerializers",
     "NotificationTemplateDetailSerializersRequest",
     "NotificationTemplateUpdateSerializersRequest",
+    "NotificationVariable",
+    "NotificationWording",
+    "NotifyProposalsRequest",
+    "NotifyProposalsResponse",
     "NotifySystemEnum",
     "ObservableObjectTypeEnum",
     "ObtainAuthTokenRequest",
@@ -4788,6 +5221,7 @@ __all__ = (
     "OfferingAccessSubnets",
     "OfferingAccountPreview",
     "OfferingAccountSettings",
+    "OfferingAssessment",
     "OfferingAttributes",
     "OfferingBackendIdRulesUpdateRequest",
     "OfferingBackendIdRulesUpdateRequestBackendIdRules",
@@ -4823,6 +5257,11 @@ __all__ = (
     "OfferingCreateRequestMultipartBackendMetadata",
     "OfferingCreateRequestMultipartLimits",
     "OfferingDefaultAccessSubnetRow",
+    "OfferingDemand",
+    "OfferingDemandComponent",
+    "OfferingDemandPool",
+    "OfferingDependent",
+    "OfferingDependentChangeEnum",
     "OfferingDescriptionUpdateRequest",
     "OfferingEstimatedCostPolicy",
     "OfferingEstimatedCostPolicyFieldEnum",
@@ -4939,6 +5378,11 @@ __all__ = (
     "OfferingStateCounters",
     "OfferingStats",
     "OfferingStatsCounter",
+    "OfferingTeam",
+    "OfferingTeamPerson",
+    "OfferingTeamProvider",
+    "OfferingTeamSlot",
+    "OfferingTeamStep",
     "OfferingTermsOfService",
     "OfferingTermsOfServiceCreate",
     "OfferingTermsOfServiceCreateRequest",
@@ -5002,11 +5446,15 @@ __all__ = (
     "OnboardingVerificationValidationMethodEnum",
     "OnboardingVerificationVerifiedCompanyData",
     "OnboardingVerificationVerifiedUserRoles",
+    "OnDepletedEnum",
+    "OnNegativeEnum",
     "OPENPORTALMEMBERSHIPSYNCMODEEnum",
     "OpenPortalQuota",
     "OpenportalRemoteProjectsTotalUsageRetrieveResponse200",
     "OpenportalUnmanagedProjectsHistoryAtRetrieveResponse400",
     "OpenportalUnmanagedProjectsHistoryAtRetrieveResponse404",
+    "OpenRoundWorkflowStepRequest",
+    "OpenRoundWorkflowStepResponse",
     "OpenStackAllowedAddressPair",
     "OpenStackAllowedAddressPairRequest",
     "OpenStackBackendInstance",
@@ -5178,6 +5626,9 @@ __all__ = (
     "OrderAttachmentRequestForm",
     "OrderAttachmentRequestMultipart",
     "OrderAuthorEnum",
+    "OrderAward",
+    "OrderAwardAwardedLimits",
+    "OrderAwardRequestedLimitsType0",
     "OrderBackendIDRequest",
     "OrderConsumerInfoRequest",
     "OrderConsumerInfoRequestForm",
@@ -5219,6 +5670,7 @@ __all__ = (
     "OtlpV1MetricsJsonBody",
     "OtlpV1MetricsResponse200",
     "OutcomeEnum",
+    "OutcomeSetEnum",
     "PaidRequest",
     "PaidRequestForm",
     "PaidRequestMultipart",
@@ -5262,10 +5714,18 @@ __all__ = (
     "PatchedCallManagingOrganisationRequest",
     "PatchedCallManagingOrganisationRequestForm",
     "PatchedCallManagingOrganisationRequestMultipart",
+    "PatchedCallNotificationOverrideRequest",
+    "PatchedCallOfferingComponentRequest",
+    "PatchedCallPanelRequest",
+    "PatchedCallProposalRoleRequest",
+    "PatchedCallResourcePoolRequest",
     "PatchedCallResourceTemplateRequest",
     "PatchedCallResourceTemplateRequestAttributes",
     "PatchedCallResourceTemplateRequestLimits",
     "PatchedCallReviewerPoolUpdateRequest",
+    "PatchedCallTemplateRequest",
+    "PatchedCallTemplateRequestDocument",
+    "PatchedCallTemplateRequestScenariosItem",
     "PatchedCallWorkflowStepNotificationRuleRequest",
     "PatchedCallWorkflowStepRequest",
     "PatchedCannedResponseRequest",
@@ -5378,7 +5838,13 @@ __all__ = (
     "PatchedProjectTemplateRequestAllocationUnitsMapping",
     "PatchedProjectTemplateRequestRoleMapping",
     "PatchedProposalProjectRoleMappingRequest",
+    "PatchedProposalRankingRequest",
+    "PatchedProposalRankingRequestRecommendedResources",
     "PatchedProposalReviewRequest",
+    "PatchedProposalReviewRequestCriteriaScores",
+    "PatchedProposalRunUpdateRequest",
+    "PatchedProposalRunUpdateRequestGrantedLimits",
+    "PatchedProposalRunUpdateRequestRequestedLimits",
     "PatchedProtectedCallRequest",
     "PatchedProtectedRoundRequest",
     "PatchedProviderCannedResponseRequest",
@@ -5425,6 +5891,7 @@ __all__ = (
     "PatchedReviewerPublicationRequestExternalIds",
     "PatchedRobotAccountRequest",
     "PatchedRoleDetailsRequest",
+    "PatchedRoundMeetingNoteRequest",
     "PatchedRuleRequest",
     "PatchedRuleRequestPlanAttributes",
     "PatchedRuleRequestPlanLimits",
@@ -5496,15 +5963,23 @@ __all__ = (
     "PersonIdentifierFieldsResponsePersonIdentifierFields",
     "PlanBillingMode",
     "PlanComponent",
+    "PlannedOutcomeEnum",
     "PlanUsageResponse",
     "PluginComponent",
     "PluginOfferingType",
+    "PolarityEnum",
     "PolicyCostBreakdown",
     "PolicyEnum",
     "PolicyGateEnum",
     "PolicyPeriodEnum",
     "PolicyTriggerStatus",
     "PolicyTypeEnum",
+    "PoolStatusEnum",
+    "PortfolioReport",
+    "PortfolioReportBlock",
+    "PortfolioReportCall",
+    "PortfolioReportMonth",
+    "PortfolioReportRound",
     "PosixIdentity",
     "PosixIdentityConsumerTypeEnum",
     "PosixIdentityOEnum",
@@ -5519,6 +5994,7 @@ __all__ = (
     "PosixIdPoolStats",
     "PosixIdSourceEnum",
     "PosixSharingOffering",
+    "PostAwardStatusEnum",
     "PresetEnum",
     "PreviewPeriod",
     "PreviewServiceAttributesRequestRequest",
@@ -5622,7 +6098,12 @@ __all__ = (
     "ProjectUsageReportUsers",
     "ProjectUser",
     "Proposal",
+    "ProposalAwardedDuration",
+    "ProposalAwardedDurationRequest",
+    "ProposalBudget",
+    "ProposalBudgetEntry",
     "ProposalCanSubmitResponse",
+    "ProposalChangeRequest",
     "ProposalChecklistAnswerSubmitResponse",
     "ProposalComplianceStatus",
     "ProposalConfigurableFieldEnum",
@@ -5631,19 +6112,46 @@ __all__ = (
     "ProposalDocumentationRequest",
     "ProposalDocumentationRequestForm",
     "ProposalDocumentationRequestMultipart",
+    "ProposalFeedbackRequest",
     "ProposalFieldMetadata",
     "ProposalFieldStateEnum",
     "ProposalOEnum",
+    "ProposalPreviewAsRequest",
+    "ProposalPreviewRole",
     "ProposalProjectRoleMapping",
     "ProposalProjectRoleMappingRequest",
     "ProposalProtectedCallsReviewProposalComplianceResponse200",
+    "ProposalRanking",
+    "ProposalRankingOEnum",
+    "ProposalRankingRecommendedResources",
+    "ProposalRankingRequest",
+    "ProposalRankingRequestRecommendedResources",
     "ProposalRequest",
     "ProposalReview",
+    "ProposalReviewCriteriaScores",
+    "ProposalReviewerSuggestion",
+    "ProposalReviewerSuggestionCreateRequest",
+    "ProposalReviewerSuggestionStatus",
+    "ProposalReviewerSuggestionWithdrawRequest",
     "ProposalReviewOEnum",
     "ProposalReviewRequest",
+    "ProposalReviewRequestCriteriaScores",
     "ProposalReviewStateEnum",
+    "ProposalRoleAssignment",
+    "ProposalRoleAssignmentActionRequest",
+    "ProposalRoleAssignRequest",
+    "ProposalRoleCandidate",
+    "ProposalRun",
+    "ProposalRunAppliedChanges",
+    "ProposalRunGrantedLimits",
+    "ProposalRunPhaseEnum",
+    "ProposalRunRequestedLimits",
+    "ProposalRunStateEnum",
+    "ProposalSetPanelRequest",
     "ProposalStates",
+    "ProposalStatusLabel",
     "ProposalUpdateProjectDetailsRequest",
+    "ProposalWithdrawRequest",
     "ProposalWorkflowStepInstance",
     "ProposalWorkflowStepInstanceStatusEnum",
     "ProposedAssignment",
@@ -5718,8 +6226,10 @@ __all__ = (
     "ProviderUsernameCandidate",
     "ProviderUsernameConflict",
     "ProviderUserRoleDetails",
+    "ProvisionAwardedItemRequest",
     "PublicCall",
     "PublicCallFieldEnum",
+    "PublicCallStateEnum",
     "PublicInvitation",
     "PublicMaintenanceAnnouncement",
     "PublicMaintenanceAnnouncementStateEnum",
@@ -5854,17 +6364,25 @@ __all__ = (
     "RancherWorkloadCreateRequest",
     "RancherWorkloadOEnum",
     "RancherWorkloadRequest",
+    "RankingImportRequest",
+    "RankingImportResponse",
     "RbacPolicyDirectionEnum",
     "ReassignItemRequest",
     "ReassignItemResponse",
     "RecentTicket",
     "RecipientEnum",
+    "RecipientsEnum",
+    "RecommendedComponent",
+    "RecommendedOffering",
     "ReconcileRequestRequest",
     "ReferenceNumberRequest",
     "RejectedPoint",
+    "RejectRequestedOfferingRequest",
     "RejectWorkflowStepRequest",
     "RejectWorkflowStepResponse",
     "RelationshipTypeEnum",
+    "ReleasedReport",
+    "ReleaseStepReportRequest",
     "RelevantWhen",
     "RemoteAllocation",
     "RemoteAllocationFieldEnum",
@@ -5902,10 +6420,13 @@ __all__ = (
     "RenewalEstimateRequestRequest",
     "RenewalEstimateRequestRequestLimits",
     "RenewalEstimateResponse",
+    "ReopenContributionRequest",
     "ReopenDecisionRequest",
     "ReplicationStats",
     "ReportSection",
     "ReportSectionRequest",
+    "RequestableComponent",
+    "RequestChangesRequest",
     "RequestedOffering",
     "RequestedOfferingAttributes",
     "RequestedOfferingRequest",
@@ -5921,6 +6442,8 @@ __all__ = (
     "RequestedResourceRequest",
     "RequestedResourceRequestAttributes",
     "RequestedResourceRequestLimits",
+    "RequestExtensionRequest",
+    "RequestExtensionRequestRequestedLimits",
     "RequestType",
     "RequestTypeAdmin",
     "RequestTypeAdminRequest",
@@ -5928,6 +6451,7 @@ __all__ = (
     "RequestTypeReorderRequest",
     "RequestTypes",
     "ReservedAgentTask",
+    "ResolutionEnum",
     "ResourceApiKey",
     "ResourceApiKeyAction",
     "ResourceApiKeyCreateRequest",
@@ -5956,9 +6480,6 @@ __all__ = (
     "ResourceBackendMetadataRequestBackendMetadata",
     "ResourceClassSummary",
     "ResourceContext",
-    "ResourceDemandStat",
-    "ResourceDemandStatTotalApprovedLimits",
-    "ResourceDemandStatTotalRequestedLimits",
     "ResourceDownscaledRequest",
     "ResourceEffectiveIDRequest",
     "ResourceEndDateByProviderRequest",
@@ -5987,6 +6508,8 @@ __all__ = (
     "ResourceOptionsRequestOptionsType0",
     "ResourcePausedRequest",
     "ResourcePlanPeriod",
+    "ResourcePoolCell",
+    "ResourcePoolUsage",
     "ResourceProject",
     "ResourceProjectBackendIdRequest",
     "ResourceProjectCurrentUsages",
@@ -6050,6 +6573,7 @@ __all__ = (
     "RetentionPolicy",
     "RetentionPolicyRequest",
     "ReviewCommentRequest",
+    "ReviewCriterion",
     "ReviewerAffiliation",
     "ReviewerAffiliationRequest",
     "ReviewerBid",
@@ -6071,19 +6595,30 @@ __all__ = (
     "ReviewerProfilesPublishResponse200",
     "ReviewerProfilesUnpublishResponse200",
     "ReviewerPublication",
+    "ReviewerPublicationApproval",
     "ReviewerPublicationExternalIds",
     "ReviewerPublicationRequest",
     "ReviewerPublicationRequestExternalIds",
+    "ReviewerRegistry",
+    "ReviewerRegistryOEnum",
+    "ReviewerRegistryPool",
+    "ReviewerReport",
+    "ReviewerReportRow",
+    "ReviewerReportTotals",
+    "ReviewerStandingEnum",
+    "ReviewerStandingRequest",
     "ReviewerStats",
     "ReviewerSuggestion",
+    "ReviewerSuggestionCandidate",
+    "ReviewerSuggestionEntry",
     "ReviewerSuggestionItem",
     "ReviewerSuggestionOEnum",
     "ReviewerSuggestionRequest",
     "ReviewerSuggestionStatusEnum",
     "ReviewerSuggestionTopMatchingProposal",
     "ReviewerSuggestionTopMatchingProposalRequest",
-    "ReviewProgressStat",
     "ReviewSubmitRequest",
+    "ReviewSubmitRequestCriteriaScores",
     "RichTextToolbarLevelEnum",
     "RmqClientProperties",
     "RmqEnrichedConnection",
@@ -6126,8 +6661,20 @@ __all__ = (
     "RoleTemplateOEnum",
     "RoleType",
     "RoundAdoptionRequest",
+    "RoundMeetingNote",
+    "RoundMeetingNoteDocument",
+    "RoundMeetingNoteRequest",
+    "RoundReport",
+    "RoundReportProposal",
+    "RoundReportRow",
+    "RoundReportRowStatusEnum",
+    "RoundReportTotals",
     "RoundReviewer",
     "RoundStatus",
+    "RoundStatusEnum",
+    "RoundStep",
+    "RoundStepProposalResult",
+    "RoundWorkflowStepDueDateRequest",
     "RouteToProviderRequest",
     "Rule",
     "RulePlanAttributes",
@@ -6155,6 +6702,13 @@ __all__ = (
     "SavedFilterRequestFilterParams",
     "SaveSettingsRequestRequest",
     "SaveSettingsResponse",
+    "ScenarioAssertionResult",
+    "ScenarioAssertionResultActualType0",
+    "ScenarioAssertionResultAssertion",
+    "ScenarioCoverage",
+    "ScenarioCoverageUntriedOutcomes",
+    "ScenarioResult",
+    "ScenarioTotals",
     "ScheduledAgentTask",
     "ScienceDomain",
     "ScienceDomainOEnum",
@@ -6223,6 +6777,8 @@ __all__ = (
     "ServiceSettingsStateEnum",
     "SetAllowedAddressPairsRequest",
     "SetAllowedDomainsRequest",
+    "SetDefaultDelegate",
+    "SetDefaultDelegateRequest",
     "SetEarliestApproveRequest",
     "SetErredRequest",
     "SetExternalGatewayFixedIPRequest",
@@ -6252,6 +6808,7 @@ __all__ = (
     "SiteAgentLogCreateRequest",
     "SiteMaintenanceReservationRequest",
     "SkippedProposal",
+    "SkippedReasonEnum",
     "SlurmCommand",
     "SlurmCommandHistory",
     "SlurmCommandHistoryParameters",
@@ -6327,11 +6884,26 @@ __all__ = (
     "SshKeyOEnum",
     "SshKeyRequest",
     "StageEnum",
+    "StateGroupEnum",
     "StateTransitionError",
     "Status",
-    "StepChecklistResponseGroup",
+    "StepAudienceStatusLabels",
+    "StepAudienceStatusLabelsOutcomes",
+    "StepAudienceStatusLabelsRequest",
+    "StepAudienceStatusLabelsRequestOutcomes",
     "StepChecklistStatus",
-    "StepEnum",
+    "StepContribution",
+    "StepContributionStatus",
+    "StepContributionWithAnswers",
+    "StepInput",
+    "StepKind",
+    "StepKindNotificationRule",
+    "StepOutcomeSet",
+    "StepRunCondition",
+    "StepRunConditionRequest",
+    "StepScoreGate",
+    "StepStatusLabels",
+    "StepStatusLabelsRequest",
     "StorageDataType",
     "StorageDataTypeRequest",
     "StorageFolderConfig",
@@ -6340,10 +6912,18 @@ __all__ = (
     "StyleEnum",
     "SubmitRequestRequest",
     "SubmitRequestResponse",
+    "SubmitRoundReportResponse",
+    "SubmitStepContributionRequest",
+    "SubmitStepContributionResponse",
     "SubNetMapping",
     "SubNetMappingRequest",
     "SubresourceOffering",
     "SuggestAlternativeReviewers",
+    "SuggestedReviewer",
+    "SuggestedReviewerConflict",
+    "SuggestedReviewerInvitation",
+    "SuggestedReviewerInvitationOutcomeEnum",
+    "SuggestedReviewersActionRequest",
     "SuggestionRejectRequest",
     "SupportedCountriesResponse",
     "SupportStats",
@@ -6382,7 +6962,9 @@ __all__ = (
     "Tag",
     "TagRequest",
     "TagsRequest",
+    "TargetEnum",
     "TargetUser",
+    "TeamPartEnum",
     "TeamWorkload",
     "TechnicalAssessmentAnswer",
     "TechnicalAssessmentAnswerAnswerData",
@@ -6428,6 +7010,7 @@ __all__ = (
     "TriggerEnum",
     "TriggerSyncRequestRequest",
     "UndecidedAtRoundCompletionEnum",
+    "UnlockableParts",
     "UpdateActionsRequest",
     "UpdateActionsResponse",
     "UpdateEndpointRequest",
@@ -6528,6 +7111,7 @@ __all__ = (
     "VersionHistory",
     "VersionHistoryRevisionUserType0",
     "VersionHistorySerializedData",
+    "ViewEnum",
     "VisibilityEnum",
     "VisibleInvitationDetails",
     "VmwareCluster",
@@ -6579,9 +7163,85 @@ __all__ = (
     "WebShellTicket",
     "WidgetEnum",
     "WithdrawableAdjustmentRequest",
+    "WithdrawRunRequest",
+    "WorkflowChangeKind",
+    "WorkflowChanges",
+    "WorkflowChangeType",
+    "WorkflowCheck",
+    "WorkflowCheckFinding",
+    "WorkflowCheckSeverity",
+    "WorkflowCheckSummary",
     "WorkflowCriterion",
     "WorkflowCriterionRequest",
+    "WorkflowDescription",
+    "WorkflowDescriptionActor",
+    "WorkflowDescriptionActorKindEnum",
+    "WorkflowDescriptionAlwaysSent",
+    "WorkflowDescriptionApplicant",
+    "WorkflowDescriptionCall",
+    "WorkflowDescriptionCallExtra",
+    "WorkflowDescriptionCallSettings",
+    "WorkflowDescriptionChecklist",
+    "WorkflowDescriptionCoiDeclaration",
+    "WorkflowDescriptionCoiDeclarationSourceEnum",
+    "WorkflowDescriptionContributors",
+    "WorkflowDescriptionDelegation",
+    "WorkflowDescriptionFlag",
+    "WorkflowDescriptionFlagCell",
+    "WorkflowDescriptionFlagKindEnum",
+    "WorkflowDescriptionFlagSeverityEnum",
+    "WorkflowDescriptionIssuesStructuralItem",
+    "WorkflowDescriptionNotifications",
+    "WorkflowDescriptionNotifiedCell",
+    "WorkflowDescriptionOutcome",
+    "WorkflowDescriptionPlannedStep",
+    "WorkflowDescriptionPostAwardSchedule",
+    "WorkflowDescriptionRef",
+    "WorkflowDescriptionRefSourceEnum",
+    "WorkflowDescriptionRoleCell",
+    "WorkflowDescriptionRound",
+    "WorkflowDescriptionRule",
+    "WorkflowDescriptionRunCondition",
+    "WorkflowDescriptionSchedule",
+    "WorkflowDescriptionStage",
+    "WorkflowDescriptionStep",
+    "WorkflowDescriptionStepExtra",
+    "WorkflowDescriptionTrigger",
+    "WorkflowDiff",
+    "WorkflowDiffTemplate",
+    "WorkflowDryRun",
+    "WorkflowDryRunParametersRequest",
+    "WorkflowDryRunScenarioDraft",
+    "WorkflowEntityChange",
+    "WorkflowFieldChange",
+    "WorkflowFieldChangeAddedItem",
+    "WorkflowFieldChangeNewType0",
+    "WorkflowFieldChangeOldType0",
+    "WorkflowFieldChangeRemovedItem",
+    "WorkflowMail",
+    "WorkflowPath",
+    "WorkflowPaths",
+    "WorkflowPathStep",
+    "WorkflowPhaseEnum",
+    "WorkflowProgress",
+    "WorkflowProgressOutcome",
+    "WorkflowProgressRound",
+    "WorkflowProgressRoundStep",
+    "WorkflowProgressStep",
+    "WorkflowReport",
+    "WorkflowReportCallStep",
+    "WorkflowReportStep",
+    "WorkflowScenarioStatus",
     "WorkflowStepResponsibleUser",
+    "WorkflowStepUserOffering",
+    "WorkflowTimeline",
+    "WorkflowTimelineNotification",
+    "WorkflowTimelineStep",
+    "WorkflowVersion",
+    "WorkflowVersionDetail",
+    "WorkflowVersionDetailDocument",
+    "WorkflowVersionReason",
+    "WorkflowVersionSummary",
     "YAxisEnum",
     "ZAMMADARTICLETYPEEnum",
 )

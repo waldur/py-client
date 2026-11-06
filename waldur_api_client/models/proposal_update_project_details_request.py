@@ -18,12 +18,15 @@ class ProposalUpdateProjectDetailsRequest:
         description (Union[Unset, str]):
         project_summary (Union[Unset, str]):
         science_sub_domain (Union[None, UUID, Unset]):
+        requested_duration_months (Union[None, Unset, int]): The project length, in months: one of the call's
+            allowed_duration_months.
     """
 
     name: str
     description: Union[Unset, str] = UNSET
     project_summary: Union[Unset, str] = UNSET
     science_sub_domain: Union[None, UUID, Unset] = UNSET
+    requested_duration_months: Union[None, Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -41,6 +44,12 @@ class ProposalUpdateProjectDetailsRequest:
         else:
             science_sub_domain = self.science_sub_domain
 
+        requested_duration_months: Union[None, Unset, int]
+        if isinstance(self.requested_duration_months, Unset):
+            requested_duration_months = UNSET
+        else:
+            requested_duration_months = self.requested_duration_months
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -54,6 +63,8 @@ class ProposalUpdateProjectDetailsRequest:
             field_dict["project_summary"] = project_summary
         if science_sub_domain is not UNSET:
             field_dict["science_sub_domain"] = science_sub_domain
+        if requested_duration_months is not UNSET:
+            field_dict["requested_duration_months"] = requested_duration_months
 
         return field_dict
 
@@ -83,11 +94,21 @@ class ProposalUpdateProjectDetailsRequest:
 
         science_sub_domain = _parse_science_sub_domain(d.pop("science_sub_domain", UNSET))
 
+        def _parse_requested_duration_months(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        requested_duration_months = _parse_requested_duration_months(d.pop("requested_duration_months", UNSET))
+
         proposal_update_project_details_request = cls(
             name=name,
             description=description,
             project_summary=project_summary,
             science_sub_domain=science_sub_domain,
+            requested_duration_months=requested_duration_months,
         )
 
         proposal_update_project_details_request.additional_properties = d

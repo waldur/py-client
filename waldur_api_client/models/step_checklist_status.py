@@ -16,6 +16,9 @@ class StepChecklistStatus:
         checklist_name (Union[None, str]):
         checklist_completed (bool):
         unanswered_required_count (int):
+        can_read (bool): Whether the caller may read the step's form as a whole (step-checklist without a contribution):
+            its responsible role, the call team, staff, or someone who may contribute to it. A contributor's own card is
+            read through its contribution.
     """
 
     has_checklist: bool
@@ -23,6 +26,7 @@ class StepChecklistStatus:
     checklist_name: Union[None, str]
     checklist_completed: bool
     unanswered_required_count: int
+    can_read: bool
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -37,6 +41,8 @@ class StepChecklistStatus:
 
         unanswered_required_count = self.unanswered_required_count
 
+        can_read = self.can_read
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -46,6 +52,7 @@ class StepChecklistStatus:
                 "checklist_name": checklist_name,
                 "checklist_completed": checklist_completed,
                 "unanswered_required_count": unanswered_required_count,
+                "can_read": can_read,
             }
         )
 
@@ -69,12 +76,15 @@ class StepChecklistStatus:
 
         unanswered_required_count = d.pop("unanswered_required_count")
 
+        can_read = d.pop("can_read")
+
         step_checklist_status = cls(
             has_checklist=has_checklist,
             checklist_required=checklist_required,
             checklist_name=checklist_name,
             checklist_completed=checklist_completed,
             unanswered_required_count=unanswered_required_count,
+            can_read=can_read,
         )
 
         step_checklist_status.additional_properties = d

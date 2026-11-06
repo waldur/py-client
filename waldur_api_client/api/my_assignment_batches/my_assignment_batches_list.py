@@ -6,14 +6,32 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.my_assignment_batch import MyAssignmentBatch
-from ...types import Response
+from ...models.my_assignment_batch_status_enum import MyAssignmentBatchStatusEnum
+from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
 
-def _get_kwargs() -> dict[str, Any]:
+def _get_kwargs(
+    *,
+    status: Union[Unset, list[MyAssignmentBatchStatusEnum]] = UNSET,
+) -> dict[str, Any]:
+    params: dict[str, Any] = {}
+
+    json_status: Union[Unset, list[str]] = UNSET
+    if not isinstance(status, Unset):
+        json_status = []
+        for status_item_data in status:
+            status_item = status_item_data.value
+            json_status.append(status_item)
+
+    params["status"] = json_status
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/my-assignment-batches/",
+        "params": params,
     }
 
     return _kwargs
@@ -50,8 +68,14 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    status: Union[Unset, list[MyAssignmentBatchStatusEnum]] = UNSET,
 ) -> Response[list["MyAssignmentBatch"]]:
-    """List all pending assignment batches for the authenticated reviewer.
+    """List the authenticated reviewer's assignment batches. By default only batches still awaiting a
+    response are returned. The status filter uses the effective status: a sent batch past its deadline
+    is expired even before the expiry task has run.
+
+    Args:
+        status (Union[Unset, list[MyAssignmentBatchStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -61,7 +85,9 @@ def sync_detailed(
         Response[list['MyAssignmentBatch']]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        status=status,
+    )
 
     response = client.get_httpx_client().request(
         **kwargs,
@@ -73,8 +99,14 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    status: Union[Unset, list[MyAssignmentBatchStatusEnum]] = UNSET,
 ) -> list["MyAssignmentBatch"]:
-    """List all pending assignment batches for the authenticated reviewer.
+    """List the authenticated reviewer's assignment batches. By default only batches still awaiting a
+    response are returned. The status filter uses the effective status: a sent batch past its deadline
+    is expired even before the expiry task has run.
+
+    Args:
+        status (Union[Unset, list[MyAssignmentBatchStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -86,14 +118,21 @@ def sync(
 
     return sync_detailed(
         client=client,
+        status=status,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    status: Union[Unset, list[MyAssignmentBatchStatusEnum]] = UNSET,
 ) -> Response[list["MyAssignmentBatch"]]:
-    """List all pending assignment batches for the authenticated reviewer.
+    """List the authenticated reviewer's assignment batches. By default only batches still awaiting a
+    response are returned. The status filter uses the effective status: a sent batch past its deadline
+    is expired even before the expiry task has run.
+
+    Args:
+        status (Union[Unset, list[MyAssignmentBatchStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -103,7 +142,9 @@ async def asyncio_detailed(
         Response[list['MyAssignmentBatch']]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        status=status,
+    )
 
     response = await client.get_async_httpx_client().request(**kwargs)
 
@@ -113,8 +154,14 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    status: Union[Unset, list[MyAssignmentBatchStatusEnum]] = UNSET,
 ) -> list["MyAssignmentBatch"]:
-    """List all pending assignment batches for the authenticated reviewer.
+    """List the authenticated reviewer's assignment batches. By default only batches still awaiting a
+    response are returned. The status filter uses the effective status: a sent batch past its deadline
+    is expired even before the expiry task has run.
+
+    Args:
+        status (Union[Unset, list[MyAssignmentBatchStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -127,6 +174,7 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            status=status,
         )
     ).parsed
 
@@ -134,6 +182,7 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
+    status: Union[Unset, list[MyAssignmentBatchStatusEnum]] = UNSET,
 ) -> list["MyAssignmentBatch"]:
     """Get All Pages
 
@@ -143,6 +192,7 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
+        status (Union[Unset, list[MyAssignmentBatchStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -156,7 +206,9 @@ def sync_all(
     all_results: list[MyAssignmentBatch] = []
 
     # Get initial request kwargs
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        status=status,
+    )
 
     # Set page_size to maximum
     if "params" not in kwargs:
@@ -203,6 +255,7 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
+    status: Union[Unset, list[MyAssignmentBatchStatusEnum]] = UNSET,
 ) -> list["MyAssignmentBatch"]:
     """Get All Pages (Async)
 
@@ -212,6 +265,7 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
+        status (Union[Unset, list[MyAssignmentBatchStatusEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -225,7 +279,9 @@ async def asyncio_all(
     all_results: list[MyAssignmentBatch] = []
 
     # Get initial request kwargs
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        status=status,
+    )
 
     # Set page_size to maximum
     if "params" not in kwargs:

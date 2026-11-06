@@ -9,7 +9,7 @@ T = TypeVar("T", bound="CallImportParametersRequestCallData")
 
 @_attrs_define
 class CallImportParametersRequestCallData:
-    """Exported call document, as a mapping or a YAML string."""
+    """Exported call document, as a mapping or a YAML string. Give this or template."""
 
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

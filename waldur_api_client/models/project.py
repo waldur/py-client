@@ -14,6 +14,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.affiliated_organization import AffiliatedOrganization
+    from ..models.awarded_proposal import AwardedProposal
     from ..models.nested_price_estimate import NestedPriceEstimate
     from ..models.project_marketplace_resource_count import ProjectMarketplaceResourceCount
     from ..models.project_metadata_answer import ProjectMetadataAnswer
@@ -95,6 +96,7 @@ class Project:
         marketplace_resource_count (Union[Unset, ProjectMarketplaceResourceCount]):
         billing_price_estimate (Union[Unset, NestedPriceEstimate]):
         has_metrics (Union[Unset, bool]):
+        awarded_proposal (Union['AwardedProposal', None, Unset]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -153,10 +155,12 @@ class Project:
     marketplace_resource_count: Union[Unset, "ProjectMarketplaceResourceCount"] = UNSET
     billing_price_estimate: Union[Unset, "NestedPriceEstimate"] = UNSET
     has_metrics: Union[Unset, bool] = UNSET
+    awarded_proposal: Union["AwardedProposal", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.affiliated_organization import AffiliatedOrganization
+        from ..models.awarded_proposal import AwardedProposal
         from ..models.project_termination_metadata_type_0 import ProjectTerminationMetadataType0
 
         url = self.url
@@ -396,6 +400,14 @@ class Project:
 
         has_metrics = self.has_metrics
 
+        awarded_proposal: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.awarded_proposal, Unset):
+            awarded_proposal = UNSET
+        elif isinstance(self.awarded_proposal, AwardedProposal):
+            awarded_proposal = self.awarded_proposal.to_dict()
+        else:
+            awarded_proposal = self.awarded_proposal
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -511,12 +523,15 @@ class Project:
             field_dict["billing_price_estimate"] = billing_price_estimate
         if has_metrics is not UNSET:
             field_dict["has_metrics"] = has_metrics
+        if awarded_proposal is not UNSET:
+            field_dict["awarded_proposal"] = awarded_proposal
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.affiliated_organization import AffiliatedOrganization
+        from ..models.awarded_proposal import AwardedProposal
         from ..models.nested_price_estimate import NestedPriceEstimate
         from ..models.project_marketplace_resource_count import ProjectMarketplaceResourceCount
         from ..models.project_metadata_answer import ProjectMetadataAnswer
@@ -889,6 +904,23 @@ class Project:
 
         has_metrics = d.pop("has_metrics", UNSET)
 
+        def _parse_awarded_proposal(data: object) -> Union["AwardedProposal", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                awarded_proposal_type_1 = AwardedProposal.from_dict(data)
+
+                return awarded_proposal_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["AwardedProposal", None, Unset], data)
+
+        awarded_proposal = _parse_awarded_proposal(d.pop("awarded_proposal", UNSET))
+
         project = cls(
             url=url,
             uuid=uuid,
@@ -946,6 +978,7 @@ class Project:
             marketplace_resource_count=marketplace_resource_count,
             billing_price_estimate=billing_price_estimate,
             has_metrics=has_metrics,
+            awarded_proposal=awarded_proposal,
         )
 
         project.additional_properties = d

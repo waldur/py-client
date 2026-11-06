@@ -32,6 +32,7 @@ class ConflictOfInterest:
         proposal (Union[None, str]):
         proposal_uuid (UUID):
         proposal_name (str):
+        proposal_slug (str):
         round_uuid (UUID):
         round_name (str):
         call (str):
@@ -68,6 +69,7 @@ class ConflictOfInterest:
     proposal: Union[None, str]
     proposal_uuid: UUID
     proposal_name: str
+    proposal_slug: str
     round_uuid: UUID
     round_name: str
     call: str
@@ -112,6 +114,8 @@ class ConflictOfInterest:
         proposal_uuid = str(self.proposal_uuid)
 
         proposal_name = self.proposal_name
+
+        proposal_slug = self.proposal_slug
 
         round_uuid = str(self.round_uuid)
 
@@ -182,6 +186,7 @@ class ConflictOfInterest:
                 "proposal": proposal,
                 "proposal_uuid": proposal_uuid,
                 "proposal_name": proposal_name,
+                "proposal_slug": proposal_slug,
                 "round_uuid": round_uuid,
                 "round_name": round_name,
                 "call": call,
@@ -239,6 +244,8 @@ class ConflictOfInterest:
         proposal_uuid = UUID(d.pop("proposal_uuid"))
 
         proposal_name = d.pop("proposal_name")
+
+        proposal_slug = d.pop("proposal_slug")
 
         round_uuid = UUID(d.pop("round_uuid"))
 
@@ -327,6 +334,7 @@ class ConflictOfInterest:
             proposal=proposal,
             proposal_uuid=proposal_uuid,
             proposal_name=proposal_name,
+            proposal_slug=proposal_slug,
             round_uuid=round_uuid,
             round_name=round_name,
             call=call,

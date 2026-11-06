@@ -19,7 +19,7 @@ class CallDocument:
         uuid (Union[Unset, UUID]):
         file (Union[None, Unset, str]): Documentation for call for proposals.
         file_name (Union[Unset, str]):
-        file_size (Union[Unset, int]):
+        file_size (Union[None, Unset, int]):
         description (Union[Unset, str]):
         created (Union[Unset, datetime.datetime]):
     """
@@ -27,7 +27,7 @@ class CallDocument:
     uuid: Union[Unset, UUID] = UNSET
     file: Union[None, Unset, str] = UNSET
     file_name: Union[Unset, str] = UNSET
-    file_size: Union[Unset, int] = UNSET
+    file_size: Union[None, Unset, int] = UNSET
     description: Union[Unset, str] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -45,7 +45,11 @@ class CallDocument:
 
         file_name = self.file_name
 
-        file_size = self.file_size
+        file_size: Union[None, Unset, int]
+        if isinstance(self.file_size, Unset):
+            file_size = UNSET
+        else:
+            file_size = self.file_size
 
         description = self.description
 
@@ -92,7 +96,14 @@ class CallDocument:
 
         file_name = d.pop("file_name", UNSET)
 
-        file_size = d.pop("file_size", UNSET)
+        def _parse_file_size(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        file_size = _parse_file_size(d.pop("file_size", UNSET))
 
         description = d.pop("description", UNSET)
 

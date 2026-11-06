@@ -19,6 +19,8 @@ class DuplicateCallRequestRequest:
         copy_rounds (Union[Unset, bool]):  Default: True.
         copy_workflow_steps (Union[Unset, bool]):  Default: True.
         copy_resource_templates (Union[Unset, bool]):  Default: True.
+        copy_budgets (Union[Unset, bool]): Copy the resource pools. Needs copy_offerings, which copies the component
+            rules they are set on; a round's pool is copied only with copy_rounds, onto the copied round. Default: True.
         copy_role_mappings (Union[Unset, bool]):  Default: True.
         copy_applicant_visibility_config (Union[Unset, bool]):  Default: True.
         copy_proposal_field_config (Union[Unset, bool]):  Default: True.
@@ -33,6 +35,7 @@ class DuplicateCallRequestRequest:
     copy_rounds: Union[Unset, bool] = True
     copy_workflow_steps: Union[Unset, bool] = True
     copy_resource_templates: Union[Unset, bool] = True
+    copy_budgets: Union[Unset, bool] = True
     copy_role_mappings: Union[Unset, bool] = True
     copy_applicant_visibility_config: Union[Unset, bool] = True
     copy_proposal_field_config: Union[Unset, bool] = True
@@ -53,6 +56,8 @@ class DuplicateCallRequestRequest:
         copy_workflow_steps = self.copy_workflow_steps
 
         copy_resource_templates = self.copy_resource_templates
+
+        copy_budgets = self.copy_budgets
 
         copy_role_mappings = self.copy_role_mappings
 
@@ -83,6 +88,8 @@ class DuplicateCallRequestRequest:
             field_dict["copy_workflow_steps"] = copy_workflow_steps
         if copy_resource_templates is not UNSET:
             field_dict["copy_resource_templates"] = copy_resource_templates
+        if copy_budgets is not UNSET:
+            field_dict["copy_budgets"] = copy_budgets
         if copy_role_mappings is not UNSET:
             field_dict["copy_role_mappings"] = copy_role_mappings
         if copy_applicant_visibility_config is not UNSET:
@@ -113,6 +120,8 @@ class DuplicateCallRequestRequest:
 
         copy_resource_templates = d.pop("copy_resource_templates", UNSET)
 
+        copy_budgets = d.pop("copy_budgets", UNSET)
+
         copy_role_mappings = d.pop("copy_role_mappings", UNSET)
 
         copy_applicant_visibility_config = d.pop("copy_applicant_visibility_config", UNSET)
@@ -132,6 +141,7 @@ class DuplicateCallRequestRequest:
             copy_rounds=copy_rounds,
             copy_workflow_steps=copy_workflow_steps,
             copy_resource_templates=copy_resource_templates,
+            copy_budgets=copy_budgets,
             copy_role_mappings=copy_role_mappings,
             copy_applicant_visibility_config=copy_applicant_visibility_config,
             copy_proposal_field_config=copy_proposal_field_config,

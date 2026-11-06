@@ -58,6 +58,9 @@ def sync_detailed(
     body: RoundAdoptionRequest,
 ) -> Response[ProtectedRound]:
     """Record that the round's results were adopted: the date, a note and optionally the adopting document.
+    A call with adoption_required takes it only while the round is deciding, and publishes the round's
+    results only once it is recorded. While the round withholds its results, only those who may read the
+    adoption record may write it.
 
     Args:
         uuid (str):
@@ -93,6 +96,9 @@ def sync(
     body: RoundAdoptionRequest,
 ) -> ProtectedRound:
     """Record that the round's results were adopted: the date, a note and optionally the adopting document.
+    A call with adoption_required takes it only while the round is deciding, and publishes the round's
+    results only once it is recorded. While the round withholds its results, only those who may read the
+    adoption record may write it.
 
     Args:
         uuid (str):
@@ -123,6 +129,9 @@ async def asyncio_detailed(
     body: RoundAdoptionRequest,
 ) -> Response[ProtectedRound]:
     """Record that the round's results were adopted: the date, a note and optionally the adopting document.
+    A call with adoption_required takes it only while the round is deciding, and publishes the round's
+    results only once it is recorded. While the round withholds its results, only those who may read the
+    adoption record may write it.
 
     Args:
         uuid (str):
@@ -156,6 +165,9 @@ async def asyncio(
     body: RoundAdoptionRequest,
 ) -> ProtectedRound:
     """Record that the round's results were adopted: the date, a note and optionally the adopting document.
+    A call with adoption_required takes it only while the round is deciding, and publishes the round's
+    results only once it is recorded. While the round withholds its results, only those who may read the
+    adoption record may write it.
 
     Args:
         uuid (str):

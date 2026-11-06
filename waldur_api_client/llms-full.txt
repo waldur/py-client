@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-dev.20261106185036
+# Version: 8.1.4-dev.20261106222025
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -1990,65 +1990,60 @@ Query parameters (4):
 POST /api/call-managing-organisations/
 Request body: yes
 
-### call_managing_organisations_global_stats_performance_list
-GET /api/call-managing-organisations/global_stats_performance/
-Summary: Get call performance statistics across all calls
-Description: Get call performance statistics across all calls.
-Query parameters (4):
-  - customer
-  - customer_keyword
-  - customer_uuid
-  - o — Ordering
+### call_managing_organisations_reports_budgets_global_retrieve
+GET /api/call-managing-organisations/reports/budgets/
+Summary: Per resource pool, and per component awarded or asked for without one: what it offers, what was requested, awarded and remains, and what proposals still waiting for their decision ask of it
+Description: Per resource pool, and per component awarded or asked for without one: what it offers, what was requested, awarded and remains, and what proposals still waiting for their decision ask of it. The submission dates do not apply. Over every call of every call managing organization, for staff and supp...
+Query parameters (5):
+  - call_uuid — Report on these calls only. Not found when one is not a call of the organizations reported on.
+  - organisation_uuid — Report on the calls of these call managing organizations only. Not found when one is not a call managing organization.
+  - round_uuid — Report on one round of the calls. Not found when it is not a round of a call reported on.
+  - submitted_from — Count only proposals submitted on or after this day.
+  - submitted_to — Count only proposals submitted on or before this day.
 
-### call_managing_organisations_global_stats_performance_count
-HEAD /api/call-managing-organisations/global_stats_performance/
-Summary: Get number of items in the collection matching the request parameters
-Description: Get number of items in the collection matching the request parameters.
-Query parameters (4):
-  - customer
-  - customer_keyword
-  - customer_uuid
-  - o — Ordering
+### call_managing_organisations_reports_portfolio_global_retrieve
+GET /api/call-managing-organisations/reports/portfolio/
+Summary: Per call and round: proposals submitted, the outcome mix, the success rate (accepted out of decided) and the mean overall score of the submitted reviews; with submissions per month
+Description: Per call and round: proposals submitted, the outcome mix, the success rate (accepted out of decided) and the mean overall score of the submitted reviews; with submissions per month. Over every call of every call managing organization, for staff and support.
+Query parameters (5):
+  - call_uuid — Report on these calls only. Not found when one is not a call of the organizations reported on.
+  - organisation_uuid — Report on the calls of these call managing organizations only. Not found when one is not a call managing organization.
+  - round_uuid — Report on one round of the calls. Not found when it is not a round of a call reported on.
+  - submitted_from — Count only proposals submitted on or after this day.
+  - submitted_to — Count only proposals submitted on or before this day.
 
-### call_managing_organisations_global_stats_resource_demand_list
-GET /api/call-managing-organisations/global_stats_resource_demand/
-Summary: Get resource demand statistics across all calls and offerings
-Description: Get resource demand statistics across all calls and offerings.
-Query parameters (4):
-  - customer
-  - customer_keyword
-  - customer_uuid
-  - o — Ordering
+### call_managing_organisations_reports_reviewers_global_retrieve
+GET /api/call-managing-organisations/reports/reviewers/
+Summary: Per reviewer of the proposals: assignments sent and how they were answered, reviews by state and overdue, the median days to answer and to review, and the mean score given
+Description: Per reviewer of the proposals: assignments sent and how they were answered, reviews by state and overdue, the median days to answer and to review, and the mean score given. Deactivated reviewers are listed too. Over every call of every call managing organization, for staff and support.
+Query parameters (5):
+  - call_uuid — Report on these calls only. Not found when one is not a call of the organizations reported on.
+  - organisation_uuid — Report on the calls of these call managing organizations only. Not found when one is not a call managing organization.
+  - round_uuid — Report on one round of the calls. Not found when it is not a round of a call reported on.
+  - submitted_from — Count only proposals submitted on or after this day.
+  - submitted_to — Count only proposals submitted on or before this day.
 
-### call_managing_organisations_global_stats_resource_demand_count
-HEAD /api/call-managing-organisations/global_stats_resource_demand/
-Summary: Get number of items in the collection matching the request parameters
-Description: Get number of items in the collection matching the request parameters.
-Query parameters (4):
-  - customer
-  - customer_keyword
-  - customer_uuid
-  - o — Ordering
+### call_managing_organisations_reports_rounds_global_retrieve
+GET /api/call-managing-organisations/reports/rounds/
+Summary: Per round: the days from its cut-off to the evaluation, deciding, the results' publication and their adoption, and how late the results came against its allocation date
+Description: Per round: the days from its cut-off to the evaluation, deciding, the results' publication and their adoption, and how late the results came against its allocation date. With submission dates, the rounds whose submission window overlaps them. Over every call of every call managing organization, f...
+Query parameters (5):
+  - call_uuid — Report on these calls only. Not found when one is not a call of the organizations reported on.
+  - organisation_uuid — Report on the calls of these call managing organizations only. Not found when one is not a call managing organization.
+  - round_uuid — Report on one round of the calls. Not found when it is not a round of a call reported on.
+  - submitted_from — Count only proposals submitted on or after this day.
+  - submitted_to — Count only proposals submitted on or before this day.
 
-### call_managing_organisations_global_stats_review_progress_list
-GET /api/call-managing-organisations/global_stats_review_progress/
-Summary: Get review progress statistics across all reviewers
-Description: Get review progress statistics across all reviewers.
-Query parameters (4):
-  - customer
-  - customer_keyword
-  - customer_uuid
-  - o — Ordering
-
-### call_managing_organisations_global_stats_review_progress_count
-HEAD /api/call-managing-organisations/global_stats_review_progress/
-Summary: Get number of items in the collection matching the request parameters
-Description: Get number of items in the collection matching the request parameters.
-Query parameters (4):
-  - customer
-  - customer_keyword
-  - customer_uuid
-  - o — Ordering
+### call_managing_organisations_reports_workflow_global_retrieve
+GET /api/call-managing-organisations/reports/workflow/
+Summary: Per workflow step, summed over the calls by step key: proposals waiting at it, overdue there, completed late, and the median and 90th percentile days it took; with each call's own figures
+Description: Per workflow step, summed over the calls by step key: proposals waiting at it, overdue there, completed late, and the median and 90th percentile days it took; with each call's own figures. Over every call of every call managing organization, for staff and support.
+Query parameters (5):
+  - call_uuid — Report on these calls only. Not found when one is not a call of the organizations reported on.
+  - organisation_uuid — Report on the calls of these call managing organizations only. Not found when one is not a call managing organization.
+  - round_uuid — Report on one round of the calls. Not found when it is not a round of a call reported on.
+  - submitted_from — Count only proposals submitted on or after this day.
+  - submitted_to — Count only proposals submitted on or before this day.
 
 ### call_managing_organisations_retrieve
 GET /api/call-managing-organisations/{uuid}/
@@ -2125,6 +2120,66 @@ Query parameters (11):
   - user_slug — User slug
   - user_url — User URL
   - username — User username
+
+### call_managing_organisations_reports_budgets_retrieve
+GET /api/call-managing-organisations/{uuid}/reports/budgets/
+Summary: Per resource pool, and per component awarded or asked for without one: what it offers, what was requested, awarded and remains, and what proposals still waiting for their decision ask of it
+Description: Per resource pool, and per component awarded or asked for without one: what it offers, what was requested, awarded and remains, and what proposals still waiting for their decision ask of it. The submission dates do not apply. Over the organization's calls the user may change the configuration of:...
+Path parameters:
+  - uuid
+Query parameters (4):
+  - call_uuid — Report on these calls of the organization only. Not found when one is not a call the user may report on.
+  - round_uuid — Report on one round of the calls. Not found when it is not a round of a call reported on.
+  - submitted_from — Count only proposals submitted on or after this day.
+  - submitted_to — Count only proposals submitted on or before this day.
+
+### call_managing_organisations_reports_portfolio_retrieve
+GET /api/call-managing-organisations/{uuid}/reports/portfolio/
+Summary: Per call and round: proposals submitted, the outcome mix, the success rate (accepted out of decided) and the mean overall score of the submitted reviews; with submissions per month
+Description: Per call and round: proposals submitted, the outcome mix, the success rate (accepted out of decided) and the mean overall score of the submitted reviews; with submissions per month. Over the organization's calls the user may change the configuration of: all of them for its call organizers, staff ...
+Path parameters:
+  - uuid
+Query parameters (4):
+  - call_uuid — Report on these calls of the organization only. Not found when one is not a call the user may report on.
+  - round_uuid — Report on one round of the calls. Not found when it is not a round of a call reported on.
+  - submitted_from — Count only proposals submitted on or after this day.
+  - submitted_to — Count only proposals submitted on or before this day.
+
+### call_managing_organisations_reports_reviewers_retrieve
+GET /api/call-managing-organisations/{uuid}/reports/reviewers/
+Summary: Per reviewer of the proposals: assignments sent and how they were answered, reviews by state and overdue, the median days to answer and to review, and the mean score given
+Description: Per reviewer of the proposals: assignments sent and how they were answered, reviews by state and overdue, the median days to answer and to review, and the mean score given. Deactivated reviewers are listed too. Over the organization's calls the user may change the configuration of: all of them fo...
+Path parameters:
+  - uuid
+Query parameters (4):
+  - call_uuid — Report on these calls of the organization only. Not found when one is not a call the user may report on.
+  - round_uuid — Report on one round of the calls. Not found when it is not a round of a call reported on.
+  - submitted_from — Count only proposals submitted on or after this day.
+  - submitted_to — Count only proposals submitted on or before this day.
+
+### call_managing_organisations_reports_rounds_retrieve
+GET /api/call-managing-organisations/{uuid}/reports/rounds/
+Summary: Per round: the days from its cut-off to the evaluation, deciding, the results' publication and their adoption, and how late the results came against its allocation date
+Description: Per round: the days from its cut-off to the evaluation, deciding, the results' publication and their adoption, and how late the results came against its allocation date. With submission dates, the rounds whose submission window overlaps them. Over the organization's calls the user may change the ...
+Path parameters:
+  - uuid
+Query parameters (4):
+  - call_uuid — Report on these calls of the organization only. Not found when one is not a call the user may report on.
+  - round_uuid — Report on one round of the calls. Not found when it is not a round of a call reported on.
+  - submitted_from — Count only proposals submitted on or after this day.
+  - submitted_to — Count only proposals submitted on or before this day.
+
+### call_managing_organisations_reports_workflow_retrieve
+GET /api/call-managing-organisations/{uuid}/reports/workflow/
+Summary: Per workflow step, summed over the calls by step key: proposals waiting at it, overdue there, completed late, and the median and 90th percentile days it took; with each call's own figures
+Description: Per workflow step, summed over the calls by step key: proposals waiting at it, overdue there, completed late, and the median and 90th percentile days it took; with each call's own figures. Over the organization's calls the user may change the configuration of: all of them for its call organizers,...
+Path parameters:
+  - uuid
+Query parameters (4):
+  - call_uuid — Report on these calls of the organization only. Not found when one is not a call the user may report on.
+  - round_uuid — Report on one round of the calls. Not found when it is not a round of a call reported on.
+  - submitted_from — Count only proposals submitted on or after this day.
+  - submitted_to — Count only proposals submitted on or before this day.
 
 ### call_managing_organisations_stats_retrieve
 GET /api/call-managing-organisations/{uuid}/stats/
@@ -2264,7 +2319,7 @@ Description: Get number of items in the collection matching the request paramete
 ### call_rounds_dashboard_deadlines_list
 GET /api/call-rounds/dashboard-deadlines/
 Summary: Get upcoming round deadlines for the call manager dashboard
-Description: Returns the rounds in calls managed by the current user that are still open (cutoff time in the future), nearest first. Paginated: the exact total is in the X-Result-Count header.
+Description: Returns the rounds in calls managed by the current user that are still open (cutoff time in the future), nearest first. Rounds without a cut-off come last, with no due date. Paginated: the exact total is in the X-Result-Count header.
 
 ### call_rounds_dashboard_deadlines_count
 HEAD /api/call-rounds/dashboard-deadlines/
@@ -2281,6 +2336,109 @@ GET /api/call-rounds/{uuid}/reviewers/
 Summary: Return list of reviewers for round
 Description: Return list of reviewers for round.
 Path parameters:
+  - uuid
+
+============================================================
+## call-templates  (module: waldur_api_client.api.call_templates)
+============================================================
+
+### call_templates_list
+GET /api/call-templates/
+Query parameters (3):
+  - is_published
+  - name
+  - o — Ordering
+
+### call_templates_count
+HEAD /api/call-templates/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - is_published
+  - name
+  - o — Ordering
+
+### call_templates_create
+POST /api/call-templates/
+Request body: yes
+
+### call_templates_load_preset
+POST /api/call-templates/load_preset/
+Summary: Load call template presets
+Description: Create a call template from each preset given: a copy that keeps no link to the preset. Refused, with nothing created, when a template already holds the name a preset would be loaded under. The templates are published only if publish is set.
+Request body: yes
+
+### call_templates_presets_list
+GET /api/call-templates/presets/
+Summary: List the call template presets
+Description: The call templates shipped with this portal: starting points for a template, with whether a template already holds the name each would be loaded under.
+
+### call_templates_presets_count
+HEAD /api/call-templates/presets/
+Summary: List the call template presets
+Description: Get number of items in the collection matching the request parameters.
+
+### call_templates_retrieve
+GET /api/call-templates/{uuid}/
+Path parameters:
+  - uuid
+
+### call_templates_update
+PUT /api/call-templates/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### call_templates_partial_update
+PATCH /api/call-templates/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### call_templates_destroy
+DELETE /api/call-templates/{uuid}/
+Path parameters:
+  - uuid
+
+### call_templates_workflow_check_retrieve
+GET /api/call-templates/{uuid}/workflow-check/
+Summary: Check the template's workflow
+Description: Errors, warnings and notes on the template's workflow, each with the setting that fixes it. Only the rules that read the document run: a template has no rounds, offerings or people.
+Path parameters:
+  - uuid
+
+### call_templates_workflow_description_retrieve
+GET /api/call-templates/{uuid}/workflow-description/
+Summary: Describe the template's workflow
+Description: What each step of the template's workflow does and who takes part in it: roles, applicant labels, notification rules and their flags, and the planned schedule. Rules only, never people.
+Path parameters:
+  - uuid
+
+### call_templates_workflow_diff_retrieve
+GET /api/call-templates/{uuid}/workflow-diff/
+Summary: Compare two versions of the template
+Path parameters:
+  - uuid
+Query parameters (2):
+  - from — Version to compare from: a version number, 'current', and on a call 'template' (the template version it was created from, the default) or 'template_latest' (its template as it is now).
+  - to — Version to compare to; 'current' by default.
+
+### call_templates_workflow_versions_list
+GET /api/call-templates/{uuid}/workflow-versions/
+Summary: List the template's versions
+Description: Every version of the template's document, newest last.
+Path parameters:
+  - uuid
+Query parameters (3):
+  - is_published
+  - name
+  - o — Ordering
+
+### call_templates_workflow_versions_retrieve
+GET /api/call-templates/{uuid}/workflow-versions/{number}/
+Summary: Get one version of the template
+Path parameters:
+  - number — Number of the version.
   - uuid
 
 ============================================================
@@ -2642,17 +2800,21 @@ Request body: yes
 
 ### checklists_admin_list
 GET /api/checklists-admin/
-Query parameters (2):
+Query parameters (4):
   - checklist_type — Type of compliance this checklist addresses
   - checklist_type__in — Filter by multiple checklist types
+  - customer_uuid — Checklists of this organization
+  - is_shared — Checklists the whole portal shares (no organization)
 
 ### checklists_admin_count
 HEAD /api/checklists-admin/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (2):
+Query parameters (4):
   - checklist_type — Type of compliance this checklist addresses
   - checklist_type__in — Filter by multiple checklist types
+  - customer_uuid — Checklists of this organization
+  - is_shared — Checklists the whole portal shares (no organization)
 
 ### checklists_admin_create
 POST /api/checklists-admin/
@@ -2686,9 +2848,11 @@ Summary: Return checklist questions
 Description: Return checklist questions.
 Path parameters:
   - uuid
-Query parameters (2):
+Query parameters (4):
   - checklist_type — Type of compliance this checklist addresses
   - checklist_type__in — Filter by multiple checklist types
+  - customer_uuid — Checklists of this organization
+  - is_shared — Checklists the whole portal shares (no organization)
 
 ============================================================
 ## checklists-admin-question-dependencies  (module: waldur_api_client.api.checklists_admin_question_dependencies)
@@ -3006,24 +3170,24 @@ Request body: yes
 
 ### conflicts_of_interest_dismiss
 POST /api/conflicts-of-interest/{uuid}/dismiss/
-Summary: Dismiss a conflict of interest (not a real conflict)
-Description: Dismiss a conflict of interest (not a real conflict).
+Summary: Dismiss a pending conflict of interest (not a real conflict)
+Description: Dismiss a pending conflict of interest (not a real conflict).
 Path parameters:
   - uuid
 Request body: yes
 
 ### conflicts_of_interest_recuse
 POST /api/conflicts-of-interest/{uuid}/recuse/
-Summary: Recuse reviewer from the proposal
-Description: Recuse reviewer from the proposal.
+Summary: Recuse the reviewer from the proposal over a pending conflict
+Description: Recuse the reviewer from the proposal over a pending conflict.
 Path parameters:
   - uuid
 Request body: yes
 
 ### conflicts_of_interest_waive
 POST /api/conflicts-of-interest/{uuid}/waive/
-Summary: Waive a conflict with a management plan
-Description: Waive a conflict with a management plan.
+Summary: Waive a pending conflict with a management plan
+Description: Waive a pending conflict with a management plan. Refused for a type the call's COI settings require recusal for.
 Path parameters:
   - uuid
 Request body: yes
@@ -9991,6 +10155,17 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_provider_offerings_dependents_list
+GET /api/marketplace-provider-offerings/{uuid}/dependents/
+Summary: What depends on an offering
+Description: What other parts of the portal -- calls for proposals, say -- have built on the offering, one of its plans or one of its components, and whether they would refuse the given change. Shown before the change is confirmed.
+Path parameters:
+  - uuid
+Query parameters (3):
+  - change (required)
+  - component_type — For a component change: the component's type.
+  - plan_uuid — For a plan change: the plan.
+
 ### marketplace_provider_offerings_draft
 POST /api/marketplace-provider-offerings/{uuid}/draft/
 Summary: Move an offering to draft
@@ -15596,13 +15771,17 @@ Description: Retrieves metadata for all settings that can be changed at runtime.
 
 ### my_assignment_batches_list
 GET /api/my-assignment-batches/
-Summary: List all pending assignment batches for the authenticated reviewer
-Description: List all pending assignment batches for the authenticated reviewer.
+Summary: List the authenticated reviewer's assignment batches
+Description: List the authenticated reviewer's assignment batches. By default only batches still awaiting a response are returned. The status filter uses the effective status: a sent batch past its deadline is expired even before the expiry task has run.
+Query parameters (1):
+  - status — Effective batch status. Defaults to sent.
 
 ### my_assignment_batches_count
 HEAD /api/my-assignment-batches/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
+Query parameters (1):
+  - status — Effective batch status. Defaults to sent.
 
 ### my_assignment_batches_retrieve
 GET /api/my-assignment-batches/{uuid}/
@@ -21065,15 +21244,18 @@ Path parameters:
 
 ### proposal_my_requested_resources_list
 GET /api/proposal-my-requested-resources/
-Query parameters (11):
+Query parameters (14):
+  - call_uuid
   - created
   - include_closed — Include requests belonging to rejected or canceled proposals. They are omitted by default.
+  - involved — Only requests of proposals the current user takes part in, leaving out those read only through staff or support access
   - o — Ordering
   - offering — Offering
   - offering_uuid
   - proposal — Proposal
   - proposal_state — Proposal state
   - proposal_uuid
+  - provider_uuid — Provider
   - query — Search by offering, proposal, call or resource name
   - resource — Resource
   - resource_uuid
@@ -21082,15 +21264,18 @@ Query parameters (11):
 HEAD /api/proposal-my-requested-resources/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (11):
+Query parameters (14):
+  - call_uuid
   - created
   - include_closed — Include requests belonging to rejected or canceled proposals. They are omitted by default.
+  - involved — Only requests of proposals the current user takes part in, leaving out those read only through staff or support access
   - o — Ordering
   - offering — Offering
   - offering_uuid
   - proposal — Proposal
   - proposal_state — Proposal state
   - proposal_uuid
+  - provider_uuid — Provider
   - query — Search by offering, proposal, call or resource name
   - resource — Resource
   - resource_uuid
@@ -21101,42 +21286,105 @@ Path parameters:
   - uuid
 
 ============================================================
+## proposal-my-tasks  (module: waldur_api_client.api.proposal_my_tasks)
+============================================================
+
+### proposal_my_tasks_list
+GET /api/proposal-my-tasks/
+Query parameters (3):
+  - due — Only the tasks past their deadline (overdue), or due within PROPOSAL_DASHBOARD_REVIEWS_DUE_WITHIN_DAYS days and not yet past it (due_soon).
+  - offering_uuid — Only the tasks about this offering.
+  - provider_uuid — Only the tasks about an offering of this provider organization.
+
+### proposal_my_tasks_count
+HEAD /api/proposal-my-tasks/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - due — Only the tasks past their deadline (overdue), or due within PROPOSAL_DASHBOARD_REVIEWS_DUE_WITHIN_DAYS days and not yet past it (due_soon).
+  - offering_uuid — Only the tasks about this offering.
+  - provider_uuid — Only the tasks about an offering of this provider organization.
+
+### proposal_my_tasks_summary_retrieve
+GET /api/proposal-my-tasks/summary/
+Summary: Summarise the current user's open tasks
+Description: How many tasks the list holds, and how many of them are overdue or due soon: the counts the list's ``due`` filter narrows it to. Takes the list's offering_uuid and provider_uuid.
+
+============================================================
+## proposal-offering-demand  (module: waldur_api_client.api.proposal_offering_demand)
+============================================================
+
+### proposal_offering_demand_list
+GET /api/proposal-offering-demand/
+Query parameters (5):
+  - call_uuid — Only this call.
+  - offering_uuid — Only this offering.
+  - provider_uuid — Only the offerings of this provider organization.
+  - round_uuid — Only this round of a call.
+  - state_group — Only these groups of proposal states.
+
+### proposal_offering_demand_count
+HEAD /api/proposal-offering-demand/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (5):
+  - call_uuid — Only this call.
+  - offering_uuid — Only this offering.
+  - provider_uuid — Only the offerings of this provider organization.
+  - round_uuid — Only this round of a call.
+  - state_group — Only these groups of proposal states.
+
+============================================================
 ## proposal-proposals  (module: waldur_api_client.api.proposal_proposals)
 ============================================================
 
 ### proposal_proposals_list
 GET /api/proposal-proposals/
-Query parameters (12):
+Query parameters (19):
   - as_role — Only proposals the current user holds this role on
   - call_uuid
+  - changes_requested — Only proposals waiting on changes asked of their applicant
   - created_by_uuid
+  - final_report_overdue — Only proposals whose final report is past its due date
+  - involved — Only proposals the current user takes part in, leaving out those read only through staff or support access
   - my_proposals
   - name
   - o — Ordering
   - organization_uuid
+  - panel_uuid — Panel UUID
+  - post_award_status — Where an accepted proposal's extension or final report stands
   - round
   - round_uuid
+  - run_phase — Only proposals with a run of this phase
+  - run_state — Only proposals with a run in this state
   - slug — Slug
   - state
-  - workflow_step — Current workflow step
+  - workflow_step — Multiple values may be separated by commas.
 
 ### proposal_proposals_count
 HEAD /api/proposal-proposals/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (12):
+Query parameters (19):
   - as_role — Only proposals the current user holds this role on
   - call_uuid
+  - changes_requested — Only proposals waiting on changes asked of their applicant
   - created_by_uuid
+  - final_report_overdue — Only proposals whose final report is past its due date
+  - involved — Only proposals the current user takes part in, leaving out those read only through staff or support access
   - my_proposals
   - name
   - o — Ordering
   - organization_uuid
+  - panel_uuid — Panel UUID
+  - post_award_status — Where an accepted proposal's extension or final report stands
   - round
   - round_uuid
+  - run_phase — Only proposals with a run of this phase
+  - run_state — Only proposals with a run in this state
   - slug — Slug
   - state
-  - workflow_step — Current workflow step
+  - workflow_step — Multiple values may be separated by commas.
 
 ### proposal_proposals_create
 POST /api/proposal-proposals/
@@ -21170,6 +21418,14 @@ Path parameters:
 DELETE /api/proposal-proposals/{uuid}/
 Path parameters:
   - uuid
+
+### proposal_proposals_accept_contribution
+POST /api/proposal-proposals/{uuid}/accept_contribution/
+Summary: Take over a contribution slot handed to the caller
+Description: Take over a contribution slot handed to the caller. To hand it back, decline it with decline_contribution.
+Path parameters:
+  - uuid
+Request body: yes
 
 ### proposal_proposals_add_user
 POST /api/proposal-proposals/{uuid}/add_user/
@@ -21243,6 +21499,48 @@ Path parameters:
   - obj_uuid
   - uuid
 
+### proposal_proposals_budget_retrieve
+GET /api/proposal-proposals/{uuid}/budget/
+Summary: Where the proposal's award stands against the call's budgets for its round: per budget row, the offered total, what the other proposals were awarded, what remains, this award and whether it fits
+Description: Where the proposal's award stands against the call's budgets for its round: per budget row, the offered total, what the other proposals were awarded, what remains, this award and whether it fits. For the call team; never the applicant team.
+Path parameters:
+  - uuid
+
+### proposal_proposals_cancel_change_request
+POST /api/proposal-proposals/{uuid}/cancel_change_request/
+Summary: Call off an open request for changes to the applicant: the step is its actor's again, with its full duration
+Description: Call off an open request for changes to the applicant: the step is its actor's again, with its full duration. For whoever made the request, the call's managers and organizers, and staff.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_change_requests_list
+GET /api/proposal-proposals/{uuid}/change_requests/
+Summary: The requests for changes made on the proposal, open and closed, oldest first: the rounds of changes asked of its applicant, and the contributions reopened
+Description: The requests for changes made on the proposal, open and closed, oldest first: the rounds of changes asked of its applicant, and the contributions reopened. Each as far as the caller reads it: the applicant team the requests made to it, the step's actors and the call's managers those, and a reopen...
+Path parameters:
+  - uuid
+Query parameters (19):
+  - as_role — Only proposals the current user holds this role on
+  - call_uuid
+  - changes_requested — Only proposals waiting on changes asked of their applicant
+  - created_by_uuid
+  - final_report_overdue — Only proposals whose final report is past its due date
+  - involved — Only proposals the current user takes part in, leaving out those read only through staff or support access
+  - my_proposals
+  - name
+  - o — Ordering
+  - organization_uuid
+  - panel_uuid — Panel UUID
+  - post_award_status — Where an accepted proposal's extension or final report stands
+  - round
+  - round_uuid
+  - run_phase — Only proposals with a run of this phase
+  - run_state — Only proposals with a run in this state
+  - slug — Slug
+  - state
+  - workflow_step — Multiple values may be separated by commas.
+
 ### proposal_proposals_checklist_retrieve
 GET /api/proposal-proposals/{uuid}/checklist/
 Summary: Get checklist with questions and existing answers
@@ -21261,8 +21559,8 @@ Path parameters:
 
 ### proposal_proposals_complete_workflow_step
 POST /api/proposal-proposals/{uuid}/complete_workflow_step/
-Summary: Complete the current workflow step with an outcome
-Description: Complete the current workflow step with an outcome.
+Summary: Complete an active workflow step with an outcome: the one step_uuid names, as several steps of a stage may be active at once
+Description: Complete an active workflow step with an outcome: the one step_uuid names, as several steps of a stage may be active at once.
 Path parameters:
   - uuid
 Request body: yes
@@ -21281,6 +21579,50 @@ Description: Get checklist completion status.
 Path parameters:
   - uuid
 
+### proposal_proposals_contributions_list
+GET /api/proposal-proposals/{uuid}/contributions/
+Summary: List the contributions to the proposal's workflow steps the caller may read: one per person or per requested offering, with status, outcome and conditions
+Description: List the contributions to the proposal's workflow steps the caller may read: one per person or per requested offering, with status, outcome and conditions.
+Path parameters:
+  - uuid
+Query parameters (20):
+  - as_role — Only proposals the current user holds this role on
+  - call_uuid
+  - changes_requested — Only proposals waiting on changes asked of their applicant
+  - created_by_uuid
+  - final_report_overdue — Only proposals whose final report is past its due date
+  - involved — Only proposals the current user takes part in, leaving out those read only through staff or support access
+  - my_proposals
+  - name
+  - o — Ordering
+  - organization_uuid
+  - panel_uuid — Panel UUID
+  - post_award_status — Where an accepted proposal's extension or final report stands
+  - round
+  - round_uuid
+  - run_phase — Only proposals with a run of this phase
+  - run_state — Only proposals with a run in this state
+  - slug — Slug
+  - state
+  - step_uuid — UUID of the call step; every step when left out.
+  - workflow_step — Multiple values may be separated by commas.
+
+### proposal_proposals_decline_contribution
+POST /api/proposal-proposals/{uuid}/decline_contribution/
+Summary: Decline a contribution of one's own, or, as a call manager, withdraw an open contribution from the step's work
+Description: Decline a contribution of one's own, or, as a call manager, withdraw an open contribution from the step's work.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_delegate_contribution
+POST /api/proposal-proposals/{uuid}/delegate_contribution/
+Summary: Hand a contribution slot to someone the step's delegable_to allows -- an offering manager of the slot's offering, or a holder of an evaluator role on the proposal -- or take it back with a null user_uuid
+Description: Hand a contribution slot to someone the step's delegable_to allows -- an offering manager of the slot's offering, or a holder of an evaluator role on the proposal -- or take it back with a null user_uuid. Its holders and the call's managers may; the person it is handed to accepts or declines it.
+Path parameters:
+  - uuid
+Request body: yes
+
 ### proposal_proposals_delete_user
 POST /api/proposal-proposals/{uuid}/delete_user/
 Summary: Revoke a role from a user
@@ -21293,6 +21635,42 @@ Request body: yes
 POST /api/proposal-proposals/{uuid}/detach_documents/
 Summary: Detach documents from proposal
 Description: Detach documents from proposal.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_discard_suggested_reviewers
+POST /api/proposal-proposals/{uuid}/discard_suggested_reviewers/
+Summary: Set suggested reviewers aside, unless already invited
+Description: Set suggested reviewers aside, unless already invited.
+Path parameters:
+  - uuid
+Query parameters (19):
+  - as_role — Only proposals the current user holds this role on
+  - call_uuid
+  - changes_requested — Only proposals waiting on changes asked of their applicant
+  - created_by_uuid
+  - final_report_overdue — Only proposals whose final report is past its due date
+  - involved — Only proposals the current user takes part in, leaving out those read only through staff or support access
+  - my_proposals
+  - name
+  - o — Ordering
+  - organization_uuid
+  - panel_uuid — Panel UUID
+  - post_award_status — Where an accepted proposal's extension or final report stands
+  - round
+  - round_uuid
+  - run_phase — Only proposals with a run of this phase
+  - run_state — Only proposals with a run in this state
+  - slug — Slug
+  - state
+  - workflow_step — Multiple values may be separated by commas.
+Request body: yes
+
+### proposal_proposals_invite_suggested_reviewers
+POST /api/proposal-proposals/{uuid}/invite_suggested_reviewers/
+Summary: Invite suggested reviewers to the call's reviewer pool, as an invitation by e-mail is sent: the call's response window and the invitation e-mail apply
+Description: Invite suggested reviewers to the call's reviewer pool, as an invitation by e-mail is sent: the call's response window and the invitation e-mail apply. Each suggestion of the person follows the invitation. A person already in the pool is linked to their entry instead.
 Path parameters:
   - uuid
 Request body: yes
@@ -21335,10 +21713,125 @@ Query parameters (11):
   - user_url — User URL
   - username — User username
 
+### proposal_proposals_my_reviewer_suggestions_list
+GET /api/proposal-proposals/{uuid}/my_reviewer_suggestions/
+Summary: The reviewers the caller suggested for the proposal, with where each stands
+Description: The reviewers the caller suggested for the proposal, with where each stands.
+Path parameters:
+  - uuid
+
+### proposal_proposals_my_reviewer_suggestions_create
+POST /api/proposal-proposals/{uuid}/my_reviewer_suggestions/
+Summary: Suggest a reviewer for the proposal: an existing user or an e-mail address, with a note
+Description: Suggest a reviewer for the proposal: an existing user or an e-mail address, with a note. Only a holder of the evaluator role of the active step collecting reviewer suggestions, through their own contribution to it.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_offering_assessments_list
+GET /api/proposal-proposals/{uuid}/offering_assessments/
+Summary: What the proposal's per-offering assessments concluded about each requested offering -- accepted, conditionally accepted with its conditions, or rejected -- for the allocation decision
+Description: What the proposal's per-offering assessments concluded about each requested offering -- accepted, conditionally accepted with its conditions, or rejected -- for the allocation decision.
+Path parameters:
+  - uuid
+Query parameters (19):
+  - as_role — Only proposals the current user holds this role on
+  - call_uuid
+  - changes_requested — Only proposals waiting on changes asked of their applicant
+  - created_by_uuid
+  - final_report_overdue — Only proposals whose final report is past its due date
+  - involved — Only proposals the current user takes part in, leaving out those read only through staff or support access
+  - my_proposals
+  - name
+  - o — Ordering
+  - organization_uuid
+  - panel_uuid — Panel UUID
+  - post_award_status — Where an accepted proposal's extension or final report stands
+  - round
+  - round_uuid
+  - run_phase — Only proposals with a run of this phase
+  - run_state — Only proposals with a run in this state
+  - slug — Slug
+  - state
+  - workflow_step — Multiple values may be separated by commas.
+
+### proposal_proposals_open_final_report
+POST /api/proposal-proposals/{uuid}/open_final_report/
+Summary: Open an accepted proposal's final report ahead of its due date, or for a project without an end date
+Description: Open an accepted proposal's final report ahead of its due date, or for a project without an end date. Call managers and staff.
+Path parameters:
+  - uuid
+
+### proposal_proposals_preview_as
+POST /api/proposal-proposals/{uuid}/preview-as/
+Summary: Preview the proposal as a role of its call
+Description: The proposal page as a role of its call sees it now: the real read endpoints answering a synthetic person given the role, in a transaction that is rolled back. No real person is viewed as, nothing is saved and no mail is sent. For the same readers as workflow-timeline.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_preview_roles_list
+GET /api/proposal-proposals/{uuid}/preview-roles/
+Summary: The roles the proposal may be previewed as
+Description: Every role of the proposal's call that its page may be previewed as -- an offering's team once per requested offering. For the same readers as workflow-timeline.
+Path parameters:
+  - uuid
+
+### proposal_proposals_provision_awarded_item
+POST /api/proposal-proposals/{uuid}/provision_awarded_item/
+Summary: Order an item of an allocated proposal's award again: one that allocation could not order (see its provision_error) or whose order the provider refused
+Description: Order an item of an allocated proposal's award again: one that allocation could not order (see its provision_error) or whose order the provider refused. Call managers and staff, once the provider's offering takes orders again.
+Path parameters:
+  - uuid
+Request body: yes
+
 ### proposal_proposals_reject_workflow_step
 POST /api/proposal-proposals/{uuid}/reject_workflow_step/
-Summary: Reject the proposal at the current workflow step
-Description: Reject the proposal at the current workflow step.
+Summary: Reject the proposal at an active workflow step: the one step_uuid names
+Description: Reject the proposal at an active workflow step: the one step_uuid names. Steps running beside it are withdrawn.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_release_step_report
+POST /api/proposal-proposals/{uuid}/release_step_report/
+Summary: Release the report of a completed assessment step configured to be released, such as a consolidated report or final feedback, to the applicant -- optionally as an edited text
+Description: Release the report of a completed assessment step configured to be released, such as a consolidated report or final feedback, to the applicant -- optionally as an edited text. By the step's completer or those overseeing the call; once per step.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_released_reports_list
+GET /api/proposal-proposals/{uuid}/released_reports/
+Summary: The reports of the proposal's steps released to the applicant, such as the consolidated report or final feedback
+Description: The reports of the proposal's steps released to the applicant, such as the consolidated report or final feedback. For the call team, and for the applicant team once released -- whatever the call says about showing reviews -- unless the decision is held for the round's publication.
+Path parameters:
+  - uuid
+Query parameters (19):
+  - as_role — Only proposals the current user holds this role on
+  - call_uuid
+  - changes_requested — Only proposals waiting on changes asked of their applicant
+  - created_by_uuid
+  - final_report_overdue — Only proposals whose final report is past its due date
+  - involved — Only proposals the current user takes part in, leaving out those read only through staff or support access
+  - my_proposals
+  - name
+  - o — Ordering
+  - organization_uuid
+  - panel_uuid — Panel UUID
+  - post_award_status — Where an accepted proposal's extension or final report stands
+  - round
+  - round_uuid
+  - run_phase — Only proposals with a run of this phase
+  - run_state — Only proposals with a run in this state
+  - slug — Slug
+  - state
+  - workflow_step — Multiple values may be separated by commas.
+
+### proposal_proposals_reopen_contribution
+POST /api/proposal-proposals/{uuid}/reopen_contribution/
+Summary: Reopen a submitted contribution -- one offering's technical assessment, say -- for its contributor to revise and submit again
+Description: Reopen a submitted contribution -- one offering's technical assessment, say -- for its contributor to revise and submit again. While its step is active, or completed with the proposal waiting to be advanced by hand, in which case the step becomes active again. Its answers are kept; its outcome co...
 Path parameters:
   - uuid
 Request body: yes
@@ -21347,6 +21840,22 @@ Request body: yes
 POST /api/proposal-proposals/{uuid}/reopen_decision/
 Summary: Reopen an allocation decision held for the round's publication: the decision step becomes active again with its outcome cleared, and the proposal counts as undecided until it is decided anew
 Description: Reopen an allocation decision held for the round's publication: the decision step becomes active again with its outcome cleared, and the proposal counts as undecided until it is decided anew. Only before the round's results are published. Nothing is sent to the applicant. The reopen is logged on ...
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_request_changes
+POST /api/proposal-proposals/{uuid}/request_changes/
+Summary: Send a proposal in review back to its applicant to change the parts named, at a step that allows it
+Description: Send a proposal in review back to its applicant to change the parts named, at a step that allows it. The proposal stays in review on the step; the parts become editable for the applicant until the changes are submitted, and the step does not lapse meanwhile. For whoever acts on the step -- the ca...
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_request_extension
+POST /api/proposal-proposals/{uuid}/request_extension/
+Summary: Request an extension of an accepted proposal's allocation: opens an extension run on the call's extension steps
+Description: Request an extension of an accepted proposal's allocation: opens an extension run on the call's extension steps. Only the proposal's team, while the proposal is not completed, has no open run, and before the end of the extension window.
 Path parameters:
   - uuid
 Request body: yes
@@ -21409,26 +21918,126 @@ Path parameters:
   - obj_uuid
   - uuid
 
-### proposal_proposals_step_checklist_responses_list
-GET /api/proposal-proposals/{uuid}/step-checklist-responses/
-Summary: List a workflow step's checklist answers grouped by reviewer, for the threaded technical-assessment view
-Description: List a workflow step's checklist answers grouped by reviewer, for the threaded technical-assessment view. Each technical reviewer (offering manager) answers the same checklist; this returns every reviewer's decision and comment.
+### proposal_proposals_reviewer_suggestion_candidates_list
+GET /api/proposal-proposals/{uuid}/reviewer_suggestion_candidates/
+Summary: Registered users the caller may suggest as reviewers: those with a published reviewer profile and those in the call's reviewer pool, at most 20, never with their e-mail address
+Description: Registered users the caller may suggest as reviewers: those with a published reviewer profile and those in the call's reviewer pool, at most 20, never with their e-mail address. The applicant team, the caller and the proposal's evaluator role holders are left out; a standing conflict of interest ...
 Path parameters:
   - uuid
-Query parameters (13):
+Query parameters (1):
+  - query (required) — Name, username or e-mail to search for, case-insensitive, at least 3 characters; every word must match.
+
+### proposal_proposals_revoke_role_assignment
+POST /api/proposal-proposals/{uuid}/revoke_role_assignment/
+Summary: Take an evaluator role away
+Description: Take an evaluator role away. The holder loses the access it gave; the assignment is kept as history. The completer of an assignment step takes away only their own; the call manager anyone's.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_role_assignment_candidates_list
+GET /api/proposal-proposals/{uuid}/role_assignment_candidates/
+Summary: Users who may hold the role on the proposal by its eligibility, at most 50 (10 for a role any user may hold), with whether they can be assigned: a conflict of interest on record or another evaluator role on the proposal rules them out
+Description: Users who may hold the role on the proposal by its eligibility, at most 50 (10 for a role any user may hold), with whether they can be assigned: a conflict of interest on record or another evaluator role on the proposal rules them out. The applicant team is left out. Email, and whether a conflict...
+Path parameters:
+  - uuid
+Query parameters (2):
+  - query — Name, email or username to search for, case-insensitive. Email matches in part for staff and those overseeing the call, as a whole address for anyone else. Required for a role any user may hold, at least 3 characters: without it no one is listed.
+  - role_uuid (required) — The evaluator role to pick holders for.
+
+### proposal_proposals_role_assignments_list
+GET /api/proposal-proposals/{uuid}/role_assignments/
+Summary: Who holds the call's evaluator roles on the proposal
+Description: Who holds the call's evaluator roles on the proposal. For the call's managers, the holders and the completer of an assignment step; never the applicant team.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - include_revoked — Include revoked assignments, the role's history.
+
+### proposal_proposals_role_assignments_set
+POST /api/proposal-proposals/{uuid}/role_assignments/
+Summary: Assign an evaluator role on the proposal
+Description: Assign an evaluator role on the proposal. Call managers at any time, the completer of an assignment step for the role while it runs -- who may make someone the lead only while the role has none, or when they are its lead handing it over. Refused for an ineligible user, a recorded conflict of inte...
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_runs_list
+GET /api/proposal-proposals/{uuid}/runs/
+Summary: The accepted proposal's extension requests and final report, oldest first
+Description: The accepted proposal's extension requests and final report, oldest first. For whoever reads its award; the applicant team reads what was granted once it is decided.
+Path parameters:
+  - uuid
+
+### proposal_proposals_runs_retrieve
+GET /api/proposal-proposals/{uuid}/runs/{obj_uuid}/
+Summary: Read an extension request or final report, or change what an open extension asks for -- the proposal's team, while its request step runs -- or grants: whoever completes its decision, while that runs
+Description: Read an extension request or final report, or change what an open extension asks for -- the proposal's team, while its request step runs -- or grants: whoever completes its decision, while that runs.
+Path parameters:
+  - obj_uuid
+  - uuid
+
+### proposal_proposals_runs_partial_update
+PATCH /api/proposal-proposals/{uuid}/runs/{obj_uuid}/
+Summary: Read an extension request or final report, or change what an open extension asks for -- the proposal's team, while its request step runs -- or grants: whoever completes its decision, while that runs
+Description: Read an extension request or final report, or change what an open extension asks for -- the proposal's team, while its request step runs -- or grants: whoever completes its decision, while that runs.
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
+### proposal_proposals_set_awarded_duration
+POST /api/proposal-proposals/{uuid}/set_awarded_duration/
+Summary: Set the project length the award grants, from the call's allowed_duration_months
+Description: Set the project length the award grants, from the call's allowed_duration_months. Call managers only, while the allocation decision is in progress.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_set_panel
+POST /api/proposal-proposals/{uuid}/set_panel/
+Summary: Move the proposal to another panel of its call, or off any panel
+Description: Move the proposal to another panel of its call, or off any panel. For those who manage the call and the completer of the proposal's running assignment step that assigns a role held through its panel. The chair the workflow assigned from the old panel, who has done nothing on the proposal yet, is ...
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_set_role_lead
+POST /api/proposal-proposals/{uuid}/set_role_lead/
+Summary: Mark a holder as the lead of their role, in place of any other
+Description: Mark a holder as the lead of their role, in place of any other. The completer of an assignment step only while the role has no lead, or as its lead handing it over; the call manager always.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_step_checklist_responses_list
+GET /api/proposal-proposals/{uuid}/step-checklist-responses/
+Summary: List the contributions to a workflow step with their checklist answers, for the threaded view of the step: one entry per contribution (per person or per requested offering) the caller may read
+Description: List the contributions to a workflow step with their checklist answers, for the threaded view of the step: one entry per contribution (per person or per requested offering) the caller may read.
+Path parameters:
+  - uuid
+Query parameters (21):
   - as_role — Only proposals the current user holds this role on
   - call_uuid
+  - changes_requested — Only proposals waiting on changes asked of their applicant
   - created_by_uuid
+  - final_report_overdue — Only proposals whose final report is past its due date
+  - involved — Only proposals the current user takes part in, leaving out those read only through staff or support access
   - my_proposals
   - name
   - o — Ordering
   - organization_uuid
+  - panel_uuid — Panel UUID
+  - post_award_status — Where an accepted proposal's extension or final report stands
   - round
   - round_uuid
+  - run_phase — Only proposals with a run of this phase
+  - run_state — Only proposals with a run in this state
   - slug — Slug
   - state
-  - step (required) — Workflow step key (e.g. technical_assessment).
-  - workflow_step — Current workflow step
+  - step — Key of the call step (e.g. technical_assessment). Either this or step_uuid is required.
+  - step_uuid — UUID of the call step.
+  - workflow_step — Multiple values may be separated by commas.
 
 ### proposal_proposals_step_checklist_retrieve
 GET /api/proposal-proposals/{uuid}/step-checklist/
@@ -21436,9 +22045,39 @@ Summary: Get a workflow step's checklist with questions and answers
 Description: Get a workflow step's checklist with questions and answers.
 Path parameters:
   - uuid
-Query parameters (2):
+Query parameters (4):
+  - contribution_uuid — UUID of the contribution whose answers are meant. The caller's own contribution to the step when left out.
   - include_all — Return all questions ignoring dynamic visibility.
-  - step (required) — Workflow step key (e.g. technical_assessment).
+  - step — Key of the call step (e.g. technical_assessment). Either this or step_uuid is required.
+  - step_uuid — UUID of the call step.
+
+### proposal_proposals_step_inputs_list
+GET /api/proposal-proposals/{uuid}/step_inputs/
+Summary: What the input steps of one of the proposal's workflow steps produced: their contributions with answers, reviews and outcome
+Description: What the input steps of one of the proposal's workflow steps produced: their contributions with answers, reviews and outcome. For whoever holds the step's work once it has started -- its contributors and completer, or the applicant team on an applicant step, who read the public parts only -- and ...
+Path parameters:
+  - uuid
+Query parameters (20):
+  - as_role — Only proposals the current user holds this role on
+  - call_uuid
+  - changes_requested — Only proposals waiting on changes asked of their applicant
+  - created_by_uuid
+  - final_report_overdue — Only proposals whose final report is past its due date
+  - involved — Only proposals the current user takes part in, leaving out those read only through staff or support access
+  - my_proposals
+  - name
+  - o — Ordering
+  - organization_uuid
+  - panel_uuid — Panel UUID
+  - post_award_status — Where an accepted proposal's extension or final report stands
+  - round
+  - round_uuid
+  - run_phase — Only proposals with a run of this phase
+  - run_state — Only proposals with a run in this state
+  - slug — Slug
+  - state
+  - step_uuid (required) — UUID of the call step whose inputs are read.
+  - workflow_step — Multiple values may be separated by commas.
 
 ### proposal_proposals_submit_step_checklist_answers
 POST /api/proposal-proposals/{uuid}/submit-step-checklist-answers/
@@ -21446,8 +22085,10 @@ Summary: Submit answers to a workflow step's checklist
 Description: Submit answers to a workflow step's checklist.
 Path parameters:
   - uuid
-Query parameters (1):
-  - step (required) — Workflow step key (e.g. technical_assessment).
+Query parameters (3):
+  - contribution_uuid — UUID of the contribution whose answers are meant. The caller's own contribution to the step when left out.
+  - step — Key of the call step (e.g. technical_assessment). Either this or step_uuid is required.
+  - step_uuid — UUID of the call step.
 Request body: yes
 
 ### proposal_proposals_submit
@@ -21465,6 +22106,57 @@ Path parameters:
   - uuid
 Request body: yes
 
+### proposal_proposals_submit_changes
+POST /api/proposal-proposals/{uuid}/submit_changes/
+Summary: Submit the changes requested of the applicant, every open request at once: several steps of a stage may each have asked
+Description: Submit the changes requested of the applicant, every open request at once: several steps of a stage may each have asked. The parts unlocked are locked again, and each asking step goes back to its actor with its full duration. The proposal keeps its submission time. Returns the requests closed. Fo...
+Path parameters:
+  - uuid
+Query parameters (19):
+  - as_role — Only proposals the current user holds this role on
+  - call_uuid
+  - changes_requested — Only proposals waiting on changes asked of their applicant
+  - created_by_uuid
+  - final_report_overdue — Only proposals whose final report is past its due date
+  - involved — Only proposals the current user takes part in, leaving out those read only through staff or support access
+  - my_proposals
+  - name
+  - o — Ordering
+  - organization_uuid
+  - panel_uuid — Panel UUID
+  - post_award_status — Where an accepted proposal's extension or final report stands
+  - round
+  - round_uuid
+  - run_phase — Only proposals with a run of this phase
+  - run_state — Only proposals with a run in this state
+  - slug — Slug
+  - state
+  - workflow_step — Multiple values may be separated by commas.
+
+### proposal_proposals_submit_contribution
+POST /api/proposal-proposals/{uuid}/submit_contribution/
+Summary: Submit a contribution to a workflow step with its outcome
+Description: Submit a contribution to a workflow step with its outcome. On a step whose outcome its contributions decide, the last one completes the step.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_suggested_reviewers_list
+GET /api/proposal-proposals/{uuid}/suggested_reviewers/
+Summary: The reviewers the proposal's evaluators suggested, merged per suggested person, with who suggested them, where each stands and the conflicts of interest known
+Description: The reviewers the proposal's evaluators suggested, merged per suggested person, with who suggested them, where each stands and the conflicts of interest known. For the call's managers and the completer of a step collecting suggestions; never the applicant team. Only staff, support and those overs...
+Path parameters:
+  - uuid
+
+### proposal_proposals_unlockable_parts_retrieve
+GET /api/proposal-proposals/{uuid}/unlockable_parts/
+Summary: The parts of the proposal a request for changes may unlock: the Project details fields the call collects, and its documents, requested resources, team and compliance answers
+Description: The parts of the proposal a request for changes may unlock: the Project details fields the call collects, and its documents, requested resources, team and compliance answers. At a step of an extension request or final report (step_uuid), the run's parts instead: its applicant step's answers, and ...
+Path parameters:
+  - uuid
+Query parameters (1):
+  - step_uuid — The step instance the changes would be asked at.
+
 ### proposal_proposals_update_project_details
 POST /api/proposal-proposals/{uuid}/update_project_details/
 Summary: Update project details of a proposal
@@ -21481,25 +22173,72 @@ Path parameters:
   - uuid
 Request body: yes
 
+### proposal_proposals_withdraw
+POST /api/proposal-proposals/{uuid}/withdraw/
+Summary: Withdraw a submitted proposal from evaluation, at its applicant's request
+Description: Withdraw a submitted proposal from evaluation, at its applicant's request. Its unfinished steps are skipped, reviews still being written are closed, unanswered review assignments lapse and the call managers are told. Not available once an award awaits the applicant's answer: declining the award i...
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_withdraw_reviewer_suggestion
+POST /api/proposal-proposals/{uuid}/withdraw_reviewer_suggestion/
+Summary: Take back one's own reviewer suggestion while it is pending and the step collecting it is active
+Description: Take back one's own reviewer suggestion while it is pending and the step collecting it is active.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_withdraw_run
+POST /api/proposal-proposals/{uuid}/withdraw_run/
+Summary: Call off the open extension request or final report
+Description: Call off the open extension request or final report. The proposal's team withdraws its own extension request while the request is still being written; the call's managers and staff any open run. Nothing is granted.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_proposals_workflow_mails_list
+GET /api/proposal-proposals/{uuid}/workflow-mails/
+Summary: Workflow mail of the proposal, as sent
+Description: The mails among `uuid` (repeat it for each; from a timeline row's email_log_uuids) that the proposal's workflow sent: subject, body and addresses. For the same readers as workflow-timeline.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - uuid (required)
+
+### proposal_proposals_workflow_timeline_retrieve
+GET /api/proposal-proposals/{uuid}/workflow-timeline/
+Summary: Timeline of the proposal's workflow
+Description: The proposal's steps, planned against actual, who completed each, and the workflow mail sent about it: the audience as a role and a count, never an address. For those who configure the proposal's call, staff and support; not for its applicant team.
+Path parameters:
+  - uuid
+
 ### proposal_proposals_workflow_states_list
 GET /api/proposal-proposals/{uuid}/workflow_states/
 Summary: List all workflow step instances for this proposal
 Description: List all workflow step instances for this proposal.
 Path parameters:
   - uuid
-Query parameters (12):
+Query parameters (19):
   - as_role — Only proposals the current user holds this role on
   - call_uuid
+  - changes_requested — Only proposals waiting on changes asked of their applicant
   - created_by_uuid
+  - final_report_overdue — Only proposals whose final report is past its due date
+  - involved — Only proposals the current user takes part in, leaving out those read only through staff or support access
   - my_proposals
   - name
   - o — Ordering
   - organization_uuid
+  - panel_uuid — Panel UUID
+  - post_award_status — Where an accepted proposal's extension or final report stands
   - round
   - round_uuid
+  - run_phase — Only proposals with a run of this phase
+  - run_state — Only proposals with a run in this state
   - slug — Slug
   - state
-  - workflow_step — Current workflow step
+  - workflow_step — Multiple values may be separated by commas.
 
 ============================================================
 ## proposal-protected-calls  (module: waldur_api_client.api.proposal_protected_calls)
@@ -21550,7 +22289,7 @@ Query parameters (12):
   - checklist_type — Filter by checklist type (default: proposal_compliance)
   - customer
   - customer_keyword
-  - customer_uuid (required) — Customer UUID to check permissions for. Required to verify user has CREATE_CALL permission on that customer's call managing organization.
+  - customer_uuid (required) — UUID of the customer running the call managing organization whose checklists to list. The caller must configure a call of that organization or be allowed to create one there.
   - has_active_round
   - name
   - o — Ordering
@@ -21568,7 +22307,7 @@ Query parameters (12):
   - checklist_type — Filter by checklist type (default: proposal_compliance)
   - customer
   - customer_keyword
-  - customer_uuid (required) — Customer UUID to check permissions for. Required to verify user has CREATE_CALL permission on that customer's call managing organization.
+  - customer_uuid (required) — UUID of the customer running the call managing organization whose checklists to list. The caller must configure a call of that organization or be allowed to create one there.
   - has_active_round
   - name
   - o — Ordering
@@ -21586,13 +22325,47 @@ Description: Returns counts for the call manager dashboard: pending assessments,
 ### proposal_protected_calls_import_call
 POST /api/proposal-protected-calls/import_call/
 Summary: Import call configuration
-Description: Create a draft call under the given call managing organization from a document produced by export_call. References that cannot be resolved by name on this portal are skipped and reported in warnings. The import is atomic.
+Description: Create a draft call under the given call managing organization from a document produced by export_call. References that cannot be resolved by name on this portal are skipped and reported in warnings. The import is atomic. A document's lists are bounded (at most 100 workflow steps, 50 notification...
 Request body: yes
 
 ### proposal_protected_calls_step_checklists_list
 GET /api/proposal-protected-calls/step_checklists/
 Summary: List checklists that can be attached to a workflow step (WORKFLOW_STEP-typed)
-Description: List checklists that can be attached to a workflow step (WORKFLOW_STEP-typed). Available to call managers so the workflow config UI can populate its checklist picker without staff-only access to the checklist admin API.
+Description: List checklists that can be attached to a workflow step (WORKFLOW_STEP-typed). Available to call managers so the workflow config UI can populate its checklist picker without staff-only access to the checklist admin API. Lists the forms the whole portal shares and those of the organizations whose ...
+Query parameters (11):
+  - customer
+  - customer_keyword
+  - customer_uuid — Only the forms a call of this organization can use: the shared ones and the organization's own.
+  - has_active_round
+  - name
+  - o — Ordering
+  - offering_uuid
+  - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
+  - slug — Slug
+  - state
+
+### proposal_protected_calls_step_checklists_count
+HEAD /api/proposal-protected-calls/step_checklists/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (11):
+  - customer
+  - customer_keyword
+  - customer_uuid — Only the forms a call of this organization can use: the shared ones and the organization's own.
+  - has_active_round
+  - name
+  - o — Ordering
+  - offering_uuid
+  - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
+  - slug — Slug
+  - state
+
+### proposal_protected_calls_workflow_step_kinds_list
+GET /api/proposal-protected-calls/workflow_step_kinds/
+Summary: List the kinds a call's workflow steps are made of: their outcome sets, default completer and the step fields that apply to them
+Description: List the kinds a call's workflow steps are made of: their outcome sets, default completer and the step fields that apply to them. For the workflow configuration UI.
 Query parameters (11):
   - customer
   - customer_keyword
@@ -21606,8 +22379,8 @@ Query parameters (11):
   - slug — Slug
   - state
 
-### proposal_protected_calls_step_checklists_count
-HEAD /api/proposal-protected-calls/step_checklists/
+### proposal_protected_calls_workflow_step_kinds_count
+HEAD /api/proposal-protected-calls/workflow_step_kinds/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
 Query parameters (11):
@@ -21650,7 +22423,7 @@ Path parameters:
 ### proposal_protected_calls_activate
 POST /api/proposal-protected-calls/{uuid}/activate/
 Summary: Activate a call
-Description: Activate a call.
+Description: Activate a call. Refused with every error the workflow check finds; warnings do not block.
 Path parameters:
   - uuid
 
@@ -21674,9 +22447,25 @@ Query parameters (1):
 ### proposal_protected_calls_archive
 POST /api/proposal-protected-calls/{uuid}/archive/
 Summary: Archive a call
-Description: Archive a call.
+Description: Archive a call. A call with proposals still in evaluation is archived only with confirm: those proposals stop where they are.
 Path parameters:
   - uuid
+Request body: yes
+
+### proposal_protected_calls_assignment_configuration_retrieve
+GET /api/proposal-protected-calls/{uuid}/assignment-configuration/
+Summary: Get or update the call's assignment settings: the response window of review assignments, reminders and reassignment
+Description: Get or update the call's assignment settings: the response window of review assignments, reminders and reassignment. A call without settings reads the defaults.
+Path parameters:
+  - uuid
+
+### proposal_protected_calls_assignment_configuration_partial_update
+PATCH /api/proposal-protected-calls/{uuid}/assignment-configuration/
+Summary: Get or update the call's assignment settings: the response window of review assignments, reminders and reassignment
+Description: Get or update the call's assignment settings: the response window of review assignments, reminders and reassignment. A call without settings reads the defaults.
+Path parameters:
+  - uuid
+Request body: yes
 
 ### proposal_protected_calls_attach_documents
 POST /api/proposal-protected-calls/{uuid}/attach_documents/
@@ -21787,10 +22576,11 @@ Summary: Download the call's proposals as CSV, one row per proposal, with one co
 Description: Download the call's proposals as CSV, one row per proposal, with one column per requested offering component. The column set is derived from the call, so it is the same for every row and between exports of the same call.
 Path parameters:
   - uuid
-Query parameters (4):
+Query parameters (5):
   - created_by_uuid — Limit the export to one applicant.
   - proposal_name — Limit the export to proposals whose name contains this text — the list's search box. Named proposal_name because a bare `name` is read by the call's own filterset.
   - proposal_state — Limit the export to proposals in these states.
+  - proposal_uuid — Limit the export to these proposals, such as those selected in the list; repeat the parameter for each.
   - round_uuid — Limit the export to one round.
 
 ### proposal_protected_calls_export_reviews
@@ -21801,7 +22591,7 @@ Path parameters:
   - uuid
 Query parameters (5):
   - proposal_name — Limit the export to proposals whose name contains this text — the list's search box. Named proposal_name because a bare `name` is read by the call's own filterset.
-  - proposal_uuid — Limit the export to one proposal.
+  - proposal_uuid — Limit the export to these proposals, such as those selected in the list; repeat the parameter for each.
   - review_state — Limit the export to reviews in these states.
   - reviewer_uuid — Limit the export to one reviewer.
   - round_uuid — Limit the export to one round.
@@ -21891,6 +22681,125 @@ Path parameters:
   - uuid
 Request body: yes
 
+### proposal_protected_calls_notification_mail_types_list
+GET /api/proposal-protected-calls/{uuid}/notification_mail_types/
+Summary: Mail types the call may word itself
+Description: Every mail type the call sends that its managers may word themselves: the variables its wording may use, the portal's wording it starts from, and the call's own wording if any. For those who configure the call, staff and support.
+Path parameters:
+  - uuid
+
+### proposal_protected_calls_notification_overrides_list
+GET /api/proposal-protected-calls/{uuid}/notification_overrides/
+Summary: The call's own wording of the mail it sends
+Description: The call's own wording of the mail it sends. For those who configure the call, staff and support.
+Path parameters:
+  - uuid
+
+### proposal_protected_calls_notification_overrides_set
+POST /api/proposal-protected-calls/{uuid}/notification_overrides/
+Summary: Word a mail of the call itself: subject, text body and HTML body, replacing the portal's wording for that mail on this call
+Description: Word a mail of the call itself: subject, text body and HTML body, replacing the portal's wording for that mail on this call. Replaces the call's earlier wording of the same mail. Validated by rendering it in the sandbox against an example context; errors are given by field.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_notification_overrides_retrieve
+GET /api/proposal-protected-calls/{uuid}/notification_overrides/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+
+### proposal_protected_calls_notification_overrides_update
+PUT /api/proposal-protected-calls/{uuid}/notification_overrides/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_notification_overrides_partial_update
+PATCH /api/proposal-protected-calls/{uuid}/notification_overrides/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_notification_overrides_destroy
+DELETE /api/proposal-protected-calls/{uuid}/notification_overrides/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+
+### proposal_protected_calls_notification_preview_retrieve
+GET /api/proposal-protected-calls/{uuid}/notification_preview/
+Summary: Preview a mail of the call
+Description: The mail a notification rule's cell -- step, trigger and recipient -- or a mail type would send, rendered with the real templates and the call's own wording, on a synthetic proposal of the call: subject, text and HTML. Nothing is sent or kept, and no real person is named. For those who configure ...
+Path parameters:
+  - uuid
+Query parameters (6):
+  - days_before
+  - mail_type
+  - recipient
+  - step
+  - trigger
+  - variant
+
+### proposal_protected_calls_notification_preview_draft
+POST /api/proposal-protected-calls/{uuid}/notification_preview_draft/
+Summary: Preview a draft of the call's wording of a mail
+Description: As notification_preview, in the wording given -- subject, text body and HTML body -- which is validated in the sandbox and not saved. For those who may update the call.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_notify_proposals
+POST /api/proposal-protected-calls/{uuid}/notify-proposals/
+Summary: Email the applicants of selected proposals of this call
+Description: Email the applicants of selected proposals of this call. One message per recipient per proposal, sent asynchronously; each proposal gets an event recording it.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_offering_components_list
+GET /api/proposal-protected-calls/{uuid}/offering_components/
+Summary: List the call's component rules: per component of a call offering, what a proposal may request of it
+Description: List the call's component rules: per component of a call offering, what a proposal may request of it.
+Path parameters:
+  - uuid
+
+### proposal_protected_calls_offering_components_set
+POST /api/proposal-protected-calls/{uuid}/offering_components/
+Summary: Set what a proposal may request of a component of a call offering: one billed by its limit that the offering's plan prices
+Description: Set what a proposal may request of a component of a call offering: one billed by its limit that the offering's plan prices. Refused once a submitted proposal requests the offering.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_offering_components_retrieve
+GET /api/proposal-protected-calls/{uuid}/offering_components/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+
+### proposal_protected_calls_offering_components_update
+PUT /api/proposal-protected-calls/{uuid}/offering_components/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_offering_components_partial_update
+PATCH /api/proposal-protected-calls/{uuid}/offering_components/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_offering_components_destroy
+DELETE /api/proposal-protected-calls/{uuid}/offering_components/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+
 ### proposal_protected_calls_offerings_list
 GET /api/proposal-protected-calls/{uuid}/offerings/
 Summary: List offerings for a call
@@ -21934,6 +22843,88 @@ Path parameters:
   - obj_uuid
   - uuid
 
+### proposal_protected_calls_panels_list
+GET /api/proposal-protected-calls/{uuid}/panels/
+Summary: List the call's panels: the science domains each covers, its chair and members
+Description: List the call's panels: the science domains each covers, its chair and members. For whoever may update the call and the call's panel members.
+Path parameters:
+  - uuid
+
+### proposal_protected_calls_panels_set
+POST /api/proposal-protected-calls/{uuid}/panels/
+Summary: Add a panel to the call
+Description: Add a panel to the call. Proposals are routed to it by their science sub-domain when their evaluation starts.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_panels_retrieve
+GET /api/proposal-protected-calls/{uuid}/panels/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+
+### proposal_protected_calls_panels_update
+PUT /api/proposal-protected-calls/{uuid}/panels/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_panels_partial_update
+PATCH /api/proposal-protected-calls/{uuid}/panels/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_panels_destroy
+DELETE /api/proposal-protected-calls/{uuid}/panels/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+
+### proposal_protected_calls_proposal_roles_list
+GET /api/proposal-protected-calls/{uuid}/proposal_roles/
+Summary: List the evaluator roles the call gives on its proposals, such as a lead and a second rapporteur
+Description: List the evaluator roles the call gives on its proposals, such as a lead and a second rapporteur.
+Path parameters:
+  - uuid
+
+### proposal_protected_calls_proposal_roles_set
+POST /api/proposal-protected-calls/{uuid}/proposal_roles/
+Summary: Add an evaluator role to the call
+Description: Add an evaluator role to the call.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_proposal_roles_retrieve
+GET /api/proposal-protected-calls/{uuid}/proposal_roles/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+
+### proposal_protected_calls_proposal_roles_update
+PUT /api/proposal-protected-calls/{uuid}/proposal_roles/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_proposal_roles_partial_update
+PATCH /api/proposal-protected-calls/{uuid}/proposal_roles/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_proposal_roles_destroy
+DELETE /api/proposal-protected-calls/{uuid}/proposal_roles/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+
 ### proposal_protected_calls_proposals_compliance_answers_list
 GET /api/proposal-protected-calls/{uuid}/proposals/{proposal_uuid}/compliance-answers/
 Summary: Get detailed compliance answers for a specific proposal (call managers only)
@@ -21972,6 +22963,109 @@ Query parameters (11):
   - open_for_offering_uuid — Calls the offering can be requested through right now
   - slug — Slug
   - state
+
+### proposal_protected_calls_reports_budgets_retrieve
+GET /api/proposal-protected-calls/{uuid}/reports/budgets/
+Summary: Per resource pool, and per component awarded or asked for without one: what it offers, what was requested, awarded and remains, and what proposals still waiting for their decision ask of it
+Description: Per resource pool, and per component awarded or asked for without one: what it offers, what was requested, awarded and remains, and what proposals still waiting for their decision ask of it. The submission dates do not apply. Over the call alone, for its managers, staff and support.
+Path parameters:
+  - uuid
+Query parameters (3):
+  - round_uuid — Report on one round of the calls. Not found when it is not a round of a call reported on.
+  - submitted_from — Count only proposals submitted on or after this day.
+  - submitted_to — Count only proposals submitted on or before this day.
+
+### proposal_protected_calls_reports_portfolio_retrieve
+GET /api/proposal-protected-calls/{uuid}/reports/portfolio/
+Summary: Per call and round: proposals submitted, the outcome mix, the success rate (accepted out of decided) and the mean overall score of the submitted reviews; with submissions per month
+Description: Per call and round: proposals submitted, the outcome mix, the success rate (accepted out of decided) and the mean overall score of the submitted reviews; with submissions per month. Over the call alone, for its managers, staff and support.
+Path parameters:
+  - uuid
+Query parameters (3):
+  - round_uuid — Report on one round of the calls. Not found when it is not a round of a call reported on.
+  - submitted_from — Count only proposals submitted on or after this day.
+  - submitted_to — Count only proposals submitted on or before this day.
+
+### proposal_protected_calls_reports_reviewers_retrieve
+GET /api/proposal-protected-calls/{uuid}/reports/reviewers/
+Summary: Per reviewer of the proposals: assignments sent and how they were answered, reviews by state and overdue, the median days to answer and to review, and the mean score given
+Description: Per reviewer of the proposals: assignments sent and how they were answered, reviews by state and overdue, the median days to answer and to review, and the mean score given. Deactivated reviewers are listed too. Over the call alone, for its managers, staff and support.
+Path parameters:
+  - uuid
+Query parameters (3):
+  - round_uuid — Report on one round of the calls. Not found when it is not a round of a call reported on.
+  - submitted_from — Count only proposals submitted on or after this day.
+  - submitted_to — Count only proposals submitted on or before this day.
+
+### proposal_protected_calls_reports_rounds_retrieve
+GET /api/proposal-protected-calls/{uuid}/reports/rounds/
+Summary: Per round: the days from its cut-off to the evaluation, deciding, the results' publication and their adoption, and how late the results came against its allocation date
+Description: Per round: the days from its cut-off to the evaluation, deciding, the results' publication and their adoption, and how late the results came against its allocation date. With submission dates, the rounds whose submission window overlaps them. Over the call alone, for its managers, staff and support.
+Path parameters:
+  - uuid
+Query parameters (3):
+  - round_uuid — Report on one round of the calls. Not found when it is not a round of a call reported on.
+  - submitted_from — Count only proposals submitted on or after this day.
+  - submitted_to — Count only proposals submitted on or before this day.
+
+### proposal_protected_calls_reports_workflow_retrieve
+GET /api/proposal-protected-calls/{uuid}/reports/workflow/
+Summary: Per workflow step, summed over the calls by step key: proposals waiting at it, overdue there, completed late, and the median and 90th percentile days it took; with each call's own figures
+Description: Per workflow step, summed over the calls by step key: proposals waiting at it, overdue there, completed late, and the median and 90th percentile days it took; with each call's own figures. Over the call alone, for its managers, staff and support.
+Path parameters:
+  - uuid
+Query parameters (3):
+  - round_uuid — Report on one round of the calls. Not found when it is not a round of a call reported on.
+  - submitted_from — Count only proposals submitted on or after this day.
+  - submitted_to — Count only proposals submitted on or before this day.
+
+### proposal_protected_calls_resource_pool_usage_list
+GET /api/proposal-protected-calls/{uuid}/resource_pool_usage/
+Summary: The call's resource pools as a matrix: per component rule, a cell for the whole call and one per round, each with what its pool offers and what was requested, awarded and remains
+Description: The call's resource pools as a matrix: per component rule, a cell for the whole call and one per round, each with what its pool offers and what was requested, awarded and remains. Awarded counts what the allocation decisions granted, held and tentative awards included. For the call's managers, st...
+Path parameters:
+  - uuid
+
+### proposal_protected_calls_resource_pools_list
+GET /api/proposal-protected-calls/{uuid}/resource_pools/
+Summary: List the call's resource pools: per component rule, how much the call awards over the whole call or one round
+Description: List the call's resource pools: per component rule, how much the call awards over the whole call or one round.
+Path parameters:
+  - uuid
+
+### proposal_protected_calls_resource_pools_set
+POST /api/proposal-protected-calls/{uuid}/resource_pools/
+Summary: Add a resource pool to a component rule of the call: for the whole call (no round) or one round
+Description: Add a resource pool to a component rule of the call: for the whole call (no round) or one round. A proposal draws on both.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_resource_pools_retrieve
+GET /api/proposal-protected-calls/{uuid}/resource_pools/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+
+### proposal_protected_calls_resource_pools_update
+PUT /api/proposal-protected-calls/{uuid}/resource_pools/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_resource_pools_partial_update
+PATCH /api/proposal-protected-calls/{uuid}/resource_pools/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_resource_pools_destroy
+DELETE /api/proposal-protected-calls/{uuid}/resource_pools/{obj_uuid}/
+Path parameters:
+  - obj_uuid
+  - uuid
 
 ### proposal_protected_calls_resource_templates_list
 GET /api/proposal-protected-calls/{uuid}/resource_templates/
@@ -22110,6 +23204,24 @@ Path parameters:
   - obj_uuid
   - uuid
 
+### proposal_protected_calls_rounds_advance_workflow_step
+POST /api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/advance_workflow_step/
+Summary: Move on every proposal of the round parked on a completed step of manual transition, named by step_uuid or its key, as the manual advance on each proposal would
+Description: Move on every proposal of the round parked on a completed step of manual transition, named by step_uuid or its key, as the manual advance on each proposal would. Each proposal is committed on its own: one that cannot be moved is listed in failed, the rest go on. Running it again changes nothing.
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_rounds_allocate_in_submission_order
+POST /api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/allocate_in_submission_order/
+Summary: Take the allocation decision of every proposal of an ended round at it, first come first served: in submission order, approve each while its award fits what remains of every budget it draws on; decline those below the decision's quality threshold, and those that no longer fit (or leave them, on_depleted=leave) -- a later, smaller proposal still gets its chance
+Description: Take the allocation decision of every proposal of an ended round at it, first come first served: in submission order, approve each while its award fits what remains of every budget it draws on; decline those below the decision's quality threshold, and those that no longer fit (or leave them, on_d...
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
 ### proposal_protected_calls_rounds_close
 POST /api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/close/
 Path parameters:
@@ -22125,6 +23237,24 @@ Path parameters:
   - obj_uuid
   - uuid
 
+### proposal_protected_calls_rounds_complete_workflow_step
+POST /api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/complete_workflow_step/
+Summary: Complete a call step -- named by step_uuid or its key -- with one outcome for every proposal of the round where that step is active, each as if completed on the proposal: same gates, notifications and ledger
+Description: Complete a call step -- named by step_uuid or its key -- with one outcome for every proposal of the round where that step is active, each as if completed on the proposal: same gates, notifications and ledger. Each proposal is committed on its own: one whose step cannot be completed, for whatever ...
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_rounds_open_workflow_step
+POST /api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/open_workflow_step/
+Summary: Open a step run once per round (round_scoped) for the round, named by step_uuid or its key
+Description: Open a step run once per round (round_scoped) for the round, named by step_uuid or its key. Refused while a proposal of the round under evaluation has not reached the step yet, unless forced with a reason; that refusal carries lagging_count. The proposals parked on the step before it, waiting to ...
+Path parameters:
+  - obj_uuid
+  - uuid
+Request body: yes
+
 ### proposal_protected_calls_rounds_publish_results
 POST /api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/publish_results/
 Summary: Publish all allocation decisions of an ended round at once: announce every held decision to its applicant and carry it out
@@ -22137,10 +23267,31 @@ Request body: yes
 ### proposal_protected_calls_rounds_record_adoption
 POST /api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/record_adoption/
 Summary: Record that the round's results were adopted: the date, a note and optionally the adopting document
-Description: Record that the round's results were adopted: the date, a note and optionally the adopting document.
+Description: Record that the round's results were adopted: the date, a note and optionally the adopting document. A call with adoption_required takes it only while the round is deciding, and publishes the round's results only once it is recorded. While the round withholds its results, only those who may read ...
 Path parameters:
   - obj_uuid
   - uuid
+Request body: yes
+
+### proposal_protected_calls_rounds_set_workflow_step_due_date
+POST /api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/set_workflow_step_due_date/
+Summary: Set when a step of the call is due in this round, for every proposal of it, or clear it (null) to count the step's duration again
+Description: Set when a step of the call is due in this round, for every proposal of it, or clear it (null) to count the step's duration again. The proposals at the step get the new deadline at once, and their deadline reminders are sent again for it. Returns the round's steps.
+Path parameters:
+  - obj_uuid
+  - uuid
+Query parameters (11):
+  - customer
+  - customer_keyword
+  - customer_uuid
+  - has_active_round
+  - name
+  - o — Ordering
+  - offering_uuid
+  - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
+  - slug — Slug
+  - state
 Request body: yes
 
 ### proposal_protected_calls_rounds_start_deciding
@@ -22150,6 +23301,21 @@ Description: Move an ended round from evaluating to deciding: its proposals have
 Path parameters:
   - obj_uuid
   - uuid
+
+### proposal_protected_calls_run_workflow_scenarios
+POST /api/proposal-protected-calls/{uuid}/run-workflow-scenarios/
+Summary: Run the call's saved scenarios
+Description: Dry-run each scenario of the template the call was created from on the call, at most 20, in the background, and keep the results on the call's latest workflow version; a run already on its way is not started again. Answers at once with the results so far and status 'running': poll workflow-scenar...
+Path parameters:
+  - uuid
+
+### proposal_protected_calls_save_as_template
+POST /api/proposal-protected-calls/{uuid}/save_as_template/
+Summary: Save call configuration as a template
+Description: Save the call's settings and workflow -- proposal roles, steps, notification rules and the steps' forms -- as a new, unpublished call template. Rounds, requested offerings and documents are left out. Staff only: the template carries the call's forms, which publishing it shows to every call manager.
+Path parameters:
+  - uuid
+Request body: yes
 
 ### proposal_protected_calls_send_all_assignments
 POST /api/proposal-protected-calls/{uuid}/send-all-assignments/
@@ -22200,10 +23366,100 @@ Path parameters:
   - uuid
 Request body: yes
 
+### proposal_protected_calls_workflow_check_retrieve
+GET /api/proposal-protected-calls/{uuid}/workflow-check/
+Summary: Check the call's workflow
+Description: Errors, warnings and notes on the call's workflow, each with the setting that fixes it. Errors stop the call's activation; warnings do not. For those who configure the call, staff and support.
+Path parameters:
+  - uuid
+
+### proposal_protected_calls_workflow_description_retrieve
+GET /api/proposal-protected-calls/{uuid}/workflow-description/
+Summary: Describe the call's workflow
+Description: What each step of the call's workflow does and who takes part in it: roles, applicant labels, notification rules and their flags, and the planned schedule. Rules and counts only, never people. For those who configure the call, staff and support.
+Path parameters:
+  - uuid
+
+### proposal_protected_calls_workflow_diff_retrieve
+GET /api/proposal-protected-calls/{uuid}/workflow-diff/
+Summary: Compare two workflow versions of the call
+Description: The changes between two versions of the call's settings and workflow, by step and field, each marked as behavior or cosmetic. By default, from the template version the call was created from to the call as it is now.
+Path parameters:
+  - uuid
+Query parameters (2):
+  - from — Version to compare from: a version number, 'current', and on a call 'template' (the template version it was created from, the default) or 'template_latest' (its template as it is now).
+  - to — Version to compare to; 'current' by default.
+
+### proposal_protected_calls_workflow_dry_run
+POST /api/proposal-protected-calls/{uuid}/workflow-dry-run/
+Summary: Dry-run the call's workflow
+Description: Replay a path through the call's workflow on a synthetic proposal and return the state of every step, the log, every mail the path would send rendered with the real templates, and the outcomes tried. Stateless: each request replays its whole list of actions, and rewinding is a shorter list. Nothi...
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_workflow_paths_retrieve
+GET /api/proposal-protected-calls/{uuid}/workflow-paths/
+Summary: Paths the call's proposals took through its workflow
+Description: Each distinct sequence of steps and outcomes the proposals took, with how many took it and whether a saved scenario covers it. For those who configure the call, staff and support.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - round — Only this round's proposals.
+
+### proposal_protected_calls_workflow_progress_retrieve
+GET /api/proposal-protected-calls/{uuid}/workflow-progress/
+Summary: Workflow progress of the call's proposals
+Description: Per step: proposals waiting at it now and how many of them are overdue, median and 90th-percentile days completed instances took against the planned duration, skipped, expired and withdrawn counts, and the share of each outcome. Counts only. For those who configure the call, staff and support.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - round — Count only this round's proposals.
+
+### proposal_protected_calls_workflow_report_retrieve
+GET /api/proposal-protected-calls/{uuid}/workflow-report/
+Summary: Download the call's workflow validation as PDF
+Description: The call's workflow validation on paper: the workflow check's findings, the steps, who sees, contributes to, completes and is told about each, and the last scenario run. Rules and counts only, never people. For those who configure the call, staff and support.
+Path parameters:
+  - uuid
+
+### proposal_protected_calls_workflow_scenarios_retrieve
+GET /api/proposal-protected-calls/{uuid}/workflow-scenarios/
+Summary: The call's saved scenarios and their last results
+Description: The scenarios of the template the call was created from, and how they went when last run on the call: passed, failed at the first assertion that did not hold, or an error. 'running' while a run asked for has not finished. For those who configure the call, staff and support.
+Path parameters:
+  - uuid
+
+### proposal_protected_calls_workflow_versions_list
+GET /api/proposal-protected-calls/{uuid}/workflow-versions/
+Summary: List the call's workflow versions
+Description: Every recorded version of the call's settings and workflow, oldest first, with who made it and how many changes it holds. For those who configure the call, staff and support.
+Path parameters:
+  - uuid
+Query parameters (11):
+  - customer
+  - customer_keyword
+  - customer_uuid
+  - has_active_round
+  - name
+  - o — Ordering
+  - offering_uuid
+  - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
+  - slug — Slug
+  - state
+
+### proposal_protected_calls_workflow_versions_retrieve
+GET /api/proposal-protected-calls/{uuid}/workflow-versions/{number}/
+Summary: Get one workflow version of the call
+Path parameters:
+  - number — Number of the version.
+  - uuid
+
 ### proposal_protected_calls_workflow_steps_list
 GET /api/proposal-protected-calls/{uuid}/workflow_steps/
 Summary: List workflow steps for a call
-Description: List workflow steps for a call.
+Description: List workflow steps for a call. Who holds each step's completer role, its notification rules, status labels, run condition and score threshold are the call team's: anyone else with a role on the call reads them empty.
 Path parameters:
   - uuid
 
@@ -22293,13 +23549,74 @@ Path parameters:
   - uuid
 
 ============================================================
+## proposal-rankings  (module: waldur_api_client.api.proposal_rankings)
+============================================================
+
+### proposal_rankings_list
+GET /api/proposal-rankings/
+Query parameters (6):
+  - call_uuid
+  - meeting_note_uuid — A round report's ranking; without it the list is the round's overall ranking.
+  - o — Ordering
+  - panel_uuid
+  - proposal_uuid
+  - round_uuid
+
+### proposal_rankings_count
+HEAD /api/proposal-rankings/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (6):
+  - call_uuid
+  - meeting_note_uuid — A round report's ranking; without it the list is the round's overall ranking.
+  - o — Ordering
+  - panel_uuid
+  - proposal_uuid
+  - round_uuid
+
+### proposal_rankings_create
+POST /api/proposal-rankings/
+Request body: yes
+
+### proposal_rankings_export_csv_retrieve
+GET /api/proposal-rankings/export_csv/
+Summary: The round's ranking as CSV: one row per ranked proposal, with a recommended:<requested offering uuid>:<component type> column per offering component of the call
+Description: The round's ranking as CSV: one row per ranked proposal, with a recommended:<requested offering uuid>:<component type> column per offering component of the call. For the call's managers, the proposals of the round not ranked yet follow with empty values, so the file can be filled in and imported.
+Query parameters (2):
+  - meeting_note_uuid — UUID of a round report: its ranking instead of the round's overall one.
+  - round_uuid (required) — UUID of the round.
+
+### proposal_rankings_import_csv
+POST /api/proposal-rankings/import_csv/
+Summary: Create or update the round's ranking from a CSV in the export's format
+Description: Create or update the round's ranking from a CSV in the export's format. Rows without a rank are left out; rankings not in the file stay as they are. Ranks are checked across the round as it will be after the import, so a file can reorder it. All or nothing: an error in any row saves no row. Refus...
+Request body: yes
+
+### proposal_rankings_retrieve
+GET /api/proposal-rankings/{uuid}/
+Path parameters:
+  - uuid
+
+### proposal_rankings_partial_update
+PATCH /api/proposal-rankings/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_rankings_destroy
+DELETE /api/proposal-rankings/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
 ## proposal-requested-offerings  (module: waldur_api_client.api.proposal_requested_offerings)
 ============================================================
 
 ### proposal_requested_offerings_list
 GET /api/proposal-requested-offerings/
-Query parameters (8):
+Query parameters (9):
   - call — Call
+  - call_state — Call state
   - call_uuid
   - o — Ordering
   - offering — Offering
@@ -22312,8 +23629,39 @@ Query parameters (8):
 HEAD /api/proposal-requested-offerings/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (8):
+Query parameters (9):
   - call — Call
+  - call_state — Call state
+  - call_uuid
+  - o — Ordering
+  - offering — Offering
+  - offering_uuid
+  - organization_uuid
+  - provider_uuid — Provider
+  - state
+
+### proposal_requested_offerings_team_slots_list
+GET /api/proposal-requested-offerings/team_slots/
+Summary: The open slots of the teams of every offering the caller sees here -- their colleagues' and delegates' as well as their own -- across the calls
+Description: The open slots of the teams of every offering the caller sees here -- their colleagues' and delegates' as well as their own -- across the calls. Filter as the list is filtered (provider_uuid, offering_uuid, call_uuid).
+Query parameters (9):
+  - call — Call
+  - call_state — Call state
+  - call_uuid
+  - o — Ordering
+  - offering — Offering
+  - offering_uuid
+  - organization_uuid
+  - provider_uuid — Provider
+  - state
+
+### proposal_requested_offerings_team_slots_count
+HEAD /api/proposal-requested-offerings/team_slots/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (9):
+  - call — Call
+  - call_state — Call state
   - call_uuid
   - o — Ordering
   - offering — Offering
@@ -22336,8 +23684,46 @@ Path parameters:
 
 ### proposal_requested_offerings_cancel
 POST /api/proposal-requested-offerings/{uuid}/cancel/
-Summary: Cancel a requested offering
-Description: Cancel a requested offering.
+Summary: Decline the request: the offering does not take part in the call
+Description: Decline the request: the offering does not take part in the call. The reason is told to the call's managers.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_requested_offerings_delegate_slots
+POST /api/proposal-requested-offerings/{uuid}/delegate_slots/
+Summary: Hand several of the team's open slots to one person, or take them back with a null user_uuid
+Description: Hand several of the team's open slots to one person, or take them back with a null user_uuid. Each slot is handed on as delegate_contribution would; one that cannot be is left as it is and listed with why.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_requested_offerings_set_default_delegate
+POST /api/proposal-requested-offerings/{uuid}/set_default_delegate/
+Summary: Name who the offering's slots are handed to as they open, on steps whose slots may be handed within the team, or nobody with a null user_uuid
+Description: Name who the offering's slots are handed to as they open, on steps whose slots may be handed within the team, or nobody with a null user_uuid. Slots already open stay as they are.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_requested_offerings_team_retrieve
+GET /api/proposal-requested-offerings/{uuid}/team/
+Summary: The offering's team by name: its managers, who do the team's part of each step, and everyone else with a role on the offering, whom a slot may be handed to
+Description: The offering's team by name: its managers, who do the team's part of each step, and everyone else with a role on the offering, whom a slot may be handed to.
+Path parameters:
+  - uuid
+
+### proposal_requested_offerings_team_step_slots_list
+GET /api/proposal-requested-offerings/{uuid}/team_step_slots/
+Summary: The team's open slots in the call: per proposal at a step the team has a part in, who holds it and when it is due
+Description: The team's open slots in the call: per proposal at a step the team has a part in, who holds it and when it is due.
+Path parameters:
+  - uuid
+
+### proposal_requested_offerings_team_steps_list
+GET /api/proposal-requested-offerings/{uuid}/team_steps/
+Summary: The steps of the call's workflow the offering's team acts in: those its offering managers complete, and those each requested offering's team contributes to
+Description: The steps of the call's workflow the offering's team acts in: those its offering managers complete, and those each requested offering's team contributes to. The call's other steps are not listed.
 Path parameters:
   - uuid
 
@@ -22347,14 +23733,17 @@ Path parameters:
 
 ### proposal_requested_resources_list
 GET /api/proposal-requested-resources/
-Query parameters (10):
+Query parameters (13):
+  - call_uuid
   - created
+  - involved — Only requests of proposals the current user takes part in, leaving out those read only through staff or support access
   - o — Ordering
   - offering — Offering
   - offering_uuid
   - proposal — Proposal
   - proposal_state — Proposal state
   - proposal_uuid
+  - provider_uuid — Provider
   - query — Search by offering, proposal, call or resource name
   - resource — Resource
   - resource_uuid
@@ -22363,14 +23752,17 @@ Query parameters (10):
 HEAD /api/proposal-requested-resources/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (10):
+Query parameters (13):
+  - call_uuid
   - created
+  - involved — Only requests of proposals the current user takes part in, leaving out those read only through staff or support access
   - o — Ordering
   - offering — Offering
   - offering_uuid
   - proposal — Proposal
   - proposal_state — Proposal state
   - proposal_uuid
+  - provider_uuid — Provider
   - query — Search by offering, proposal, call or resource name
   - resource — Resource
   - resource_uuid
@@ -22461,6 +23853,40 @@ Description: Submit a review, changing its state to SUBMITTED.
 Path parameters:
   - uuid
 Request body: yes
+
+============================================================
+## proposal-role-assignments  (module: waldur_api_client.api.proposal_role_assignments)
+============================================================
+
+### proposal_role_assignments_list
+GET /api/proposal-role-assignments/
+Query parameters (4):
+  - call_uuid
+  - is_active
+  - proposal_uuid
+  - user_uuid
+
+### proposal_role_assignments_count
+HEAD /api/proposal-role-assignments/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - call_uuid
+  - is_active
+  - proposal_uuid
+  - user_uuid
+
+### proposal_role_assignments_retrieve
+GET /api/proposal-role-assignments/{uuid}/
+Path parameters:
+  - uuid
+
+### proposal_role_assignments_confirm_no_conflict
+POST /api/proposal-role-assignments/{uuid}/confirm_no_conflict/
+Summary: Confirm having no conflict of interest with the proposal, as the holder of the role
+Description: Confirm having no conflict of interest with the proposal, as the holder of the role. Required by some calls before the proposal opens to its evaluators; refused while a conflict is on record.
+Path parameters:
+  - uuid
 
 ============================================================
 ## provider-canned-responses  (module: waldur_api_client.api.provider_canned_responses)
@@ -24100,7 +25526,7 @@ Request body: yes
 ### reviewer_invitations_decline
 POST /api/reviewer-invitations/{token}/decline/
 Summary: Decline a reviewer invitation
-Description: Decline a reviewer invitation.
+Description: Decline a reviewer invitation. Requires signing in as the invitee; for an invitation sent to an address with no account, the signed-in user's e-mail must match it.
 Path parameters:
   - token
 Request body: yes
@@ -24367,6 +25793,57 @@ Path parameters:
 Request body: yes
 
 ============================================================
+## reviewer-registry  (module: waldur_api_client.api.reviewer_registry)
+============================================================
+
+### reviewer_registry_list
+GET /api/reviewer-registry/
+Query parameters (4):
+  - o — Ordering
+  - publication_pending
+  - query
+  - standing — Only an active reviewer is selected for, invited to or offered new review work.
+
+### reviewer_registry_count
+HEAD /api/reviewer-registry/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - o — Ordering
+  - publication_pending
+  - query
+  - standing — Only an active reviewer is selected for, invited to or offered new review work.
+
+### reviewer_registry_retrieve
+GET /api/reviewer-registry/{uuid}/
+Path parameters:
+  - uuid
+
+### reviewer_registry_approve_publication
+POST /api/reviewer-registry/{uuid}/approve-publication/
+Summary: Approve the reviewer's pending request to publish their profile
+Description: Approve the reviewer's pending request to publish their profile.
+Path parameters:
+  - uuid
+Request body: yes
+
+### reviewer_registry_reject_publication
+POST /api/reviewer-registry/{uuid}/reject-publication/
+Summary: Reject the reviewer's pending request to publish their profile; the comment is shown to the reviewer
+Description: Reject the reviewer's pending request to publish their profile; the comment is shown to the reviewer.
+Path parameters:
+  - uuid
+Request body: yes
+
+### reviewer_registry_set_standing
+POST /api/reviewer-registry/{uuid}/set-standing/
+Summary: Set the reviewer's standing
+Description: Set the reviewer's standing. A suspended or blocked reviewer is no longer selected for, invited to or offered new review work, and cannot accept pending invitations or assignments; work already accepted stays. Nothing is deleted. A reason is required unless the standing is active.
+Path parameters:
+  - uuid
+Request body: yes
+
+============================================================
 ## reviewer-suggestions  (module: waldur_api_client.api.reviewer_suggestions)
 ============================================================
 
@@ -24557,6 +26034,86 @@ Path parameters:
 PUT /api/roles/{uuid}/update_descriptions/
 Summary: Update role descriptions
 Description: Allows staff users to update the multilingual descriptions of a role.
+Path parameters:
+  - uuid
+Request body: yes
+
+============================================================
+## round-meeting-notes  (module: waldur_api_client.api.round_meeting_notes)
+============================================================
+
+### round_meeting_notes_list
+GET /api/round-meeting-notes/
+Query parameters (4):
+  - call_step_uuid
+  - call_uuid
+  - is_report
+  - round_uuid
+
+### round_meeting_notes_count
+HEAD /api/round-meeting-notes/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - call_step_uuid
+  - call_uuid
+  - is_report
+  - round_uuid
+
+### round_meeting_notes_create
+POST /api/round-meeting-notes/
+Request body: yes
+
+### round_meeting_notes_retrieve
+GET /api/round-meeting-notes/{uuid}/
+Path parameters:
+  - uuid
+
+### round_meeting_notes_partial_update
+PATCH /api/round-meeting-notes/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### round_meeting_notes_destroy
+DELETE /api/round-meeting-notes/{uuid}/
+Path parameters:
+  - uuid
+
+### round_meeting_notes_checklist_retrieve
+GET /api/round-meeting-notes/{uuid}/checklist/
+Summary: Get checklist with questions and existing answers
+Description: Get checklist with questions and existing answers.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - include_all — If true, returns all questions including hidden ones (for dynamic form visibility). Default: false.
+
+### round_meeting_notes_completion_status_retrieve
+GET /api/round-meeting-notes/{uuid}/completion_status/
+Summary: Get checklist completion status
+Description: Get checklist completion status.
+Path parameters:
+  - uuid
+
+### round_meeting_notes_reopen
+POST /api/round-meeting-notes/{uuid}/reopen/
+Summary: Hand a submitted round report back to its author, for the call's managers, while proposals stand at its step: a proposal that reached the step after the report was submitted then joins it
+Description: Hand a submitted round report back to its author, for the call's managers, while proposals stand at its step: a proposal that reached the step after the report was submitted then joins it.
+Path parameters:
+  - uuid
+
+### round_meeting_notes_submit
+POST /api/round-meeting-notes/{uuid}/submit/
+Summary: Submit a round report, as its author
+Description: Submit a round report, as its author. Its form's required questions must be answered. What it covers, and its ranking, are then fixed. Each covered proposal whose round reports are all submitted has the step completed (assessment steps), listed in completed; one that cannot be is listed in failed.
+Path parameters:
+  - uuid
+
+### round_meeting_notes_submit_answers
+POST /api/round-meeting-notes/{uuid}/submit_answers/
+Summary: Answer the round report's form, as its author, until the report is submitted
+Description: Answer the round report's form, as its author, until the report is submitted.
 Path parameters:
   - uuid
 Request body: yes

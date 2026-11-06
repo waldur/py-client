@@ -5,6 +5,7 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.order_state import OrderState
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -36,6 +37,10 @@ class RequestedResource:
             group for no gain.
         created_by (Union[None, str]):
         created_by_name (str):
+        order_state (Union[None, OrderState]): State of the order that provisions the item's resource; null while
+            nothing has been provisioned for it.
+        order_rejection_comment (Union[None, str]): Why the order was refused, for a viewer who may read the order; null
+            otherwise.
         attributes (Union[Unset, RequestedResourceAttributes]):
         limits (Union[Unset, RequestedResourceLimits]):
         purchase_order_reference (Union[Unset, str]):
@@ -54,6 +59,8 @@ class RequestedResource:
     has_purchase_order: bool
     created_by: Union[None, str]
     created_by_name: str
+    order_state: Union[None, OrderState]
+    order_rejection_comment: Union[None, str]
     attributes: Union[Unset, "RequestedResourceAttributes"] = UNSET
     limits: Union[Unset, "RequestedResourceLimits"] = UNSET
     purchase_order_reference: Union[Unset, str] = UNSET
@@ -87,6 +94,15 @@ class RequestedResource:
 
         created_by_name = self.created_by_name
 
+        order_state: Union[None, str]
+        if isinstance(self.order_state, OrderState):
+            order_state = self.order_state.value
+        else:
+            order_state = self.order_state
+
+        order_rejection_comment: Union[None, str]
+        order_rejection_comment = self.order_rejection_comment
+
         attributes: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
@@ -115,6 +131,8 @@ class RequestedResource:
                 "has_purchase_order": has_purchase_order,
                 "created_by": created_by,
                 "created_by_name": created_by_name,
+                "order_state": order_state,
+                "order_rejection_comment": order_rejection_comment,
             }
         )
         if attributes is not UNSET:
@@ -169,6 +187,28 @@ class RequestedResource:
 
         created_by_name = d.pop("created_by_name")
 
+        def _parse_order_state(data: object) -> Union[None, OrderState]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                order_state_type_0 = OrderState(data)
+
+                return order_state_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, OrderState], data)
+
+        order_state = _parse_order_state(d.pop("order_state"))
+
+        def _parse_order_rejection_comment(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        order_rejection_comment = _parse_order_rejection_comment(d.pop("order_rejection_comment"))
+
         _attributes = d.pop("attributes", UNSET)
         attributes: Union[Unset, RequestedResourceAttributes]
         if isinstance(_attributes, Unset):
@@ -200,6 +240,8 @@ class RequestedResource:
             has_purchase_order=has_purchase_order,
             created_by=created_by,
             created_by_name=created_by_name,
+            order_state=order_state,
+            order_rejection_comment=order_rejection_comment,
             attributes=attributes,
             limits=limits,
             purchase_order_reference=purchase_order_reference,

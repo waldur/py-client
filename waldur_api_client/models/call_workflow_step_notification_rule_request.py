@@ -24,6 +24,8 @@ class CallWorkflowStepNotificationRuleRequest:
         is_enabled (Union[Unset, bool]):
         notified_proposal_roles (Union[Unset, list[str]]): Only for an applicant audience: names of the proposal roles
             whose holders are notified. Empty notifies the proposal creator and every member of the proposal team.
+        proposal_role (Union[None, UUID, Unset]): Only for the proposal_role audience: the call's evaluator role whose
+            holders are notified.
     """
 
     workflow_step: UUID
@@ -32,6 +34,7 @@ class CallWorkflowStepNotificationRuleRequest:
     days_before: Union[None, Unset, int] = UNSET
     is_enabled: Union[Unset, bool] = UNSET
     notified_proposal_roles: Union[Unset, list[str]] = UNSET
+    proposal_role: Union[None, UUID, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -53,6 +56,14 @@ class CallWorkflowStepNotificationRuleRequest:
         if not isinstance(self.notified_proposal_roles, Unset):
             notified_proposal_roles = self.notified_proposal_roles
 
+        proposal_role: Union[None, Unset, str]
+        if isinstance(self.proposal_role, Unset):
+            proposal_role = UNSET
+        elif isinstance(self.proposal_role, UUID):
+            proposal_role = str(self.proposal_role)
+        else:
+            proposal_role = self.proposal_role
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -68,6 +79,8 @@ class CallWorkflowStepNotificationRuleRequest:
             field_dict["is_enabled"] = is_enabled
         if notified_proposal_roles is not UNSET:
             field_dict["notified_proposal_roles"] = notified_proposal_roles
+        if proposal_role is not UNSET:
+            field_dict["proposal_role"] = proposal_role
 
         return field_dict
 
@@ -93,6 +106,23 @@ class CallWorkflowStepNotificationRuleRequest:
 
         notified_proposal_roles = cast(list[str], d.pop("notified_proposal_roles", UNSET))
 
+        def _parse_proposal_role(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                proposal_role_type_0 = UUID(data)
+
+                return proposal_role_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        proposal_role = _parse_proposal_role(d.pop("proposal_role", UNSET))
+
         call_workflow_step_notification_rule_request = cls(
             workflow_step=workflow_step,
             trigger=trigger,
@@ -100,6 +130,7 @@ class CallWorkflowStepNotificationRuleRequest:
             days_before=days_before,
             is_enabled=is_enabled,
             notified_proposal_roles=notified_proposal_roles,
+            proposal_role=proposal_role,
         )
 
         call_workflow_step_notification_rule_request.additional_properties = d

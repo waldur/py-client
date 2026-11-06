@@ -22,6 +22,8 @@ class CallWorkflowStepNotificationRuleNested:
             reminder is sent.
         is_enabled (bool):
         notified_proposal_roles (list[str]):
+        proposal_role (Union[None, UUID]):
+        proposal_role_name (Union[None, str]):
     """
 
     uuid: UUID
@@ -30,6 +32,8 @@ class CallWorkflowStepNotificationRuleNested:
     days_before: Union[None, int]
     is_enabled: bool
     notified_proposal_roles: list[str]
+    proposal_role: Union[None, UUID]
+    proposal_role_name: Union[None, str]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -46,6 +50,15 @@ class CallWorkflowStepNotificationRuleNested:
 
         notified_proposal_roles = self.notified_proposal_roles
 
+        proposal_role: Union[None, str]
+        if isinstance(self.proposal_role, UUID):
+            proposal_role = str(self.proposal_role)
+        else:
+            proposal_role = self.proposal_role
+
+        proposal_role_name: Union[None, str]
+        proposal_role_name = self.proposal_role_name
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -56,6 +69,8 @@ class CallWorkflowStepNotificationRuleNested:
                 "days_before": days_before,
                 "is_enabled": is_enabled,
                 "notified_proposal_roles": notified_proposal_roles,
+                "proposal_role": proposal_role,
+                "proposal_role_name": proposal_role_name,
             }
         )
 
@@ -81,6 +96,28 @@ class CallWorkflowStepNotificationRuleNested:
 
         notified_proposal_roles = cast(list[str], d.pop("notified_proposal_roles"))
 
+        def _parse_proposal_role(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                proposal_role_type_0 = UUID(data)
+
+                return proposal_role_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        proposal_role = _parse_proposal_role(d.pop("proposal_role"))
+
+        def _parse_proposal_role_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        proposal_role_name = _parse_proposal_role_name(d.pop("proposal_role_name"))
+
         call_workflow_step_notification_rule_nested = cls(
             uuid=uuid,
             trigger=trigger,
@@ -88,6 +125,8 @@ class CallWorkflowStepNotificationRuleNested:
             days_before=days_before,
             is_enabled=is_enabled,
             notified_proposal_roles=notified_proposal_roles,
+            proposal_role=proposal_role,
+            proposal_role_name=proposal_role_name,
         )
 
         call_workflow_step_notification_rule_nested.additional_properties = d

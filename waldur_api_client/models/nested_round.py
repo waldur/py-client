@@ -22,7 +22,8 @@ class NestedRound:
         slug (Union[Unset, str]):
         name (Union[Unset, str]):
         start_time (Union[Unset, datetime.datetime]):
-        cutoff_time (Union[Unset, datetime.datetime]):
+        cutoff_time (Union[None, Unset, datetime.datetime]): When submission closes. Empty: the round stays open until a
+            call manager closes it.
         status (Union[Unset, RoundStatus]):
         allocation_date (Union[None, Unset, datetime.datetime]):
         review_duration_in_days (Union[None, Unset, int]):
@@ -32,13 +33,14 @@ class NestedRound:
         deciding_started_at (Union[None, Unset, datetime.datetime]):
         results_published_at (Union[None, Unset, datetime.datetime]):
         closed_at (Union[None, Unset, datetime.datetime]):
+        adopted_at (Union[None, Unset, datetime.date]): When the round's results were adopted.
     """
 
     uuid: Union[Unset, UUID] = UNSET
     slug: Union[Unset, str] = UNSET
     name: Union[Unset, str] = UNSET
     start_time: Union[Unset, datetime.datetime] = UNSET
-    cutoff_time: Union[Unset, datetime.datetime] = UNSET
+    cutoff_time: Union[None, Unset, datetime.datetime] = UNSET
     status: Union[Unset, RoundStatus] = UNSET
     allocation_date: Union[None, Unset, datetime.datetime] = UNSET
     review_duration_in_days: Union[None, Unset, int] = UNSET
@@ -47,6 +49,7 @@ class NestedRound:
     deciding_started_at: Union[None, Unset, datetime.datetime] = UNSET
     results_published_at: Union[None, Unset, datetime.datetime] = UNSET
     closed_at: Union[None, Unset, datetime.datetime] = UNSET
+    adopted_at: Union[None, Unset, datetime.date] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -62,9 +65,13 @@ class NestedRound:
         if not isinstance(self.start_time, Unset):
             start_time = self.start_time.isoformat()
 
-        cutoff_time: Union[Unset, str] = UNSET
-        if not isinstance(self.cutoff_time, Unset):
+        cutoff_time: Union[None, Unset, str]
+        if isinstance(self.cutoff_time, Unset):
+            cutoff_time = UNSET
+        elif isinstance(self.cutoff_time, datetime.datetime):
             cutoff_time = self.cutoff_time.isoformat()
+        else:
+            cutoff_time = self.cutoff_time
 
         status: Union[Unset, str] = UNSET
         if not isinstance(self.status, Unset):
@@ -124,6 +131,14 @@ class NestedRound:
         else:
             closed_at = self.closed_at
 
+        adopted_at: Union[None, Unset, str]
+        if isinstance(self.adopted_at, Unset):
+            adopted_at = UNSET
+        elif isinstance(self.adopted_at, datetime.date):
+            adopted_at = self.adopted_at.isoformat()
+        else:
+            adopted_at = self.adopted_at
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -153,6 +168,8 @@ class NestedRound:
             field_dict["results_published_at"] = results_published_at
         if closed_at is not UNSET:
             field_dict["closed_at"] = closed_at
+        if adopted_at is not UNSET:
+            field_dict["adopted_at"] = adopted_at
 
         return field_dict
 
@@ -177,12 +194,22 @@ class NestedRound:
         else:
             start_time = isoparse(_start_time)
 
-        _cutoff_time = d.pop("cutoff_time", UNSET)
-        cutoff_time: Union[Unset, datetime.datetime]
-        if isinstance(_cutoff_time, Unset):
-            cutoff_time = UNSET
-        else:
-            cutoff_time = isoparse(_cutoff_time)
+        def _parse_cutoff_time(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                cutoff_time_type_0 = isoparse(data)
+
+                return cutoff_time_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        cutoff_time = _parse_cutoff_time(d.pop("cutoff_time", UNSET))
 
         _status = d.pop("status", UNSET)
         status: Union[Unset, RoundStatus]
@@ -302,6 +329,23 @@ class NestedRound:
 
         closed_at = _parse_closed_at(d.pop("closed_at", UNSET))
 
+        def _parse_adopted_at(data: object) -> Union[None, Unset, datetime.date]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                adopted_at_type_0 = isoparse(data).date()
+
+                return adopted_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.date], data)
+
+        adopted_at = _parse_adopted_at(d.pop("adopted_at", UNSET))
+
         nested_round = cls(
             uuid=uuid,
             slug=slug,
@@ -316,6 +360,7 @@ class NestedRound:
             deciding_started_at=deciding_started_at,
             results_published_at=results_published_at,
             closed_at=closed_at,
+            adopted_at=adopted_at,
         )
 
         nested_round.additional_properties = d

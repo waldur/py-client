@@ -69,7 +69,9 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["CallWorkflowStep"]]:
-    """List workflow steps for a call.
+    """List workflow steps for a call. Who holds each step's completer role, its notification rules, status
+    labels, run condition and score threshold are the call team's: anyone else with a role on the call
+    reads them empty.
 
     Args:
         uuid (UUID):
@@ -104,7 +106,9 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["CallWorkflowStep"]:
-    """List workflow steps for a call.
+    """List workflow steps for a call. Who holds each step's completer role, its notification rules, status
+    labels, run condition and score threshold are the call team's: anyone else with a role on the call
+    reads them empty.
 
     Args:
         uuid (UUID):
@@ -134,7 +138,9 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["CallWorkflowStep"]]:
-    """List workflow steps for a call.
+    """List workflow steps for a call. Who holds each step's completer role, its notification rules, status
+    labels, run condition and score threshold are the call team's: anyone else with a role on the call
+    reads them empty.
 
     Args:
         uuid (UUID):
@@ -167,7 +173,9 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["CallWorkflowStep"]:
-    """List workflow steps for a call.
+    """List workflow steps for a call. Who holds each step's completer role, its notification rules, status
+    labels, run condition and score threshold are the call team's: anyone else with a role on the call
+    reads them empty.
 
     Args:
         uuid (UUID):

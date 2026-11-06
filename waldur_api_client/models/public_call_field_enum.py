@@ -2,7 +2,9 @@ from enum import Enum
 
 
 class PublicCallFieldEnum(str, Enum):
+    ALLOWED_DURATION_MONTHS = "allowed_duration_months"
     BACKEND_ID = "backend_id"
+    COMPONENT_RULES = "component_rules"
     CREATED = "created"
     CUSTOMER_NAME = "customer_name"
     CUSTOMER_UUID = "customer_uuid"

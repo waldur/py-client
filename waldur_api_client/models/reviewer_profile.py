@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.reviewer_standing_enum import ReviewerStandingEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -14,6 +15,7 @@ if TYPE_CHECKING:
     from ..models.reviewer_expertise import ReviewerExpertise
     from ..models.reviewer_profile_profile_completeness import ReviewerProfileProfileCompleteness
     from ..models.reviewer_publication import ReviewerPublication
+    from ..models.reviewer_publication_approval import ReviewerPublicationApproval
     from ..models.reviewer_stats import ReviewerStats
 
 
@@ -40,6 +42,9 @@ class ReviewerProfile:
             fields.
         is_published (bool): Whether profile is discoverable by call managers
         published_at (Union[None, datetime.datetime]): When the profile was published
+        publication_request (Union['ReviewerPublicationApproval', None]): The latest request to publish the profile,
+            while the operator approves publication: pending, or how it was decided and why.
+        standing (ReviewerStandingEnum):
         created (datetime.datetime):
         modified (datetime.datetime):
         orcid_id (Union[None, Unset, str]): ORCID identifier (format: 0000-0000-0000-0000)
@@ -63,6 +68,8 @@ class ReviewerProfile:
     profile_completeness: "ReviewerProfileProfileCompleteness"
     is_published: bool
     published_at: Union[None, datetime.datetime]
+    publication_request: Union["ReviewerPublicationApproval", None]
+    standing: ReviewerStandingEnum
     created: datetime.datetime
     modified: datetime.datetime
     orcid_id: Union[None, Unset, str] = UNSET
@@ -72,6 +79,8 @@ class ReviewerProfile:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.reviewer_publication_approval import ReviewerPublicationApproval
+
         url = self.url
 
         uuid = str(self.uuid)
@@ -119,6 +128,14 @@ class ReviewerProfile:
         else:
             published_at = self.published_at
 
+        publication_request: Union[None, dict[str, Any]]
+        if isinstance(self.publication_request, ReviewerPublicationApproval):
+            publication_request = self.publication_request.to_dict()
+        else:
+            publication_request = self.publication_request
+
+        standing = self.standing.value
+
         created = self.created.isoformat()
 
         modified = self.modified.isoformat()
@@ -156,6 +173,8 @@ class ReviewerProfile:
                 "profile_completeness": profile_completeness,
                 "is_published": is_published,
                 "published_at": published_at,
+                "publication_request": publication_request,
+                "standing": standing,
                 "created": created,
                 "modified": modified,
             }
@@ -177,6 +196,7 @@ class ReviewerProfile:
         from ..models.reviewer_expertise import ReviewerExpertise
         from ..models.reviewer_profile_profile_completeness import ReviewerProfileProfileCompleteness
         from ..models.reviewer_publication import ReviewerPublication
+        from ..models.reviewer_publication_approval import ReviewerPublicationApproval
         from ..models.reviewer_stats import ReviewerStats
 
         d = dict(src_dict)
@@ -251,6 +271,23 @@ class ReviewerProfile:
 
         published_at = _parse_published_at(d.pop("published_at"))
 
+        def _parse_publication_request(data: object) -> Union["ReviewerPublicationApproval", None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                publication_request_type_1 = ReviewerPublicationApproval.from_dict(data)
+
+                return publication_request_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["ReviewerPublicationApproval", None], data)
+
+        publication_request = _parse_publication_request(d.pop("publication_request"))
+
+        standing = ReviewerStandingEnum(d.pop("standing"))
+
         created = isoparse(d.pop("created"))
 
         modified = isoparse(d.pop("modified"))
@@ -286,6 +323,8 @@ class ReviewerProfile:
             profile_completeness=profile_completeness,
             is_published=is_published,
             published_at=published_at,
+            publication_request=publication_request,
+            standing=standing,
             created=created,
             modified=modified,
             orcid_id=orcid_id,

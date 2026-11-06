@@ -16,6 +16,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.protected_proposal_list import ProtectedProposalList
     from ..models.publish_round_results_failure import PublishRoundResultsFailure
+    from ..models.round_step import RoundStep
 
 
 T = TypeVar("T", bound="CompleteRoundResponse")
@@ -29,7 +30,6 @@ class CompleteRoundResponse:
         slug (str):
         name (str):
         start_time (datetime.datetime):
-        cutoff_time (datetime.datetime):
         status (RoundStatus):
         lifecycle_state (Union[LifecycleStateEnum, None]): Where the round stands after its cut-off: evaluating,
             deciding, results_published or closed. Empty before the cut-off.
@@ -37,6 +37,7 @@ class CompleteRoundResponse:
         deciding_started_at (Union[None, datetime.datetime]):
         results_published_at (Union[None, datetime.datetime]):
         closed_at (Union[None, datetime.datetime]):
+        adopted_at (Union[None, datetime.date]): When the round's results were adopted.
         url (str):
         proposals (list['ProtectedProposalList']):
         results_published_by_name (Union[None, str]):
@@ -45,17 +46,22 @@ class CompleteRoundResponse:
             them. Null for anyone who may not see held decisions.
         has_proposals (bool): Whether the round holds any proposal, in any state. A round with proposals cannot be
             deleted. Unlike the proposals list, which leaves out what the viewer may not see, this counts every one.
+        round_steps (list['RoundStep']): The call's enabled steps in this round: the due date of each there, how many
+            proposals stand before, at and parked on it, and for a step run once per round its opening and round reports.
         results_forced_reason (Union[None, str]): Why results were published while some proposals of the round still had
             no decision.
-        adopted_at (Union[None, datetime.date]): When the round's results were adopted.
         adoption_note (Union[None, str]):
         adoption_document (Union[None, str]):
         rejected_proposals (list['PublishRoundResultsFailure']): Proposals without a decision that completing the round
             rejected.
         failed_proposals (list['PublishRoundResultsFailure']): Proposals without a decision whose rejection failed. The
             round stays open; completing it again retries them.
+        cutoff_time (Union[None, Unset, datetime.datetime]): When submission closes. Empty: the round stays open until a
+            call manager closes it.
         allocation_date (Union[None, Unset, datetime.datetime]):
-        review_duration_in_days (Union[Unset, int]):
+        review_duration_in_days (Union[None, Unset, int]): Deprecated: a review is due when the step it contributes to
+            is (see the round's step due dates). Only a review whose step has no deadline is still due this many days after
+            it was created.
         undecided_at_round_completion (Union[BlankEnum, None, UndecidedAtRoundCompletionEnum, Unset]): Overrides the
             call's rule for proposals still without a decision when the round is completed. Empty: the call's rule applies.
     """
@@ -64,26 +70,27 @@ class CompleteRoundResponse:
     slug: str
     name: str
     start_time: datetime.datetime
-    cutoff_time: datetime.datetime
     status: RoundStatus
     lifecycle_state: Union[LifecycleStateEnum, None]
     evaluation_started_at: Union[None, datetime.datetime]
     deciding_started_at: Union[None, datetime.datetime]
     results_published_at: Union[None, datetime.datetime]
     closed_at: Union[None, datetime.datetime]
+    adopted_at: Union[None, datetime.date]
     url: str
     proposals: list["ProtectedProposalList"]
     results_published_by_name: Union[None, str]
     held_decisions_count: Union[None, int]
     has_proposals: bool
+    round_steps: list["RoundStep"]
     results_forced_reason: Union[None, str]
-    adopted_at: Union[None, datetime.date]
     adoption_note: Union[None, str]
     adoption_document: Union[None, str]
     rejected_proposals: list["PublishRoundResultsFailure"]
     failed_proposals: list["PublishRoundResultsFailure"]
+    cutoff_time: Union[None, Unset, datetime.datetime] = UNSET
     allocation_date: Union[None, Unset, datetime.datetime] = UNSET
-    review_duration_in_days: Union[Unset, int] = UNSET
+    review_duration_in_days: Union[None, Unset, int] = UNSET
     undecided_at_round_completion: Union[BlankEnum, None, UndecidedAtRoundCompletionEnum, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -95,8 +102,6 @@ class CompleteRoundResponse:
         name = self.name
 
         start_time = self.start_time.isoformat()
-
-        cutoff_time = self.cutoff_time.isoformat()
 
         status = self.status.value
 
@@ -130,6 +135,12 @@ class CompleteRoundResponse:
         else:
             closed_at = self.closed_at
 
+        adopted_at: Union[None, str]
+        if isinstance(self.adopted_at, datetime.date):
+            adopted_at = self.adopted_at.isoformat()
+        else:
+            adopted_at = self.adopted_at
+
         url = self.url
 
         proposals = []
@@ -145,14 +156,13 @@ class CompleteRoundResponse:
 
         has_proposals = self.has_proposals
 
+        round_steps = []
+        for round_steps_item_data in self.round_steps:
+            round_steps_item = round_steps_item_data.to_dict()
+            round_steps.append(round_steps_item)
+
         results_forced_reason: Union[None, str]
         results_forced_reason = self.results_forced_reason
-
-        adopted_at: Union[None, str]
-        if isinstance(self.adopted_at, datetime.date):
-            adopted_at = self.adopted_at.isoformat()
-        else:
-            adopted_at = self.adopted_at
 
         adoption_note: Union[None, str]
         adoption_note = self.adoption_note
@@ -170,6 +180,14 @@ class CompleteRoundResponse:
             failed_proposals_item = failed_proposals_item_data.to_dict()
             failed_proposals.append(failed_proposals_item)
 
+        cutoff_time: Union[None, Unset, str]
+        if isinstance(self.cutoff_time, Unset):
+            cutoff_time = UNSET
+        elif isinstance(self.cutoff_time, datetime.datetime):
+            cutoff_time = self.cutoff_time.isoformat()
+        else:
+            cutoff_time = self.cutoff_time
+
         allocation_date: Union[None, Unset, str]
         if isinstance(self.allocation_date, Unset):
             allocation_date = UNSET
@@ -178,7 +196,11 @@ class CompleteRoundResponse:
         else:
             allocation_date = self.allocation_date
 
-        review_duration_in_days = self.review_duration_in_days
+        review_duration_in_days: Union[None, Unset, int]
+        if isinstance(self.review_duration_in_days, Unset):
+            review_duration_in_days = UNSET
+        else:
+            review_duration_in_days = self.review_duration_in_days
 
         undecided_at_round_completion: Union[None, Unset, str]
         if isinstance(self.undecided_at_round_completion, Unset):
@@ -198,26 +220,28 @@ class CompleteRoundResponse:
                 "slug": slug,
                 "name": name,
                 "start_time": start_time,
-                "cutoff_time": cutoff_time,
                 "status": status,
                 "lifecycle_state": lifecycle_state,
                 "evaluation_started_at": evaluation_started_at,
                 "deciding_started_at": deciding_started_at,
                 "results_published_at": results_published_at,
                 "closed_at": closed_at,
+                "adopted_at": adopted_at,
                 "url": url,
                 "proposals": proposals,
                 "results_published_by_name": results_published_by_name,
                 "held_decisions_count": held_decisions_count,
                 "has_proposals": has_proposals,
+                "round_steps": round_steps,
                 "results_forced_reason": results_forced_reason,
-                "adopted_at": adopted_at,
                 "adoption_note": adoption_note,
                 "adoption_document": adoption_document,
                 "rejected_proposals": rejected_proposals,
                 "failed_proposals": failed_proposals,
             }
         )
+        if cutoff_time is not UNSET:
+            field_dict["cutoff_time"] = cutoff_time
         if allocation_date is not UNSET:
             field_dict["allocation_date"] = allocation_date
         if review_duration_in_days is not UNSET:
@@ -231,6 +255,7 @@ class CompleteRoundResponse:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.protected_proposal_list import ProtectedProposalList
         from ..models.publish_round_results_failure import PublishRoundResultsFailure
+        from ..models.round_step import RoundStep
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -240,8 +265,6 @@ class CompleteRoundResponse:
         name = d.pop("name")
 
         start_time = isoparse(d.pop("start_time"))
-
-        cutoff_time = isoparse(d.pop("cutoff_time"))
 
         status = RoundStatus(d.pop("status"))
 
@@ -320,6 +343,21 @@ class CompleteRoundResponse:
 
         closed_at = _parse_closed_at(d.pop("closed_at"))
 
+        def _parse_adopted_at(data: object) -> Union[None, datetime.date]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                adopted_at_type_0 = isoparse(data).date()
+
+                return adopted_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, datetime.date], data)
+
+        adopted_at = _parse_adopted_at(d.pop("adopted_at"))
+
         url = d.pop("url")
 
         proposals = []
@@ -345,27 +383,19 @@ class CompleteRoundResponse:
 
         has_proposals = d.pop("has_proposals")
 
+        round_steps = []
+        _round_steps = d.pop("round_steps")
+        for round_steps_item_data in _round_steps:
+            round_steps_item = RoundStep.from_dict(round_steps_item_data)
+
+            round_steps.append(round_steps_item)
+
         def _parse_results_forced_reason(data: object) -> Union[None, str]:
             if data is None:
                 return data
             return cast(Union[None, str], data)
 
         results_forced_reason = _parse_results_forced_reason(d.pop("results_forced_reason"))
-
-        def _parse_adopted_at(data: object) -> Union[None, datetime.date]:
-            if data is None:
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                adopted_at_type_0 = isoparse(data).date()
-
-                return adopted_at_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, datetime.date], data)
-
-        adopted_at = _parse_adopted_at(d.pop("adopted_at"))
 
         def _parse_adoption_note(data: object) -> Union[None, str]:
             if data is None:
@@ -395,6 +425,23 @@ class CompleteRoundResponse:
 
             failed_proposals.append(failed_proposals_item)
 
+        def _parse_cutoff_time(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                cutoff_time_type_0 = isoparse(data)
+
+                return cutoff_time_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        cutoff_time = _parse_cutoff_time(d.pop("cutoff_time", UNSET))
+
         def _parse_allocation_date(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
                 return data
@@ -412,7 +459,14 @@ class CompleteRoundResponse:
 
         allocation_date = _parse_allocation_date(d.pop("allocation_date", UNSET))
 
-        review_duration_in_days = d.pop("review_duration_in_days", UNSET)
+        def _parse_review_duration_in_days(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        review_duration_in_days = _parse_review_duration_in_days(d.pop("review_duration_in_days", UNSET))
 
         def _parse_undecided_at_round_completion(
             data: object,
@@ -448,24 +502,25 @@ class CompleteRoundResponse:
             slug=slug,
             name=name,
             start_time=start_time,
-            cutoff_time=cutoff_time,
             status=status,
             lifecycle_state=lifecycle_state,
             evaluation_started_at=evaluation_started_at,
             deciding_started_at=deciding_started_at,
             results_published_at=results_published_at,
             closed_at=closed_at,
+            adopted_at=adopted_at,
             url=url,
             proposals=proposals,
             results_published_by_name=results_published_by_name,
             held_decisions_count=held_decisions_count,
             has_proposals=has_proposals,
+            round_steps=round_steps,
             results_forced_reason=results_forced_reason,
-            adopted_at=adopted_at,
             adoption_note=adoption_note,
             adoption_document=adoption_document,
             rejected_proposals=rejected_proposals,
             failed_proposals=failed_proposals,
+            cutoff_time=cutoff_time,
             allocation_date=allocation_date,
             review_duration_in_days=review_duration_in_days,
             undecided_at_round_completion=undecided_at_round_completion,

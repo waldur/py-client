@@ -1,7 +1,6 @@
 import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -14,31 +13,24 @@ T = TypeVar("T", bound="ReviewerStats")
 class ReviewerStats:
     """
     Attributes:
-        uuid (UUID):
-        total_reviews_completed (int):
-        total_reviews_declined (int):
-        total_reviews_timeout (int):
-        average_review_time_days (Union[None, float]):
-        average_score_given (Union[None, float]):
-        last_review_date (Union[None, datetime.date]):
-        quality_rating (Union[None, float]):
-        quality_rating_count (int):
+        total_reviews_completed (int): Reviews the reviewer submitted.
+        total_reviews_declined (int): Assignments and reviews the reviewer declined.
+        total_reviews_timeout (int): Assignments left unanswered until they expired, and reviews rejected at their
+            deadline.
+        average_review_time_days (Union[None, float]): Mean days from a review's creation to its submission.
+        average_score_given (Union[None, float]): Mean overall score of the submitted reviews, 1-5.
+        last_review_date (Union[None, datetime.date]): When the reviewer last submitted a review.
     """
 
-    uuid: UUID
     total_reviews_completed: int
     total_reviews_declined: int
     total_reviews_timeout: int
     average_review_time_days: Union[None, float]
     average_score_given: Union[None, float]
     last_review_date: Union[None, datetime.date]
-    quality_rating: Union[None, float]
-    quality_rating_count: int
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        uuid = str(self.uuid)
-
         total_reviews_completed = self.total_reviews_completed
 
         total_reviews_declined = self.total_reviews_declined
@@ -57,24 +49,16 @@ class ReviewerStats:
         else:
             last_review_date = self.last_review_date
 
-        quality_rating: Union[None, float]
-        quality_rating = self.quality_rating
-
-        quality_rating_count = self.quality_rating_count
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "uuid": uuid,
                 "total_reviews_completed": total_reviews_completed,
                 "total_reviews_declined": total_reviews_declined,
                 "total_reviews_timeout": total_reviews_timeout,
                 "average_review_time_days": average_review_time_days,
                 "average_score_given": average_score_given,
                 "last_review_date": last_review_date,
-                "quality_rating": quality_rating,
-                "quality_rating_count": quality_rating_count,
             }
         )
 
@@ -83,8 +67,6 @@ class ReviewerStats:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        uuid = UUID(d.pop("uuid"))
-
         total_reviews_completed = d.pop("total_reviews_completed")
 
         total_reviews_declined = d.pop("total_reviews_declined")
@@ -120,25 +102,13 @@ class ReviewerStats:
 
         last_review_date = _parse_last_review_date(d.pop("last_review_date"))
 
-        def _parse_quality_rating(data: object) -> Union[None, float]:
-            if data is None:
-                return data
-            return cast(Union[None, float], data)
-
-        quality_rating = _parse_quality_rating(d.pop("quality_rating"))
-
-        quality_rating_count = d.pop("quality_rating_count")
-
         reviewer_stats = cls(
-            uuid=uuid,
             total_reviews_completed=total_reviews_completed,
             total_reviews_declined=total_reviews_declined,
             total_reviews_timeout=total_reviews_timeout,
             average_review_time_days=average_review_time_days,
             average_score_given=average_score_given,
             last_review_date=last_review_date,
-            quality_rating=quality_rating,
-            quality_rating_count=quality_rating_count,
         )
 
         reviewer_stats.additional_properties = d

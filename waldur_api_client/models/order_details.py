@@ -14,6 +14,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.issue_reference import IssueReference
+    from ..models.order_award import OrderAward
     from ..models.order_details_attributes import OrderDetailsAttributes
     from ..models.order_details_limits import OrderDetailsLimits
     from ..models.order_details_offering_plugin_options import OrderDetailsOfferingPluginOptions
@@ -136,6 +137,7 @@ class OrderDetails:
         auto_approved_by_rule_uuid (Union[None, UUID, Unset]):
         auto_approved_cost_limit_snapshot (Union[None, Unset, str]):
         issue (Union['IssueReference', None, Unset]):
+        award (Union['OrderAward', None, Unset]):
     """
 
     offering: Union[Unset, str] = UNSET
@@ -235,10 +237,12 @@ class OrderDetails:
     auto_approved_by_rule_uuid: Union[None, UUID, Unset] = UNSET
     auto_approved_cost_limit_snapshot: Union[None, Unset, str] = UNSET
     issue: Union["IssueReference", None, Unset] = UNSET
+    award: Union["OrderAward", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.issue_reference import IssueReference
+        from ..models.order_award import OrderAward
 
         offering = self.offering
 
@@ -674,6 +678,14 @@ class OrderDetails:
         else:
             issue = self.issue
 
+        award: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.award, Unset):
+            award = UNSET
+        elif isinstance(self.award, OrderAward):
+            award = self.award.to_dict()
+        else:
+            award = self.award
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -871,12 +883,15 @@ class OrderDetails:
             field_dict["auto_approved_cost_limit_snapshot"] = auto_approved_cost_limit_snapshot
         if issue is not UNSET:
             field_dict["issue"] = issue
+        if award is not UNSET:
+            field_dict["award"] = award
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.issue_reference import IssueReference
+        from ..models.order_award import OrderAward
         from ..models.order_details_attributes import OrderDetailsAttributes
         from ..models.order_details_limits import OrderDetailsLimits
         from ..models.order_details_offering_plugin_options import OrderDetailsOfferingPluginOptions
@@ -1607,6 +1622,23 @@ class OrderDetails:
 
         issue = _parse_issue(d.pop("issue", UNSET))
 
+        def _parse_award(data: object) -> Union["OrderAward", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                award_type_1 = OrderAward.from_dict(data)
+
+                return award_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["OrderAward", None, Unset], data)
+
+        award = _parse_award(d.pop("award", UNSET))
+
         order_details = cls(
             offering=offering,
             offering_name=offering_name,
@@ -1705,6 +1737,7 @@ class OrderDetails:
             auto_approved_by_rule_uuid=auto_approved_by_rule_uuid,
             auto_approved_cost_limit_snapshot=auto_approved_cost_limit_snapshot,
             issue=issue,
+            award=award,
         )
 
         order_details.additional_properties = d

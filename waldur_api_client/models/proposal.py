@@ -10,15 +10,19 @@ from dateutil.parser import isoparse
 from ..models.blank_enum import BlankEnum
 from ..models.gender_enum import GenderEnum
 from ..models.oecd_fos_2007_code_enum import OecdFos2007CodeEnum
+from ..models.post_award_status_enum import PostAwardStatusEnum
 from ..models.proposal_states import ProposalStates
-from ..models.step_enum import StepEnum
+from ..models.workflow_phase_enum import WorkflowPhaseEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.nested_round import NestedRound
+    from ..models.offering_team_provider import OfferingTeamProvider
     from ..models.proposal_can_submit_response import ProposalCanSubmitResponse
+    from ..models.proposal_change_request import ProposalChangeRequest
     from ..models.proposal_compliance_status import ProposalComplianceStatus
     from ..models.proposal_documentation import ProposalDocumentation
+    from ..models.proposal_status_label import ProposalStatusLabel
 
 
 T = TypeVar("T", bound="Proposal")
@@ -71,17 +75,53 @@ class Proposal:
         call_uuid (UUID):
         call_name (str):
         call_managing_organisation_uuid (UUID):
+        call_adoption_required (bool): Whether the call's round results are adopted, after which a held decision can no
+            longer be reopened.
         oecd_fos_2007_label (str):
         science_sub_domain_name (str):
         science_domain_uuid (UUID):
         science_domain_name (str):
+        panel_uuid (Union[None, UUID]): The call panel evaluating the proposal. Null for whoever may not see who
+            evaluates it, the applicant team always.
+        panel_name (Union[None, str]): The name of the call panel, as panel_uuid is shown.
         allocation_comment (Union[None, str]):
         created (datetime.datetime):
+        submitted_at (Union[None, datetime.datetime]): When the proposal left draft. Null for proposals submitted before
+            this field existed: their submission was never recorded and the only proxy, the first workflow step instance,
+            was backfilled by migration for the oldest of them — so it is left empty rather than filled with a date that
+            reads as fact.
         compliance_status (Union['ProposalComplianceStatus', None]):
         can_submit (ProposalCanSubmitResponse):
         awaiting_manual_advance (bool):
         decision_held (Union[None, bool]):
-        workflow_step (Union[None, StepEnum]): Current active workflow step for this proposal.
+        open_change_requests (list['ProposalChangeRequest']): The changes asked of the applicant and not yet submitted,
+            earliest first: several steps of a stage may each ask at once. Each says what to change and which parts it
+            unlocks meanwhile; the applicant may edit every part any of them unlocks, and submits them all at once. For the
+            applicant team and those overseeing the call; empty otherwise.
+        reads_own_offerings_only (bool): Whether the caller reads the proposal only as the provider of some of the
+            offerings it requests: its requested resources, award, assessments and extensions then show only their own
+            offerings' part.
+        offering_team_providers (list['OfferingTeamProvider']): The providers whose offering requested by the proposal
+            the caller holds a role on -- its managers, or someone its part of a step can be handed to: each opens the
+            proposal as that offering's team. Empty for everyone else.
+        workflow_step (Union[None, str]): Key of the call step the proposal stands in.
+        status_labels (list['ProposalStatusLabel']): What the call configured the caller's dashboard to call the
+            proposal's current stage: one label per step of the stage that has one for the caller (several when the stage
+            runs steps side by side). Empty when nothing is configured, so the state stands.
+        requested_duration_months (Union[None, int]): The project length the applicant chose from the call's
+            allowed_duration_months. Written through update_project_details.
+        awarded_duration_months (Union[None, int]): The project length the award grants, in months. Null for whoever may
+            not read the award yet, as the awarded resources.
+        completed_at (Union[None, datetime.datetime]): When the project was completed: its final report accepted.
+        post_award_status (Union[None, PostAwardStatusEnum]): Where an accepted proposal's extension request or final
+            report stands. Null before acceptance, without post-award work, and for whoever may not read the award.
+        open_run_uuid (Union[None, UUID]): The open extension request or final report, if any.
+        open_run_phase (Union[None, WorkflowPhaseEnum]):
+        extension_requestable_until (Union[None, datetime.date]): The last day an extension can be requested; null when
+            the call takes no extension requests or the project has no end date.
+        final_report_openable (bool): Whether the final report can be opened now: the proposal is accepted with a
+            project, not completed, has no open extension request or final report, and its call has final report steps. Who
+            may open it is decided by the action itself.
         description (Union[Unset, str]):
         project_summary (Union[Unset, str]):
         oecd_fos_2007_code (Union[BlankEnum, None, OecdFos2007CodeEnum, Unset]):
@@ -131,17 +171,33 @@ class Proposal:
     call_uuid: UUID
     call_name: str
     call_managing_organisation_uuid: UUID
+    call_adoption_required: bool
     oecd_fos_2007_label: str
     science_sub_domain_name: str
     science_domain_uuid: UUID
     science_domain_name: str
+    panel_uuid: Union[None, UUID]
+    panel_name: Union[None, str]
     allocation_comment: Union[None, str]
     created: datetime.datetime
+    submitted_at: Union[None, datetime.datetime]
     compliance_status: Union["ProposalComplianceStatus", None]
     can_submit: "ProposalCanSubmitResponse"
     awaiting_manual_advance: bool
     decision_held: Union[None, bool]
-    workflow_step: Union[None, StepEnum]
+    open_change_requests: list["ProposalChangeRequest"]
+    reads_own_offerings_only: bool
+    offering_team_providers: list["OfferingTeamProvider"]
+    workflow_step: Union[None, str]
+    status_labels: list["ProposalStatusLabel"]
+    requested_duration_months: Union[None, int]
+    awarded_duration_months: Union[None, int]
+    completed_at: Union[None, datetime.datetime]
+    post_award_status: Union[None, PostAwardStatusEnum]
+    open_run_uuid: Union[None, UUID]
+    open_run_phase: Union[None, WorkflowPhaseEnum]
+    extension_requestable_until: Union[None, datetime.date]
+    final_report_openable: bool
     description: Union[Unset, str] = UNSET
     project_summary: Union[Unset, str] = UNSET
     oecd_fos_2007_code: Union[BlankEnum, None, OecdFos2007CodeEnum, Unset] = UNSET
@@ -255,6 +311,8 @@ class Proposal:
 
         call_managing_organisation_uuid = str(self.call_managing_organisation_uuid)
 
+        call_adoption_required = self.call_adoption_required
+
         oecd_fos_2007_label = self.oecd_fos_2007_label
 
         science_sub_domain_name = self.science_sub_domain_name
@@ -263,10 +321,25 @@ class Proposal:
 
         science_domain_name = self.science_domain_name
 
+        panel_uuid: Union[None, str]
+        if isinstance(self.panel_uuid, UUID):
+            panel_uuid = str(self.panel_uuid)
+        else:
+            panel_uuid = self.panel_uuid
+
+        panel_name: Union[None, str]
+        panel_name = self.panel_name
+
         allocation_comment: Union[None, str]
         allocation_comment = self.allocation_comment
 
         created = self.created.isoformat()
+
+        submitted_at: Union[None, str]
+        if isinstance(self.submitted_at, datetime.datetime):
+            submitted_at = self.submitted_at.isoformat()
+        else:
+            submitted_at = self.submitted_at
 
         compliance_status: Union[None, dict[str, Any]]
         if isinstance(self.compliance_status, ProposalComplianceStatus):
@@ -281,11 +354,63 @@ class Proposal:
         decision_held: Union[None, bool]
         decision_held = self.decision_held
 
+        open_change_requests = []
+        for open_change_requests_item_data in self.open_change_requests:
+            open_change_requests_item = open_change_requests_item_data.to_dict()
+            open_change_requests.append(open_change_requests_item)
+
+        reads_own_offerings_only = self.reads_own_offerings_only
+
+        offering_team_providers = []
+        for offering_team_providers_item_data in self.offering_team_providers:
+            offering_team_providers_item = offering_team_providers_item_data.to_dict()
+            offering_team_providers.append(offering_team_providers_item)
+
         workflow_step: Union[None, str]
-        if isinstance(self.workflow_step, StepEnum):
-            workflow_step = self.workflow_step.value
+        workflow_step = self.workflow_step
+
+        status_labels = []
+        for status_labels_item_data in self.status_labels:
+            status_labels_item = status_labels_item_data.to_dict()
+            status_labels.append(status_labels_item)
+
+        requested_duration_months: Union[None, int]
+        requested_duration_months = self.requested_duration_months
+
+        awarded_duration_months: Union[None, int]
+        awarded_duration_months = self.awarded_duration_months
+
+        completed_at: Union[None, str]
+        if isinstance(self.completed_at, datetime.datetime):
+            completed_at = self.completed_at.isoformat()
         else:
-            workflow_step = self.workflow_step
+            completed_at = self.completed_at
+
+        post_award_status: Union[None, str]
+        if isinstance(self.post_award_status, PostAwardStatusEnum):
+            post_award_status = self.post_award_status.value
+        else:
+            post_award_status = self.post_award_status
+
+        open_run_uuid: Union[None, str]
+        if isinstance(self.open_run_uuid, UUID):
+            open_run_uuid = str(self.open_run_uuid)
+        else:
+            open_run_uuid = self.open_run_uuid
+
+        open_run_phase: Union[None, str]
+        if isinstance(self.open_run_phase, WorkflowPhaseEnum):
+            open_run_phase = self.open_run_phase.value
+        else:
+            open_run_phase = self.open_run_phase
+
+        extension_requestable_until: Union[None, str]
+        if isinstance(self.extension_requestable_until, datetime.date):
+            extension_requestable_until = self.extension_requestable_until.isoformat()
+        else:
+            extension_requestable_until = self.extension_requestable_until
+
+        final_report_openable = self.final_report_openable
 
         description = self.description
 
@@ -356,17 +481,33 @@ class Proposal:
                 "call_uuid": call_uuid,
                 "call_name": call_name,
                 "call_managing_organisation_uuid": call_managing_organisation_uuid,
+                "call_adoption_required": call_adoption_required,
                 "oecd_fos_2007_label": oecd_fos_2007_label,
                 "science_sub_domain_name": science_sub_domain_name,
                 "science_domain_uuid": science_domain_uuid,
                 "science_domain_name": science_domain_name,
+                "panel_uuid": panel_uuid,
+                "panel_name": panel_name,
                 "allocation_comment": allocation_comment,
                 "created": created,
+                "submitted_at": submitted_at,
                 "compliance_status": compliance_status,
                 "can_submit": can_submit,
                 "awaiting_manual_advance": awaiting_manual_advance,
                 "decision_held": decision_held,
+                "open_change_requests": open_change_requests,
+                "reads_own_offerings_only": reads_own_offerings_only,
+                "offering_team_providers": offering_team_providers,
                 "workflow_step": workflow_step,
+                "status_labels": status_labels,
+                "requested_duration_months": requested_duration_months,
+                "awarded_duration_months": awarded_duration_months,
+                "completed_at": completed_at,
+                "post_award_status": post_award_status,
+                "open_run_uuid": open_run_uuid,
+                "open_run_phase": open_run_phase,
+                "extension_requestable_until": extension_requestable_until,
+                "final_report_openable": final_report_openable,
             }
         )
         if description is not UNSET:
@@ -383,9 +524,12 @@ class Proposal:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.nested_round import NestedRound
+        from ..models.offering_team_provider import OfferingTeamProvider
         from ..models.proposal_can_submit_response import ProposalCanSubmitResponse
+        from ..models.proposal_change_request import ProposalChangeRequest
         from ..models.proposal_compliance_status import ProposalComplianceStatus
         from ..models.proposal_documentation import ProposalDocumentation
+        from ..models.proposal_status_label import ProposalStatusLabel
 
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
@@ -538,6 +682,8 @@ class Proposal:
 
         call_managing_organisation_uuid = UUID(d.pop("call_managing_organisation_uuid"))
 
+        call_adoption_required = d.pop("call_adoption_required")
+
         oecd_fos_2007_label = d.pop("oecd_fos_2007_label")
 
         science_sub_domain_name = d.pop("science_sub_domain_name")
@@ -545,6 +691,28 @@ class Proposal:
         science_domain_uuid = UUID(d.pop("science_domain_uuid"))
 
         science_domain_name = d.pop("science_domain_name")
+
+        def _parse_panel_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                panel_uuid_type_0 = UUID(data)
+
+                return panel_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        panel_uuid = _parse_panel_uuid(d.pop("panel_uuid"))
+
+        def _parse_panel_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        panel_name = _parse_panel_name(d.pop("panel_name"))
 
         def _parse_allocation_comment(data: object) -> Union[None, str]:
             if data is None:
@@ -554,6 +722,21 @@ class Proposal:
         allocation_comment = _parse_allocation_comment(d.pop("allocation_comment"))
 
         created = isoparse(d.pop("created"))
+
+        def _parse_submitted_at(data: object) -> Union[None, datetime.datetime]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                submitted_at_type_0 = isoparse(data)
+
+                return submitted_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, datetime.datetime], data)
+
+        submitted_at = _parse_submitted_at(d.pop("submitted_at"))
 
         def _parse_compliance_status(data: object) -> Union["ProposalComplianceStatus", None]:
             if data is None:
@@ -581,20 +764,126 @@ class Proposal:
 
         decision_held = _parse_decision_held(d.pop("decision_held"))
 
-        def _parse_workflow_step(data: object) -> Union[None, StepEnum]:
+        open_change_requests = []
+        _open_change_requests = d.pop("open_change_requests")
+        for open_change_requests_item_data in _open_change_requests:
+            open_change_requests_item = ProposalChangeRequest.from_dict(open_change_requests_item_data)
+
+            open_change_requests.append(open_change_requests_item)
+
+        reads_own_offerings_only = d.pop("reads_own_offerings_only")
+
+        offering_team_providers = []
+        _offering_team_providers = d.pop("offering_team_providers")
+        for offering_team_providers_item_data in _offering_team_providers:
+            offering_team_providers_item = OfferingTeamProvider.from_dict(offering_team_providers_item_data)
+
+            offering_team_providers.append(offering_team_providers_item)
+
+        def _parse_workflow_step(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        workflow_step = _parse_workflow_step(d.pop("workflow_step"))
+
+        status_labels = []
+        _status_labels = d.pop("status_labels")
+        for status_labels_item_data in _status_labels:
+            status_labels_item = ProposalStatusLabel.from_dict(status_labels_item_data)
+
+            status_labels.append(status_labels_item)
+
+        def _parse_requested_duration_months(data: object) -> Union[None, int]:
+            if data is None:
+                return data
+            return cast(Union[None, int], data)
+
+        requested_duration_months = _parse_requested_duration_months(d.pop("requested_duration_months"))
+
+        def _parse_awarded_duration_months(data: object) -> Union[None, int]:
+            if data is None:
+                return data
+            return cast(Union[None, int], data)
+
+        awarded_duration_months = _parse_awarded_duration_months(d.pop("awarded_duration_months"))
+
+        def _parse_completed_at(data: object) -> Union[None, datetime.datetime]:
             if data is None:
                 return data
             try:
                 if not isinstance(data, str):
                     raise TypeError()
-                workflow_step_type_0 = StepEnum(data)
+                completed_at_type_0 = isoparse(data)
 
-                return workflow_step_type_0
+                return completed_at_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, StepEnum], data)
+            return cast(Union[None, datetime.datetime], data)
 
-        workflow_step = _parse_workflow_step(d.pop("workflow_step"))
+        completed_at = _parse_completed_at(d.pop("completed_at"))
+
+        def _parse_post_award_status(data: object) -> Union[None, PostAwardStatusEnum]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                post_award_status_type_0 = PostAwardStatusEnum(data)
+
+                return post_award_status_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, PostAwardStatusEnum], data)
+
+        post_award_status = _parse_post_award_status(d.pop("post_award_status"))
+
+        def _parse_open_run_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                open_run_uuid_type_0 = UUID(data)
+
+                return open_run_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        open_run_uuid = _parse_open_run_uuid(d.pop("open_run_uuid"))
+
+        def _parse_open_run_phase(data: object) -> Union[None, WorkflowPhaseEnum]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                open_run_phase_type_0 = WorkflowPhaseEnum(data)
+
+                return open_run_phase_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, WorkflowPhaseEnum], data)
+
+        open_run_phase = _parse_open_run_phase(d.pop("open_run_phase"))
+
+        def _parse_extension_requestable_until(data: object) -> Union[None, datetime.date]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                extension_requestable_until_type_0 = isoparse(data).date()
+
+                return extension_requestable_until_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, datetime.date], data)
+
+        extension_requestable_until = _parse_extension_requestable_until(d.pop("extension_requestable_until"))
+
+        final_report_openable = d.pop("final_report_openable")
 
         description = d.pop("description", UNSET)
 
@@ -686,17 +975,33 @@ class Proposal:
             call_uuid=call_uuid,
             call_name=call_name,
             call_managing_organisation_uuid=call_managing_organisation_uuid,
+            call_adoption_required=call_adoption_required,
             oecd_fos_2007_label=oecd_fos_2007_label,
             science_sub_domain_name=science_sub_domain_name,
             science_domain_uuid=science_domain_uuid,
             science_domain_name=science_domain_name,
+            panel_uuid=panel_uuid,
+            panel_name=panel_name,
             allocation_comment=allocation_comment,
             created=created,
+            submitted_at=submitted_at,
             compliance_status=compliance_status,
             can_submit=can_submit,
             awaiting_manual_advance=awaiting_manual_advance,
             decision_held=decision_held,
+            open_change_requests=open_change_requests,
+            reads_own_offerings_only=reads_own_offerings_only,
+            offering_team_providers=offering_team_providers,
             workflow_step=workflow_step,
+            status_labels=status_labels,
+            requested_duration_months=requested_duration_months,
+            awarded_duration_months=awarded_duration_months,
+            completed_at=completed_at,
+            post_award_status=post_award_status,
+            open_run_uuid=open_run_uuid,
+            open_run_phase=open_run_phase,
+            extension_requestable_until=extension_requestable_until,
+            final_report_openable=final_report_openable,
             description=description,
             project_summary=project_summary,
             oecd_fos_2007_code=oecd_fos_2007_code,

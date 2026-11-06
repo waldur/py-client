@@ -6,17 +6,27 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.reject_requested_offering_request import RejectRequestedOfferingRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
+    *,
+    body: RejectRequestedOfferingRequest,
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": f"/api/proposal-requested-offerings/{uuid}/cancel/",
     }
 
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -41,11 +51,14 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    body: RejectRequestedOfferingRequest,
 ) -> Response[Any]:
-    """Cancel a requested offering.
+    """Decline the request: the offering does not take part in the call. The reason is told to the call's
+    managers.
 
     Args:
         uuid (UUID):
+        body (RejectRequestedOfferingRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -57,6 +70,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        body=body,
     )
 
     response = client.get_httpx_client().request(
@@ -70,11 +84,14 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    body: RejectRequestedOfferingRequest,
 ) -> Response[Any]:
-    """Cancel a requested offering.
+    """Decline the request: the offering does not take part in the call. The reason is told to the call's
+    managers.
 
     Args:
         uuid (UUID):
+        body (RejectRequestedOfferingRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -86,6 +103,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        body=body,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)

@@ -60,7 +60,8 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: RejectWorkflowStepRequest,
 ) -> Response[RejectWorkflowStepResponse]:
-    """Reject the proposal at the current workflow step.
+    """Reject the proposal at an active workflow step: the one step_uuid names. Steps running beside it are
+    withdrawn.
 
     Args:
         uuid (UUID):
@@ -92,7 +93,8 @@ def sync(
     client: AuthenticatedClient,
     body: RejectWorkflowStepRequest,
 ) -> RejectWorkflowStepResponse:
-    """Reject the proposal at the current workflow step.
+    """Reject the proposal at an active workflow step: the one step_uuid names. Steps running beside it are
+    withdrawn.
 
     Args:
         uuid (UUID):
@@ -119,7 +121,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: RejectWorkflowStepRequest,
 ) -> Response[RejectWorkflowStepResponse]:
-    """Reject the proposal at the current workflow step.
+    """Reject the proposal at an active workflow step: the one step_uuid names. Steps running beside it are
+    withdrawn.
 
     Args:
         uuid (UUID):
@@ -149,7 +152,8 @@ async def asyncio(
     client: AuthenticatedClient,
     body: RejectWorkflowStepRequest,
 ) -> RejectWorkflowStepResponse:
-    """Reject the proposal at the current workflow step.
+    """Reject the proposal at an active workflow step: the one step_uuid names. Steps running beside it are
+    withdrawn.
 
     Args:
         uuid (UUID):

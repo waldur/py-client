@@ -16,15 +16,16 @@ class NestedRoundRequest:
     """
     Attributes:
         start_time (datetime.datetime):
-        cutoff_time (datetime.datetime):
         slug (Union[Unset, str]):
+        cutoff_time (Union[None, Unset, datetime.datetime]): When submission closes. Empty: the round stays open until a
+            call manager closes it.
         allocation_date (Union[None, Unset, datetime.datetime]):
         review_duration_in_days (Union[None, Unset, int]):
     """
 
     start_time: datetime.datetime
-    cutoff_time: datetime.datetime
     slug: Union[Unset, str] = UNSET
+    cutoff_time: Union[None, Unset, datetime.datetime] = UNSET
     allocation_date: Union[None, Unset, datetime.datetime] = UNSET
     review_duration_in_days: Union[None, Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -32,9 +33,15 @@ class NestedRoundRequest:
     def to_dict(self) -> dict[str, Any]:
         start_time = self.start_time.isoformat()
 
-        cutoff_time = self.cutoff_time.isoformat()
-
         slug = self.slug
+
+        cutoff_time: Union[None, Unset, str]
+        if isinstance(self.cutoff_time, Unset):
+            cutoff_time = UNSET
+        elif isinstance(self.cutoff_time, datetime.datetime):
+            cutoff_time = self.cutoff_time.isoformat()
+        else:
+            cutoff_time = self.cutoff_time
 
         allocation_date: Union[None, Unset, str]
         if isinstance(self.allocation_date, Unset):
@@ -55,11 +62,12 @@ class NestedRoundRequest:
         field_dict.update(
             {
                 "start_time": start_time,
-                "cutoff_time": cutoff_time,
             }
         )
         if slug is not UNSET:
             field_dict["slug"] = slug
+        if cutoff_time is not UNSET:
+            field_dict["cutoff_time"] = cutoff_time
         if allocation_date is not UNSET:
             field_dict["allocation_date"] = allocation_date
         if review_duration_in_days is not UNSET:
@@ -72,9 +80,24 @@ class NestedRoundRequest:
         d = dict(src_dict)
         start_time = isoparse(d.pop("start_time"))
 
-        cutoff_time = isoparse(d.pop("cutoff_time"))
-
         slug = d.pop("slug", UNSET)
+
+        def _parse_cutoff_time(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                cutoff_time_type_0 = isoparse(data)
+
+                return cutoff_time_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        cutoff_time = _parse_cutoff_time(d.pop("cutoff_time", UNSET))
 
         def _parse_allocation_date(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
@@ -104,8 +127,8 @@ class NestedRoundRequest:
 
         nested_round_request = cls(
             start_time=start_time,
-            cutoff_time=cutoff_time,
             slug=slug,
+            cutoff_time=cutoff_time,
             allocation_date=allocation_date,
             review_duration_in_days=review_duration_in_days,
         )

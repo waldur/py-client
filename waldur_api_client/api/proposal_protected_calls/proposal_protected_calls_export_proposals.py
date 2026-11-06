@@ -17,6 +17,7 @@ def _get_kwargs(
     created_by_uuid: Union[Unset, UUID] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
+    proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -36,6 +37,15 @@ def _get_kwargs(
             json_proposal_state.append(proposal_state_item)
 
     params["proposal_state"] = json_proposal_state
+
+    json_proposal_uuid: Union[Unset, list[str]] = UNSET
+    if not isinstance(proposal_uuid, Unset):
+        json_proposal_uuid = []
+        for proposal_uuid_item_data in proposal_uuid:
+            proposal_uuid_item = str(proposal_uuid_item_data)
+            json_proposal_uuid.append(proposal_uuid_item)
+
+    params["proposal_uuid"] = json_proposal_uuid
 
     json_round_uuid: Union[Unset, str] = UNSET
     if not isinstance(round_uuid, Unset):
@@ -79,6 +89,7 @@ def sync_detailed(
     created_by_uuid: Union[Unset, UUID] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
+    proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[File]:
     """Download the call's proposals as CSV, one row per proposal, with one column per requested offering
@@ -90,6 +101,7 @@ def sync_detailed(
         created_by_uuid (Union[Unset, UUID]):
         proposal_name (Union[Unset, str]):
         proposal_state (Union[Unset, list[ProposalStates]]):
+        proposal_uuid (Union[Unset, list[UUID]]):
         round_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -105,6 +117,7 @@ def sync_detailed(
         created_by_uuid=created_by_uuid,
         proposal_name=proposal_name,
         proposal_state=proposal_state,
+        proposal_uuid=proposal_uuid,
         round_uuid=round_uuid,
     )
 
@@ -122,6 +135,7 @@ def sync(
     created_by_uuid: Union[Unset, UUID] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
+    proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
 ) -> File:
     """Download the call's proposals as CSV, one row per proposal, with one column per requested offering
@@ -133,6 +147,7 @@ def sync(
         created_by_uuid (Union[Unset, UUID]):
         proposal_name (Union[Unset, str]):
         proposal_state (Union[Unset, list[ProposalStates]]):
+        proposal_uuid (Union[Unset, list[UUID]]):
         round_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -149,6 +164,7 @@ def sync(
         created_by_uuid=created_by_uuid,
         proposal_name=proposal_name,
         proposal_state=proposal_state,
+        proposal_uuid=proposal_uuid,
         round_uuid=round_uuid,
     ).parsed
 
@@ -160,6 +176,7 @@ async def asyncio_detailed(
     created_by_uuid: Union[Unset, UUID] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
+    proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[File]:
     """Download the call's proposals as CSV, one row per proposal, with one column per requested offering
@@ -171,6 +188,7 @@ async def asyncio_detailed(
         created_by_uuid (Union[Unset, UUID]):
         proposal_name (Union[Unset, str]):
         proposal_state (Union[Unset, list[ProposalStates]]):
+        proposal_uuid (Union[Unset, list[UUID]]):
         round_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -186,6 +204,7 @@ async def asyncio_detailed(
         created_by_uuid=created_by_uuid,
         proposal_name=proposal_name,
         proposal_state=proposal_state,
+        proposal_uuid=proposal_uuid,
         round_uuid=round_uuid,
     )
 
@@ -201,6 +220,7 @@ async def asyncio(
     created_by_uuid: Union[Unset, UUID] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
+    proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
 ) -> File:
     """Download the call's proposals as CSV, one row per proposal, with one column per requested offering
@@ -212,6 +232,7 @@ async def asyncio(
         created_by_uuid (Union[Unset, UUID]):
         proposal_name (Union[Unset, str]):
         proposal_state (Union[Unset, list[ProposalStates]]):
+        proposal_uuid (Union[Unset, list[UUID]]):
         round_uuid (Union[Unset, UUID]):
 
     Raises:
@@ -229,6 +250,7 @@ async def asyncio(
             created_by_uuid=created_by_uuid,
             proposal_name=proposal_name,
             proposal_state=proposal_state,
+            proposal_uuid=proposal_uuid,
             round_uuid=round_uuid,
         )
     ).parsed

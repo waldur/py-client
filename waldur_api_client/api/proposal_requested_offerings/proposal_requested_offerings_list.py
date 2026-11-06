@@ -6,6 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.call_states import CallStates
 from ...models.provider_requested_offering import ProviderRequestedOffering
 from ...models.provider_requested_offering_o_enum import ProviderRequestedOfferingOEnum
 from ...models.requested_offering_states import RequestedOfferingStates
@@ -16,6 +17,7 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     call: Union[Unset, str] = UNSET,
+    call_state: Union[Unset, list[CallStates]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, list[ProviderRequestedOfferingOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
@@ -29,6 +31,15 @@ def _get_kwargs(
     params: dict[str, Any] = {}
 
     params["call"] = call
+
+    json_call_state: Union[Unset, list[str]] = UNSET
+    if not isinstance(call_state, Unset):
+        json_call_state = []
+        for call_state_item_data in call_state:
+            call_state_item = call_state_item_data.value
+            json_call_state.append(call_state_item)
+
+    params["call_state"] = json_call_state
 
     json_call_uuid: Union[Unset, str] = UNSET
     if not isinstance(call_uuid, Unset):
@@ -117,6 +128,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     call: Union[Unset, str] = UNSET,
+    call_state: Union[Unset, list[CallStates]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, list[ProviderRequestedOfferingOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
@@ -130,6 +142,7 @@ def sync_detailed(
     """
     Args:
         call (Union[Unset, str]):
+        call_state (Union[Unset, list[CallStates]]):
         call_uuid (Union[Unset, UUID]):
         o (Union[Unset, list[ProviderRequestedOfferingOEnum]]):
         offering (Union[Unset, str]):
@@ -150,6 +163,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         call=call,
+        call_state=call_state,
         call_uuid=call_uuid,
         o=o,
         offering=offering,
@@ -172,6 +186,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     call: Union[Unset, str] = UNSET,
+    call_state: Union[Unset, list[CallStates]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, list[ProviderRequestedOfferingOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
@@ -185,6 +200,7 @@ def sync(
     """
     Args:
         call (Union[Unset, str]):
+        call_state (Union[Unset, list[CallStates]]):
         call_uuid (Union[Unset, UUID]):
         o (Union[Unset, list[ProviderRequestedOfferingOEnum]]):
         offering (Union[Unset, str]):
@@ -206,6 +222,7 @@ def sync(
     return sync_detailed(
         client=client,
         call=call,
+        call_state=call_state,
         call_uuid=call_uuid,
         o=o,
         offering=offering,
@@ -222,6 +239,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     call: Union[Unset, str] = UNSET,
+    call_state: Union[Unset, list[CallStates]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, list[ProviderRequestedOfferingOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
@@ -235,6 +253,7 @@ async def asyncio_detailed(
     """
     Args:
         call (Union[Unset, str]):
+        call_state (Union[Unset, list[CallStates]]):
         call_uuid (Union[Unset, UUID]):
         o (Union[Unset, list[ProviderRequestedOfferingOEnum]]):
         offering (Union[Unset, str]):
@@ -255,6 +274,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         call=call,
+        call_state=call_state,
         call_uuid=call_uuid,
         o=o,
         offering=offering,
@@ -275,6 +295,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     call: Union[Unset, str] = UNSET,
+    call_state: Union[Unset, list[CallStates]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, list[ProviderRequestedOfferingOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
@@ -288,6 +309,7 @@ async def asyncio(
     """
     Args:
         call (Union[Unset, str]):
+        call_state (Union[Unset, list[CallStates]]):
         call_uuid (Union[Unset, UUID]):
         o (Union[Unset, list[ProviderRequestedOfferingOEnum]]):
         offering (Union[Unset, str]):
@@ -310,6 +332,7 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             call=call,
+            call_state=call_state,
             call_uuid=call_uuid,
             o=o,
             offering=offering,
@@ -327,6 +350,7 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     call: Union[Unset, str] = UNSET,
+    call_state: Union[Unset, list[CallStates]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, list[ProviderRequestedOfferingOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
@@ -344,6 +368,7 @@ def sync_all(
 
     Args:
         call (Union[Unset, str]):
+        call_state (Union[Unset, list[CallStates]]):
         call_uuid (Union[Unset, UUID]):
         o (Union[Unset, list[ProviderRequestedOfferingOEnum]]):
         offering (Union[Unset, str]):
@@ -366,6 +391,7 @@ def sync_all(
     # Get initial request kwargs
     kwargs = _get_kwargs(
         call=call,
+        call_state=call_state,
         call_uuid=call_uuid,
         o=o,
         offering=offering,
@@ -421,6 +447,7 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     call: Union[Unset, str] = UNSET,
+    call_state: Union[Unset, list[CallStates]] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
     o: Union[Unset, list[ProviderRequestedOfferingOEnum]] = UNSET,
     offering: Union[Unset, str] = UNSET,
@@ -438,6 +465,7 @@ async def asyncio_all(
 
     Args:
         call (Union[Unset, str]):
+        call_state (Union[Unset, list[CallStates]]):
         call_uuid (Union[Unset, UUID]):
         o (Union[Unset, list[ProviderRequestedOfferingOEnum]]):
         offering (Union[Unset, str]):
@@ -460,6 +488,7 @@ async def asyncio_all(
     # Get initial request kwargs
     kwargs = _get_kwargs(
         call=call,
+        call_state=call_state,
         call_uuid=call_uuid,
         o=o,
         offering=offering,

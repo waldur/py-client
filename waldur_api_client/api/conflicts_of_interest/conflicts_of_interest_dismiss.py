@@ -58,7 +58,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: COIStatusUpdateRequest,
 ) -> Response[ConflictOfInterest]:
-    """Dismiss a conflict of interest (not a real conflict).
+    """Dismiss a pending conflict of interest (not a real conflict).
 
     Args:
         uuid (UUID):
@@ -90,7 +90,7 @@ def sync(
     client: AuthenticatedClient,
     body: COIStatusUpdateRequest,
 ) -> ConflictOfInterest:
-    """Dismiss a conflict of interest (not a real conflict).
+    """Dismiss a pending conflict of interest (not a real conflict).
 
     Args:
         uuid (UUID):
@@ -117,7 +117,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: COIStatusUpdateRequest,
 ) -> Response[ConflictOfInterest]:
-    """Dismiss a conflict of interest (not a real conflict).
+    """Dismiss a pending conflict of interest (not a real conflict).
 
     Args:
         uuid (UUID):
@@ -147,7 +147,7 @@ async def asyncio(
     client: AuthenticatedClient,
     body: COIStatusUpdateRequest,
 ) -> ConflictOfInterest:
-    """Dismiss a conflict of interest (not a real conflict).
+    """Dismiss a pending conflict of interest (not a real conflict).
 
     Args:
         uuid (UUID):

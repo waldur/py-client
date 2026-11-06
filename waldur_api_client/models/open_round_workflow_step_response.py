@@ -1,0 +1,165 @@
+import datetime
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
+from uuid import UUID
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+from dateutil.parser import isoparse
+
+if TYPE_CHECKING:
+    from ..models.round_step_proposal_result import RoundStepProposalResult
+
+
+T = TypeVar("T", bound="OpenRoundWorkflowStepResponse")
+
+
+@_attrs_define
+class OpenRoundWorkflowStepResponse:
+    """
+    Attributes:
+        step_uuid (UUID):
+        step_name (str):
+        opened_at (datetime.datetime):
+        due_at (Union[None, datetime.datetime]):
+        reports_created (int):
+        advanced (list['RoundStepProposalResult']):
+        skipped (list['RoundStepProposalResult']):
+        failed (list['RoundStepProposalResult']):
+    """
+
+    step_uuid: UUID
+    step_name: str
+    opened_at: datetime.datetime
+    due_at: Union[None, datetime.datetime]
+    reports_created: int
+    advanced: list["RoundStepProposalResult"]
+    skipped: list["RoundStepProposalResult"]
+    failed: list["RoundStepProposalResult"]
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        step_uuid = str(self.step_uuid)
+
+        step_name = self.step_name
+
+        opened_at = self.opened_at.isoformat()
+
+        due_at: Union[None, str]
+        if isinstance(self.due_at, datetime.datetime):
+            due_at = self.due_at.isoformat()
+        else:
+            due_at = self.due_at
+
+        reports_created = self.reports_created
+
+        advanced = []
+        for advanced_item_data in self.advanced:
+            advanced_item = advanced_item_data.to_dict()
+            advanced.append(advanced_item)
+
+        skipped = []
+        for skipped_item_data in self.skipped:
+            skipped_item = skipped_item_data.to_dict()
+            skipped.append(skipped_item)
+
+        failed = []
+        for failed_item_data in self.failed:
+            failed_item = failed_item_data.to_dict()
+            failed.append(failed_item)
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update(
+            {
+                "step_uuid": step_uuid,
+                "step_name": step_name,
+                "opened_at": opened_at,
+                "due_at": due_at,
+                "reports_created": reports_created,
+                "advanced": advanced,
+                "skipped": skipped,
+                "failed": failed,
+            }
+        )
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.round_step_proposal_result import RoundStepProposalResult
+
+        d = dict(src_dict)
+        step_uuid = UUID(d.pop("step_uuid"))
+
+        step_name = d.pop("step_name")
+
+        opened_at = isoparse(d.pop("opened_at"))
+
+        def _parse_due_at(data: object) -> Union[None, datetime.datetime]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                due_at_type_0 = isoparse(data)
+
+                return due_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, datetime.datetime], data)
+
+        due_at = _parse_due_at(d.pop("due_at"))
+
+        reports_created = d.pop("reports_created")
+
+        advanced = []
+        _advanced = d.pop("advanced")
+        for advanced_item_data in _advanced:
+            advanced_item = RoundStepProposalResult.from_dict(advanced_item_data)
+
+            advanced.append(advanced_item)
+
+        skipped = []
+        _skipped = d.pop("skipped")
+        for skipped_item_data in _skipped:
+            skipped_item = RoundStepProposalResult.from_dict(skipped_item_data)
+
+            skipped.append(skipped_item)
+
+        failed = []
+        _failed = d.pop("failed")
+        for failed_item_data in _failed:
+            failed_item = RoundStepProposalResult.from_dict(failed_item_data)
+
+            failed.append(failed_item)
+
+        open_round_workflow_step_response = cls(
+            step_uuid=step_uuid,
+            step_name=step_name,
+            opened_at=opened_at,
+            due_at=due_at,
+            reports_created=reports_created,
+            advanced=advanced,
+            skipped=skipped,
+            failed=failed,
+        )
+
+        open_round_workflow_step_response.additional_properties = d
+        return open_round_workflow_step_response
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

@@ -15,16 +15,21 @@ class WorkflowCriterionRequest:
     Attributes:
         name (str):
         order (Union[Unset, int]):
+        weight (Union[Unset, int]): The criterion's weight in a review's overall score, relative to the other criteria
+            of the step.
     """
 
     name: str
     order: Union[Unset, int] = UNSET
+    weight: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
         order = self.order
+
+        weight = self.weight
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -35,6 +40,8 @@ class WorkflowCriterionRequest:
         )
         if order is not UNSET:
             field_dict["order"] = order
+        if weight is not UNSET:
+            field_dict["weight"] = weight
 
         return field_dict
 
@@ -45,9 +52,12 @@ class WorkflowCriterionRequest:
 
         order = d.pop("order", UNSET)
 
+        weight = d.pop("weight", UNSET)
+
         workflow_criterion_request = cls(
             name=name,
             order=order,
+            weight=weight,
         )
 
         workflow_criterion_request.additional_properties = d

@@ -6,6 +6,7 @@ class ProjectFieldEnum(str, Enum):
     AFFILIATION_CODE = "affiliation_code"
     AFFILIATION_NAME = "affiliation_name"
     AFFILIATION_UUID = "affiliation_uuid"
+    AWARDED_PROPOSAL = "awarded_proposal"
     BACKEND_ID = "backend_id"
     BILLING_PRICE_ESTIMATE = "billing_price_estimate"
     CREATED = "created"

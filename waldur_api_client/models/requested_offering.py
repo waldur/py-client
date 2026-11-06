@@ -12,8 +12,10 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.base_public_plan import BasePublicPlan
+    from ..models.call_offering_component import CallOfferingComponent
     from ..models.offering_component import OfferingComponent
     from ..models.offering_options import OfferingOptions
+    from ..models.requestable_component import RequestableComponent
     from ..models.requested_offering_attributes import RequestedOfferingAttributes
 
 
@@ -46,6 +48,11 @@ class RequestedOffering:
         created_by (Union[None, str]):
         created_by_name (str):
         approved_by_name (str):
+        component_rules (list['CallOfferingComponent']): What a proposal may request of each component of the offering.
+        requestable_components (list['RequestableComponent']): The components a rule can be set for: billed by their
+            limit and priced by the call's plan.
+        rules_locked (bool): Whether a submitted proposal requests the offering: its component rules can no longer
+            change.
         attributes (Union[Unset, RequestedOfferingAttributes]):
         plan (Union[None, Unset, str]):
         description (Union[Unset, str]):
@@ -71,6 +78,9 @@ class RequestedOffering:
     created_by: Union[None, str]
     created_by_name: str
     approved_by_name: str
+    component_rules: list["CallOfferingComponent"]
+    requestable_components: list["RequestableComponent"]
+    rules_locked: bool
     attributes: Union[Unset, "RequestedOfferingAttributes"] = UNSET
     plan: Union[None, Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
@@ -122,6 +132,18 @@ class RequestedOffering:
 
         approved_by_name = self.approved_by_name
 
+        component_rules = []
+        for component_rules_item_data in self.component_rules:
+            component_rules_item = component_rules_item_data.to_dict()
+            component_rules.append(component_rules_item)
+
+        requestable_components = []
+        for requestable_components_item_data in self.requestable_components:
+            requestable_components_item = requestable_components_item_data.to_dict()
+            requestable_components.append(requestable_components_item)
+
+        rules_locked = self.rules_locked
+
         attributes: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
@@ -158,6 +180,9 @@ class RequestedOffering:
                 "created_by": created_by,
                 "created_by_name": created_by_name,
                 "approved_by_name": approved_by_name,
+                "component_rules": component_rules,
+                "requestable_components": requestable_components,
+                "rules_locked": rules_locked,
             }
         )
         if attributes is not UNSET:
@@ -172,8 +197,10 @@ class RequestedOffering:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.base_public_plan import BasePublicPlan
+        from ..models.call_offering_component import CallOfferingComponent
         from ..models.offering_component import OfferingComponent
         from ..models.offering_options import OfferingOptions
+        from ..models.requestable_component import RequestableComponent
         from ..models.requested_offering_attributes import RequestedOfferingAttributes
 
         d = dict(src_dict)
@@ -232,6 +259,22 @@ class RequestedOffering:
 
         approved_by_name = d.pop("approved_by_name")
 
+        component_rules = []
+        _component_rules = d.pop("component_rules")
+        for component_rules_item_data in _component_rules:
+            component_rules_item = CallOfferingComponent.from_dict(component_rules_item_data)
+
+            component_rules.append(component_rules_item)
+
+        requestable_components = []
+        _requestable_components = d.pop("requestable_components")
+        for requestable_components_item_data in _requestable_components:
+            requestable_components_item = RequestableComponent.from_dict(requestable_components_item_data)
+
+            requestable_components.append(requestable_components_item)
+
+        rules_locked = d.pop("rules_locked")
+
         _attributes = d.pop("attributes", UNSET)
         attributes: Union[Unset, RequestedOfferingAttributes]
         if isinstance(_attributes, Unset):
@@ -271,6 +314,9 @@ class RequestedOffering:
             created_by=created_by,
             created_by_name=created_by_name,
             approved_by_name=approved_by_name,
+            component_rules=component_rules,
+            requestable_components=requestable_components,
+            rules_locked=rules_locked,
             attributes=attributes,
             plan=plan,
             description=description,

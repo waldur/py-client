@@ -6,11 +6,13 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.post_award_status_enum import PostAwardStatusEnum
 from ...models.proposal_o_enum import ProposalOEnum
+from ...models.proposal_run_phase_enum import ProposalRunPhaseEnum
+from ...models.proposal_run_state_enum import ProposalRunStateEnum
 from ...models.proposal_states import ProposalStates
 from ...models.proposal_workflow_step_instance import ProposalWorkflowStepInstance
 from ...models.responsible_role_enum import ResponsibleRoleEnum
-from ...models.step_enum import StepEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -20,18 +22,25 @@ def _get_kwargs(
     *,
     as_role: Union[Unset, ResponsibleRoleEnum] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
+    changes_requested: Union[Unset, bool] = UNSET,
     created_by_uuid: Union[Unset, UUID] = UNSET,
+    final_report_overdue: Union[Unset, bool] = UNSET,
+    involved: Union[Unset, bool] = UNSET,
     my_proposals: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProposalOEnum]] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    panel_uuid: Union[Unset, UUID] = UNSET,
+    post_award_status: Union[Unset, list[PostAwardStatusEnum]] = UNSET,
     round_: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
+    run_phase: Union[Unset, ProposalRunPhaseEnum] = UNSET,
+    run_state: Union[Unset, ProposalRunStateEnum] = UNSET,
     slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[ProposalStates]] = UNSET,
-    workflow_step: Union[Unset, list[StepEnum]] = UNSET,
+    workflow_step: Union[Unset, list[str]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -46,10 +55,16 @@ def _get_kwargs(
         json_call_uuid = str(call_uuid)
     params["call_uuid"] = json_call_uuid
 
+    params["changes_requested"] = changes_requested
+
     json_created_by_uuid: Union[Unset, str] = UNSET
     if not isinstance(created_by_uuid, Unset):
         json_created_by_uuid = str(created_by_uuid)
     params["created_by_uuid"] = json_created_by_uuid
+
+    params["final_report_overdue"] = final_report_overdue
+
+    params["involved"] = involved
 
     params["my_proposals"] = my_proposals
 
@@ -73,6 +88,20 @@ def _get_kwargs(
 
     params["page_size"] = page_size
 
+    json_panel_uuid: Union[Unset, str] = UNSET
+    if not isinstance(panel_uuid, Unset):
+        json_panel_uuid = str(panel_uuid)
+    params["panel_uuid"] = json_panel_uuid
+
+    json_post_award_status: Union[Unset, list[str]] = UNSET
+    if not isinstance(post_award_status, Unset):
+        json_post_award_status = []
+        for post_award_status_item_data in post_award_status:
+            post_award_status_item = post_award_status_item_data.value
+            json_post_award_status.append(post_award_status_item)
+
+    params["post_award_status"] = json_post_award_status
+
     json_round_: Union[Unset, str] = UNSET
     if not isinstance(round_, Unset):
         json_round_ = str(round_)
@@ -82,6 +111,18 @@ def _get_kwargs(
     if not isinstance(round_uuid, Unset):
         json_round_uuid = str(round_uuid)
     params["round_uuid"] = json_round_uuid
+
+    json_run_phase: Union[Unset, str] = UNSET
+    if not isinstance(run_phase, Unset):
+        json_run_phase = run_phase.value
+
+    params["run_phase"] = json_run_phase
+
+    json_run_state: Union[Unset, str] = UNSET
+    if not isinstance(run_state, Unset):
+        json_run_state = run_state.value
+
+    params["run_state"] = json_run_state
 
     params["slug"] = slug
 
@@ -96,10 +137,7 @@ def _get_kwargs(
 
     json_workflow_step: Union[Unset, list[str]] = UNSET
     if not isinstance(workflow_step, Unset):
-        json_workflow_step = []
-        for workflow_step_item_data in workflow_step:
-            workflow_step_item = workflow_step_item_data.value
-            json_workflow_step.append(workflow_step_item)
+        json_workflow_step = workflow_step
 
     params["workflow_step"] = json_workflow_step
 
@@ -148,18 +186,25 @@ def sync_detailed(
     client: AuthenticatedClient,
     as_role: Union[Unset, ResponsibleRoleEnum] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
+    changes_requested: Union[Unset, bool] = UNSET,
     created_by_uuid: Union[Unset, UUID] = UNSET,
+    final_report_overdue: Union[Unset, bool] = UNSET,
+    involved: Union[Unset, bool] = UNSET,
     my_proposals: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProposalOEnum]] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    panel_uuid: Union[Unset, UUID] = UNSET,
+    post_award_status: Union[Unset, list[PostAwardStatusEnum]] = UNSET,
     round_: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
+    run_phase: Union[Unset, ProposalRunPhaseEnum] = UNSET,
+    run_state: Union[Unset, ProposalRunStateEnum] = UNSET,
     slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[ProposalStates]] = UNSET,
-    workflow_step: Union[Unset, list[StepEnum]] = UNSET,
+    workflow_step: Union[Unset, list[str]] = UNSET,
 ) -> Response[list["ProposalWorkflowStepInstance"]]:
     """List all workflow step instances for this proposal.
 
@@ -167,18 +212,25 @@ def sync_detailed(
         uuid (UUID):
         as_role (Union[Unset, ResponsibleRoleEnum]):
         call_uuid (Union[Unset, UUID]):
+        changes_requested (Union[Unset, bool]):
         created_by_uuid (Union[Unset, UUID]):
+        final_report_overdue (Union[Unset, bool]):
+        involved (Union[Unset, bool]):
         my_proposals (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[ProposalOEnum]]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        panel_uuid (Union[Unset, UUID]):
+        post_award_status (Union[Unset, list[PostAwardStatusEnum]]):
         round_ (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
+        run_phase (Union[Unset, ProposalRunPhaseEnum]):
+        run_state (Union[Unset, ProposalRunStateEnum]):
         slug (Union[Unset, str]):
         state (Union[Unset, list[ProposalStates]]):
-        workflow_step (Union[Unset, list[StepEnum]]):
+        workflow_step (Union[Unset, list[str]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -192,15 +244,22 @@ def sync_detailed(
         uuid=uuid,
         as_role=as_role,
         call_uuid=call_uuid,
+        changes_requested=changes_requested,
         created_by_uuid=created_by_uuid,
+        final_report_overdue=final_report_overdue,
+        involved=involved,
         my_proposals=my_proposals,
         name=name,
         o=o,
         organization_uuid=organization_uuid,
         page=page,
         page_size=page_size,
+        panel_uuid=panel_uuid,
+        post_award_status=post_award_status,
         round_=round_,
         round_uuid=round_uuid,
+        run_phase=run_phase,
+        run_state=run_state,
         slug=slug,
         state=state,
         workflow_step=workflow_step,
@@ -219,18 +278,25 @@ def sync(
     client: AuthenticatedClient,
     as_role: Union[Unset, ResponsibleRoleEnum] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
+    changes_requested: Union[Unset, bool] = UNSET,
     created_by_uuid: Union[Unset, UUID] = UNSET,
+    final_report_overdue: Union[Unset, bool] = UNSET,
+    involved: Union[Unset, bool] = UNSET,
     my_proposals: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProposalOEnum]] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    panel_uuid: Union[Unset, UUID] = UNSET,
+    post_award_status: Union[Unset, list[PostAwardStatusEnum]] = UNSET,
     round_: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
+    run_phase: Union[Unset, ProposalRunPhaseEnum] = UNSET,
+    run_state: Union[Unset, ProposalRunStateEnum] = UNSET,
     slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[ProposalStates]] = UNSET,
-    workflow_step: Union[Unset, list[StepEnum]] = UNSET,
+    workflow_step: Union[Unset, list[str]] = UNSET,
 ) -> list["ProposalWorkflowStepInstance"]:
     """List all workflow step instances for this proposal.
 
@@ -238,18 +304,25 @@ def sync(
         uuid (UUID):
         as_role (Union[Unset, ResponsibleRoleEnum]):
         call_uuid (Union[Unset, UUID]):
+        changes_requested (Union[Unset, bool]):
         created_by_uuid (Union[Unset, UUID]):
+        final_report_overdue (Union[Unset, bool]):
+        involved (Union[Unset, bool]):
         my_proposals (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[ProposalOEnum]]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        panel_uuid (Union[Unset, UUID]):
+        post_award_status (Union[Unset, list[PostAwardStatusEnum]]):
         round_ (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
+        run_phase (Union[Unset, ProposalRunPhaseEnum]):
+        run_state (Union[Unset, ProposalRunStateEnum]):
         slug (Union[Unset, str]):
         state (Union[Unset, list[ProposalStates]]):
-        workflow_step (Union[Unset, list[StepEnum]]):
+        workflow_step (Union[Unset, list[str]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -264,15 +337,22 @@ def sync(
         client=client,
         as_role=as_role,
         call_uuid=call_uuid,
+        changes_requested=changes_requested,
         created_by_uuid=created_by_uuid,
+        final_report_overdue=final_report_overdue,
+        involved=involved,
         my_proposals=my_proposals,
         name=name,
         o=o,
         organization_uuid=organization_uuid,
         page=page,
         page_size=page_size,
+        panel_uuid=panel_uuid,
+        post_award_status=post_award_status,
         round_=round_,
         round_uuid=round_uuid,
+        run_phase=run_phase,
+        run_state=run_state,
         slug=slug,
         state=state,
         workflow_step=workflow_step,
@@ -285,18 +365,25 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     as_role: Union[Unset, ResponsibleRoleEnum] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
+    changes_requested: Union[Unset, bool] = UNSET,
     created_by_uuid: Union[Unset, UUID] = UNSET,
+    final_report_overdue: Union[Unset, bool] = UNSET,
+    involved: Union[Unset, bool] = UNSET,
     my_proposals: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProposalOEnum]] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    panel_uuid: Union[Unset, UUID] = UNSET,
+    post_award_status: Union[Unset, list[PostAwardStatusEnum]] = UNSET,
     round_: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
+    run_phase: Union[Unset, ProposalRunPhaseEnum] = UNSET,
+    run_state: Union[Unset, ProposalRunStateEnum] = UNSET,
     slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[ProposalStates]] = UNSET,
-    workflow_step: Union[Unset, list[StepEnum]] = UNSET,
+    workflow_step: Union[Unset, list[str]] = UNSET,
 ) -> Response[list["ProposalWorkflowStepInstance"]]:
     """List all workflow step instances for this proposal.
 
@@ -304,18 +391,25 @@ async def asyncio_detailed(
         uuid (UUID):
         as_role (Union[Unset, ResponsibleRoleEnum]):
         call_uuid (Union[Unset, UUID]):
+        changes_requested (Union[Unset, bool]):
         created_by_uuid (Union[Unset, UUID]):
+        final_report_overdue (Union[Unset, bool]):
+        involved (Union[Unset, bool]):
         my_proposals (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[ProposalOEnum]]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        panel_uuid (Union[Unset, UUID]):
+        post_award_status (Union[Unset, list[PostAwardStatusEnum]]):
         round_ (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
+        run_phase (Union[Unset, ProposalRunPhaseEnum]):
+        run_state (Union[Unset, ProposalRunStateEnum]):
         slug (Union[Unset, str]):
         state (Union[Unset, list[ProposalStates]]):
-        workflow_step (Union[Unset, list[StepEnum]]):
+        workflow_step (Union[Unset, list[str]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -329,15 +423,22 @@ async def asyncio_detailed(
         uuid=uuid,
         as_role=as_role,
         call_uuid=call_uuid,
+        changes_requested=changes_requested,
         created_by_uuid=created_by_uuid,
+        final_report_overdue=final_report_overdue,
+        involved=involved,
         my_proposals=my_proposals,
         name=name,
         o=o,
         organization_uuid=organization_uuid,
         page=page,
         page_size=page_size,
+        panel_uuid=panel_uuid,
+        post_award_status=post_award_status,
         round_=round_,
         round_uuid=round_uuid,
+        run_phase=run_phase,
+        run_state=run_state,
         slug=slug,
         state=state,
         workflow_step=workflow_step,
@@ -354,18 +455,25 @@ async def asyncio(
     client: AuthenticatedClient,
     as_role: Union[Unset, ResponsibleRoleEnum] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
+    changes_requested: Union[Unset, bool] = UNSET,
     created_by_uuid: Union[Unset, UUID] = UNSET,
+    final_report_overdue: Union[Unset, bool] = UNSET,
+    involved: Union[Unset, bool] = UNSET,
     my_proposals: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProposalOEnum]] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    panel_uuid: Union[Unset, UUID] = UNSET,
+    post_award_status: Union[Unset, list[PostAwardStatusEnum]] = UNSET,
     round_: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
+    run_phase: Union[Unset, ProposalRunPhaseEnum] = UNSET,
+    run_state: Union[Unset, ProposalRunStateEnum] = UNSET,
     slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[ProposalStates]] = UNSET,
-    workflow_step: Union[Unset, list[StepEnum]] = UNSET,
+    workflow_step: Union[Unset, list[str]] = UNSET,
 ) -> list["ProposalWorkflowStepInstance"]:
     """List all workflow step instances for this proposal.
 
@@ -373,18 +481,25 @@ async def asyncio(
         uuid (UUID):
         as_role (Union[Unset, ResponsibleRoleEnum]):
         call_uuid (Union[Unset, UUID]):
+        changes_requested (Union[Unset, bool]):
         created_by_uuid (Union[Unset, UUID]):
+        final_report_overdue (Union[Unset, bool]):
+        involved (Union[Unset, bool]):
         my_proposals (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[ProposalOEnum]]):
         organization_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        panel_uuid (Union[Unset, UUID]):
+        post_award_status (Union[Unset, list[PostAwardStatusEnum]]):
         round_ (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
+        run_phase (Union[Unset, ProposalRunPhaseEnum]):
+        run_state (Union[Unset, ProposalRunStateEnum]):
         slug (Union[Unset, str]):
         state (Union[Unset, list[ProposalStates]]):
-        workflow_step (Union[Unset, list[StepEnum]]):
+        workflow_step (Union[Unset, list[str]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -400,15 +515,22 @@ async def asyncio(
             client=client,
             as_role=as_role,
             call_uuid=call_uuid,
+            changes_requested=changes_requested,
             created_by_uuid=created_by_uuid,
+            final_report_overdue=final_report_overdue,
+            involved=involved,
             my_proposals=my_proposals,
             name=name,
             o=o,
             organization_uuid=organization_uuid,
             page=page,
             page_size=page_size,
+            panel_uuid=panel_uuid,
+            post_award_status=post_award_status,
             round_=round_,
             round_uuid=round_uuid,
+            run_phase=run_phase,
+            run_state=run_state,
             slug=slug,
             state=state,
             workflow_step=workflow_step,
@@ -422,16 +544,23 @@ def sync_all(
     client: AuthenticatedClient,
     as_role: Union[Unset, ResponsibleRoleEnum] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
+    changes_requested: Union[Unset, bool] = UNSET,
     created_by_uuid: Union[Unset, UUID] = UNSET,
+    final_report_overdue: Union[Unset, bool] = UNSET,
+    involved: Union[Unset, bool] = UNSET,
     my_proposals: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProposalOEnum]] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
+    panel_uuid: Union[Unset, UUID] = UNSET,
+    post_award_status: Union[Unset, list[PostAwardStatusEnum]] = UNSET,
     round_: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
+    run_phase: Union[Unset, ProposalRunPhaseEnum] = UNSET,
+    run_state: Union[Unset, ProposalRunStateEnum] = UNSET,
     slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[ProposalStates]] = UNSET,
-    workflow_step: Union[Unset, list[StepEnum]] = UNSET,
+    workflow_step: Union[Unset, list[str]] = UNSET,
 ) -> list["ProposalWorkflowStepInstance"]:
     """Get All Pages
 
@@ -444,16 +573,23 @@ def sync_all(
         uuid (UUID):
         as_role (Union[Unset, ResponsibleRoleEnum]):
         call_uuid (Union[Unset, UUID]):
+        changes_requested (Union[Unset, bool]):
         created_by_uuid (Union[Unset, UUID]):
+        final_report_overdue (Union[Unset, bool]):
+        involved (Union[Unset, bool]):
         my_proposals (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[ProposalOEnum]]):
         organization_uuid (Union[Unset, UUID]):
+        panel_uuid (Union[Unset, UUID]):
+        post_award_status (Union[Unset, list[PostAwardStatusEnum]]):
         round_ (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
+        run_phase (Union[Unset, ProposalRunPhaseEnum]):
+        run_state (Union[Unset, ProposalRunStateEnum]):
         slug (Union[Unset, str]):
         state (Union[Unset, list[ProposalStates]]):
-        workflow_step (Union[Unset, list[StepEnum]]):
+        workflow_step (Union[Unset, list[str]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -471,13 +607,20 @@ def sync_all(
         uuid=uuid,
         as_role=as_role,
         call_uuid=call_uuid,
+        changes_requested=changes_requested,
         created_by_uuid=created_by_uuid,
+        final_report_overdue=final_report_overdue,
+        involved=involved,
         my_proposals=my_proposals,
         name=name,
         o=o,
         organization_uuid=organization_uuid,
+        panel_uuid=panel_uuid,
+        post_award_status=post_award_status,
         round_=round_,
         round_uuid=round_uuid,
+        run_phase=run_phase,
+        run_state=run_state,
         slug=slug,
         state=state,
         workflow_step=workflow_step,
@@ -531,16 +674,23 @@ async def asyncio_all(
     client: AuthenticatedClient,
     as_role: Union[Unset, ResponsibleRoleEnum] = UNSET,
     call_uuid: Union[Unset, UUID] = UNSET,
+    changes_requested: Union[Unset, bool] = UNSET,
     created_by_uuid: Union[Unset, UUID] = UNSET,
+    final_report_overdue: Union[Unset, bool] = UNSET,
+    involved: Union[Unset, bool] = UNSET,
     my_proposals: Union[Unset, bool] = UNSET,
     name: Union[Unset, str] = UNSET,
     o: Union[Unset, list[ProposalOEnum]] = UNSET,
     organization_uuid: Union[Unset, UUID] = UNSET,
+    panel_uuid: Union[Unset, UUID] = UNSET,
+    post_award_status: Union[Unset, list[PostAwardStatusEnum]] = UNSET,
     round_: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
+    run_phase: Union[Unset, ProposalRunPhaseEnum] = UNSET,
+    run_state: Union[Unset, ProposalRunStateEnum] = UNSET,
     slug: Union[Unset, str] = UNSET,
     state: Union[Unset, list[ProposalStates]] = UNSET,
-    workflow_step: Union[Unset, list[StepEnum]] = UNSET,
+    workflow_step: Union[Unset, list[str]] = UNSET,
 ) -> list["ProposalWorkflowStepInstance"]:
     """Get All Pages (Async)
 
@@ -553,16 +703,23 @@ async def asyncio_all(
         uuid (UUID):
         as_role (Union[Unset, ResponsibleRoleEnum]):
         call_uuid (Union[Unset, UUID]):
+        changes_requested (Union[Unset, bool]):
         created_by_uuid (Union[Unset, UUID]):
+        final_report_overdue (Union[Unset, bool]):
+        involved (Union[Unset, bool]):
         my_proposals (Union[Unset, bool]):
         name (Union[Unset, str]):
         o (Union[Unset, list[ProposalOEnum]]):
         organization_uuid (Union[Unset, UUID]):
+        panel_uuid (Union[Unset, UUID]):
+        post_award_status (Union[Unset, list[PostAwardStatusEnum]]):
         round_ (Union[Unset, UUID]):
         round_uuid (Union[Unset, UUID]):
+        run_phase (Union[Unset, ProposalRunPhaseEnum]):
+        run_state (Union[Unset, ProposalRunStateEnum]):
         slug (Union[Unset, str]):
         state (Union[Unset, list[ProposalStates]]):
-        workflow_step (Union[Unset, list[StepEnum]]):
+        workflow_step (Union[Unset, list[str]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -580,13 +737,20 @@ async def asyncio_all(
         uuid=uuid,
         as_role=as_role,
         call_uuid=call_uuid,
+        changes_requested=changes_requested,
         created_by_uuid=created_by_uuid,
+        final_report_overdue=final_report_overdue,
+        involved=involved,
         my_proposals=my_proposals,
         name=name,
         o=o,
         organization_uuid=organization_uuid,
+        panel_uuid=panel_uuid,
+        post_award_status=post_award_status,
         round_=round_,
         round_uuid=round_uuid,
+        run_phase=run_phase,
+        run_state=run_state,
         slug=slug,
         state=state,
         workflow_step=workflow_step,

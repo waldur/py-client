@@ -60,7 +60,8 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: CompleteWorkflowStepRequest,
 ) -> Response[CompleteWorkflowStepResponse]:
-    """Complete the current workflow step with an outcome.
+    """Complete an active workflow step with an outcome: the one step_uuid names, as several steps of a
+    stage may be active at once.
 
     Args:
         uuid (UUID):
@@ -92,7 +93,8 @@ def sync(
     client: AuthenticatedClient,
     body: CompleteWorkflowStepRequest,
 ) -> CompleteWorkflowStepResponse:
-    """Complete the current workflow step with an outcome.
+    """Complete an active workflow step with an outcome: the one step_uuid names, as several steps of a
+    stage may be active at once.
 
     Args:
         uuid (UUID):
@@ -119,7 +121,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: CompleteWorkflowStepRequest,
 ) -> Response[CompleteWorkflowStepResponse]:
-    """Complete the current workflow step with an outcome.
+    """Complete an active workflow step with an outcome: the one step_uuid names, as several steps of a
+    stage may be active at once.
 
     Args:
         uuid (UUID):
@@ -149,7 +152,8 @@ async def asyncio(
     client: AuthenticatedClient,
     body: CompleteWorkflowStepRequest,
 ) -> CompleteWorkflowStepResponse:
-    """Complete the current workflow step with an outcome.
+    """Complete an active workflow step with an outcome: the one step_uuid names, as several steps of a
+    stage may be active at once.
 
     Args:
         uuid (UUID):

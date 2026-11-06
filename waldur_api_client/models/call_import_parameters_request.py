@@ -19,8 +19,10 @@ class CallImportParametersRequest:
     """
     Attributes:
         manager (UUID): Call managing organization that will own the imported call.
-        call_data (CallImportParametersRequestCallData): Exported call document, as a mapping or a YAML string.
         name (Union[Unset, str]): Name for the imported call. Defaults to the exported name.
+        call_data (Union[Unset, CallImportParametersRequestCallData]): Exported call document, as a mapping or a YAML
+            string. Give this or template.
+        template (Union[Unset, UUID]): Published call template to create the call from. Give this or call_data.
         import_documents (Union[Unset, bool]):  Default: True.
         import_rounds (Union[Unset, bool]):  Default: True.
         import_offerings (Union[Unset, bool]):  Default: True.
@@ -32,8 +34,9 @@ class CallImportParametersRequest:
     """
 
     manager: UUID
-    call_data: "CallImportParametersRequestCallData"
     name: Union[Unset, str] = UNSET
+    call_data: Union[Unset, "CallImportParametersRequestCallData"] = UNSET
+    template: Union[Unset, UUID] = UNSET
     import_documents: Union[Unset, bool] = True
     import_rounds: Union[Unset, bool] = True
     import_offerings: Union[Unset, bool] = True
@@ -47,9 +50,15 @@ class CallImportParametersRequest:
     def to_dict(self) -> dict[str, Any]:
         manager = str(self.manager)
 
-        call_data = self.call_data.to_dict()
-
         name = self.name
+
+        call_data: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.call_data, Unset):
+            call_data = self.call_data.to_dict()
+
+        template: Union[Unset, str] = UNSET
+        if not isinstance(self.template, Unset):
+            template = str(self.template)
 
         import_documents = self.import_documents
 
@@ -72,11 +81,14 @@ class CallImportParametersRequest:
         field_dict.update(
             {
                 "manager": manager,
-                "call_data": call_data,
             }
         )
         if name is not UNSET:
             field_dict["name"] = name
+        if call_data is not UNSET:
+            field_dict["call_data"] = call_data
+        if template is not UNSET:
+            field_dict["template"] = template
         if import_documents is not UNSET:
             field_dict["import_documents"] = import_documents
         if import_rounds is not UNSET:
@@ -103,9 +115,21 @@ class CallImportParametersRequest:
         d = dict(src_dict)
         manager = UUID(d.pop("manager"))
 
-        call_data = CallImportParametersRequestCallData.from_dict(d.pop("call_data"))
-
         name = d.pop("name", UNSET)
+
+        _call_data = d.pop("call_data", UNSET)
+        call_data: Union[Unset, CallImportParametersRequestCallData]
+        if isinstance(_call_data, Unset):
+            call_data = UNSET
+        else:
+            call_data = CallImportParametersRequestCallData.from_dict(_call_data)
+
+        _template = d.pop("template", UNSET)
+        template: Union[Unset, UUID]
+        if isinstance(_template, Unset):
+            template = UNSET
+        else:
+            template = UUID(_template)
 
         import_documents = d.pop("import_documents", UNSET)
 
@@ -125,8 +149,9 @@ class CallImportParametersRequest:
 
         call_import_parameters_request = cls(
             manager=manager,
-            call_data=call_data,
             name=name,
+            call_data=call_data,
+            template=template,
             import_documents=import_documents,
             import_rounds=import_rounds,
             import_offerings=import_offerings,

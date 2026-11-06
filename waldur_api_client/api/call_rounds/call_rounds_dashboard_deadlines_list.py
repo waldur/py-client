@@ -69,7 +69,8 @@ def sync_detailed(
     """Get upcoming round deadlines for the call manager dashboard
 
      Returns the rounds in calls managed by the current user that are still open (cutoff time in the
-    future), nearest first. Paginated: the exact total is in the X-Result-Count header.
+    future), nearest first. Rounds without a cut-off come last, with no due date. Paginated: the exact
+    total is in the X-Result-Count header.
 
     Args:
         page (Union[Unset, int]):
@@ -104,7 +105,8 @@ def sync(
     """Get upcoming round deadlines for the call manager dashboard
 
      Returns the rounds in calls managed by the current user that are still open (cutoff time in the
-    future), nearest first. Paginated: the exact total is in the X-Result-Count header.
+    future), nearest first. Rounds without a cut-off come last, with no due date. Paginated: the exact
+    total is in the X-Result-Count header.
 
     Args:
         page (Union[Unset, int]):
@@ -134,7 +136,8 @@ async def asyncio_detailed(
     """Get upcoming round deadlines for the call manager dashboard
 
      Returns the rounds in calls managed by the current user that are still open (cutoff time in the
-    future), nearest first. Paginated: the exact total is in the X-Result-Count header.
+    future), nearest first. Rounds without a cut-off come last, with no due date. Paginated: the exact
+    total is in the X-Result-Count header.
 
     Args:
         page (Union[Unset, int]):
@@ -167,7 +170,8 @@ async def asyncio(
     """Get upcoming round deadlines for the call manager dashboard
 
      Returns the rounds in calls managed by the current user that are still open (cutoff time in the
-    future), nearest first. Paginated: the exact total is in the X-Result-Count header.
+    future), nearest first. Rounds without a cut-off come last, with no due date. Paginated: the exact
+    total is in the X-Result-Count header.
 
     Args:
         page (Union[Unset, int]):

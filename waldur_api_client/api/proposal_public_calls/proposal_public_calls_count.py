@@ -6,8 +6,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.call_states import CallStates
 from ...models.protected_call_o_enum import ProtectedCallOEnum
+from ...models.public_call_state_enum import PublicCallStateEnum
 from ...types import UNSET, Response, Unset
 
 
@@ -25,7 +25,7 @@ def _get_kwargs(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     slug: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[CallStates]] = UNSET,
+    state: Union[Unset, list[PublicCallStateEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -133,7 +133,7 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     slug: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[CallStates]] = UNSET,
+    state: Union[Unset, list[PublicCallStateEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
@@ -150,7 +150,7 @@ def sync_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         slug (Union[Unset, str]):
-        state (Union[Unset, list[CallStates]]):
+        state (Union[Unset, list[PublicCallStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -198,7 +198,7 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     slug: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[CallStates]] = UNSET,
+    state: Union[Unset, list[PublicCallStateEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
@@ -215,7 +215,7 @@ def sync(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         slug (Union[Unset, str]):
-        state (Union[Unset, list[CallStates]]):
+        state (Union[Unset, list[PublicCallStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -258,7 +258,7 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     slug: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[CallStates]] = UNSET,
+    state: Union[Unset, list[PublicCallStateEnum]] = UNSET,
 ) -> Response[int]:
     """Get number of items in the collection matching the request parameters.
 
@@ -275,7 +275,7 @@ async def asyncio_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         slug (Union[Unset, str]):
-        state (Union[Unset, list[CallStates]]):
+        state (Union[Unset, list[PublicCallStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -321,7 +321,7 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     slug: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[CallStates]] = UNSET,
+    state: Union[Unset, list[PublicCallStateEnum]] = UNSET,
 ) -> int:
     """Get number of items in the collection matching the request parameters.
 
@@ -338,7 +338,7 @@ async def asyncio(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         slug (Union[Unset, str]):
-        state (Union[Unset, list[CallStates]]):
+        state (Union[Unset, list[PublicCallStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

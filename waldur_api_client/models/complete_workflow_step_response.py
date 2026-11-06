@@ -1,5 +1,6 @@
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,12 +16,14 @@ class CompleteWorkflowStepResponse:
     Attributes:
         detail (str):
         proposal_state (Union[Unset, str]): New proposal state when the workflow terminates.
-        next_step (Union[Unset, str]): Identifier of the step that just became active.
+        next_step (Union[Unset, str]): Key of the step that just became active.
+        next_step_uuid (Union[Unset, UUID]): UUID of the call step that just became active.
     """
 
     detail: str
     proposal_state: Union[Unset, str] = UNSET
     next_step: Union[Unset, str] = UNSET
+    next_step_uuid: Union[Unset, UUID] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -29,6 +32,10 @@ class CompleteWorkflowStepResponse:
         proposal_state = self.proposal_state
 
         next_step = self.next_step
+
+        next_step_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.next_step_uuid, Unset):
+            next_step_uuid = str(self.next_step_uuid)
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -41,6 +48,8 @@ class CompleteWorkflowStepResponse:
             field_dict["proposal_state"] = proposal_state
         if next_step is not UNSET:
             field_dict["next_step"] = next_step
+        if next_step_uuid is not UNSET:
+            field_dict["next_step_uuid"] = next_step_uuid
 
         return field_dict
 
@@ -53,10 +62,18 @@ class CompleteWorkflowStepResponse:
 
         next_step = d.pop("next_step", UNSET)
 
+        _next_step_uuid = d.pop("next_step_uuid", UNSET)
+        next_step_uuid: Union[Unset, UUID]
+        if isinstance(_next_step_uuid, Unset):
+            next_step_uuid = UNSET
+        else:
+            next_step_uuid = UUID(_next_step_uuid)
+
         complete_workflow_step_response = cls(
             detail=detail,
             proposal_state=proposal_state,
             next_step=next_step,
+            next_step_uuid=next_step_uuid,
         )
 
         complete_workflow_step_response.additional_properties = d

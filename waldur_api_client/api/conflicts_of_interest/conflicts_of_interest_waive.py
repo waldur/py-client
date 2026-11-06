@@ -58,7 +58,8 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: COIStatusUpdateRequest,
 ) -> Response[ConflictOfInterest]:
-    """Waive a conflict with a management plan.
+    """Waive a pending conflict with a management plan. Refused for a type the call's COI settings require
+    recusal for.
 
     Args:
         uuid (UUID):
@@ -90,7 +91,8 @@ def sync(
     client: AuthenticatedClient,
     body: COIStatusUpdateRequest,
 ) -> ConflictOfInterest:
-    """Waive a conflict with a management plan.
+    """Waive a pending conflict with a management plan. Refused for a type the call's COI settings require
+    recusal for.
 
     Args:
         uuid (UUID):
@@ -117,7 +119,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: COIStatusUpdateRequest,
 ) -> Response[ConflictOfInterest]:
-    """Waive a conflict with a management plan.
+    """Waive a pending conflict with a management plan. Refused for a type the call's COI settings require
+    recusal for.
 
     Args:
         uuid (UUID):
@@ -147,7 +150,8 @@ async def asyncio(
     client: AuthenticatedClient,
     body: COIStatusUpdateRequest,
 ) -> ConflictOfInterest:
-    """Waive a conflict with a management plan.
+    """Waive a pending conflict with a management plan. Refused for a type the call's COI settings require
+    recusal for.
 
     Args:
         uuid (UUID):

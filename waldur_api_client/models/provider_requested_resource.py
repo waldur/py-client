@@ -5,6 +5,7 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.proposal_states import ProposalStates
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -36,6 +37,16 @@ class ProviderRequestedResource:
         created_by_name (str):
         proposal_name (str):
         proposal (str):
+        proposal_uuid (UUID):
+        proposal_slug (str):
+        proposal_state (ProposalStates):
+        call_name (str):
+        call_uuid (UUID):
+        round_name (str):
+        offering_name (str):
+        offering_uuid (UUID):
+        resource_uuid (Union[None, UUID]):
+        resource_state (Union[None, str]):
         resource (Union[None, Unset, str]):
         attributes (Union[Unset, ProviderRequestedResourceAttributes]):
         limits (Union[Unset, ProviderRequestedResourceLimits]):
@@ -56,6 +67,16 @@ class ProviderRequestedResource:
     created_by_name: str
     proposal_name: str
     proposal: str
+    proposal_uuid: UUID
+    proposal_slug: str
+    proposal_state: ProposalStates
+    call_name: str
+    call_uuid: UUID
+    round_name: str
+    offering_name: str
+    offering_uuid: UUID
+    resource_uuid: Union[None, UUID]
+    resource_state: Union[None, str]
     resource: Union[None, Unset, str] = UNSET
     attributes: Union[Unset, "ProviderRequestedResourceAttributes"] = UNSET
     limits: Union[Unset, "ProviderRequestedResourceLimits"] = UNSET
@@ -88,6 +109,31 @@ class ProviderRequestedResource:
         proposal_name = self.proposal_name
 
         proposal = self.proposal
+
+        proposal_uuid = str(self.proposal_uuid)
+
+        proposal_slug = self.proposal_slug
+
+        proposal_state = self.proposal_state.value
+
+        call_name = self.call_name
+
+        call_uuid = str(self.call_uuid)
+
+        round_name = self.round_name
+
+        offering_name = self.offering_name
+
+        offering_uuid = str(self.offering_uuid)
+
+        resource_uuid: Union[None, str]
+        if isinstance(self.resource_uuid, UUID):
+            resource_uuid = str(self.resource_uuid)
+        else:
+            resource_uuid = self.resource_uuid
+
+        resource_state: Union[None, str]
+        resource_state = self.resource_state
 
         resource: Union[None, Unset, str]
         if isinstance(self.resource, Unset):
@@ -129,6 +175,16 @@ class ProviderRequestedResource:
                 "created_by_name": created_by_name,
                 "proposal_name": proposal_name,
                 "proposal": proposal,
+                "proposal_uuid": proposal_uuid,
+                "proposal_slug": proposal_slug,
+                "proposal_state": proposal_state,
+                "call_name": call_name,
+                "call_uuid": call_uuid,
+                "round_name": round_name,
+                "offering_name": offering_name,
+                "offering_uuid": offering_uuid,
+                "resource_uuid": resource_uuid,
+                "resource_state": resource_state,
             }
         )
         if resource is not UNSET:
@@ -176,6 +232,44 @@ class ProviderRequestedResource:
         proposal_name = d.pop("proposal_name")
 
         proposal = d.pop("proposal")
+
+        proposal_uuid = UUID(d.pop("proposal_uuid"))
+
+        proposal_slug = d.pop("proposal_slug")
+
+        proposal_state = ProposalStates(d.pop("proposal_state"))
+
+        call_name = d.pop("call_name")
+
+        call_uuid = UUID(d.pop("call_uuid"))
+
+        round_name = d.pop("round_name")
+
+        offering_name = d.pop("offering_name")
+
+        offering_uuid = UUID(d.pop("offering_uuid"))
+
+        def _parse_resource_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                resource_uuid_type_0 = UUID(data)
+
+                return resource_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        resource_uuid = _parse_resource_uuid(d.pop("resource_uuid"))
+
+        def _parse_resource_state(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        resource_state = _parse_resource_state(d.pop("resource_state"))
 
         def _parse_resource(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -226,6 +320,16 @@ class ProviderRequestedResource:
             created_by_name=created_by_name,
             proposal_name=proposal_name,
             proposal=proposal,
+            proposal_uuid=proposal_uuid,
+            proposal_slug=proposal_slug,
+            proposal_state=proposal_state,
+            call_name=call_name,
+            call_uuid=call_uuid,
+            round_name=round_name,
+            offering_name=offering_name,
+            offering_uuid=offering_uuid,
+            resource_uuid=resource_uuid,
+            resource_state=resource_state,
             resource=resource,
             attributes=attributes,
             limits=limits,

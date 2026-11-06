@@ -58,7 +58,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: COIStatusUpdateRequest,
 ) -> Response[ConflictOfInterest]:
-    """Recuse reviewer from the proposal.
+    """Recuse the reviewer from the proposal over a pending conflict.
 
     Args:
         uuid (UUID):
@@ -90,7 +90,7 @@ def sync(
     client: AuthenticatedClient,
     body: COIStatusUpdateRequest,
 ) -> ConflictOfInterest:
-    """Recuse reviewer from the proposal.
+    """Recuse the reviewer from the proposal over a pending conflict.
 
     Args:
         uuid (UUID):
@@ -117,7 +117,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: COIStatusUpdateRequest,
 ) -> Response[ConflictOfInterest]:
-    """Recuse reviewer from the proposal.
+    """Recuse the reviewer from the proposal over a pending conflict.
 
     Args:
         uuid (UUID):
@@ -147,7 +147,7 @@ async def asyncio(
     client: AuthenticatedClient,
     body: COIStatusUpdateRequest,
 ) -> ConflictOfInterest:
-    """Recuse reviewer from the proposal.
+    """Recuse the reviewer from the proposal over a pending conflict.
 
     Args:
         uuid (UUID):

@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.invitation_status_enum import InvitationStatusEnum
 from ..models.reviewer_suggestion_status_enum import ReviewerSuggestionStatusEnum
 from ..models.source_type_enum import SourceTypeEnum
 from ..types import UNSET, Unset
@@ -39,6 +40,9 @@ class ReviewerSuggestion:
         reviewed_by (Union[None, str]):
         reviewed_by_name (str):
         reviewed_at (Union[None, datetime.datetime]):
+        pool_invitation_status (Union[InvitationStatusEnum, None]): Where the reviewer stands in the call's reviewer
+            pool -- invited from this suggestion or directly: pending, accepted, declined or expired. Empty when not
+            invited.
         matched_keywords (list[str]):
         top_matching_proposals (list['ReviewerSuggestionTopMatchingProposal']):
         source_type (SourceTypeEnum):
@@ -65,6 +69,7 @@ class ReviewerSuggestion:
     reviewed_by: Union[None, str]
     reviewed_by_name: str
     reviewed_at: Union[None, datetime.datetime]
+    pool_invitation_status: Union[InvitationStatusEnum, None]
     matched_keywords: list[str]
     top_matching_proposals: list["ReviewerSuggestionTopMatchingProposal"]
     source_type: SourceTypeEnum
@@ -116,6 +121,12 @@ class ReviewerSuggestion:
         else:
             reviewed_at = self.reviewed_at
 
+        pool_invitation_status: Union[None, str]
+        if isinstance(self.pool_invitation_status, InvitationStatusEnum):
+            pool_invitation_status = self.pool_invitation_status.value
+        else:
+            pool_invitation_status = self.pool_invitation_status
+
         matched_keywords = self.matched_keywords
 
         top_matching_proposals = []
@@ -156,6 +167,7 @@ class ReviewerSuggestion:
                 "reviewed_by": reviewed_by,
                 "reviewed_by_name": reviewed_by_name,
                 "reviewed_at": reviewed_at,
+                "pool_invitation_status": pool_invitation_status,
                 "matched_keywords": matched_keywords,
                 "top_matching_proposals": top_matching_proposals,
                 "source_type": source_type,
@@ -237,6 +249,21 @@ class ReviewerSuggestion:
 
         reviewed_at = _parse_reviewed_at(d.pop("reviewed_at"))
 
+        def _parse_pool_invitation_status(data: object) -> Union[InvitationStatusEnum, None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                pool_invitation_status_type_0 = InvitationStatusEnum(data)
+
+                return pool_invitation_status_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[InvitationStatusEnum, None], data)
+
+        pool_invitation_status = _parse_pool_invitation_status(d.pop("pool_invitation_status"))
+
         matched_keywords = cast(list[str], d.pop("matched_keywords"))
 
         top_matching_proposals = []
@@ -281,6 +308,7 @@ class ReviewerSuggestion:
             reviewed_by=reviewed_by,
             reviewed_by_name=reviewed_by_name,
             reviewed_at=reviewed_at,
+            pool_invitation_status=pool_invitation_status,
             matched_keywords=matched_keywords,
             top_matching_proposals=top_matching_proposals,
             source_type=source_type,

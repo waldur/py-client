@@ -9,6 +9,7 @@ class OrderDetailsFieldEnum(str, Enum):
     AUTO_APPROVED = "auto_approved"
     AUTO_APPROVED_BY_RULE_UUID = "auto_approved_by_rule_uuid"
     AUTO_APPROVED_COST_LIMIT_SNAPSHOT = "auto_approved_cost_limit_snapshot"
+    AWARD = "award"
     BACKEND_ID = "backend_id"
     CALLBACK_URL = "callback_url"
     CAN_TERMINATE = "can_terminate"

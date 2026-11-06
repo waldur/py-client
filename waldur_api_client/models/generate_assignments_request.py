@@ -17,7 +17,8 @@ class GenerateAssignmentsRequest:
         proposal_uuids (Union[Unset, list[UUID]]): Specific proposal UUIDs to generate assignments for. If empty,
             generates for all submitted proposals needing reviewers.
         reviewers_per_proposal (Union[Unset, int]): Number of reviewers to assign per proposal. If not specified, uses
-            call's minimum_number_of_reviewers setting.
+            the call's matching configuration min_reviewers_per_proposal (3 when the call has none). May not exceed its
+            max_reviewers_per_proposal.
     """
 
     proposal_uuids: Union[Unset, list[UUID]] = UNSET

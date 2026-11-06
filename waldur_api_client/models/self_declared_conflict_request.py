@@ -18,13 +18,13 @@ class SelfDeclaredConflictRequest:
     Attributes:
         proposal_uuid (UUID):
         coi_type (CoiTypeEnum):
-        severity (Union[Unset, COISeverityLevel]):  Default: COISeverityLevel.APPARENT.
+        severity (Union[Unset, COISeverityLevel]):
         description (Union[Unset, str]):  Default: ''.
     """
 
     proposal_uuid: UUID
     coi_type: CoiTypeEnum
-    severity: Union[Unset, COISeverityLevel] = COISeverityLevel.APPARENT
+    severity: Union[Unset, COISeverityLevel] = UNSET
     description: Union[Unset, str] = ""
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

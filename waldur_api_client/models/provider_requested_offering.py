@@ -7,11 +7,15 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.call_states import CallStates
 from ..models.requested_offering_states import RequestedOfferingStates
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.base_public_plan import BasePublicPlan
+    from ..models.call_offering_component_bounds import CallOfferingComponentBounds
+    from ..models.call_pool_summary import CallPoolSummary
+    from ..models.nested_round import NestedRound
     from ..models.offering_component import OfferingComponent
     from ..models.offering_options import OfferingOptions
     from ..models.provider_requested_offering_attributes import ProviderRequestedOfferingAttributes
@@ -41,14 +45,28 @@ class ProviderRequestedOffering:
         created (datetime.datetime):
         url (str):
         call_name (str):
+        call_uuid (UUID):
+        call_state (CallStates):
         call (str):
+        current_round (Union['NestedRound', None]): The call's round that matters now: the open one, else the next to
+            open, else the one that ended last.
+        proposals_count (int): Proposals, past their draft, requesting the offering in this call.
+        offering_managers_count (int): People holding the offering manager role on the offering: the team the call's
+            offering-team steps hand work to.
+        team_steps_count (int): Enabled steps of the call's workflow the offering's team completes or contributes to.
         description (str):
         created_by_name (str):
         created_by_email (str):
+        component_rules (list['CallOfferingComponentBounds']): What a proposal may request of each component: what the
+            provider commits to by accepting.
+        pools (list['CallPoolSummary']): How much of each component the call awards, overall or per round.
+        default_delegate_uuid (Union[None, UUID]):
+        default_delegate_name (Union[None, str]):
         attributes (Union[Unset, ProviderRequestedOfferingAttributes]):
         require_purchase_order (Union[Unset, bool]): Whether a purchase order must accompany a resource request for this
             offering before the proposal can be submitted. Defaults to the offering's require_purchase_order_upload, and
             stays under the call manager's control afterwards.
+        rejection_reason (Union[Unset, str]): Why the provider declined to take part in the call.
     """
 
     uuid: UUID
@@ -68,15 +86,28 @@ class ProviderRequestedOffering:
     created: datetime.datetime
     url: str
     call_name: str
+    call_uuid: UUID
+    call_state: CallStates
     call: str
+    current_round: Union["NestedRound", None]
+    proposals_count: int
+    offering_managers_count: int
+    team_steps_count: int
     description: str
     created_by_name: str
     created_by_email: str
+    component_rules: list["CallOfferingComponentBounds"]
+    pools: list["CallPoolSummary"]
+    default_delegate_uuid: Union[None, UUID]
+    default_delegate_name: Union[None, str]
     attributes: Union[Unset, "ProviderRequestedOfferingAttributes"] = UNSET
     require_purchase_order: Union[Unset, bool] = UNSET
+    rejection_reason: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        from ..models.nested_round import NestedRound
+
         uuid = str(self.uuid)
 
         state = self.state.value
@@ -115,7 +146,23 @@ class ProviderRequestedOffering:
 
         call_name = self.call_name
 
+        call_uuid = str(self.call_uuid)
+
+        call_state = self.call_state.value
+
         call = self.call
+
+        current_round: Union[None, dict[str, Any]]
+        if isinstance(self.current_round, NestedRound):
+            current_round = self.current_round.to_dict()
+        else:
+            current_round = self.current_round
+
+        proposals_count = self.proposals_count
+
+        offering_managers_count = self.offering_managers_count
+
+        team_steps_count = self.team_steps_count
 
         description = self.description
 
@@ -123,11 +170,32 @@ class ProviderRequestedOffering:
 
         created_by_email = self.created_by_email
 
+        component_rules = []
+        for component_rules_item_data in self.component_rules:
+            component_rules_item = component_rules_item_data.to_dict()
+            component_rules.append(component_rules_item)
+
+        pools = []
+        for pools_item_data in self.pools:
+            pools_item = pools_item_data.to_dict()
+            pools.append(pools_item)
+
+        default_delegate_uuid: Union[None, str]
+        if isinstance(self.default_delegate_uuid, UUID):
+            default_delegate_uuid = str(self.default_delegate_uuid)
+        else:
+            default_delegate_uuid = self.default_delegate_uuid
+
+        default_delegate_name: Union[None, str]
+        default_delegate_name = self.default_delegate_name
+
         attributes: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
         require_purchase_order = self.require_purchase_order
+
+        rejection_reason = self.rejection_reason
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -150,22 +218,37 @@ class ProviderRequestedOffering:
                 "created": created,
                 "url": url,
                 "call_name": call_name,
+                "call_uuid": call_uuid,
+                "call_state": call_state,
                 "call": call,
+                "current_round": current_round,
+                "proposals_count": proposals_count,
+                "offering_managers_count": offering_managers_count,
+                "team_steps_count": team_steps_count,
                 "description": description,
                 "created_by_name": created_by_name,
                 "created_by_email": created_by_email,
+                "component_rules": component_rules,
+                "pools": pools,
+                "default_delegate_uuid": default_delegate_uuid,
+                "default_delegate_name": default_delegate_name,
             }
         )
         if attributes is not UNSET:
             field_dict["attributes"] = attributes
         if require_purchase_order is not UNSET:
             field_dict["require_purchase_order"] = require_purchase_order
+        if rejection_reason is not UNSET:
+            field_dict["rejection_reason"] = rejection_reason
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.base_public_plan import BasePublicPlan
+        from ..models.call_offering_component_bounds import CallOfferingComponentBounds
+        from ..models.call_pool_summary import CallPoolSummary
+        from ..models.nested_round import NestedRound
         from ..models.offering_component import OfferingComponent
         from ..models.offering_options import OfferingOptions
         from ..models.provider_requested_offering_attributes import ProviderRequestedOfferingAttributes
@@ -215,13 +298,74 @@ class ProviderRequestedOffering:
 
         call_name = d.pop("call_name")
 
+        call_uuid = UUID(d.pop("call_uuid"))
+
+        call_state = CallStates(d.pop("call_state"))
+
         call = d.pop("call")
+
+        def _parse_current_round(data: object) -> Union["NestedRound", None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                current_round_type_1 = NestedRound.from_dict(data)
+
+                return current_round_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["NestedRound", None], data)
+
+        current_round = _parse_current_round(d.pop("current_round"))
+
+        proposals_count = d.pop("proposals_count")
+
+        offering_managers_count = d.pop("offering_managers_count")
+
+        team_steps_count = d.pop("team_steps_count")
 
         description = d.pop("description")
 
         created_by_name = d.pop("created_by_name")
 
         created_by_email = d.pop("created_by_email")
+
+        component_rules = []
+        _component_rules = d.pop("component_rules")
+        for component_rules_item_data in _component_rules:
+            component_rules_item = CallOfferingComponentBounds.from_dict(component_rules_item_data)
+
+            component_rules.append(component_rules_item)
+
+        pools = []
+        _pools = d.pop("pools")
+        for pools_item_data in _pools:
+            pools_item = CallPoolSummary.from_dict(pools_item_data)
+
+            pools.append(pools_item)
+
+        def _parse_default_delegate_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                default_delegate_uuid_type_0 = UUID(data)
+
+                return default_delegate_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        default_delegate_uuid = _parse_default_delegate_uuid(d.pop("default_delegate_uuid"))
+
+        def _parse_default_delegate_name(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        default_delegate_name = _parse_default_delegate_name(d.pop("default_delegate_name"))
 
         _attributes = d.pop("attributes", UNSET)
         attributes: Union[Unset, ProviderRequestedOfferingAttributes]
@@ -231,6 +375,8 @@ class ProviderRequestedOffering:
             attributes = ProviderRequestedOfferingAttributes.from_dict(_attributes)
 
         require_purchase_order = d.pop("require_purchase_order", UNSET)
+
+        rejection_reason = d.pop("rejection_reason", UNSET)
 
         provider_requested_offering = cls(
             uuid=uuid,
@@ -250,12 +396,23 @@ class ProviderRequestedOffering:
             created=created,
             url=url,
             call_name=call_name,
+            call_uuid=call_uuid,
+            call_state=call_state,
             call=call,
+            current_round=current_round,
+            proposals_count=proposals_count,
+            offering_managers_count=offering_managers_count,
+            team_steps_count=team_steps_count,
             description=description,
             created_by_name=created_by_name,
             created_by_email=created_by_email,
+            component_rules=component_rules,
+            pools=pools,
+            default_delegate_uuid=default_delegate_uuid,
+            default_delegate_name=default_delegate_name,
             attributes=attributes,
             require_purchase_order=require_purchase_order,
+            rejection_reason=rejection_reason,
         )
 
         provider_requested_offering.additional_properties = d

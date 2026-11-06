@@ -7,8 +7,6 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
-from ..types import UNSET, Unset
-
 T = TypeVar("T", bound="ProposalDocumentation")
 
 
@@ -17,46 +15,42 @@ class ProposalDocumentation:
     """
     Attributes:
         uuid (UUID):
+        file (str): Upload supporting documentation in PDF format.
         file_name (str):
-        file_size (int):
+        file_size (Union[None, int]):
         created (datetime.datetime):
-        file (Union[None, Unset, str]): Upload supporting documentation in PDF format.
     """
 
     uuid: UUID
+    file: str
     file_name: str
-    file_size: int
+    file_size: Union[None, int]
     created: datetime.datetime
-    file: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         uuid = str(self.uuid)
 
+        file = self.file
+
         file_name = self.file_name
 
+        file_size: Union[None, int]
         file_size = self.file_size
 
         created = self.created.isoformat()
-
-        file: Union[None, Unset, str]
-        if isinstance(self.file, Unset):
-            file = UNSET
-        else:
-            file = self.file
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "uuid": uuid,
+                "file": file,
                 "file_name": file_name,
                 "file_size": file_size,
                 "created": created,
             }
         )
-        if file is not UNSET:
-            field_dict["file"] = file
 
         return field_dict
 
@@ -65,27 +59,25 @@ class ProposalDocumentation:
         d = dict(src_dict)
         uuid = UUID(d.pop("uuid"))
 
+        file = d.pop("file")
+
         file_name = d.pop("file_name")
 
-        file_size = d.pop("file_size")
+        def _parse_file_size(data: object) -> Union[None, int]:
+            if data is None:
+                return data
+            return cast(Union[None, int], data)
+
+        file_size = _parse_file_size(d.pop("file_size"))
 
         created = isoparse(d.pop("created"))
 
-        def _parse_file(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        file = _parse_file(d.pop("file", UNSET))
-
         proposal_documentation = cls(
             uuid=uuid,
+            file=file,
             file_name=file_name,
             file_size=file_size,
             created=created,
-            file=file,
         )
 
         proposal_documentation.additional_properties = d

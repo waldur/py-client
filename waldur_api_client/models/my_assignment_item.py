@@ -1,9 +1,11 @@
+import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+from dateutil.parser import isoparse
 
 T = TypeVar("T", bound="MyAssignmentItem")
 
@@ -17,8 +19,10 @@ class MyAssignmentItem:
         proposal_name (str):
         proposal_slug (str):
         proposal_summary (str):
-        status (str):
+        status (str): Effective status: a pending item past its deadline reads as expired.
         status_display (str):
+        expires_at (Union[None, datetime.datetime]): Deadline for responding to this item.
+        is_expired (bool): Whether the item can no longer be answered because its deadline has passed.
         affinity_score (Union[None, float]):
         has_coi (bool):
     """
@@ -30,6 +34,8 @@ class MyAssignmentItem:
     proposal_summary: str
     status: str
     status_display: str
+    expires_at: Union[None, datetime.datetime]
+    is_expired: bool
     affinity_score: Union[None, float]
     has_coi: bool
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -49,6 +55,14 @@ class MyAssignmentItem:
 
         status_display = self.status_display
 
+        expires_at: Union[None, str]
+        if isinstance(self.expires_at, datetime.datetime):
+            expires_at = self.expires_at.isoformat()
+        else:
+            expires_at = self.expires_at
+
+        is_expired = self.is_expired
+
         affinity_score: Union[None, float]
         affinity_score = self.affinity_score
 
@@ -65,6 +79,8 @@ class MyAssignmentItem:
                 "proposal_summary": proposal_summary,
                 "status": status,
                 "status_display": status_display,
+                "expires_at": expires_at,
+                "is_expired": is_expired,
                 "affinity_score": affinity_score,
                 "has_coi": has_coi,
             }
@@ -89,6 +105,23 @@ class MyAssignmentItem:
 
         status_display = d.pop("status_display")
 
+        def _parse_expires_at(data: object) -> Union[None, datetime.datetime]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                expires_at_type_0 = isoparse(data)
+
+                return expires_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, datetime.datetime], data)
+
+        expires_at = _parse_expires_at(d.pop("expires_at"))
+
+        is_expired = d.pop("is_expired")
+
         def _parse_affinity_score(data: object) -> Union[None, float]:
             if data is None:
                 return data
@@ -106,6 +139,8 @@ class MyAssignmentItem:
             proposal_summary=proposal_summary,
             status=status,
             status_display=status_display,
+            expires_at=expires_at,
+            is_expired=is_expired,
             affinity_score=affinity_score,
             has_coi=has_coi,
         )

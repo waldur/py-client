@@ -2,7 +2,7 @@ from enum import Enum
 
 
 class ENABLEDREPORTINGSCREENSEnum(str, Enum):
-    CALL_PERFORMANCE = "call-performance"
+    CALL_REPORTS = "call-reports"
     CAPACITY = "capacity"
     GROWTH = "growth"
     MAINTENANCE_OVERVIEW = "maintenance-overview"
@@ -24,10 +24,8 @@ class ENABLEDREPORTINGSCREENSEnum(str, Enum):
     PROVISIONING_STATS = "provisioning-stats"
     QUOTAS = "quotas"
     RESOURCES_GEOGRAPHY = "resources-geography"
-    RESOURCE_DEMAND = "resource-demand"
     RESOURCE_USAGE = "resource-usage"
     REVENUE = "revenue"
-    REVIEW_PROGRESS = "review-progress"
     USAGE_BY_CREATOR = "usage-by-creator"
     USAGE_BY_CUSTOMER = "usage-by-customer"
     USAGE_BY_ORG_TYPE = "usage-by-org-type"

@@ -1,0 +1,196 @@
+from http import HTTPStatus
+from typing import Any, Union
+
+import httpx
+
+from ... import errors
+from ...client import AuthenticatedClient, Client
+from ...models.advance_round_workflow_step_request import AdvanceRoundWorkflowStepRequest
+from ...models.advance_round_workflow_step_response import AdvanceRoundWorkflowStepResponse
+from ...types import Response
+
+
+def _get_kwargs(
+    uuid: str,
+    obj_uuid: str,
+    *,
+    body: AdvanceRoundWorkflowStepRequest,
+) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+
+    _kwargs: dict[str, Any] = {
+        "method": "post",
+        "url": f"/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/advance_workflow_step/",
+    }
+
+    _kwargs["json"] = body.to_dict()
+
+    headers["Content-Type"] = "application/json"
+
+    _kwargs["headers"] = headers
+    return _kwargs
+
+
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> AdvanceRoundWorkflowStepResponse:
+    if response.status_code == 404:
+        raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
+    if response.status_code == 200:
+        response_200 = AdvanceRoundWorkflowStepResponse.from_dict(response.json())
+
+        return response_200
+    raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
+
+
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[AdvanceRoundWorkflowStepResponse]:
+    return Response(
+        status_code=HTTPStatus(response.status_code),
+        content=response.content,
+        headers=response.headers,
+        parsed=_parse_response(client=client, response=response),
+    )
+
+
+def sync_detailed(
+    uuid: str,
+    obj_uuid: str,
+    *,
+    client: AuthenticatedClient,
+    body: AdvanceRoundWorkflowStepRequest,
+) -> Response[AdvanceRoundWorkflowStepResponse]:
+    """Move on every proposal of the round parked on a completed step of manual transition, named by
+    step_uuid or its key, as the manual advance on each proposal would. Each proposal is committed on
+    its own: one that cannot be moved is listed in failed, the rest go on. Running it again changes
+    nothing.
+
+    Args:
+        uuid (str):
+        obj_uuid (str):
+        body (AdvanceRoundWorkflowStepRequest):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[AdvanceRoundWorkflowStepResponse]
+    """
+
+    kwargs = _get_kwargs(
+        uuid=uuid,
+        obj_uuid=obj_uuid,
+        body=body,
+    )
+
+    response = client.get_httpx_client().request(
+        **kwargs,
+    )
+
+    return _build_response(client=client, response=response)
+
+
+def sync(
+    uuid: str,
+    obj_uuid: str,
+    *,
+    client: AuthenticatedClient,
+    body: AdvanceRoundWorkflowStepRequest,
+) -> AdvanceRoundWorkflowStepResponse:
+    """Move on every proposal of the round parked on a completed step of manual transition, named by
+    step_uuid or its key, as the manual advance on each proposal would. Each proposal is committed on
+    its own: one that cannot be moved is listed in failed, the rest go on. Running it again changes
+    nothing.
+
+    Args:
+        uuid (str):
+        obj_uuid (str):
+        body (AdvanceRoundWorkflowStepRequest):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        AdvanceRoundWorkflowStepResponse
+    """
+
+    return sync_detailed(
+        uuid=uuid,
+        obj_uuid=obj_uuid,
+        client=client,
+        body=body,
+    ).parsed
+
+
+async def asyncio_detailed(
+    uuid: str,
+    obj_uuid: str,
+    *,
+    client: AuthenticatedClient,
+    body: AdvanceRoundWorkflowStepRequest,
+) -> Response[AdvanceRoundWorkflowStepResponse]:
+    """Move on every proposal of the round parked on a completed step of manual transition, named by
+    step_uuid or its key, as the manual advance on each proposal would. Each proposal is committed on
+    its own: one that cannot be moved is listed in failed, the rest go on. Running it again changes
+    nothing.
+
+    Args:
+        uuid (str):
+        obj_uuid (str):
+        body (AdvanceRoundWorkflowStepRequest):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[AdvanceRoundWorkflowStepResponse]
+    """
+
+    kwargs = _get_kwargs(
+        uuid=uuid,
+        obj_uuid=obj_uuid,
+        body=body,
+    )
+
+    response = await client.get_async_httpx_client().request(**kwargs)
+
+    return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    uuid: str,
+    obj_uuid: str,
+    *,
+    client: AuthenticatedClient,
+    body: AdvanceRoundWorkflowStepRequest,
+) -> AdvanceRoundWorkflowStepResponse:
+    """Move on every proposal of the round parked on a completed step of manual transition, named by
+    step_uuid or its key, as the manual advance on each proposal would. Each proposal is committed on
+    its own: one that cannot be moved is listed in failed, the rest go on. Running it again changes
+    nothing.
+
+    Args:
+        uuid (str):
+        obj_uuid (str):
+        body (AdvanceRoundWorkflowStepRequest):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        AdvanceRoundWorkflowStepResponse
+    """
+
+    return (
+        await asyncio_detailed(
+            uuid=uuid,
+            obj_uuid=obj_uuid,
+            client=client,
+            body=body,
+        )
+    ).parsed

@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.budget_enforcement_enum import BudgetEnforcementEnum
 from ..models.call_states import CallStates
 from ..models.evaluation_start_enum import EvaluationStartEnum
 from ..models.order_author_enum import OrderAuthorEnum
@@ -18,8 +19,10 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.call_applicant_visibility_config import CallApplicantVisibilityConfig
     from ..models.call_document import CallDocument
+    from ..models.call_offering_component_bounds import CallOfferingComponentBounds
     from ..models.call_proposal_field_config import CallProposalFieldConfig
     from ..models.call_resource_template import CallResourceTemplate
+    from ..models.call_reviewer_eligibility import CallReviewerEligibility
     from ..models.nested_requested_offering import NestedRequestedOffering
     from ..models.nested_round import NestedRound
     from ..models.proposal_field_metadata import ProposalFieldMetadata
@@ -36,7 +39,7 @@ class ProtectedCall:
         uuid (Union[Unset, UUID]):
         created (Union[Unset, datetime.datetime]):
         start_date (Union[Unset, datetime.datetime]):
-        end_date (Union[Unset, datetime.datetime]):
+        end_date (Union[None, Unset, datetime.datetime]):
         slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         name (Union[Unset, str]):
         description (Union[Unset, str]):
@@ -49,7 +52,12 @@ class ProtectedCall:
         rounds (Union[Unset, list['NestedRound']]):
         documents (Union[Unset, list['CallDocument']]):
         resource_templates (Union[Unset, list['CallResourceTemplate']]):
+        component_rules (Union[Unset, list['CallOfferingComponentBounds']]): What a proposal may request of each
+            component of the call's accepted offerings, in the component's unit and per its limit period.
         fixed_duration_in_days (Union[None, Unset, int]):
+        allowed_duration_months (Union[Unset, list[int]]): Durations, in months, the applicant chooses the project's
+            length from. Empty offers no choice. Cannot be combined with fixed_duration_in_days. Proposals already submitted
+            keep the length they asked for.
         max_prepaid_duration_months (Union[None, Unset, int]): The longest prepaid subscription, in whole months, that
             fits inside fixed_duration_in_days measured from today; null when the call fixes no duration.
         backend_id (Union[Unset, str]):
@@ -57,7 +65,8 @@ class ProtectedCall:
         reviewer_identity_visible_to_submitters (Union[Unset, bool]): Whether proposal applicants can see reviewer
             identities
         reviews_visible_to_submitters (Union[Unset, bool]): Whether proposal applicants can see review comments and
-            scores
+            scores. Applicants still see what an applicant step lists as its input steps, such as the reviews they respond
+            to.
         has_eligibility_restrictions (Union[Unset, bool]): Check if call has any eligibility restrictions configured.
         proposal_field_config (Union[Unset, CallProposalFieldConfig]):
         evaluation_start (Union[Unset, EvaluationStartEnum]):
@@ -71,6 +80,9 @@ class ProtectedCall:
         panel_chair (Union[None, UUID, Unset]):
         panel_chair_uuid (Union[Unset, UUID]):
         panel_chair_name (Union[Unset, str]):
+        panel_vice_chair (Union[None, UUID, Unset]):
+        panel_vice_chair_uuid (Union[Unset, UUID]):
+        panel_vice_chair_name (Union[Unset, str]):
         proposal_slug_template (Union[None, Unset, str]): Template for proposal slugs. Supports: {call_slug},
             {round_slug}, {org_slug}, {year}, {month}, {counter}, {counter_padded}. Default: {round_slug}-{counter_padded}
         user_email_patterns (Union[Unset, list[str]]): List of email regex patterns. User must match one.
@@ -83,6 +95,9 @@ class ProtectedCall:
         user_assurance_levels (Union[Unset, list[str]]): List of required assurance URIs (REFEDS). User must have ALL of
             these.
         applicant_visibility_config (Union['CallApplicantVisibilityConfig', None, Unset]):
+        reviewer_eligibility (Union['CallReviewerEligibility', None, Unset]): Who may review for the call: checked when
+            a reviewer is invited, accepts, is suggested or is given the call's reviewer role. Kept apart from the
+            restrictions on applicants.
         proposal_field_metadata (Union[Unset, list['ProposalFieldMetadata']]): Per-field state, permitted transitions
             and downstream consumers for the Project details step.
         has_proposals (Union[Unset, bool]): Whether any proposal has been submitted to this call. Used by the frontend
@@ -94,14 +109,28 @@ class ProtectedCall:
         order_author_user_name (Union[None, Unset, str]):
         carry_over_drafts (Union[Unset, bool]): Whether a draft still open when its round's cut-off passes moves on to
             the call's next round instead of being canceled. Without a later round the draft is canceled either way.
+        coi_declaration_text (Union[Unset, str]): The conflict-of-interest declaration evaluators confirm, for every
+            step asking them to that has no text of its own. Empty for the platform's standard declaration.
         undecided_at_round_completion (Union[Unset, UndecidedAtRoundCompletionEnum]):
+        adoption_required (Union[Unset, bool]): Whether a round's results must be adopted (by a board, say) before they
+            are published. The adoption is then recorded while the round is deciding, and publication waits for it.
+        budget_enforcement (Union[Unset, BudgetEnforcementEnum]):
+        applicant_cc_roles (Union[Unset, list[str]]): Names of the proposal roles whose holders are copied (Cc) on every
+            mail to the applicant about a proposal: PROPOSAL.MANAGER for the principal investigator, PROPOSAL.ADMIN for the
+            proposal administrators. Only the proposal's current team is copied. Empty copies nobody.
+        target_decision_days (Union[None, Unset, int]): Days from a round's cut-off to its decision the workflow is
+            planned for, when the round has no allocation date. The workflow check compares the steps' durations with it.
+        template_uuid (Union[None, UUID, Unset]):
+        template_name (Union[None, Unset, str]):
+        template_version (Union[None, Unset, int]): Version of the template the call was created from.
+        template_latest_version (Union[None, Unset, int]): The template's current version.
     """
 
     url: Union[Unset, str] = UNSET
     uuid: Union[Unset, UUID] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     start_date: Union[Unset, datetime.datetime] = UNSET
-    end_date: Union[Unset, datetime.datetime] = UNSET
+    end_date: Union[None, Unset, datetime.datetime] = UNSET
     slug: Union[Unset, str] = UNSET
     name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
@@ -114,7 +143,9 @@ class ProtectedCall:
     rounds: Union[Unset, list["NestedRound"]] = UNSET
     documents: Union[Unset, list["CallDocument"]] = UNSET
     resource_templates: Union[Unset, list["CallResourceTemplate"]] = UNSET
+    component_rules: Union[Unset, list["CallOfferingComponentBounds"]] = UNSET
     fixed_duration_in_days: Union[None, Unset, int] = UNSET
+    allowed_duration_months: Union[Unset, list[int]] = UNSET
     max_prepaid_duration_months: Union[None, Unset, int] = UNSET
     backend_id: Union[Unset, str] = UNSET
     external_url: Union[None, Unset, str] = UNSET
@@ -132,6 +163,9 @@ class ProtectedCall:
     panel_chair: Union[None, UUID, Unset] = UNSET
     panel_chair_uuid: Union[Unset, UUID] = UNSET
     panel_chair_name: Union[Unset, str] = UNSET
+    panel_vice_chair: Union[None, UUID, Unset] = UNSET
+    panel_vice_chair_uuid: Union[Unset, UUID] = UNSET
+    panel_vice_chair_name: Union[Unset, str] = UNSET
     proposal_slug_template: Union[None, Unset, str] = UNSET
     user_email_patterns: Union[Unset, list[str]] = UNSET
     user_affiliations: Union[Unset, list[str]] = UNSET
@@ -140,6 +174,7 @@ class ProtectedCall:
     user_organization_types: Union[Unset, list[str]] = UNSET
     user_assurance_levels: Union[Unset, list[str]] = UNSET
     applicant_visibility_config: Union["CallApplicantVisibilityConfig", None, Unset] = UNSET
+    reviewer_eligibility: Union["CallReviewerEligibility", None, Unset] = UNSET
     proposal_field_metadata: Union[Unset, list["ProposalFieldMetadata"]] = UNSET
     has_proposals: Union[Unset, bool] = UNSET
     order_author: Union[Unset, OrderAuthorEnum] = UNSET
@@ -147,11 +182,21 @@ class ProtectedCall:
     order_author_user_uuid: Union[None, UUID, Unset] = UNSET
     order_author_user_name: Union[None, Unset, str] = UNSET
     carry_over_drafts: Union[Unset, bool] = UNSET
+    coi_declaration_text: Union[Unset, str] = UNSET
     undecided_at_round_completion: Union[Unset, UndecidedAtRoundCompletionEnum] = UNSET
+    adoption_required: Union[Unset, bool] = UNSET
+    budget_enforcement: Union[Unset, BudgetEnforcementEnum] = UNSET
+    applicant_cc_roles: Union[Unset, list[str]] = UNSET
+    target_decision_days: Union[None, Unset, int] = UNSET
+    template_uuid: Union[None, UUID, Unset] = UNSET
+    template_name: Union[None, Unset, str] = UNSET
+    template_version: Union[None, Unset, int] = UNSET
+    template_latest_version: Union[None, Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.call_applicant_visibility_config import CallApplicantVisibilityConfig
+        from ..models.call_reviewer_eligibility import CallReviewerEligibility
 
         url = self.url
 
@@ -167,9 +212,13 @@ class ProtectedCall:
         if not isinstance(self.start_date, Unset):
             start_date = self.start_date.isoformat()
 
-        end_date: Union[Unset, str] = UNSET
-        if not isinstance(self.end_date, Unset):
+        end_date: Union[None, Unset, str]
+        if isinstance(self.end_date, Unset):
+            end_date = UNSET
+        elif isinstance(self.end_date, datetime.datetime):
             end_date = self.end_date.isoformat()
+        else:
+            end_date = self.end_date
 
         slug = self.slug
 
@@ -221,11 +270,22 @@ class ProtectedCall:
                 resource_templates_item = resource_templates_item_data.to_dict()
                 resource_templates.append(resource_templates_item)
 
+        component_rules: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.component_rules, Unset):
+            component_rules = []
+            for component_rules_item_data in self.component_rules:
+                component_rules_item = component_rules_item_data.to_dict()
+                component_rules.append(component_rules_item)
+
         fixed_duration_in_days: Union[None, Unset, int]
         if isinstance(self.fixed_duration_in_days, Unset):
             fixed_duration_in_days = UNSET
         else:
             fixed_duration_in_days = self.fixed_duration_in_days
+
+        allowed_duration_months: Union[Unset, list[int]] = UNSET
+        if not isinstance(self.allowed_duration_months, Unset):
+            allowed_duration_months = self.allowed_duration_months
 
         max_prepaid_duration_months: Union[None, Unset, int]
         if isinstance(self.max_prepaid_duration_months, Unset):
@@ -295,6 +355,20 @@ class ProtectedCall:
 
         panel_chair_name = self.panel_chair_name
 
+        panel_vice_chair: Union[None, Unset, str]
+        if isinstance(self.panel_vice_chair, Unset):
+            panel_vice_chair = UNSET
+        elif isinstance(self.panel_vice_chair, UUID):
+            panel_vice_chair = str(self.panel_vice_chair)
+        else:
+            panel_vice_chair = self.panel_vice_chair
+
+        panel_vice_chair_uuid: Union[Unset, str] = UNSET
+        if not isinstance(self.panel_vice_chair_uuid, Unset):
+            panel_vice_chair_uuid = str(self.panel_vice_chair_uuid)
+
+        panel_vice_chair_name = self.panel_vice_chair_name
+
         proposal_slug_template: Union[None, Unset, str]
         if isinstance(self.proposal_slug_template, Unset):
             proposal_slug_template = UNSET
@@ -333,6 +407,14 @@ class ProtectedCall:
         else:
             applicant_visibility_config = self.applicant_visibility_config
 
+        reviewer_eligibility: Union[None, Unset, dict[str, Any]]
+        if isinstance(self.reviewer_eligibility, Unset):
+            reviewer_eligibility = UNSET
+        elif isinstance(self.reviewer_eligibility, CallReviewerEligibility):
+            reviewer_eligibility = self.reviewer_eligibility.to_dict()
+        else:
+            reviewer_eligibility = self.reviewer_eligibility
+
         proposal_field_metadata: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.proposal_field_metadata, Unset):
             proposal_field_metadata = []
@@ -370,9 +452,53 @@ class ProtectedCall:
 
         carry_over_drafts = self.carry_over_drafts
 
+        coi_declaration_text = self.coi_declaration_text
+
         undecided_at_round_completion: Union[Unset, str] = UNSET
         if not isinstance(self.undecided_at_round_completion, Unset):
             undecided_at_round_completion = self.undecided_at_round_completion.value
+
+        adoption_required = self.adoption_required
+
+        budget_enforcement: Union[Unset, str] = UNSET
+        if not isinstance(self.budget_enforcement, Unset):
+            budget_enforcement = self.budget_enforcement.value
+
+        applicant_cc_roles: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.applicant_cc_roles, Unset):
+            applicant_cc_roles = self.applicant_cc_roles
+
+        target_decision_days: Union[None, Unset, int]
+        if isinstance(self.target_decision_days, Unset):
+            target_decision_days = UNSET
+        else:
+            target_decision_days = self.target_decision_days
+
+        template_uuid: Union[None, Unset, str]
+        if isinstance(self.template_uuid, Unset):
+            template_uuid = UNSET
+        elif isinstance(self.template_uuid, UUID):
+            template_uuid = str(self.template_uuid)
+        else:
+            template_uuid = self.template_uuid
+
+        template_name: Union[None, Unset, str]
+        if isinstance(self.template_name, Unset):
+            template_name = UNSET
+        else:
+            template_name = self.template_name
+
+        template_version: Union[None, Unset, int]
+        if isinstance(self.template_version, Unset):
+            template_version = UNSET
+        else:
+            template_version = self.template_version
+
+        template_latest_version: Union[None, Unset, int]
+        if isinstance(self.template_latest_version, Unset):
+            template_latest_version = UNSET
+        else:
+            template_latest_version = self.template_latest_version
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -411,8 +537,12 @@ class ProtectedCall:
             field_dict["documents"] = documents
         if resource_templates is not UNSET:
             field_dict["resource_templates"] = resource_templates
+        if component_rules is not UNSET:
+            field_dict["component_rules"] = component_rules
         if fixed_duration_in_days is not UNSET:
             field_dict["fixed_duration_in_days"] = fixed_duration_in_days
+        if allowed_duration_months is not UNSET:
+            field_dict["allowed_duration_months"] = allowed_duration_months
         if max_prepaid_duration_months is not UNSET:
             field_dict["max_prepaid_duration_months"] = max_prepaid_duration_months
         if backend_id is not UNSET:
@@ -447,6 +577,12 @@ class ProtectedCall:
             field_dict["panel_chair_uuid"] = panel_chair_uuid
         if panel_chair_name is not UNSET:
             field_dict["panel_chair_name"] = panel_chair_name
+        if panel_vice_chair is not UNSET:
+            field_dict["panel_vice_chair"] = panel_vice_chair
+        if panel_vice_chair_uuid is not UNSET:
+            field_dict["panel_vice_chair_uuid"] = panel_vice_chair_uuid
+        if panel_vice_chair_name is not UNSET:
+            field_dict["panel_vice_chair_name"] = panel_vice_chair_name
         if proposal_slug_template is not UNSET:
             field_dict["proposal_slug_template"] = proposal_slug_template
         if user_email_patterns is not UNSET:
@@ -463,6 +599,8 @@ class ProtectedCall:
             field_dict["user_assurance_levels"] = user_assurance_levels
         if applicant_visibility_config is not UNSET:
             field_dict["applicant_visibility_config"] = applicant_visibility_config
+        if reviewer_eligibility is not UNSET:
+            field_dict["reviewer_eligibility"] = reviewer_eligibility
         if proposal_field_metadata is not UNSET:
             field_dict["proposal_field_metadata"] = proposal_field_metadata
         if has_proposals is not UNSET:
@@ -477,8 +615,26 @@ class ProtectedCall:
             field_dict["order_author_user_name"] = order_author_user_name
         if carry_over_drafts is not UNSET:
             field_dict["carry_over_drafts"] = carry_over_drafts
+        if coi_declaration_text is not UNSET:
+            field_dict["coi_declaration_text"] = coi_declaration_text
         if undecided_at_round_completion is not UNSET:
             field_dict["undecided_at_round_completion"] = undecided_at_round_completion
+        if adoption_required is not UNSET:
+            field_dict["adoption_required"] = adoption_required
+        if budget_enforcement is not UNSET:
+            field_dict["budget_enforcement"] = budget_enforcement
+        if applicant_cc_roles is not UNSET:
+            field_dict["applicant_cc_roles"] = applicant_cc_roles
+        if target_decision_days is not UNSET:
+            field_dict["target_decision_days"] = target_decision_days
+        if template_uuid is not UNSET:
+            field_dict["template_uuid"] = template_uuid
+        if template_name is not UNSET:
+            field_dict["template_name"] = template_name
+        if template_version is not UNSET:
+            field_dict["template_version"] = template_version
+        if template_latest_version is not UNSET:
+            field_dict["template_latest_version"] = template_latest_version
 
         return field_dict
 
@@ -486,8 +642,10 @@ class ProtectedCall:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.call_applicant_visibility_config import CallApplicantVisibilityConfig
         from ..models.call_document import CallDocument
+        from ..models.call_offering_component_bounds import CallOfferingComponentBounds
         from ..models.call_proposal_field_config import CallProposalFieldConfig
         from ..models.call_resource_template import CallResourceTemplate
+        from ..models.call_reviewer_eligibility import CallReviewerEligibility
         from ..models.nested_requested_offering import NestedRequestedOffering
         from ..models.nested_round import NestedRound
         from ..models.proposal_field_metadata import ProposalFieldMetadata
@@ -516,12 +674,22 @@ class ProtectedCall:
         else:
             start_date = isoparse(_start_date)
 
-        _end_date = d.pop("end_date", UNSET)
-        end_date: Union[Unset, datetime.datetime]
-        if isinstance(_end_date, Unset):
-            end_date = UNSET
-        else:
-            end_date = isoparse(_end_date)
+        def _parse_end_date(data: object) -> Union[None, Unset, datetime.datetime]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                end_date_type_0 = isoparse(data)
+
+                return end_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.datetime], data)
+
+        end_date = _parse_end_date(d.pop("end_date", UNSET))
 
         slug = d.pop("slug", UNSET)
 
@@ -582,6 +750,13 @@ class ProtectedCall:
 
             resource_templates.append(resource_templates_item)
 
+        component_rules = []
+        _component_rules = d.pop("component_rules", UNSET)
+        for component_rules_item_data in _component_rules or []:
+            component_rules_item = CallOfferingComponentBounds.from_dict(component_rules_item_data)
+
+            component_rules.append(component_rules_item)
+
         def _parse_fixed_duration_in_days(data: object) -> Union[None, Unset, int]:
             if data is None:
                 return data
@@ -590,6 +765,8 @@ class ProtectedCall:
             return cast(Union[None, Unset, int], data)
 
         fixed_duration_in_days = _parse_fixed_duration_in_days(d.pop("fixed_duration_in_days", UNSET))
+
+        allowed_duration_months = cast(list[int], d.pop("allowed_duration_months", UNSET))
 
         def _parse_max_prepaid_duration_months(data: object) -> Union[None, Unset, int]:
             if data is None:
@@ -701,6 +878,32 @@ class ProtectedCall:
 
         panel_chair_name = d.pop("panel_chair_name", UNSET)
 
+        def _parse_panel_vice_chair(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                panel_vice_chair_type_0 = UUID(data)
+
+                return panel_vice_chair_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        panel_vice_chair = _parse_panel_vice_chair(d.pop("panel_vice_chair", UNSET))
+
+        _panel_vice_chair_uuid = d.pop("panel_vice_chair_uuid", UNSET)
+        panel_vice_chair_uuid: Union[Unset, UUID]
+        if isinstance(_panel_vice_chair_uuid, Unset):
+            panel_vice_chair_uuid = UNSET
+        else:
+            panel_vice_chair_uuid = UUID(_panel_vice_chair_uuid)
+
+        panel_vice_chair_name = d.pop("panel_vice_chair_name", UNSET)
+
         def _parse_proposal_slug_template(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -738,6 +941,23 @@ class ProtectedCall:
             return cast(Union["CallApplicantVisibilityConfig", None, Unset], data)
 
         applicant_visibility_config = _parse_applicant_visibility_config(d.pop("applicant_visibility_config", UNSET))
+
+        def _parse_reviewer_eligibility(data: object) -> Union["CallReviewerEligibility", None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                reviewer_eligibility_type_1 = CallReviewerEligibility.from_dict(data)
+
+                return reviewer_eligibility_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["CallReviewerEligibility", None, Unset], data)
+
+        reviewer_eligibility = _parse_reviewer_eligibility(d.pop("reviewer_eligibility", UNSET))
 
         proposal_field_metadata = []
         _proposal_field_metadata = d.pop("proposal_field_metadata", UNSET)
@@ -800,12 +1020,78 @@ class ProtectedCall:
 
         carry_over_drafts = d.pop("carry_over_drafts", UNSET)
 
+        coi_declaration_text = d.pop("coi_declaration_text", UNSET)
+
         _undecided_at_round_completion = d.pop("undecided_at_round_completion", UNSET)
         undecided_at_round_completion: Union[Unset, UndecidedAtRoundCompletionEnum]
         if isinstance(_undecided_at_round_completion, Unset):
             undecided_at_round_completion = UNSET
         else:
             undecided_at_round_completion = UndecidedAtRoundCompletionEnum(_undecided_at_round_completion)
+
+        adoption_required = d.pop("adoption_required", UNSET)
+
+        _budget_enforcement = d.pop("budget_enforcement", UNSET)
+        budget_enforcement: Union[Unset, BudgetEnforcementEnum]
+        if isinstance(_budget_enforcement, Unset):
+            budget_enforcement = UNSET
+        else:
+            budget_enforcement = BudgetEnforcementEnum(_budget_enforcement)
+
+        applicant_cc_roles = cast(list[str], d.pop("applicant_cc_roles", UNSET))
+
+        def _parse_target_decision_days(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        target_decision_days = _parse_target_decision_days(d.pop("target_decision_days", UNSET))
+
+        def _parse_template_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                template_uuid_type_0 = UUID(data)
+
+                return template_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        template_uuid = _parse_template_uuid(d.pop("template_uuid", UNSET))
+
+        def _parse_template_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        template_name = _parse_template_name(d.pop("template_name", UNSET))
+
+        def _parse_template_version(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        template_version = _parse_template_version(d.pop("template_version", UNSET))
+
+        def _parse_template_latest_version(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        template_latest_version = _parse_template_latest_version(d.pop("template_latest_version", UNSET))
 
         protected_call = cls(
             url=url,
@@ -825,7 +1111,9 @@ class ProtectedCall:
             rounds=rounds,
             documents=documents,
             resource_templates=resource_templates,
+            component_rules=component_rules,
             fixed_duration_in_days=fixed_duration_in_days,
+            allowed_duration_months=allowed_duration_months,
             max_prepaid_duration_months=max_prepaid_duration_months,
             backend_id=backend_id,
             external_url=external_url,
@@ -843,6 +1131,9 @@ class ProtectedCall:
             panel_chair=panel_chair,
             panel_chair_uuid=panel_chair_uuid,
             panel_chair_name=panel_chair_name,
+            panel_vice_chair=panel_vice_chair,
+            panel_vice_chair_uuid=panel_vice_chair_uuid,
+            panel_vice_chair_name=panel_vice_chair_name,
             proposal_slug_template=proposal_slug_template,
             user_email_patterns=user_email_patterns,
             user_affiliations=user_affiliations,
@@ -851,6 +1142,7 @@ class ProtectedCall:
             user_organization_types=user_organization_types,
             user_assurance_levels=user_assurance_levels,
             applicant_visibility_config=applicant_visibility_config,
+            reviewer_eligibility=reviewer_eligibility,
             proposal_field_metadata=proposal_field_metadata,
             has_proposals=has_proposals,
             order_author=order_author,
@@ -858,7 +1150,16 @@ class ProtectedCall:
             order_author_user_uuid=order_author_user_uuid,
             order_author_user_name=order_author_user_name,
             carry_over_drafts=carry_over_drafts,
+            coi_declaration_text=coi_declaration_text,
             undecided_at_round_completion=undecided_at_round_completion,
+            adoption_required=adoption_required,
+            budget_enforcement=budget_enforcement,
+            applicant_cc_roles=applicant_cc_roles,
+            target_decision_days=target_decision_days,
+            template_uuid=template_uuid,
+            template_name=template_name,
+            template_version=template_version,
+            template_latest_version=template_latest_version,
         )
 
         protected_call.additional_properties = d

@@ -6,10 +6,10 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.call_states import CallStates
 from ...models.protected_call_o_enum import ProtectedCallOEnum
 from ...models.public_call import PublicCall
 from ...models.public_call_field_enum import PublicCallFieldEnum
+from ...models.public_call_state_enum import PublicCallStateEnum
 from ...types import UNSET, Response, Unset
 from ...utils import parse_link_header
 
@@ -29,7 +29,7 @@ def _get_kwargs(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     slug: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[CallStates]] = UNSET,
+    state: Union[Unset, list[PublicCallStateEnum]] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
@@ -147,7 +147,7 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     slug: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[CallStates]] = UNSET,
+    state: Union[Unset, list[PublicCallStateEnum]] = UNSET,
 ) -> Response[list["PublicCall"]]:
     """
     Args:
@@ -164,7 +164,7 @@ def sync_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         slug (Union[Unset, str]):
-        state (Union[Unset, list[CallStates]]):
+        state (Union[Unset, list[PublicCallStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -214,7 +214,7 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     slug: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[CallStates]] = UNSET,
+    state: Union[Unset, list[PublicCallStateEnum]] = UNSET,
 ) -> list["PublicCall"]:
     """
     Args:
@@ -231,7 +231,7 @@ def sync(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         slug (Union[Unset, str]):
-        state (Union[Unset, list[CallStates]]):
+        state (Union[Unset, list[PublicCallStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -276,7 +276,7 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     slug: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[CallStates]] = UNSET,
+    state: Union[Unset, list[PublicCallStateEnum]] = UNSET,
 ) -> Response[list["PublicCall"]]:
     """
     Args:
@@ -293,7 +293,7 @@ async def asyncio_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         slug (Union[Unset, str]):
-        state (Union[Unset, list[CallStates]]):
+        state (Union[Unset, list[PublicCallStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -341,7 +341,7 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     slug: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[CallStates]] = UNSET,
+    state: Union[Unset, list[PublicCallStateEnum]] = UNSET,
 ) -> list["PublicCall"]:
     """
     Args:
@@ -358,7 +358,7 @@ async def asyncio(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         slug (Union[Unset, str]):
-        state (Union[Unset, list[CallStates]]):
+        state (Union[Unset, list[PublicCallStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -403,7 +403,7 @@ def sync_all(
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     open_for_offering_uuid: Union[Unset, UUID] = UNSET,
     slug: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[CallStates]] = UNSET,
+    state: Union[Unset, list[PublicCallStateEnum]] = UNSET,
 ) -> list["PublicCall"]:
     """Get All Pages
 
@@ -424,7 +424,7 @@ def sync_all(
         offerings_provider_uuid (Union[Unset, UUID]):
         open_for_offering_uuid (Union[Unset, UUID]):
         slug (Union[Unset, str]):
-        state (Union[Unset, list[CallStates]]):
+        state (Union[Unset, list[PublicCallStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -509,7 +509,7 @@ async def asyncio_all(
     offerings_provider_uuid: Union[Unset, UUID] = UNSET,
     open_for_offering_uuid: Union[Unset, UUID] = UNSET,
     slug: Union[Unset, str] = UNSET,
-    state: Union[Unset, list[CallStates]] = UNSET,
+    state: Union[Unset, list[PublicCallStateEnum]] = UNSET,
 ) -> list["PublicCall"]:
     """Get All Pages (Async)
 
@@ -530,7 +530,7 @@ async def asyncio_all(
         offerings_provider_uuid (Union[Unset, UUID]):
         open_for_offering_uuid (Union[Unset, UUID]):
         slug (Union[Unset, str]):
-        state (Union[Unset, list[CallStates]]):
+        state (Union[Unset, list[PublicCallStateEnum]]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
