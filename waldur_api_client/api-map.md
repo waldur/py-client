@@ -3170,6 +3170,7 @@ Module: `waldur_api_client.api.override_settings`
 
 - `override_settings_retrieve` GET `/api/override-settings/` — Get all overridable settings (no params)
 - `override_settings` POST `/api/override-settings/` — Update overridable settings (request body)
+- `override_settings_sources_list` GET `/api/override-settings/sources/` — Get where overridden settings come from (no params)
 
 ## passkeys
 Module: `waldur_api_client.api.passkeys`
@@ -3793,7 +3794,7 @@ Module: `waldur_api_client.api.remote_waldur_api`
 - `remote_waldur_api_remote_resource_team_status_list` GET `/api/remote-waldur-api/remote_resource_team_status/{resource_uuid}/` — Get remote resource team members (path: resource_uuid)
 - `remote_waldur_api_shared_offerings` POST `/api/remote-waldur-api/shared_offerings/` — List remote importable offerings for particular customer (1 query param | request body)
 - `remote_waldur_api_sync_resource` POST `/api/remote-waldur-api/sync_resource/{uuid}/` (path: uuid)
-- `remote_waldur_api_sync_resource_project_permissions` POST `/api/remote-waldur-api/sync_resource_project_permissions/{uuid}/` (path: uuid)
+- `remote_waldur_api_sync_resource_project_permissions` POST `/api/remote-waldur-api/sync_resource_project_permissions/{uuid}/` — Queue a push of the resource's project team to the remote Waldur (path: uuid)
 
 ## reviewer-bids
 Module: `waldur_api_client.api.reviewer_bids`

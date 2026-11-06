@@ -3014,6 +3014,8 @@ from .set_mtu_request import SetMtuRequest
 from .set_offerings_username_request import SetOfferingsUsernameRequest
 from .set_partition_qo_s_request import SetPartitionQoSRequest
 from .set_token_quota_request import SetTokenQuotaRequest
+from .setting_source import SettingSource
+from .setting_source_source_enum import SettingSourceSourceEnum
 from .settings_item import SettingsItem
 from .settings_item_default import SettingsItemDefault
 from .settings_item_option import SettingsItemOption
@@ -6238,6 +6240,8 @@ __all__ = (
     "SettingsItemDefault",
     "SettingsItemOption",
     "SettingsMetadataResponse",
+    "SettingSource",
+    "SettingSourceSourceEnum",
     "SettingsSection",
     "SetTokenQuotaRequest",
     "SeverityByDay",

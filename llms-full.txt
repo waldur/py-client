@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-rc.6.dev.20261105162723
+# Version: 8.1.4
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -20163,6 +20163,11 @@ Summary: Update overridable settings
 Description: Updates one or more settings in the database. Requires staff permissions. Support users cannot update settings.
 Request body: yes
 
+### override_settings_sources_list
+GET /api/override-settings/sources/
+Summary: Get where overridden settings come from
+Description: Lists every setting that has a value of its own or that the deployment manages, with who wrote it last, what re-applies it on every deploy and whether it is locked. A locked setting cannot be changed through /api/override-settings/.
+
 ============================================================
 ## passkeys  (module: waldur_api_client.api.passkeys)
 ============================================================
@@ -23999,6 +24004,8 @@ Path parameters:
 
 ### remote_waldur_api_sync_resource_project_permissions
 POST /api/remote-waldur-api/sync_resource_project_permissions/{uuid}/
+Summary: Queue a push of the resource's project team to the remote Waldur
+Description: Queue a push of the resource's project team to the remote Waldur.
 Path parameters:
   - uuid
 
