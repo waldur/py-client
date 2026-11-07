@@ -82,7 +82,9 @@ def sync_detailed(
 
      What other parts of the portal -- calls for proposals, say -- have built on the offering, one of its
     plans or one of its components, and whether they would refuse the given change. Shown before the
-    change is confirmed.
+    change is confirmed. Open to whoever may change the offering: staff, and holders of OFFERING.UPDATE
+    on the offering, its organization or its service provider. They see every dependent, including calls
+    run by other organizations, since those are what the change would break.
 
     Args:
         uuid (UUID):
@@ -124,7 +126,9 @@ def sync(
 
      What other parts of the portal -- calls for proposals, say -- have built on the offering, one of its
     plans or one of its components, and whether they would refuse the given change. Shown before the
-    change is confirmed.
+    change is confirmed. Open to whoever may change the offering: staff, and holders of OFFERING.UPDATE
+    on the offering, its organization or its service provider. They see every dependent, including calls
+    run by other organizations, since those are what the change would break.
 
     Args:
         uuid (UUID):
@@ -161,7 +165,9 @@ async def asyncio_detailed(
 
      What other parts of the portal -- calls for proposals, say -- have built on the offering, one of its
     plans or one of its components, and whether they would refuse the given change. Shown before the
-    change is confirmed.
+    change is confirmed. Open to whoever may change the offering: staff, and holders of OFFERING.UPDATE
+    on the offering, its organization or its service provider. They see every dependent, including calls
+    run by other organizations, since those are what the change would break.
 
     Args:
         uuid (UUID):
@@ -201,7 +207,9 @@ async def asyncio(
 
      What other parts of the portal -- calls for proposals, say -- have built on the offering, one of its
     plans or one of its components, and whether they would refuse the given change. Shown before the
-    change is confirmed.
+    change is confirmed. Open to whoever may change the offering: staff, and holders of OFFERING.UPDATE
+    on the offering, its organization or its service provider. They see every dependent, including calls
+    run by other organizations, since those are what the change would break.
 
     Args:
         uuid (UUID):

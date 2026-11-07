@@ -14,19 +14,15 @@ T = TypeVar("T", bound="PatchedReviewerBidRequest")
 class PatchedReviewerBidRequest:
     """
     Attributes:
-        proposal (Union[Unset, str]):
         bid (Union[Unset, BidEnum]):
         comment (Union[Unset, str]): Optional comment explaining the bid
     """
 
-    proposal: Union[Unset, str] = UNSET
     bid: Union[Unset, BidEnum] = UNSET
     comment: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        proposal = self.proposal
-
         bid: Union[Unset, str] = UNSET
         if not isinstance(self.bid, Unset):
             bid = self.bid.value
@@ -36,8 +32,6 @@ class PatchedReviewerBidRequest:
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if proposal is not UNSET:
-            field_dict["proposal"] = proposal
         if bid is not UNSET:
             field_dict["bid"] = bid
         if comment is not UNSET:
@@ -48,8 +42,6 @@ class PatchedReviewerBidRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        proposal = d.pop("proposal", UNSET)
-
         _bid = d.pop("bid", UNSET)
         bid: Union[Unset, BidEnum]
         if isinstance(_bid, Unset):
@@ -60,7 +52,6 @@ class PatchedReviewerBidRequest:
         comment = d.pop("comment", UNSET)
 
         patched_reviewer_bid_request = cls(
-            proposal=proposal,
             bid=bid,
             comment=comment,
         )

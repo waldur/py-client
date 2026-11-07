@@ -49,7 +49,8 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[CallManagingOrganisationStat]:
-    """Return statistics for call managing organization.
+    """Return statistics for call managing organization, counted over the active calls the caller may
+    report on, as the organization reports are: a call manager's figures cover their own calls.
 
     Args:
         uuid (UUID):
@@ -78,7 +79,8 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> CallManagingOrganisationStat:
-    """Return statistics for call managing organization.
+    """Return statistics for call managing organization, counted over the active calls the caller may
+    report on, as the organization reports are: a call manager's figures cover their own calls.
 
     Args:
         uuid (UUID):
@@ -102,7 +104,8 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[CallManagingOrganisationStat]:
-    """Return statistics for call managing organization.
+    """Return statistics for call managing organization, counted over the active calls the caller may
+    report on, as the organization reports are: a call manager's figures cover their own calls.
 
     Args:
         uuid (UUID):
@@ -129,7 +132,8 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> CallManagingOrganisationStat:
-    """Return statistics for call managing organization.
+    """Return statistics for call managing organization, counted over the active calls the caller may
+    report on, as the organization reports are: a call manager's figures cover their own calls.
 
     Args:
         uuid (UUID):

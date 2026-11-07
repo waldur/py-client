@@ -14,19 +14,15 @@ T = TypeVar("T", bound="ReviewerBidRequest")
 class ReviewerBidRequest:
     """
     Attributes:
-        proposal (str):
         bid (BidEnum):
         comment (Union[Unset, str]): Optional comment explaining the bid
     """
 
-    proposal: str
     bid: BidEnum
     comment: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        proposal = self.proposal
-
         bid = self.bid.value
 
         comment = self.comment
@@ -35,7 +31,6 @@ class ReviewerBidRequest:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "proposal": proposal,
                 "bid": bid,
             }
         )
@@ -47,14 +42,11 @@ class ReviewerBidRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        proposal = d.pop("proposal")
-
         bid = BidEnum(d.pop("bid"))
 
         comment = d.pop("comment", UNSET)
 
         reviewer_bid_request = cls(
-            proposal=proposal,
             bid=bid,
             comment=comment,
         )

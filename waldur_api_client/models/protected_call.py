@@ -43,6 +43,8 @@ class ProtectedCall:
         slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         name (Union[Unset, str]):
         description (Union[Unset, str]):
+        image (Union[None, Unset, str]): Logo shown on the call's card in place of its initials. A PNG, JPEG or GIF of
+            at most 2 MB; null or an empty value removes it.
         state (Union[Unset, CallStates]):
         manager (Union[Unset, str]):
         manager_uuid (Union[Unset, UUID]):
@@ -134,6 +136,7 @@ class ProtectedCall:
     slug: Union[Unset, str] = UNSET
     name: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
+    image: Union[None, Unset, str] = UNSET
     state: Union[Unset, CallStates] = UNSET
     manager: Union[Unset, str] = UNSET
     manager_uuid: Union[Unset, UUID] = UNSET
@@ -225,6 +228,12 @@ class ProtectedCall:
         name = self.name
 
         description = self.description
+
+        image: Union[None, Unset, str]
+        if isinstance(self.image, Unset):
+            image = UNSET
+        else:
+            image = self.image
 
         state: Union[Unset, str] = UNSET
         if not isinstance(self.state, Unset):
@@ -519,6 +528,8 @@ class ProtectedCall:
             field_dict["name"] = name
         if description is not UNSET:
             field_dict["description"] = description
+        if image is not UNSET:
+            field_dict["image"] = image
         if state is not UNSET:
             field_dict["state"] = state
         if manager is not UNSET:
@@ -696,6 +707,15 @@ class ProtectedCall:
         name = d.pop("name", UNSET)
 
         description = d.pop("description", UNSET)
+
+        def _parse_image(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        image = _parse_image(d.pop("image", UNSET))
 
         _state = d.pop("state", UNSET)
         state: Union[Unset, CallStates]
@@ -1102,6 +1122,7 @@ class ProtectedCall:
             slug=slug,
             name=name,
             description=description,
+            image=image,
             state=state,
             manager=manager,
             manager_uuid=manager_uuid,

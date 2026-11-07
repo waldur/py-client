@@ -15,6 +15,7 @@ class PublicCallFieldEnum(str, Enum):
     EXTERNAL_URL = "external_url"
     FIXED_DURATION_IN_DAYS = "fixed_duration_in_days"
     HAS_ELIGIBILITY_RESTRICTIONS = "has_eligibility_restrictions"
+    IMAGE = "image"
     MANAGER = "manager"
     MANAGER_UUID = "manager_uuid"
     MAX_PREPAID_DURATION_MONTHS = "max_prepaid_duration_months"

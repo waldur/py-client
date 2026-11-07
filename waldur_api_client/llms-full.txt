@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-dev.20261106222025
+# Version: 8.1.4-dev.20261107142251
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2183,8 +2183,8 @@ Query parameters (4):
 
 ### call_managing_organisations_stats_retrieve
 GET /api/call-managing-organisations/{uuid}/stats/
-Summary: Return statistics for call managing organization
-Description: Return statistics for call managing organization.
+Summary: Return statistics for call managing organization, counted over the active calls the caller may report on, as the organization reports are: a call manager's figures cover their own calls
+Description: Return statistics for call managing organization, counted over the active calls the caller may report on, as the organization reports are: a call manager's figures cover their own calls.
 Path parameters:
   - uuid
 
@@ -10158,7 +10158,7 @@ Request body: yes
 ### marketplace_provider_offerings_dependents_list
 GET /api/marketplace-provider-offerings/{uuid}/dependents/
 Summary: What depends on an offering
-Description: What other parts of the portal -- calls for proposals, say -- have built on the offering, one of its plans or one of its components, and whether they would refuse the given change. Shown before the change is confirmed.
+Description: What other parts of the portal -- calls for proposals, say -- have built on the offering, one of its plans or one of its components, and whether they would refuse the given change. Shown before the change is confirmed. Open to whoever may change the offering: staff, and holders of OFFERING.UPDATE...
 Path parameters:
   - uuid
 Query parameters (3):
@@ -21390,20 +21390,6 @@ Query parameters (19):
 POST /api/proposal-proposals/
 Request body: yes
 
-### proposal_proposals_checklist_template_retrieve
-GET /api/proposal-proposals/checklist-template/
-Summary: Get checklist template for creating new objects
-Description: Get checklist template for creating new objects.
-Query parameters (1):
-  - parent_uuid (required) — UUID of the parent object (e.g., customer UUID for new projects)
-
-### proposal_proposals_checklist_template_count
-HEAD /api/proposal-proposals/checklist-template/
-Summary: Get number of items in the collection matching the request parameters
-Description: Get number of items in the collection matching the request parameters.
-Query parameters (1):
-  - parent_uuid (required) — UUID of the parent object (e.g., customer UUID for new projects)
-
 ### proposal_proposals_dashboard_stats_retrieve
 GET /api/proposal-proposals/dashboard-stats/
 Summary: Get submitter dashboard stats
@@ -25443,10 +25429,6 @@ Query parameters (5):
   - o — Ordering
   - proposal_uuid
   - reviewer_uuid
-
-### reviewer_bids_create
-POST /api/reviewer-bids/
-Request body: yes
 
 ### reviewer_bids_bulk_submit
 POST /api/reviewer-bids/bulk-submit/

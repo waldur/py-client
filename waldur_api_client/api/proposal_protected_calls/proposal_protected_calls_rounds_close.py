@@ -6,6 +6,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.protected_call_request import ProtectedCallRequest
+from ...models.protected_call_request_form import ProtectedCallRequestForm
+from ...models.protected_call_request_multipart import ProtectedCallRequestMultipart
 from ...types import Response
 
 
@@ -13,7 +15,11 @@ def _get_kwargs(
     uuid: str,
     obj_uuid: str,
     *,
-    body: ProtectedCallRequest,
+    body: Union[
+        ProtectedCallRequest,
+        ProtectedCallRequestForm,
+        ProtectedCallRequestMultipart,
+    ],
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -22,9 +28,16 @@ def _get_kwargs(
         "url": f"/api/proposal-protected-calls/{uuid}/rounds/{obj_uuid}/close/",
     }
 
-    _kwargs["json"] = body.to_dict()
+    if isinstance(body, ProtectedCallRequest):
+        _kwargs["json"] = body.to_dict()
 
-    headers["Content-Type"] = "application/json"
+        headers["Content-Type"] = "application/json"
+    if isinstance(body, ProtectedCallRequestForm):
+        _kwargs["data"] = body.to_dict()
+
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    if isinstance(body, ProtectedCallRequestMultipart):
+        _kwargs["files"] = body.to_multipart()
 
     _kwargs["headers"] = headers
     return _kwargs
@@ -53,13 +66,19 @@ def sync_detailed(
     obj_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: ProtectedCallRequest,
+    body: Union[
+        ProtectedCallRequest,
+        ProtectedCallRequestForm,
+        ProtectedCallRequestMultipart,
+    ],
 ) -> Response[str]:
     """
     Args:
         uuid (str):
         obj_uuid (str):
         body (ProtectedCallRequest):
+        body (ProtectedCallRequestForm):
+        body (ProtectedCallRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -87,13 +106,19 @@ def sync(
     obj_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: ProtectedCallRequest,
+    body: Union[
+        ProtectedCallRequest,
+        ProtectedCallRequestForm,
+        ProtectedCallRequestMultipart,
+    ],
 ) -> str:
     """
     Args:
         uuid (str):
         obj_uuid (str):
         body (ProtectedCallRequest):
+        body (ProtectedCallRequestForm):
+        body (ProtectedCallRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -116,13 +141,19 @@ async def asyncio_detailed(
     obj_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: ProtectedCallRequest,
+    body: Union[
+        ProtectedCallRequest,
+        ProtectedCallRequestForm,
+        ProtectedCallRequestMultipart,
+    ],
 ) -> Response[str]:
     """
     Args:
         uuid (str):
         obj_uuid (str):
         body (ProtectedCallRequest):
+        body (ProtectedCallRequestForm):
+        body (ProtectedCallRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -148,13 +179,19 @@ async def asyncio(
     obj_uuid: str,
     *,
     client: AuthenticatedClient,
-    body: ProtectedCallRequest,
+    body: Union[
+        ProtectedCallRequest,
+        ProtectedCallRequestForm,
+        ProtectedCallRequestMultipart,
+    ],
 ) -> str:
     """
     Args:
         uuid (str):
         obj_uuid (str):
         body (ProtectedCallRequest):
+        body (ProtectedCallRequestForm):
+        body (ProtectedCallRequestMultipart):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

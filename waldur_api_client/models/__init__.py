@@ -2246,6 +2246,8 @@ from .patched_proposal_run_update_request import PatchedProposalRunUpdateRequest
 from .patched_proposal_run_update_request_granted_limits import PatchedProposalRunUpdateRequestGrantedLimits
 from .patched_proposal_run_update_request_requested_limits import PatchedProposalRunUpdateRequestRequestedLimits
 from .patched_protected_call_request import PatchedProtectedCallRequest
+from .patched_protected_call_request_form import PatchedProtectedCallRequestForm
+from .patched_protected_call_request_multipart import PatchedProtectedCallRequestMultipart
 from .patched_protected_round_request import PatchedProtectedRoundRequest
 from .patched_provider_canned_response_request import PatchedProviderCannedResponseRequest
 from .patched_provider_helpdesk_request import PatchedProviderHelpdeskRequest
@@ -2583,6 +2585,8 @@ from .protected_call import ProtectedCall
 from .protected_call_field_enum import ProtectedCallFieldEnum
 from .protected_call_o_enum import ProtectedCallOEnum
 from .protected_call_request import ProtectedCallRequest
+from .protected_call_request_form import ProtectedCallRequestForm
+from .protected_call_request_multipart import ProtectedCallRequestMultipart
 from .protected_proposal_list import ProtectedProposalList
 from .protected_round import ProtectedRound
 from .protected_round_request import ProtectedRoundRequest
@@ -5846,6 +5850,8 @@ __all__ = (
     "PatchedProposalRunUpdateRequestGrantedLimits",
     "PatchedProposalRunUpdateRequestRequestedLimits",
     "PatchedProtectedCallRequest",
+    "PatchedProtectedCallRequestForm",
+    "PatchedProtectedCallRequestMultipart",
     "PatchedProtectedRoundRequest",
     "PatchedProviderCannedResponseRequest",
     "PatchedProviderHelpdeskRequest",
@@ -6159,6 +6165,8 @@ __all__ = (
     "ProtectedCallFieldEnum",
     "ProtectedCallOEnum",
     "ProtectedCallRequest",
+    "ProtectedCallRequestForm",
+    "ProtectedCallRequestMultipart",
     "ProtectedProposalList",
     "ProtectedRound",
     "ProtectedRoundRequest",

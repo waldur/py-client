@@ -25,6 +25,7 @@ class ProtectedCallFieldEnum(str, Enum):
     FIXED_DURATION_IN_DAYS = "fixed_duration_in_days"
     HAS_ELIGIBILITY_RESTRICTIONS = "has_eligibility_restrictions"
     HAS_PROPOSALS = "has_proposals"
+    IMAGE = "image"
     MANAGER = "manager"
     MANAGER_UUID = "manager_uuid"
     MAX_PREPAID_DURATION_MONTHS = "max_prepaid_duration_months"

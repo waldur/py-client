@@ -28,6 +28,9 @@ class CallManagingOrganisation:
         customer_country (str):
         description (Union[Unset, str]):
         image (Union[None, Unset, str]):
+        max_active_proposals_per_applicant (Union[None, Unset, int]): How many proposals an applicant may have under
+            evaluation or running as a project, across all of this organization's calls, before they may submit another.
+            Empty sets no limit.
     """
 
     url: str
@@ -42,6 +45,7 @@ class CallManagingOrganisation:
     customer_country: str
     description: Union[Unset, str] = UNSET
     image: Union[None, Unset, str] = UNSET
+    max_active_proposals_per_applicant: Union[None, Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -73,6 +77,12 @@ class CallManagingOrganisation:
         else:
             image = self.image
 
+        max_active_proposals_per_applicant: Union[None, Unset, int]
+        if isinstance(self.max_active_proposals_per_applicant, Unset):
+            max_active_proposals_per_applicant = UNSET
+        else:
+            max_active_proposals_per_applicant = self.max_active_proposals_per_applicant
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -93,6 +103,8 @@ class CallManagingOrganisation:
             field_dict["description"] = description
         if image is not UNSET:
             field_dict["image"] = image
+        if max_active_proposals_per_applicant is not UNSET:
+            field_dict["max_active_proposals_per_applicant"] = max_active_proposals_per_applicant
 
         return field_dict
 
@@ -130,6 +142,17 @@ class CallManagingOrganisation:
 
         image = _parse_image(d.pop("image", UNSET))
 
+        def _parse_max_active_proposals_per_applicant(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        max_active_proposals_per_applicant = _parse_max_active_proposals_per_applicant(
+            d.pop("max_active_proposals_per_applicant", UNSET)
+        )
+
         call_managing_organisation = cls(
             url=url,
             uuid=uuid,
@@ -143,6 +166,7 @@ class CallManagingOrganisation:
             customer_country=customer_country,
             description=description,
             image=image,
+            max_active_proposals_per_applicant=max_active_proposals_per_applicant,
         )
 
         call_managing_organisation.additional_properties = d

@@ -1,17 +1,19 @@
 from collections.abc import Mapping
+from io import BytesIO
 from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from .. import types
 from ..models.budget_enforcement_enum import BudgetEnforcementEnum
 from ..models.evaluation_start_enum import EvaluationStartEnum
 from ..models.order_author_enum import OrderAuthorEnum
 from ..models.publish_results_enum import PublishResultsEnum
 from ..models.resource_template_selection_mode_enum import ResourceTemplateSelectionModeEnum
 from ..models.undecided_at_round_completion_enum import UndecidedAtRoundCompletionEnum
-from ..types import UNSET, Unset
+from ..types import UNSET, File, Unset
 
 if TYPE_CHECKING:
     from ..models.call_applicant_visibility_config_request import CallApplicantVisibilityConfigRequest
@@ -30,6 +32,8 @@ class ProtectedCallRequest:
         manager (str):
         slug (Union[Unset, str]): URL-friendly identifier. Only editable by staff users.
         description (Union[Unset, str]):
+        image (Union[File, None, Unset]): Logo shown on the call's card in place of its initials. A PNG, JPEG or GIF of
+            at most 2 MB; null or an empty value removes it.
         fixed_duration_in_days (Union[None, Unset, int]):
         allowed_duration_months (Union[Unset, list[int]]): Durations, in months, the applicant chooses the project's
             length from. Empty offers no choice. Cannot be combined with fixed_duration_in_days. Proposals already submitted
@@ -88,6 +92,7 @@ class ProtectedCallRequest:
     manager: str
     slug: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
+    image: Union[File, None, Unset] = UNSET
     fixed_duration_in_days: Union[None, Unset, int] = UNSET
     allowed_duration_months: Union[Unset, list[int]] = UNSET
     backend_id: Union[Unset, str] = UNSET
@@ -134,6 +139,15 @@ class ProtectedCallRequest:
         slug = self.slug
 
         description = self.description
+
+        image: Union[None, Unset, types.FileTypes]
+        if isinstance(self.image, Unset):
+            image = UNSET
+        elif isinstance(self.image, File):
+            image = self.image.to_tuple()
+
+        else:
+            image = self.image
 
         fixed_duration_in_days: Union[None, Unset, int]
         if isinstance(self.fixed_duration_in_days, Unset):
@@ -299,6 +313,8 @@ class ProtectedCallRequest:
             field_dict["slug"] = slug
         if description is not UNSET:
             field_dict["description"] = description
+        if image is not UNSET:
+            field_dict["image"] = image
         if fixed_duration_in_days is not UNSET:
             field_dict["fixed_duration_in_days"] = fixed_duration_in_days
         if allowed_duration_months is not UNSET:
@@ -382,6 +398,23 @@ class ProtectedCallRequest:
         slug = d.pop("slug", UNSET)
 
         description = d.pop("description", UNSET)
+
+        def _parse_image(data: object) -> Union[File, None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, bytes):
+                    raise TypeError()
+                image_type_0 = File(payload=BytesIO(data))
+
+                return image_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[File, None, Unset], data)
+
+        image = _parse_image(d.pop("image", UNSET))
 
         def _parse_fixed_duration_in_days(data: object) -> Union[None, Unset, int]:
             if data is None:
@@ -616,6 +649,7 @@ class ProtectedCallRequest:
             manager=manager,
             slug=slug,
             description=description,
+            image=image,
             fixed_duration_in_days=fixed_duration_in_days,
             allowed_duration_months=allowed_duration_months,
             backend_id=backend_id,

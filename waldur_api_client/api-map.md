@@ -373,7 +373,7 @@ Module: `waldur_api_client.api.call_managing_organisations`
 - `call_managing_organisations_reports_reviewers_retrieve` GET `/api/call-managing-organisations/{uuid}/reports/reviewers/` — Per reviewer of the proposals: assignments sent and how they were answered, reviews by state and overdue, the median days to answer and to review, and the mean score given (path: uuid | 4 query params)
 - `call_managing_organisations_reports_rounds_retrieve` GET `/api/call-managing-organisations/{uuid}/reports/rounds/` — Per round: the days from its cut-off to the evaluation, deciding, the results' publication and their adoption, and how late the results came against its allocation date (path: uuid | 4 query params)
 - `call_managing_organisations_reports_workflow_retrieve` GET `/api/call-managing-organisations/{uuid}/reports/workflow/` — Per workflow step, summed over the calls by step key: proposals waiting at it, overdue there, completed late, and the median and 90th percentile days it took; with each call's own figures (path: uuid | 4 query params)
-- `call_managing_organisations_stats_retrieve` GET `/api/call-managing-organisations/{uuid}/stats/` — Return statistics for call managing organization (path: uuid)
+- `call_managing_organisations_stats_retrieve` GET `/api/call-managing-organisations/{uuid}/stats/` — Return statistics for call managing organization, counted over the active calls the caller may report on, as the organization reports are: a call manager's figures cover their own calls (path: uuid)
 - `call_managing_organisations_update_user` POST `/api/call-managing-organisations/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)
 
 ## call-proposal-project-role-mappings
@@ -3367,8 +3367,6 @@ Module: `waldur_api_client.api.proposal_proposals`
 - `proposal_proposals_list` GET `/api/proposal-proposals/` (19 query params)
 - `proposal_proposals_count` HEAD `/api/proposal-proposals/` — Get number of items in the collection matching the request parameters (19 query params)
 - `proposal_proposals_create` POST `/api/proposal-proposals/` (request body)
-- `proposal_proposals_checklist_template_retrieve` GET `/api/proposal-proposals/checklist-template/` — Get checklist template for creating new objects (1 query param)
-- `proposal_proposals_checklist_template_count` HEAD `/api/proposal-proposals/checklist-template/` — Get number of items in the collection matching the request parameters (1 query param)
 - `proposal_proposals_dashboard_stats_retrieve` GET `/api/proposal-proposals/dashboard-stats/` — Get submitter dashboard stats (no params)
 - `proposal_proposals_retrieve` GET `/api/proposal-proposals/{uuid}/` (path: uuid)
 - `proposal_proposals_destroy` DELETE `/api/proposal-proposals/{uuid}/` (path: uuid)
@@ -3967,7 +3965,6 @@ Module: `waldur_api_client.api.reviewer_bids`
 
 - `reviewer_bids_list` GET `/api/reviewer-bids/` (5 query params)
 - `reviewer_bids_count` HEAD `/api/reviewer-bids/` — Get number of items in the collection matching the request parameters (5 query params)
-- `reviewer_bids_create` POST `/api/reviewer-bids/` (request body)
 - `reviewer_bids_bulk_submit` POST `/api/reviewer-bids/bulk-submit/` — Submit multiple bids at once (request body)
 - `reviewer_bids_my_bids_list` GET `/api/reviewer-bids/my-bids/` — Get my bids for a specific call (5 query params)
 - `reviewer_bids_my_bids_count` HEAD `/api/reviewer-bids/my-bids/` — Get number of items in the collection matching the request parameters (5 query params)
