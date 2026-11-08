@@ -971,6 +971,8 @@ from .external_network_subnet_response import ExternalNetworkSubnetResponse
 from .external_subnet import ExternalSubnet
 from .external_subnet_allocation_pools import ExternalSubnetAllocationPools
 from .external_subnet_dns_nameservers import ExternalSubnetDnsNameservers
+from .facet import Facet
+from .facet_value import FacetValue
 from .feature_item import FeatureItem
 from .feature_metadata_response import FeatureMetadataResponse
 from .feature_metadata_response_feature_enums import FeatureMetadataResponseFeatureEnums
@@ -4661,6 +4663,8 @@ __all__ = (
     "ExternalSubnet",
     "ExternalSubnetAllocationPools",
     "ExternalSubnetDnsNameservers",
+    "Facet",
+    "FacetValue",
     "FeatureItem",
     "FeatureMetadataResponse",
     "FeatureMetadataResponseFeatureEnums",

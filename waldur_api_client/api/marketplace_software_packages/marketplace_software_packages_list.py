@@ -16,9 +16,11 @@ from ...utils import parse_link_header
 def _get_kwargs(
     *,
     catalog_name: Union[Unset, str] = UNSET,
+    catalog_name_exact: Union[Unset, str] = UNSET,
     catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
     catalog_uuid: Union[Unset, UUID] = UNSET,
     catalog_version: Union[Unset, str] = UNSET,
+    catalog_version_exact: Union[Unset, str] = UNSET,
     category: Union[Unset, str] = UNSET,
     cpu_family: Union[Unset, list[str]] = UNSET,
     cpu_microarchitecture: Union[Unset, list[str]] = UNSET,
@@ -45,6 +47,8 @@ def _get_kwargs(
 
     params["catalog_name"] = catalog_name
 
+    params["catalog_name_exact"] = catalog_name_exact
+
     json_catalog_type: Union[Unset, str] = UNSET
     if not isinstance(catalog_type, Unset):
         json_catalog_type = catalog_type.value
@@ -57,6 +61,8 @@ def _get_kwargs(
     params["catalog_uuid"] = json_catalog_uuid
 
     params["catalog_version"] = catalog_version
+
+    params["catalog_version_exact"] = catalog_version_exact
 
     params["category"] = category
 
@@ -162,9 +168,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     catalog_name: Union[Unset, str] = UNSET,
+    catalog_name_exact: Union[Unset, str] = UNSET,
     catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
     catalog_uuid: Union[Unset, UUID] = UNSET,
     catalog_version: Union[Unset, str] = UNSET,
+    catalog_version_exact: Union[Unset, str] = UNSET,
     category: Union[Unset, str] = UNSET,
     cpu_family: Union[Unset, list[str]] = UNSET,
     cpu_microarchitecture: Union[Unset, list[str]] = UNSET,
@@ -194,9 +202,11 @@ def sync_detailed(
 
     Args:
         catalog_name (Union[Unset, str]):
+        catalog_name_exact (Union[Unset, str]):
         catalog_type (Union[Unset, CatalogTypeEnum]):
         catalog_uuid (Union[Unset, UUID]):
         catalog_version (Union[Unset, str]):
+        catalog_version_exact (Union[Unset, str]):
         category (Union[Unset, str]):
         cpu_family (Union[Unset, list[str]]):
         cpu_microarchitecture (Union[Unset, list[str]]):
@@ -229,9 +239,11 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         catalog_name=catalog_name,
+        catalog_name_exact=catalog_name_exact,
         catalog_type=catalog_type,
         catalog_uuid=catalog_uuid,
         catalog_version=catalog_version,
+        catalog_version_exact=catalog_version_exact,
         category=category,
         cpu_family=cpu_family,
         cpu_microarchitecture=cpu_microarchitecture,
@@ -266,9 +278,11 @@ def sync(
     *,
     client: AuthenticatedClient,
     catalog_name: Union[Unset, str] = UNSET,
+    catalog_name_exact: Union[Unset, str] = UNSET,
     catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
     catalog_uuid: Union[Unset, UUID] = UNSET,
     catalog_version: Union[Unset, str] = UNSET,
+    catalog_version_exact: Union[Unset, str] = UNSET,
     category: Union[Unset, str] = UNSET,
     cpu_family: Union[Unset, list[str]] = UNSET,
     cpu_microarchitecture: Union[Unset, list[str]] = UNSET,
@@ -298,9 +312,11 @@ def sync(
 
     Args:
         catalog_name (Union[Unset, str]):
+        catalog_name_exact (Union[Unset, str]):
         catalog_type (Union[Unset, CatalogTypeEnum]):
         catalog_uuid (Union[Unset, UUID]):
         catalog_version (Union[Unset, str]):
+        catalog_version_exact (Union[Unset, str]):
         category (Union[Unset, str]):
         cpu_family (Union[Unset, list[str]]):
         cpu_microarchitecture (Union[Unset, list[str]]):
@@ -334,9 +350,11 @@ def sync(
     return sync_detailed(
         client=client,
         catalog_name=catalog_name,
+        catalog_name_exact=catalog_name_exact,
         catalog_type=catalog_type,
         catalog_uuid=catalog_uuid,
         catalog_version=catalog_version,
+        catalog_version_exact=catalog_version_exact,
         category=category,
         cpu_family=cpu_family,
         cpu_microarchitecture=cpu_microarchitecture,
@@ -365,9 +383,11 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     catalog_name: Union[Unset, str] = UNSET,
+    catalog_name_exact: Union[Unset, str] = UNSET,
     catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
     catalog_uuid: Union[Unset, UUID] = UNSET,
     catalog_version: Union[Unset, str] = UNSET,
+    catalog_version_exact: Union[Unset, str] = UNSET,
     category: Union[Unset, str] = UNSET,
     cpu_family: Union[Unset, list[str]] = UNSET,
     cpu_microarchitecture: Union[Unset, list[str]] = UNSET,
@@ -397,9 +417,11 @@ async def asyncio_detailed(
 
     Args:
         catalog_name (Union[Unset, str]):
+        catalog_name_exact (Union[Unset, str]):
         catalog_type (Union[Unset, CatalogTypeEnum]):
         catalog_uuid (Union[Unset, UUID]):
         catalog_version (Union[Unset, str]):
+        catalog_version_exact (Union[Unset, str]):
         category (Union[Unset, str]):
         cpu_family (Union[Unset, list[str]]):
         cpu_microarchitecture (Union[Unset, list[str]]):
@@ -432,9 +454,11 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         catalog_name=catalog_name,
+        catalog_name_exact=catalog_name_exact,
         catalog_type=catalog_type,
         catalog_uuid=catalog_uuid,
         catalog_version=catalog_version,
+        catalog_version_exact=catalog_version_exact,
         category=category,
         cpu_family=cpu_family,
         cpu_microarchitecture=cpu_microarchitecture,
@@ -467,9 +491,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     catalog_name: Union[Unset, str] = UNSET,
+    catalog_name_exact: Union[Unset, str] = UNSET,
     catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
     catalog_uuid: Union[Unset, UUID] = UNSET,
     catalog_version: Union[Unset, str] = UNSET,
+    catalog_version_exact: Union[Unset, str] = UNSET,
     category: Union[Unset, str] = UNSET,
     cpu_family: Union[Unset, list[str]] = UNSET,
     cpu_microarchitecture: Union[Unset, list[str]] = UNSET,
@@ -499,9 +525,11 @@ async def asyncio(
 
     Args:
         catalog_name (Union[Unset, str]):
+        catalog_name_exact (Union[Unset, str]):
         catalog_type (Union[Unset, CatalogTypeEnum]):
         catalog_uuid (Union[Unset, UUID]):
         catalog_version (Union[Unset, str]):
+        catalog_version_exact (Union[Unset, str]):
         category (Union[Unset, str]):
         cpu_family (Union[Unset, list[str]]):
         cpu_microarchitecture (Union[Unset, list[str]]):
@@ -536,9 +564,11 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             catalog_name=catalog_name,
+            catalog_name_exact=catalog_name_exact,
             catalog_type=catalog_type,
             catalog_uuid=catalog_uuid,
             catalog_version=catalog_version,
+            catalog_version_exact=catalog_version_exact,
             category=category,
             cpu_family=cpu_family,
             cpu_microarchitecture=cpu_microarchitecture,
@@ -568,9 +598,11 @@ def sync_all(
     *,
     client: AuthenticatedClient,
     catalog_name: Union[Unset, str] = UNSET,
+    catalog_name_exact: Union[Unset, str] = UNSET,
     catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
     catalog_uuid: Union[Unset, UUID] = UNSET,
     catalog_version: Union[Unset, str] = UNSET,
+    catalog_version_exact: Union[Unset, str] = UNSET,
     category: Union[Unset, str] = UNSET,
     cpu_family: Union[Unset, list[str]] = UNSET,
     cpu_microarchitecture: Union[Unset, list[str]] = UNSET,
@@ -600,9 +632,11 @@ def sync_all(
 
     Args:
         catalog_name (Union[Unset, str]):
+        catalog_name_exact (Union[Unset, str]):
         catalog_type (Union[Unset, CatalogTypeEnum]):
         catalog_uuid (Union[Unset, UUID]):
         catalog_version (Union[Unset, str]):
+        catalog_version_exact (Union[Unset, str]):
         category (Union[Unset, str]):
         cpu_family (Union[Unset, list[str]]):
         cpu_microarchitecture (Union[Unset, list[str]]):
@@ -637,9 +671,11 @@ def sync_all(
     # Get initial request kwargs
     kwargs = _get_kwargs(
         catalog_name=catalog_name,
+        catalog_name_exact=catalog_name_exact,
         catalog_type=catalog_type,
         catalog_uuid=catalog_uuid,
         catalog_version=catalog_version,
+        catalog_version_exact=catalog_version_exact,
         category=category,
         cpu_family=cpu_family,
         cpu_microarchitecture=cpu_microarchitecture,
@@ -707,9 +743,11 @@ async def asyncio_all(
     *,
     client: AuthenticatedClient,
     catalog_name: Union[Unset, str] = UNSET,
+    catalog_name_exact: Union[Unset, str] = UNSET,
     catalog_type: Union[Unset, CatalogTypeEnum] = UNSET,
     catalog_uuid: Union[Unset, UUID] = UNSET,
     catalog_version: Union[Unset, str] = UNSET,
+    catalog_version_exact: Union[Unset, str] = UNSET,
     category: Union[Unset, str] = UNSET,
     cpu_family: Union[Unset, list[str]] = UNSET,
     cpu_microarchitecture: Union[Unset, list[str]] = UNSET,
@@ -739,9 +777,11 @@ async def asyncio_all(
 
     Args:
         catalog_name (Union[Unset, str]):
+        catalog_name_exact (Union[Unset, str]):
         catalog_type (Union[Unset, CatalogTypeEnum]):
         catalog_uuid (Union[Unset, UUID]):
         catalog_version (Union[Unset, str]):
+        catalog_version_exact (Union[Unset, str]):
         category (Union[Unset, str]):
         cpu_family (Union[Unset, list[str]]):
         cpu_microarchitecture (Union[Unset, list[str]]):
@@ -776,9 +816,11 @@ async def asyncio_all(
     # Get initial request kwargs
     kwargs = _get_kwargs(
         catalog_name=catalog_name,
+        catalog_name_exact=catalog_name_exact,
         catalog_type=catalog_type,
         catalog_uuid=catalog_uuid,
         catalog_version=catalog_version,
+        catalog_version_exact=catalog_version_exact,
         category=category,
         cpu_family=cpu_family,
         cpu_microarchitecture=cpu_microarchitecture,

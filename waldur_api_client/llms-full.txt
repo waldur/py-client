@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-dev.20261107190207
+# Version: 8.1.4-dev.20261108165759
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -8357,6 +8357,37 @@ Summary: Create an offering user
 Description: Associates a user with a specific offering, creating an offering-specific user account. This is typically done by a service provider.
 Request body: yes
 
+### marketplace_offering_users_facets_list
+GET /api/marketplace-offering-users/facets/
+Summary: Count the values each filter can still take
+Description: Accepts the same filters as the list. Each facet is counted under every filter except its own, so its values are those that still have rows given the other selections and search.
+Query parameters (25):
+  - created — Created after
+  - created_before — Created before
+  - facet — Comma-separated facet names to compute; all by default.
+  - facet_limit — Most values returned per facet, by count (default 100, at most 1000).
+  - facet_q — Keep only values whose label contains this text (at most 100 characters).
+  - has_complete_profile — User has complete profile for the offering
+  - has_consent — User Has Consent
+  - is_provider_backed — Backed by a service provider account
+  - is_restricted — Is restricted
+  - modified — Modified after
+  - modified_before — Modified before
+  - o — Ordering
+  - offering
+  - offering_has_active_tos — Offering has active Terms of Service
+  - offering_slug — Multiple values may be separated by commas.
+  - offering_uuid — Multiple values may be separated by commas.
+  - parent_offering_uuid
+  - provider_uuid — Provider UUID
+  - query — Search by offering name, username, user name, UID or primary GID
+  - runtime_state — Offering user runtime state
+  - service_provider_account_uuid — Service provider account UUID
+  - state — Offering user state
+  - user_username — User username
+  - user_uuid — User UUID
+  - username — Username
+
 ### marketplace_offering_users_posix_identities_list
 GET /api/marketplace-offering-users/posix_identities/
 Summary: List a user's POSIX identities across all their offerings
@@ -8811,6 +8842,40 @@ Query parameters (25):
   - created — Created after
   - created_before — Created before
   - customer_uuid — Customer UUID
+  - modified — Modified after
+  - modified_before — Modified before
+  - o — Ordering
+  - offering
+  - offering_slug — Multiple values may be separated by commas.
+  - offering_type — Offering type
+  - offering_uuid — Offering UUID
+  - parent_offering_uuid
+  - project_uuid — Project UUID
+  - provider_uuid — Provider UUID
+  - query — Search by order UUID, slug, project name or resource name
+  - resource — Resource URL
+  - resource_name — Resource name
+  - resource_uuid — Resource UUID
+  - service_manager_uuid — Service manager UUID
+  - slug — Slug
+  - state — Order state
+  - type — Order type
+  - was_auto_approved — Auto-approved
+
+### marketplace_orders_facets_list
+GET /api/marketplace-orders/facets/
+Summary: Count the values each filter can still take
+Description: Accepts the same filters as the list. Each facet is counted under every filter except its own, so its values are those that still have rows given the other selections and search.
+Query parameters (28):
+  - can_approve_as_consumer — Can approve as consumer
+  - can_approve_as_provider — Can approve as provider
+  - category_uuid — Category UUID
+  - created — Created after
+  - created_before — Created before
+  - customer_uuid — Customer UUID
+  - facet — Comma-separated facet names to compute; all by default.
+  - facet_limit — Most values returned per facet, by count (default 100, at most 1000).
+  - facet_q — Keep only values whose label contains this text (at most 100 characters).
   - modified — Modified after
   - modified_before — Modified before
   - o — Ordering
@@ -9744,6 +9809,59 @@ Description: Get number of items in the collection matching the request paramete
 Query parameters (2):
   - include_organization_subnets — Also merge in the organization-level access subnets of customers owning non-terminated resources of the offerings.
   - offering_uuid (required) — UUID of an offering to include. May be repeated.
+
+### marketplace_provider_offerings_facets_list
+GET /api/marketplace-provider-offerings/facets/
+Summary: Count the values each filter can still take
+Description: Accepts the same filters as the list. Each facet is counted under every filter except its own, so its values are those that still have rows given the other selections and search.
+Query parameters (47):
+  - accessible — Only offerings the current user can order
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
+  - allowed_customer_uuid — Allowed customer UUID
+  - attributes — Offering attributes (JSON)
+  - billable — Billable
+  - can_create_offering_user
+  - category_group_uuid — Category group UUID
+  - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
+  - created — Created after
+  - created_before — Created before
+  - customer — Customer URL
+  - customer_uuid — Customer UUID
+  - description — Description contains
+  - facet — Comma-separated facet names to compute; all by default.
+  - facet_limit — Most values returned per facet, by count (default 100, at most 1000).
+  - facet_q — Keep only values whose label contains this text (at most 100 characters).
+  - has_active_terms_of_service — Has Active Terms of Service
+  - has_terms_of_service — Has Terms of Service
+  - importable — Filter by importable offerings.
+  - keyword — Keyword
+  - modified — Modified after
+  - modified_before — Modified before
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Ordering
+  - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
+  - organization_group_uuid — Organization group UUID
+  - parent_uuid — Parent offering UUID
+  - project_uuid — Project UUID
+  - query — Search by offering name, slug or description
+  - resource_customer_uuid — Resource customer UUID
+  - resource_project_uuid — Resource project UUID
+  - scope_uuid — Scope UUID
+  - service_manager_uuid — Service manager UUID
+  - shared — Shared
+  - slug — Slug
+  - state — Offering state
+  - tag — Tag UUID (OR logic)
+  - tag_name — Tag name (OR logic)
+  - tag_names_and — Tag names with AND logic (comma-separated)
+  - tags_and — Tag UUIDs with AND logic (comma-separated)
+  - type — Offering type
+  - user_has_consent — User Has Consent
+  - user_has_offering_user — User Has Offering User
+  - uuid_list — Comma-separated offering UUIDs
 
 ### marketplace_provider_offerings_groups_list
 GET /api/marketplace-provider-offerings/groups/
@@ -11120,6 +11238,61 @@ Query parameters (46):
   - visible_to_providers — Include only resources visible to service providers
   - visible_to_username — Visible to username
 
+### marketplace_provider_resources_facets_list
+GET /api/marketplace-provider-resources/facets/
+Summary: Count the values each filter can still take
+Description: Accepts the same filters as the list. Each facet is counted under every filter except its own, so its values are those that still have rows given the other selections and search.
+Query parameters (49):
+  - backend_id — Backend ID
+  - category_uuid — Category UUID
+  - component_count — Filter by exact number of components
+  - created — Created after
+  - created_before — Created before
+  - customer — Customer URL
+  - customer_uuid — Customer UUID
+  - downscaled — Downscaled
+  - facet — Comma-separated facet names to compute; all by default.
+  - facet_limit — Most values returned per facet, by count (default 100, at most 1000).
+  - facet_q — Keep only values whose label contains this text (at most 100 characters).
+  - flavor_name — Flavor name
+  - has_terminate_date — Has termination date
+  - image_name — Image name
+  - is_attached — Filter by attached state
+  - lexis_links_supported — LEXIS links supported
+  - limit_based — Filter by limit-based offerings
+  - limit_component_count — Filter by exact number of limit-based components
+  - modified — Modified after
+  - modified_before — Modified before
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Ordering
+  - offering
+  - offering_billable — Offering billable
+  - offering_shared — Offering shared
+  - offering_slug — Multiple values may be separated by commas.
+  - offering_type — Offering type
+  - offering_uuid — Multiple values may be separated by commas.
+  - only_limit_based — Filter resources with only limit-based components
+  - only_usage_based — Filter resources with only usage-based components
+  - order_state — Order state
+  - parent_offering_uuid
+  - paused — Paused
+  - plan_uuid — Plan UUID
+  - project_name — Project name
+  - project_uuid — Project UUID
+  - provider_uuid — Provider UUID
+  - query — Search by resource UUID, name, slug, backend ID, effective ID, IPs or hypervisor
+  - resource_attributes — Resource attributes (JSON)
+  - restrict_member_access — Restrict member access
+  - runtime_state — Runtime state
+  - scope — Filter by scope URL.
+  - service_manager_uuid — Service manager UUID
+  - slug — Slug
+  - state — Resource state
+  - usage_based — Filter by usage-based offerings
+  - visible_to_providers — Include only resources visible to service providers
+  - visible_to_username — Visible to username
+
 ### marketplace_provider_resources_retrieve
 GET /api/marketplace-provider-resources/{uuid}/
 Summary: Retrieve a provider resource
@@ -11640,6 +11813,58 @@ Query parameters (43):
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - description — Description contains
+  - has_active_terms_of_service — Has Active Terms of Service
+  - has_terms_of_service — Has Terms of Service
+  - keyword — Keyword
+  - modified — Modified after
+  - modified_before — Modified before
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Ordering
+  - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
+  - organization_group_uuid — Organization group UUID
+  - parent_uuid — Parent offering UUID
+  - project_uuid — Project UUID
+  - query — Search by offering name, slug or description
+  - resource_customer_uuid — Resource customer UUID
+  - resource_project_uuid — Resource project UUID
+  - scope_uuid — Scope UUID
+  - service_manager_uuid — Service manager UUID
+  - shared — Shared
+  - slug — Slug
+  - state — Offering state
+  - tag — Tag UUID (OR logic)
+  - tag_name — Tag name (OR logic)
+  - tag_names_and — Tag names with AND logic (comma-separated)
+  - tags_and — Tag UUIDs with AND logic (comma-separated)
+  - type — Offering type
+  - user_has_consent — User Has Consent
+  - user_has_offering_user — User Has Offering User
+  - uuid_list — Comma-separated offering UUIDs
+
+### marketplace_public_offerings_facets_list
+GET /api/marketplace-public-offerings/facets/
+Summary: Count the values each filter can still take
+Description: Accepts the same filters as the list. Each facet is counted under every filter except its own, so its values are those that still have rows given the other selections and search.
+Query parameters (46):
+  - accessible — Only offerings the current user can order
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
+  - allowed_customer_uuid — Allowed customer UUID
+  - attributes — Offering attributes (JSON)
+  - billable — Billable
+  - can_create_offering_user
+  - category_group_uuid — Category group UUID
+  - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
+  - created — Created after
+  - created_before — Created before
+  - customer — Customer URL
+  - customer_uuid — Customer UUID
+  - description — Description contains
+  - facet — Comma-separated facet names to compute; all by default.
+  - facet_limit — Most values returned per facet, by count (default 100, at most 1000).
+  - facet_q — Keep only values whose label contains this text (at most 100 characters).
   - has_active_terms_of_service — Has Active Terms of Service
   - has_terms_of_service — Has Terms of Service
   - keyword — Keyword
@@ -12236,6 +12461,61 @@ Query parameters (46):
   - customer — Customer URL
   - customer_uuid — Customer UUID
   - downscaled — Downscaled
+  - flavor_name — Flavor name
+  - has_terminate_date — Has termination date
+  - image_name — Image name
+  - is_attached — Filter by attached state
+  - lexis_links_supported — LEXIS links supported
+  - limit_based — Filter by limit-based offerings
+  - limit_component_count — Filter by exact number of limit-based components
+  - modified — Modified after
+  - modified_before — Modified before
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Ordering
+  - offering
+  - offering_billable — Offering billable
+  - offering_shared — Offering shared
+  - offering_slug — Multiple values may be separated by commas.
+  - offering_type — Offering type
+  - offering_uuid — Multiple values may be separated by commas.
+  - only_limit_based — Filter resources with only limit-based components
+  - only_usage_based — Filter resources with only usage-based components
+  - order_state — Order state
+  - parent_offering_uuid
+  - paused — Paused
+  - plan_uuid — Plan UUID
+  - project_name — Project name
+  - project_uuid — Project UUID
+  - provider_uuid — Provider UUID
+  - query — Search by resource UUID, name, slug, backend ID, effective ID, IPs or hypervisor
+  - resource_attributes — Resource attributes (JSON)
+  - restrict_member_access — Restrict member access
+  - runtime_state — Runtime state
+  - scope — Filter by scope URL.
+  - service_manager_uuid — Service manager UUID
+  - slug — Slug
+  - state — Resource state
+  - usage_based — Filter by usage-based offerings
+  - visible_to_providers — Include only resources visible to service providers
+  - visible_to_username — Visible to username
+
+### marketplace_resources_facets_list
+GET /api/marketplace-resources/facets/
+Summary: Count the values each filter can still take
+Description: Accepts the same filters as the list. Each facet is counted under every filter except its own, so its values are those that still have rows given the other selections and search.
+Query parameters (49):
+  - backend_id — Backend ID
+  - category_uuid — Category UUID
+  - component_count — Filter by exact number of components
+  - created — Created after
+  - created_before — Created before
+  - customer — Customer URL
+  - customer_uuid — Customer UUID
+  - downscaled — Downscaled
+  - facet — Comma-separated facet names to compute; all by default.
+  - facet_limit — Most values returned per facet, by count (default 100, at most 1000).
+  - facet_q — Keep only values whose label contains this text (at most 100 characters).
   - flavor_name — Flavor name
   - has_terminate_date — Has termination date
   - image_name — Image name
@@ -13518,6 +13798,60 @@ Query parameters (43):
   - user_has_offering_user — User Has Offering User
   - uuid_list — Comma-separated offering UUIDs
 
+### marketplace_service_providers_offerings_facets_list
+GET /api/marketplace-service-providers/{service_provider_uuid}/offerings/facets/
+Summary: Count the values each filter can still take
+Description: Accepts the same filters as the list. Each facet is counted under every filter except its own, so its values are those that still have rows given the other selections and search.
+Path parameters:
+  - service_provider_uuid
+Query parameters (46):
+  - accessible — Only offerings the current user can order
+  - accessible_via_calls — Deprecated: offerings accepted on an active call, regardless of whether a proposal can actually be submitted for them. Use open_for_proposals instead.
+  - allowed_customer_uuid — Allowed customer UUID
+  - attributes — Offering attributes (JSON)
+  - billable — Billable
+  - can_create_offering_user
+  - category_group_uuid — Category group UUID
+  - category_uuid — Category UUID
+  - consumer_customer_uuid — Consumer customer UUID
+  - created — Created after
+  - created_before — Created before
+  - customer — Customer URL
+  - customer_uuid — Customer UUID
+  - description — Description contains
+  - facet — Comma-separated facet names to compute; all by default.
+  - facet_limit — Most values returned per facet, by count (default 100, at most 1000).
+  - facet_q — Keep only values whose label contains this text (at most 100 characters).
+  - has_active_terms_of_service — Has Active Terms of Service
+  - has_terms_of_service — Has Terms of Service
+  - keyword — Keyword
+  - modified — Modified after
+  - modified_before — Modified before
+  - name — Name
+  - name_exact — Name (exact)
+  - o — Ordering
+  - offering_group_uuid — Offering group UUID
+  - open_for_proposals — Offerings that can be requested through a call right now: accepted on an active call with a round that is open, and covered by a resource template when the call defines any.
+  - organization_group_uuid — Organization group UUID
+  - parent_uuid — Parent offering UUID
+  - project_uuid — Project UUID
+  - query — Search by offering name, slug or description
+  - resource_customer_uuid — Resource customer UUID
+  - resource_project_uuid — Resource project UUID
+  - scope_uuid — Scope UUID
+  - service_manager_uuid — Service manager UUID
+  - shared — Shared
+  - slug — Slug
+  - state — Offering state
+  - tag — Tag UUID (OR logic)
+  - tag_name — Tag name (OR logic)
+  - tag_names_and — Tag names with AND logic (comma-separated)
+  - tags_and — Tag UUIDs with AND logic (comma-separated)
+  - type — Offering type
+  - user_has_consent — User Has Consent
+  - user_has_offering_user — User Has Offering User
+  - uuid_list — Comma-separated offering UUIDs
+
 ### marketplace_service_providers_offerings_types_list
 GET /api/marketplace-service-providers/{service_provider_uuid}/offerings/types/
 Summary: List distinct offering types for a service provider
@@ -14562,11 +14896,13 @@ Path parameters:
 GET /api/marketplace-software-packages/
 Summary: List software packages
 Description: Returns a paginated list of software packages available in the catalogs. Can be filtered by catalog, offering, or various package attributes.
-Query parameters (23):
+Query parameters (25):
   - catalog_name — Filter packages by catalog name (case-insensitive partial match)
+  - catalog_name_exact — Filter packages by exact catalog name
   - catalog_type — Filter packages by catalog type (binary_runtime, source_package, package_manager)
   - catalog_uuid — Filter packages from a specific software catalog
   - catalog_version — Filter packages by catalog version (case-insensitive partial match)
+  - catalog_version_exact — Filter packages by exact catalog version
   - category — Filter packages by category (e.g., bio, hpc, chemistry)
   - cpu_family — Filter packages available for any of the given CPU families (e.g., x86_64, aarch64)
   - cpu_microarchitecture — Filter packages available for any of the given CPU microarchitectures (e.g., generic, amd/zen3, intel/sapphirerapids)
@@ -14591,11 +14927,13 @@ Query parameters (23):
 HEAD /api/marketplace-software-packages/
 Summary: List software packages
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (23):
+Query parameters (25):
   - catalog_name — Filter packages by catalog name (case-insensitive partial match)
+  - catalog_name_exact — Filter packages by exact catalog name
   - catalog_type — Filter packages by catalog type (binary_runtime, source_package, package_manager)
   - catalog_uuid — Filter packages from a specific software catalog
   - catalog_version — Filter packages by catalog version (case-insensitive partial match)
+  - catalog_version_exact — Filter packages by exact catalog version
   - category — Filter packages by category (e.g., bio, hpc, chemistry)
   - cpu_family — Filter packages available for any of the given CPU families (e.g., x86_64, aarch64)
   - cpu_microarchitecture — Filter packages available for any of the given CPU microarchitectures (e.g., generic, amd/zen3, intel/sapphirerapids)
@@ -14621,6 +14959,40 @@ POST /api/marketplace-software-packages/
 Summary: Create a software package
 Description: Creates a new software package within a catalog. Requires staff permissions.
 Request body: yes
+
+### marketplace_software_packages_facets_list
+GET /api/marketplace-software-packages/facets/
+Summary: Count the values each filter can still take
+Description: Accepts the same filters as the list. Each facet is counted under every filter except its own, so its values are those that still have rows given the other selections and search.
+Query parameters (28):
+  - catalog_name — Filter packages by catalog name (case-insensitive partial match)
+  - catalog_name_exact — Filter packages by exact catalog name
+  - catalog_type — Filter packages by catalog type (binary_runtime, source_package, package_manager)
+  - catalog_uuid — Filter packages from a specific software catalog
+  - catalog_version — Filter packages by catalog version (case-insensitive partial match)
+  - catalog_version_exact — Filter packages by exact catalog version
+  - category — Filter packages by category (e.g., bio, hpc, chemistry)
+  - cpu_family — Filter packages available for any of the given CPU families (e.g., x86_64, aarch64)
+  - cpu_microarchitecture — Filter packages available for any of the given CPU microarchitectures (e.g., generic, amd/zen3, intel/sapphirerapids)
+  - description — Filter packages by description (case-insensitive partial match)
+  - extension_name — Filter packages having extensions with a specific name
+  - extension_type — Filter packages having extensions of a specific type (e.g., 'python')
+  - facet — Comma-separated facet names to compute; all by default.
+  - facet_limit — Most values returned per facet, by count (default 100, at most 1000).
+  - facet_q — Keep only values whose label contains this text (at most 100 characters).
+  - gpu_arch — Filter packages by GPU architecture (e.g., nvidia/cc90)
+  - has_gpu — Filter packages that have GPU-enabled builds
+  - has_version — Filter packages that have a specific version
+  - is_extension — Filter packages that are extensions of other packages
+  - license — Filter packages by license (e.g., GPL-3.0, MIT)
+  - name — Filter packages by name (case-insensitive partial match)
+  - name_exact — Filter packages by exact name (case-insensitive)
+  - o — Ordering
+  - offering_uuid — Filter packages available for a specific offering
+  - parent_software_uuid — Filter extension packages belonging to a specific parent package
+  - query — Query packages by name, description, or version (case-insensitive partial match)
+  - toolchain_families_compatibility — Filter packages compatible with a specific toolchain family (e.g., foss_2022b)
+  - toolchain_name — Filter packages by toolchain name (e.g., foss, gfbf)
 
 ### marketplace_software_packages_retrieve
 GET /api/marketplace-software-packages/{uuid}/
@@ -21395,6 +21767,34 @@ GET /api/proposal-proposals/dashboard-stats/
 Summary: Get submitter dashboard stats
 Description: Returns counts of the current user's own proposals grouped by state, covering both in-progress and decided proposals.
 
+### proposal_proposals_facets_list
+GET /api/proposal-proposals/facets/
+Summary: Count the values each filter can still take
+Description: Accepts the same filters as the list. Each facet is counted under every filter except its own, so its values are those that still have rows given the other selections and search.
+Query parameters (22):
+  - as_role — Only proposals the current user holds this role on
+  - call_uuid
+  - changes_requested — Only proposals waiting on changes asked of their applicant
+  - created_by_uuid
+  - facet — Comma-separated facet names to compute; all by default.
+  - facet_limit — Most values returned per facet, by count (default 100, at most 1000).
+  - facet_q — Keep only values whose label contains this text (at most 100 characters).
+  - final_report_overdue — Only proposals whose final report is past its due date
+  - involved — Only proposals the current user takes part in, leaving out those read only through staff or support access
+  - my_proposals
+  - name
+  - o — Ordering
+  - organization_uuid
+  - panel_uuid — Panel UUID
+  - post_award_status — Where an accepted proposal's extension or final report stands
+  - round
+  - round_uuid
+  - run_phase — Only proposals with a run of this phase
+  - run_state — Only proposals with a run in this state
+  - slug — Slug
+  - state
+  - workflow_step — Multiple values may be separated by commas.
+
 ### proposal_proposals_retrieve
 GET /api/proposal-proposals/{uuid}/
 Path parameters:
@@ -21745,6 +22145,13 @@ Query parameters (19):
 POST /api/proposal-proposals/{uuid}/open_final_report/
 Summary: Open an accepted proposal's final report ahead of its due date, or for a project without an end date
 Description: Open an accepted proposal's final report ahead of its due date, or for a project without an end date. Call managers and staff.
+Path parameters:
+  - uuid
+
+### proposal_proposals_pdf_retrieve
+GET /api/proposal-proposals/{uuid}/pdf/
+Summary: Download the proposal as PDF
+Description: The proposal as one document: the application, requested resources, team and attachment names, then the evaluation -- workflow steps, contributions, per-offering assessments, released reports, ranking and award. Each section holds exactly what the endpoint serving it returns to the caller, and is...
 Path parameters:
   - uuid
 
@@ -23626,6 +24033,24 @@ Query parameters (9):
   - provider_uuid — Provider
   - state
 
+### proposal_requested_offerings_facets_list
+GET /api/proposal-requested-offerings/facets/
+Summary: Count the values each filter can still take
+Description: Accepts the same filters as the list. Each facet is counted under every filter except its own, so its values are those that still have rows given the other selections and search.
+Query parameters (12):
+  - call — Call
+  - call_state — Call state
+  - call_uuid
+  - facet — Comma-separated facet names to compute; all by default.
+  - facet_limit — Most values returned per facet, by count (default 100, at most 1000).
+  - facet_q — Keep only values whose label contains this text (at most 100 characters).
+  - o — Ordering
+  - offering — Offering
+  - offering_uuid
+  - organization_uuid
+  - provider_uuid — Provider
+  - state
+
 ### proposal_requested_offerings_team_slots_list
 GET /api/proposal-requested-offerings/team_slots/
 Summary: The open slots of the teams of every offering the caller sees here -- their colleagues' and delegates' as well as their own -- across the calls
@@ -23802,6 +24227,26 @@ Request body: yes
 GET /api/proposal-reviews/dashboard-stats/
 Summary: Get reviewer dashboard stats and deadlines
 Description: Returns counts (assigned, pending, completed) for every review assigned to the current user, plus their nearest review deadlines ordered by due date. Overdue reviews sort first and are included; the counts cover all reviews, the deadline list is capped and deadlines_total gives its true length.
+
+### proposal_reviews_facets_list
+GET /api/proposal-reviews/facets/
+Summary: Count the values each filter can still take
+Description: Accepts the same filters as the list. Each facet is counted under every filter except its own, so its values are those that still have rows given the other selections and search.
+Query parameters (14):
+  - call_uuid
+  - due_within_days — Only reviews in progress whose deadline is at most this many days away, including ones already past it. Implies state=in_review.
+  - facet — Comma-separated facet names to compute; all by default.
+  - facet_limit — Most values returned per facet, by count (default 100, at most 1000).
+  - facet_q — Keep only values whose label contains this text (at most 100 characters).
+  - managed_calls_only — Only reviews on calls where the current user is call manager, the same scope as the call manager dashboard.
+  - o — Ordering
+  - organization_uuid
+  - proposal
+  - proposal_name
+  - proposal_uuid
+  - reviewer_uuid
+  - round_uuid
+  - state
 
 ### proposal_reviews_retrieve
 GET /api/proposal-reviews/{uuid}/
@@ -24098,6 +24543,23 @@ HEAD /api/provider-tickets/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
 Query parameters (8):
+  - is_escalated
+  - o — Ordering
+  - priority
+  - provider_assignee
+  - provider_helpdesk_uuid
+  - sla_breached
+  - status
+  - summary
+
+### provider_tickets_facets_list
+GET /api/provider-tickets/facets/
+Summary: Count the values each filter can still take
+Description: Accepts the same filters as the list. Each facet is counted under every filter except its own, so its values are those that still have rows given the other selections and search.
+Query parameters (11):
+  - facet — Comma-separated facet names to compute; all by default.
+  - facet_limit — Most values returned per facet, by count (default 100, at most 1000).
+  - facet_q — Keep only values whose label contains this text (at most 100 characters).
   - is_escalated
   - o — Ordering
   - priority
@@ -26861,6 +27323,43 @@ Request body: yes
 POST /api/support-issues/bulk_update/
 Summary: Bulk update multiple issues
 Request body: yes
+
+### support_issues_facets_list
+GET /api/support-issues/facets/
+Summary: Count the values each filter can still take
+Description: Accepts the same filters as the list. Each facet is counted under every filter except its own, so its values are those that still have rows given the other selections and search.
+Query parameters (31):
+  - assignee
+  - assignee_name
+  - caller
+  - caller_full_name — Caller full name contains
+  - customer
+  - customer_uuid
+  - facet — Comma-separated facet names to compute; all by default.
+  - facet_limit — Most values returned per facet, by count (default 100, at most 1000).
+  - facet_q — Keep only values whose label contains this text (at most 100 characters).
+  - is_escalated
+  - is_open — Has not reached a terminal status
+  - is_parent — Is a parent issue
+  - is_routed — Has been routed to provider
+  - key
+  - o — Ordering
+  - project
+  - project_uuid
+  - provider_uuid
+  - query — Summary or key contains
+  - remote_id
+  - reporter
+  - reporter_name
+  - resolution_year_month
+  - resource — Filter by resource URL.
+  - resource_external_ip — Resource external IP
+  - resource_internal_ip — Resource internal IP
+  - resource_uuid — Resource UUID
+  - sla_breached
+  - status
+  - summary
+  - type
 
 ### support_issues_retrieve
 GET /api/support-issues/{uuid}/
