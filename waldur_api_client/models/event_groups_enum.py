@@ -10,6 +10,7 @@ class EventGroupsEnum(str, Enum):
     CREDITS = "credits"
     CUSTOMERS = "customers"
     INVOICES = "invoices"
+    MCP = "mcp"
     OFFERING_ACCOUNTING = "offering_accounting"
     ONBOARDING = "onboarding"
     OPENSTACK_FLOATING_IP = "openstack_floating_ip"

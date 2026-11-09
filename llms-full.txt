@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-dev.20261108165759
+# Version: 8.1.4-dev.20261109191941
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -7241,7 +7241,7 @@ Path parameters:
 ### marketplace_demo_presets_list_list
 GET /api/marketplace-demo-presets/list/
 Summary: List demo presets
-Description: Returns a list of available demo data presets. Staff access only.
+Description: Returns the demo data presets this deployment offers. Staff access only; answers 404 unless the deployment enables demo presets.
 
 ### marketplace_demo_presets_list_count
 HEAD /api/marketplace-demo-presets/list/
@@ -8735,7 +8735,7 @@ Path parameters:
 GET /api/marketplace-orders/
 Summary: List orders
 Description: Returns a paginated list of orders accessible to the current user. Orders are visible to service consumers (project/customer members with appropriate permissions) and service providers.
-Query parameters (26):
+Query parameters (27):
   - can_approve_as_consumer — Can approve as consumer
   - can_approve_as_provider — Can approve as provider
   - category_uuid — Category UUID
@@ -8743,6 +8743,7 @@ Query parameters (26):
   - created_before — Created before
   - customer_uuid — Customer UUID
   - field
+  - from_award — Placed by a proposal's award
   - modified — Modified after
   - modified_before — Modified before
   - o — Ordering
@@ -8767,13 +8768,14 @@ Query parameters (26):
 HEAD /api/marketplace-orders/
 Summary: List orders
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (25):
+Query parameters (26):
   - can_approve_as_consumer — Can approve as consumer
   - can_approve_as_provider — Can approve as provider
   - category_uuid — Category UUID
   - created — Created after
   - created_before — Created before
   - customer_uuid — Customer UUID
+  - from_award — Placed by a proposal's award
   - modified — Modified after
   - modified_before — Modified before
   - o — Ordering
@@ -8804,13 +8806,14 @@ Request body: yes
 GET /api/marketplace-orders/dashboard-my-orders/
 Summary: List current user's unfinished orders
 Description: Returns the orders created by the current user that are still pending approval or being processed, newest first. Scoped to the requesting user only, so requesters can track their orders even without list permissions on the project or organization. Paginated: the exact total is in the X-Result-Cou...
-Query parameters (25):
+Query parameters (26):
   - can_approve_as_consumer — Can approve as consumer
   - can_approve_as_provider — Can approve as provider
   - category_uuid — Category UUID
   - created — Created after
   - created_before — Created before
   - customer_uuid — Customer UUID
+  - from_award — Placed by a proposal's award
   - modified — Modified after
   - modified_before — Modified before
   - o — Ordering
@@ -8835,13 +8838,14 @@ Query parameters (25):
 HEAD /api/marketplace-orders/dashboard-my-orders/
 Summary: List current user's unfinished orders
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (25):
+Query parameters (26):
   - can_approve_as_consumer — Can approve as consumer
   - can_approve_as_provider — Can approve as provider
   - category_uuid — Category UUID
   - created — Created after
   - created_before — Created before
   - customer_uuid — Customer UUID
+  - from_award — Placed by a proposal's award
   - modified — Modified after
   - modified_before — Modified before
   - o — Ordering
@@ -8866,7 +8870,7 @@ Query parameters (25):
 GET /api/marketplace-orders/facets/
 Summary: Count the values each filter can still take
 Description: Accepts the same filters as the list. Each facet is counted under every filter except its own, so its values are those that still have rows given the other selections and search.
-Query parameters (28):
+Query parameters (29):
   - can_approve_as_consumer — Can approve as consumer
   - can_approve_as_provider — Can approve as provider
   - category_uuid — Category UUID
@@ -8876,6 +8880,7 @@ Query parameters (28):
   - facet — Comma-separated facet names to compute; all by default.
   - facet_limit — Most values returned per facet, by count (default 100, at most 1000).
   - facet_q — Keep only values whose label contains this text (at most 100 characters).
+  - from_award — Placed by a proposal's award
   - modified — Modified after
   - modified_before — Modified before
   - o — Ordering
@@ -21681,6 +21686,9 @@ Query parameters (3):
 GET /api/proposal-my-tasks/summary/
 Summary: Summarise the current user's open tasks
 Description: How many tasks the list holds, and how many of them are overdue or due soon: the counts the list's ``due`` filter narrows it to. Takes the list's offering_uuid and provider_uuid.
+Query parameters (2):
+  - offering_uuid — Only the tasks about this offering.
+  - provider_uuid — Only the tasks about an offering of this provider organization.
 
 ============================================================
 ## proposal-offering-demand  (module: waldur_api_client.api.proposal_offering_demand)

@@ -8,6 +8,7 @@ from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
 from ..models.step_contribution_status import StepContributionStatus
+from ..models.workflow_phase_enum import WorkflowPhaseEnum
 
 T = TypeVar("T", bound="OfferingTeamSlot")
 
@@ -25,6 +26,7 @@ class OfferingTeamSlot:
         requested_offering_uuid (UUID):
         step_name (str):
         step_key (str):
+        phase (WorkflowPhaseEnum):
         status (StepContributionStatus):
         delegate_uuid (Union[None, UUID]):
         delegate_name (Union[None, str]):
@@ -43,6 +45,7 @@ class OfferingTeamSlot:
     requested_offering_uuid: UUID
     step_name: str
     step_key: str
+    phase: WorkflowPhaseEnum
     status: StepContributionStatus
     delegate_uuid: Union[None, UUID]
     delegate_name: Union[None, str]
@@ -70,6 +73,8 @@ class OfferingTeamSlot:
         step_name = self.step_name
 
         step_key = self.step_key
+
+        phase = self.phase.value
 
         status = self.status.value
 
@@ -107,6 +112,7 @@ class OfferingTeamSlot:
                 "requested_offering_uuid": requested_offering_uuid,
                 "step_name": step_name,
                 "step_key": step_key,
+                "phase": phase,
                 "status": status,
                 "delegate_uuid": delegate_uuid,
                 "delegate_name": delegate_name,
@@ -139,6 +145,8 @@ class OfferingTeamSlot:
         step_name = d.pop("step_name")
 
         step_key = d.pop("step_key")
+
+        phase = WorkflowPhaseEnum(d.pop("phase"))
 
         status = StepContributionStatus(d.pop("status"))
 
@@ -195,6 +203,7 @@ class OfferingTeamSlot:
             requested_offering_uuid=requested_offering_uuid,
             step_name=step_name,
             step_key=step_key,
+            phase=phase,
             status=status,
             delegate_uuid=delegate_uuid,
             delegate_name=delegate_name,

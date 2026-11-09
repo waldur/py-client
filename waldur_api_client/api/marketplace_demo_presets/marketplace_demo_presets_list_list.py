@@ -66,7 +66,8 @@ def sync_detailed(
 ) -> Response[list["DemoPreset"]]:
     """List demo presets
 
-     Returns a list of available demo data presets. Staff access only.
+     Returns the demo data presets this deployment offers. Staff access only; answers 404 unless the
+    deployment enables demo presets.
 
     Args:
         page (Union[Unset, int]):
@@ -100,7 +101,8 @@ def sync(
 ) -> list["DemoPreset"]:
     """List demo presets
 
-     Returns a list of available demo data presets. Staff access only.
+     Returns the demo data presets this deployment offers. Staff access only; answers 404 unless the
+    deployment enables demo presets.
 
     Args:
         page (Union[Unset, int]):
@@ -129,7 +131,8 @@ async def asyncio_detailed(
 ) -> Response[list["DemoPreset"]]:
     """List demo presets
 
-     Returns a list of available demo data presets. Staff access only.
+     Returns the demo data presets this deployment offers. Staff access only; answers 404 unless the
+    deployment enables demo presets.
 
     Args:
         page (Union[Unset, int]):
@@ -161,7 +164,8 @@ async def asyncio(
 ) -> list["DemoPreset"]:
     """List demo presets
 
-     Returns a list of available demo data presets. Staff access only.
+     Returns the demo data presets this deployment offers. Staff access only; answers 404 unless the
+    deployment enables demo presets.
 
     Args:
         page (Union[Unset, int]):

@@ -26,6 +26,7 @@ def _get_kwargs(
     facet: Union[Unset, str] = UNSET,
     facet_limit: Union[Unset, int] = UNSET,
     facet_q: Union[Unset, str] = UNSET,
+    from_award: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
@@ -77,6 +78,8 @@ def _get_kwargs(
     params["facet_limit"] = facet_limit
 
     params["facet_q"] = facet_q
+
+    params["from_award"] = from_award
 
     json_modified: Union[Unset, str] = UNSET
     if not isinstance(modified, Unset):
@@ -216,6 +219,7 @@ def sync_detailed(
     facet: Union[Unset, str] = UNSET,
     facet_limit: Union[Unset, int] = UNSET,
     facet_q: Union[Unset, str] = UNSET,
+    from_award: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
@@ -251,6 +255,7 @@ def sync_detailed(
         facet (Union[Unset, str]):
         facet_limit (Union[Unset, int]):
         facet_q (Union[Unset, str]):
+        from_award (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[OrderDetailsOEnum]]):
@@ -289,6 +294,7 @@ def sync_detailed(
         facet=facet,
         facet_limit=facet_limit,
         facet_q=facet_q,
+        from_award=from_award,
         modified=modified,
         modified_before=modified_before,
         o=o,
@@ -329,6 +335,7 @@ def sync(
     facet: Union[Unset, str] = UNSET,
     facet_limit: Union[Unset, int] = UNSET,
     facet_q: Union[Unset, str] = UNSET,
+    from_award: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
@@ -364,6 +371,7 @@ def sync(
         facet (Union[Unset, str]):
         facet_limit (Union[Unset, int]):
         facet_q (Union[Unset, str]):
+        from_award (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[OrderDetailsOEnum]]):
@@ -403,6 +411,7 @@ def sync(
         facet=facet,
         facet_limit=facet_limit,
         facet_q=facet_q,
+        from_award=from_award,
         modified=modified,
         modified_before=modified_before,
         o=o,
@@ -437,6 +446,7 @@ async def asyncio_detailed(
     facet: Union[Unset, str] = UNSET,
     facet_limit: Union[Unset, int] = UNSET,
     facet_q: Union[Unset, str] = UNSET,
+    from_award: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
@@ -472,6 +482,7 @@ async def asyncio_detailed(
         facet (Union[Unset, str]):
         facet_limit (Union[Unset, int]):
         facet_q (Union[Unset, str]):
+        from_award (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[OrderDetailsOEnum]]):
@@ -510,6 +521,7 @@ async def asyncio_detailed(
         facet=facet,
         facet_limit=facet_limit,
         facet_q=facet_q,
+        from_award=from_award,
         modified=modified,
         modified_before=modified_before,
         o=o,
@@ -548,6 +560,7 @@ async def asyncio(
     facet: Union[Unset, str] = UNSET,
     facet_limit: Union[Unset, int] = UNSET,
     facet_q: Union[Unset, str] = UNSET,
+    from_award: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
@@ -583,6 +596,7 @@ async def asyncio(
         facet (Union[Unset, str]):
         facet_limit (Union[Unset, int]):
         facet_q (Union[Unset, str]):
+        from_award (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[OrderDetailsOEnum]]):
@@ -623,6 +637,7 @@ async def asyncio(
             facet=facet,
             facet_limit=facet_limit,
             facet_q=facet_q,
+            from_award=from_award,
             modified=modified,
             modified_before=modified_before,
             o=o,
@@ -658,6 +673,7 @@ def sync_all(
     facet: Union[Unset, str] = UNSET,
     facet_limit: Union[Unset, int] = UNSET,
     facet_q: Union[Unset, str] = UNSET,
+    from_award: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
@@ -695,6 +711,7 @@ def sync_all(
         facet (Union[Unset, str]):
         facet_limit (Union[Unset, int]):
         facet_q (Union[Unset, str]):
+        from_award (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[OrderDetailsOEnum]]):
@@ -737,6 +754,7 @@ def sync_all(
         facet=facet,
         facet_limit=facet_limit,
         facet_q=facet_q,
+        from_award=from_award,
         modified=modified,
         modified_before=modified_before,
         o=o,
@@ -812,6 +830,7 @@ async def asyncio_all(
     facet: Union[Unset, str] = UNSET,
     facet_limit: Union[Unset, int] = UNSET,
     facet_q: Union[Unset, str] = UNSET,
+    from_award: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
@@ -849,6 +868,7 @@ async def asyncio_all(
         facet (Union[Unset, str]):
         facet_limit (Union[Unset, int]):
         facet_q (Union[Unset, str]):
+        from_award (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[OrderDetailsOEnum]]):
@@ -891,6 +911,7 @@ async def asyncio_all(
         facet=facet,
         facet_limit=facet_limit,
         facet_q=facet_q,
+        from_award=from_award,
         modified=modified,
         modified_before=modified_before,
         o=o,

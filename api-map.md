@@ -1597,12 +1597,12 @@ Module: `waldur_api_client.api.marketplace_openstack_instance_metrics`
 ## marketplace-orders
 Module: `waldur_api_client.api.marketplace_orders`
 
-- `marketplace_orders_list` GET `/api/marketplace-orders/` — List orders (26 query params)
-- `marketplace_orders_count` HEAD `/api/marketplace-orders/` — List orders (25 query params)
+- `marketplace_orders_list` GET `/api/marketplace-orders/` — List orders (27 query params)
+- `marketplace_orders_count` HEAD `/api/marketplace-orders/` — List orders (26 query params)
 - `marketplace_orders_create` POST `/api/marketplace-orders/` — Create an order (request body)
-- `marketplace_orders_dashboard_my_orders_list` GET `/api/marketplace-orders/dashboard-my-orders/` — List current user's unfinished orders (25 query params)
-- `marketplace_orders_dashboard_my_orders_count` HEAD `/api/marketplace-orders/dashboard-my-orders/` — List current user's unfinished orders (25 query params)
-- `marketplace_orders_facets_list` GET `/api/marketplace-orders/facets/` — Count the values each filter can still take (28 query params)
+- `marketplace_orders_dashboard_my_orders_list` GET `/api/marketplace-orders/dashboard-my-orders/` — List current user's unfinished orders (26 query params)
+- `marketplace_orders_dashboard_my_orders_count` HEAD `/api/marketplace-orders/dashboard-my-orders/` — List current user's unfinished orders (26 query params)
+- `marketplace_orders_facets_list` GET `/api/marketplace-orders/facets/` — Count the values each filter can still take (29 query params)
 - `marketplace_orders_retrieve` GET `/api/marketplace-orders/{uuid}/` — Retrieve an order (path: uuid | 1 query param)
 - `marketplace_orders_update` PUT `/api/marketplace-orders/{uuid}/` (path: uuid | request body)
 - `marketplace_orders_partial_update` PATCH `/api/marketplace-orders/{uuid}/` (path: uuid | request body)
@@ -3361,7 +3361,7 @@ Module: `waldur_api_client.api.proposal_my_tasks`
 
 - `proposal_my_tasks_list` GET `/api/proposal-my-tasks/` (3 query params)
 - `proposal_my_tasks_count` HEAD `/api/proposal-my-tasks/` — Get number of items in the collection matching the request parameters (3 query params)
-- `proposal_my_tasks_summary_retrieve` GET `/api/proposal-my-tasks/summary/` — Summarise the current user's open tasks (no params)
+- `proposal_my_tasks_summary_retrieve` GET `/api/proposal-my-tasks/summary/` — Summarise the current user's open tasks (2 query params)
 
 ## proposal-offering-demand
 Module: `waldur_api_client.api.proposal_offering_demand`

@@ -21,6 +21,7 @@ def _get_kwargs(
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    from_award: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
@@ -68,6 +69,8 @@ def _get_kwargs(
     if not isinstance(customer_uuid, Unset):
         json_customer_uuid = str(customer_uuid)
     params["customer_uuid"] = json_customer_uuid
+
+    params["from_award"] = from_award
 
     json_modified: Union[Unset, str] = UNSET
     if not isinstance(modified, Unset):
@@ -210,6 +213,7 @@ def sync_detailed(
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    from_award: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
@@ -243,6 +247,7 @@ def sync_detailed(
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
+        from_award (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[OrderDetailsOEnum]]):
@@ -280,6 +285,7 @@ def sync_detailed(
         created=created,
         created_before=created_before,
         customer_uuid=customer_uuid,
+        from_award=from_award,
         modified=modified,
         modified_before=modified_before,
         o=o,
@@ -319,6 +325,7 @@ def sync(
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    from_award: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
@@ -352,6 +359,7 @@ def sync(
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
+        from_award (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[OrderDetailsOEnum]]):
@@ -390,6 +398,7 @@ def sync(
         created=created,
         created_before=created_before,
         customer_uuid=customer_uuid,
+        from_award=from_award,
         modified=modified,
         modified_before=modified_before,
         o=o,
@@ -423,6 +432,7 @@ async def asyncio_detailed(
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    from_award: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
@@ -456,6 +466,7 @@ async def asyncio_detailed(
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
+        from_award (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[OrderDetailsOEnum]]):
@@ -493,6 +504,7 @@ async def asyncio_detailed(
         created=created,
         created_before=created_before,
         customer_uuid=customer_uuid,
+        from_award=from_award,
         modified=modified,
         modified_before=modified_before,
         o=o,
@@ -530,6 +542,7 @@ async def asyncio(
     created: Union[Unset, datetime.datetime] = UNSET,
     created_before: Union[Unset, datetime.datetime] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    from_award: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
     modified_before: Union[Unset, datetime.datetime] = UNSET,
     o: Union[Unset, list[OrderDetailsOEnum]] = UNSET,
@@ -563,6 +576,7 @@ async def asyncio(
         created (Union[Unset, datetime.datetime]):
         created_before (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
+        from_award (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
         modified_before (Union[Unset, datetime.datetime]):
         o (Union[Unset, list[OrderDetailsOEnum]]):
@@ -602,6 +616,7 @@ async def asyncio(
             created=created,
             created_before=created_before,
             customer_uuid=customer_uuid,
+            from_award=from_award,
             modified=modified,
             modified_before=modified_before,
             o=o,

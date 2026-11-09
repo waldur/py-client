@@ -149,6 +149,7 @@ class EventTypesEnum(str, Enum):
     MATRIX_PASSWORD_GENERATED = "matrix_password_generated"
     MATRIX_RECOVERY_KEY_ESCROWED = "matrix_recovery_key_escrowed"
     MATRIX_RECOVERY_KEY_VIEWED = "matrix_recovery_key_viewed"
+    MCP_TOOL_CALLED = "mcp_tool_called"
     NOTIFY_EXTERNAL_USER = "notify_external_user"
     NOTIFY_ORGANIZATION_OWNERS = "notify_organization_owners"
     NOTIFY_PROJECT_TEAM = "notify_project_team"

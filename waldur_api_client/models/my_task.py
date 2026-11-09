@@ -11,6 +11,7 @@ from ..models.call_step_kind_enum import CallStepKindEnum
 from ..models.needed_enum import NeededEnum
 from ..models.target_enum import TargetEnum
 from ..models.view_enum import ViewEnum
+from ..models.workflow_phase_enum import WorkflowPhaseEnum
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="MyTask")
@@ -53,6 +54,8 @@ class MyTask:
         call_step_uuid (Union[None, UUID, Unset]):
         step_name (Union[None, Unset, str]):
         step_kind (Union[CallStepKindEnum, None, Unset]):
+        phase (Union[None, Unset, WorkflowPhaseEnum]): The phase of the task's step: the evaluation before the award, or
+            an extension or closing after it; null for a task on no step.
         view_customer_uuid (Union[None, UUID, Unset]): The organization the view is under: the one managing the call for
             the call team's view, the provider for the offering team's.
     """
@@ -83,6 +86,7 @@ class MyTask:
     call_step_uuid: Union[None, UUID, Unset] = UNSET
     step_name: Union[None, Unset, str] = UNSET
     step_kind: Union[CallStepKindEnum, None, Unset] = UNSET
+    phase: Union[None, Unset, WorkflowPhaseEnum] = UNSET
     view_customer_uuid: Union[None, UUID, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -225,6 +229,14 @@ class MyTask:
         else:
             step_kind = self.step_kind
 
+        phase: Union[None, Unset, str]
+        if isinstance(self.phase, Unset):
+            phase = UNSET
+        elif isinstance(self.phase, WorkflowPhaseEnum):
+            phase = self.phase.value
+        else:
+            phase = self.phase
+
         view_customer_uuid: Union[None, Unset, str]
         if isinstance(self.view_customer_uuid, Unset):
             view_customer_uuid = UNSET
@@ -280,6 +292,8 @@ class MyTask:
             field_dict["step_name"] = step_name
         if step_kind is not UNSET:
             field_dict["step_kind"] = step_kind
+        if phase is not UNSET:
+            field_dict["phase"] = phase
         if view_customer_uuid is not UNSET:
             field_dict["view_customer_uuid"] = view_customer_uuid
 
@@ -545,6 +559,23 @@ class MyTask:
 
         step_kind = _parse_step_kind(d.pop("step_kind", UNSET))
 
+        def _parse_phase(data: object) -> Union[None, Unset, WorkflowPhaseEnum]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                phase_type_0 = WorkflowPhaseEnum(data)
+
+                return phase_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, WorkflowPhaseEnum], data)
+
+        phase = _parse_phase(d.pop("phase", UNSET))
+
         def _parse_view_customer_uuid(data: object) -> Union[None, UUID, Unset]:
             if data is None:
                 return data
@@ -589,6 +620,7 @@ class MyTask:
             call_step_uuid=call_step_uuid,
             step_name=step_name,
             step_kind=step_kind,
+            phase=phase,
             view_customer_uuid=view_customer_uuid,
         )
 

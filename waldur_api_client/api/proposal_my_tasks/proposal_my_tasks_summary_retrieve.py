@@ -1,18 +1,38 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.my_task_summary import MyTaskSummary
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
-def _get_kwargs() -> dict[str, Any]:
+def _get_kwargs(
+    *,
+    offering_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
+) -> dict[str, Any]:
+    params: dict[str, Any] = {}
+
+    json_offering_uuid: Union[Unset, str] = UNSET
+    if not isinstance(offering_uuid, Unset):
+        json_offering_uuid = str(offering_uuid)
+    params["offering_uuid"] = json_offering_uuid
+
+    json_provider_uuid: Union[Unset, str] = UNSET
+    if not isinstance(provider_uuid, Unset):
+        json_provider_uuid = str(provider_uuid)
+    params["provider_uuid"] = json_provider_uuid
+
+    params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/proposal-my-tasks/summary/",
+        "params": params,
     }
 
     return _kwargs
@@ -40,11 +60,17 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    offering_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[MyTaskSummary]:
     """Summarise the current user's open tasks
 
      How many tasks the list holds, and how many of them are overdue or due soon: the counts the list's
     ``due`` filter narrows it to. Takes the list's offering_uuid and provider_uuid.
+
+    Args:
+        offering_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -54,7 +80,10 @@ def sync_detailed(
         Response[MyTaskSummary]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        offering_uuid=offering_uuid,
+        provider_uuid=provider_uuid,
+    )
 
     response = client.get_httpx_client().request(
         **kwargs,
@@ -66,11 +95,17 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    offering_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> MyTaskSummary:
     """Summarise the current user's open tasks
 
      How many tasks the list holds, and how many of them are overdue or due soon: the counts the list's
     ``due`` filter narrows it to. Takes the list's offering_uuid and provider_uuid.
+
+    Args:
+        offering_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -82,17 +117,25 @@ def sync(
 
     return sync_detailed(
         client=client,
+        offering_uuid=offering_uuid,
+        provider_uuid=provider_uuid,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    offering_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[MyTaskSummary]:
     """Summarise the current user's open tasks
 
      How many tasks the list holds, and how many of them are overdue or due soon: the counts the list's
     ``due`` filter narrows it to. Takes the list's offering_uuid and provider_uuid.
+
+    Args:
+        offering_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -102,7 +145,10 @@ async def asyncio_detailed(
         Response[MyTaskSummary]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        offering_uuid=offering_uuid,
+        provider_uuid=provider_uuid,
+    )
 
     response = await client.get_async_httpx_client().request(**kwargs)
 
@@ -112,11 +158,17 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    offering_uuid: Union[Unset, UUID] = UNSET,
+    provider_uuid: Union[Unset, UUID] = UNSET,
 ) -> MyTaskSummary:
     """Summarise the current user's open tasks
 
      How many tasks the list holds, and how many of them are overdue or due soon: the counts the list's
     ``due`` filter narrows it to. Takes the list's offering_uuid and provider_uuid.
+
+    Args:
+        offering_uuid (Union[Unset, UUID]):
+        provider_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -129,5 +181,7 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            offering_uuid=offering_uuid,
+            provider_uuid=provider_uuid,
         )
     ).parsed
