@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.1.4-dev.20261109191941).
+> Auto-generated Python SDK for the Waldur API (version 8.1.4-dev.20261110191534).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -98,6 +98,7 @@ waldur_api_client/
 - **data-access-logs** (4 endpoints)
 - **database-stats** (1 endpoint)
 - **debug** (18 endpoints)
+- **demo-preset-status** (1 endpoint)
 - **digitalocean-droplets** (15 endpoints)
 - **digitalocean-images** (3 endpoints)
 - **digitalocean-regions** (3 endpoints)
@@ -197,7 +198,7 @@ waldur_api_client/
 - **marketplace-project-usage** (2 endpoints)
 - **marketplace-provider-offerings** (98 endpoints)
 - **marketplace-provider-resource-projects** (13 endpoints)
-- **marketplace-provider-resources** (48 endpoints)
+- **marketplace-provider-resources** (49 endpoints)
 - **marketplace-public-api** (2 endpoints)
 - **marketplace-public-offerings** (6 endpoints)
 - **marketplace-related-customers** (1 endpoint)
@@ -208,7 +209,7 @@ waldur_api_client/
 - **marketplace-resource-metrics** (1 endpoint)
 - **marketplace-resource-offerings** (1 endpoint)
 - **marketplace-resource-projects** (13 endpoints)
-- **marketplace-resources** (39 endpoints)
+- **marketplace-resources** (40 endpoints)
 - **marketplace-robot-accounts** (12 endpoints)
 - **marketplace-runtime-states** (1 endpoint)
 - **marketplace-screenshots** (7 endpoints)
@@ -240,6 +241,7 @@ waldur_api_client/
 - **my-assignment-batches** (3 endpoints)
 - **notification-messages** (9 endpoints)
 - **notification-messages-templates** (8 endpoints)
+- **oauth** (2 endpoints)
 - **onboarding** (2 endpoints)
 - **onboarding-justifications** (10 endpoints)
 - **onboarding-question-metadata** (7 endpoints)

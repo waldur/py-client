@@ -275,6 +275,9 @@ class MergedPluginOptions:
         display_prepaid_limits_as_total (Union[Unset, bool]): If set to True, the UI shows each prepaid component as the
             total for the whole subscription (the monthly amount times the months ordered) instead of a monthly amount, and
             the resource's limit_usage sums its usage over the whole subscription. Ordering and billing do not change.
+        show_order_period_totals (Union[Unset, bool]): If set to True, the UI can show each limit-based component of a
+            resource for the whole order period: the usage summed since the resource was created against the current limit
+            times the months of the order. Ordering, billing and enforcement do not change.
     """
 
     account_scope: Union[AccountScope, BlankEnum, Unset] = UNSET
@@ -394,6 +397,7 @@ class MergedPluginOptions:
     show_ssh_key_loss_warning: Union[Unset, bool] = False
     hide_api_keys_tab: Union[Unset, bool] = UNSET
     display_prepaid_limits_as_total: Union[Unset, bool] = UNSET
+    show_order_period_totals: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -756,6 +760,8 @@ class MergedPluginOptions:
 
         display_prepaid_limits_as_total = self.display_prepaid_limits_as_total
 
+        show_order_period_totals = self.show_order_period_totals
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -1007,6 +1013,8 @@ class MergedPluginOptions:
             field_dict["hide_api_keys_tab"] = hide_api_keys_tab
         if display_prepaid_limits_as_total is not UNSET:
             field_dict["display_prepaid_limits_as_total"] = display_prepaid_limits_as_total
+        if show_order_period_totals is not UNSET:
+            field_dict["show_order_period_totals"] = show_order_period_totals
 
         return field_dict
 
@@ -1509,6 +1517,8 @@ class MergedPluginOptions:
 
         display_prepaid_limits_as_total = d.pop("display_prepaid_limits_as_total", UNSET)
 
+        show_order_period_totals = d.pop("show_order_period_totals", UNSET)
+
         merged_plugin_options = cls(
             account_scope=account_scope,
             username_generation_policy=username_generation_policy,
@@ -1627,6 +1637,7 @@ class MergedPluginOptions:
             show_ssh_key_loss_warning=show_ssh_key_loss_warning,
             hide_api_keys_tab=hide_api_keys_tab,
             display_prepaid_limits_as_total=display_prepaid_limits_as_total,
+            show_order_period_totals=show_order_period_totals,
         )
 
         merged_plugin_options.additional_properties = d

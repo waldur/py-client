@@ -6,6 +6,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.resource import Resource
 from ...models.resource_field_enum import ResourceFieldEnum
 from ...types import UNSET, Response, Unset
 
@@ -37,13 +38,17 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Resource:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
+    if response.status_code == 200:
+        response_200 = Resource.from_dict(response.json())
+
+        return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Resource]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -57,7 +62,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
-) -> Response[Any]:
+) -> Response[Resource]:
     """
     Args:
         uuid (UUID):
@@ -68,7 +73,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[Resource]
     """
 
     kwargs = _get_kwargs(
@@ -83,12 +88,12 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
     field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
-) -> Response[Any]:
+) -> Resource:
     """
     Args:
         uuid (UUID):
@@ -99,7 +104,33 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Resource
+    """
+
+    return sync_detailed(
+        uuid=uuid,
+        client=client,
+        field=field,
+    ).parsed
+
+
+async def asyncio_detailed(
+    uuid: UUID,
+    *,
+    client: AuthenticatedClient,
+    field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
+) -> Response[Resource]:
+    """
+    Args:
+        uuid (UUID):
+        field (Union[Unset, list[ResourceFieldEnum]]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[Resource]
     """
 
     kwargs = _get_kwargs(
@@ -110,3 +141,31 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    uuid: UUID,
+    *,
+    client: AuthenticatedClient,
+    field: Union[Unset, list[ResourceFieldEnum]] = UNSET,
+) -> Resource:
+    """
+    Args:
+        uuid (UUID):
+        field (Union[Unset, list[ResourceFieldEnum]]):
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Resource
+    """
+
+    return (
+        await asyncio_detailed(
+            uuid=uuid,
+            client=client,
+            field=field,
+        )
+    ).parsed

@@ -619,6 +619,11 @@ from .conflict_summary_response_by_severity import ConflictSummaryResponseBySeve
 from .conflict_summary_response_by_status import ConflictSummaryResponseByStatus
 from .conflict_summary_response_by_type import ConflictSummaryResponseByType
 from .connection_stats import ConnectionStats
+from .consent_decision_request import ConsentDecisionRequest
+from .consent_details import ConsentDetails
+from .consent_error import ConsentError
+from .consent_result import ConsentResult
+from .consent_scope import ConsentScope
 from .console_url import ConsoleUrl
 from .constance_settings import ConstanceSettings
 from .constance_settings_loginlogomultilingual import ConstanceSettingsLOGINLOGOMULTILINGUAL
@@ -786,8 +791,11 @@ from .delete_attachments_request import DeleteAttachmentsRequest
 from .delivery_enum import DeliveryEnum
 from .demo_preset import DemoPreset
 from .demo_preset_entity_counts import DemoPresetEntityCounts
+from .demo_preset_load_job import DemoPresetLoadJob
+from .demo_preset_load_job_state_enum import DemoPresetLoadJobStateEnum
 from .demo_preset_load_request_request import DemoPresetLoadRequestRequest
 from .demo_preset_load_response import DemoPresetLoadResponse
+from .demo_preset_status import DemoPresetStatus
 from .demo_preset_user import DemoPresetUser
 from .dependency_logic_operator_enum import DependencyLogicOperatorEnum
 from .deployment_mode_enum import DeploymentModeEnum
@@ -873,6 +881,7 @@ from .earlier_invoice_payment import EarlierInvoicePayment
 from .effective_route import EffectiveRoute
 from .effective_route_source_enum import EffectiveRouteSourceEnum
 from .effective_routes_response import EffectiveRoutesResponse
+from .elevated_access_enum import ElevatedAccessEnum
 from .eligibility_check import EligibilityCheck
 from .eligible_from_enum import EligibleFromEnum
 from .eligible_project import EligibleProject
@@ -1123,6 +1132,8 @@ from .import_license_request_request import ImportLicenseRequestRequest
 from .import_license_response import ImportLicenseResponse
 from .import_publications_request import ImportPublicationsRequest
 from .import_publications_source_enum import ImportPublicationsSourceEnum
+from .import_resource_request import ImportResourceRequest
+from .import_resource_request_additional_details_type_0 import ImportResourceRequestAdditionalDetailsType0
 from .import_usage_error import ImportUsageError
 from .import_usage_item_request import ImportUsageItemRequest
 from .import_usage_request import ImportUsageRequest
@@ -2039,6 +2050,7 @@ from .order_details_o_enum import OrderDetailsOEnum
 from .order_details_offering_plugin_options import OrderDetailsOfferingPluginOptions
 from .order_error_details_request import OrderErrorDetailsRequest
 from .order_info_response import OrderInfoResponse
+from .order_period_usage import OrderPeriodUsage
 from .order_provider_info_request import OrderProviderInfoRequest
 from .order_provider_info_request_form import OrderProviderInfoRequestForm
 from .order_provider_info_request_multipart import OrderProviderInfoRequestMultipart
@@ -2816,6 +2828,7 @@ from .recommended_component import RecommendedComponent
 from .recommended_offering import RecommendedOffering
 from .reconcile_request_request import ReconcileRequestRequest
 from .reference_number_request import ReferenceNumberRequest
+from .registration_source_enum import RegistrationSourceEnum
 from .reject_requested_offering_request import RejectRequestedOfferingRequest
 from .reject_workflow_step_request import RejectWorkflowStepRequest
 from .reject_workflow_step_response import RejectWorkflowStepResponse
@@ -2894,6 +2907,7 @@ from .requested_resource_request_attributes import RequestedResourceRequestAttri
 from .requested_resource_request_limits import RequestedResourceRequestLimits
 from .reserved_agent_task import ReservedAgentTask
 from .resolution_enum import ResolutionEnum
+from .resource import Resource
 from .resource_api_key import ResourceApiKey
 from .resource_api_key_action import ResourceApiKeyAction
 from .resource_api_key_create_request import ResourceApiKeyCreateRequest
@@ -2923,11 +2937,14 @@ from .resource_api_key_usage_request import ResourceApiKeyUsageRequest
 from .resource_api_key_usage_request_usages import ResourceApiKeyUsageRequestUsages
 from .resource_api_key_usage_totals import ResourceApiKeyUsageTotals
 from .resource_api_key_usage_totals_usages import ResourceApiKeyUsageTotalsUsages
+from .resource_attributes import ResourceAttributes
 from .resource_backend_id_request import ResourceBackendIDRequest
 from .resource_backend_metadata_request import ResourceBackendMetadataRequest
 from .resource_backend_metadata_request_backend_metadata import ResourceBackendMetadataRequestBackendMetadata
 from .resource_class_summary import ResourceClassSummary
 from .resource_context import ResourceContext
+from .resource_current_usages import ResourceCurrentUsages
+from .resource_display_limits import ResourceDisplayLimits
 from .resource_downscaled_request import ResourceDownscaledRequest
 from .resource_effective_id_request import ResourceEffectiveIDRequest
 from .resource_end_date_by_provider_request import ResourceEndDateByProviderRequest
@@ -2949,13 +2966,17 @@ from .resource_limit_change_request_create_requested_limits import ResourceLimit
 from .resource_limit_change_request_current_limits import ResourceLimitChangeRequestCurrentLimits
 from .resource_limit_change_request_requested_limits import ResourceLimitChangeRequestRequestedLimits
 from .resource_limit_period import ResourceLimitPeriod
+from .resource_limit_usage import ResourceLimitUsage
+from .resource_limits import ResourceLimits
 from .resource_metric import ResourceMetric
 from .resource_missing_usage import ResourceMissingUsage
 from .resource_o_enum import ResourceOEnum
 from .resource_offering import ResourceOffering
+from .resource_offering_plugin_options import ResourceOfferingPluginOptions
 from .resource_offering_request import ResourceOfferingRequest
 from .resource_options_request import ResourceOptionsRequest
 from .resource_options_request_options_type_0 import ResourceOptionsRequestOptionsType0
+from .resource_options_type_0 import ResourceOptionsType0
 from .resource_paused_request import ResourcePausedRequest
 from .resource_plan_period import ResourcePlanPeriod
 from .resource_pool_cell import ResourcePoolCell
@@ -2982,6 +3003,7 @@ from .resource_renew_request_form_limits import ResourceRenewRequestFormLimits
 from .resource_renew_request_limits import ResourceRenewRequestLimits
 from .resource_renew_request_multipart import ResourceRenewRequestMultipart
 from .resource_renew_request_multipart_limits import ResourceRenewRequestMultipartLimits
+from .resource_renewal_date_type_0 import ResourceRenewalDateType0
 from .resource_report_request import ResourceReportRequest
 from .resource_request import ResourceRequest
 from .resource_restrict_member_access_request import ResourceRestrictMemberAccessRequest
@@ -2989,15 +3011,8 @@ from .resource_set_limits_request import ResourceSetLimitsRequest
 from .resource_set_limits_request_limits import ResourceSetLimitsRequestLimits
 from .resource_set_state_erred_request import ResourceSetStateErredRequest
 from .resource_slug_request import ResourceSlugRequest
-from .resource_spending_limits_request import ResourceSpendingLimitsRequest
-from .resource_spending_limits_request_spending_limits import ResourceSpendingLimitsRequestSpendingLimits
-from .resource_spending_limits_request_spending_limits_additional_property_type_0 import (
-    ResourceSpendingLimitsRequestSpendingLimitsAdditionalPropertyType0,
-)
-from .resource_spending_limits_spending_limits import ResourceSpendingLimitsSpendingLimits
-from .resource_spending_limits_spending_limits_additional_property_type_0 import (
-    ResourceSpendingLimitsSpendingLimitsAdditionalPropertyType0,
-)
+from .resource_spending_limits import ResourceSpendingLimits
+from .resource_spending_limits_additional_property_type_0 import ResourceSpendingLimitsAdditionalPropertyType0
 from .resource_state import ResourceState
 from .resource_suggest_name_request import ResourceSuggestNameRequest
 from .resource_suggest_name_request_attributes import ResourceSuggestNameRequestAttributes
@@ -3244,6 +3259,16 @@ from .set_mtu import SetMtu
 from .set_mtu_request import SetMtuRequest
 from .set_offerings_username_request import SetOfferingsUsernameRequest
 from .set_partition_qo_s_request import SetPartitionQoSRequest
+from .set_resource_spending_limits import SetResourceSpendingLimits
+from .set_resource_spending_limits_request import SetResourceSpendingLimitsRequest
+from .set_resource_spending_limits_request_spending_limits import SetResourceSpendingLimitsRequestSpendingLimits
+from .set_resource_spending_limits_request_spending_limits_additional_property_type_0 import (
+    SetResourceSpendingLimitsRequestSpendingLimitsAdditionalPropertyType0,
+)
+from .set_resource_spending_limits_spending_limits import SetResourceSpendingLimitsSpendingLimits
+from .set_resource_spending_limits_spending_limits_additional_property_type_0 import (
+    SetResourceSpendingLimitsSpendingLimitsAdditionalPropertyType0,
+)
 from .set_token_quota_request import SetTokenQuotaRequest
 from .setting_source import SettingSource
 from .setting_source_source_enum import SettingSourceSourceEnum
@@ -4321,6 +4346,11 @@ __all__ = (
     "ConflictSummaryResponseByStatus",
     "ConflictSummaryResponseByType",
     "ConnectionStats",
+    "ConsentDecisionRequest",
+    "ConsentDetails",
+    "ConsentError",
+    "ConsentResult",
+    "ConsentScope",
     "ConsoleUrl",
     "ConstanceSettings",
     "ConstanceSettingsLOGINLOGOMULTILINGUAL",
@@ -4482,8 +4512,11 @@ __all__ = (
     "DeliveryEnum",
     "DemoPreset",
     "DemoPresetEntityCounts",
+    "DemoPresetLoadJob",
+    "DemoPresetLoadJobStateEnum",
     "DemoPresetLoadRequestRequest",
     "DemoPresetLoadResponse",
+    "DemoPresetStatus",
     "DemoPresetUser",
     "DependencyLogicOperatorEnum",
     "DeploymentModeEnum",
@@ -4567,6 +4600,7 @@ __all__ = (
     "EffectiveRoute",
     "EffectiveRouteSourceEnum",
     "EffectiveRoutesResponse",
+    "ElevatedAccessEnum",
     "EligibilityCheck",
     "EligibleFromEnum",
     "EligibleProject",
@@ -4812,6 +4846,8 @@ __all__ = (
     "ImportLicenseResponse",
     "ImportPublicationsRequest",
     "ImportPublicationsSourceEnum",
+    "ImportResourceRequest",
+    "ImportResourceRequestAdditionalDetailsType0",
     "ImportUsageError",
     "ImportUsageItemRequest",
     "ImportUsageRequest",
@@ -5653,6 +5689,7 @@ __all__ = (
     "OrderDetailsOfferingPluginOptions",
     "OrderErrorDetailsRequest",
     "OrderInfoResponse",
+    "OrderPeriodUsage",
     "OrderProviderInfoRequest",
     "OrderProviderInfoRequestForm",
     "OrderProviderInfoRequestMultipart",
@@ -6388,6 +6425,7 @@ __all__ = (
     "RecommendedOffering",
     "ReconcileRequestRequest",
     "ReferenceNumberRequest",
+    "RegistrationSourceEnum",
     "RejectedPoint",
     "RejectRequestedOfferingRequest",
     "RejectWorkflowStepRequest",
@@ -6464,6 +6502,7 @@ __all__ = (
     "RequestTypes",
     "ReservedAgentTask",
     "ResolutionEnum",
+    "Resource",
     "ResourceApiKey",
     "ResourceApiKeyAction",
     "ResourceApiKeyCreateRequest",
@@ -6487,11 +6526,14 @@ __all__ = (
     "ResourceApiKeyUsageRequestUsages",
     "ResourceApiKeyUsageTotals",
     "ResourceApiKeyUsageTotalsUsages",
+    "ResourceAttributes",
     "ResourceBackendIDRequest",
     "ResourceBackendMetadataRequest",
     "ResourceBackendMetadataRequestBackendMetadata",
     "ResourceClassSummary",
     "ResourceContext",
+    "ResourceCurrentUsages",
+    "ResourceDisplayLimits",
     "ResourceDownscaledRequest",
     "ResourceEffectiveIDRequest",
     "ResourceEndDateByProviderRequest",
@@ -6511,13 +6553,17 @@ __all__ = (
     "ResourceLimitChangeRequestCurrentLimits",
     "ResourceLimitChangeRequestRequestedLimits",
     "ResourceLimitPeriod",
+    "ResourceLimits",
+    "ResourceLimitUsage",
     "ResourceMetric",
     "ResourceMissingUsage",
     "ResourceOEnum",
     "ResourceOffering",
+    "ResourceOfferingPluginOptions",
     "ResourceOfferingRequest",
     "ResourceOptionsRequest",
     "ResourceOptionsRequestOptionsType0",
+    "ResourceOptionsType0",
     "ResourcePausedRequest",
     "ResourcePlanPeriod",
     "ResourcePoolCell",
@@ -6538,6 +6584,7 @@ __all__ = (
     "ResourceReallocateLimitsResponse",
     "ResourceReallocateTargetRequest",
     "ResourceReallocateTargetRequestAllocatedLimits",
+    "ResourceRenewalDateType0",
     "ResourceRenewRequest",
     "ResourceRenewRequestForm",
     "ResourceRenewRequestFormLimits",
@@ -6553,11 +6600,8 @@ __all__ = (
     "ResourcesGeographySummary",
     "ResourcesLimits",
     "ResourceSlugRequest",
-    "ResourceSpendingLimitsRequest",
-    "ResourceSpendingLimitsRequestSpendingLimits",
-    "ResourceSpendingLimitsRequestSpendingLimitsAdditionalPropertyType0",
-    "ResourceSpendingLimitsSpendingLimits",
-    "ResourceSpendingLimitsSpendingLimitsAdditionalPropertyType0",
+    "ResourceSpendingLimits",
+    "ResourceSpendingLimitsAdditionalPropertyType0",
     "ResourceState",
     "ResourceSuggestNameRequest",
     "ResourceSuggestNameRequestAttributes",
@@ -6802,6 +6846,12 @@ __all__ = (
     "SetMtuRequest",
     "SetOfferingsUsernameRequest",
     "SetPartitionQoSRequest",
+    "SetResourceSpendingLimits",
+    "SetResourceSpendingLimitsRequest",
+    "SetResourceSpendingLimitsRequestSpendingLimits",
+    "SetResourceSpendingLimitsRequestSpendingLimitsAdditionalPropertyType0",
+    "SetResourceSpendingLimitsSpendingLimits",
+    "SetResourceSpendingLimitsSpendingLimitsAdditionalPropertyType0",
     "SettingsItem",
     "SettingsItemDefault",
     "SettingsItemOption",

@@ -153,6 +153,8 @@ class EventMetadataResponseEventGroupsAdditionalPropertyItem(str, Enum):
     NOTIFY_EXTERNAL_USER = "notify_external_user"
     NOTIFY_ORGANIZATION_OWNERS = "notify_organization_owners"
     NOTIFY_PROJECT_TEAM = "notify_project_team"
+    OAUTH_CONSENT_DENIED = "oauth_consent_denied"
+    OAUTH_CONSENT_GRANTED = "oauth_consent_granted"
     OFFERING_ACCESS_SUBNET_CREATION_SUCCEEDED = "offering_access_subnet_creation_succeeded"
     OFFERING_ACCESS_SUBNET_DELETION_SUCCEEDED = "offering_access_subnet_deletion_succeeded"
     OFFERING_ACCESS_SUBNET_UPDATE_SUCCEEDED = "offering_access_subnet_update_succeeded"

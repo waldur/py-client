@@ -6,15 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.resource_spending_limits import ResourceSpendingLimits
-from ...models.resource_spending_limits_request import ResourceSpendingLimitsRequest
+from ...models.set_resource_spending_limits import SetResourceSpendingLimits
+from ...models.set_resource_spending_limits_request import SetResourceSpendingLimitsRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: ResourceSpendingLimitsRequest,
+    body: SetResourceSpendingLimitsRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,11 +31,13 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> ResourceSpendingLimits:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> SetResourceSpendingLimits:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = ResourceSpendingLimits.from_dict(response.json())
+        response_200 = SetResourceSpendingLimits.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -43,7 +45,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ResourceSpendingLimits]:
+) -> Response[SetResourceSpendingLimits]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -56,8 +58,8 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceSpendingLimitsRequest,
-) -> Response[ResourceSpendingLimits]:
+    body: SetResourceSpendingLimitsRequest,
+) -> Response[SetResourceSpendingLimits]:
     """Set resource spending limits
 
      Replaces the spending limits of the resource's usage-based components at once, with no order or
@@ -66,14 +68,14 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
-        body (ResourceSpendingLimitsRequest):
+        body (SetResourceSpendingLimitsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceSpendingLimits]
+        Response[SetResourceSpendingLimits]
     """
 
     kwargs = _get_kwargs(
@@ -92,8 +94,8 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceSpendingLimitsRequest,
-) -> ResourceSpendingLimits:
+    body: SetResourceSpendingLimitsRequest,
+) -> SetResourceSpendingLimits:
     """Set resource spending limits
 
      Replaces the spending limits of the resource's usage-based components at once, with no order or
@@ -102,14 +104,14 @@ def sync(
 
     Args:
         uuid (UUID):
-        body (ResourceSpendingLimitsRequest):
+        body (SetResourceSpendingLimitsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceSpendingLimits
+        SetResourceSpendingLimits
     """
 
     return sync_detailed(
@@ -123,8 +125,8 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceSpendingLimitsRequest,
-) -> Response[ResourceSpendingLimits]:
+    body: SetResourceSpendingLimitsRequest,
+) -> Response[SetResourceSpendingLimits]:
     """Set resource spending limits
 
      Replaces the spending limits of the resource's usage-based components at once, with no order or
@@ -133,14 +135,14 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
-        body (ResourceSpendingLimitsRequest):
+        body (SetResourceSpendingLimitsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ResourceSpendingLimits]
+        Response[SetResourceSpendingLimits]
     """
 
     kwargs = _get_kwargs(
@@ -157,8 +159,8 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: ResourceSpendingLimitsRequest,
-) -> ResourceSpendingLimits:
+    body: SetResourceSpendingLimitsRequest,
+) -> SetResourceSpendingLimits:
     """Set resource spending limits
 
      Replaces the spending limits of the resource's usage-based components at once, with no order or
@@ -167,14 +169,14 @@ async def asyncio(
 
     Args:
         uuid (UUID):
-        body (ResourceSpendingLimitsRequest):
+        body (SetResourceSpendingLimitsRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ResourceSpendingLimits
+        SetResourceSpendingLimits
     """
 
     return (

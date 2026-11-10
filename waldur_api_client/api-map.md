@@ -743,6 +743,11 @@ Module: `waldur_api_client.api.debug`
 - `debug_pubsub_queues_retrieve` GET `/api/debug/pubsub/queues/` — Get subscription queues overview (no params)
 - `debug_pubsub_queues_count` HEAD `/api/debug/pubsub/queues/` — Get subscription queues overview (no params)
 
+## demo-preset-status
+Module: `waldur_api_client.api.demo_preset_status`
+
+- `demo_preset_status_retrieve` GET `/api/demo-preset-status/` — Demo preset load status (no params)
+
 ## digitalocean-droplets
 Module: `waldur_api_client.api.digitalocean_droplets`
 
@@ -1884,6 +1889,7 @@ Module: `waldur_api_client.api.marketplace_provider_resources`
 - `marketplace_provider_resources_move_resource` POST `/api/marketplace-provider-resources/{uuid}/move_resource/` — Move a resource to another project (path: uuid | request body)
 - `marketplace_provider_resources_offering_retrieve` GET `/api/marketplace-provider-resources/{uuid}/offering/` — Get offering details (path: uuid | 1 query param)
 - `marketplace_provider_resources_offering_for_subresources_list` GET `/api/marketplace-provider-resources/{uuid}/offering_for_subresources/` — List offerings for sub-resources (path: uuid)
+- `marketplace_provider_resources_order_period_usage_list` GET `/api/marketplace-provider-resources/{uuid}/order_period_usage/` — Get usage for the whole order period (path: uuid)
 - `marketplace_provider_resources_plan_periods_list` GET `/api/marketplace-provider-resources/{uuid}/plan_periods/` — List resource plan periods (path: uuid)
 - `marketplace_provider_resources_pull` POST `/api/marketplace-provider-resources/{uuid}/pull/` — Pull resource data (path: uuid)
 - `marketplace_provider_resources_refresh_last_sync` POST `/api/marketplace-provider-resources/{uuid}/refresh_last_sync/` — Refresh last sync time (path: uuid)
@@ -2043,6 +2049,7 @@ Module: `waldur_api_client.api.marketplace_resources`
 - `marketplace_resources_move_resource` POST `/api/marketplace-resources/{uuid}/move_resource/` — Move a resource to another project (path: uuid | request body)
 - `marketplace_resources_offering_retrieve` GET `/api/marketplace-resources/{uuid}/offering/` — Get offering details (path: uuid | 1 query param)
 - `marketplace_resources_offering_for_subresources_list` GET `/api/marketplace-resources/{uuid}/offering_for_subresources/` — List offerings for sub-resources (path: uuid)
+- `marketplace_resources_order_period_usage_list` GET `/api/marketplace-resources/{uuid}/order_period_usage/` — Get usage for the whole order period (path: uuid)
 - `marketplace_resources_plan_periods_list` GET `/api/marketplace-resources/{uuid}/plan_periods/` — List resource plan periods (path: uuid)
 - `marketplace_resources_pull` POST `/api/marketplace-resources/{uuid}/pull/` — Pull resource data (path: uuid)
 - `marketplace_resources_reallocate_limits` POST `/api/marketplace-resources/{uuid}/reallocate_limits/` — Reallocate resource limits (path: uuid | request body)
@@ -2535,6 +2542,12 @@ Module: `waldur_api_client.api.notification_messages_templates`
 - `notification_messages_templates_partial_update` PATCH `/api/notification-messages-templates/{uuid}/` (path: uuid | request body)
 - `notification_messages_templates_destroy` DELETE `/api/notification-messages-templates/{uuid}/` (path: uuid)
 - `notification_messages_templates_override` POST `/api/notification-messages-templates/{uuid}/override/` — Override notification template content (path: uuid | request body)
+
+## oauth
+Module: `waldur_api_client.api.oauth`
+
+- `oauth_consent_retrieve` GET `/api/oauth/consent/` — Describe the client asking for access, for the consent page (8 query params)
+- `oauth_consent` POST `/api/oauth/consent/` — Record the user's decision and return where to send the browser (request body)
 
 ## onboarding
 Module: `waldur_api_client.api.onboarding`

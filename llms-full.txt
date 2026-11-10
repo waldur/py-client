@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-dev.20261109191941
+# Version: 8.1.4-dev.20261110191534
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -4178,6 +4178,15 @@ Summary: Get subscription queues overview
 Description: Get number of items in the collection matching the request parameters.
 
 ============================================================
+## demo-preset-status  (module: waldur_api_client.api.demo_preset_status)
+============================================================
+
+### demo_preset_status_retrieve
+GET /api/demo-preset-status/
+Summary: Demo preset load status
+Description: Reports whether a demo preset is loading and the latest load. Once that load is done, lists the preset's users without a staff or support role, with their passwords for quick login. Public; answers 404 unless the deployment enables demo presets.
+
+============================================================
 ## digitalocean-droplets  (module: waldur_api_client.api.digitalocean_droplets)
 ============================================================
 
@@ -7251,7 +7260,7 @@ Description: Get number of items in the collection matching the request paramete
 ### marketplace_demo_presets_load
 POST /api/marketplace-demo-presets/load/{name}/
 Summary: Load demo preset
-Description: Load a demo preset into the database. This operation will optionally clean up existing data before loading. Staff access only.
+Description: Load a demo preset into the database. A load runs in the background and answers 202 with the load; follow it with /api/demo-preset-status/. While it runs the rest of the API answers 503. A load with cleanup first drops every task queued for the workers. A dry run is answered directly with its out...
 Path parameters:
   - name — Name of the preset to load
 Request body: yes
@@ -9155,7 +9164,7 @@ Path parameters:
 ### marketplace_plans_update
 PUT /api/marketplace-plans/{uuid}/
 Summary: Update a provider plan
-Description: Updates an existing plan. Note: A plan cannot be updated if it is already used by resources.
+Description: Updates an existing plan. Note: while resources use the plan, its unit and billing mode cannot be changed; prices change through update_prices.
 Path parameters:
   - uuid
 Request body: yes
@@ -9163,7 +9172,7 @@ Request body: yes
 ### marketplace_plans_partial_update
 PATCH /api/marketplace-plans/{uuid}/
 Summary: Partially update a provider plan
-Description: Partially updates an existing plan. Note: A plan cannot be updated if it is already used by resources.
+Description: Partially updates an existing plan. Note: while resources use the plan, its unit and billing mode cannot be changed; prices change through update_prices.
 Path parameters:
   - uuid
 Request body: yes
@@ -11495,6 +11504,13 @@ Description: Returns a list of offerings that can be provisioned as sub-resource
 Path parameters:
   - uuid
 
+### marketplace_provider_resources_order_period_usage_list
+GET /api/marketplace-provider-resources/{uuid}/order_period_usage/
+Summary: Get usage for the whole order period
+Description: Returns the usage of each limit-based, non-prepaid component with a monthly limit period, summed since the resource was created, counting each billing period with its highest reported usage. Available when the offering has show_order_period_totals enabled. Not shown to users who see the resource ...
+Path parameters:
+  - uuid
+
 ### marketplace_provider_resources_plan_periods_list
 GET /api/marketplace-provider-resources/{uuid}/plan_periods/
 Summary: List resource plan periods
@@ -12752,6 +12768,13 @@ Query parameters (1):
 GET /api/marketplace-resources/{uuid}/offering_for_subresources/
 Summary: List offerings for sub-resources
 Description: Returns a list of offerings that can be provisioned as sub-resources of the current resource.
+Path parameters:
+  - uuid
+
+### marketplace_resources_order_period_usage_list
+GET /api/marketplace-resources/{uuid}/order_period_usage/
+Summary: Get usage for the whole order period
+Description: Returns the usage of each limit-based, non-prepaid component with a monthly limit period, summed since the resource was created, counting each billing period with its highest reported usage. Available when the offering has show_order_period_totals enabled. Not shown to users who see the resource ...
 Path parameters:
   - uuid
 
@@ -16286,6 +16309,30 @@ POST /api/notification-messages-templates/{uuid}/override/
 Summary: Override notification template content
 Path parameters:
   - uuid
+Request body: yes
+
+============================================================
+## oauth  (module: waldur_api_client.api.oauth)
+============================================================
+
+### oauth_consent_retrieve
+GET /api/oauth/consent/
+Summary: Describe the client asking for access, for the consent page
+Description: Describe the client asking for access, for the consent page.
+Query parameters (8):
+  - client_id (required)
+  - code_challenge (required)
+  - code_challenge_method (required)
+  - redirect_uri
+  - resource
+  - response_type (required)
+  - scope
+  - state
+
+### oauth_consent
+POST /api/oauth/consent/
+Summary: Record the user's decision and return where to send the browser
+Description: Record the user's decision and return where to send the browser.
 Request body: yes
 
 ============================================================
@@ -21847,7 +21894,7 @@ Request body: yes
 ### proposal_proposals_awarded_resources_list
 GET /api/proposal-proposals/{uuid}/awarded_resources/
 Summary: List what the allocation decision awards the proposal
-Description: List what the allocation decision awards the proposal. Staff, support, the call's managers and organizers, and the managers of the offerings involved see it at any time; the applicant team once the decision is released.
+Description: List what the allocation decision awards the proposal. Staff, support, the call's managers and organizers, and the managers of the offerings involved (their own offerings' items) see it at any time; the applicant team once the decision is released; a results reader of the managing organization (C...
 Path parameters:
   - uuid
 

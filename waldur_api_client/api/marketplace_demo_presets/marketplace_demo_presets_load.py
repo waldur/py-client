@@ -5,6 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.demo_preset_load_job import DemoPresetLoadJob
 from ...models.demo_preset_load_request_request import DemoPresetLoadRequestRequest
 from ...models.demo_preset_load_response import DemoPresetLoadResponse
 from ...types import Response
@@ -32,25 +33,35 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Union[Any, DemoPresetLoadResponse]:
+) -> Union[Any, DemoPresetLoadJob, DemoPresetLoadResponse]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
         response_200 = DemoPresetLoadResponse.from_dict(response.json())
 
         return response_200
+    if response.status_code == 202:
+        response_202 = DemoPresetLoadJob.from_dict(response.json())
+
+        return response_202
     if response.status_code == 400:
         response_400 = cast(Any, None)
         return response_400
     if response.status_code == 404:
         response_404 = cast(Any, None)
         return response_404
+    if response.status_code == 409:
+        response_409 = cast(Any, None)
+        return response_409
+    if response.status_code == 503:
+        response_503 = cast(Any, None)
+        return response_503
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, DemoPresetLoadResponse]]:
+) -> Response[Union[Any, DemoPresetLoadJob, DemoPresetLoadResponse]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -64,11 +75,14 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: DemoPresetLoadRequestRequest,
-) -> Response[Union[Any, DemoPresetLoadResponse]]:
+) -> Response[Union[Any, DemoPresetLoadJob, DemoPresetLoadResponse]]:
     """Load demo preset
 
-     Load a demo preset into the database. This operation will optionally clean up existing data before
-    loading. Staff access only.
+     Load a demo preset into the database. A load runs in the background and answers 202 with the load;
+    follow it with /api/demo-preset-status/. While it runs the rest of the API answers 503. A load with
+    cleanup first drops every task queued for the workers. A dry run is answered directly with its
+    output. Answers 409 while another load runs, and 503 if the task queue cannot be reached. Staff
+    access only.
 
     Args:
         name (str):
@@ -79,7 +93,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, DemoPresetLoadResponse]]
+        Response[Union[Any, DemoPresetLoadJob, DemoPresetLoadResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -99,11 +113,14 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: DemoPresetLoadRequestRequest,
-) -> Union[Any, DemoPresetLoadResponse]:
+) -> Union[Any, DemoPresetLoadJob, DemoPresetLoadResponse]:
     """Load demo preset
 
-     Load a demo preset into the database. This operation will optionally clean up existing data before
-    loading. Staff access only.
+     Load a demo preset into the database. A load runs in the background and answers 202 with the load;
+    follow it with /api/demo-preset-status/. While it runs the rest of the API answers 503. A load with
+    cleanup first drops every task queued for the workers. A dry run is answered directly with its
+    output. Answers 409 while another load runs, and 503 if the task queue cannot be reached. Staff
+    access only.
 
     Args:
         name (str):
@@ -114,7 +131,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, DemoPresetLoadResponse]
+        Union[Any, DemoPresetLoadJob, DemoPresetLoadResponse]
     """
 
     return sync_detailed(
@@ -129,11 +146,14 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: DemoPresetLoadRequestRequest,
-) -> Response[Union[Any, DemoPresetLoadResponse]]:
+) -> Response[Union[Any, DemoPresetLoadJob, DemoPresetLoadResponse]]:
     """Load demo preset
 
-     Load a demo preset into the database. This operation will optionally clean up existing data before
-    loading. Staff access only.
+     Load a demo preset into the database. A load runs in the background and answers 202 with the load;
+    follow it with /api/demo-preset-status/. While it runs the rest of the API answers 503. A load with
+    cleanup first drops every task queued for the workers. A dry run is answered directly with its
+    output. Answers 409 while another load runs, and 503 if the task queue cannot be reached. Staff
+    access only.
 
     Args:
         name (str):
@@ -144,7 +164,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, DemoPresetLoadResponse]]
+        Response[Union[Any, DemoPresetLoadJob, DemoPresetLoadResponse]]
     """
 
     kwargs = _get_kwargs(
@@ -162,11 +182,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: DemoPresetLoadRequestRequest,
-) -> Union[Any, DemoPresetLoadResponse]:
+) -> Union[Any, DemoPresetLoadJob, DemoPresetLoadResponse]:
     """Load demo preset
 
-     Load a demo preset into the database. This operation will optionally clean up existing data before
-    loading. Staff access only.
+     Load a demo preset into the database. A load runs in the background and answers 202 with the load;
+    follow it with /api/demo-preset-status/. While it runs the rest of the API answers 503. A load with
+    cleanup first drops every task queued for the workers. A dry run is answered directly with its
+    output. Answers 409 while another load runs, and 503 if the task queue cannot be reached. Staff
+    access only.
 
     Args:
         name (str):
@@ -177,7 +200,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, DemoPresetLoadResponse]
+        Union[Any, DemoPresetLoadJob, DemoPresetLoadResponse]
     """
 
     return (

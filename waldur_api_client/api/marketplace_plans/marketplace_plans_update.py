@@ -60,7 +60,8 @@ def sync_detailed(
 ) -> Response[ProviderPlanDetails]:
     """Update a provider plan
 
-     Updates an existing plan. Note: A plan cannot be updated if it is already used by resources.
+     Updates an existing plan. Note: while resources use the plan, its unit and billing mode cannot be
+    changed; prices change through update_prices.
 
     Args:
         uuid (UUID):
@@ -94,7 +95,8 @@ def sync(
 ) -> ProviderPlanDetails:
     """Update a provider plan
 
-     Updates an existing plan. Note: A plan cannot be updated if it is already used by resources.
+     Updates an existing plan. Note: while resources use the plan, its unit and billing mode cannot be
+    changed; prices change through update_prices.
 
     Args:
         uuid (UUID):
@@ -123,7 +125,8 @@ async def asyncio_detailed(
 ) -> Response[ProviderPlanDetails]:
     """Update a provider plan
 
-     Updates an existing plan. Note: A plan cannot be updated if it is already used by resources.
+     Updates an existing plan. Note: while resources use the plan, its unit and billing mode cannot be
+    changed; prices change through update_prices.
 
     Args:
         uuid (UUID):
@@ -155,7 +158,8 @@ async def asyncio(
 ) -> ProviderPlanDetails:
     """Update a provider plan
 
-     Updates an existing plan. Note: A plan cannot be updated if it is already used by resources.
+     Updates an existing plan. Note: while resources use the plan, its unit and billing mode cannot be
+    changed; prices change through update_prices.
 
     Args:
         uuid (UUID):
