@@ -24,6 +24,17 @@ stages:
 Fetch OpenAPI schema:
   extends: .fetch-openapi-schema
 
+# GitLab unpacks artifacts over the job's checkout, which still holds the client
+# committed last time. A module the generator no longer writes (a removed
+# endpoint or model) therefore survived into both the nightly commit and the
+# wheel: since this pipeline moved to GitLab CI, no generated file has ever been
+# deleted, and 8.1.4 still shipped the Azure modules two months after the API
+# dropped them. The client travels as generated/waldur_api_client instead, and
+# each job that commits or packages it replaces the checkout's copy with it.
+.use generated client: &use_generated_client
+  - rm -rf waldur_api_client
+  - mv generated/waldur_api_client waldur_api_client
+
 Build Python SDK:
   stage: test
   image: registry.hpc.ut.ee/mirror/library/python:3.13-bookworm
@@ -37,21 +48,22 @@ Build Python SDK:
   script:
     - pip install uv
     - uv pip install --system git+https://github.com/waldur/openapi-python-client.git pyyaml
-    - rm -rf gen-client waldur_api_client
+    - rm -rf gen-client generated
     - openapi-python-client generate --path waldur-openapi-schema.yaml --output-path gen-client --overwrite --meta poetry
     - python scripts/generate_llm_docs.py waldur-openapi-schema.yaml gen-client/
-    - cp -a gen-client/waldur_api_client waldur_api_client
+    - mkdir generated
+    - cp -a gen-client/waldur_api_client generated/waldur_api_client
     - cp gen-client/llms.txt llms.txt
     - cp gen-client/llms-full.txt llms-full.txt
     - cp gen-client/api-map.md api-map.md
     # The packaged copies are the ones shipped to PyPI via pyproject.toml `include`.
-    - cp gen-client/llms.txt gen-client/llms-full.txt gen-client/api-map.md waldur_api_client/
+    - cp gen-client/llms.txt gen-client/llms-full.txt gen-client/api-map.md generated/waldur_api_client/
     - rm -rf gen-client
     - echo "Compiling generated Python module..."
-    - python -m py_compile $(find waldur_api_client -name "*.py")
+    - python -m py_compile $(find generated/waldur_api_client -name "*.py")
   artifacts:
     paths:
-      - waldur_api_client/
+      - generated/waldur_api_client/
       - llms.txt
       - llms-full.txt
       - api-map.md
@@ -75,7 +87,7 @@ Verify generated client:
     - job: Build Python SDK
       artifacts: true
   variables:
-    GENERATED_DIR: "waldur_api_client"
+    GENERATED_DIR: "generated/waldur_api_client"
 
 Release Python SDK:
   stage: release
@@ -96,15 +108,17 @@ Release Python SDK:
     # Authenticate origin with token for pushing back commits & tags
     - git remote set-url origin "https://gitlab-ci-token:${GITLAB_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git"
   script:
+    - *use_generated_client
+    # -A stages the modules the generator stopped writing as deletions.
     - |
       if [ -n "$RELEASE_VERSION" ]; then
         sed -i 's/^version = "[^"]*"/version = "'$RELEASE_VERSION'"/' pyproject.toml
-        git add pyproject.toml waldur_api_client llms.txt llms-full.txt api-map.md
+        git add -A pyproject.toml waldur_api_client llms.txt llms-full.txt api-map.md
         git diff --cached --quiet && echo "py-client version already set" || git commit -m "Release: bump version and update code to $RELEASE_VERSION"
         git tag -a $RELEASE_VERSION -m "Release version $RELEASE_VERSION" || echo "Tag $RELEASE_VERSION already exists"
         git push origin $RELEASE_VERSION || echo "Tag $RELEASE_VERSION already pushed"
       else
-        git add waldur_api_client llms.txt llms-full.txt api-map.md
+        git add -A waldur_api_client llms.txt llms-full.txt api-map.md
         git diff --cached --quiet && echo "No changes" || git commit -m "chore: nightly update of Waldur Python SDK"
       fi
     - git push origin HEAD:main || echo "main branch already up to date"
@@ -120,6 +134,7 @@ Publish Dev to PyPI:
     - job: Build Python SDK
       artifacts: true
   script:
+    - *use_generated_client
     - pip install uv
     - uv pip install --system poetry
     - |
@@ -164,6 +179,7 @@ Publish Release to PyPI:
     - job: Verify generated client
       artifacts: false
   script:
+    - *use_generated_client
     - pip install uv
     - uv pip install --system poetry
     - poetry version "$RELEASE_VERSION"
