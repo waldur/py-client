@@ -41,6 +41,7 @@ class ProtectedCallFieldEnum(str, Enum):
     PANEL_VICE_CHAIR = "panel_vice_chair"
     PANEL_VICE_CHAIR_NAME = "panel_vice_chair_name"
     PANEL_VICE_CHAIR_UUID = "panel_vice_chair_uuid"
+    PROJECT_NAME_TEMPLATE = "project_name_template"
     PROPOSAL_FIELD_CONFIG = "proposal_field_config"
     PROPOSAL_FIELD_METADATA = "proposal_field_metadata"
     PROPOSAL_SLUG_TEMPLATE = "proposal_slug_template"

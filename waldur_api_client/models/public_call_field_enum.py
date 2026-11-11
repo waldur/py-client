@@ -21,6 +21,7 @@ class PublicCallFieldEnum(str, Enum):
     MAX_PREPAID_DURATION_MONTHS = "max_prepaid_duration_months"
     NAME = "name"
     OFFERINGS = "offerings"
+    PROJECT_NAME_TEMPLATE = "project_name_template"
     PROPOSAL_FIELD_CONFIG = "proposal_field_config"
     PUBLISH_RESULTS = "publish_results"
     RESOURCE_TEMPLATES = "resource_templates"

@@ -67,6 +67,9 @@ class PublicCall:
         evaluation_start (Union[Unset, EvaluationStartEnum]):
         publish_results (Union[Unset, PublishResultsEnum]):
         resource_template_selection_mode (Union[Unset, ResourceTemplateSelectionModeEnum]):
+        project_name_template (Union[None, Unset, str]): Name given to the project an accepted proposal creates.
+            Placeholders: {proposal_name}, {proposal_slug}, {call_prefix}, {call_slug}, {call_name}, {round_start},
+            {round_slug}, {org_slug}, {year}. Empty means {call_prefix} - {round_start} - {proposal_name}.
     """
 
     url: Union[Unset, str] = UNSET
@@ -100,6 +103,7 @@ class PublicCall:
     evaluation_start: Union[Unset, EvaluationStartEnum] = UNSET
     publish_results: Union[Unset, PublishResultsEnum] = UNSET
     resource_template_selection_mode: Union[Unset, ResourceTemplateSelectionModeEnum] = UNSET
+    project_name_template: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -234,6 +238,12 @@ class PublicCall:
         if not isinstance(self.resource_template_selection_mode, Unset):
             resource_template_selection_mode = self.resource_template_selection_mode.value
 
+        project_name_template: Union[None, Unset, str]
+        if isinstance(self.project_name_template, Unset):
+            project_name_template = UNSET
+        else:
+            project_name_template = self.project_name_template
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -299,6 +309,8 @@ class PublicCall:
             field_dict["publish_results"] = publish_results
         if resource_template_selection_mode is not UNSET:
             field_dict["resource_template_selection_mode"] = resource_template_selection_mode
+        if project_name_template is not UNSET:
+            field_dict["project_name_template"] = project_name_template
 
         return field_dict
 
@@ -492,6 +504,15 @@ class PublicCall:
         else:
             resource_template_selection_mode = ResourceTemplateSelectionModeEnum(_resource_template_selection_mode)
 
+        def _parse_project_name_template(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        project_name_template = _parse_project_name_template(d.pop("project_name_template", UNSET))
+
         public_call = cls(
             url=url,
             uuid=uuid,
@@ -524,6 +545,7 @@ class PublicCall:
             evaluation_start=evaluation_start,
             publish_results=publish_results,
             resource_template_selection_mode=resource_template_selection_mode,
+            project_name_template=project_name_template,
         )
 
         public_call.additional_properties = d

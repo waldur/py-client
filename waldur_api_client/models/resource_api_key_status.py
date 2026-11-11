@@ -15,6 +15,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.resource_api_key_status_current_usages_type_0 import ResourceApiKeyStatusCurrentUsagesType0
     from ..models.resource_api_key_status_limits_type_0 import ResourceApiKeyStatusLimitsType0
+    from ..models.resource_api_key_status_resource_spending_limits import ResourceApiKeyStatusResourceSpendingLimits
     from ..models.resource_api_key_status_spending_limits_type_0 import ResourceApiKeyStatusSpendingLimitsType0
     from ..models.spending_limit_usage import SpendingLimitUsage
 
@@ -28,7 +29,17 @@ class ResourceApiKeyStatus:
     Attributes:
         uuid (UUID):
         resource_uuid (UUID):
+        resource_name (str):
         resource_backend_id (str):
+        offering_uuid (UUID):
+        offering_name (str):
+        customer_uuid (UUID): The consuming organization.
+        customer_name (str): The consuming organization.
+        project_uuid (UUID):
+        project_name (str):
+        resource_plan_uuid (Union[None, UUID]):
+        resource_spending_limits (ResourceApiKeyStatusResourceSpendingLimits): The resource's spending limits, per
+            component and period, which cap every key of the resource.
         pending_action (Union[BlankEnum, ResourceApiKeyAction]):
         modified (datetime.datetime):
         user_uuid (Union[None, UUID]):
@@ -42,6 +53,8 @@ class ResourceApiKeyStatus:
             list. The site agent applies this one.
         current_usages (Union['ResourceApiKeyStatusCurrentUsagesType0', None]):
         usage_period (Union[None, datetime.date]):
+        estimated_cost (Union[None, str]): What the key's usage this month costs at the unit prices of the resource's
+            plan, without discounts or credits. Zero until the first usage report of the month; recomputed on every report.
         paused_by_limit (Union[None, bool]): Waldur paused the key because its usage reached a limit. Such a key is
             resumed automatically once its usage is under its limits again: when the period of the limit resets, or when a
             limit is raised. A total limit never resets, so only raising or clearing it does.
@@ -58,7 +71,16 @@ class ResourceApiKeyStatus:
 
     uuid: UUID
     resource_uuid: UUID
+    resource_name: str
     resource_backend_id: str
+    offering_uuid: UUID
+    offering_name: str
+    customer_uuid: UUID
+    customer_name: str
+    project_uuid: UUID
+    project_name: str
+    resource_plan_uuid: Union[None, UUID]
+    resource_spending_limits: "ResourceApiKeyStatusResourceSpendingLimits"
     pending_action: Union[BlankEnum, ResourceApiKeyAction]
     modified: datetime.datetime
     user_uuid: Union[None, UUID]
@@ -70,6 +92,7 @@ class ResourceApiKeyStatus:
     effective_models: Union[None, list[str]]
     current_usages: Union["ResourceApiKeyStatusCurrentUsagesType0", None]
     usage_period: Union[None, datetime.date]
+    estimated_cost: Union[None, str]
     paused_by_limit: Union[None, bool]
     limit_resumes_at: Union[None, datetime.datetime]
     client_id: Union[Unset, str] = UNSET
@@ -88,7 +111,29 @@ class ResourceApiKeyStatus:
 
         resource_uuid = str(self.resource_uuid)
 
+        resource_name = self.resource_name
+
         resource_backend_id = self.resource_backend_id
+
+        offering_uuid = str(self.offering_uuid)
+
+        offering_name = self.offering_name
+
+        customer_uuid = str(self.customer_uuid)
+
+        customer_name = self.customer_name
+
+        project_uuid = str(self.project_uuid)
+
+        project_name = self.project_name
+
+        resource_plan_uuid: Union[None, str]
+        if isinstance(self.resource_plan_uuid, UUID):
+            resource_plan_uuid = str(self.resource_plan_uuid)
+        else:
+            resource_plan_uuid = self.resource_plan_uuid
+
+        resource_spending_limits = self.resource_spending_limits.to_dict()
 
         pending_action: str
         if isinstance(self.pending_action, ResourceApiKeyAction):
@@ -155,6 +200,9 @@ class ResourceApiKeyStatus:
         else:
             usage_period = self.usage_period
 
+        estimated_cost: Union[None, str]
+        estimated_cost = self.estimated_cost
+
         paused_by_limit: Union[None, bool]
         paused_by_limit = self.paused_by_limit
 
@@ -188,7 +236,16 @@ class ResourceApiKeyStatus:
             {
                 "uuid": uuid,
                 "resource_uuid": resource_uuid,
+                "resource_name": resource_name,
                 "resource_backend_id": resource_backend_id,
+                "offering_uuid": offering_uuid,
+                "offering_name": offering_name,
+                "customer_uuid": customer_uuid,
+                "customer_name": customer_name,
+                "project_uuid": project_uuid,
+                "project_name": project_name,
+                "resource_plan_uuid": resource_plan_uuid,
+                "resource_spending_limits": resource_spending_limits,
                 "pending_action": pending_action,
                 "modified": modified,
                 "user_uuid": user_uuid,
@@ -200,6 +257,7 @@ class ResourceApiKeyStatus:
                 "effective_models": effective_models,
                 "current_usages": current_usages,
                 "usage_period": usage_period,
+                "estimated_cost": estimated_cost,
                 "paused_by_limit": paused_by_limit,
                 "limit_resumes_at": limit_resumes_at,
             }
@@ -221,6 +279,7 @@ class ResourceApiKeyStatus:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.resource_api_key_status_current_usages_type_0 import ResourceApiKeyStatusCurrentUsagesType0
         from ..models.resource_api_key_status_limits_type_0 import ResourceApiKeyStatusLimitsType0
+        from ..models.resource_api_key_status_resource_spending_limits import ResourceApiKeyStatusResourceSpendingLimits
         from ..models.resource_api_key_status_spending_limits_type_0 import ResourceApiKeyStatusSpendingLimitsType0
         from ..models.spending_limit_usage import SpendingLimitUsage
 
@@ -229,7 +288,40 @@ class ResourceApiKeyStatus:
 
         resource_uuid = UUID(d.pop("resource_uuid"))
 
+        resource_name = d.pop("resource_name")
+
         resource_backend_id = d.pop("resource_backend_id")
+
+        offering_uuid = UUID(d.pop("offering_uuid"))
+
+        offering_name = d.pop("offering_name")
+
+        customer_uuid = UUID(d.pop("customer_uuid"))
+
+        customer_name = d.pop("customer_name")
+
+        project_uuid = UUID(d.pop("project_uuid"))
+
+        project_name = d.pop("project_name")
+
+        def _parse_resource_plan_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                resource_plan_uuid_type_0 = UUID(data)
+
+                return resource_plan_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        resource_plan_uuid = _parse_resource_plan_uuid(d.pop("resource_plan_uuid"))
+
+        resource_spending_limits = ResourceApiKeyStatusResourceSpendingLimits.from_dict(
+            d.pop("resource_spending_limits")
+        )
 
         def _parse_pending_action(data: object) -> Union[BlankEnum, ResourceApiKeyAction]:
             try:
@@ -384,6 +476,13 @@ class ResourceApiKeyStatus:
 
         usage_period = _parse_usage_period(d.pop("usage_period"))
 
+        def _parse_estimated_cost(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        estimated_cost = _parse_estimated_cost(d.pop("estimated_cost"))
+
         def _parse_paused_by_limit(data: object) -> Union[None, bool]:
             if data is None:
                 return data
@@ -439,7 +538,16 @@ class ResourceApiKeyStatus:
         resource_api_key_status = cls(
             uuid=uuid,
             resource_uuid=resource_uuid,
+            resource_name=resource_name,
             resource_backend_id=resource_backend_id,
+            offering_uuid=offering_uuid,
+            offering_name=offering_name,
+            customer_uuid=customer_uuid,
+            customer_name=customer_name,
+            project_uuid=project_uuid,
+            project_name=project_name,
+            resource_plan_uuid=resource_plan_uuid,
+            resource_spending_limits=resource_spending_limits,
             pending_action=pending_action,
             modified=modified,
             user_uuid=user_uuid,
@@ -451,6 +559,7 @@ class ResourceApiKeyStatus:
             effective_models=effective_models,
             current_usages=current_usages,
             usage_period=usage_period,
+            estimated_cost=estimated_cost,
             paused_by_limit=paused_by_limit,
             limit_resumes_at=limit_resumes_at,
             client_id=client_id,

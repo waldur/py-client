@@ -21,6 +21,7 @@ if TYPE_CHECKING:
     from ..models.offering_component import OfferingComponent
     from ..models.order_details import OrderDetails
     from ..models.report_section import ReportSection
+    from ..models.resource_api_key_counts import ResourceApiKeyCounts
     from ..models.resource_attributes import ResourceAttributes
     from ..models.resource_current_usages import ResourceCurrentUsages
     from ..models.resource_display_limits import ResourceDisplayLimits
@@ -158,6 +159,8 @@ class Resource:
         offering_components (Union[Unset, list['OfferingComponent']]):
         has_api_keys (Union[Unset, bool]): Whether the resource owns any API keys, so the portal can offer key
             management without knowing which backend serves the resource.
+        api_key_counts (Union[Unset, ResourceApiKeyCounts]): How many keys the resource has in each state, deleted ones
+            left out, as {state: count}. States with no keys are absent.
         offering_account_settings (Union[Unset, OfferingAccountSettings]):
         display_limits (Union[Unset, ResourceDisplayLimits]): Resource option values shown as the limits of usage-based
             components. Display only: not stored in limits, billed or enforced.
@@ -255,6 +258,7 @@ class Resource:
     offering_state: Union[Unset, OfferingState] = UNSET
     offering_components: Union[Unset, list["OfferingComponent"]] = UNSET
     has_api_keys: Union[Unset, bool] = UNSET
+    api_key_counts: Union[Unset, "ResourceApiKeyCounts"] = UNSET
     offering_account_settings: Union[Unset, "OfferingAccountSettings"] = UNSET
     display_limits: Union[Unset, "ResourceDisplayLimits"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -634,6 +638,10 @@ class Resource:
 
         has_api_keys = self.has_api_keys
 
+        api_key_counts: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.api_key_counts, Unset):
+            api_key_counts = self.api_key_counts.to_dict()
+
         offering_account_settings: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.offering_account_settings, Unset):
             offering_account_settings = self.offering_account_settings.to_dict()
@@ -829,6 +837,8 @@ class Resource:
             field_dict["offering_components"] = offering_components
         if has_api_keys is not UNSET:
             field_dict["has_api_keys"] = has_api_keys
+        if api_key_counts is not UNSET:
+            field_dict["api_key_counts"] = api_key_counts
         if offering_account_settings is not UNSET:
             field_dict["offering_account_settings"] = offering_account_settings
         if display_limits is not UNSET:
@@ -844,6 +854,7 @@ class Resource:
         from ..models.offering_component import OfferingComponent
         from ..models.order_details import OrderDetails
         from ..models.report_section import ReportSection
+        from ..models.resource_api_key_counts import ResourceApiKeyCounts
         from ..models.resource_attributes import ResourceAttributes
         from ..models.resource_current_usages import ResourceCurrentUsages
         from ..models.resource_display_limits import ResourceDisplayLimits
@@ -1451,6 +1462,13 @@ class Resource:
 
         has_api_keys = d.pop("has_api_keys", UNSET)
 
+        _api_key_counts = d.pop("api_key_counts", UNSET)
+        api_key_counts: Union[Unset, ResourceApiKeyCounts]
+        if isinstance(_api_key_counts, Unset):
+            api_key_counts = UNSET
+        else:
+            api_key_counts = ResourceApiKeyCounts.from_dict(_api_key_counts)
+
         _offering_account_settings = d.pop("offering_account_settings", UNSET)
         offering_account_settings: Union[Unset, OfferingAccountSettings]
         if isinstance(_offering_account_settings, Unset):
@@ -1558,6 +1576,7 @@ class Resource:
             offering_state=offering_state,
             offering_components=offering_components,
             has_api_keys=has_api_keys,
+            api_key_counts=api_key_counts,
             offering_account_settings=offering_account_settings,
             display_limits=display_limits,
         )

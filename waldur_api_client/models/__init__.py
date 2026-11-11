@@ -220,6 +220,7 @@ from .auth_token import AuthToken
 from .auth_token_challenge import AuthTokenChallenge
 from .auth_type_enum import AuthTypeEnum
 from .authorized_via_enum import AuthorizedViaEnum
+from .automatic_decision_guard_enum import AutomaticDecisionGuardEnum
 from .availability_zone_response import AvailabilityZoneResponse
 from .available_arrow_customers_response import AvailableArrowCustomersResponse
 from .available_binding_target import AvailableBindingTarget
@@ -294,6 +295,7 @@ from .blank_enum import BlankEnum
 from .booking import Booking
 from .booking_order_uuid import BookingOrderUUID
 from .booking_resource import BookingResource
+from .booking_resource_api_key_counts import BookingResourceApiKeyCounts
 from .booking_resource_attributes import BookingResourceAttributes
 from .booking_resource_current_usages import BookingResourceCurrentUsages
 from .booking_resource_display_limits import BookingResourceDisplayLimits
@@ -795,6 +797,20 @@ from .demo_preset_load_job import DemoPresetLoadJob
 from .demo_preset_load_job_state_enum import DemoPresetLoadJobStateEnum
 from .demo_preset_load_request_request import DemoPresetLoadRequestRequest
 from .demo_preset_load_response import DemoPresetLoadResponse
+from .demo_preset_preview import DemoPresetPreview
+from .demo_preset_preview_entity_counts import DemoPresetPreviewEntityCounts
+from .demo_preset_preview_feature_change import DemoPresetPreviewFeatureChange
+from .demo_preset_preview_feature_change_source_enum import DemoPresetPreviewFeatureChangeSourceEnum
+from .demo_preset_preview_offering_group import DemoPresetPreviewOfferingGroup
+from .demo_preset_preview_organization import DemoPresetPreviewOrganization
+from .demo_preset_preview_overlay_contents import DemoPresetPreviewOverlayContents
+from .demo_preset_preview_project import DemoPresetPreviewProject
+from .demo_preset_preview_role import DemoPresetPreviewRole
+from .demo_preset_preview_setting_change import DemoPresetPreviewSettingChange
+from .demo_preset_preview_setting_change_current_value_type_0 import DemoPresetPreviewSettingChangeCurrentValueType0
+from .demo_preset_preview_setting_change_new_value_type_0 import DemoPresetPreviewSettingChangeNewValueType0
+from .demo_preset_preview_setting_change_source_enum import DemoPresetPreviewSettingChangeSourceEnum
+from .demo_preset_preview_user import DemoPresetPreviewUser
 from .demo_preset_status import DemoPresetStatus
 from .demo_preset_user import DemoPresetUser
 from .dependency_logic_operator_enum import DependencyLogicOperatorEnum
@@ -2910,6 +2926,7 @@ from .resolution_enum import ResolutionEnum
 from .resource import Resource
 from .resource_api_key import ResourceApiKey
 from .resource_api_key_action import ResourceApiKeyAction
+from .resource_api_key_counts import ResourceApiKeyCounts
 from .resource_api_key_create_request import ResourceApiKeyCreateRequest
 from .resource_api_key_create_request_limits_type_0 import ResourceApiKeyCreateRequestLimitsType0
 from .resource_api_key_create_request_spending_limits_type_0 import ResourceApiKeyCreateRequestSpendingLimitsType0
@@ -2919,6 +2936,10 @@ from .resource_api_key_create_request_spending_limits_type_0_additional_property
 from .resource_api_key_current_usages_type_0 import ResourceApiKeyCurrentUsagesType0
 from .resource_api_key_limits_type_0 import ResourceApiKeyLimitsType0
 from .resource_api_key_report_created_request import ResourceApiKeyReportCreatedRequest
+from .resource_api_key_resource_spending_limits import ResourceApiKeyResourceSpendingLimits
+from .resource_api_key_resource_spending_limits_additional_property_type_0 import (
+    ResourceApiKeyResourceSpendingLimitsAdditionalPropertyType0,
+)
 from .resource_api_key_set_erred_request import ResourceApiKeySetErredRequest
 from .resource_api_key_set_key_request import ResourceApiKeySetKeyRequest
 from .resource_api_key_spending_limits_type_0 import ResourceApiKeySpendingLimitsType0
@@ -2929,6 +2950,11 @@ from .resource_api_key_state import ResourceApiKeyState
 from .resource_api_key_status import ResourceApiKeyStatus
 from .resource_api_key_status_current_usages_type_0 import ResourceApiKeyStatusCurrentUsagesType0
 from .resource_api_key_status_limits_type_0 import ResourceApiKeyStatusLimitsType0
+from .resource_api_key_status_o_enum import ResourceApiKeyStatusOEnum
+from .resource_api_key_status_resource_spending_limits import ResourceApiKeyStatusResourceSpendingLimits
+from .resource_api_key_status_resource_spending_limits_additional_property_type_0 import (
+    ResourceApiKeyStatusResourceSpendingLimitsAdditionalPropertyType0,
+)
 from .resource_api_key_status_spending_limits_type_0 import ResourceApiKeyStatusSpendingLimitsType0
 from .resource_api_key_status_spending_limits_type_0_additional_property_type_0 import (
     ResourceApiKeyStatusSpendingLimitsType0AdditionalPropertyType0,
@@ -3951,6 +3977,7 @@ __all__ = (
     "AuthToken",
     "AuthTokenChallenge",
     "AuthTypeEnum",
+    "AutomaticDecisionGuardEnum",
     "AvailabilityZoneResponse",
     "AvailableArrowCustomersResponse",
     "AvailableBindingTarget",
@@ -4025,6 +4052,7 @@ __all__ = (
     "Booking",
     "BookingOrderUUID",
     "BookingResource",
+    "BookingResourceApiKeyCounts",
     "BookingResourceAttributes",
     "BookingResourceCurrentUsages",
     "BookingResourceDisplayLimits",
@@ -4516,6 +4544,20 @@ __all__ = (
     "DemoPresetLoadJobStateEnum",
     "DemoPresetLoadRequestRequest",
     "DemoPresetLoadResponse",
+    "DemoPresetPreview",
+    "DemoPresetPreviewEntityCounts",
+    "DemoPresetPreviewFeatureChange",
+    "DemoPresetPreviewFeatureChangeSourceEnum",
+    "DemoPresetPreviewOfferingGroup",
+    "DemoPresetPreviewOrganization",
+    "DemoPresetPreviewOverlayContents",
+    "DemoPresetPreviewProject",
+    "DemoPresetPreviewRole",
+    "DemoPresetPreviewSettingChange",
+    "DemoPresetPreviewSettingChangeCurrentValueType0",
+    "DemoPresetPreviewSettingChangeNewValueType0",
+    "DemoPresetPreviewSettingChangeSourceEnum",
+    "DemoPresetPreviewUser",
     "DemoPresetStatus",
     "DemoPresetUser",
     "DependencyLogicOperatorEnum",
@@ -6505,6 +6547,7 @@ __all__ = (
     "Resource",
     "ResourceApiKey",
     "ResourceApiKeyAction",
+    "ResourceApiKeyCounts",
     "ResourceApiKeyCreateRequest",
     "ResourceApiKeyCreateRequestLimitsType0",
     "ResourceApiKeyCreateRequestSpendingLimitsType0",
@@ -6512,6 +6555,8 @@ __all__ = (
     "ResourceApiKeyCurrentUsagesType0",
     "ResourceApiKeyLimitsType0",
     "ResourceApiKeyReportCreatedRequest",
+    "ResourceApiKeyResourceSpendingLimits",
+    "ResourceApiKeyResourceSpendingLimitsAdditionalPropertyType0",
     "ResourceApiKeySetErredRequest",
     "ResourceApiKeySetKeyRequest",
     "ResourceApiKeySpendingLimitsType0",
@@ -6520,6 +6565,9 @@ __all__ = (
     "ResourceApiKeyStatus",
     "ResourceApiKeyStatusCurrentUsagesType0",
     "ResourceApiKeyStatusLimitsType0",
+    "ResourceApiKeyStatusOEnum",
+    "ResourceApiKeyStatusResourceSpendingLimits",
+    "ResourceApiKeyStatusResourceSpendingLimitsAdditionalPropertyType0",
     "ResourceApiKeyStatusSpendingLimitsType0",
     "ResourceApiKeyStatusSpendingLimitsType0AdditionalPropertyType0",
     "ResourceApiKeyUsageRequest",

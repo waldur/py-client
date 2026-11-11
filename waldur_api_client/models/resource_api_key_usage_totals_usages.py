@@ -9,7 +9,10 @@ T = TypeVar("T", bound="ResourceApiKeyUsageTotalsUsages")
 
 @_attrs_define
 class ResourceApiKeyUsageTotalsUsages:
-    """Usage per component type in the current month, summed over the resource's keys, deleted ones included."""
+    """Usage per component type in the current month, summed over the keys, deleted ones included. Only comparable within
+    one offering.
+
+    """
 
     additional_properties: dict[str, float] = _attrs_field(init=False, factory=dict)
 

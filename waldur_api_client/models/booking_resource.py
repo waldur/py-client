@@ -16,6 +16,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.backend_metadata import BackendMetadata
+    from ..models.booking_resource_api_key_counts import BookingResourceApiKeyCounts
     from ..models.booking_resource_attributes import BookingResourceAttributes
     from ..models.booking_resource_current_usages import BookingResourceCurrentUsages
     from ..models.booking_resource_display_limits import BookingResourceDisplayLimits
@@ -159,6 +160,8 @@ class BookingResource:
         offering_components (Union[Unset, list['OfferingComponent']]):
         has_api_keys (Union[Unset, bool]): Whether the resource owns any API keys, so the portal can offer key
             management without knowing which backend serves the resource.
+        api_key_counts (Union[Unset, BookingResourceApiKeyCounts]): How many keys the resource has in each state,
+            deleted ones left out, as {state: count}. States with no keys are absent.
         offering_account_settings (Union[Unset, OfferingAccountSettings]):
         display_limits (Union[Unset, BookingResourceDisplayLimits]): Resource option values shown as the limits of
             usage-based components. Display only: not stored in limits, billed or enforced.
@@ -265,6 +268,7 @@ class BookingResource:
     offering_state: Union[Unset, OfferingState] = UNSET
     offering_components: Union[Unset, list["OfferingComponent"]] = UNSET
     has_api_keys: Union[Unset, bool] = UNSET
+    api_key_counts: Union[Unset, "BookingResourceApiKeyCounts"] = UNSET
     offering_account_settings: Union[Unset, "OfferingAccountSettings"] = UNSET
     display_limits: Union[Unset, "BookingResourceDisplayLimits"] = UNSET
     created_by: Union[Unset, str] = UNSET
@@ -651,6 +655,10 @@ class BookingResource:
 
         has_api_keys = self.has_api_keys
 
+        api_key_counts: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.api_key_counts, Unset):
+            api_key_counts = self.api_key_counts.to_dict()
+
         offering_account_settings: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.offering_account_settings, Unset):
             offering_account_settings = self.offering_account_settings.to_dict()
@@ -865,6 +873,8 @@ class BookingResource:
             field_dict["offering_components"] = offering_components
         if has_api_keys is not UNSET:
             field_dict["has_api_keys"] = has_api_keys
+        if api_key_counts is not UNSET:
+            field_dict["api_key_counts"] = api_key_counts
         if offering_account_settings is not UNSET:
             field_dict["offering_account_settings"] = offering_account_settings
         if display_limits is not UNSET:
@@ -889,6 +899,7 @@ class BookingResource:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.backend_metadata import BackendMetadata
+        from ..models.booking_resource_api_key_counts import BookingResourceApiKeyCounts
         from ..models.booking_resource_attributes import BookingResourceAttributes
         from ..models.booking_resource_current_usages import BookingResourceCurrentUsages
         from ..models.booking_resource_display_limits import BookingResourceDisplayLimits
@@ -1502,6 +1513,13 @@ class BookingResource:
 
         has_api_keys = d.pop("has_api_keys", UNSET)
 
+        _api_key_counts = d.pop("api_key_counts", UNSET)
+        api_key_counts: Union[Unset, BookingResourceApiKeyCounts]
+        if isinstance(_api_key_counts, Unset):
+            api_key_counts = UNSET
+        else:
+            api_key_counts = BookingResourceApiKeyCounts.from_dict(_api_key_counts)
+
         _offering_account_settings = d.pop("offering_account_settings", UNSET)
         offering_account_settings: Union[Unset, OfferingAccountSettings]
         if isinstance(_offering_account_settings, Unset):
@@ -1628,6 +1646,7 @@ class BookingResource:
             offering_state=offering_state,
             offering_components=offering_components,
             has_api_keys=has_api_keys,
+            api_key_counts=api_key_counts,
             offering_account_settings=offering_account_settings,
             display_limits=display_limits,
             created_by=created_by,

@@ -4,6 +4,7 @@ from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.automatic_decision_guard_enum import AutomaticDecisionGuardEnum
 from ..models.workflow_phase_enum import WorkflowPhaseEnum
 
 if TYPE_CHECKING:
@@ -47,6 +48,8 @@ class WorkflowDescriptionStep:
         input_steps (list[str]):
         is_allocation_decision (bool):
         decides_automatically (bool):
+        automatic_decision_guard (Union[AutomaticDecisionGuardEnum, None]): What stops an unsuitable proposal before the
+            automatic decision awards it; null unless the step decides automatically.
         allocation_time (Union[None, str]):
         include_award_response (bool):
         allows_change_requests (bool):
@@ -92,6 +95,7 @@ class WorkflowDescriptionStep:
     input_steps: list[str]
     is_allocation_decision: bool
     decides_automatically: bool
+    automatic_decision_guard: Union[AutomaticDecisionGuardEnum, None]
     allocation_time: Union[None, str]
     include_award_response: bool
     allows_change_requests: bool
@@ -173,6 +177,12 @@ class WorkflowDescriptionStep:
         is_allocation_decision = self.is_allocation_decision
 
         decides_automatically = self.decides_automatically
+
+        automatic_decision_guard: Union[None, str]
+        if isinstance(self.automatic_decision_guard, AutomaticDecisionGuardEnum):
+            automatic_decision_guard = self.automatic_decision_guard.value
+        else:
+            automatic_decision_guard = self.automatic_decision_guard
 
         allocation_time: Union[None, str]
         allocation_time = self.allocation_time
@@ -265,6 +275,7 @@ class WorkflowDescriptionStep:
                 "input_steps": input_steps,
                 "is_allocation_decision": is_allocation_decision,
                 "decides_automatically": decides_automatically,
+                "automatic_decision_guard": automatic_decision_guard,
                 "allocation_time": allocation_time,
                 "include_award_response": include_award_response,
                 "allows_change_requests": allows_change_requests,
@@ -393,6 +404,21 @@ class WorkflowDescriptionStep:
         is_allocation_decision = d.pop("is_allocation_decision")
 
         decides_automatically = d.pop("decides_automatically")
+
+        def _parse_automatic_decision_guard(data: object) -> Union[AutomaticDecisionGuardEnum, None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                automatic_decision_guard_type_0 = AutomaticDecisionGuardEnum(data)
+
+                return automatic_decision_guard_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[AutomaticDecisionGuardEnum, None], data)
+
+        automatic_decision_guard = _parse_automatic_decision_guard(d.pop("automatic_decision_guard"))
 
         def _parse_allocation_time(data: object) -> Union[None, str]:
             if data is None:
@@ -529,6 +555,7 @@ class WorkflowDescriptionStep:
             input_steps=input_steps,
             is_allocation_decision=is_allocation_decision,
             decides_automatically=decides_automatically,
+            automatic_decision_guard=automatic_decision_guard,
             allocation_time=allocation_time,
             include_award_response=include_award_response,
             allows_change_requests=allows_change_requests,

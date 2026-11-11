@@ -1330,8 +1330,8 @@ Module: `waldur_api_client.api.marketplace_customer_usage`
 ## marketplace-demo-presets
 Module: `waldur_api_client.api.marketplace_demo_presets`
 
-- `marketplace_demo_presets_info_retrieve` GET `/api/marketplace-demo-presets/info/{name}/` — Get demo preset details (path: name)
-- `marketplace_demo_presets_info_count` HEAD `/api/marketplace-demo-presets/info/{name}/` — Get demo preset details (path: name)
+- `marketplace_demo_presets_info_retrieve` GET `/api/marketplace-demo-presets/info/{name}/` — Preview a demo preset (path: name)
+- `marketplace_demo_presets_info_count` HEAD `/api/marketplace-demo-presets/info/{name}/` — Preview a demo preset (path: name)
 - `marketplace_demo_presets_list_list` GET `/api/marketplace-demo-presets/list/` — List demo presets (no params)
 - `marketplace_demo_presets_list_count` HEAD `/api/marketplace-demo-presets/list/` — List demo presets (no params)
 - `marketplace_demo_presets_load` POST `/api/marketplace-demo-presets/load/{name}/` — Load demo preset (path: name | request body)
@@ -1956,12 +1956,12 @@ Module: `waldur_api_client.api.marketplace_remote_synchronisations`
 ## marketplace-resource-api-keys
 Module: `waldur_api_client.api.marketplace_resource_api_keys`
 
-- `marketplace_resource_api_keys_list` GET `/api/marketplace-resource-api-keys/` (7 query params)
-- `marketplace_resource_api_keys_count` HEAD `/api/marketplace-resource-api-keys/` — Get number of items in the collection matching the request parameters (7 query params)
+- `marketplace_resource_api_keys_list` GET `/api/marketplace-resource-api-keys/` (12 query params)
+- `marketplace_resource_api_keys_count` HEAD `/api/marketplace-resource-api-keys/` — Get number of items in the collection matching the request parameters (12 query params)
 - `marketplace_resource_api_keys_create` POST `/api/marketplace-resource-api-keys/` — Request an API key (request body)
 - `marketplace_resource_api_keys_report_created` POST `/api/marketplace-resource-api-keys/report_created/` — Report a freshly-applied API key (request body)
-- `marketplace_resource_api_keys_usage_totals_retrieve` GET `/api/marketplace-resource-api-keys/usage_totals/` — Total API key usage of a resource (1 query param)
-- `marketplace_resource_api_keys_usage_totals_count` HEAD `/api/marketplace-resource-api-keys/usage_totals/` — Total API key usage of a resource (1 query param)
+- `marketplace_resource_api_keys_usage_totals_retrieve` GET `/api/marketplace-resource-api-keys/usage_totals/` — Total API key usage of a resource, offering or provider (12 query params)
+- `marketplace_resource_api_keys_usage_totals_count` HEAD `/api/marketplace-resource-api-keys/usage_totals/` — Total API key usage of a resource, offering or provider (12 query params)
 - `marketplace_resource_api_keys_retrieve` GET `/api/marketplace-resource-api-keys/{uuid}/` (path: uuid)
 - `marketplace_resource_api_keys_partial_update` PATCH `/api/marketplace-resource-api-keys/{uuid}/` — Edit an API key (path: uuid | request body)
 - `marketplace_resource_api_keys_destroy` DELETE `/api/marketplace-resource-api-keys/{uuid}/` — Delete an API key (path: uuid)

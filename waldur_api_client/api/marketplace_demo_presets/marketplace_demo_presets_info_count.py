@@ -50,7 +50,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[int]:
-    """Get demo preset details
+    """Preview a demo preset
 
      Get number of items in the collection matching the request parameters.
 
@@ -81,7 +81,7 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> int:
-    """Get demo preset details
+    """Preview a demo preset
 
      Get number of items in the collection matching the request parameters.
 
@@ -107,7 +107,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[int]:
-    """Get demo preset details
+    """Preview a demo preset
 
      Get number of items in the collection matching the request parameters.
 
@@ -136,7 +136,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> int:
-    """Get demo preset details
+    """Preview a demo preset
 
      Get number of items in the collection matching the request parameters.
 

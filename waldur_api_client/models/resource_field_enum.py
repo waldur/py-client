@@ -2,6 +2,7 @@ from enum import Enum
 
 
 class ResourceFieldEnum(str, Enum):
+    API_KEY_COUNTS = "api_key_counts"
     ATTRIBUTES = "attributes"
     AVAILABLE_ACTIONS = "available_actions"
     BACKEND_ID = "backend_id"

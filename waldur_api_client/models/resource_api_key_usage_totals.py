@@ -15,21 +15,27 @@ T = TypeVar("T", bound="ResourceApiKeyUsageTotals")
 class ResourceApiKeyUsageTotals:
     """
     Attributes:
-        usages (ResourceApiKeyUsageTotalsUsages): Usage per component type in the current month, summed over the
-            resource's keys, deleted ones included.
+        usages (ResourceApiKeyUsageTotalsUsages): Usage per component type in the current month, summed over the keys,
+            deleted ones included. Only comparable within one offering.
+        estimated_cost (str): The keys' estimated cost this month, summed. Unlike the usages it adds up across
+            offerings.
     """
 
     usages: "ResourceApiKeyUsageTotalsUsages"
+    estimated_cost: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         usages = self.usages.to_dict()
+
+        estimated_cost = self.estimated_cost
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "usages": usages,
+                "estimated_cost": estimated_cost,
             }
         )
 
@@ -42,8 +48,11 @@ class ResourceApiKeyUsageTotals:
         d = dict(src_dict)
         usages = ResourceApiKeyUsageTotalsUsages.from_dict(d.pop("usages"))
 
+        estimated_cost = d.pop("estimated_cost")
+
         resource_api_key_usage_totals = cls(
             usages=usages,
+            estimated_cost=estimated_cost,
         )
 
         resource_api_key_usage_totals.additional_properties = d

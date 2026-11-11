@@ -6,6 +6,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.allocation_time_enum import AllocationTimeEnum
+from ..models.automatic_decision_guard_enum import AutomaticDecisionGuardEnum
 from ..models.blank_enum import BlankEnum
 from ..models.call_step_kind_enum import CallStepKindEnum
 from ..models.on_negative_enum import OnNegativeEnum
@@ -109,6 +110,7 @@ class CallWorkflowStepRequest:
             decision.
         decides_automatically (Union[Unset, bool]): Allocation decision: approve on reaching this step, as the system,
             with the award as requested; fall back to the completer when the approval is refused.
+        automatic_decision_guard (Union[Unset, AutomaticDecisionGuardEnum]):
         allocation_time (Union[Unset, AllocationTimeEnum]):
         display_order (Union[None, Unset, int]): Deprecated: steps are ordered by order.
         criteria (Union[Unset, list['WorkflowCriterionRequest']]):
@@ -157,6 +159,7 @@ class CallWorkflowStepRequest:
     status_labels: Union["StepStatusLabelsRequest", None, Unset] = UNSET
     include_award_response: Union[Unset, bool] = UNSET
     decides_automatically: Union[Unset, bool] = UNSET
+    automatic_decision_guard: Union[Unset, AutomaticDecisionGuardEnum] = UNSET
     allocation_time: Union[Unset, AllocationTimeEnum] = UNSET
     display_order: Union[None, Unset, int] = UNSET
     criteria: Union[Unset, list["WorkflowCriterionRequest"]] = UNSET
@@ -334,6 +337,10 @@ class CallWorkflowStepRequest:
 
         decides_automatically = self.decides_automatically
 
+        automatic_decision_guard: Union[Unset, str] = UNSET
+        if not isinstance(self.automatic_decision_guard, Unset):
+            automatic_decision_guard = self.automatic_decision_guard.value
+
         allocation_time: Union[Unset, str] = UNSET
         if not isinstance(self.allocation_time, Unset):
             allocation_time = self.allocation_time.value
@@ -440,6 +447,8 @@ class CallWorkflowStepRequest:
             field_dict["include_award_response"] = include_award_response
         if decides_automatically is not UNSET:
             field_dict["decides_automatically"] = decides_automatically
+        if automatic_decision_guard is not UNSET:
+            field_dict["automatic_decision_guard"] = automatic_decision_guard
         if allocation_time is not UNSET:
             field_dict["allocation_time"] = allocation_time
         if display_order is not UNSET:
@@ -717,6 +726,13 @@ class CallWorkflowStepRequest:
 
         decides_automatically = d.pop("decides_automatically", UNSET)
 
+        _automatic_decision_guard = d.pop("automatic_decision_guard", UNSET)
+        automatic_decision_guard: Union[Unset, AutomaticDecisionGuardEnum]
+        if isinstance(_automatic_decision_guard, Unset):
+            automatic_decision_guard = UNSET
+        else:
+            automatic_decision_guard = AutomaticDecisionGuardEnum(_automatic_decision_guard)
+
         _allocation_time = d.pop("allocation_time", UNSET)
         allocation_time: Union[Unset, AllocationTimeEnum]
         if isinstance(_allocation_time, Unset):
@@ -784,6 +800,7 @@ class CallWorkflowStepRequest:
             status_labels=status_labels,
             include_award_response=include_award_response,
             decides_automatically=decides_automatically,
+            automatic_decision_guard=automatic_decision_guard,
             allocation_time=allocation_time,
             display_order=display_order,
             criteria=criteria,

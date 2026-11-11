@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.demo_preset import DemoPreset
+from ...models.demo_preset_preview import DemoPresetPreview
 from ...types import Response
 
 
@@ -20,11 +20,13 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Union[Any, DemoPreset]:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Union[Any, DemoPresetPreview]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = DemoPreset.from_dict(response.json())
+        response_200 = DemoPresetPreview.from_dict(response.json())
 
         return response_200
     if response.status_code == 404:
@@ -35,7 +37,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, DemoPreset]]:
+) -> Response[Union[Any, DemoPresetPreview]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -48,10 +50,13 @@ def sync_detailed(
     name: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[Any, DemoPreset]]:
-    """Get demo preset details
+) -> Response[Union[Any, DemoPresetPreview]]:
+    """Preview a demo preset
 
-     Returns detailed information about a specific demo preset. Staff access only.
+     Returns what loading the preset would do: its users, organizations, projects, resources and
+    offerings, the settings and features a load with cleanup first would change, and warnings about what
+    would not work afterwards. Secret values and the passwords of staff and support users are never
+    returned. Staff access only.
 
     Args:
         name (str):
@@ -61,7 +66,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, DemoPreset]]
+        Response[Union[Any, DemoPresetPreview]]
     """
 
     kwargs = _get_kwargs(
@@ -79,10 +84,13 @@ def sync(
     name: str,
     *,
     client: AuthenticatedClient,
-) -> Union[Any, DemoPreset]:
-    """Get demo preset details
+) -> Union[Any, DemoPresetPreview]:
+    """Preview a demo preset
 
-     Returns detailed information about a specific demo preset. Staff access only.
+     Returns what loading the preset would do: its users, organizations, projects, resources and
+    offerings, the settings and features a load with cleanup first would change, and warnings about what
+    would not work afterwards. Secret values and the passwords of staff and support users are never
+    returned. Staff access only.
 
     Args:
         name (str):
@@ -92,7 +100,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, DemoPreset]
+        Union[Any, DemoPresetPreview]
     """
 
     return sync_detailed(
@@ -105,10 +113,13 @@ async def asyncio_detailed(
     name: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Union[Any, DemoPreset]]:
-    """Get demo preset details
+) -> Response[Union[Any, DemoPresetPreview]]:
+    """Preview a demo preset
 
-     Returns detailed information about a specific demo preset. Staff access only.
+     Returns what loading the preset would do: its users, organizations, projects, resources and
+    offerings, the settings and features a load with cleanup first would change, and warnings about what
+    would not work afterwards. Secret values and the passwords of staff and support users are never
+    returned. Staff access only.
 
     Args:
         name (str):
@@ -118,7 +129,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, DemoPreset]]
+        Response[Union[Any, DemoPresetPreview]]
     """
 
     kwargs = _get_kwargs(
@@ -134,10 +145,13 @@ async def asyncio(
     name: str,
     *,
     client: AuthenticatedClient,
-) -> Union[Any, DemoPreset]:
-    """Get demo preset details
+) -> Union[Any, DemoPresetPreview]:
+    """Preview a demo preset
 
-     Returns detailed information about a specific demo preset. Staff access only.
+     Returns what loading the preset would do: its users, organizations, projects, resources and
+    offerings, the settings and features a load with cleanup first would change, and warnings about what
+    would not work afterwards. Secret values and the passwords of staff and support users are never
+    returned. Staff access only.
 
     Args:
         name (str):
@@ -147,7 +161,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, DemoPreset]
+        Union[Any, DemoPresetPreview]
     """
 
     return (

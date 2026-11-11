@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.4-dev.20261110203926
+# Version: 8.1.4-dev.20261111001438
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -7235,14 +7235,14 @@ Query parameters (1):
 
 ### marketplace_demo_presets_info_retrieve
 GET /api/marketplace-demo-presets/info/{name}/
-Summary: Get demo preset details
-Description: Returns detailed information about a specific demo preset. Staff access only.
+Summary: Preview a demo preset
+Description: Returns what loading the preset would do: its users, organizations, projects, resources and offerings, the settings and features a load with cleanup first would change, and warnings about what would not work afterwards. Secret values and the passwords of staff and support users are never returned...
 Path parameters:
   - name — Name of the preset
 
 ### marketplace_demo_presets_info_count
 HEAD /api/marketplace-demo-presets/info/{name}/
-Summary: Get demo preset details
+Summary: Preview a demo preset
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - name — Name of the preset
@@ -12001,11 +12001,16 @@ Path parameters:
 
 ### marketplace_resource_api_keys_list
 GET /api/marketplace-resource-api-keys/
-Query parameters (7):
+Query parameters (12):
+  - customer_uuid — Consumer organization UUID
   - has_pending_action — Has a pending command
   - modified_before — Modified before
+  - o — Ordering
   - offering_uuid — Offering UUID
+  - paused_by_limit — Paused by a spending limit
   - pending_action — Pending command
+  - project_uuid — Project UUID
+  - provider_uuid — Keys of resources of the offerings of this service provider organization, to callers the provider resource list shows those resources to.
   - resource_uuid — Resource UUID
   - state — API key state
   - user_uuid — Assignee UUID
@@ -12014,11 +12019,16 @@ Query parameters (7):
 HEAD /api/marketplace-resource-api-keys/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (7):
+Query parameters (12):
+  - customer_uuid — Consumer organization UUID
   - has_pending_action — Has a pending command
   - modified_before — Modified before
+  - o — Ordering
   - offering_uuid — Offering UUID
+  - paused_by_limit — Paused by a spending limit
   - pending_action — Pending command
+  - project_uuid — Project UUID
+  - provider_uuid — Keys of resources of the offerings of this service provider organization, to callers the provider resource list shows those resources to.
   - resource_uuid — Resource UUID
   - state — API key state
   - user_uuid — Assignee UUID
@@ -12037,17 +12047,39 @@ Request body: yes
 
 ### marketplace_resource_api_keys_usage_totals_retrieve
 GET /api/marketplace-resource-api-keys/usage_totals/
-Summary: Total API key usage of a resource
-Description: Sums the usage the site agent reported for the resource's keys in the current month, per component type. Deleted keys are included, so deleting a key leaves the total unchanged.
-Query parameters (1):
-  - resource_uuid (required)
+Summary: Total API key usage of a resource, offering or provider
+Description: Sums the usage the site agent reported in the current month for the keys of a resource, an offering or a service provider, per component type, and their estimated cost. Deleted keys are included, so deleting a key leaves the totals unchanged. One of resource_uuid, offering_uuid and provider_uuid ...
+Query parameters (12):
+  - customer_uuid — Consumer organization UUID
+  - has_pending_action — Has a pending command
+  - modified_before — Modified before
+  - o — Ordering
+  - offering_uuid — One of resource_uuid, offering_uuid and provider_uuid is required.
+  - paused_by_limit — Paused by a spending limit
+  - pending_action — Pending command
+  - project_uuid — Project UUID
+  - provider_uuid — One of resource_uuid, offering_uuid and provider_uuid is required.
+  - resource_uuid — One of resource_uuid, offering_uuid and provider_uuid is required.
+  - state — API key state
+  - user_uuid — Assignee UUID
 
 ### marketplace_resource_api_keys_usage_totals_count
 HEAD /api/marketplace-resource-api-keys/usage_totals/
-Summary: Total API key usage of a resource
+Summary: Total API key usage of a resource, offering or provider
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (1):
-  - resource_uuid (required)
+Query parameters (12):
+  - customer_uuid — Consumer organization UUID
+  - has_pending_action — Has a pending command
+  - modified_before — Modified before
+  - o — Ordering
+  - offering_uuid — One of resource_uuid, offering_uuid and provider_uuid is required.
+  - paused_by_limit — Paused by a spending limit
+  - pending_action — Pending command
+  - project_uuid — Project UUID
+  - provider_uuid — One of resource_uuid, offering_uuid and provider_uuid is required.
+  - resource_uuid — One of resource_uuid, offering_uuid and provider_uuid is required.
+  - state — API key state
+  - user_uuid — Assignee UUID
 
 ### marketplace_resource_api_keys_retrieve
 GET /api/marketplace-resource-api-keys/{uuid}/

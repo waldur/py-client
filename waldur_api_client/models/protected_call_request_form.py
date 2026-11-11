@@ -49,6 +49,9 @@ class ProtectedCallRequestForm:
         evaluation_start (Union[Unset, EvaluationStartEnum]):
         publish_results (Union[Unset, PublishResultsEnum]):
         resource_template_selection_mode (Union[Unset, ResourceTemplateSelectionModeEnum]):
+        project_name_template (Union[None, Unset, str]): Name given to the project an accepted proposal creates.
+            Placeholders: {proposal_name}, {proposal_slug}, {call_prefix}, {call_slug}, {call_name}, {round_start},
+            {round_slug}, {org_slug}, {year}. Empty means {call_prefix} - {round_start} - {proposal_name}.
         created_by (Union[None, Unset, str]):
         reference_code (Union[Unset, str]):
         compliance_checklist (Union[None, UUID, Unset]): Compliance checklist that proposals must complete before
@@ -103,6 +106,7 @@ class ProtectedCallRequestForm:
     evaluation_start: Union[Unset, EvaluationStartEnum] = UNSET
     publish_results: Union[Unset, PublishResultsEnum] = UNSET
     resource_template_selection_mode: Union[Unset, ResourceTemplateSelectionModeEnum] = UNSET
+    project_name_template: Union[None, Unset, str] = UNSET
     created_by: Union[None, Unset, str] = UNSET
     reference_code: Union[Unset, str] = UNSET
     compliance_checklist: Union[None, UUID, Unset] = UNSET
@@ -186,6 +190,12 @@ class ProtectedCallRequestForm:
         resource_template_selection_mode: Union[Unset, str] = UNSET
         if not isinstance(self.resource_template_selection_mode, Unset):
             resource_template_selection_mode = self.resource_template_selection_mode.value
+
+        project_name_template: Union[None, Unset, str]
+        if isinstance(self.project_name_template, Unset):
+            project_name_template = UNSET
+        else:
+            project_name_template = self.project_name_template
 
         created_by: Union[None, Unset, str]
         if isinstance(self.created_by, Unset):
@@ -335,6 +345,8 @@ class ProtectedCallRequestForm:
             field_dict["publish_results"] = publish_results
         if resource_template_selection_mode is not UNSET:
             field_dict["resource_template_selection_mode"] = resource_template_selection_mode
+        if project_name_template is not UNSET:
+            field_dict["project_name_template"] = project_name_template
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if reference_code is not UNSET:
@@ -469,6 +481,15 @@ class ProtectedCallRequestForm:
             resource_template_selection_mode = UNSET
         else:
             resource_template_selection_mode = ResourceTemplateSelectionModeEnum(_resource_template_selection_mode)
+
+        def _parse_project_name_template(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        project_name_template = _parse_project_name_template(d.pop("project_name_template", UNSET))
 
         def _parse_created_by(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -660,6 +681,7 @@ class ProtectedCallRequestForm:
             evaluation_start=evaluation_start,
             publish_results=publish_results,
             resource_template_selection_mode=resource_template_selection_mode,
+            project_name_template=project_name_template,
             created_by=created_by,
             reference_code=reference_code,
             compliance_checklist=compliance_checklist,
