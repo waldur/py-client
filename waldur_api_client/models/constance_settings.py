@@ -271,6 +271,7 @@ class ConstanceSettings:
         disabled_offering_types (Union[Unset, list[Union[BlankEnum, OfferingTypeEnum]]]):
         onboarding_validation_methods (Union[Unset, list[Union[BlankEnum, OnboardingValidationEnum]]]):
         onboarding_verification_expiry_hours (Union[Unset, int]):
+        onboarding_notification_emails (Union[Unset, str]):
         onboarding_ariregister_base_url (Union[Unset, str]):
         onboarding_ariregister_username (Union[Unset, str]):
         onboarding_ariregister_password (Union[Unset, str]):
@@ -634,6 +635,7 @@ class ConstanceSettings:
     disabled_offering_types: Union[Unset, list[Union[BlankEnum, OfferingTypeEnum]]] = UNSET
     onboarding_validation_methods: Union[Unset, list[Union[BlankEnum, OnboardingValidationEnum]]] = UNSET
     onboarding_verification_expiry_hours: Union[Unset, int] = UNSET
+    onboarding_notification_emails: Union[Unset, str] = UNSET
     onboarding_ariregister_base_url: Union[Unset, str] = UNSET
     onboarding_ariregister_username: Union[Unset, str] = UNSET
     onboarding_ariregister_password: Union[Unset, str] = UNSET
@@ -1432,6 +1434,8 @@ class ConstanceSettings:
 
         onboarding_verification_expiry_hours = self.onboarding_verification_expiry_hours
 
+        onboarding_notification_emails = self.onboarding_notification_emails
+
         onboarding_ariregister_base_url = self.onboarding_ariregister_base_url
 
         onboarding_ariregister_username = self.onboarding_ariregister_username
@@ -2219,6 +2223,8 @@ class ConstanceSettings:
             field_dict["ONBOARDING_VALIDATION_METHODS"] = onboarding_validation_methods
         if onboarding_verification_expiry_hours is not UNSET:
             field_dict["ONBOARDING_VERIFICATION_EXPIRY_HOURS"] = onboarding_verification_expiry_hours
+        if onboarding_notification_emails is not UNSET:
+            field_dict["ONBOARDING_NOTIFICATION_EMAILS"] = onboarding_notification_emails
         if onboarding_ariregister_base_url is not UNSET:
             field_dict["ONBOARDING_ARIREGISTER_BASE_URL"] = onboarding_ariregister_base_url
         if onboarding_ariregister_username is not UNSET:
@@ -3378,6 +3384,8 @@ class ConstanceSettings:
 
         onboarding_verification_expiry_hours = d.pop("ONBOARDING_VERIFICATION_EXPIRY_HOURS", UNSET)
 
+        onboarding_notification_emails = d.pop("ONBOARDING_NOTIFICATION_EMAILS", UNSET)
+
         onboarding_ariregister_base_url = d.pop("ONBOARDING_ARIREGISTER_BASE_URL", UNSET)
 
         onboarding_ariregister_username = d.pop("ONBOARDING_ARIREGISTER_USERNAME", UNSET)
@@ -3980,6 +3988,7 @@ class ConstanceSettings:
             disabled_offering_types=disabled_offering_types,
             onboarding_validation_methods=onboarding_validation_methods,
             onboarding_verification_expiry_hours=onboarding_verification_expiry_hours,
+            onboarding_notification_emails=onboarding_notification_emails,
             onboarding_ariregister_base_url=onboarding_ariregister_base_url,
             onboarding_ariregister_username=onboarding_ariregister_username,
             onboarding_ariregister_password=onboarding_ariregister_password,
