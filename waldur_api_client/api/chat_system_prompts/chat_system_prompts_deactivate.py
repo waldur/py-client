@@ -58,7 +58,7 @@ def sync_detailed(
 ) -> Response[SystemPrompt]:
     """Deactivate the active system prompt
 
-     Deactivate this prompt. The system will fall back to Constance overrides or built-in defaults.
+     Deactivate this prompt. The system will fall back to the system prompt setting or built-in defaults.
 
     Args:
         uuid (UUID):
@@ -92,7 +92,7 @@ def sync(
 ) -> SystemPrompt:
     """Deactivate the active system prompt
 
-     Deactivate this prompt. The system will fall back to Constance overrides or built-in defaults.
+     Deactivate this prompt. The system will fall back to the system prompt setting or built-in defaults.
 
     Args:
         uuid (UUID):
@@ -121,7 +121,7 @@ async def asyncio_detailed(
 ) -> Response[SystemPrompt]:
     """Deactivate the active system prompt
 
-     Deactivate this prompt. The system will fall back to Constance overrides or built-in defaults.
+     Deactivate this prompt. The system will fall back to the system prompt setting or built-in defaults.
 
     Args:
         uuid (UUID):
@@ -153,7 +153,7 @@ async def asyncio(
 ) -> SystemPrompt:
     """Deactivate the active system prompt
 
-     Deactivate this prompt. The system will fall back to Constance overrides or built-in defaults.
+     Deactivate this prompt. The system will fall back to the system prompt setting or built-in defaults.
 
     Args:
         uuid (UUID):

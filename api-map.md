@@ -4193,7 +4193,7 @@ Module: `waldur_api_client.api.support`
 - `support_settings_atlassian_discover_projects` POST `/api/support/settings/atlassian/discover_projects/` — Discover available Service Desk projects (request body)
 - `support_settings_atlassian_discover_request_types` POST `/api/support/settings/atlassian/discover_request_types/` — Discover request types for a selected project (request body)
 - `support_settings_atlassian_preview_settings` POST `/api/support/settings/atlassian/preview_settings/` — Generate preview of settings to be saved (request body)
-- `support_settings_atlassian_save_settings` POST `/api/support/settings/atlassian/save_settings/` — Save selected settings to constance (request body)
+- `support_settings_atlassian_save_settings` POST `/api/support/settings/atlassian/save_settings/` — Save selected settings (request body)
 - `support_settings_atlassian_validate_credentials` POST `/api/support/settings/atlassian/validate_credentials/` — Validate Atlassian credentials without saving them (request body)
 
 ## support-attachments

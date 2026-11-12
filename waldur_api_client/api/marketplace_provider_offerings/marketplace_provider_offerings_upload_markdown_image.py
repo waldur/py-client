@@ -79,8 +79,8 @@ def sync_detailed(
 ) -> Response[MarkdownImageUploadResponse]:
     """Upload markdown image
 
-     Uploads an image for embedding in offering markdown descriptions. Requires
-    ENABLE_MARKDOWN_IMAGE_UPLOAD Constance setting.
+     Uploads an image for embedding in offering markdown descriptions. Requires the
+    ENABLE_MARKDOWN_IMAGE_UPLOAD setting.
 
     Args:
         uuid (UUID):
@@ -120,8 +120,8 @@ def sync(
 ) -> MarkdownImageUploadResponse:
     """Upload markdown image
 
-     Uploads an image for embedding in offering markdown descriptions. Requires
-    ENABLE_MARKDOWN_IMAGE_UPLOAD Constance setting.
+     Uploads an image for embedding in offering markdown descriptions. Requires the
+    ENABLE_MARKDOWN_IMAGE_UPLOAD setting.
 
     Args:
         uuid (UUID):
@@ -156,8 +156,8 @@ async def asyncio_detailed(
 ) -> Response[MarkdownImageUploadResponse]:
     """Upload markdown image
 
-     Uploads an image for embedding in offering markdown descriptions. Requires
-    ENABLE_MARKDOWN_IMAGE_UPLOAD Constance setting.
+     Uploads an image for embedding in offering markdown descriptions. Requires the
+    ENABLE_MARKDOWN_IMAGE_UPLOAD setting.
 
     Args:
         uuid (UUID):
@@ -195,8 +195,8 @@ async def asyncio(
 ) -> MarkdownImageUploadResponse:
     """Upload markdown image
 
-     Uploads an image for embedding in offering markdown descriptions. Requires
-    ENABLE_MARKDOWN_IMAGE_UPLOAD Constance setting.
+     Uploads an image for embedding in offering markdown descriptions. Requires the
+    ENABLE_MARKDOWN_IMAGE_UPLOAD setting.
 
     Args:
         uuid (UUID):

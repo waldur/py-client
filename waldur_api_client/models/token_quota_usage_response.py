@@ -17,13 +17,13 @@ class TokenQuotaUsageResponse:
     Attributes:
         daily_remaining (Union[None, int]): Get remaining daily tokens.
         daily_reset_at (datetime.datetime): Calculate next midnight (00:00:00).
-        daily_system_default (int): Get system default daily token limit from constance config.
+        daily_system_default (int): Get system default daily token limit setting.
         weekly_remaining (Union[None, int]): Get remaining weekly tokens.
         weekly_reset_at (datetime.datetime): Calculate next Monday at midnight.
-        weekly_system_default (int): Get system default weekly token limit from constance config.
+        weekly_system_default (int): Get system default weekly token limit setting.
         monthly_remaining (Union[None, int]): Get remaining monthly tokens.
         monthly_reset_at (datetime.datetime): Calculate first day of next month at midnight.
-        monthly_system_default (int): Get system default monthly token limit from constance config.
+        monthly_system_default (int): Get system default monthly token limit setting.
         daily_limit (Union[None, Unset, int]): Daily token limit (non-negative integer). Null uses system default. -1
             means unlimited.
         daily_usage (Union[Unset, int]):

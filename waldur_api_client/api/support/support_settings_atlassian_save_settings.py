@@ -50,7 +50,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: AtlassianSettingsSaveRequest,
 ) -> Response[Any]:
-    """Save selected settings to constance.
+    """Save selected settings.
 
     Args:
         body (AtlassianSettingsSaveRequest):
@@ -79,7 +79,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: AtlassianSettingsSaveRequest,
 ) -> Response[Any]:
-    """Save selected settings to constance.
+    """Save selected settings.
 
     Args:
         body (AtlassianSettingsSaveRequest):

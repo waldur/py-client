@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.1.dev.20261112133455
+# Version: 8.1.5-rc.1.dev.20261112204713
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2694,7 +2694,7 @@ Request body: yes
 ### chat_system_prompts_deactivate
 POST /api/chat-system-prompts/{uuid}/deactivate/
 Summary: Deactivate the active system prompt
-Description: Deactivate this prompt. The system will fall back to Constance overrides or built-in defaults.
+Description: Deactivate this prompt. The system will fall back to the system prompt setting or built-in defaults.
 Path parameters:
   - uuid
 Request body: yes
@@ -11006,7 +11006,7 @@ Request body: yes
 ### marketplace_provider_offerings_upload_markdown_image
 POST /api/marketplace-provider-offerings/{uuid}/upload_markdown_image/
 Summary: Upload markdown image
-Description: Uploads an image for embedding in offering markdown descriptions. Requires ENABLE_MARKDOWN_IMAGE_UPLOAD Constance setting.
+Description: Uploads an image for embedding in offering markdown descriptions. Requires the ENABLE_MARKDOWN_IMAGE_UPLOAD setting.
 Path parameters:
   - uuid
 Request body: yes
@@ -27020,8 +27020,8 @@ Request body: yes
 
 ### support_settings_atlassian_save_settings
 POST /api/support/settings/atlassian/save_settings/
-Summary: Save selected settings to constance
-Description: Save selected settings to constance.
+Summary: Save selected settings
+Description: Save selected settings.
 Request body: yes
 
 ### support_settings_atlassian_validate_credentials
