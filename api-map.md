@@ -3958,6 +3958,13 @@ Module: `waldur_api_client.api.rancher_workloads`
 - `rancher_workloads_yaml_retrieve` GET `/api/rancher-workloads/{uuid}/yaml/` (path: uuid)
 - `rancher_workloads_yaml_update` PUT `/api/rancher-workloads/{uuid}/yaml/` (path: uuid | request body)
 
+## reauthentication
+Module: `waldur_api_client.api.reauthentication`
+
+- `reauthentication_passkey_begin` POST `/api/reauthentication/passkey/begin/` — Begin re-authentication with a passkey (request body)
+- `reauthentication_passkey_finish` POST `/api/reauthentication/passkey/finish/` — Finish re-authentication with a passkey (request body)
+- `reauthentication_password` POST `/api/reauthentication/password/` — Re-authenticate with a password (request body)
+
 ## remote-eduteams
 Module: `waldur_api_client.api.remote_eduteams`
 

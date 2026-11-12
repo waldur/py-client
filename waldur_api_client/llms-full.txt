@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.1
+# Version: 8.1.5-rc.1.dev.20261112133455
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -3876,7 +3876,7 @@ Request body: yes
 ### customers_project_digest_config_send_test
 POST /api/customers/{uuid}/project-digest-config/send-test/
 Summary: Send a test digest email
-Description: Send a test digest email to the requesting user.
+Description: Send a test digest email to the requesting user. When nothing is sent, `sent` is false and `detail` says why.
 Path parameters:
   - uuid
 
@@ -12133,7 +12133,7 @@ Path parameters:
 ### marketplace_resource_api_keys_reveal_retrieve
 GET /api/marketplace-resource-api-keys/{uuid}/reveal/
 Summary: Reveal an API key
-Description: Returns the decrypted key value. Available to members of the resource's project or organization (except minimal-visibility viewers); a key with an assignee only to the assignee. Staff and support are no exception: staff reveal a key by impersonating a user who may. Audit-logged; under impersonati...
+Description: Returns the decrypted key value. A key with an assignee is revealed only to the assignee. Any other key is revealed to whoever holds RESOURCE.REVEAL_API_KEY on the resource's project or organization. Staff and support are no exception: staff reveal a key by impersonating a user who may. Refused w...
 Path parameters:
   - uuid
 
@@ -25838,6 +25838,27 @@ Path parameters:
 Request body: yes
 
 ============================================================
+## reauthentication  (module: waldur_api_client.api.reauthentication)
+============================================================
+
+### reauthentication_passkey_begin
+POST /api/reauthentication/passkey/begin/
+Summary: Begin re-authentication with a passkey
+Request body: yes
+
+### reauthentication_passkey_finish
+POST /api/reauthentication/passkey/finish/
+Summary: Finish re-authentication with a passkey
+Description: Returns a single-use grant for one change that requires re-authentication, to send in the X-Reauthentication-Grant header.
+Request body: yes
+
+### reauthentication_password
+POST /api/reauthentication/password/
+Summary: Re-authenticate with a password
+Description: Returns a single-use grant for one change that requires re-authentication, to send in the X-Reauthentication-Grant header. Wrong passwords count toward the sign-in lockout.
+Request body: yes
+
+============================================================
 ## remote-eduteams  (module: waldur_api_client.api.remote_eduteams)
 ============================================================
 
@@ -28805,7 +28826,7 @@ Path parameters:
 ### users_change_email
 POST /api/users/{uuid}/change_email/
 Summary: Request email change
-Description: Allows to change email for user.
+Description: Allows to change email for user. Requires a re-authentication grant for change_email, except for a user changing their own email who has no method to re-authenticate with. Refused when the user's identity provider supplies the email.
 Path parameters:
   - uuid
 Request body: yes
@@ -28813,7 +28834,7 @@ Request body: yes
 ### users_change_password
 POST /api/users/{uuid}/change_password/
 Summary: Change user password
-Description: Allows staff user to change password for any user.
+Description: Allows staff user to change password for any user. Requires the staff user's own re-authentication grant for change_password.
 Path parameters:
   - uuid
 Request body: yes

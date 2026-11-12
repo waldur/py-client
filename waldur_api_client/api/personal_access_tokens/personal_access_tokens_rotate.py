@@ -7,35 +7,47 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.personal_access_token_created import PersonalAccessTokenCreated
-from ...types import Response
+from ...models.reauthentication_challenge import ReauthenticationChallenge
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
+    *,
+    x_reauthentication_grant: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+    if not isinstance(x_reauthentication_grant, Unset):
+        headers["X-Reauthentication-Grant"] = x_reauthentication_grant
+
     _kwargs: dict[str, Any] = {
         "method": "post",
         "url": f"/api/personal-access-tokens/{uuid}/rotate/",
     }
 
+    _kwargs["headers"] = headers
     return _kwargs
 
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> PersonalAccessTokenCreated:
+) -> Union[PersonalAccessTokenCreated, ReauthenticationChallenge]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 201:
         response_201 = PersonalAccessTokenCreated.from_dict(response.json())
 
         return response_201
+    if response.status_code == 401:
+        response_401 = ReauthenticationChallenge.from_dict(response.json())
+
+        return response_401
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[PersonalAccessTokenCreated]:
+) -> Response[Union[PersonalAccessTokenCreated, ReauthenticationChallenge]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -48,24 +60,27 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[PersonalAccessTokenCreated]:
+    x_reauthentication_grant: Union[Unset, str] = UNSET,
+) -> Response[Union[PersonalAccessTokenCreated, ReauthenticationChallenge]]:
     """Rotate a personal access token
 
      Atomically revoke the old token and create a new one with the same scopes and bindings.
 
     Args:
         uuid (UUID):
+        x_reauthentication_grant (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PersonalAccessTokenCreated]
+        Response[Union[PersonalAccessTokenCreated, ReauthenticationChallenge]]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        x_reauthentication_grant=x_reauthentication_grant,
     )
 
     response = client.get_httpx_client().request(
@@ -79,25 +94,28 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> PersonalAccessTokenCreated:
+    x_reauthentication_grant: Union[Unset, str] = UNSET,
+) -> Union[PersonalAccessTokenCreated, ReauthenticationChallenge]:
     """Rotate a personal access token
 
      Atomically revoke the old token and create a new one with the same scopes and bindings.
 
     Args:
         uuid (UUID):
+        x_reauthentication_grant (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        PersonalAccessTokenCreated
+        Union[PersonalAccessTokenCreated, ReauthenticationChallenge]
     """
 
     return sync_detailed(
         uuid=uuid,
         client=client,
+        x_reauthentication_grant=x_reauthentication_grant,
     ).parsed
 
 
@@ -105,24 +123,27 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> Response[PersonalAccessTokenCreated]:
+    x_reauthentication_grant: Union[Unset, str] = UNSET,
+) -> Response[Union[PersonalAccessTokenCreated, ReauthenticationChallenge]]:
     """Rotate a personal access token
 
      Atomically revoke the old token and create a new one with the same scopes and bindings.
 
     Args:
         uuid (UUID):
+        x_reauthentication_grant (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PersonalAccessTokenCreated]
+        Response[Union[PersonalAccessTokenCreated, ReauthenticationChallenge]]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        x_reauthentication_grant=x_reauthentication_grant,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -134,25 +155,28 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-) -> PersonalAccessTokenCreated:
+    x_reauthentication_grant: Union[Unset, str] = UNSET,
+) -> Union[PersonalAccessTokenCreated, ReauthenticationChallenge]:
     """Rotate a personal access token
 
      Atomically revoke the old token and create a new one with the same scopes and bindings.
 
     Args:
         uuid (UUID):
+        x_reauthentication_grant (Union[Unset, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        PersonalAccessTokenCreated
+        Union[PersonalAccessTokenCreated, ReauthenticationChallenge]
     """
 
     return (
         await asyncio_detailed(
             uuid=uuid,
             client=client,
+            x_reauthentication_grant=x_reauthentication_grant,
         )
     ).parsed

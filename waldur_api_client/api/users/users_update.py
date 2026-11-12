@@ -6,11 +6,12 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.reauthentication_challenge import ReauthenticationChallenge
 from ...models.user import User
 from ...models.user_request import UserRequest
 from ...models.user_request_form import UserRequestForm
 from ...models.user_request_multipart import UserRequestMultipart
-from ...types import Response
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
@@ -21,8 +22,11 @@ def _get_kwargs(
         UserRequestForm,
         UserRequestMultipart,
     ],
+    x_reauthentication_grant: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(x_reauthentication_grant, Unset):
+        headers["X-Reauthentication-Grant"] = x_reauthentication_grant
 
     _kwargs: dict[str, Any] = {
         "method": "put",
@@ -44,17 +48,25 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> User:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Union[ReauthenticationChallenge, User]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
         response_200 = User.from_dict(response.json())
 
         return response_200
+    if response.status_code == 401:
+        response_401 = ReauthenticationChallenge.from_dict(response.json())
+
+        return response_401
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[User]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[Union[ReauthenticationChallenge, User]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -72,10 +84,12 @@ def sync_detailed(
         UserRequestForm,
         UserRequestMultipart,
     ],
-) -> Response[User]:
+    x_reauthentication_grant: Union[Unset, str] = UNSET,
+) -> Response[Union[ReauthenticationChallenge, User]]:
     """
     Args:
         uuid (UUID):
+        x_reauthentication_grant (Union[Unset, str]):
         body (UserRequest):
         body (UserRequestForm):
         body (UserRequestMultipart):
@@ -85,12 +99,13 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[User]
+        Response[Union[ReauthenticationChallenge, User]]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
         body=body,
+        x_reauthentication_grant=x_reauthentication_grant,
     )
 
     response = client.get_httpx_client().request(
@@ -109,10 +124,12 @@ def sync(
         UserRequestForm,
         UserRequestMultipart,
     ],
-) -> User:
+    x_reauthentication_grant: Union[Unset, str] = UNSET,
+) -> Union[ReauthenticationChallenge, User]:
     """
     Args:
         uuid (UUID):
+        x_reauthentication_grant (Union[Unset, str]):
         body (UserRequest):
         body (UserRequestForm):
         body (UserRequestMultipart):
@@ -122,13 +139,14 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        User
+        Union[ReauthenticationChallenge, User]
     """
 
     return sync_detailed(
         uuid=uuid,
         client=client,
         body=body,
+        x_reauthentication_grant=x_reauthentication_grant,
     ).parsed
 
 
@@ -141,10 +159,12 @@ async def asyncio_detailed(
         UserRequestForm,
         UserRequestMultipart,
     ],
-) -> Response[User]:
+    x_reauthentication_grant: Union[Unset, str] = UNSET,
+) -> Response[Union[ReauthenticationChallenge, User]]:
     """
     Args:
         uuid (UUID):
+        x_reauthentication_grant (Union[Unset, str]):
         body (UserRequest):
         body (UserRequestForm):
         body (UserRequestMultipart):
@@ -154,12 +174,13 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[User]
+        Response[Union[ReauthenticationChallenge, User]]
     """
 
     kwargs = _get_kwargs(
         uuid=uuid,
         body=body,
+        x_reauthentication_grant=x_reauthentication_grant,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -176,10 +197,12 @@ async def asyncio(
         UserRequestForm,
         UserRequestMultipart,
     ],
-) -> User:
+    x_reauthentication_grant: Union[Unset, str] = UNSET,
+) -> Union[ReauthenticationChallenge, User]:
     """
     Args:
         uuid (UUID):
+        x_reauthentication_grant (Union[Unset, str]):
         body (UserRequest):
         body (UserRequestForm):
         body (UserRequestMultipart):
@@ -189,7 +212,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        User
+        Union[ReauthenticationChallenge, User]
     """
 
     return (
@@ -197,5 +220,6 @@ async def asyncio(
             uuid=uuid,
             client=client,
             body=body,
+            x_reauthentication_grant=x_reauthentication_grant,
         )
     ).parsed

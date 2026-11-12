@@ -7,14 +7,18 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.personal_access_token_create_request import PersonalAccessTokenCreateRequest
 from ...models.personal_access_token_created import PersonalAccessTokenCreated
-from ...types import Response
+from ...models.reauthentication_challenge import ReauthenticationChallenge
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
     *,
     body: PersonalAccessTokenCreateRequest,
+    x_reauthentication_grant: Union[Unset, str] = UNSET,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(x_reauthentication_grant, Unset):
+        headers["X-Reauthentication-Grant"] = x_reauthentication_grant
 
     _kwargs: dict[str, Any] = {
         "method": "post",
@@ -31,19 +35,23 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> PersonalAccessTokenCreated:
+) -> Union[PersonalAccessTokenCreated, ReauthenticationChallenge]:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 201:
         response_201 = PersonalAccessTokenCreated.from_dict(response.json())
 
         return response_201
+    if response.status_code == 401:
+        response_401 = ReauthenticationChallenge.from_dict(response.json())
+
+        return response_401
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[PersonalAccessTokenCreated]:
+) -> Response[Union[PersonalAccessTokenCreated, ReauthenticationChallenge]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -56,10 +64,12 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     body: PersonalAccessTokenCreateRequest,
-) -> Response[PersonalAccessTokenCreated]:
+    x_reauthentication_grant: Union[Unset, str] = UNSET,
+) -> Response[Union[PersonalAccessTokenCreated, ReauthenticationChallenge]]:
     """Create a personal access token
 
     Args:
+        x_reauthentication_grant (Union[Unset, str]):
         body (PersonalAccessTokenCreateRequest):
 
     Raises:
@@ -67,11 +77,12 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PersonalAccessTokenCreated]
+        Response[Union[PersonalAccessTokenCreated, ReauthenticationChallenge]]
     """
 
     kwargs = _get_kwargs(
         body=body,
+        x_reauthentication_grant=x_reauthentication_grant,
     )
 
     response = client.get_httpx_client().request(
@@ -85,10 +96,12 @@ def sync(
     *,
     client: AuthenticatedClient,
     body: PersonalAccessTokenCreateRequest,
-) -> PersonalAccessTokenCreated:
+    x_reauthentication_grant: Union[Unset, str] = UNSET,
+) -> Union[PersonalAccessTokenCreated, ReauthenticationChallenge]:
     """Create a personal access token
 
     Args:
+        x_reauthentication_grant (Union[Unset, str]):
         body (PersonalAccessTokenCreateRequest):
 
     Raises:
@@ -96,12 +109,13 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        PersonalAccessTokenCreated
+        Union[PersonalAccessTokenCreated, ReauthenticationChallenge]
     """
 
     return sync_detailed(
         client=client,
         body=body,
+        x_reauthentication_grant=x_reauthentication_grant,
     ).parsed
 
 
@@ -109,10 +123,12 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     body: PersonalAccessTokenCreateRequest,
-) -> Response[PersonalAccessTokenCreated]:
+    x_reauthentication_grant: Union[Unset, str] = UNSET,
+) -> Response[Union[PersonalAccessTokenCreated, ReauthenticationChallenge]]:
     """Create a personal access token
 
     Args:
+        x_reauthentication_grant (Union[Unset, str]):
         body (PersonalAccessTokenCreateRequest):
 
     Raises:
@@ -120,11 +136,12 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[PersonalAccessTokenCreated]
+        Response[Union[PersonalAccessTokenCreated, ReauthenticationChallenge]]
     """
 
     kwargs = _get_kwargs(
         body=body,
+        x_reauthentication_grant=x_reauthentication_grant,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -136,10 +153,12 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     body: PersonalAccessTokenCreateRequest,
-) -> PersonalAccessTokenCreated:
+    x_reauthentication_grant: Union[Unset, str] = UNSET,
+) -> Union[PersonalAccessTokenCreated, ReauthenticationChallenge]:
     """Create a personal access token
 
     Args:
+        x_reauthentication_grant (Union[Unset, str]):
         body (PersonalAccessTokenCreateRequest):
 
     Raises:
@@ -147,12 +166,13 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        PersonalAccessTokenCreated
+        Union[PersonalAccessTokenCreated, ReauthenticationChallenge]
     """
 
     return (
         await asyncio_detailed(
             client=client,
             body=body,
+            x_reauthentication_grant=x_reauthentication_grant,
         )
     ).parsed

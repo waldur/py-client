@@ -49,10 +49,11 @@ def sync_detailed(
 ) -> Response[ResourceApiKey]:
     """Reveal an API key
 
-     Returns the decrypted key value. Available to members of the resource's project or organization
-    (except minimal-visibility viewers); a key with an assignee only to the assignee. Staff and support
-    are no exception: staff reveal a key by impersonating a user who may. Audit-logged; under
-    impersonation the event names the impersonator.
+     Returns the decrypted key value. A key with an assignee is revealed only to the assignee. Any other
+    key is revealed to whoever holds RESOURCE.REVEAL_API_KEY on the resource's project or organization.
+    Staff and support are no exception: staff reveal a key by impersonating a user who may. Refused with
+    403 to a personal access token, whatever its scopes. Audit-logged; under impersonation the event
+    names the impersonator.
 
     Args:
         uuid (UUID):
@@ -83,10 +84,11 @@ def sync(
 ) -> ResourceApiKey:
     """Reveal an API key
 
-     Returns the decrypted key value. Available to members of the resource's project or organization
-    (except minimal-visibility viewers); a key with an assignee only to the assignee. Staff and support
-    are no exception: staff reveal a key by impersonating a user who may. Audit-logged; under
-    impersonation the event names the impersonator.
+     Returns the decrypted key value. A key with an assignee is revealed only to the assignee. Any other
+    key is revealed to whoever holds RESOURCE.REVEAL_API_KEY on the resource's project or organization.
+    Staff and support are no exception: staff reveal a key by impersonating a user who may. Refused with
+    403 to a personal access token, whatever its scopes. Audit-logged; under impersonation the event
+    names the impersonator.
 
     Args:
         uuid (UUID):
@@ -112,10 +114,11 @@ async def asyncio_detailed(
 ) -> Response[ResourceApiKey]:
     """Reveal an API key
 
-     Returns the decrypted key value. Available to members of the resource's project or organization
-    (except minimal-visibility viewers); a key with an assignee only to the assignee. Staff and support
-    are no exception: staff reveal a key by impersonating a user who may. Audit-logged; under
-    impersonation the event names the impersonator.
+     Returns the decrypted key value. A key with an assignee is revealed only to the assignee. Any other
+    key is revealed to whoever holds RESOURCE.REVEAL_API_KEY on the resource's project or organization.
+    Staff and support are no exception: staff reveal a key by impersonating a user who may. Refused with
+    403 to a personal access token, whatever its scopes. Audit-logged; under impersonation the event
+    names the impersonator.
 
     Args:
         uuid (UUID):
@@ -144,10 +147,11 @@ async def asyncio(
 ) -> ResourceApiKey:
     """Reveal an API key
 
-     Returns the decrypted key value. Available to members of the resource's project or organization
-    (except minimal-visibility viewers); a key with an assignee only to the assignee. Staff and support
-    are no exception: staff reveal a key by impersonating a user who may. Audit-logged; under
-    impersonation the event names the impersonator.
+     Returns the decrypted key value. A key with an assignee is revealed only to the assignee. Any other
+    key is revealed to whoever holds RESOURCE.REVEAL_API_KEY on the resource's project or organization.
+    Staff and support are no exception: staff reveal a key by impersonating a user who may. Refused with
+    403 to a personal access token, whatever its scopes. Audit-logged; under impersonation the event
+    names the impersonator.
 
     Args:
         uuid (UUID):

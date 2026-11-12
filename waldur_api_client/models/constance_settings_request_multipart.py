@@ -400,6 +400,10 @@ class ConstanceSettingsRequestMultipart:
         matrix_livekit_public_url (Union[Unset, str]):
         site_agent_log_max_rows_per_identity (Union[Unset, int]):
         api_token_max_lifetime_minutes (Union[Unset, int]):
+        password_failures_per_address_limit (Union[Unset, int]):
+        password_failures_per_address_window_minutes (Union[Unset, int]):
+        password_failures_per_address_cooloff_minutes (Union[Unset, int]):
+        reauthentication_grant_lifetime_seconds (Union[Unset, int]):
         pat_enabled (Union[Unset, bool]):
         pat_max_lifetime_days (Union[Unset, int]):
         pat_max_tokens_per_user (Union[Unset, int]):
@@ -764,6 +768,10 @@ class ConstanceSettingsRequestMultipart:
     matrix_livekit_public_url: Union[Unset, str] = UNSET
     site_agent_log_max_rows_per_identity: Union[Unset, int] = UNSET
     api_token_max_lifetime_minutes: Union[Unset, int] = UNSET
+    password_failures_per_address_limit: Union[Unset, int] = UNSET
+    password_failures_per_address_window_minutes: Union[Unset, int] = UNSET
+    password_failures_per_address_cooloff_minutes: Union[Unset, int] = UNSET
+    reauthentication_grant_lifetime_seconds: Union[Unset, int] = UNSET
     pat_enabled: Union[Unset, bool] = UNSET
     pat_max_lifetime_days: Union[Unset, int] = UNSET
     pat_max_tokens_per_user: Union[Unset, int] = UNSET
@@ -1775,6 +1783,14 @@ class ConstanceSettingsRequestMultipart:
 
         api_token_max_lifetime_minutes = self.api_token_max_lifetime_minutes
 
+        password_failures_per_address_limit = self.password_failures_per_address_limit
+
+        password_failures_per_address_window_minutes = self.password_failures_per_address_window_minutes
+
+        password_failures_per_address_cooloff_minutes = self.password_failures_per_address_cooloff_minutes
+
+        reauthentication_grant_lifetime_seconds = self.reauthentication_grant_lifetime_seconds
+
         pat_enabled = self.pat_enabled
 
         pat_max_lifetime_days = self.pat_max_lifetime_days
@@ -2514,6 +2530,14 @@ class ConstanceSettingsRequestMultipart:
             field_dict["SITE_AGENT_LOG_MAX_ROWS_PER_IDENTITY"] = site_agent_log_max_rows_per_identity
         if api_token_max_lifetime_minutes is not UNSET:
             field_dict["API_TOKEN_MAX_LIFETIME_MINUTES"] = api_token_max_lifetime_minutes
+        if password_failures_per_address_limit is not UNSET:
+            field_dict["PASSWORD_FAILURES_PER_ADDRESS_LIMIT"] = password_failures_per_address_limit
+        if password_failures_per_address_window_minutes is not UNSET:
+            field_dict["PASSWORD_FAILURES_PER_ADDRESS_WINDOW_MINUTES"] = password_failures_per_address_window_minutes
+        if password_failures_per_address_cooloff_minutes is not UNSET:
+            field_dict["PASSWORD_FAILURES_PER_ADDRESS_COOLOFF_MINUTES"] = password_failures_per_address_cooloff_minutes
+        if reauthentication_grant_lifetime_seconds is not UNSET:
+            field_dict["REAUTHENTICATION_GRANT_LIFETIME_SECONDS"] = reauthentication_grant_lifetime_seconds
         if pat_enabled is not UNSET:
             field_dict["PAT_ENABLED"] = pat_enabled
         if pat_max_lifetime_days is not UNSET:
@@ -4671,6 +4695,38 @@ class ConstanceSettingsRequestMultipart:
                 )
             )
 
+        if not isinstance(self.password_failures_per_address_limit, Unset):
+            files.append(
+                (
+                    "PASSWORD_FAILURES_PER_ADDRESS_LIMIT",
+                    (None, str(self.password_failures_per_address_limit).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.password_failures_per_address_window_minutes, Unset):
+            files.append(
+                (
+                    "PASSWORD_FAILURES_PER_ADDRESS_WINDOW_MINUTES",
+                    (None, str(self.password_failures_per_address_window_minutes).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.password_failures_per_address_cooloff_minutes, Unset):
+            files.append(
+                (
+                    "PASSWORD_FAILURES_PER_ADDRESS_COOLOFF_MINUTES",
+                    (None, str(self.password_failures_per_address_cooloff_minutes).encode(), "text/plain"),
+                )
+            )
+
+        if not isinstance(self.reauthentication_grant_lifetime_seconds, Unset):
+            files.append(
+                (
+                    "REAUTHENTICATION_GRANT_LIFETIME_SECONDS",
+                    (None, str(self.reauthentication_grant_lifetime_seconds).encode(), "text/plain"),
+                )
+            )
+
         if not isinstance(self.pat_enabled, Unset):
             files.append(("PAT_ENABLED", (None, str(self.pat_enabled).encode(), "text/plain")))
 
@@ -6059,6 +6115,14 @@ class ConstanceSettingsRequestMultipart:
 
         api_token_max_lifetime_minutes = d.pop("API_TOKEN_MAX_LIFETIME_MINUTES", UNSET)
 
+        password_failures_per_address_limit = d.pop("PASSWORD_FAILURES_PER_ADDRESS_LIMIT", UNSET)
+
+        password_failures_per_address_window_minutes = d.pop("PASSWORD_FAILURES_PER_ADDRESS_WINDOW_MINUTES", UNSET)
+
+        password_failures_per_address_cooloff_minutes = d.pop("PASSWORD_FAILURES_PER_ADDRESS_COOLOFF_MINUTES", UNSET)
+
+        reauthentication_grant_lifetime_seconds = d.pop("REAUTHENTICATION_GRANT_LIFETIME_SECONDS", UNSET)
+
         pat_enabled = d.pop("PAT_ENABLED", UNSET)
 
         pat_max_lifetime_days = d.pop("PAT_MAX_LIFETIME_DAYS", UNSET)
@@ -6430,6 +6494,10 @@ class ConstanceSettingsRequestMultipart:
             matrix_livekit_public_url=matrix_livekit_public_url,
             site_agent_log_max_rows_per_identity=site_agent_log_max_rows_per_identity,
             api_token_max_lifetime_minutes=api_token_max_lifetime_minutes,
+            password_failures_per_address_limit=password_failures_per_address_limit,
+            password_failures_per_address_window_minutes=password_failures_per_address_window_minutes,
+            password_failures_per_address_cooloff_minutes=password_failures_per_address_cooloff_minutes,
+            reauthentication_grant_lifetime_seconds=reauthentication_grant_lifetime_seconds,
             pat_enabled=pat_enabled,
             pat_max_lifetime_days=pat_max_lifetime_days,
             pat_max_tokens_per_user=pat_max_tokens_per_user,

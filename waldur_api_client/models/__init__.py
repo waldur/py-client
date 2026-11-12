@@ -2108,6 +2108,9 @@ from .passkey_credential_transports import PasskeyCredentialTransports
 from .passkey_credential_update import PasskeyCredentialUpdate
 from .passkey_credential_update_request import PasskeyCredentialUpdateRequest
 from .passkey_mfa_begin_request import PasskeyMfaBeginRequest
+from .passkey_reauthentication_begin_request import PasskeyReauthenticationBeginRequest
+from .passkey_reauthentication_finish_request import PasskeyReauthenticationFinishRequest
+from .passkey_reauthentication_finish_request_credential import PasskeyReauthenticationFinishRequestCredential
 from .passkey_registration_finish_request import PasskeyRegistrationFinishRequest
 from .passkey_registration_finish_request_credential import PasskeyRegistrationFinishRequestCredential
 from .passkey_revoke_request import PasskeyRevokeRequest
@@ -2472,6 +2475,7 @@ from .project_digest_config import ProjectDigestConfig
 from .project_digest_config_request import ProjectDigestConfigRequest
 from .project_digest_preview_request import ProjectDigestPreviewRequest
 from .project_digest_preview_response import ProjectDigestPreviewResponse
+from .project_digest_send_test_response import ProjectDigestSendTestResponse
 from .project_email_policy_response import ProjectEmailPolicyResponse
 from .project_end_date_change_request import ProjectEndDateChangeRequest
 from .project_end_date_change_request_create import ProjectEndDateChangeRequestCreate
@@ -2837,6 +2841,12 @@ from .ranking_import_response import RankingImportResponse
 from .rbac_policy_direction_enum import RbacPolicyDirectionEnum
 from .reassign_item_request import ReassignItemRequest
 from .reassign_item_response import ReassignItemResponse
+from .reauthentication_action_enum import ReauthenticationActionEnum
+from .reauthentication_challenge import ReauthenticationChallenge
+from .reauthentication_grant import ReauthenticationGrant
+from .reauthentication_method_enum import ReauthenticationMethodEnum
+from .reauthentication_password_request import ReauthenticationPasswordRequest
+from .reauthentication_throttled import ReauthenticationThrottled
 from .recent_ticket import RecentTicket
 from .recipient_enum import RecipientEnum
 from .recipients_enum import RecipientsEnum
@@ -3487,6 +3497,7 @@ from .thread_session_flags import ThreadSessionFlags
 from .thread_session_o_enum import ThreadSessionOEnum
 from .thread_session_request import ThreadSessionRequest
 from .thread_session_scope_enum import ThreadSessionScopeEnum
+from .throttled import Throttled
 from .time_series_to_s_data import TimeSeriesToSData
 from .timing_bucket_enum import TimingBucketEnum
 from .to_s_consent_dashboard import ToSConsentDashboard
@@ -5773,6 +5784,9 @@ __all__ = (
     "PasskeyCredentialUpdate",
     "PasskeyCredentialUpdateRequest",
     "PasskeyMfaBeginRequest",
+    "PasskeyReauthenticationBeginRequest",
+    "PasskeyReauthenticationFinishRequest",
+    "PasskeyReauthenticationFinishRequestCredential",
     "PasskeyRegistrationFinishRequest",
     "PasskeyRegistrationFinishRequestCredential",
     "PasskeyRevokeRequest",
@@ -6115,6 +6129,7 @@ __all__ = (
     "ProjectDigestConfigRequest",
     "ProjectDigestPreviewRequest",
     "ProjectDigestPreviewResponse",
+    "ProjectDigestSendTestResponse",
     "ProjectEmailPolicyResponse",
     "ProjectEndDateChangeRequest",
     "ProjectEndDateChangeRequestCreate",
@@ -6460,6 +6475,12 @@ __all__ = (
     "RbacPolicyDirectionEnum",
     "ReassignItemRequest",
     "ReassignItemResponse",
+    "ReauthenticationActionEnum",
+    "ReauthenticationChallenge",
+    "ReauthenticationGrant",
+    "ReauthenticationMethodEnum",
+    "ReauthenticationPasswordRequest",
+    "ReauthenticationThrottled",
     "RecentTicket",
     "RecipientEnum",
     "RecipientsEnum",
@@ -7092,6 +7113,7 @@ __all__ = (
     "ThreadSessionOEnum",
     "ThreadSessionRequest",
     "ThreadSessionScopeEnum",
+    "Throttled",
     "TimeSeriesToSData",
     "TimingBucketEnum",
     "TokenExchangeRequest",

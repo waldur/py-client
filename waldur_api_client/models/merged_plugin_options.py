@@ -90,13 +90,15 @@ class MergedPluginOptions:
         conceal_billing_data (Union[Unset, bool]): If set to True, pricing and components tab would be concealed.
         create_orders_on_resource_option_change (Union[Unset, bool]): If set to True, create orders when options of
             related resources are changed.
-        enable_resource_end_date_change_requests (Union[Unset, bool]): If set to True, users without
-            RESOURCE.SET_END_DATE can request an end date change, and holders of that permission approve or reject. Approval
-            writes the date directly; no order is created. Requests are published as events so an external approval system
-            can decide instead. Not applicable to prepaid offerings, which extend through renewal instead.
-        enable_resource_limit_change_requests (Union[Unset, bool]): If set to True, users who cannot change resource
-            limits directly (RESOURCE.SET_LIMITS together with ORDER.CREATE) can request a limit change, and holders of
-            RESOURCE.SET_LIMITS approve or reject. Approval submits an update order for the requested limits.
+        enable_resource_end_date_change_requests (Union[Unset, bool]): If set to True, users with
+            RESOURCE.REQUEST_END_DATE_CHANGE and without RESOURCE.SET_END_DATE can request an end date change, and holders
+            of RESOURCE.SET_END_DATE approve or reject. Approval writes the date directly; no order is created. Requests are
+            published as events so an external approval system can decide instead. Not applicable to prepaid offerings,
+            which extend through renewal instead.
+        enable_resource_limit_change_requests (Union[Unset, bool]): If set to True, users with
+            RESOURCE.REQUEST_LIMITS_CHANGE who cannot change resource limits directly (RESOURCE.SET_LIMITS together with
+            ORDER.CREATE) can request a limit change, and holders of RESOURCE.SET_LIMITS approve or reject. Approval submits
+            an update order for the requested limits.
         enable_resource_projects (Union[Unset, bool]): Enable sub-project management within resources.
         enable_membership_sync_status (Union[Unset, bool]): Enable per-member sync status reporting by the site agent:
             team views show whether each role grant has propagated to the provider backend, and providers can trigger a
