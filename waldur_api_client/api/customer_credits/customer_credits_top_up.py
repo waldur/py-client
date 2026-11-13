@@ -61,7 +61,9 @@ def sync_detailed(
     """Record a customer prepayment as paid credit. Raises the credit value and writes a top-up ledger
     entry with the comment. Unlike granted credit, invoices paid from it count towards the affiliate
     fee, and it does not expire. A negative amount reverses a top-up, e.g. a bounced payment, and draws
-    on paid credit only.
+    on paid credit only. With an external_reference the call is safe to retry: a repeat with the same
+    reference and amount returns the credit unchanged, and one with another amount is refused. A
+    reversal needs a reference of its own.
 
     Args:
         uuid (UUID):
@@ -96,7 +98,9 @@ def sync(
     """Record a customer prepayment as paid credit. Raises the credit value and writes a top-up ledger
     entry with the comment. Unlike granted credit, invoices paid from it count towards the affiliate
     fee, and it does not expire. A negative amount reverses a top-up, e.g. a bounced payment, and draws
-    on paid credit only.
+    on paid credit only. With an external_reference the call is safe to retry: a repeat with the same
+    reference and amount returns the credit unchanged, and one with another amount is refused. A
+    reversal needs a reference of its own.
 
     Args:
         uuid (UUID):
@@ -126,7 +130,9 @@ async def asyncio_detailed(
     """Record a customer prepayment as paid credit. Raises the credit value and writes a top-up ledger
     entry with the comment. Unlike granted credit, invoices paid from it count towards the affiliate
     fee, and it does not expire. A negative amount reverses a top-up, e.g. a bounced payment, and draws
-    on paid credit only.
+    on paid credit only. With an external_reference the call is safe to retry: a repeat with the same
+    reference and amount returns the credit unchanged, and one with another amount is refused. A
+    reversal needs a reference of its own.
 
     Args:
         uuid (UUID):
@@ -159,7 +165,9 @@ async def asyncio(
     """Record a customer prepayment as paid credit. Raises the credit value and writes a top-up ledger
     entry with the comment. Unlike granted credit, invoices paid from it count towards the affiliate
     fee, and it does not expire. A negative amount reverses a top-up, e.g. a bounced payment, and draws
-    on paid credit only.
+    on paid credit only. With an external_reference the call is safe to retry: a repeat with the same
+    reference and amount returns the credit unchanged, and one with another amount is refused. A
+    reversal needs a reference of its own.
 
     Args:
         uuid (UUID):

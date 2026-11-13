@@ -15,12 +15,17 @@ class CreditTopUpRequest:
     Attributes:
         amount (str): Positive to record a prepayment, negative to reverse one.
         comment (str):
-        payment_reference (Union[Unset, str]): Bank transfer or payment identifier, kept in the ledger comment.
+        payment_reference (Union[Unset, str]): Bank transfer or payment identifier, kept in the ledger comment. Not
+            checked for repeats; send external_reference for that.
+        external_reference (Union[Unset, str]): The sender's unique identifier for this top-up, e.g. an ERP payment ID.
+            A repeat with the same amount returns the credit unchanged; with another amount it is refused. A reversal needs
+            a reference of its own.
     """
 
     amount: str
     comment: str
     payment_reference: Union[Unset, str] = UNSET
+    external_reference: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -29,6 +34,8 @@ class CreditTopUpRequest:
         comment = self.comment
 
         payment_reference = self.payment_reference
+
+        external_reference = self.external_reference
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -40,6 +47,8 @@ class CreditTopUpRequest:
         )
         if payment_reference is not UNSET:
             field_dict["payment_reference"] = payment_reference
+        if external_reference is not UNSET:
+            field_dict["external_reference"] = external_reference
 
         return field_dict
 
@@ -52,10 +61,13 @@ class CreditTopUpRequest:
 
         payment_reference = d.pop("payment_reference", UNSET)
 
+        external_reference = d.pop("external_reference", UNSET)
+
         credit_top_up_request = cls(
             amount=amount,
             comment=comment,
             payment_reference=payment_reference,
+            external_reference=external_reference,
         )
 
         credit_top_up_request.additional_properties = d

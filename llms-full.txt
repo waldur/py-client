@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.1.dev.20261112204713
+# Version: 8.1.5-rc.2.dev.20261113125527
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -3198,12 +3198,14 @@ Request body: yes
 
 ### credit_transactions_list
 GET /api/credit-transactions/
-Query parameters (9):
+Query parameters (11):
   - billing_period
   - billing_period_after
   - billing_period_before
+  - channel
   - credit_uuid
   - customer_uuid
+  - external_reference
   - o — Ordering
   - project_credit_uuid
   - project_uuid
@@ -3213,12 +3215,14 @@ Query parameters (9):
 HEAD /api/credit-transactions/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (9):
+Query parameters (11):
   - billing_period
   - billing_period_after
   - billing_period_before
+  - channel
   - credit_uuid
   - customer_uuid
+  - external_reference
   - o — Ordering
   - project_credit_uuid
   - project_uuid
@@ -21038,8 +21042,10 @@ POST /api/personal-access-tokens/{uuid}/set_network_acl/
 Summary: Replace the network ACL of a personal access token
 Description: Replace the token's source-network allowlist.
 
-A dedicated action rather than PATCH: update/partial_update stay
-disabled on this viewset, and the change gets its own audit event.
+Narrowing the list needs nothing more: every new network lies inside
+a current one of the same address family, or the token was
+unrestricted, or the list is unchanged. Anything else lets the token
+work from an address it could not before, and needs a...
 Path parameters:
   - uuid
 Request body: yes

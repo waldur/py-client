@@ -7,6 +7,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.credit_transaction_channel_enum import CreditTransactionChannelEnum
 from ...models.credit_transaction_o_enum import CreditTransactionOEnum
 from ...types import UNSET, Response, Unset
 
@@ -16,8 +17,10 @@ def _get_kwargs(
     billing_period: Union[Unset, datetime.date] = UNSET,
     billing_period_after: Union[Unset, datetime.date] = UNSET,
     billing_period_before: Union[Unset, datetime.date] = UNSET,
+    channel: Union[Unset, list[CreditTransactionChannelEnum]] = UNSET,
     credit_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    external_reference: Union[Unset, str] = UNSET,
     o: Union[Unset, list[CreditTransactionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -42,6 +45,15 @@ def _get_kwargs(
         json_billing_period_before = billing_period_before.isoformat()
     params["billing_period_before"] = json_billing_period_before
 
+    json_channel: Union[Unset, list[str]] = UNSET
+    if not isinstance(channel, Unset):
+        json_channel = []
+        for channel_item_data in channel:
+            channel_item = channel_item_data.value
+            json_channel.append(channel_item)
+
+    params["channel"] = json_channel
+
     json_credit_uuid: Union[Unset, str] = UNSET
     if not isinstance(credit_uuid, Unset):
         json_credit_uuid = str(credit_uuid)
@@ -51,6 +63,8 @@ def _get_kwargs(
     if not isinstance(customer_uuid, Unset):
         json_customer_uuid = str(customer_uuid)
     params["customer_uuid"] = json_customer_uuid
+
+    params["external_reference"] = external_reference
 
     json_o: Union[Unset, list[str]] = UNSET
     if not isinstance(o, Unset):
@@ -117,8 +131,10 @@ def sync_detailed(
     billing_period: Union[Unset, datetime.date] = UNSET,
     billing_period_after: Union[Unset, datetime.date] = UNSET,
     billing_period_before: Union[Unset, datetime.date] = UNSET,
+    channel: Union[Unset, list[CreditTransactionChannelEnum]] = UNSET,
     credit_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    external_reference: Union[Unset, str] = UNSET,
     o: Union[Unset, list[CreditTransactionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -132,8 +148,10 @@ def sync_detailed(
         billing_period (Union[Unset, datetime.date]):
         billing_period_after (Union[Unset, datetime.date]):
         billing_period_before (Union[Unset, datetime.date]):
+        channel (Union[Unset, list[CreditTransactionChannelEnum]]):
         credit_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
+        external_reference (Union[Unset, str]):
         o (Union[Unset, list[CreditTransactionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -153,8 +171,10 @@ def sync_detailed(
         billing_period=billing_period,
         billing_period_after=billing_period_after,
         billing_period_before=billing_period_before,
+        channel=channel,
         credit_uuid=credit_uuid,
         customer_uuid=customer_uuid,
+        external_reference=external_reference,
         o=o,
         page=page,
         page_size=page_size,
@@ -176,8 +196,10 @@ def sync(
     billing_period: Union[Unset, datetime.date] = UNSET,
     billing_period_after: Union[Unset, datetime.date] = UNSET,
     billing_period_before: Union[Unset, datetime.date] = UNSET,
+    channel: Union[Unset, list[CreditTransactionChannelEnum]] = UNSET,
     credit_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    external_reference: Union[Unset, str] = UNSET,
     o: Union[Unset, list[CreditTransactionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -191,8 +213,10 @@ def sync(
         billing_period (Union[Unset, datetime.date]):
         billing_period_after (Union[Unset, datetime.date]):
         billing_period_before (Union[Unset, datetime.date]):
+        channel (Union[Unset, list[CreditTransactionChannelEnum]]):
         credit_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
+        external_reference (Union[Unset, str]):
         o (Union[Unset, list[CreditTransactionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -213,8 +237,10 @@ def sync(
         billing_period=billing_period,
         billing_period_after=billing_period_after,
         billing_period_before=billing_period_before,
+        channel=channel,
         credit_uuid=credit_uuid,
         customer_uuid=customer_uuid,
+        external_reference=external_reference,
         o=o,
         page=page,
         page_size=page_size,
@@ -230,8 +256,10 @@ async def asyncio_detailed(
     billing_period: Union[Unset, datetime.date] = UNSET,
     billing_period_after: Union[Unset, datetime.date] = UNSET,
     billing_period_before: Union[Unset, datetime.date] = UNSET,
+    channel: Union[Unset, list[CreditTransactionChannelEnum]] = UNSET,
     credit_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    external_reference: Union[Unset, str] = UNSET,
     o: Union[Unset, list[CreditTransactionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -245,8 +273,10 @@ async def asyncio_detailed(
         billing_period (Union[Unset, datetime.date]):
         billing_period_after (Union[Unset, datetime.date]):
         billing_period_before (Union[Unset, datetime.date]):
+        channel (Union[Unset, list[CreditTransactionChannelEnum]]):
         credit_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
+        external_reference (Union[Unset, str]):
         o (Union[Unset, list[CreditTransactionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -266,8 +296,10 @@ async def asyncio_detailed(
         billing_period=billing_period,
         billing_period_after=billing_period_after,
         billing_period_before=billing_period_before,
+        channel=channel,
         credit_uuid=credit_uuid,
         customer_uuid=customer_uuid,
+        external_reference=external_reference,
         o=o,
         page=page,
         page_size=page_size,
@@ -287,8 +319,10 @@ async def asyncio(
     billing_period: Union[Unset, datetime.date] = UNSET,
     billing_period_after: Union[Unset, datetime.date] = UNSET,
     billing_period_before: Union[Unset, datetime.date] = UNSET,
+    channel: Union[Unset, list[CreditTransactionChannelEnum]] = UNSET,
     credit_uuid: Union[Unset, UUID] = UNSET,
     customer_uuid: Union[Unset, UUID] = UNSET,
+    external_reference: Union[Unset, str] = UNSET,
     o: Union[Unset, list[CreditTransactionOEnum]] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
@@ -302,8 +336,10 @@ async def asyncio(
         billing_period (Union[Unset, datetime.date]):
         billing_period_after (Union[Unset, datetime.date]):
         billing_period_before (Union[Unset, datetime.date]):
+        channel (Union[Unset, list[CreditTransactionChannelEnum]]):
         credit_uuid (Union[Unset, UUID]):
         customer_uuid (Union[Unset, UUID]):
+        external_reference (Union[Unset, str]):
         o (Union[Unset, list[CreditTransactionOEnum]]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
@@ -325,8 +361,10 @@ async def asyncio(
             billing_period=billing_period,
             billing_period_after=billing_period_after,
             billing_period_before=billing_period_before,
+            channel=channel,
             credit_uuid=credit_uuid,
             customer_uuid=customer_uuid,
+            external_reference=external_reference,
             o=o,
             page=page,
             page_size=page_size,

@@ -8,6 +8,7 @@ class ReauthenticationActionEnum(str, Enum):
     REGISTER_PASSKEY = "register_passkey"
     REVOKE_PASSKEY = "revoke_passkey"
     TOKEN_LIFETIME = "token_lifetime"
+    WIDEN_PERSONAL_ACCESS_TOKEN_NETWORKS = "widen_personal_access_token_networks"
 
     def __str__(self) -> str:
         return str(self.value)

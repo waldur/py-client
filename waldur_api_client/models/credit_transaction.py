@@ -7,6 +7,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.credit_transaction_channel_enum import CreditTransactionChannelEnum
 from ..models.transaction_type_enum import TransactionTypeEnum
 from ..types import UNSET, Unset
 
@@ -25,9 +26,12 @@ class CreditTransaction:
         earned_change (Union[None, str]):
         transaction_type (TransactionTypeEnum):
         transaction_type_display (str):
+        channel_display (str):
         customer_uuid (Union[None, UUID]):
         customer_name (Union[None, str]):
         comment (Union[Unset, str]):
+        channel (Union[Unset, CreditTransactionChannelEnum]):
+        external_reference (Union[Unset, str]):
         project_uuid (Union[Unset, str]):
         project_name (Union[Unset, str]):
         billing_period (Union[None, Unset, datetime.date]):
@@ -41,9 +45,12 @@ class CreditTransaction:
     earned_change: Union[None, str]
     transaction_type: TransactionTypeEnum
     transaction_type_display: str
+    channel_display: str
     customer_uuid: Union[None, UUID]
     customer_name: Union[None, str]
     comment: Union[Unset, str] = UNSET
+    channel: Union[Unset, CreditTransactionChannelEnum] = UNSET
+    external_reference: Union[Unset, str] = UNSET
     project_uuid: Union[Unset, str] = UNSET
     project_name: Union[Unset, str] = UNSET
     billing_period: Union[None, Unset, datetime.date] = UNSET
@@ -69,6 +76,8 @@ class CreditTransaction:
 
         transaction_type_display = self.transaction_type_display
 
+        channel_display = self.channel_display
+
         customer_uuid: Union[None, str]
         if isinstance(self.customer_uuid, UUID):
             customer_uuid = str(self.customer_uuid)
@@ -79,6 +88,12 @@ class CreditTransaction:
         customer_name = self.customer_name
 
         comment = self.comment
+
+        channel: Union[Unset, str] = UNSET
+        if not isinstance(self.channel, Unset):
+            channel = self.channel.value
+
+        external_reference = self.external_reference
 
         project_uuid = self.project_uuid
 
@@ -104,12 +119,17 @@ class CreditTransaction:
                 "earned_change": earned_change,
                 "transaction_type": transaction_type,
                 "transaction_type_display": transaction_type_display,
+                "channel_display": channel_display,
                 "customer_uuid": customer_uuid,
                 "customer_name": customer_name,
             }
         )
         if comment is not UNSET:
             field_dict["comment"] = comment
+        if channel is not UNSET:
+            field_dict["channel"] = channel
+        if external_reference is not UNSET:
+            field_dict["external_reference"] = external_reference
         if project_uuid is not UNSET:
             field_dict["project_uuid"] = project_uuid
         if project_name is not UNSET:
@@ -153,6 +173,8 @@ class CreditTransaction:
 
         transaction_type_display = d.pop("transaction_type_display")
 
+        channel_display = d.pop("channel_display")
+
         def _parse_customer_uuid(data: object) -> Union[None, UUID]:
             if data is None:
                 return data
@@ -176,6 +198,15 @@ class CreditTransaction:
         customer_name = _parse_customer_name(d.pop("customer_name"))
 
         comment = d.pop("comment", UNSET)
+
+        _channel = d.pop("channel", UNSET)
+        channel: Union[Unset, CreditTransactionChannelEnum]
+        if isinstance(_channel, Unset):
+            channel = UNSET
+        else:
+            channel = CreditTransactionChannelEnum(_channel)
+
+        external_reference = d.pop("external_reference", UNSET)
 
         project_uuid = d.pop("project_uuid", UNSET)
 
@@ -207,9 +238,12 @@ class CreditTransaction:
             earned_change=earned_change,
             transaction_type=transaction_type,
             transaction_type_display=transaction_type_display,
+            channel_display=channel_display,
             customer_uuid=customer_uuid,
             customer_name=customer_name,
             comment=comment,
+            channel=channel,
+            external_reference=external_reference,
             project_uuid=project_uuid,
             project_name=project_name,
             billing_period=billing_period,

@@ -606,8 +606,8 @@ Module: `waldur_api_client.api.conflicts_of_interest`
 ## credit-transactions
 Module: `waldur_api_client.api.credit_transactions`
 
-- `credit_transactions_list` GET `/api/credit-transactions/` (9 query params)
-- `credit_transactions_count` HEAD `/api/credit-transactions/` — Get number of items in the collection matching the request parameters (9 query params)
+- `credit_transactions_list` GET `/api/credit-transactions/` (11 query params)
+- `credit_transactions_count` HEAD `/api/credit-transactions/` — Get number of items in the collection matching the request parameters (11 query params)
 - `credit_transactions_retrieve` GET `/api/credit-transactions/{uuid}/` (path: uuid)
 
 ## customer-affiliates

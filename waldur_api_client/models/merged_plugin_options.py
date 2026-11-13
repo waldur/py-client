@@ -39,6 +39,9 @@ class MergedPluginOptions:
         login_shell (Union[Unset, str]): Login shell assigned to GLAuth/LDAP accounts.
         auto_approve_remote_orders (Union[Unset, bool]): If set to True, an order can be processed without approval
         resource_expiration_threshold (Union[Unset, int]): Resource expiration threshold in days. Default: 30.
+        resource_expiration_reminders (Union[Unset, list[int]]): Days before a resource's end date on which its users
+            are reminded, by email and on the dashboard. When empty or unset, the email goes out 7 days and 1 day before the
+            end, and the dashboard follows USER_ACTIONS_DEFAULT_EXPIRATION_REMINDERS. Only staff can change it.
         service_provider_can_create_offering_user (Union[Unset, bool]): Service provider can create offering user
         uses_robot_accounts (Union[Unset, bool]): This offering's identity model is per-resource robot accounts rather
             than automatic offering users. Unset means false. Cannot be combined with
@@ -289,6 +292,7 @@ class MergedPluginOptions:
     login_shell: Union[Unset, str] = UNSET
     auto_approve_remote_orders: Union[Unset, bool] = UNSET
     resource_expiration_threshold: Union[Unset, int] = 30
+    resource_expiration_reminders: Union[Unset, list[int]] = UNSET
     service_provider_can_create_offering_user: Union[Unset, bool] = UNSET
     uses_robot_accounts: Union[Unset, bool] = UNSET
     offering_user_auto_deletion: Union[Unset, bool] = False
@@ -428,6 +432,10 @@ class MergedPluginOptions:
         auto_approve_remote_orders = self.auto_approve_remote_orders
 
         resource_expiration_threshold = self.resource_expiration_threshold
+
+        resource_expiration_reminders: Union[Unset, list[int]] = UNSET
+        if not isinstance(self.resource_expiration_reminders, Unset):
+            resource_expiration_reminders = self.resource_expiration_reminders
 
         service_provider_can_create_offering_user = self.service_provider_can_create_offering_user
 
@@ -781,6 +789,8 @@ class MergedPluginOptions:
             field_dict["auto_approve_remote_orders"] = auto_approve_remote_orders
         if resource_expiration_threshold is not UNSET:
             field_dict["resource_expiration_threshold"] = resource_expiration_threshold
+        if resource_expiration_reminders is not UNSET:
+            field_dict["resource_expiration_reminders"] = resource_expiration_reminders
         if service_provider_can_create_offering_user is not UNSET:
             field_dict["service_provider_can_create_offering_user"] = service_provider_can_create_offering_user
         if uses_robot_accounts is not UNSET:
@@ -1074,6 +1084,8 @@ class MergedPluginOptions:
         auto_approve_remote_orders = d.pop("auto_approve_remote_orders", UNSET)
 
         resource_expiration_threshold = d.pop("resource_expiration_threshold", UNSET)
+
+        resource_expiration_reminders = cast(list[int], d.pop("resource_expiration_reminders", UNSET))
 
         service_provider_can_create_offering_user = d.pop("service_provider_can_create_offering_user", UNSET)
 
@@ -1529,6 +1541,7 @@ class MergedPluginOptions:
             login_shell=login_shell,
             auto_approve_remote_orders=auto_approve_remote_orders,
             resource_expiration_threshold=resource_expiration_threshold,
+            resource_expiration_reminders=resource_expiration_reminders,
             service_provider_can_create_offering_user=service_provider_can_create_offering_user,
             uses_robot_accounts=uses_robot_accounts,
             offering_user_auto_deletion=offering_user_auto_deletion,

@@ -693,6 +693,7 @@ from .credentials_validation_response import CredentialsValidationResponse
 from .credit_reclassification_request import CreditReclassificationRequest
 from .credit_top_up_request import CreditTopUpRequest
 from .credit_transaction import CreditTransaction
+from .credit_transaction_channel_enum import CreditTransactionChannelEnum
 from .credit_transaction_o_enum import CreditTransactionOEnum
 from .current_qos_status_enum import CurrentQosStatusEnum
 from .current_stage_enum import CurrentStageEnum
@@ -4453,6 +4454,7 @@ __all__ = (
     "CreditReclassificationRequest",
     "CreditTopUpRequest",
     "CreditTransaction",
+    "CreditTransactionChannelEnum",
     "CreditTransactionOEnum",
     "CurrentQosStatusEnum",
     "CurrentStageEnum",
