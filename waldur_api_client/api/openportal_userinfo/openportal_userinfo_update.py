@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
@@ -11,7 +12,7 @@ from ...types import Response
 
 
 def _get_kwargs(
-    user: int,
+    user: UUID,
     *,
     body: UserInfoRequest,
 ) -> dict[str, Any]:
@@ -50,14 +51,14 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 
 def sync_detailed(
-    user: int,
+    user: UUID,
     *,
     client: AuthenticatedClient,
     body: UserInfoRequest,
 ) -> Response[UserInfo]:
     """
     Args:
-        user (int):
+        user (UUID):
         body (UserInfoRequest):
 
     Raises:
@@ -81,14 +82,14 @@ def sync_detailed(
 
 
 def sync(
-    user: int,
+    user: UUID,
     *,
     client: AuthenticatedClient,
     body: UserInfoRequest,
 ) -> UserInfo:
     """
     Args:
-        user (int):
+        user (UUID):
         body (UserInfoRequest):
 
     Raises:
@@ -107,14 +108,14 @@ def sync(
 
 
 async def asyncio_detailed(
-    user: int,
+    user: UUID,
     *,
     client: AuthenticatedClient,
     body: UserInfoRequest,
 ) -> Response[UserInfo]:
     """
     Args:
-        user (int):
+        user (UUID):
         body (UserInfoRequest):
 
     Raises:
@@ -136,14 +137,14 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    user: int,
+    user: UUID,
     *,
     client: AuthenticatedClient,
     body: UserInfoRequest,
 ) -> UserInfo:
     """
     Args:
-        user (int):
+        user (UUID):
         body (UserInfoRequest):
 
     Raises:

@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
@@ -9,7 +10,7 @@ from ...types import Response
 
 
 def _get_kwargs(
-    user: int,
+    user: UUID,
 ) -> dict[str, Any]:
     _kwargs: dict[str, Any] = {
         "method": "delete",
@@ -37,13 +38,13 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 
 def sync_detailed(
-    user: int,
+    user: UUID,
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
     """
     Args:
-        user (int):
+        user (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -65,13 +66,13 @@ def sync_detailed(
 
 
 async def asyncio_detailed(
-    user: int,
+    user: UUID,
     *,
     client: AuthenticatedClient,
 ) -> Response[Any]:
     """
     Args:
-        user (int):
+        user (UUID):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

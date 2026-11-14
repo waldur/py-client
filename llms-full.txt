@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.2.dev.20261113125527
+# Version: 8.1.5-rc.2.dev.20261114151722
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -16372,6 +16372,30 @@ Description: Record the user's decision and return where to send the browser.
 Request body: yes
 
 ============================================================
+## oauth-connected-apps  (module: waldur_api_client.api.oauth_connected_apps)
+============================================================
+
+### oauth_connected_apps_list
+GET /api/oauth-connected-apps/
+
+### oauth_connected_apps_count
+HEAD /api/oauth-connected-apps/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+
+### oauth_connected_apps_retrieve
+GET /api/oauth-connected-apps/{uuid}/
+Path parameters:
+  - uuid
+
+### oauth_connected_apps_destroy
+DELETE /api/oauth-connected-apps/{uuid}/
+Summary: Revoke a connected app
+Description: Revoke the client's access and refresh tokens and pending codes.
+Path parameters:
+  - uuid
+
+============================================================
 ## onboarding  (module: waldur_api_client.api.onboarding)
 ============================================================
 
@@ -17130,37 +17154,37 @@ Request body: yes
 ### openportal_projectinfo_retrieve
 GET /api/openportal-projectinfo/{project}/
 Path parameters:
-  - project
+  - project — UUID of the project
 
 ### openportal_projectinfo_update
 PUT /api/openportal-projectinfo/{project}/
 Path parameters:
-  - project
+  - project — UUID of the project
 Request body: yes
 
 ### openportal_projectinfo_partial_update
 PATCH /api/openportal-projectinfo/{project}/
 Path parameters:
-  - project
+  - project — UUID of the project
 Request body: yes
 
 ### openportal_projectinfo_destroy
 DELETE /api/openportal-projectinfo/{project}/
 Path parameters:
-  - project
+  - project — UUID of the project
 
 ### openportal_projectinfo_set_allowed_destinations_update
 PUT /api/openportal-projectinfo/{project}/set_allowed_destinations/
 Summary: Set allowed destinations for project
 Path parameters:
-  - project
+  - project — UUID of the project
 Request body: yes
 
 ### openportal_projectinfo_set_shortname_update
 PUT /api/openportal-projectinfo/{project}/set_shortname/
 Summary: Set shortname for project
 Path parameters:
-  - project
+  - project — UUID of the project
 Request body: yes
 
 ============================================================
@@ -17801,30 +17825,30 @@ Description: Get number of items in the collection matching the request paramete
 ### openportal_userinfo_retrieve
 GET /api/openportal-userinfo/{user}/
 Path parameters:
-  - user
+  - user — UUID of the user
 
 ### openportal_userinfo_update
 PUT /api/openportal-userinfo/{user}/
 Path parameters:
-  - user
+  - user — UUID of the user
 Request body: yes
 
 ### openportal_userinfo_partial_update
 PATCH /api/openportal-userinfo/{user}/
 Path parameters:
-  - user
+  - user — UUID of the user
 Request body: yes
 
 ### openportal_userinfo_destroy
 DELETE /api/openportal-userinfo/{user}/
 Path parameters:
-  - user
+  - user — UUID of the user
 
 ### openportal_userinfo_set_shortname_update
 PUT /api/openportal-userinfo/{user}/set_shortname/
 Summary: Set shortname for user
 Path parameters:
-  - user
+  - user — UUID of the user
 Request body: yes
 
 ============================================================

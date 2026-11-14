@@ -1,19 +1,20 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.set_user_shortname_request import SetUserShortnameRequest
 from ...models.user_info import UserInfo
-from ...models.user_info_request import UserInfoRequest
 from ...types import Response
 
 
 def _get_kwargs(
-    user: int,
+    user: UUID,
     *,
-    body: UserInfoRequest,
+    body: SetUserShortnameRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -50,16 +51,16 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 
 def sync_detailed(
-    user: int,
+    user: UUID,
     *,
     client: AuthenticatedClient,
-    body: UserInfoRequest,
+    body: SetUserShortnameRequest,
 ) -> Response[UserInfo]:
     """Set shortname for user
 
     Args:
-        user (int):
-        body (UserInfoRequest):
+        user (UUID):
+        body (SetUserShortnameRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -82,16 +83,16 @@ def sync_detailed(
 
 
 def sync(
-    user: int,
+    user: UUID,
     *,
     client: AuthenticatedClient,
-    body: UserInfoRequest,
+    body: SetUserShortnameRequest,
 ) -> UserInfo:
     """Set shortname for user
 
     Args:
-        user (int):
-        body (UserInfoRequest):
+        user (UUID):
+        body (SetUserShortnameRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -109,16 +110,16 @@ def sync(
 
 
 async def asyncio_detailed(
-    user: int,
+    user: UUID,
     *,
     client: AuthenticatedClient,
-    body: UserInfoRequest,
+    body: SetUserShortnameRequest,
 ) -> Response[UserInfo]:
     """Set shortname for user
 
     Args:
-        user (int):
-        body (UserInfoRequest):
+        user (UUID):
+        body (SetUserShortnameRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -139,16 +140,16 @@ async def asyncio_detailed(
 
 
 async def asyncio(
-    user: int,
+    user: UUID,
     *,
     client: AuthenticatedClient,
-    body: UserInfoRequest,
+    body: SetUserShortnameRequest,
 ) -> UserInfo:
     """Set shortname for user
 
     Args:
-        user (int):
-        body (UserInfoRequest):
+        user (UUID):
+        body (SetUserShortnameRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

@@ -2549,6 +2549,14 @@ Module: `waldur_api_client.api.oauth`
 - `oauth_consent_retrieve` GET `/api/oauth/consent/` — Describe the client asking for access, for the consent page (8 query params)
 - `oauth_consent` POST `/api/oauth/consent/` — Record the user's decision and return where to send the browser (request body)
 
+## oauth-connected-apps
+Module: `waldur_api_client.api.oauth_connected_apps`
+
+- `oauth_connected_apps_list` GET `/api/oauth-connected-apps/` (no params)
+- `oauth_connected_apps_count` HEAD `/api/oauth-connected-apps/` — Get number of items in the collection matching the request parameters (no params)
+- `oauth_connected_apps_retrieve` GET `/api/oauth-connected-apps/{uuid}/` (path: uuid)
+- `oauth_connected_apps_destroy` DELETE `/api/oauth-connected-apps/{uuid}/` — Revoke a connected app (path: uuid)
+
 ## onboarding
 Module: `waldur_api_client.api.onboarding`
 

@@ -4,27 +4,28 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-T = TypeVar("T", bound="ResourceOfferingRequest")
+T = TypeVar("T", bound="SetUserShortnameRequest")
 
 
 @_attrs_define
-class ResourceOfferingRequest:
+class SetUserShortnameRequest:
     """
     Attributes:
-        name (str):
+        shortname (str): A short, unique name for you. It will be used to form your local username on any systems.
+            Should only contain lower-case letters and digits and must start with a letter.
     """
 
-    name: str
+    shortname: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        name = self.name
+        shortname = self.shortname
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "name": name,
+                "shortname": shortname,
             }
         )
 
@@ -33,14 +34,14 @@ class ResourceOfferingRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        name = d.pop("name")
+        shortname = d.pop("shortname")
 
-        resource_offering_request = cls(
-            name=name,
+        set_user_shortname_request = cls(
+            shortname=shortname,
         )
 
-        resource_offering_request.additional_properties = d
-        return resource_offering_request
+        set_user_shortname_request.additional_properties = d
+        return set_user_shortname_request
 
     @property
     def additional_keys(self) -> list[str]:

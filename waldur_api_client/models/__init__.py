@@ -620,6 +620,7 @@ from .conflict_summary_response import ConflictSummaryResponse
 from .conflict_summary_response_by_severity import ConflictSummaryResponseBySeverity
 from .conflict_summary_response_by_status import ConflictSummaryResponseByStatus
 from .conflict_summary_response_by_type import ConflictSummaryResponseByType
+from .connected_app import ConnectedApp
 from .connection_stats import ConnectionStats
 from .consent_decision_request import ConsentDecisionRequest
 from .consent_details import ConsentDetails
@@ -2521,6 +2522,8 @@ from .project_storage_report_user_quotas_additional_property import ProjectStora
 from .project_storage_report_users import ProjectStorageReportUsers
 from .project_template import ProjectTemplate
 from .project_template_allocation_units_mapping import ProjectTemplateAllocationUnitsMapping
+from .project_template_offering import ProjectTemplateOffering
+from .project_template_offering_request import ProjectTemplateOfferingRequest
 from .project_template_request import ProjectTemplateRequest
 from .project_template_request_allocation_units_mapping import ProjectTemplateRequestAllocationUnitsMapping
 from .project_template_request_role_mapping import ProjectTemplateRequestRoleMapping
@@ -3010,7 +3013,6 @@ from .resource_missing_usage import ResourceMissingUsage
 from .resource_o_enum import ResourceOEnum
 from .resource_offering import ResourceOffering
 from .resource_offering_plugin_options import ResourceOfferingPluginOptions
-from .resource_offering_request import ResourceOfferingRequest
 from .resource_options_request import ResourceOptionsRequest
 from .resource_options_request_options_type_0 import ResourceOptionsRequestOptionsType0
 from .resource_options_type_0 import ResourceOptionsType0
@@ -3307,6 +3309,7 @@ from .set_resource_spending_limits_spending_limits_additional_property_type_0 im
     SetResourceSpendingLimitsSpendingLimitsAdditionalPropertyType0,
 )
 from .set_token_quota_request import SetTokenQuotaRequest
+from .set_user_shortname_request import SetUserShortnameRequest
 from .setting_source import SettingSource
 from .setting_source_source_enum import SettingSourceSourceEnum
 from .settings_item import SettingsItem
@@ -4385,6 +4388,7 @@ __all__ = (
     "ConflictSummaryResponseBySeverity",
     "ConflictSummaryResponseByStatus",
     "ConflictSummaryResponseByType",
+    "ConnectedApp",
     "ConnectionStats",
     "ConsentDecisionRequest",
     "ConsentDetails",
@@ -6190,6 +6194,8 @@ __all__ = (
     "ProjectsUsagesGroupedByOecdUsagesAdditionalProperty",
     "ProjectTemplate",
     "ProjectTemplateAllocationUnitsMapping",
+    "ProjectTemplateOffering",
+    "ProjectTemplateOfferingRequest",
     "ProjectTemplateRequest",
     "ProjectTemplateRequestAllocationUnitsMapping",
     "ProjectTemplateRequestRoleMapping",
@@ -6631,7 +6637,6 @@ __all__ = (
     "ResourceOEnum",
     "ResourceOffering",
     "ResourceOfferingPluginOptions",
-    "ResourceOfferingRequest",
     "ResourceOptionsRequest",
     "ResourceOptionsRequestOptionsType0",
     "ResourceOptionsType0",
@@ -6931,6 +6936,7 @@ __all__ = (
     "SettingSourceSourceEnum",
     "SettingsSection",
     "SetTokenQuotaRequest",
+    "SetUserShortnameRequest",
     "SeverityByDay",
     "SeverityByDaySeries",
     "SIDEBARSTYLEEnum",
