@@ -407,7 +407,7 @@ class EventMetadataResponseEventGroupsAdditionalPropertyItem(str, Enum):
     REVIEWER_WORKLOAD_LIMIT_OVERRIDDEN = "reviewer_workload_limit_overridden"
     REVIEW_ACCEPTED = "review_accepted"
     REVIEW_ASSIGNED = "review_assigned"
-    REVIEW_ASSIGNMENTS_CLOSED_ON_ROLE_REVOKE = "review_assignments_closed_on_role_revoke"
+    REVIEW_ASSIGNMENTS_CLOSED_ON_LEAVING_POOL = "review_assignments_closed_on_leaving_pool"
     REVIEW_ASSIGNMENT_FORCE_UNBLOCKED = "review_assignment_force_unblocked"
     REVIEW_CANCELED = "review_canceled"
     REVIEW_DECLINED = "review_declined"
