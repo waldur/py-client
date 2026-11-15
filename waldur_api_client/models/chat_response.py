@@ -23,6 +23,7 @@ class ChatResponse:
         e (Union[Unset, str]): Error message.
         m (Union[Unset, ChatResponseM]): System metadata (thread_uuid, message UUIDs).
         w (Union[Unset, str]): PII detection warning message.
+        d (Union[Unset, int]): reasoning: thinking time in milliseconds, sent when the thinking ends.
         status (Union[Unset, str]): vm_order status: 'form' | 'project_form' | 'preview' | 'success' | 'error'.
         name (Union[Unset, str]): VM name.
         flavor (Union[Unset, str]): Flavor display string (e.g. 'm1.small (2 vCPU, 4GB RAM)').
@@ -56,6 +57,7 @@ class ChatResponse:
     e: Union[Unset, str] = UNSET
     m: Union[Unset, "ChatResponseM"] = UNSET
     w: Union[Unset, str] = UNSET
+    d: Union[Unset, int] = UNSET
     status: Union[Unset, str] = UNSET
     name: Union[Unset, str] = UNSET
     flavor: Union[Unset, str] = UNSET
@@ -93,6 +95,8 @@ class ChatResponse:
             m = self.m.to_dict()
 
         w = self.w
+
+        d = self.d
 
         status = self.status
 
@@ -161,6 +165,8 @@ class ChatResponse:
             field_dict["m"] = m
         if w is not UNSET:
             field_dict["w"] = w
+        if d is not UNSET:
+            field_dict["d"] = d
         if status is not UNSET:
             field_dict["status"] = status
         if name is not UNSET:
@@ -228,6 +234,8 @@ class ChatResponse:
 
         w = d.pop("w", UNSET)
 
+        d = d.pop("d", UNSET)
+
         status = d.pop("status", UNSET)
 
         name = d.pop("name", UNSET)
@@ -277,6 +285,7 @@ class ChatResponse:
             e=e,
             m=m,
             w=w,
+            d=d,
             status=status,
             name=name,
             flavor=flavor,

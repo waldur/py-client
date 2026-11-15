@@ -21,7 +21,9 @@ class ProtectedProposalList:
         name (str):
         state (ProposalStates):
         reviews (list[Any]): Return serialized reviews based on user permissions and visibility settings.
-            - Staff, call managers, and reviewers see all reviews.
+            - Staff and call managers see all reviews.
+            - Reviewers see their own reviews only, as on /api/proposal-reviews/
+              (filter_reviews_for_user): reviewers judge independently.
             - Submitters see submitted reviews if visibility is enabled.
         approved_by_name (str):
         created_by_name (str):

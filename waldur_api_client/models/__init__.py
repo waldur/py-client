@@ -187,6 +187,7 @@ from .assignment_item_status import AssignmentItemStatus
 from .assignment_source import AssignmentSource
 from .association import Association
 from .atlassian_credentials_request import AtlassianCredentialsRequest
+from .atlassian_current_settings import AtlassianCurrentSettings
 from .atlassian_custom_field_response import AtlassianCustomFieldResponse
 from .atlassian_priority_response import AtlassianPriorityResponse
 from .atlassian_project_response import AtlassianProjectResponse
@@ -1348,6 +1349,12 @@ from .marketplace_offering_estimated_cost_policies_history_at_retrieve_response_
 )
 from .marketplace_offering_estimated_cost_policies_history_at_retrieve_response_404 import (
     MarketplaceOfferingEstimatedCostPoliciesHistoryAtRetrieveResponse404,
+)
+from .marketplace_offering_users_profile_field_warnings_retrieve_response_200 import (
+    MarketplaceOfferingUsersProfileFieldWarningsRetrieveResponse200,
+)
+from .marketplace_offering_users_profile_field_warnings_retrieve_response_200_additional_property_item import (
+    MarketplaceOfferingUsersProfileFieldWarningsRetrieveResponse200AdditionalPropertyItem,
 )
 from .marketplace_open_portal_create_order_attributes import MarketplaceOpenPortalCreateOrderAttributes
 from .marketplace_open_portal_remote_create_order_attributes import MarketplaceOpenPortalRemoteCreateOrderAttributes
@@ -3444,6 +3451,7 @@ from .suggested_reviewer_invitation import SuggestedReviewerInvitation
 from .suggested_reviewer_invitation_outcome_enum import SuggestedReviewerInvitationOutcomeEnum
 from .suggested_reviewers_action_request import SuggestedReviewersActionRequest
 from .suggestion_reject_request import SuggestionRejectRequest
+from .support_feedback_report_retrieve_response_200 import SupportFeedbackReportRetrieveResponse200
 from .support_stats import SupportStats
 from .support_user import SupportUser
 from .support_user_attachment_brief import SupportUserAttachmentBrief
@@ -3959,6 +3967,7 @@ __all__ = (
     "AssignmentSource",
     "Association",
     "AtlassianCredentialsRequest",
+    "AtlassianCurrentSettings",
     "AtlassianCustomFieldResponse",
     "AtlassianPriorityResponse",
     "AtlassianProjectResponse",
@@ -5097,6 +5106,8 @@ __all__ = (
     "MARKETPLACELAYOUTMODEEnum",
     "MarketplaceOfferingEstimatedCostPoliciesHistoryAtRetrieveResponse400",
     "MarketplaceOfferingEstimatedCostPoliciesHistoryAtRetrieveResponse404",
+    "MarketplaceOfferingUsersProfileFieldWarningsRetrieveResponse200",
+    "MarketplaceOfferingUsersProfileFieldWarningsRetrieveResponse200AdditionalPropertyItem",
     "MarketplaceOpenPortalCreateOrderAttributes",
     "MarketplaceOpenPortalRemoteCreateOrderAttributes",
     "MarketplacePlansHistoryAtRetrieveResponse400",
@@ -7065,6 +7076,7 @@ __all__ = (
     "SuggestedReviewersActionRequest",
     "SuggestionRejectRequest",
     "SupportedCountriesResponse",
+    "SupportFeedbackReportRetrieveResponse200",
     "SupportStats",
     "SupportUser",
     "SupportUserAttachmentBrief",

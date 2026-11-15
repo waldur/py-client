@@ -5,6 +5,9 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
+from ...models.marketplace_offering_users_profile_field_warnings_retrieve_response_200 import (
+    MarketplaceOfferingUsersProfileFieldWarningsRetrieveResponse200,
+)
 from ...types import Response
 
 
@@ -17,15 +20,21 @@ def _get_kwargs() -> dict[str, Any]:
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Any:
+def _parse_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> MarketplaceOfferingUsersProfileFieldWarningsRetrieveResponse200:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        return None
+        response_200 = MarketplaceOfferingUsersProfileFieldWarningsRetrieveResponse200.from_dict(response.json())
+
+        return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
-def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[Any]:
+def _build_response(
+    *, client: Union[AuthenticatedClient, Client], response: httpx.Response
+) -> Response[MarketplaceOfferingUsersProfileFieldWarningsRetrieveResponse200]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -37,7 +46,7 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> Response[MarketplaceOfferingUsersProfileFieldWarningsRetrieveResponse200]:
     """Get profile field warnings
 
      Returns a mapping of user profile field names to offerings that expose those fields. When
@@ -49,7 +58,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        Response[MarketplaceOfferingUsersProfileFieldWarningsRetrieveResponse200]
     """
 
     kwargs = _get_kwargs()
@@ -61,10 +70,10 @@ def sync_detailed(
     return _build_response(client=client, response=response)
 
 
-async def asyncio_detailed(
+def sync(
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> MarketplaceOfferingUsersProfileFieldWarningsRetrieveResponse200:
     """Get profile field warnings
 
      Returns a mapping of user profile field names to offerings that expose those fields. When
@@ -76,7 +85,30 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Any]
+        MarketplaceOfferingUsersProfileFieldWarningsRetrieveResponse200
+    """
+
+    return sync_detailed(
+        client=client,
+    ).parsed
+
+
+async def asyncio_detailed(
+    *,
+    client: AuthenticatedClient,
+) -> Response[MarketplaceOfferingUsersProfileFieldWarningsRetrieveResponse200]:
+    """Get profile field warnings
+
+     Returns a mapping of user profile field names to offerings that expose those fields. When
+    ENFORCE_OFFERING_USER_PROFILE_COMPLETENESS is enabled, clearing a field listed here would make the
+    user invisible to the service provider for the associated offerings.
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[MarketplaceOfferingUsersProfileFieldWarningsRetrieveResponse200]
     """
 
     kwargs = _get_kwargs()
@@ -84,3 +116,28 @@ async def asyncio_detailed(
     response = await client.get_async_httpx_client().request(**kwargs)
 
     return _build_response(client=client, response=response)
+
+
+async def asyncio(
+    *,
+    client: AuthenticatedClient,
+) -> MarketplaceOfferingUsersProfileFieldWarningsRetrieveResponse200:
+    """Get profile field warnings
+
+     Returns a mapping of user profile field names to offerings that expose those fields. When
+    ENFORCE_OFFERING_USER_PROFILE_COMPLETENESS is enabled, clearing a field listed here would make the
+    user invisible to the service provider for the associated offerings.
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        MarketplaceOfferingUsersProfileFieldWarningsRetrieveResponse200
+    """
+
+    return (
+        await asyncio_detailed(
+            client=client,
+        )
+    ).parsed

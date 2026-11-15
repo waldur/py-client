@@ -26,7 +26,7 @@ class ProjectPermissionLog:
         project_uuid (Union[Unset, UUID]):
         project_name (Union[Unset, str]):
         project_created (Union[Unset, datetime.datetime]):
-        project_end_date (Union[Unset, datetime.datetime]):
+        project_end_date (Union[None, Unset, datetime.date]):
         customer_uuid (Union[Unset, UUID]):
         customer_name (Union[Unset, str]):
         role (Union[Unset, str]):
@@ -49,7 +49,7 @@ class ProjectPermissionLog:
     project_uuid: Union[Unset, UUID] = UNSET
     project_name: Union[Unset, str] = UNSET
     project_created: Union[Unset, datetime.datetime] = UNSET
-    project_end_date: Union[Unset, datetime.datetime] = UNSET
+    project_end_date: Union[None, Unset, datetime.date] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
     customer_name: Union[Unset, str] = UNSET
     role: Union[Unset, str] = UNSET
@@ -105,9 +105,13 @@ class ProjectPermissionLog:
         if not isinstance(self.project_created, Unset):
             project_created = self.project_created.isoformat()
 
-        project_end_date: Union[Unset, str] = UNSET
-        if not isinstance(self.project_end_date, Unset):
+        project_end_date: Union[None, Unset, str]
+        if isinstance(self.project_end_date, Unset):
+            project_end_date = UNSET
+        elif isinstance(self.project_end_date, datetime.date):
             project_end_date = self.project_end_date.isoformat()
+        else:
+            project_end_date = self.project_end_date
 
         customer_uuid: Union[Unset, str] = UNSET
         if not isinstance(self.customer_uuid, Unset):
@@ -251,12 +255,22 @@ class ProjectPermissionLog:
         else:
             project_created = isoparse(_project_created)
 
-        _project_end_date = d.pop("project_end_date", UNSET)
-        project_end_date: Union[Unset, datetime.datetime]
-        if isinstance(_project_end_date, Unset):
-            project_end_date = UNSET
-        else:
-            project_end_date = isoparse(_project_end_date)
+        def _parse_project_end_date(data: object) -> Union[None, Unset, datetime.date]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                project_end_date_type_0 = isoparse(data).date()
+
+                return project_end_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.date], data)
+
+        project_end_date = _parse_project_end_date(d.pop("project_end_date", UNSET))
 
         _customer_uuid = d.pop("customer_uuid", UNSET)
         customer_uuid: Union[Unset, UUID]

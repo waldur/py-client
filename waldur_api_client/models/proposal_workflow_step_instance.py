@@ -97,10 +97,11 @@ class ProposalWorkflowStepInstance:
         can_suggest_reviewers (bool): Whether the caller may suggest a reviewer through the step now: it is the active
             step collecting suggestions and the caller's own contribution to it is still open.
         ready_to_complete (bool): For whoever may complete the active step: every contribution is in and its completion
-            gates are met, so it waits only for them. False for everyone else.
+            gates are met, so it waits only for them. The minimum score threshold counts only for those who read score_gate.
+            False for everyone else.
         score_gate (Union['StepScoreGate', None]): The active step's score against its minimum score threshold, before
             anyone decides: below it, only declining is possible. Null without a threshold, once the step is no longer
-            active, and for readers outside the call team.
+            active, and for readers outside the call team, the step's own evaluators included.
         decided_automatically (bool): Whether the system took this allocation decision itself, on a call whose decision
             decides automatically.
     """

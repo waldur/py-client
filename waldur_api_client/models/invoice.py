@@ -34,7 +34,7 @@ class Invoice:
         month (Union[Unset, int]):
         issuer_details (Union[Unset, CustomerDetails]):
         invoice_date (Union[None, Unset, datetime.date]): Date then invoice moved from state pending to created.
-        due_date (Union[Unset, datetime.date]):
+        due_date (Union[None, Unset, datetime.date]):
         customer_details (Union[Unset, CustomerDetails]):
         items (Union[Unset, list['InvoiceItem']]):
         backend_id (Union[Unset, str]):
@@ -59,7 +59,7 @@ class Invoice:
     month: Union[Unset, int] = UNSET
     issuer_details: Union[Unset, "CustomerDetails"] = UNSET
     invoice_date: Union[None, Unset, datetime.date] = UNSET
-    due_date: Union[Unset, datetime.date] = UNSET
+    due_date: Union[None, Unset, datetime.date] = UNSET
     customer_details: Union[Unset, "CustomerDetails"] = UNSET
     items: Union[Unset, list["InvoiceItem"]] = UNSET
     backend_id: Union[Unset, str] = UNSET
@@ -107,9 +107,13 @@ class Invoice:
         else:
             invoice_date = self.invoice_date
 
-        due_date: Union[Unset, str] = UNSET
-        if not isinstance(self.due_date, Unset):
+        due_date: Union[None, Unset, str]
+        if isinstance(self.due_date, Unset):
+            due_date = UNSET
+        elif isinstance(self.due_date, datetime.date):
             due_date = self.due_date.isoformat()
+        else:
+            due_date = self.due_date
 
         customer_details: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.customer_details, Unset):
@@ -242,12 +246,22 @@ class Invoice:
 
         invoice_date = _parse_invoice_date(d.pop("invoice_date", UNSET))
 
-        _due_date = d.pop("due_date", UNSET)
-        due_date: Union[Unset, datetime.date]
-        if isinstance(_due_date, Unset):
-            due_date = UNSET
-        else:
-            due_date = isoparse(_due_date).date()
+        def _parse_due_date(data: object) -> Union[None, Unset, datetime.date]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                due_date_type_0 = isoparse(data).date()
+
+                return due_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.date], data)
+
+        due_date = _parse_due_date(d.pop("due_date", UNSET))
 
         _customer_details = d.pop("customer_details", UNSET)
         customer_details: Union[Unset, CustomerDetails]

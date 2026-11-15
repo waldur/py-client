@@ -9,6 +9,8 @@ class MessageBlocksItemKey(str, Enum):
     HPC_JOB = "hpc_job"
     MARKDOWN = "markdown"
     MERMAID = "mermaid"
+    NARRATION = "narration"
+    REASONING = "reasoning"
     RESOURCE_LIST = "resource_list"
     TOOL = "tool"
     VM_ORDER = "vm_order"

@@ -26,7 +26,7 @@ class LexisLink:
         resource_name (str):
         resource_type (str):
         resource_backend_id (str):
-        resource_end_date (datetime.datetime):
+        resource_end_date (Union[None, datetime.date]):
         project_uuid (UUID):
         project_name (str):
         customer_uuid (UUID):
@@ -46,7 +46,7 @@ class LexisLink:
     resource_name: str
     resource_type: str
     resource_backend_id: str
-    resource_end_date: datetime.datetime
+    resource_end_date: Union[None, datetime.date]
     project_uuid: UUID
     project_name: str
     customer_uuid: UUID
@@ -79,7 +79,11 @@ class LexisLink:
 
         resource_backend_id = self.resource_backend_id
 
-        resource_end_date = self.resource_end_date.isoformat()
+        resource_end_date: Union[None, str]
+        if isinstance(self.resource_end_date, datetime.date):
+            resource_end_date = self.resource_end_date.isoformat()
+        else:
+            resource_end_date = self.resource_end_date
 
         project_uuid = str(self.project_uuid)
 
@@ -146,7 +150,20 @@ class LexisLink:
 
         resource_backend_id = d.pop("resource_backend_id")
 
-        resource_end_date = isoparse(d.pop("resource_end_date"))
+        def _parse_resource_end_date(data: object) -> Union[None, datetime.date]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                resource_end_date_type_0 = isoparse(data).date()
+
+                return resource_end_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, datetime.date], data)
+
+        resource_end_date = _parse_resource_end_date(d.pop("resource_end_date"))
 
         project_uuid = UUID(d.pop("project_uuid"))
 

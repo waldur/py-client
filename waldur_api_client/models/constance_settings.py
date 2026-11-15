@@ -303,6 +303,7 @@ class ConstanceSettings:
         ai_assistant_session_retention_days (Union[Unset, int]):
         ai_assistant_history_limit (Union[Unset, int]):
         ai_assistant_stream_timeout_seconds (Union[Unset, int]):
+        ai_assistant_show_reasoning (Union[Unset, bool]):
         ai_assistant_injection_allowlist (Union[Unset, str]):
         ai_assistant_name (Union[Unset, str]):
         ai_assistant_system_prompt_custom_instructions (Union[Unset, str]):
@@ -671,6 +672,7 @@ class ConstanceSettings:
     ai_assistant_session_retention_days: Union[Unset, int] = UNSET
     ai_assistant_history_limit: Union[Unset, int] = UNSET
     ai_assistant_stream_timeout_seconds: Union[Unset, int] = UNSET
+    ai_assistant_show_reasoning: Union[Unset, bool] = UNSET
     ai_assistant_injection_allowlist: Union[Unset, str] = UNSET
     ai_assistant_name: Union[Unset, str] = UNSET
     ai_assistant_system_prompt_custom_instructions: Union[Unset, str] = UNSET
@@ -1508,6 +1510,8 @@ class ConstanceSettings:
 
         ai_assistant_stream_timeout_seconds = self.ai_assistant_stream_timeout_seconds
 
+        ai_assistant_show_reasoning = self.ai_assistant_show_reasoning
+
         ai_assistant_injection_allowlist = self.ai_assistant_injection_allowlist
 
         ai_assistant_name = self.ai_assistant_name
@@ -2303,6 +2307,8 @@ class ConstanceSettings:
             field_dict["AI_ASSISTANT_HISTORY_LIMIT"] = ai_assistant_history_limit
         if ai_assistant_stream_timeout_seconds is not UNSET:
             field_dict["AI_ASSISTANT_STREAM_TIMEOUT_SECONDS"] = ai_assistant_stream_timeout_seconds
+        if ai_assistant_show_reasoning is not UNSET:
+            field_dict["AI_ASSISTANT_SHOW_REASONING"] = ai_assistant_show_reasoning
         if ai_assistant_injection_allowlist is not UNSET:
             field_dict["AI_ASSISTANT_INJECTION_ALLOWLIST"] = ai_assistant_injection_allowlist
         if ai_assistant_name is not UNSET:
@@ -3477,6 +3483,8 @@ class ConstanceSettings:
 
         ai_assistant_stream_timeout_seconds = d.pop("AI_ASSISTANT_STREAM_TIMEOUT_SECONDS", UNSET)
 
+        ai_assistant_show_reasoning = d.pop("AI_ASSISTANT_SHOW_REASONING", UNSET)
+
         ai_assistant_injection_allowlist = d.pop("AI_ASSISTANT_INJECTION_ALLOWLIST", UNSET)
 
         ai_assistant_name = d.pop("AI_ASSISTANT_NAME", UNSET)
@@ -4052,6 +4060,7 @@ class ConstanceSettings:
             ai_assistant_session_retention_days=ai_assistant_session_retention_days,
             ai_assistant_history_limit=ai_assistant_history_limit,
             ai_assistant_stream_timeout_seconds=ai_assistant_stream_timeout_seconds,
+            ai_assistant_show_reasoning=ai_assistant_show_reasoning,
             ai_assistant_injection_allowlist=ai_assistant_injection_allowlist,
             ai_assistant_name=ai_assistant_name,
             ai_assistant_system_prompt_custom_instructions=ai_assistant_system_prompt_custom_instructions,
