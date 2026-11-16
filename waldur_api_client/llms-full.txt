@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.2.dev.20261115180844
+# Version: 8.1.5-rc.2.dev.20261116135732
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -2578,6 +2578,11 @@ Description: Returns a Markdown upgrade report, maintenance announcement text an
 POST /api/chat/stream/
 Request body: yes
 
+### chat_suggestions_retrieve
+GET /api/chat/suggestions/
+Summary: Quick prompts for the caller
+Description: The ids of the quick prompts to offer on an empty AI assistant thread, most relevant first. A prompt is offered only when the caller has every tool it needs (as the stream would for this request), the portal has the features it needs switched on, and, for some, the caller has the data it is about...
+
 ============================================================
 ## chat-messages  (module: waldur_api_client.api.chat_messages)
 ============================================================
@@ -4405,6 +4410,23 @@ Query parameters (5):
 GET /api/digitalocean-sizes/{uuid}/
 Path parameters:
   - uuid
+
+============================================================
+## docs-search  (module: waldur_api_client.api.docs_search)
+============================================================
+
+### docs_search_retrieve
+GET /api/docs-search/
+Summary: Search the documentation of this release
+Description: Search the documentation of this release.
+
+End users get only the sections for their role whose features are
+switched on here. Staff and support also get sections for switched-off
+features, marked ``enabled_here: false``. Answers 424 while
+DOCS_SEARCH_ENABLED is off and 503 when no documentation ...
+Query parameters (2):
+  - limit
+  - query (required)
 
 ============================================================
 ## email-logs  (module: waldur_api_client.api.email_logs)

@@ -523,6 +523,9 @@ from .chat_response import ChatResponse
 from .chat_response_m import ChatResponseM
 from .chat_session import ChatSession
 from .chat_session_field_enum import ChatSessionFieldEnum
+from .chat_suggestion import ChatSuggestion
+from .chat_suggestion_id_enum import ChatSuggestionIdEnum
+from .chat_suggestions_response import ChatSuggestionsResponse
 from .chat_thread_stats_response import ChatThreadStatsResponse
 from .chat_tools_execute_response_200 import ChatToolsExecuteResponse200
 from .check_run_status_enum import CheckRunStatusEnum
@@ -862,6 +865,11 @@ from .disk_format_enum import DiskFormatEnum
 from .display_limit_config import DisplayLimitConfig
 from .display_limit_config_request import DisplayLimitConfigRequest
 from .dlq_queue import DLQQueue
+from .docs_search_disabled import DocsSearchDisabled
+from .docs_search_hit import DocsSearchHit
+from .docs_search_response import DocsSearchResponse
+from .docs_search_switched_off import DocsSearchSwitchedOff
+from .docs_search_unavailable import DocsSearchUnavailable
 from .dry_run import DryRun
 from .dry_run_action_request import DryRunActionRequest
 from .dry_run_audience import DryRunAudience
@@ -4299,6 +4307,9 @@ __all__ = (
     "ChatResponseM",
     "ChatSession",
     "ChatSessionFieldEnum",
+    "ChatSuggestion",
+    "ChatSuggestionIdEnum",
+    "ChatSuggestionsResponse",
     "ChatThreadStatsResponse",
     "ChatToolsExecuteResponse200",
     "Checklist",
@@ -4630,6 +4641,11 @@ __all__ = (
     "DisplayLimitConfig",
     "DisplayLimitConfigRequest",
     "DLQQueue",
+    "DocsSearchDisabled",
+    "DocsSearchHit",
+    "DocsSearchResponse",
+    "DocsSearchSwitchedOff",
+    "DocsSearchUnavailable",
     "DryRun",
     "DryRunActionRequest",
     "DryRunAudience",

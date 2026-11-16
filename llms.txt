@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.1.5-rc.2.dev.20261115180844).
+> Auto-generated Python SDK for the Waldur API (version 8.1.5-rc.2.dev.20261116135732).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -71,7 +71,7 @@ waldur_api_client/
 - **changelog** (5 endpoints)
 - **changelog-entries** (1 endpoint)
 - **changelog-upgrade-report** (1 endpoint)
-- **chat** (1 endpoint)
+- **chat** (2 endpoints)
 - **chat-messages** (2 endpoints)
 - **chat-quota** (2 endpoints)
 - **chat-sessions** (3 endpoints)
@@ -103,6 +103,7 @@ waldur_api_client/
 - **digitalocean-images** (3 endpoints)
 - **digitalocean-regions** (3 endpoints)
 - **digitalocean-sizes** (3 endpoints)
+- **docs-search** (1 endpoint)
 - **email-logs** (3 endpoints)
 - **event-consumers** (7 endpoints)
 - **event-subscription-queues** (4 endpoints)

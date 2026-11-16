@@ -19,7 +19,7 @@ class ProjectAnswer:
         is_completed (bool): Get completion status.
         requires_review (bool): Get review requirement status.
         answers_count (int): Get count of answers.
-        unanswered_required_count (int): Get count of unanswered required questions.
+        unanswered_required_count (int): Get count of unanswered required questions shown to the user.
     """
 
     project_uuid: UUID

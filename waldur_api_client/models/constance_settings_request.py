@@ -92,6 +92,7 @@ class ConstanceSettingsRequest:
         only_one_project_manager (Union[Unset, bool]):
         default_idp (Union[BlankEnum, DEFAULTIDPEnum, Unset]):
         docs_url (Union[Unset, str]):
+        docs_search_enabled (Union[Unset, bool]):
         short_page_title (Union[Unset, str]):
         full_page_title (Union[Unset, str]):
         project_end_date_mandatory (Union[Unset, bool]):
@@ -461,6 +462,7 @@ class ConstanceSettingsRequest:
     only_one_project_manager: Union[Unset, bool] = UNSET
     default_idp: Union[BlankEnum, DEFAULTIDPEnum, Unset] = UNSET
     docs_url: Union[Unset, str] = UNSET
+    docs_search_enabled: Union[Unset, bool] = UNSET
     short_page_title: Union[Unset, str] = UNSET
     full_page_title: Union[Unset, str] = UNSET
     project_end_date_mandatory: Union[Unset, bool] = UNSET
@@ -897,6 +899,8 @@ class ConstanceSettingsRequest:
             default_idp = self.default_idp.value
 
         docs_url = self.docs_url
+
+        docs_search_enabled = self.docs_search_enabled
 
         short_page_title = self.short_page_title
 
@@ -1911,6 +1915,8 @@ class ConstanceSettingsRequest:
             field_dict["DEFAULT_IDP"] = default_idp
         if docs_url is not UNSET:
             field_dict["DOCS_URL"] = docs_url
+        if docs_search_enabled is not UNSET:
+            field_dict["DOCS_SEARCH_ENABLED"] = docs_search_enabled
         if short_page_title is not UNSET:
             field_dict["SHORT_PAGE_TITLE"] = short_page_title
         if full_page_title is not UNSET:
@@ -2715,6 +2721,8 @@ class ConstanceSettingsRequest:
         default_idp = _parse_default_idp(d.pop("DEFAULT_IDP", UNSET))
 
         docs_url = d.pop("DOCS_URL", UNSET)
+
+        docs_search_enabled = d.pop("DOCS_SEARCH_ENABLED", UNSET)
 
         short_page_title = d.pop("SHORT_PAGE_TITLE", UNSET)
 
@@ -3983,6 +3991,7 @@ class ConstanceSettingsRequest:
             only_one_project_manager=only_one_project_manager,
             default_idp=default_idp,
             docs_url=docs_url,
+            docs_search_enabled=docs_search_enabled,
             short_page_title=short_page_title,
             full_page_title=full_page_title,
             project_end_date_mandatory=project_end_date_mandatory,

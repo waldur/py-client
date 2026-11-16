@@ -467,6 +467,7 @@ Module: `waldur_api_client.api.changelog_upgrade_report`
 Module: `waldur_api_client.api.chat`
 
 - `chat_stream` POST `/api/chat/stream/` (request body)
+- `chat_suggestions_retrieve` GET `/api/chat/suggestions/` — Quick prompts for the caller (no params)
 
 ## chat-messages
 Module: `waldur_api_client.api.chat_messages`
@@ -787,6 +788,11 @@ Module: `waldur_api_client.api.digitalocean_sizes`
 - `digitalocean_sizes_list` GET `/api/digitalocean-sizes/` (5 query params)
 - `digitalocean_sizes_count` HEAD `/api/digitalocean-sizes/` — Get number of items in the collection matching the request parameters (5 query params)
 - `digitalocean_sizes_retrieve` GET `/api/digitalocean-sizes/{uuid}/` (path: uuid)
+
+## docs-search
+Module: `waldur_api_client.api.docs_search`
+
+- `docs_search_retrieve` GET `/api/docs-search/` — Search the documentation of this release (2 query params)
 
 ## email-logs
 Module: `waldur_api_client.api.email_logs`
