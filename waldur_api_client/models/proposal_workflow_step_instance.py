@@ -16,6 +16,7 @@ from ..models.workflow_phase_enum import WorkflowPhaseEnum
 
 if TYPE_CHECKING:
     from ..models.step_checklist_status import StepChecklistStatus
+    from ..models.step_discussion_viewer import StepDiscussionViewer
     from ..models.step_run_condition import StepRunCondition
     from ..models.step_score_gate import StepScoreGate
 
@@ -104,6 +105,9 @@ class ProposalWorkflowStepInstance:
             active, and for readers outside the call team, the step's own evaluators included.
         decided_automatically (bool): Whether the system took this allocation decision itself, on a call whose decision
             decides automatically.
+        discussion (Union['StepDiscussionViewer', None]): The step's discussion, for a step that has one, as the viewer
+            sees it: on a step run once per round the round's discussion of the proposal's panel. Null when the step has
+            none, or the viewer neither takes part in it nor oversees the call.
     """
 
     uuid: UUID
@@ -161,10 +165,12 @@ class ProposalWorkflowStepInstance:
     ready_to_complete: bool
     score_gate: Union["StepScoreGate", None]
     decided_automatically: bool
+    discussion: Union["StepDiscussionViewer", None]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.step_checklist_status import StepChecklistStatus
+        from ..models.step_discussion_viewer import StepDiscussionViewer
         from ..models.step_score_gate import StepScoreGate
 
         uuid = str(self.uuid)
@@ -335,6 +341,12 @@ class ProposalWorkflowStepInstance:
 
         decided_automatically = self.decided_automatically
 
+        discussion: Union[None, dict[str, Any]]
+        if isinstance(self.discussion, StepDiscussionViewer):
+            discussion = self.discussion.to_dict()
+        else:
+            discussion = self.discussion
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -394,6 +406,7 @@ class ProposalWorkflowStepInstance:
                 "ready_to_complete": ready_to_complete,
                 "score_gate": score_gate,
                 "decided_automatically": decided_automatically,
+                "discussion": discussion,
             }
         )
 
@@ -402,6 +415,7 @@ class ProposalWorkflowStepInstance:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.step_checklist_status import StepChecklistStatus
+        from ..models.step_discussion_viewer import StepDiscussionViewer
         from ..models.step_run_condition import StepRunCondition
         from ..models.step_score_gate import StepScoreGate
 
@@ -719,6 +733,21 @@ class ProposalWorkflowStepInstance:
 
         decided_automatically = d.pop("decided_automatically")
 
+        def _parse_discussion(data: object) -> Union["StepDiscussionViewer", None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                discussion_type_1 = StepDiscussionViewer.from_dict(data)
+
+                return discussion_type_1
+            except:  # noqa: E722
+                pass
+            return cast(Union["StepDiscussionViewer", None], data)
+
+        discussion = _parse_discussion(d.pop("discussion"))
+
         proposal_workflow_step_instance = cls(
             uuid=uuid,
             step=step,
@@ -775,6 +804,7 @@ class ProposalWorkflowStepInstance:
             ready_to_complete=ready_to_complete,
             score_gate=score_gate,
             decided_automatically=decided_automatically,
+            discussion=discussion,
         )
 
         proposal_workflow_step_instance.additional_properties = d

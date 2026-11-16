@@ -19,6 +19,7 @@ def _get_kwargs(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, MatrixRoomStateEnum] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -35,6 +36,8 @@ def _get_kwargs(
     if not isinstance(project_uuid, Unset):
         json_project_uuid = str(project_uuid)
     params["project_uuid"] = json_project_uuid
+
+    params["scope_type"] = scope_type
 
     json_state: Union[Unset, str] = UNSET
     if not isinstance(state, Unset):
@@ -87,6 +90,7 @@ def sync_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, MatrixRoomStateEnum] = UNSET,
 ) -> Response[list["EligibleProject"]]:
     """List projects the caller can create a Matrix room for
@@ -101,6 +105,7 @@ def sync_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
+        scope_type (Union[Unset, str]):
         state (Union[Unset, MatrixRoomStateEnum]):
 
     Raises:
@@ -117,6 +122,7 @@ def sync_detailed(
         page=page,
         page_size=page_size,
         project_uuid=project_uuid,
+        scope_type=scope_type,
         state=state,
     )
 
@@ -135,6 +141,7 @@ def sync(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, MatrixRoomStateEnum] = UNSET,
 ) -> list["EligibleProject"]:
     """List projects the caller can create a Matrix room for
@@ -149,6 +156,7 @@ def sync(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
+        scope_type (Union[Unset, str]):
         state (Union[Unset, MatrixRoomStateEnum]):
 
     Raises:
@@ -166,6 +174,7 @@ def sync(
         page=page,
         page_size=page_size,
         project_uuid=project_uuid,
+        scope_type=scope_type,
         state=state,
     ).parsed
 
@@ -178,6 +187,7 @@ async def asyncio_detailed(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, MatrixRoomStateEnum] = UNSET,
 ) -> Response[list["EligibleProject"]]:
     """List projects the caller can create a Matrix room for
@@ -192,6 +202,7 @@ async def asyncio_detailed(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
+        scope_type (Union[Unset, str]):
         state (Union[Unset, MatrixRoomStateEnum]):
 
     Raises:
@@ -208,6 +219,7 @@ async def asyncio_detailed(
         page=page,
         page_size=page_size,
         project_uuid=project_uuid,
+        scope_type=scope_type,
         state=state,
     )
 
@@ -224,6 +236,7 @@ async def asyncio(
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, MatrixRoomStateEnum] = UNSET,
 ) -> list["EligibleProject"]:
     """List projects the caller can create a Matrix room for
@@ -238,6 +251,7 @@ async def asyncio(
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
         project_uuid (Union[Unset, UUID]):
+        scope_type (Union[Unset, str]):
         state (Union[Unset, MatrixRoomStateEnum]):
 
     Raises:
@@ -256,6 +270,7 @@ async def asyncio(
             page=page,
             page_size=page_size,
             project_uuid=project_uuid,
+            scope_type=scope_type,
             state=state,
         )
     ).parsed
@@ -267,6 +282,7 @@ def sync_all(
     customer_uuid: Union[Unset, str] = UNSET,
     member: Union[Unset, bool] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, MatrixRoomStateEnum] = UNSET,
 ) -> list["EligibleProject"]:
     """Get All Pages
@@ -280,6 +296,7 @@ def sync_all(
         customer_uuid (Union[Unset, str]):
         member (Union[Unset, bool]):
         project_uuid (Union[Unset, UUID]):
+        scope_type (Union[Unset, str]):
         state (Union[Unset, MatrixRoomStateEnum]):
 
     Raises:
@@ -298,6 +315,7 @@ def sync_all(
         customer_uuid=customer_uuid,
         member=member,
         project_uuid=project_uuid,
+        scope_type=scope_type,
         state=state,
     )
 
@@ -349,6 +367,7 @@ async def asyncio_all(
     customer_uuid: Union[Unset, str] = UNSET,
     member: Union[Unset, bool] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, MatrixRoomStateEnum] = UNSET,
 ) -> list["EligibleProject"]:
     """Get All Pages (Async)
@@ -362,6 +381,7 @@ async def asyncio_all(
         customer_uuid (Union[Unset, str]):
         member (Union[Unset, bool]):
         project_uuid (Union[Unset, UUID]):
+        scope_type (Union[Unset, str]):
         state (Union[Unset, MatrixRoomStateEnum]):
 
     Raises:
@@ -380,6 +400,7 @@ async def asyncio_all(
         customer_uuid=customer_uuid,
         member=member,
         project_uuid=project_uuid,
+        scope_type=scope_type,
         state=state,
     )
 

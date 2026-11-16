@@ -1,6 +1,6 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -23,6 +23,8 @@ class MatrixRoomMember:
         matrix_user_id (str):
         power_level (int):
         membership_state (MembershipStateEnum):
+        role_label (Union[None, str]): What the member takes part as, by the room's kind: in a step discussion, say,
+            Panel chair, Call manager or Reviewer. Null where the kind of room names none.
         created (datetime.datetime):
         modified (datetime.datetime):
     """
@@ -34,6 +36,7 @@ class MatrixRoomMember:
     matrix_user_id: str
     power_level: int
     membership_state: MembershipStateEnum
+    role_label: Union[None, str]
     created: datetime.datetime
     modified: datetime.datetime
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -53,6 +56,9 @@ class MatrixRoomMember:
 
         membership_state = self.membership_state.value
 
+        role_label: Union[None, str]
+        role_label = self.role_label
+
         created = self.created.isoformat()
 
         modified = self.modified.isoformat()
@@ -68,6 +74,7 @@ class MatrixRoomMember:
                 "matrix_user_id": matrix_user_id,
                 "power_level": power_level,
                 "membership_state": membership_state,
+                "role_label": role_label,
                 "created": created,
                 "modified": modified,
             }
@@ -92,6 +99,13 @@ class MatrixRoomMember:
 
         membership_state = MembershipStateEnum(d.pop("membership_state"))
 
+        def _parse_role_label(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        role_label = _parse_role_label(d.pop("role_label"))
+
         created = isoparse(d.pop("created"))
 
         modified = isoparse(d.pop("modified"))
@@ -104,6 +118,7 @@ class MatrixRoomMember:
             matrix_user_id=matrix_user_id,
             power_level=power_level,
             membership_state=membership_state,
+            role_label=role_label,
             created=created,
             modified=modified,
         )

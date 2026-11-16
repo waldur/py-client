@@ -1,11 +1,15 @@
 import datetime
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union, cast
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
+
+if TYPE_CHECKING:
+    from ..models.round_step_discussion import RoundStepDiscussion
+
 
 T = TypeVar("T", bound="RoundStep")
 
@@ -14,6 +18,11 @@ T = TypeVar("T", bound="RoundStep")
 class RoundStep:
     """
     Attributes:
+        round_step_uuid (Union[None, UUID]): The step's record in the round, once it has a due date or was opened there;
+            null before.
+        has_discussion (bool):
+        discussions (list['RoundStepDiscussion']): For a round step with a discussion, its discussion per panel (one on
+            a call without panels) that the viewer takes part in or oversees; empty otherwise.
         step_uuid (UUID):
         step_key (str):
         step_name (str):
@@ -30,6 +39,9 @@ class RoundStep:
         reports_submitted (int):
     """
 
+    round_step_uuid: Union[None, UUID]
+    has_discussion: bool
+    discussions: list["RoundStepDiscussion"]
     step_uuid: UUID
     step_key: str
     step_name: str
@@ -47,6 +59,19 @@ class RoundStep:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        round_step_uuid: Union[None, str]
+        if isinstance(self.round_step_uuid, UUID):
+            round_step_uuid = str(self.round_step_uuid)
+        else:
+            round_step_uuid = self.round_step_uuid
+
+        has_discussion = self.has_discussion
+
+        discussions = []
+        for discussions_item_data in self.discussions:
+            discussions_item = discussions_item_data.to_dict()
+            discussions.append(discussions_item)
+
         step_uuid = str(self.step_uuid)
 
         step_key = self.step_key
@@ -87,6 +112,9 @@ class RoundStep:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "round_step_uuid": round_step_uuid,
+                "has_discussion": has_discussion,
+                "discussions": discussions,
                 "step_uuid": step_uuid,
                 "step_key": step_key,
                 "step_name": step_name,
@@ -108,7 +136,34 @@ class RoundStep:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.round_step_discussion import RoundStepDiscussion
+
         d = dict(src_dict)
+
+        def _parse_round_step_uuid(data: object) -> Union[None, UUID]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                round_step_uuid_type_0 = UUID(data)
+
+                return round_step_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID], data)
+
+        round_step_uuid = _parse_round_step_uuid(d.pop("round_step_uuid"))
+
+        has_discussion = d.pop("has_discussion")
+
+        discussions = []
+        _discussions = d.pop("discussions")
+        for discussions_item_data in _discussions:
+            discussions_item = RoundStepDiscussion.from_dict(discussions_item_data)
+
+            discussions.append(discussions_item)
+
         step_uuid = UUID(d.pop("step_uuid"))
 
         step_key = d.pop("step_key")
@@ -164,6 +219,9 @@ class RoundStep:
         reports_submitted = d.pop("reports_submitted")
 
         round_step = cls(
+            round_step_uuid=round_step_uuid,
+            has_discussion=has_discussion,
+            discussions=discussions,
             step_uuid=step_uuid,
             step_key=step_key,
             step_name=step_name,

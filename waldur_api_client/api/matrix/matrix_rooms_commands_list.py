@@ -17,6 +17,7 @@ def _get_kwargs(
     *,
     member: Union[Unset, bool] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, MatrixRoomStateEnum] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
@@ -27,6 +28,8 @@ def _get_kwargs(
     if not isinstance(project_uuid, Unset):
         json_project_uuid = str(project_uuid)
     params["project_uuid"] = json_project_uuid
+
+    params["scope_type"] = scope_type
 
     json_state: Union[Unset, str] = UNSET
     if not isinstance(state, Unset):
@@ -79,6 +82,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     member: Union[Unset, bool] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, MatrixRoomStateEnum] = UNSET,
 ) -> Response[list["MatrixBotCommand"]]:
     """List the bot commands the caller can use in the room
@@ -91,6 +95,7 @@ def sync_detailed(
         uuid (UUID):
         member (Union[Unset, bool]):
         project_uuid (Union[Unset, UUID]):
+        scope_type (Union[Unset, str]):
         state (Union[Unset, MatrixRoomStateEnum]):
 
     Raises:
@@ -105,6 +110,7 @@ def sync_detailed(
         uuid=uuid,
         member=member,
         project_uuid=project_uuid,
+        scope_type=scope_type,
         state=state,
     )
 
@@ -121,6 +127,7 @@ def sync(
     client: AuthenticatedClient,
     member: Union[Unset, bool] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, MatrixRoomStateEnum] = UNSET,
 ) -> list["MatrixBotCommand"]:
     """List the bot commands the caller can use in the room
@@ -133,6 +140,7 @@ def sync(
         uuid (UUID):
         member (Union[Unset, bool]):
         project_uuid (Union[Unset, UUID]):
+        scope_type (Union[Unset, str]):
         state (Union[Unset, MatrixRoomStateEnum]):
 
     Raises:
@@ -148,6 +156,7 @@ def sync(
         client=client,
         member=member,
         project_uuid=project_uuid,
+        scope_type=scope_type,
         state=state,
     ).parsed
 
@@ -158,6 +167,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     member: Union[Unset, bool] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, MatrixRoomStateEnum] = UNSET,
 ) -> Response[list["MatrixBotCommand"]]:
     """List the bot commands the caller can use in the room
@@ -170,6 +180,7 @@ async def asyncio_detailed(
         uuid (UUID):
         member (Union[Unset, bool]):
         project_uuid (Union[Unset, UUID]):
+        scope_type (Union[Unset, str]):
         state (Union[Unset, MatrixRoomStateEnum]):
 
     Raises:
@@ -184,6 +195,7 @@ async def asyncio_detailed(
         uuid=uuid,
         member=member,
         project_uuid=project_uuid,
+        scope_type=scope_type,
         state=state,
     )
 
@@ -198,6 +210,7 @@ async def asyncio(
     client: AuthenticatedClient,
     member: Union[Unset, bool] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, MatrixRoomStateEnum] = UNSET,
 ) -> list["MatrixBotCommand"]:
     """List the bot commands the caller can use in the room
@@ -210,6 +223,7 @@ async def asyncio(
         uuid (UUID):
         member (Union[Unset, bool]):
         project_uuid (Union[Unset, UUID]):
+        scope_type (Union[Unset, str]):
         state (Union[Unset, MatrixRoomStateEnum]):
 
     Raises:
@@ -226,6 +240,7 @@ async def asyncio(
             client=client,
             member=member,
             project_uuid=project_uuid,
+            scope_type=scope_type,
             state=state,
         )
     ).parsed
@@ -237,6 +252,7 @@ def sync_all(
     client: AuthenticatedClient,
     member: Union[Unset, bool] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, MatrixRoomStateEnum] = UNSET,
 ) -> list["MatrixBotCommand"]:
     """Get All Pages
@@ -250,6 +266,7 @@ def sync_all(
         uuid (UUID):
         member (Union[Unset, bool]):
         project_uuid (Union[Unset, UUID]):
+        scope_type (Union[Unset, str]):
         state (Union[Unset, MatrixRoomStateEnum]):
 
     Raises:
@@ -268,6 +285,7 @@ def sync_all(
         uuid=uuid,
         member=member,
         project_uuid=project_uuid,
+        scope_type=scope_type,
         state=state,
     )
 
@@ -319,6 +337,7 @@ async def asyncio_all(
     client: AuthenticatedClient,
     member: Union[Unset, bool] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    scope_type: Union[Unset, str] = UNSET,
     state: Union[Unset, MatrixRoomStateEnum] = UNSET,
 ) -> list["MatrixBotCommand"]:
     """Get All Pages (Async)
@@ -332,6 +351,7 @@ async def asyncio_all(
         uuid (UUID):
         member (Union[Unset, bool]):
         project_uuid (Union[Unset, UUID]):
+        scope_type (Union[Unset, str]):
         state (Union[Unset, MatrixRoomStateEnum]):
 
     Raises:
@@ -350,6 +370,7 @@ async def asyncio_all(
         uuid=uuid,
         member=member,
         project_uuid=project_uuid,
+        scope_type=scope_type,
         state=state,
     )
 

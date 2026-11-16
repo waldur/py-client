@@ -2482,19 +2482,19 @@ Module: `waldur_api_client.api.matrix`
 - `matrix_exports_count` HEAD `/api/matrix/exports/` — Get number of items in the collection matching the request parameters (3 query params)
 - `matrix_exports_retrieve` GET `/api/matrix/exports/{uuid}/` (path: uuid)
 - `matrix_exports_download_retrieve` GET `/api/matrix/exports/{uuid}/download/{kind}/` — Download a Matrix history export file (path: kind, uuid)
-- `matrix_rooms_list` GET `/api/matrix/rooms/` (3 query params)
-- `matrix_rooms_count` HEAD `/api/matrix/rooms/` — Get number of items in the collection matching the request parameters (3 query params)
+- `matrix_rooms_list` GET `/api/matrix/rooms/` (4 query params)
+- `matrix_rooms_count` HEAD `/api/matrix/rooms/` — Get number of items in the collection matching the request parameters (4 query params)
 - `matrix_rooms_create` POST `/api/matrix/rooms/` — Create a Matrix room for a project (request body)
-- `matrix_rooms_eligible_projects_list` GET `/api/matrix/rooms/eligible_projects/` — List projects the caller can create a Matrix room for (4 query params)
-- `matrix_rooms_eligible_projects_count` HEAD `/api/matrix/rooms/eligible_projects/` — List projects the caller can create a Matrix room for (4 query params)
+- `matrix_rooms_eligible_projects_list` GET `/api/matrix/rooms/eligible_projects/` — List projects the caller can create a Matrix room for (5 query params)
+- `matrix_rooms_eligible_projects_count` HEAD `/api/matrix/rooms/eligible_projects/` — List projects the caller can create a Matrix room for (5 query params)
 - `matrix_rooms_retrieve` GET `/api/matrix/rooms/{uuid}/` (path: uuid)
 - `matrix_rooms_destroy` DELETE `/api/matrix/rooms/{uuid}/` (path: uuid)
-- `matrix_rooms_commands_list` GET `/api/matrix/rooms/{uuid}/commands/` — List the bot commands the caller can use in the room (path: uuid | 3 query params)
+- `matrix_rooms_commands_list` GET `/api/matrix/rooms/{uuid}/commands/` — List the bot commands the caller can use in the room (path: uuid | 4 query params)
 - `matrix_rooms_disable` POST `/api/matrix/rooms/{uuid}/disable/` — Disable an active chat room (path: uuid | request body)
 - `matrix_rooms_export_history` POST `/api/matrix/rooms/{uuid}/export_history/` — Trigger manual history export (path: uuid)
 - `matrix_rooms_join` POST `/api/matrix/rooms/{uuid}/join/` — Join a chat room as staff (path: uuid)
 - `matrix_rooms_leave` POST `/api/matrix/rooms/{uuid}/leave/` — Leave a chat room as staff (path: uuid)
-- `matrix_rooms_members_list` GET `/api/matrix/rooms/{uuid}/members/` — List room members (path: uuid | 3 query params)
+- `matrix_rooms_members_list` GET `/api/matrix/rooms/{uuid}/members/` — List room members (path: uuid | 4 query params)
 - `matrix_rooms_open` POST `/api/matrix/rooms/{uuid}/open/` — Open a chat room's conversation (path: uuid)
 - `matrix_rooms_reactivate` POST `/api/matrix/rooms/{uuid}/reactivate/` — Re-enable an archived chat room (path: uuid)
 - `matrix_rooms_retry` POST `/api/matrix/rooms/{uuid}/retry/` — Retry a stuck or failed room operation (path: uuid)
@@ -3696,6 +3696,16 @@ Module: `waldur_api_client.api.proposal_role_assignments`
 - `proposal_role_assignments_count` HEAD `/api/proposal-role-assignments/` — Get number of items in the collection matching the request parameters (4 query params)
 - `proposal_role_assignments_retrieve` GET `/api/proposal-role-assignments/{uuid}/` (path: uuid)
 - `proposal_role_assignments_confirm_no_conflict` POST `/api/proposal-role-assignments/{uuid}/confirm_no_conflict/` — Confirm having no conflict of interest with the proposal, as the holder of the role (path: uuid)
+
+## proposal-step-discussions
+Module: `waldur_api_client.api.proposal_step_discussions`
+
+- `proposal_step_discussions_list` GET `/api/proposal-step-discussions/` (6 query params)
+- `proposal_step_discussions_count` HEAD `/api/proposal-step-discussions/` — Get number of items in the collection matching the request parameters (6 query params)
+- `proposal_step_discussions_open` POST `/api/proposal-step-discussions/open/` — Open a step's discussion (request body)
+- `proposal_step_discussions_startable_list` GET `/api/proposal-step-discussions/startable/` — List the discussions the current user could start (no params)
+- `proposal_step_discussions_startable_count` HEAD `/api/proposal-step-discussions/startable/` — List the discussions the current user could start (no params)
+- `proposal_step_discussions_retrieve` GET `/api/proposal-step-discussions/{uuid}/` (path: uuid)
 
 ## provider-canned-responses
 Module: `waldur_api_client.api.provider_canned_responses`

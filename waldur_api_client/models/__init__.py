@@ -2028,6 +2028,7 @@ from .open_stack_volume_metadata import OpenStackVolumeMetadata
 from .open_stack_volume_request import OpenStackVolumeRequest
 from .open_stack_volume_retype_request import OpenStackVolumeRetypeRequest
 from .open_stack_volume_type import OpenStackVolumeType
+from .open_step_discussion_request import OpenStepDiscussionRequest
 from .openportal_remote_projects_total_usage_retrieve_response_200 import (
     OpenportalRemoteProjectsTotalUsageRetrieveResponse200,
 )
@@ -3196,6 +3197,7 @@ from .round_reviewer import RoundReviewer
 from .round_status import RoundStatus
 from .round_status_enum import RoundStatusEnum
 from .round_step import RoundStep
+from .round_step_discussion import RoundStepDiscussion
 from .round_step_proposal_result import RoundStepProposalResult
 from .round_workflow_step_due_date_request import RoundWorkflowStepDueDateRequest
 from .route_to_provider_request import RouteToProviderRequest
@@ -3418,6 +3420,7 @@ from .ssh_key_o_enum import SshKeyOEnum
 from .ssh_key_request import SshKeyRequest
 from .sshkeyallowedtypes_enum import SSHKEYALLOWEDTYPESEnum
 from .stage_enum import StageEnum
+from .startable_step_discussion import StartableStepDiscussion
 from .state_group_enum import StateGroupEnum
 from .state_transition_error import StateTransitionError
 from .status import Status
@@ -3429,6 +3432,11 @@ from .step_checklist_status import StepChecklistStatus
 from .step_contribution import StepContribution
 from .step_contribution_status import StepContributionStatus
 from .step_contribution_with_answers import StepContributionWithAnswers
+from .step_discussion import StepDiscussion
+from .step_discussion_participant import StepDiscussionParticipant
+from .step_discussion_state_enum import StepDiscussionStateEnum
+from .step_discussion_state_enum_1 import StepDiscussionStateEnum1
+from .step_discussion_viewer import StepDiscussionViewer
 from .step_input import StepInput
 from .step_kind import StepKind
 from .step_kind_notification_rule import StepKindNotificationRule
@@ -5734,6 +5742,7 @@ __all__ = (
     "OpenStackVolumeRequest",
     "OpenStackVolumeRetypeRequest",
     "OpenStackVolumeType",
+    "OpenStepDiscussionRequest",
     "OptionField",
     "OptionFieldRequest",
     "OptionFieldTypeEnum",
@@ -6832,6 +6841,7 @@ __all__ = (
     "RoundStatus",
     "RoundStatusEnum",
     "RoundStep",
+    "RoundStepDiscussion",
     "RoundStepProposalResult",
     "RoundWorkflowStepDueDateRequest",
     "RouteToProviderRequest",
@@ -7050,6 +7060,7 @@ __all__ = (
     "SshKeyOEnum",
     "SshKeyRequest",
     "StageEnum",
+    "StartableStepDiscussion",
     "StateGroupEnum",
     "StateTransitionError",
     "Status",
@@ -7061,6 +7072,11 @@ __all__ = (
     "StepContribution",
     "StepContributionStatus",
     "StepContributionWithAnswers",
+    "StepDiscussion",
+    "StepDiscussionParticipant",
+    "StepDiscussionStateEnum",
+    "StepDiscussionStateEnum1",
+    "StepDiscussionViewer",
     "StepInput",
     "StepKind",
     "StepKindNotificationRule",

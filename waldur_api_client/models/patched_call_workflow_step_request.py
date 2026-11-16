@@ -95,6 +95,14 @@ class PatchedCallWorkflowStepRequest:
         round_scoped (Union[Unset, bool]): Run the step once per round rather than per proposal, such as a panel meeting
             after the cut-off: the call's managers open it for the round's proposals together, its contributors write one
             round report each covering their proposals, and it is completed for the round, never on one proposal.
+        has_discussion (Union[Unset, bool]): The step's contributors and completer may open a tracked discussion: an
+            encrypted Matrix room, one per proposal, or for a step run once per round one per round and panel. Its history
+            is exported to the step's record when the step ends. Only while Matrix chat is enabled; never on a blind or an
+            applicant step.
+        discussion_call_managers (Union[Unset, bool]): The call's managers join the step's discussion as observers.
+        discussion_panel_members (Union[Unset, bool]): The members of the proposal's panel join the step's discussion;
+            for a step run once per round, the members of the discussion's panel. On a call without panels, its panel
+            members.
         phase (Union[Unset, WorkflowPhaseEnum]):
         project_end_offset_days (Union[None, Unset, int]): First step of an extension or closing phase: days before the
             project's end date. An extension can be asked for until then; the closing opens then (0: on the end date).
@@ -146,6 +154,9 @@ class PatchedCallWorkflowStepRequest:
     run_condition: Union["StepRunConditionRequest", None, Unset] = UNSET
     parallel_with_previous: Union[Unset, bool] = UNSET
     round_scoped: Union[Unset, bool] = UNSET
+    has_discussion: Union[Unset, bool] = UNSET
+    discussion_call_managers: Union[Unset, bool] = UNSET
+    discussion_panel_members: Union[Unset, bool] = UNSET
     phase: Union[Unset, WorkflowPhaseEnum] = UNSET
     project_end_offset_days: Union[None, Unset, int] = UNSET
     status_labels: Union["StepStatusLabelsRequest", None, Unset] = UNSET
@@ -299,6 +310,12 @@ class PatchedCallWorkflowStepRequest:
 
         round_scoped = self.round_scoped
 
+        has_discussion = self.has_discussion
+
+        discussion_call_managers = self.discussion_call_managers
+
+        discussion_panel_members = self.discussion_panel_members
+
         phase: Union[Unset, str] = UNSET
         if not isinstance(self.phase, Unset):
             phase = self.phase.value
@@ -415,6 +432,12 @@ class PatchedCallWorkflowStepRequest:
             field_dict["parallel_with_previous"] = parallel_with_previous
         if round_scoped is not UNSET:
             field_dict["round_scoped"] = round_scoped
+        if has_discussion is not UNSET:
+            field_dict["has_discussion"] = has_discussion
+        if discussion_call_managers is not UNSET:
+            field_dict["discussion_call_managers"] = discussion_call_managers
+        if discussion_panel_members is not UNSET:
+            field_dict["discussion_panel_members"] = discussion_panel_members
         if phase is not UNSET:
             field_dict["phase"] = phase
         if project_end_offset_days is not UNSET:
@@ -656,6 +679,12 @@ class PatchedCallWorkflowStepRequest:
 
         round_scoped = d.pop("round_scoped", UNSET)
 
+        has_discussion = d.pop("has_discussion", UNSET)
+
+        discussion_call_managers = d.pop("discussion_call_managers", UNSET)
+
+        discussion_panel_members = d.pop("discussion_panel_members", UNSET)
+
         _phase = d.pop("phase", UNSET)
         phase: Union[Unset, WorkflowPhaseEnum]
         if isinstance(_phase, Unset):
@@ -759,6 +788,9 @@ class PatchedCallWorkflowStepRequest:
             run_condition=run_condition,
             parallel_with_previous=parallel_with_previous,
             round_scoped=round_scoped,
+            has_discussion=has_discussion,
+            discussion_call_managers=discussion_call_managers,
+            discussion_panel_members=discussion_panel_members,
             phase=phase,
             project_end_offset_days=project_end_offset_days,
             status_labels=status_labels,

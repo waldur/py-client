@@ -30,6 +30,10 @@ class MatrixRoom:
         scope (str):
         scope_uuid (Union[None, str]):
         scope_name (Union[None, str]):
+        scope_type (Union[None, str]): The kind of room: 'project' for a project's team room, 'step_discussion' for a
+            proposal workflow step's discussion. Null for a room of a kind of object no app registered.
+        scope_subtitle (Union[None, str]): A short line saying what the room is for: the organization of a project room,
+            the step and proposal or round of a discussion.
         customer_uuid (Union[None, str]):
         customer_name (Union[None, str]):
         members_count (int):
@@ -50,6 +54,8 @@ class MatrixRoom:
     scope: str
     scope_uuid: Union[None, str]
     scope_name: Union[None, str]
+    scope_type: Union[None, str]
+    scope_subtitle: Union[None, str]
     customer_uuid: Union[None, str]
     customer_name: Union[None, str]
     members_count: int
@@ -82,6 +88,12 @@ class MatrixRoom:
 
         scope_name: Union[None, str]
         scope_name = self.scope_name
+
+        scope_type: Union[None, str]
+        scope_type = self.scope_type
+
+        scope_subtitle: Union[None, str]
+        scope_subtitle = self.scope_subtitle
 
         customer_uuid: Union[None, str]
         customer_uuid = self.customer_uuid
@@ -120,6 +132,8 @@ class MatrixRoom:
                 "scope": scope,
                 "scope_uuid": scope_uuid,
                 "scope_name": scope_name,
+                "scope_type": scope_type,
+                "scope_subtitle": scope_subtitle,
                 "customer_uuid": customer_uuid,
                 "customer_name": customer_name,
                 "members_count": members_count,
@@ -173,6 +187,20 @@ class MatrixRoom:
 
         scope_name = _parse_scope_name(d.pop("scope_name"))
 
+        def _parse_scope_type(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        scope_type = _parse_scope_type(d.pop("scope_type"))
+
+        def _parse_scope_subtitle(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        scope_subtitle = _parse_scope_subtitle(d.pop("scope_subtitle"))
+
         def _parse_customer_uuid(data: object) -> Union[None, str]:
             if data is None:
                 return data
@@ -221,6 +249,8 @@ class MatrixRoom:
             scope=scope,
             scope_uuid=scope_uuid,
             scope_name=scope_name,
+            scope_type=scope_type,
+            scope_subtitle=scope_subtitle,
             customer_uuid=customer_uuid,
             customer_name=customer_name,
             members_count=members_count,

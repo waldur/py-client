@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.2.dev.20261116135732
+# Version: 8.1.5-rc.2.dev.20261116163028
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -16043,18 +16043,20 @@ Path parameters:
 
 ### matrix_rooms_list
 GET /api/matrix/rooms/
-Query parameters (3):
+Query parameters (4):
   - member — Only rooms the current user is a member of
   - project_uuid — Project UUID
+  - scope_type — Kind of room, such as project or step_discussion
   - state
 
 ### matrix_rooms_count
 HEAD /api/matrix/rooms/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (3):
+Query parameters (4):
   - member — Only rooms the current user is a member of
   - project_uuid — Project UUID
+  - scope_type — Kind of room, such as project or step_discussion
   - state
 
 ### matrix_rooms_create
@@ -16066,20 +16068,22 @@ Request body: yes
 GET /api/matrix/rooms/eligible_projects/
 Summary: List projects the caller can create a Matrix room for
 Description: Returns projects where the caller holds MATRIX_ROOM.CREATE on the project or its organization (staff and support see all) and no MatrixRoom row exists yet. Existing archived rooms still block creation, so projects with any room are excluded.
-Query parameters (4):
+Query parameters (5):
   - customer_uuid — Limit results to projects under this customer.
   - member — Only rooms the current user is a member of
   - project_uuid — Project UUID
+  - scope_type — Kind of room, such as project or step_discussion
   - state
 
 ### matrix_rooms_eligible_projects_count
 HEAD /api/matrix/rooms/eligible_projects/
 Summary: List projects the caller can create a Matrix room for
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (4):
+Query parameters (5):
   - customer_uuid — Limit results to projects under this customer.
   - member — Only rooms the current user is a member of
   - project_uuid — Project UUID
+  - scope_type — Kind of room, such as project or step_discussion
   - state
 
 ### matrix_rooms_retrieve
@@ -16098,9 +16102,10 @@ Summary: List the bot commands the caller can use in the room
 Description: Every bot command, and whether the caller can use it in this room now; where not, a short reason. The bot refuses with the same checks. `!ticket send` and `!ticket cancel` are available only while the caller has an open ticket draft in the room.
 Path parameters:
   - uuid
-Query parameters (3):
+Query parameters (4):
   - member — Only rooms the current user is a member of
   - project_uuid — Project UUID
+  - scope_type — Kind of room, such as project or step_discussion
   - state
 
 ### matrix_rooms_disable
@@ -16135,9 +16140,10 @@ GET /api/matrix/rooms/{uuid}/members/
 Summary: List room members
 Path parameters:
   - uuid
-Query parameters (3):
+Query parameters (4):
   - member — Only rooms the current user is a member of
   - project_uuid — Project UUID
+  - scope_type — Kind of room, such as project or step_discussion
   - state
 
 ### matrix_rooms_open
@@ -24455,6 +24461,53 @@ Path parameters:
 POST /api/proposal-role-assignments/{uuid}/confirm_no_conflict/
 Summary: Confirm having no conflict of interest with the proposal, as the holder of the role
 Description: Confirm having no conflict of interest with the proposal, as the holder of the role. Required by some calls before the proposal opens to its evaluators; refused while a conflict is on record.
+Path parameters:
+  - uuid
+
+============================================================
+## proposal-step-discussions  (module: waldur_api_client.api.proposal_step_discussions)
+============================================================
+
+### proposal_step_discussions_list
+GET /api/proposal-step-discussions/
+Query parameters (6):
+  - call_step_uuid
+  - call_uuid
+  - mine — Only the discussions the caller takes part in
+  - proposal_uuid
+  - round_uuid
+  - state
+
+### proposal_step_discussions_count
+HEAD /api/proposal-step-discussions/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (6):
+  - call_step_uuid
+  - call_uuid
+  - mine — Only the discussions the caller takes part in
+  - proposal_uuid
+  - round_uuid
+  - state
+
+### proposal_step_discussions_open
+POST /api/proposal-step-discussions/open/
+Summary: Open a step's discussion
+Description: Open the discussion of a proposal's step, or of a round step for one of the call's panels, as one of the people working on it: 201 with the discussion the first time, which creates its Matrix room, 200 with the same one afterwards. 403 for anyone who does not take part in it, before anything is s...
+Request body: yes
+
+### proposal_step_discussions_startable_list
+GET /api/proposal-step-discussions/startable/
+Summary: List the discussions the current user could start
+Description: The discussions nobody has started yet that the current user could start now: of the active steps with a discussion they take part in, and of the opened round steps of their panels, one per panel. Each names what the open action takes. Empty while Matrix chat is disabled. Not paginated.
+
+### proposal_step_discussions_startable_count
+HEAD /api/proposal-step-discussions/startable/
+Summary: List the discussions the current user could start
+Description: Get number of items in the collection matching the request parameters.
+
+### proposal_step_discussions_retrieve
+GET /api/proposal-step-discussions/{uuid}/
 Path parameters:
   - uuid
 
