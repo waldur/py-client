@@ -54,7 +54,8 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: ReviewCommentRequest,
 ) -> Response[Any]:
-    """Reject managed project request
+    """Reject managed project request. For a live award pending only for an allocation increase, only the
+    increase is declined: the award goes back to approved with the credits it has.
 
     Args:
         identifier (str):
@@ -89,7 +90,8 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: ReviewCommentRequest,
 ) -> Response[Any]:
-    """Reject managed project request
+    """Reject managed project request. For a live award pending only for an allocation increase, only the
+    increase is declined: the award goes back to approved with the credits it has.
 
     Args:
         identifier (str):

@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.2.dev.20261116184151
+# Version: 8.1.5-rc.2.dev.20261117181550
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -17007,6 +17007,7 @@ Request body: yes
 ### openportal_managed_projects_approve
 POST /api/openportal-managed-projects/{identifier}/{destination}/approve/
 Summary: Approve managed project request
+Description: Approve managed project request. Applies no more than the allocation waiting at the time of approval; send expected_allocation to refuse the approval (409) if that figure is no longer the one the reviewer saw.
 Path parameters:
   - destination — The destination of the managed project
   - identifier — The identifier of the managed project
@@ -17037,6 +17038,7 @@ Path parameters:
 ### openportal_managed_projects_reject
 POST /api/openportal-managed-projects/{identifier}/{destination}/reject/
 Summary: Reject managed project request
+Description: Reject managed project request. For a live award pending only for an allocation increase, only the increase is declined: the award goes back to approved with the credits it has.
 Path parameters:
   - destination — The destination of the managed project
   - identifier — The identifier of the managed project

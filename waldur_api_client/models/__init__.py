@@ -1330,6 +1330,7 @@ from .maintenance_stats_response_by_type import MaintenanceStatsResponseByType
 from .maintenance_stats_summary import MaintenanceStatsSummary
 from .maintenance_type_enum import MaintenanceTypeEnum
 from .managed_project import ManagedProject
+from .managed_project_approve_request import ManagedProjectApproveRequest
 from .managed_project_audit_entry import ManagedProjectAuditEntry
 from .managed_project_audit_entry_event_type_enum import ManagedProjectAuditEntryEventTypeEnum
 from .managed_rancher_create_node_request import ManagedRancherCreateNodeRequest
@@ -5108,6 +5109,7 @@ __all__ = (
     "MaintenanceStatsSummary",
     "MaintenanceTypeEnum",
     "ManagedProject",
+    "ManagedProjectApproveRequest",
     "ManagedProjectAuditEntry",
     "ManagedProjectAuditEntryEventTypeEnum",
     "ManagedRancherCreateNodeRequest",

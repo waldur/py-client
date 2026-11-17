@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.review_comment_request import ReviewCommentRequest
+from ...models.managed_project_approve_request import ManagedProjectApproveRequest
 from ...types import Response
 
 
@@ -13,7 +13,7 @@ def _get_kwargs(
     identifier: str,
     destination: str,
     *,
-    body: ReviewCommentRequest,
+    body: ManagedProjectApproveRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -52,14 +52,16 @@ def sync_detailed(
     destination: str,
     *,
     client: AuthenticatedClient,
-    body: ReviewCommentRequest,
+    body: ManagedProjectApproveRequest,
 ) -> Response[Any]:
-    """Approve managed project request
+    """Approve managed project request. Applies no more than the allocation waiting at the time of
+    approval; send expected_allocation to refuse the approval (409) if that figure is no longer the one
+    the reviewer saw.
 
     Args:
         identifier (str):
         destination (str):
-        body (ReviewCommentRequest):
+        body (ManagedProjectApproveRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -87,14 +89,16 @@ async def asyncio_detailed(
     destination: str,
     *,
     client: AuthenticatedClient,
-    body: ReviewCommentRequest,
+    body: ManagedProjectApproveRequest,
 ) -> Response[Any]:
-    """Approve managed project request
+    """Approve managed project request. Applies no more than the allocation waiting at the time of
+    approval; send expected_allocation to refuse the approval (409) if that figure is no longer the one
+    the reviewer saw.
 
     Args:
         identifier (str):
         destination (str):
-        body (ReviewCommentRequest):
+        body (ManagedProjectApproveRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

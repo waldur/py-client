@@ -34,6 +34,10 @@ class ManagedProject:
         project_data (BasicProject):
         project_template (str):
         project_template_data (ProjectTemplate):
+        approved_credits (Union[None, str]): Credits last approved, by a local reviewer or within the project template's
+            approval limit. Allocation increases are measured against this.
+        pending_allocation (Union[None, str]): Credits of an allocation increase waiting for review. Every other change
+            to the award has been applied.
         review_comment (Union[None, Unset, str]): Optional comment provided during review
         local_identifier (Union[None, Unset, str]): The local project identifier in this portal.
     """
@@ -50,6 +54,8 @@ class ManagedProject:
     project_data: "BasicProject"
     project_template: str
     project_template_data: "ProjectTemplate"
+    approved_credits: Union[None, str]
+    pending_allocation: Union[None, str]
     review_comment: Union[None, Unset, str] = UNSET
     local_identifier: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -83,6 +89,12 @@ class ManagedProject:
 
         project_template_data = self.project_template_data.to_dict()
 
+        approved_credits: Union[None, str]
+        approved_credits = self.approved_credits
+
+        pending_allocation: Union[None, str]
+        pending_allocation = self.pending_allocation
+
         review_comment: Union[None, Unset, str]
         if isinstance(self.review_comment, Unset):
             review_comment = UNSET
@@ -111,6 +123,8 @@ class ManagedProject:
                 "project_data": project_data,
                 "project_template": project_template,
                 "project_template_data": project_template_data,
+                "approved_credits": approved_credits,
+                "pending_allocation": pending_allocation,
             }
         )
         if review_comment is not UNSET:
@@ -164,6 +178,20 @@ class ManagedProject:
 
         project_template_data = ProjectTemplate.from_dict(d.pop("project_template_data"))
 
+        def _parse_approved_credits(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        approved_credits = _parse_approved_credits(d.pop("approved_credits"))
+
+        def _parse_pending_allocation(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        pending_allocation = _parse_pending_allocation(d.pop("pending_allocation"))
+
         def _parse_review_comment(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -195,6 +223,8 @@ class ManagedProject:
             project_data=project_data,
             project_template=project_template,
             project_template_data=project_template_data,
+            approved_credits=approved_credits,
+            pending_allocation=pending_allocation,
             review_comment=review_comment,
             local_identifier=local_identifier,
         )
