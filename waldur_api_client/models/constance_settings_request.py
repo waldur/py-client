@@ -118,6 +118,7 @@ class ConstanceSettingsRequest:
         sidebar_style (Union[Unset, SIDEBARSTYLEEnum]):
         font_family (Union[Unset, FONTFAMILYEnum]):
         login_logo (Union[File, None, Unset]):
+        login_logo_dark (Union[File, None, Unset]):
         login_logo_multilingual (Union[Unset, ConstanceSettingsRequestLOGINLOGOMULTILINGUAL]):
         login_page_layout (Union[Unset, LOGINPAGELAYOUTEnum]):
         login_page_video_url (Union[Unset, str]):
@@ -488,6 +489,7 @@ class ConstanceSettingsRequest:
     sidebar_style: Union[Unset, SIDEBARSTYLEEnum] = UNSET
     font_family: Union[Unset, FONTFAMILYEnum] = UNSET
     login_logo: Union[File, None, Unset] = UNSET
+    login_logo_dark: Union[File, None, Unset] = UNSET
     login_logo_multilingual: Union[Unset, "ConstanceSettingsRequestLOGINLOGOMULTILINGUAL"] = UNSET
     login_page_layout: Union[Unset, LOGINPAGELAYOUTEnum] = UNSET
     login_page_video_url: Union[Unset, str] = UNSET
@@ -1011,6 +1013,15 @@ class ConstanceSettingsRequest:
 
         else:
             login_logo = self.login_logo
+
+        login_logo_dark: Union[None, Unset, types.FileTypes]
+        if isinstance(self.login_logo_dark, Unset):
+            login_logo_dark = UNSET
+        elif isinstance(self.login_logo_dark, File):
+            login_logo_dark = self.login_logo_dark.to_tuple()
+
+        else:
+            login_logo_dark = self.login_logo_dark
 
         login_logo_multilingual: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.login_logo_multilingual, Unset):
@@ -1967,6 +1978,8 @@ class ConstanceSettingsRequest:
             field_dict["FONT_FAMILY"] = font_family
         if login_logo is not UNSET:
             field_dict["LOGIN_LOGO"] = login_logo
+        if login_logo_dark is not UNSET:
+            field_dict["LOGIN_LOGO_DARK"] = login_logo_dark
         if login_logo_multilingual is not UNSET:
             field_dict["LOGIN_LOGO_MULTILINGUAL"] = login_logo_multilingual
         if login_page_layout is not UNSET:
@@ -2903,6 +2916,23 @@ class ConstanceSettingsRequest:
             return cast(Union[File, None, Unset], data)
 
         login_logo = _parse_login_logo(d.pop("LOGIN_LOGO", UNSET))
+
+        def _parse_login_logo_dark(data: object) -> Union[File, None, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, bytes):
+                    raise TypeError()
+                login_logo_dark_type_0 = File(payload=BytesIO(data))
+
+                return login_logo_dark_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[File, None, Unset], data)
+
+        login_logo_dark = _parse_login_logo_dark(d.pop("LOGIN_LOGO_DARK", UNSET))
 
         _login_logo_multilingual = d.pop("LOGIN_LOGO_MULTILINGUAL", UNSET)
         login_logo_multilingual: Union[Unset, ConstanceSettingsRequestLOGINLOGOMULTILINGUAL]
@@ -4017,6 +4047,7 @@ class ConstanceSettingsRequest:
             sidebar_style=sidebar_style,
             font_family=font_family,
             login_logo=login_logo,
+            login_logo_dark=login_logo_dark,
             login_logo_multilingual=login_logo_multilingual,
             login_page_layout=login_page_layout,
             login_page_video_url=login_page_video_url,

@@ -446,6 +446,7 @@ class EventMetadataResponseEventGroupsAdditionalPropertyItem(str, Enum):
     TERMINATE_RESOURCES = "terminate_resources"
     TERMS_OF_SERVICE_CONSENT_GRANTED = "terms_of_service_consent_granted"
     TERMS_OF_SERVICE_CONSENT_REVOKED = "terms_of_service_consent_revoked"
+    TERMS_OF_SERVICE_REPLACED = "terms_of_service_replaced"
     TOKEN_CREATED = "token_created"
     TOKEN_LIFETIME_UPDATED = "token_lifetime_updated"
     TOKEN_VIEWED = "token_viewed"

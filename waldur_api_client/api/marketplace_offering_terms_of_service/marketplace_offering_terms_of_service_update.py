@@ -61,7 +61,8 @@ def sync_detailed(
     """Update a Terms of Service configuration
 
      Updates an existing Terms of Service configuration. Note that some fields like `version` and
-    `requires_reconsent` are protected and cannot be changed after creation.
+    `requires_reconsent` are protected and cannot be changed after creation. Activating a configuration
+    deactivates the offering's currently active one.
 
     Args:
         uuid (UUID):
@@ -96,7 +97,8 @@ def sync(
     """Update a Terms of Service configuration
 
      Updates an existing Terms of Service configuration. Note that some fields like `version` and
-    `requires_reconsent` are protected and cannot be changed after creation.
+    `requires_reconsent` are protected and cannot be changed after creation. Activating a configuration
+    deactivates the offering's currently active one.
 
     Args:
         uuid (UUID):
@@ -126,7 +128,8 @@ async def asyncio_detailed(
     """Update a Terms of Service configuration
 
      Updates an existing Terms of Service configuration. Note that some fields like `version` and
-    `requires_reconsent` are protected and cannot be changed after creation.
+    `requires_reconsent` are protected and cannot be changed after creation. Activating a configuration
+    deactivates the offering's currently active one.
 
     Args:
         uuid (UUID):
@@ -159,7 +162,8 @@ async def asyncio(
     """Update a Terms of Service configuration
 
      Updates an existing Terms of Service configuration. Note that some fields like `version` and
-    `requires_reconsent` are protected and cannot be changed after creation.
+    `requires_reconsent` are protected and cannot be changed after creation. Activating a configuration
+    deactivates the offering's currently active one.
 
     Args:
         uuid (UUID):

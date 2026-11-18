@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.2.dev.20261117181550
+# Version: 8.1.5-rc.2.dev.20261118143949
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -8199,7 +8199,7 @@ Query parameters (6):
 ### marketplace_offering_terms_of_service_create
 POST /api/marketplace-offering-terms-of-service/
 Summary: Create a Terms of Service configuration
-Description: Creates a new Terms of Service configuration for an offering. Only one active ToS configuration is allowed per offering.
+Description: Creates a new Terms of Service configuration for an offering. Only one active ToS configuration is allowed per offering: creating an active one deactivates the currently active one.
 Request body: yes
 
 ### marketplace_offering_terms_of_service_retrieve
@@ -8212,7 +8212,7 @@ Path parameters:
 ### marketplace_offering_terms_of_service_update
 PUT /api/marketplace-offering-terms-of-service/{uuid}/
 Summary: Update a Terms of Service configuration
-Description: Updates an existing Terms of Service configuration. Note that some fields like `version` and `requires_reconsent` are protected and cannot be changed after creation.
+Description: Updates an existing Terms of Service configuration. Note that some fields like `version` and `requires_reconsent` are protected and cannot be changed after creation. Activating a configuration deactivates the offering's currently active one.
 Path parameters:
   - uuid
 Request body: yes
@@ -8220,7 +8220,7 @@ Request body: yes
 ### marketplace_offering_terms_of_service_partial_update
 PATCH /api/marketplace-offering-terms-of-service/{uuid}/
 Summary: Partially update a Terms of Service configuration
-Description: Partially updates an existing Terms of Service configuration.
+Description: Partially updates an existing Terms of Service configuration. Activating a configuration deactivates the offering's currently active one.
 Path parameters:
   - uuid
 Request body: yes

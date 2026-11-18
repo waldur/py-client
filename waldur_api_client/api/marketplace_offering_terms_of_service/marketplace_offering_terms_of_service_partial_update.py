@@ -60,7 +60,8 @@ def sync_detailed(
 ) -> Response[OfferingTermsOfService]:
     """Partially update a Terms of Service configuration
 
-     Partially updates an existing Terms of Service configuration.
+     Partially updates an existing Terms of Service configuration. Activating a configuration deactivates
+    the offering's currently active one.
 
     Args:
         uuid (UUID):
@@ -94,7 +95,8 @@ def sync(
 ) -> OfferingTermsOfService:
     """Partially update a Terms of Service configuration
 
-     Partially updates an existing Terms of Service configuration.
+     Partially updates an existing Terms of Service configuration. Activating a configuration deactivates
+    the offering's currently active one.
 
     Args:
         uuid (UUID):
@@ -123,7 +125,8 @@ async def asyncio_detailed(
 ) -> Response[OfferingTermsOfService]:
     """Partially update a Terms of Service configuration
 
-     Partially updates an existing Terms of Service configuration.
+     Partially updates an existing Terms of Service configuration. Activating a configuration deactivates
+    the offering's currently active one.
 
     Args:
         uuid (UUID):
@@ -155,7 +158,8 @@ async def asyncio(
 ) -> OfferingTermsOfService:
     """Partially update a Terms of Service configuration
 
-     Partially updates an existing Terms of Service configuration.
+     Partially updates an existing Terms of Service configuration. Activating a configuration deactivates
+    the offering's currently active one.
 
     Args:
         uuid (UUID):

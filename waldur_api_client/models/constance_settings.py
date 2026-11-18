@@ -116,6 +116,7 @@ class ConstanceSettings:
         sidebar_style (Union[Unset, SIDEBARSTYLEEnum]):
         font_family (Union[Unset, FONTFAMILYEnum]):
         login_logo (Union[None, Unset, str]):
+        login_logo_dark (Union[None, Unset, str]):
         login_logo_multilingual (Union[Unset, ConstanceSettingsLOGINLOGOMULTILINGUAL]):
         login_page_layout (Union[Unset, LOGINPAGELAYOUTEnum]):
         login_page_video_url (Union[Unset, str]):
@@ -486,6 +487,7 @@ class ConstanceSettings:
     sidebar_style: Union[Unset, SIDEBARSTYLEEnum] = UNSET
     font_family: Union[Unset, FONTFAMILYEnum] = UNSET
     login_logo: Union[None, Unset, str] = UNSET
+    login_logo_dark: Union[None, Unset, str] = UNSET
     login_logo_multilingual: Union[Unset, "ConstanceSettingsLOGINLOGOMULTILINGUAL"] = UNSET
     login_page_layout: Union[Unset, LOGINPAGELAYOUTEnum] = UNSET
     login_page_video_url: Union[Unset, str] = UNSET
@@ -985,6 +987,12 @@ class ConstanceSettings:
             login_logo = UNSET
         else:
             login_logo = self.login_logo
+
+        login_logo_dark: Union[None, Unset, str]
+        if isinstance(self.login_logo_dark, Unset):
+            login_logo_dark = UNSET
+        else:
+            login_logo_dark = self.login_logo_dark
 
         login_logo_multilingual: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.login_logo_multilingual, Unset):
@@ -1929,6 +1937,8 @@ class ConstanceSettings:
             field_dict["FONT_FAMILY"] = font_family
         if login_logo is not UNSET:
             field_dict["LOGIN_LOGO"] = login_logo
+        if login_logo_dark is not UNSET:
+            field_dict["LOGIN_LOGO_DARK"] = login_logo_dark
         if login_logo_multilingual is not UNSET:
             field_dict["LOGIN_LOGO_MULTILINGUAL"] = login_logo_multilingual
         if login_page_layout is not UNSET:
@@ -2799,6 +2809,15 @@ class ConstanceSettings:
             return cast(Union[None, Unset, str], data)
 
         login_logo = _parse_login_logo(d.pop("LOGIN_LOGO", UNSET))
+
+        def _parse_login_logo_dark(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        login_logo_dark = _parse_login_logo_dark(d.pop("LOGIN_LOGO_DARK", UNSET))
 
         _login_logo_multilingual = d.pop("LOGIN_LOGO_MULTILINGUAL", UNSET)
         login_logo_multilingual: Union[Unset, ConstanceSettingsLOGINLOGOMULTILINGUAL]
@@ -3881,6 +3900,7 @@ class ConstanceSettings:
             sidebar_style=sidebar_style,
             font_family=font_family,
             login_logo=login_logo,
+            login_logo_dark=login_logo_dark,
             login_logo_multilingual=login_logo_multilingual,
             login_page_layout=login_page_layout,
             login_page_video_url=login_page_video_url,

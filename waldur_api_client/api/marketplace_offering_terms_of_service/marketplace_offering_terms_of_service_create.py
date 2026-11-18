@@ -60,7 +60,7 @@ def sync_detailed(
     """Create a Terms of Service configuration
 
      Creates a new Terms of Service configuration for an offering. Only one active ToS configuration is
-    allowed per offering.
+    allowed per offering: creating an active one deactivates the currently active one.
 
     Args:
         body (OfferingTermsOfServiceCreateRequest):
@@ -92,7 +92,7 @@ def sync(
     """Create a Terms of Service configuration
 
      Creates a new Terms of Service configuration for an offering. Only one active ToS configuration is
-    allowed per offering.
+    allowed per offering: creating an active one deactivates the currently active one.
 
     Args:
         body (OfferingTermsOfServiceCreateRequest):
@@ -119,7 +119,7 @@ async def asyncio_detailed(
     """Create a Terms of Service configuration
 
      Creates a new Terms of Service configuration for an offering. Only one active ToS configuration is
-    allowed per offering.
+    allowed per offering: creating an active one deactivates the currently active one.
 
     Args:
         body (OfferingTermsOfServiceCreateRequest):
@@ -149,7 +149,7 @@ async def asyncio(
     """Create a Terms of Service configuration
 
      Creates a new Terms of Service configuration for an offering. Only one active ToS configuration is
-    allowed per offering.
+    allowed per offering: creating an active one deactivates the currently active one.
 
     Args:
         body (OfferingTermsOfServiceCreateRequest):
