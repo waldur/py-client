@@ -226,6 +226,9 @@ class ConstanceSettingsRequest:
         freeipa_blacklisted_usernames (Union[Unset, list[str]]):
         freeipa_group_synchronization_enabled (Union[Unset, bool]):
         scim_membership_sync_enabled (Union[Unset, bool]):
+        s3_browser_allowed_endpoints (Union[Unset, str]):
+        s3_browser_verify_tls (Union[Unset, bool]):
+        s3_browser_max_upload_size_mb (Union[Unset, int]):
         scim_api_url (Union[Unset, str]):
         scim_api_key (Union[Unset, str]):
         scim_urn_namespace (Union[Unset, str]):
@@ -597,6 +600,9 @@ class ConstanceSettingsRequest:
     freeipa_blacklisted_usernames: Union[Unset, list[str]] = UNSET
     freeipa_group_synchronization_enabled: Union[Unset, bool] = UNSET
     scim_membership_sync_enabled: Union[Unset, bool] = UNSET
+    s3_browser_allowed_endpoints: Union[Unset, str] = UNSET
+    s3_browser_verify_tls: Union[Unset, bool] = UNSET
+    s3_browser_max_upload_size_mb: Union[Unset, int] = UNSET
     scim_api_url: Union[Unset, str] = UNSET
     scim_api_key: Union[Unset, str] = UNSET
     scim_urn_namespace: Union[Unset, str] = UNSET
@@ -1273,6 +1279,12 @@ class ConstanceSettingsRequest:
         freeipa_group_synchronization_enabled = self.freeipa_group_synchronization_enabled
 
         scim_membership_sync_enabled = self.scim_membership_sync_enabled
+
+        s3_browser_allowed_endpoints = self.s3_browser_allowed_endpoints
+
+        s3_browser_verify_tls = self.s3_browser_verify_tls
+
+        s3_browser_max_upload_size_mb = self.s3_browser_max_upload_size_mb
 
         scim_api_url = self.scim_api_url
 
@@ -2196,6 +2208,12 @@ class ConstanceSettingsRequest:
             field_dict["FREEIPA_GROUP_SYNCHRONIZATION_ENABLED"] = freeipa_group_synchronization_enabled
         if scim_membership_sync_enabled is not UNSET:
             field_dict["SCIM_MEMBERSHIP_SYNC_ENABLED"] = scim_membership_sync_enabled
+        if s3_browser_allowed_endpoints is not UNSET:
+            field_dict["S3_BROWSER_ALLOWED_ENDPOINTS"] = s3_browser_allowed_endpoints
+        if s3_browser_verify_tls is not UNSET:
+            field_dict["S3_BROWSER_VERIFY_TLS"] = s3_browser_verify_tls
+        if s3_browser_max_upload_size_mb is not UNSET:
+            field_dict["S3_BROWSER_MAX_UPLOAD_SIZE_MB"] = s3_browser_max_upload_size_mb
         if scim_api_url is not UNSET:
             field_dict["SCIM_API_URL"] = scim_api_url
         if scim_api_key is not UNSET:
@@ -3215,6 +3233,12 @@ class ConstanceSettingsRequest:
 
         scim_membership_sync_enabled = d.pop("SCIM_MEMBERSHIP_SYNC_ENABLED", UNSET)
 
+        s3_browser_allowed_endpoints = d.pop("S3_BROWSER_ALLOWED_ENDPOINTS", UNSET)
+
+        s3_browser_verify_tls = d.pop("S3_BROWSER_VERIFY_TLS", UNSET)
+
+        s3_browser_max_upload_size_mb = d.pop("S3_BROWSER_MAX_UPLOAD_SIZE_MB", UNSET)
+
         scim_api_url = d.pop("SCIM_API_URL", UNSET)
 
         scim_api_key = d.pop("SCIM_API_KEY", UNSET)
@@ -4155,6 +4179,9 @@ class ConstanceSettingsRequest:
             freeipa_blacklisted_usernames=freeipa_blacklisted_usernames,
             freeipa_group_synchronization_enabled=freeipa_group_synchronization_enabled,
             scim_membership_sync_enabled=scim_membership_sync_enabled,
+            s3_browser_allowed_endpoints=s3_browser_allowed_endpoints,
+            s3_browser_verify_tls=s3_browser_verify_tls,
+            s3_browser_max_upload_size_mb=s3_browser_max_upload_size_mb,
             scim_api_url=scim_api_url,
             scim_api_key=scim_api_key,
             scim_urn_namespace=scim_urn_namespace,

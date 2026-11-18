@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.2.dev.20261118143949
+# Version: 8.1.5-rc.2.dev.20261118225752
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -12169,6 +12169,102 @@ Summary: Rotate an API key
 Description: Asks the site agent to replace this key's value at the backend. The other keys are untouched (zero downtime). Available to whoever manages the resource's API keys and to the key's assignee.
 Path parameters:
   - uuid
+
+### marketplace_resource_api_keys_s3_bucket_details_retrieve
+GET /api/marketplace-resource-api-keys/{uuid}/s3/bucket-details/
+Summary: S3 browser: bucket details
+Description: The bucket's size, ACL, policy, public access block, versioning, object lock, lifecycle rules, default encryption, CORS rules and tags, as the key reads them. Read-only.
+Path parameters:
+  - uuid
+Query parameters (1):
+  - bucket (required)
+
+### marketplace_resource_api_keys_s3_buckets_list
+GET /api/marketplace-resource-api-keys/{uuid}/s3/buckets/
+Summary: S3 browser: list buckets
+Description: Buckets the key can list, with object count and bytes used where the gateway reports them. Mastermind signs the S3 call itself with the key's stored secret. Open to whoever may reveal the key, on offerings with enable_s3_browser.
+Path parameters:
+  - uuid
+Query parameters (12):
+  - customer_uuid — Consumer organization UUID
+  - has_pending_action — Has a pending command
+  - modified_before — Modified before
+  - o — Ordering
+  - offering_uuid — Offering UUID
+  - paused_by_limit — Paused by a spending limit
+  - pending_action — Pending command
+  - project_uuid — Project UUID
+  - provider_uuid — Keys of resources of the offerings of this service provider organization, to callers the provider resource list shows those resources to.
+  - resource_uuid — Resource UUID
+  - state — API key state
+  - user_uuid — Assignee UUID
+
+### marketplace_resource_api_keys_s3_create_bucket
+POST /api/marketplace-resource-api-keys/{uuid}/s3/create-bucket/
+Summary: S3 browser: create a bucket
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resource_api_keys_s3_delete_bucket
+POST /api/marketplace-resource-api-keys/{uuid}/s3/delete-bucket/
+Summary: S3 browser: delete an empty bucket
+Description: The gateway refuses a bucket that still holds objects (409 BucketNotEmpty).
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resource_api_keys_s3_delete_objects
+POST /api/marketplace-resource-api-keys/{uuid}/s3/delete-objects/
+Summary: S3 browser: delete objects
+Description: Deletes the named objects, or up to 10000 objects under a prefix per call; remaining says whether to call again. Current versions only: a versioned bucket keeps its history.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resource_api_keys_s3_download_url
+POST /api/marketplace-resource-api-keys/{uuid}/s3/download-url/
+Summary: S3 browser: download link
+Description: A presigned URL, valid for five minutes, that downloads the object straight from the gateway as an attachment. Audit-logged.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resource_api_keys_s3_info_retrieve
+GET /api/marketplace-resource-api-keys/{uuid}/s3/info/
+Summary: S3 browser: connection details
+Description: The endpoint, region and access key id an S3 client needs for this key, the largest file the browser uploads, and the resource's quotas. The secret is never returned here; reveal it separately.
+Path parameters:
+  - uuid
+
+### marketplace_resource_api_keys_s3_object_details_retrieve
+GET /api/marketplace-resource-api-keys/{uuid}/s3/object-details/
+Summary: S3 browser: object details
+Description: One object's content type, storage class, user metadata, encryption, object lock, ACL, tags and version count, as the key reads them. Read-only.
+Path parameters:
+  - uuid
+Query parameters (2):
+  - bucket (required)
+  - key (required)
+
+### marketplace_resource_api_keys_s3_objects_retrieve
+GET /api/marketplace-resource-api-keys/{uuid}/s3/objects/
+Summary: S3 browser: list objects
+Description: One page of a bucket listing under a prefix, with common prefixes as folders. Follow next_continuation_token for the next page.
+Path parameters:
+  - uuid
+Query parameters (3):
+  - bucket (required)
+  - continuation_token
+  - prefix
+
+### marketplace_resource_api_keys_s3_upload
+POST /api/marketplace-resource-api-keys/{uuid}/s3/upload/
+Summary: S3 browser: upload a small file
+Description: Uploads one file through Waldur, up to S3_BROWSER_MAX_UPLOAD_SIZE_MB (see s3/info). A larger file is refused with 413: use an S3 client. An existing file of the same name is refused with 409 unless overwrite is set.
+Path parameters:
+  - uuid
+Request body: yes
 
 ### marketplace_resource_api_keys_set_deleted
 POST /api/marketplace-resource-api-keys/{uuid}/set_deleted/

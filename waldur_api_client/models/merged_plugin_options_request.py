@@ -13,6 +13,7 @@ from ..models.deployment_mode_enum import DeploymentModeEnum
 from ..models.instance_metrics_enum import InstanceMetricsEnum
 from ..models.posix_id_source_enum import PosixIdSourceEnum
 from ..models.resource_projects_limit_policy_enum import ResourceProjectsLimitPolicyEnum
+from ..models.s3_browser_flavor_enum import S3BrowserFlavorEnum
 from ..models.storage_mode_enum import StorageModeEnum
 from ..models.username_generation_policy_enum import UsernameGenerationPolicyEnum
 from ..types import UNSET, Unset
@@ -242,6 +243,10 @@ class MergedPluginOptionsRequest:
             the chosen QoS on the SLURM association (QosLevel/DefaultQOS). When disabled (default), QoS is informational
             only — profiles are shown and the selection is recorded on the resource, but the agent does not touch SLURM QoS.
             The agent config may override this per deployment. Default: False.
+        enable_s3_browser (Union[Unset, bool]): Lets consumers browse, download from and manage the buckets of an S3
+            resource in HomePort, through one of its API keys. Mastermind signs the S3 calls itself, so it must reach the
+            resource's s3_endpoint, and staff must list that host in S3_BROWSER_ALLOWED_ENDPOINTS.
+        s3_browser_flavor (Union[Unset, S3BrowserFlavorEnum]):
         enable_api_key_provisioning (Union[Unset, bool]): Declares that the site agent can govern resource API keys one
             by one: request, assign, limit, pause, resume and delete them. Without it a resource's keys can only be revealed
             and rotated. Nothing checks the claim: turn it on only if the agent's backend supports per-key commands (such as
@@ -389,6 +394,8 @@ class MergedPluginOptionsRequest:
     slurm_periodic_policy_enabled: Union[Unset, bool] = False
     slurm_maintenance_sync_enabled: Union[Unset, bool] = False
     enforce_qos: Union[Unset, bool] = False
+    enable_s3_browser: Union[Unset, bool] = UNSET
+    s3_browser_flavor: Union[Unset, S3BrowserFlavorEnum] = UNSET
     enable_api_key_provisioning: Union[Unset, bool] = UNSET
     api_key_limits: Union[Unset, bool] = UNSET
     api_key_daily_usage: Union[Unset, bool] = UNSET
@@ -722,6 +729,12 @@ class MergedPluginOptionsRequest:
 
         enforce_qos = self.enforce_qos
 
+        enable_s3_browser = self.enable_s3_browser
+
+        s3_browser_flavor: Union[Unset, str] = UNSET
+        if not isinstance(self.s3_browser_flavor, Unset):
+            s3_browser_flavor = self.s3_browser_flavor.value
+
         enable_api_key_provisioning = self.enable_api_key_provisioning
 
         api_key_limits = self.api_key_limits
@@ -995,6 +1008,10 @@ class MergedPluginOptionsRequest:
             field_dict["slurm_maintenance_sync_enabled"] = slurm_maintenance_sync_enabled
         if enforce_qos is not UNSET:
             field_dict["enforce_qos"] = enforce_qos
+        if enable_s3_browser is not UNSET:
+            field_dict["enable_s3_browser"] = enable_s3_browser
+        if s3_browser_flavor is not UNSET:
+            field_dict["s3_browser_flavor"] = s3_browser_flavor
         if enable_api_key_provisioning is not UNSET:
             field_dict["enable_api_key_provisioning"] = enable_api_key_provisioning
         if api_key_limits is not UNSET:
@@ -1477,6 +1494,15 @@ class MergedPluginOptionsRequest:
 
         enforce_qos = d.pop("enforce_qos", UNSET)
 
+        enable_s3_browser = d.pop("enable_s3_browser", UNSET)
+
+        _s3_browser_flavor = d.pop("s3_browser_flavor", UNSET)
+        s3_browser_flavor: Union[Unset, S3BrowserFlavorEnum]
+        if isinstance(_s3_browser_flavor, Unset):
+            s3_browser_flavor = UNSET
+        else:
+            s3_browser_flavor = S3BrowserFlavorEnum(_s3_browser_flavor)
+
         enable_api_key_provisioning = d.pop("enable_api_key_provisioning", UNSET)
 
         api_key_limits = d.pop("api_key_limits", UNSET)
@@ -1642,6 +1668,8 @@ class MergedPluginOptionsRequest:
             slurm_periodic_policy_enabled=slurm_periodic_policy_enabled,
             slurm_maintenance_sync_enabled=slurm_maintenance_sync_enabled,
             enforce_qos=enforce_qos,
+            enable_s3_browser=enable_s3_browser,
+            s3_browser_flavor=s3_browser_flavor,
             enable_api_key_provisioning=enable_api_key_provisioning,
             api_key_limits=api_key_limits,
             api_key_daily_usage=api_key_daily_usage,

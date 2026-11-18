@@ -1075,6 +1075,7 @@ from .global_user_data_access_log_context import GlobalUserDataAccessLogContext
 from .global_user_data_access_log_o_enum import GlobalUserDataAccessLogOEnum
 from .global_user_role_create_request import GlobalUserRoleCreateRequest
 from .good_direction_enum import GoodDirectionEnum
+from .group_enum import GroupEnum
 from .group_invitation import GroupInvitation
 from .group_invitation_request import GroupInvitationRequest
 from .group_invitation_update import GroupInvitationUpdate
@@ -3215,6 +3216,33 @@ from .rule_test_match_response_user_claims import RuleTestMatchResponseUserClaim
 from .rule_user_claims import RuleUserClaims
 from .runtime_state_enum import RuntimeStateEnum
 from .runtime_states import RuntimeStates
+from .s3_acl import S3Acl
+from .s3_browser_capabilities import S3BrowserCapabilities
+from .s3_browser_flavor_enum import S3BrowserFlavorEnum
+from .s3_browser_info import S3BrowserInfo
+from .s3_bucket import S3Bucket
+from .s3_bucket_details import S3BucketDetails
+from .s3_bucket_request_request import S3BucketRequestRequest
+from .s3_cors_rule import S3CorsRule
+from .s3_delete_error import S3DeleteError
+from .s3_delete_objects_request_request import S3DeleteObjectsRequestRequest
+from .s3_delete_objects_result import S3DeleteObjectsResult
+from .s3_download_url import S3DownloadUrl
+from .s3_grant import S3Grant
+from .s3_lifecycle_rule import S3LifecycleRule
+from .s3_metadata_entry import S3MetadataEntry
+from .s3_object import S3Object
+from .s3_object_details import S3ObjectDetails
+from .s3_object_list import S3ObjectList
+from .s3_object_lock import S3ObjectLock
+from .s3_object_request_request import S3ObjectRequestRequest
+from .s3_public_access_block import S3PublicAccessBlock
+from .s3_quota_limit import S3QuotaLimit
+from .s3_quotas import S3Quotas
+from .s3_tag import S3Tag
+from .s3_upload_request_request import S3UploadRequestRequest
+from .s3_versioning import S3Versioning
+from .s3_versioning_status_enum import S3VersioningStatusEnum
 from .saml_2_login import Saml2Login
 from .saml_2_login_complete import Saml2LoginComplete
 from .saml_2_login_complete_request import Saml2LoginCompleteRequest
@@ -3246,6 +3274,7 @@ from .science_sub_domain_request import ScienceSubDomainRequest
 from .scim_pull_attributes_response import ScimPullAttributesResponse
 from .scim_sync_all_response import ScimSyncAllResponse
 from .scimusermatchwaldurattribute_enum import SCIMUSERMATCHWALDURATTRIBUTEEnum
+from .scope_enum import ScopeEnum
 from .scoped_offering import ScopedOffering
 from .scoped_offering_request import ScopedOfferingRequest
 from .screenshot import Screenshot
@@ -4856,6 +4885,7 @@ __all__ = (
     "GlobalUserDataAccessLogOEnum",
     "GlobalUserRoleCreateRequest",
     "GoodDirectionEnum",
+    "GroupEnum",
     "GroupInvitation",
     "GroupInvitationRequest",
     "GroupInvitationUpdate",
@@ -6860,6 +6890,33 @@ __all__ = (
     "RuleUserClaims",
     "RuntimeStateEnum",
     "RuntimeStates",
+    "S3Acl",
+    "S3BrowserCapabilities",
+    "S3BrowserFlavorEnum",
+    "S3BrowserInfo",
+    "S3Bucket",
+    "S3BucketDetails",
+    "S3BucketRequestRequest",
+    "S3CorsRule",
+    "S3DeleteError",
+    "S3DeleteObjectsRequestRequest",
+    "S3DeleteObjectsResult",
+    "S3DownloadUrl",
+    "S3Grant",
+    "S3LifecycleRule",
+    "S3MetadataEntry",
+    "S3Object",
+    "S3ObjectDetails",
+    "S3ObjectList",
+    "S3ObjectLock",
+    "S3ObjectRequestRequest",
+    "S3PublicAccessBlock",
+    "S3QuotaLimit",
+    "S3Quotas",
+    "S3Tag",
+    "S3UploadRequestRequest",
+    "S3Versioning",
+    "S3VersioningStatusEnum",
     "Saml2Login",
     "Saml2LoginComplete",
     "Saml2LoginCompleteRequest",
@@ -6893,6 +6950,7 @@ __all__ = (
     "SCIMUSERMATCHWALDURATTRIBUTEEnum",
     "ScopedOffering",
     "ScopedOfferingRequest",
+    "ScopeEnum",
     "Screenshot",
     "ScreenshotRequest",
     "ScreenshotRequestForm",
