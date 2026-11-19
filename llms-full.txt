@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.2.dev.20261118235749
+# Version: 8.1.5-rc.3.dev.20261119125716
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -7352,10 +7352,10 @@ Path parameters:
 
 ### marketplace_metric_breakdown_list
 GET /api/marketplace-metric-breakdown/
-Summary: Break a metric figure down by an attribute or by resource
+Summary: Break a metric figure down by attributes or by resource
 Query parameters (6):
   - end
-  - group_by (required) — An attribute the metric declares, or 'resource' to break a project's figure down by its resources.
+  - group_by (required) — An attribute the metric declares, several of them comma-separated to break the figure down by their combinations, or 'resource' to break a project's figure down by its resources.
   - offering_metric_uuid (required)
   - project_uuid — The project whose figure to break down. Either this or resource_uuid.
   - resource_uuid — The resource whose figure to break down. Either this or project_uuid.
@@ -12158,8 +12158,15 @@ Path parameters:
 
 ### marketplace_resource_api_keys_reveal_retrieve
 GET /api/marketplace-resource-api-keys/{uuid}/reveal/
+Summary: Reveal an API key (deprecated: use POST)
+Description: Returns the decrypted key value. A key with an assignee is revealed only to the assignee. Any other key is revealed to whoever holds RESOURCE.REVEAL_API_KEY on the resource's project or organization. Staff and support are no exception: staff reveal a key by impersonating a user who may. A persona...
+Path parameters:
+  - uuid
+
+### marketplace_resource_api_keys_reveal
+POST /api/marketplace-resource-api-keys/{uuid}/reveal/
 Summary: Reveal an API key
-Description: Returns the decrypted key value. A key with an assignee is revealed only to the assignee. Any other key is revealed to whoever holds RESOURCE.REVEAL_API_KEY on the resource's project or organization. Staff and support are no exception: staff reveal a key by impersonating a user who may. Refused w...
+Description: Returns the decrypted key value. A key with an assignee is revealed only to the assignee. Any other key is revealed to whoever holds RESOURCE.REVEAL_API_KEY on the resource's project or organization. Staff and support are no exception: staff reveal a key by impersonating a user who may. A persona...
 Path parameters:
   - uuid
 

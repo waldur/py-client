@@ -1357,7 +1357,7 @@ Module: `waldur_api_client.api.marketplace_integration_statuses`
 ## marketplace-metric-breakdown
 Module: `waldur_api_client.api.marketplace_metric_breakdown`
 
-- `marketplace_metric_breakdown_list` GET `/api/marketplace-metric-breakdown/` — Break a metric figure down by an attribute or by resource (6 query params)
+- `marketplace_metric_breakdown_list` GET `/api/marketplace-metric-breakdown/` — Break a metric figure down by attributes or by resource (6 query params)
 
 ## marketplace-metric-definitions
 Module: `waldur_api_client.api.marketplace_metric_definitions`
@@ -1975,7 +1975,8 @@ Module: `waldur_api_client.api.marketplace_resource_api_keys`
 - `marketplace_resource_api_keys_report_usage` POST `/api/marketplace-resource-api-keys/{uuid}/report_usage/` — Report API key usage (path: uuid | request body)
 - `marketplace_resource_api_keys_resume` POST `/api/marketplace-resource-api-keys/{uuid}/resume/` — Resume an API key (path: uuid)
 - `marketplace_resource_api_keys_retry` POST `/api/marketplace-resource-api-keys/{uuid}/retry/` — Retry a failed API key command (path: uuid)
-- `marketplace_resource_api_keys_reveal_retrieve` GET `/api/marketplace-resource-api-keys/{uuid}/reveal/` — Reveal an API key (path: uuid)
+- `marketplace_resource_api_keys_reveal_retrieve` GET `/api/marketplace-resource-api-keys/{uuid}/reveal/` — Reveal an API key (deprecated: use POST) (path: uuid)
+- `marketplace_resource_api_keys_reveal` POST `/api/marketplace-resource-api-keys/{uuid}/reveal/` — Reveal an API key (path: uuid)
 - `marketplace_resource_api_keys_rotate` POST `/api/marketplace-resource-api-keys/{uuid}/rotate/` — Rotate an API key (path: uuid)
 - `marketplace_resource_api_keys_s3_bucket_details_retrieve` GET `/api/marketplace-resource-api-keys/{uuid}/s3/bucket-details/` — S3 browser: bucket details (path: uuid | 1 query param)
 - `marketplace_resource_api_keys_s3_buckets_list` GET `/api/marketplace-resource-api-keys/{uuid}/s3/buckets/` — S3 browser: list buckets (path: uuid | 12 query params)

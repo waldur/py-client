@@ -95,7 +95,7 @@ def sync_detailed(
     resource_uuid: Union[Unset, UUID] = UNSET,
     start: datetime.datetime,
 ) -> Response[list["MetricBreakdownItem"]]:
-    """Break a metric figure down by an attribute or by resource
+    """Break a metric figure down by attributes or by resource
 
     Args:
         end (Union[Unset, datetime.datetime]):
@@ -139,7 +139,7 @@ def sync(
     resource_uuid: Union[Unset, UUID] = UNSET,
     start: datetime.datetime,
 ) -> list["MetricBreakdownItem"]:
-    """Break a metric figure down by an attribute or by resource
+    """Break a metric figure down by attributes or by resource
 
     Args:
         end (Union[Unset, datetime.datetime]):
@@ -178,7 +178,7 @@ async def asyncio_detailed(
     resource_uuid: Union[Unset, UUID] = UNSET,
     start: datetime.datetime,
 ) -> Response[list["MetricBreakdownItem"]]:
-    """Break a metric figure down by an attribute or by resource
+    """Break a metric figure down by attributes or by resource
 
     Args:
         end (Union[Unset, datetime.datetime]):
@@ -220,7 +220,7 @@ async def asyncio(
     resource_uuid: Union[Unset, UUID] = UNSET,
     start: datetime.datetime,
 ) -> list["MetricBreakdownItem"]:
-    """Break a metric figure down by an attribute or by resource
+    """Break a metric figure down by attributes or by resource
 
     Args:
         end (Union[Unset, datetime.datetime]):

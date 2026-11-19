@@ -9,7 +9,10 @@ T = TypeVar("T", bound="MetricBreakdownItemValueType0")
 
 @_attrs_define
 class MetricBreakdownItemValueType0:
-    """The attribute's value, or the resource's name when broken down by resource."""
+    """The attribute's value; a map of each attribute to its value when broken down by several; or the resource's name when
+    broken down by resource.
+
+    """
 
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 

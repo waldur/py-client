@@ -47,13 +47,14 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ResourceApiKey]:
-    """Reveal an API key
+    """Reveal an API key (deprecated: use POST)
 
      Returns the decrypted key value. A key with an assignee is revealed only to the assignee. Any other
     key is revealed to whoever holds RESOURCE.REVEAL_API_KEY on the resource's project or organization.
-    Staff and support are no exception: staff reveal a key by impersonating a user who may. Refused with
-    403 to a personal access token, whatever its scopes. Audit-logged; under impersonation the event
-    names the impersonator.
+    Staff and support are no exception: staff reveal a key by impersonating a user who may. A personal
+    access token reveals a key only when it carries RESOURCE.REVEAL_API_KEY and is unbound or bound to
+    the key's resource, project or organization; otherwise it is refused with 403. Audit-logged; under
+    impersonation the event names the impersonator. Deprecated: reveal with POST; GET will be removed.
 
     Args:
         uuid (UUID):
@@ -82,13 +83,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> ResourceApiKey:
-    """Reveal an API key
+    """Reveal an API key (deprecated: use POST)
 
      Returns the decrypted key value. A key with an assignee is revealed only to the assignee. Any other
     key is revealed to whoever holds RESOURCE.REVEAL_API_KEY on the resource's project or organization.
-    Staff and support are no exception: staff reveal a key by impersonating a user who may. Refused with
-    403 to a personal access token, whatever its scopes. Audit-logged; under impersonation the event
-    names the impersonator.
+    Staff and support are no exception: staff reveal a key by impersonating a user who may. A personal
+    access token reveals a key only when it carries RESOURCE.REVEAL_API_KEY and is unbound or bound to
+    the key's resource, project or organization; otherwise it is refused with 403. Audit-logged; under
+    impersonation the event names the impersonator. Deprecated: reveal with POST; GET will be removed.
 
     Args:
         uuid (UUID):
@@ -112,13 +114,14 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[ResourceApiKey]:
-    """Reveal an API key
+    """Reveal an API key (deprecated: use POST)
 
      Returns the decrypted key value. A key with an assignee is revealed only to the assignee. Any other
     key is revealed to whoever holds RESOURCE.REVEAL_API_KEY on the resource's project or organization.
-    Staff and support are no exception: staff reveal a key by impersonating a user who may. Refused with
-    403 to a personal access token, whatever its scopes. Audit-logged; under impersonation the event
-    names the impersonator.
+    Staff and support are no exception: staff reveal a key by impersonating a user who may. A personal
+    access token reveals a key only when it carries RESOURCE.REVEAL_API_KEY and is unbound or bound to
+    the key's resource, project or organization; otherwise it is refused with 403. Audit-logged; under
+    impersonation the event names the impersonator. Deprecated: reveal with POST; GET will be removed.
 
     Args:
         uuid (UUID):
@@ -145,13 +148,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> ResourceApiKey:
-    """Reveal an API key
+    """Reveal an API key (deprecated: use POST)
 
      Returns the decrypted key value. A key with an assignee is revealed only to the assignee. Any other
     key is revealed to whoever holds RESOURCE.REVEAL_API_KEY on the resource's project or organization.
-    Staff and support are no exception: staff reveal a key by impersonating a user who may. Refused with
-    403 to a personal access token, whatever its scopes. Audit-logged; under impersonation the event
-    names the impersonator.
+    Staff and support are no exception: staff reveal a key by impersonating a user who may. A personal
+    access token reveals a key only when it carries RESOURCE.REVEAL_API_KEY and is unbound or bound to
+    the key's resource, project or organization; otherwise it is refused with 403. Audit-logged; under
+    impersonation the event names the impersonator. Deprecated: reveal with POST; GET will be removed.
 
     Args:
         uuid (UUID):

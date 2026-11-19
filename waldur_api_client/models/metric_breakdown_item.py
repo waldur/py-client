@@ -16,8 +16,8 @@ T = TypeVar("T", bound="MetricBreakdownItem")
 class MetricBreakdownItem:
     """
     Attributes:
-        value (Union['MetricBreakdownItemValueType0', None]): The attribute's value, or the resource's name when broken
-            down by resource.
+        value (Union['MetricBreakdownItemValueType0', None]): The attribute's value; a map of each attribute to its
+            value when broken down by several; or the resource's name when broken down by resource.
         figure (Union[None, float]):
         resource_uuid (Union[None, UUID]):
         resource_name (Union[None, str]):
