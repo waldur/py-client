@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.2.dev.20261118225752
+# Version: 8.1.5-rc.2.dev.20261118235749
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -13720,7 +13720,8 @@ Summary: List customer projects of a service provider
 Description: Returns a paginated list of projects belonging to a specific customer that have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (29):
+Query parameters (37):
+  - active_during — Return projects active during a year (YYYY) or a month (YYYY-MM): started on or before the period's last day (start date, or creation date when there is none) and with no end date or one after the period's first day.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
   - backend_id
@@ -13735,8 +13736,12 @@ Query parameters (29):
   - customer_name — Customer name
   - customer_native_name — Customer native name
   - description — Description
+  - end_date_after — Return projects whose end date is on or after the given date.
+  - end_date_before — Return projects whose end date is on or before the given date.
+  - ended — true: projects whose end date is today or earlier. false: projects with no end date or one after today.
   - field
   - has_affiliation — Filter projects that have an affiliation.
+  - in_grace — true: projects that have ended but whose end date plus grace period (the project's, else the organization's, else none) is after today. false: all other projects.
   - is_removed — Is removed
   - modified — Modified after
   - modified_before — Modified before
@@ -13748,6 +13753,9 @@ Query parameters (29):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - start_date_after — Return projects whose start date is on or after the given date.
+  - start_date_before — Return projects whose start date is on or before the given date.
+  - started — true: projects with no start date or one not after today. false: projects whose start date is after today.
   - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role and its organization copies.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
 
@@ -13757,7 +13765,8 @@ Summary: List customer projects of a service provider
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - service_provider_uuid
-Query parameters (28):
+Query parameters (36):
+  - active_during — Return projects active during a year (YYYY) or a month (YYYY-MM): started on or before the period's last day (start date, or creation date when there is none) and with no end date or one after the period's first day.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
   - backend_id
@@ -13772,7 +13781,11 @@ Query parameters (28):
   - customer_name — Customer name
   - customer_native_name — Customer native name
   - description — Description
+  - end_date_after — Return projects whose end date is on or after the given date.
+  - end_date_before — Return projects whose end date is on or before the given date.
+  - ended — true: projects whose end date is today or earlier. false: projects with no end date or one after today.
   - has_affiliation — Filter projects that have an affiliation.
+  - in_grace — true: projects that have ended but whose end date plus grace period (the project's, else the organization's, else none) is after today. false: all other projects.
   - is_removed — Is removed
   - modified — Modified after
   - modified_before — Modified before
@@ -13784,6 +13797,9 @@ Query parameters (28):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - start_date_after — Return projects whose start date is on or after the given date.
+  - start_date_before — Return projects whose start date is on or before the given date.
+  - started — true: projects with no start date or one not after today. false: projects whose start date is after today.
   - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role and its organization copies.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
 
@@ -14226,7 +14242,8 @@ Summary: List projects of a service provider
 Description: Returns a paginated list of all projects that have consumed resources from the specified service provider.
 Path parameters:
   - service_provider_uuid
-Query parameters (28):
+Query parameters (36):
+  - active_during — Return projects active during a year (YYYY) or a month (YYYY-MM): started on or before the period's last day (start date, or creation date when there is none) and with no end date or one after the period's first day.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
   - backend_id
@@ -14241,8 +14258,12 @@ Query parameters (28):
   - customer_name — Customer name
   - customer_native_name — Customer native name
   - description — Description
+  - end_date_after — Return projects whose end date is on or after the given date.
+  - end_date_before — Return projects whose end date is on or before the given date.
+  - ended — true: projects whose end date is today or earlier. false: projects with no end date or one after today.
   - field
   - has_affiliation — Filter projects that have an affiliation.
+  - in_grace — true: projects that have ended but whose end date plus grace period (the project's, else the organization's, else none) is after today. false: all other projects.
   - is_removed — Is removed
   - modified — Modified after
   - modified_before — Modified before
@@ -14253,6 +14274,9 @@ Query parameters (28):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - start_date_after — Return projects whose start date is on or after the given date.
+  - start_date_before — Return projects whose start date is on or before the given date.
+  - started — true: projects with no start date or one not after today. false: projects whose start date is after today.
   - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role and its organization copies.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
 
@@ -14262,7 +14286,8 @@ Summary: List projects of a service provider
 Description: Get number of items in the collection matching the request parameters.
 Path parameters:
   - service_provider_uuid
-Query parameters (27):
+Query parameters (35):
+  - active_during — Return projects active during a year (YYYY) or a month (YYYY-MM): started on or before the period's last day (start date, or creation date when there is none) and with no end date or one after the period's first day.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
   - backend_id
@@ -14277,7 +14302,11 @@ Query parameters (27):
   - customer_name — Customer name
   - customer_native_name — Customer native name
   - description — Description
+  - end_date_after — Return projects whose end date is on or after the given date.
+  - end_date_before — Return projects whose end date is on or before the given date.
+  - ended — true: projects whose end date is today or earlier. false: projects with no end date or one after today.
   - has_affiliation — Filter projects that have an affiliation.
+  - in_grace — true: projects that have ended but whose end date plus grace period (the project's, else the organization's, else none) is after today. false: all other projects.
   - is_removed — Is removed
   - modified — Modified after
   - modified_before — Modified before
@@ -14288,6 +14317,9 @@ Query parameters (27):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - start_date_after — Return projects whose start date is on or after the given date.
+  - start_date_before — Return projects whose start date is on or before the given date.
+  - started — true: projects with no start date or one not after today. false: projects whose start date is after today.
   - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role and its organization copies.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
 
@@ -17607,11 +17639,31 @@ Path parameters:
   - uuid
 Request body: yes
 
+### openportal_remote_projects_storage_report_retrieve
+GET /api/openportal-remote-projects/{uuid}/storage-report/
+Summary: Storage snapshots of the award over a date range, across every project it has been attached to
+Description: Storage snapshots of the award over a date range, across every project it has been attached to. Each project contributes only the snapshots taken while the award was attached there; on the day the award moved, the project it moved to claims the whole day. The report's top level is the latest snap...
+Path parameters:
+  - uuid
+Query parameters (2):
+  - end — Last day to include. Defaults to today. A start after the end gives an empty report.
+  - start — First day to include. Defaults to when the award was first attached.
+
 ### openportal_remote_projects_total_usage_retrieve
 GET /api/openportal-remote-projects/{uuid}/total-usage/
 Summary: Get total usage for remote project
 Path parameters:
   - uuid
+
+### openportal_remote_projects_usage_report_retrieve
+GET /api/openportal-remote-projects/{uuid}/usage-report/
+Summary: Usage of the award over a date range, across every project it has been attached to
+Description: Usage of the award over a date range, across every project it has been attached to. Each project's usage counts only for the days the award was attached there; on the day the award moved, the project it moved to claims the whole day. A window on a project the caller cannot see is listed without i...
+Path parameters:
+  - uuid
+Query parameters (2):
+  - end — Last day to include. Defaults to today. A start after the end gives an empty report.
+  - start — First day to include. Defaults to when the award was first attached.
 
 ============================================================
 ## openportal-unmanaged-projects  (module: waldur_api_client.api.openportal_unmanaged_projects)
@@ -17621,8 +17673,9 @@ Path parameters:
 GET /api/openportal-unmanaged-projects/
 Summary: List projects
 Description: Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only active projects are shown.
-Query parameters (31):
+Query parameters (39):
   - accounting_is_running — Filter by whether accounting is running.
+  - active_during — Return projects active during a year (YYYY) or a month (YYYY-MM): started on or before the period's last day (start date, or creation date when there is none) and with no end date or one after the period's first day.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
   - backend_id
@@ -17637,8 +17690,12 @@ Query parameters (31):
   - customer_name — Customer name
   - customer_native_name — Customer native name
   - description — Description
+  - end_date_after — Return projects whose end date is on or after the given date.
+  - end_date_before — Return projects whose end date is on or before the given date.
+  - ended — true: projects whose end date is today or earlier. false: projects with no end date or one after today.
   - field
   - has_affiliation — Filter projects that have an affiliation.
+  - in_grace — true: projects that have ended but whose end date plus grace period (the project's, else the organization's, else none) is after today. false: all other projects.
   - include_terminated — Include soft-deleted (terminated) projects. Only available to staff and support users, or users with organizational roles who can see their terminated projects.
   - is_removed — Is removed
   - modified — Modified after
@@ -17650,6 +17707,9 @@ Query parameters (31):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - start_date_after — Return projects whose start date is on or after the given date.
+  - start_date_before — Return projects whose start date is on or before the given date.
+  - started — true: projects with no start date or one not after today. false: projects whose start date is after today.
   - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role and its organization copies.
   - user_uuid — Filter by user UUID.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
@@ -17658,8 +17718,9 @@ Query parameters (31):
 HEAD /api/openportal-unmanaged-projects/
 Summary: List projects
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (30):
+Query parameters (38):
   - accounting_is_running — Filter by whether accounting is running.
+  - active_during — Return projects active during a year (YYYY) or a month (YYYY-MM): started on or before the period's last day (start date, or creation date when there is none) and with no end date or one after the period's first day.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
   - backend_id
@@ -17674,7 +17735,11 @@ Query parameters (30):
   - customer_name — Customer name
   - customer_native_name — Customer native name
   - description — Description
+  - end_date_after — Return projects whose end date is on or after the given date.
+  - end_date_before — Return projects whose end date is on or before the given date.
+  - ended — true: projects whose end date is today or earlier. false: projects with no end date or one after today.
   - has_affiliation — Filter projects that have an affiliation.
+  - in_grace — true: projects that have ended but whose end date plus grace period (the project's, else the organization's, else none) is after today. false: all other projects.
   - include_terminated — Include soft-deleted (terminated) projects. Only available to staff and support users, or users with organizational roles who can see their terminated projects.
   - is_removed — Is removed
   - modified — Modified after
@@ -17686,6 +17751,9 @@ Query parameters (30):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - start_date_after — Return projects whose start date is on or after the given date.
+  - start_date_before — Return projects whose start date is on or before the given date.
+  - started — true: projects with no start date or one not after today. false: projects whose start date is after today.
   - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role and its organization copies.
   - user_uuid — Filter by user UUID.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
@@ -17780,8 +17848,9 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (30):
+Query parameters (38):
   - accounting_is_running — Filter by whether accounting is running.
+  - active_during — Return projects active during a year (YYYY) or a month (YYYY-MM): started on or before the period's last day (start date, or creation date when there is none) and with no end date or one after the period's first day.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
   - backend_id
@@ -17797,7 +17866,11 @@ Query parameters (30):
   - customer_name — Customer name
   - customer_native_name — Customer native name
   - description — Description
+  - end_date_after — Return projects whose end date is on or after the given date.
+  - end_date_before — Return projects whose end date is on or before the given date.
+  - ended — true: projects whose end date is today or earlier. false: projects with no end date or one after today.
   - has_affiliation — Filter projects that have an affiliation.
+  - in_grace — true: projects that have ended but whose end date plus grace period (the project's, else the organization's, else none) is after today. false: all other projects.
   - is_removed — Is removed
   - modified — Modified after
   - modified_before — Modified before
@@ -17808,6 +17881,9 @@ Query parameters (30):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - start_date_after — Return projects whose start date is on or after the given date.
+  - start_date_before — Return projects whose start date is on or before the given date.
+  - started — true: projects with no start date or one not after today. false: projects whose start date is after today.
   - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role and its organization copies.
   - user_uuid — Filter by user UUID.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
@@ -21415,8 +21491,9 @@ Path parameters:
 GET /api/projects/
 Summary: List projects
 Description: Retrieve a list of projects. The list is filtered based on the user's permissions. By default, only active projects are shown.
-Query parameters (31):
+Query parameters (39):
   - accounting_is_running — Filter by whether accounting is running.
+  - active_during — Return projects active during a year (YYYY) or a month (YYYY-MM): started on or before the period's last day (start date, or creation date when there is none) and with no end date or one after the period's first day.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
   - backend_id
@@ -21431,8 +21508,12 @@ Query parameters (31):
   - customer_name — Customer name
   - customer_native_name — Customer native name
   - description — Description
+  - end_date_after — Return projects whose end date is on or after the given date.
+  - end_date_before — Return projects whose end date is on or before the given date.
+  - ended — true: projects whose end date is today or earlier. false: projects with no end date or one after today.
   - field
   - has_affiliation — Filter projects that have an affiliation.
+  - in_grace — true: projects that have ended but whose end date plus grace period (the project's, else the organization's, else none) is after today. false: all other projects.
   - include_terminated — Include soft-deleted (terminated) projects. Only available to staff and support users, or users with organizational roles who can see their terminated projects.
   - is_removed — Is removed
   - modified — Modified after
@@ -21444,6 +21525,9 @@ Query parameters (31):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - start_date_after — Return projects whose start date is on or after the given date.
+  - start_date_before — Return projects whose start date is on or before the given date.
+  - started — true: projects with no start date or one not after today. false: projects whose start date is after today.
   - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role and its organization copies.
   - user_uuid — Filter by user UUID.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
@@ -21452,8 +21536,9 @@ Query parameters (31):
 HEAD /api/projects/
 Summary: List projects
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (30):
+Query parameters (38):
   - accounting_is_running — Filter by whether accounting is running.
+  - active_during — Return projects active during a year (YYYY) or a month (YYYY-MM): started on or before the period's last day (start date, or creation date when there is none) and with no end date or one after the period's first day.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
   - backend_id
@@ -21468,7 +21553,11 @@ Query parameters (30):
   - customer_name — Customer name
   - customer_native_name — Customer native name
   - description — Description
+  - end_date_after — Return projects whose end date is on or after the given date.
+  - end_date_before — Return projects whose end date is on or before the given date.
+  - ended — true: projects whose end date is today or earlier. false: projects with no end date or one after today.
   - has_affiliation — Filter projects that have an affiliation.
+  - in_grace — true: projects that have ended but whose end date plus grace period (the project's, else the organization's, else none) is after today. false: all other projects.
   - include_terminated — Include soft-deleted (terminated) projects. Only available to staff and support users, or users with organizational roles who can see their terminated projects.
   - is_removed — Is removed
   - modified — Modified after
@@ -21480,6 +21569,9 @@ Query parameters (30):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - start_date_after — Return projects whose start date is on or after the given date.
+  - start_date_before — Return projects whose start date is on or before the given date.
+  - started — true: projects with no start date or one not after today. false: projects whose start date is after today.
   - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role and its organization copies.
   - user_uuid — Filter by user UUID.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
@@ -21622,8 +21714,9 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (30):
+Query parameters (38):
   - accounting_is_running — Filter by whether accounting is running.
+  - active_during — Return projects active during a year (YYYY) or a month (YYYY-MM): started on or before the period's last day (start date, or creation date when there is none) and with no end date or one after the period's first day.
   - affiliation_name — Affiliation name
   - affiliation_uuid — Affiliation UUID
   - backend_id
@@ -21639,7 +21732,11 @@ Query parameters (30):
   - customer_name — Customer name
   - customer_native_name — Customer native name
   - description — Description
+  - end_date_after — Return projects whose end date is on or after the given date.
+  - end_date_before — Return projects whose end date is on or before the given date.
+  - ended — true: projects whose end date is today or earlier. false: projects with no end date or one after today.
   - has_affiliation — Filter projects that have an affiliation.
+  - in_grace — true: projects that have ended but whose end date plus grace period (the project's, else the organization's, else none) is after today. false: all other projects.
   - is_removed — Is removed
   - modified — Modified after
   - modified_before — Modified before
@@ -21650,6 +21747,9 @@ Query parameters (30):
   - science_domain_uuid — Science domain UUID
   - science_sub_domain_uuid — Science sub-domain UUID
   - slug — Slug
+  - start_date_after — Return projects whose start date is on or after the given date.
+  - start_date_before — Return projects whose start date is on or before the given date.
+  - started — true: projects with no start date or one not after today. false: projects whose start date is after today.
   - user_role — Role name or UUID; narrows user_uuid_with_active_role to that role and its organization copies.
   - user_uuid — Filter by user UUID.
   - user_uuid_with_active_role — Filter projects where the given user has a role.
@@ -23252,6 +23352,14 @@ Request body: yes
 POST /api/proposal-protected-calls/{uuid}/generate-suggestions/
 Summary: Generate reviewer suggestions with configurable matching source
 Description: Generate reviewer suggestions with configurable matching source.
+Path parameters:
+  - uuid
+Request body: yes
+
+### proposal_protected_calls_import_assignments
+POST /api/proposal-protected-calls/{uuid}/import-assignments/
+Summary: Assign proposals of a round to reviewers from a CSV file with a header row: reviewer_email, and proposal_slug or proposal_uuid
+Description: Assign proposals of a round to reviewers from a CSV file with a header row: reviewer_email, and proposal_slug or proposal_uuid. Rows are grouped by reviewer and assigned as create-manual-assignment does, in the reviewer's draft manual batch: already assigned proposals are skipped, conflicts of in...
 Path parameters:
   - uuid
 Request body: yes

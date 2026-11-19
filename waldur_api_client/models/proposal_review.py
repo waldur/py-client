@@ -7,7 +7,9 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 from dateutil.parser import isoparse
 
+from ..models.blank_enum import BlankEnum
 from ..models.proposal_review_state_enum import ProposalReviewStateEnum
+from ..models.rejection_cause_enum import RejectionCauseEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
@@ -32,6 +34,9 @@ class ProposalReview:
         reviewer_organization (str):
         reviewer_image (str):
         state (ProposalReviewStateEnum):
+        rejection_cause (Union[BlankEnum, RejectionCauseEnum]): Why a rejected review was closed: declined by the
+            reviewer, expired at its deadline, withdrawn when the reviewer joined the proposal team, or closed when the
+            proposal was decided. Empty on reviews not rejected, and on those rejected before this was recorded.
         review_end_date (Union[None, datetime.datetime]): When the review is due, or None when nothing sets a deadline.
 
             The deadline of the step the review contributes to. A review whose
@@ -92,6 +97,7 @@ class ProposalReview:
     reviewer_organization: str
     reviewer_image: str
     state: ProposalReviewStateEnum
+    rejection_cause: Union[BlankEnum, RejectionCauseEnum]
     review_end_date: Union[None, datetime.datetime]
     criteria: list["ReviewCriterion"]
     round_uuid: UUID
@@ -146,6 +152,12 @@ class ProposalReview:
         reviewer_image = self.reviewer_image
 
         state = self.state.value
+
+        rejection_cause: str
+        if isinstance(self.rejection_cause, RejectionCauseEnum):
+            rejection_cause = self.rejection_cause.value
+        else:
+            rejection_cause = self.rejection_cause.value
 
         review_end_date: Union[None, str]
         if isinstance(self.review_end_date, datetime.datetime):
@@ -276,6 +288,7 @@ class ProposalReview:
                 "reviewer_organization": reviewer_organization,
                 "reviewer_image": reviewer_image,
                 "state": state,
+                "rejection_cause": rejection_cause,
                 "review_end_date": review_end_date,
                 "criteria": criteria,
                 "round_uuid": round_uuid,
@@ -352,6 +365,23 @@ class ProposalReview:
         reviewer_image = d.pop("reviewer_image")
 
         state = ProposalReviewStateEnum(d.pop("state"))
+
+        def _parse_rejection_cause(data: object) -> Union[BlankEnum, RejectionCauseEnum]:
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                rejection_cause_type_0 = RejectionCauseEnum(data)
+
+                return rejection_cause_type_0
+            except:  # noqa: E722
+                pass
+            if not isinstance(data, str):
+                raise TypeError()
+            rejection_cause_type_1 = BlankEnum(data)
+
+            return rejection_cause_type_1
+
+        rejection_cause = _parse_rejection_cause(d.pop("rejection_cause"))
 
         def _parse_review_end_date(data: object) -> Union[None, datetime.datetime]:
             if data is None:
@@ -546,6 +576,7 @@ class ProposalReview:
             reviewer_organization=reviewer_organization,
             reviewer_image=reviewer_image,
             state=state,
+            rejection_cause=rejection_cause,
             review_end_date=review_end_date,
             criteria=criteria,
             round_uuid=round_uuid,

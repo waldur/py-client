@@ -178,6 +178,11 @@ from .assignment_batch_list import AssignmentBatchList
 from .assignment_batch_list_o_enum import AssignmentBatchListOEnum
 from .assignment_batch_request import AssignmentBatchRequest
 from .assignment_batch_status import AssignmentBatchStatus
+from .assignment_import_request import AssignmentImportRequest
+from .assignment_import_response import AssignmentImportResponse
+from .assignment_import_row import AssignmentImportRow
+from .assignment_import_row_status_enum import AssignmentImportRowStatusEnum
+from .assignment_import_totals import AssignmentImportTotals
 from .assignment_item import AssignmentItem
 from .assignment_item_decline_request import AssignmentItemDeclineRequest
 from .assignment_item_o_enum import AssignmentItemOEnum
@@ -2881,6 +2886,7 @@ from .reject_requested_offering_request import RejectRequestedOfferingRequest
 from .reject_workflow_step_request import RejectWorkflowStepRequest
 from .reject_workflow_step_response import RejectWorkflowStepResponse
 from .rejected_point import RejectedPoint
+from .rejection_cause_enum import RejectionCauseEnum
 from .relationship_type_enum import RelationshipTypeEnum
 from .release_step_report_request import ReleaseStepReportRequest
 from .released_report import ReleasedReport
@@ -2905,9 +2911,12 @@ from .remote_project_audit_entry import RemoteProjectAuditEntry
 from .remote_project_audit_entry_event_type_enum import RemoteProjectAuditEntryEventTypeEnum
 from .remote_project_audit_entry_remote_response_type_0 import RemoteProjectAuditEntryRemoteResponseType0
 from .remote_project_breakdown import RemoteProjectBreakdown
+from .remote_project_report_window import RemoteProjectReportWindow
 from .remote_project_state_enum import RemoteProjectStateEnum
+from .remote_project_storage_report import RemoteProjectStorageReport
 from .remote_project_update_request import RemoteProjectUpdateRequest
 from .remote_project_update_request_state_enum import RemoteProjectUpdateRequestStateEnum
+from .remote_project_usage_report import RemoteProjectUsageReport
 from .remote_resource_order import RemoteResourceOrder
 from .remote_resource_order_remote_state_enum import RemoteResourceOrderRemoteStateEnum
 from .remote_resource_sync_status import RemoteResourceSyncStatus
@@ -4004,6 +4013,11 @@ __all__ = (
     "AssignmentBatchListOEnum",
     "AssignmentBatchRequest",
     "AssignmentBatchStatus",
+    "AssignmentImportRequest",
+    "AssignmentImportResponse",
+    "AssignmentImportRow",
+    "AssignmentImportRowStatusEnum",
+    "AssignmentImportTotals",
     "AssignmentItem",
     "AssignmentItemDeclineRequest",
     "AssignmentItemOEnum",
@@ -6566,6 +6580,7 @@ __all__ = (
     "ReferenceNumberRequest",
     "RegistrationSourceEnum",
     "RejectedPoint",
+    "RejectionCauseEnum",
     "RejectRequestedOfferingRequest",
     "RejectWorkflowStepRequest",
     "RejectWorkflowStepResponse",
@@ -6591,9 +6606,12 @@ __all__ = (
     "RemoteProjectAuditEntryEventTypeEnum",
     "RemoteProjectAuditEntryRemoteResponseType0",
     "RemoteProjectBreakdown",
+    "RemoteProjectReportWindow",
     "RemoteProjectStateEnum",
+    "RemoteProjectStorageReport",
     "RemoteProjectUpdateRequest",
     "RemoteProjectUpdateRequestStateEnum",
+    "RemoteProjectUsageReport",
     "RemoteResourceOrder",
     "RemoteResourceOrderRemoteStateEnum",
     "RemoteResourceSyncStatus",

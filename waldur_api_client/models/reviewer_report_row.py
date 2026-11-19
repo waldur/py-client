@@ -30,6 +30,7 @@ class ReviewerReportRow:
         reviews_declined (int):
         reviews_expired (int): Closed at their deadline without being submitted.
         reviews_withdrawn (int): Withdrawn when the reviewer joined the proposal's team.
+        reviews_closed_on_decision (int): Closed unsubmitted when the proposal was accepted, rejected or canceled.
         reviews_overdue (int): In review past their deadline.
         reviewer_uuid (Union[None, UUID]): Empty for a reviewer invited by email who has no account yet: the row is
             their address's invitations.
@@ -59,6 +60,7 @@ class ReviewerReportRow:
     reviews_declined: int
     reviews_expired: int
     reviews_withdrawn: int
+    reviews_closed_on_decision: int
     reviews_overdue: int
     reviewer_uuid: Union[None, UUID]
     reviewer_name: str
@@ -100,6 +102,8 @@ class ReviewerReportRow:
         reviews_expired = self.reviews_expired
 
         reviews_withdrawn = self.reviews_withdrawn
+
+        reviews_closed_on_decision = self.reviews_closed_on_decision
 
         reviews_overdue = self.reviews_overdue
 
@@ -150,6 +154,7 @@ class ReviewerReportRow:
                 "reviews_declined": reviews_declined,
                 "reviews_expired": reviews_expired,
                 "reviews_withdrawn": reviews_withdrawn,
+                "reviews_closed_on_decision": reviews_closed_on_decision,
                 "reviews_overdue": reviews_overdue,
                 "reviewer_uuid": reviewer_uuid,
                 "reviewer_name": reviewer_name,
@@ -196,6 +201,8 @@ class ReviewerReportRow:
         reviews_expired = d.pop("reviews_expired")
 
         reviews_withdrawn = d.pop("reviews_withdrawn")
+
+        reviews_closed_on_decision = d.pop("reviews_closed_on_decision")
 
         reviews_overdue = d.pop("reviews_overdue")
 
@@ -277,6 +284,7 @@ class ReviewerReportRow:
             reviews_declined=reviews_declined,
             reviews_expired=reviews_expired,
             reviews_withdrawn=reviews_withdrawn,
+            reviews_closed_on_decision=reviews_closed_on_decision,
             reviews_overdue=reviews_overdue,
             reviewer_uuid=reviewer_uuid,
             reviewer_name=reviewer_name,

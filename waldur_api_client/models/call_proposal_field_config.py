@@ -18,12 +18,15 @@ class CallProposalFieldConfig:
         field_description (Union[Unset, ProposalFieldStateEnum]):
         field_science_sub_domain (Union[Unset, ProposalFieldStateEnum]):
         field_supporting_documentation (Union[Unset, ProposalFieldStateEnum]):
+        minimum_supporting_documents (Union[Unset, int]): How many supporting documents a proposal needs before it can
+            be submitted, while supporting documentation is required. Ignored when it is optional or hidden.
     """
 
     field_project_summary: Union[Unset, ProposalFieldStateEnum] = UNSET
     field_description: Union[Unset, ProposalFieldStateEnum] = UNSET
     field_science_sub_domain: Union[Unset, ProposalFieldStateEnum] = UNSET
     field_supporting_documentation: Union[Unset, ProposalFieldStateEnum] = UNSET
+    minimum_supporting_documents: Union[Unset, int] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -43,6 +46,8 @@ class CallProposalFieldConfig:
         if not isinstance(self.field_supporting_documentation, Unset):
             field_supporting_documentation = self.field_supporting_documentation.value
 
+        minimum_supporting_documents = self.minimum_supporting_documents
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -54,6 +59,8 @@ class CallProposalFieldConfig:
             field_dict["field_science_sub_domain"] = field_science_sub_domain
         if field_supporting_documentation is not UNSET:
             field_dict["field_supporting_documentation"] = field_supporting_documentation
+        if minimum_supporting_documents is not UNSET:
+            field_dict["minimum_supporting_documents"] = minimum_supporting_documents
 
         return field_dict
 
@@ -88,11 +95,14 @@ class CallProposalFieldConfig:
         else:
             field_supporting_documentation = ProposalFieldStateEnum(_field_supporting_documentation)
 
+        minimum_supporting_documents = d.pop("minimum_supporting_documents", UNSET)
+
         call_proposal_field_config = cls(
             field_project_summary=field_project_summary,
             field_description=field_description,
             field_science_sub_domain=field_science_sub_domain,
             field_supporting_documentation=field_supporting_documentation,
+            minimum_supporting_documents=minimum_supporting_documents,
         )
 
         call_proposal_field_config.additional_properties = d

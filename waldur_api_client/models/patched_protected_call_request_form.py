@@ -59,6 +59,12 @@ class PatchedProtectedCallRequestForm:
         panel_vice_chair (Union[None, UUID, Unset]):
         proposal_slug_template (Union[None, Unset, str]): Template for proposal slugs. Supports: {call_slug},
             {round_slug}, {org_slug}, {year}, {month}, {counter}, {counter_padded}. Default: {round_slug}-{counter_padded}
+        project_description_template (Union[None, Unset, str]): Description given to the project an accepted proposal
+            creates. Placeholders: {proposal_name}, {proposal_slug}, {call_prefix}, {call_slug}, {call_name}, {round_start},
+            {round_slug}, {org_slug}, {year}, {proposal_summary}, {proposal_description}. Empty means no description. The
+            project description is not as private as the proposal: project members, organization owners and the service
+            providers of the project's resources see it, and it is shared with external portals the project is connected to.
+            {proposal_description} copies the full proposal text there; use {proposal_summary} unless that is intended.
         user_email_patterns (Union[Unset, list[str]]): List of email regex patterns. User must match one.
         user_affiliations (Union[Unset, list[str]]): List of allowed affiliations. User must have one.
         user_identity_sources (Union[Unset, list[str]]): List of allowed identity sources (identity providers).
@@ -111,6 +117,7 @@ class PatchedProtectedCallRequestForm:
     panel_chair: Union[None, UUID, Unset] = UNSET
     panel_vice_chair: Union[None, UUID, Unset] = UNSET
     proposal_slug_template: Union[None, Unset, str] = UNSET
+    project_description_template: Union[None, Unset, str] = UNSET
     user_email_patterns: Union[Unset, list[str]] = UNSET
     user_affiliations: Union[Unset, list[str]] = UNSET
     user_identity_sources: Union[Unset, list[str]] = UNSET
@@ -230,6 +237,12 @@ class PatchedProtectedCallRequestForm:
             proposal_slug_template = UNSET
         else:
             proposal_slug_template = self.proposal_slug_template
+
+        project_description_template: Union[None, Unset, str]
+        if isinstance(self.project_description_template, Unset):
+            project_description_template = UNSET
+        else:
+            project_description_template = self.project_description_template
 
         user_email_patterns: Union[Unset, list[str]] = UNSET
         if not isinstance(self.user_email_patterns, Unset):
@@ -352,6 +365,8 @@ class PatchedProtectedCallRequestForm:
             field_dict["panel_vice_chair"] = panel_vice_chair
         if proposal_slug_template is not UNSET:
             field_dict["proposal_slug_template"] = proposal_slug_template
+        if project_description_template is not UNSET:
+            field_dict["project_description_template"] = project_description_template
         if user_email_patterns is not UNSET:
             field_dict["user_email_patterns"] = user_email_patterns
         if user_affiliations is not UNSET:
@@ -553,6 +568,15 @@ class PatchedProtectedCallRequestForm:
 
         proposal_slug_template = _parse_proposal_slug_template(d.pop("proposal_slug_template", UNSET))
 
+        def _parse_project_description_template(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        project_description_template = _parse_project_description_template(d.pop("project_description_template", UNSET))
+
         user_email_patterns = cast(list[str], d.pop("user_email_patterns", UNSET))
 
         user_affiliations = cast(list[str], d.pop("user_affiliations", UNSET))
@@ -678,6 +702,7 @@ class PatchedProtectedCallRequestForm:
             panel_chair=panel_chair,
             panel_vice_chair=panel_vice_chair,
             proposal_slug_template=proposal_slug_template,
+            project_description_template=project_description_template,
             user_email_patterns=user_email_patterns,
             user_affiliations=user_affiliations,
             user_identity_sources=user_identity_sources,

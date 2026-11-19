@@ -27,6 +27,7 @@ class ReviewerReportTotals:
         reviews_declined (int):
         reviews_expired (int): Closed at their deadline without being submitted.
         reviews_withdrawn (int): Withdrawn when the reviewer joined the proposal's team.
+        reviews_closed_on_decision (int): Closed unsubmitted when the proposal was accepted, rejected or canceled.
         reviews_overdue (int): In review past their deadline.
         reviewers (int):
     """
@@ -46,6 +47,7 @@ class ReviewerReportTotals:
     reviews_declined: int
     reviews_expired: int
     reviews_withdrawn: int
+    reviews_closed_on_decision: int
     reviews_overdue: int
     reviewers: int
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -81,6 +83,8 @@ class ReviewerReportTotals:
 
         reviews_withdrawn = self.reviews_withdrawn
 
+        reviews_closed_on_decision = self.reviews_closed_on_decision
+
         reviews_overdue = self.reviews_overdue
 
         reviewers = self.reviewers
@@ -104,6 +108,7 @@ class ReviewerReportTotals:
                 "reviews_declined": reviews_declined,
                 "reviews_expired": reviews_expired,
                 "reviews_withdrawn": reviews_withdrawn,
+                "reviews_closed_on_decision": reviews_closed_on_decision,
                 "reviews_overdue": reviews_overdue,
                 "reviewers": reviewers,
             }
@@ -144,6 +149,8 @@ class ReviewerReportTotals:
 
         reviews_withdrawn = d.pop("reviews_withdrawn")
 
+        reviews_closed_on_decision = d.pop("reviews_closed_on_decision")
+
         reviews_overdue = d.pop("reviews_overdue")
 
         reviewers = d.pop("reviewers")
@@ -164,6 +171,7 @@ class ReviewerReportTotals:
             reviews_declined=reviews_declined,
             reviews_expired=reviews_expired,
             reviews_withdrawn=reviews_withdrawn,
+            reviews_closed_on_decision=reviews_closed_on_decision,
             reviews_overdue=reviews_overdue,
             reviewers=reviewers,
         )
