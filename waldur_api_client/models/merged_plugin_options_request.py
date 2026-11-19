@@ -152,6 +152,7 @@ class MergedPluginOptionsRequest:
         resource_slug_max_length (Union[None, Unset, int]): Maximum length of auto-generated resource slugs derived from
             the resource name, overriding the default of 10 characters (up to 40). Ignored when a resource slug template is
             set.
+        pre_flight_check_enabled (Union[Unset, bool]): Check the tenant's quotas before an instance is ordered
         default_internal_network_mtu (Union[Unset, int]): If set, it will be used as a default MTU for the first network
             in a tenant
         max_instances (Union[Unset, int]): Default limit for number of instances in OpenStack tenant
@@ -342,6 +343,7 @@ class MergedPluginOptionsRequest:
     resource_name_pattern: Union[None, Unset, str] = UNSET
     resource_slug_template: Union[None, Unset, str] = UNSET
     resource_slug_max_length: Union[None, Unset, int] = UNSET
+    pre_flight_check_enabled: Union[Unset, bool] = UNSET
     default_internal_network_mtu: Union[Unset, int] = UNSET
     max_instances: Union[Unset, int] = UNSET
     max_volumes: Union[Unset, int] = UNSET
@@ -567,6 +569,8 @@ class MergedPluginOptionsRequest:
             resource_slug_max_length = UNSET
         else:
             resource_slug_max_length = self.resource_slug_max_length
+
+        pre_flight_check_enabled = self.pre_flight_check_enabled
 
         default_internal_network_mtu = self.default_internal_network_mtu
 
@@ -890,6 +894,8 @@ class MergedPluginOptionsRequest:
             field_dict["resource_slug_template"] = resource_slug_template
         if resource_slug_max_length is not UNSET:
             field_dict["resource_slug_max_length"] = resource_slug_max_length
+        if pre_flight_check_enabled is not UNSET:
+            field_dict["pre_flight_check_enabled"] = pre_flight_check_enabled
         if default_internal_network_mtu is not UNSET:
             field_dict["default_internal_network_mtu"] = default_internal_network_mtu
         if max_instances is not UNSET:
@@ -1272,6 +1278,8 @@ class MergedPluginOptionsRequest:
 
         resource_slug_max_length = _parse_resource_slug_max_length(d.pop("resource_slug_max_length", UNSET))
 
+        pre_flight_check_enabled = d.pop("pre_flight_check_enabled", UNSET)
+
         default_internal_network_mtu = d.pop("default_internal_network_mtu", UNSET)
 
         max_instances = d.pop("max_instances", UNSET)
@@ -1616,6 +1624,7 @@ class MergedPluginOptionsRequest:
             resource_name_pattern=resource_name_pattern,
             resource_slug_template=resource_slug_template,
             resource_slug_max_length=resource_slug_max_length,
+            pre_flight_check_enabled=pre_flight_check_enabled,
             default_internal_network_mtu=default_internal_network_mtu,
             max_instances=max_instances,
             max_volumes=max_volumes,

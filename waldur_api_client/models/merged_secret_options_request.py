@@ -42,6 +42,7 @@ class MergedSecretOptionsRequest:
         terminate (Union[Unset, str]): Script for resource termination
         update (Union[Unset, str]): Script for resource update
         pull (Union[Unset, str]): Script for regular resource pull
+        resource_options_handler (Union[Unset, str]): Script run when a resource's options change
         api_url (Union[Unset, str]): API URL
         token (Union[Unset, str]): Waldur access token
         customer_uuid (Union[Unset, str]): Organization UUID
@@ -87,6 +88,7 @@ class MergedSecretOptionsRequest:
     terminate: Union[Unset, str] = UNSET
     update: Union[Unset, str] = UNSET
     pull: Union[Unset, str] = UNSET
+    resource_options_handler: Union[Unset, str] = UNSET
     api_url: Union[Unset, str] = UNSET
     token: Union[Unset, str] = UNSET
     customer_uuid: Union[Unset, str] = UNSET
@@ -170,6 +172,8 @@ class MergedSecretOptionsRequest:
         update = self.update
 
         pull = self.pull
+
+        resource_options_handler = self.resource_options_handler
 
         api_url = self.api_url
 
@@ -260,6 +264,8 @@ class MergedSecretOptionsRequest:
             field_dict["update"] = update
         if pull is not UNSET:
             field_dict["pull"] = pull
+        if resource_options_handler is not UNSET:
+            field_dict["resource_options_handler"] = resource_options_handler
         if api_url is not UNSET:
             field_dict["api_url"] = api_url
         if token is not UNSET:
@@ -379,6 +385,8 @@ class MergedSecretOptionsRequest:
 
         pull = d.pop("pull", UNSET)
 
+        resource_options_handler = d.pop("resource_options_handler", UNSET)
+
         api_url = d.pop("api_url", UNSET)
 
         token = d.pop("token", UNSET)
@@ -456,6 +464,7 @@ class MergedSecretOptionsRequest:
             terminate=terminate,
             update=update,
             pull=pull,
+            resource_options_handler=resource_options_handler,
             api_url=api_url,
             token=token,
             customer_uuid=customer_uuid,

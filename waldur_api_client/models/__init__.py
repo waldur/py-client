@@ -63,6 +63,18 @@ from .affinity_matrix_response_scope_enum import AffinityMatrixResponseScopeEnum
 from .affinity_method_enum import AffinityMethodEnum
 from .agent_compatibility import AgentCompatibility
 from .agent_compatibility_status_enum import AgentCompatibilityStatusEnum
+from .agent_configuration import AgentConfiguration
+from .agent_configuration_backend_components import AgentConfigurationBackendComponents
+from .agent_configuration_backend_components_additional_property import (
+    AgentConfigurationBackendComponentsAdditionalProperty,
+)
+from .agent_configuration_backend_settings import AgentConfigurationBackendSettings
+from .agent_configuration_request import AgentConfigurationRequest
+from .agent_configuration_request_backend_components import AgentConfigurationRequestBackendComponents
+from .agent_configuration_request_backend_components_additional_property import (
+    AgentConfigurationRequestBackendComponentsAdditionalProperty,
+)
+from .agent_configuration_request_backend_settings import AgentConfigurationRequestBackendSettings
 from .agent_connection_info import AgentConnectionInfo
 from .agent_connection_stats_response import AgentConnectionStatsResponse
 from .agent_connection_summary import AgentConnectionSummary
@@ -75,6 +87,9 @@ from .agent_event_subscription_with_connection_observable_objects import (
 )
 from .agent_identity import AgentIdentity
 from .agent_identity_request import AgentIdentityRequest
+from .agent_plugin import AgentPlugin
+from .agent_plugin_component_schema_type_0 import AgentPluginComponentSchemaType0
+from .agent_plugin_settings_schema_type_0 import AgentPluginSettingsSchemaType0
 from .agent_processor import AgentProcessor
 from .agent_processor_create_request import AgentProcessorCreateRequest
 from .agent_queue_info import AgentQueueInfo
@@ -3195,6 +3210,7 @@ from .role_modify_request_permissions import RoleModifyRequestPermissions
 from .role_template import RoleTemplate
 from .role_template_o_enum import RoleTemplateOEnum
 from .role_type import RoleType
+from .roles_enum import RolesEnum
 from .round_adoption_request import RoundAdoptionRequest
 from .round_meeting_note import RoundMeetingNote
 from .round_meeting_note_document import RoundMeetingNoteDocument
@@ -3900,6 +3916,14 @@ __all__ = (
     "AffinityMethodEnum",
     "AgentCompatibility",
     "AgentCompatibilityStatusEnum",
+    "AgentConfiguration",
+    "AgentConfigurationBackendComponents",
+    "AgentConfigurationBackendComponentsAdditionalProperty",
+    "AgentConfigurationBackendSettings",
+    "AgentConfigurationRequest",
+    "AgentConfigurationRequestBackendComponents",
+    "AgentConfigurationRequestBackendComponentsAdditionalProperty",
+    "AgentConfigurationRequestBackendSettings",
     "AgentConnectionInfo",
     "AgentConnectionStatsResponse",
     "AgentConnectionSummary",
@@ -3910,6 +3934,9 @@ __all__ = (
     "AgentEventSubscriptionWithConnectionObservableObjects",
     "AgentIdentity",
     "AgentIdentityRequest",
+    "AgentPlugin",
+    "AgentPluginComponentSchemaType0",
+    "AgentPluginSettingsSchemaType0",
     "AgentProcessor",
     "AgentProcessorCreateRequest",
     "AgentQueueInfo",
@@ -6875,6 +6902,7 @@ __all__ = (
     "RoleHygieneReport",
     "RoleModifyRequest",
     "RoleModifyRequestPermissions",
+    "RolesEnum",
     "RoleTemplate",
     "RoleTemplateOEnum",
     "RoleType",

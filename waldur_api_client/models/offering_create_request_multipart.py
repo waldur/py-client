@@ -13,6 +13,7 @@ from ..models.country_enum import CountryEnum
 from ..types import UNSET, File, Unset
 
 if TYPE_CHECKING:
+    from ..models.agent_configuration_request import AgentConfigurationRequest
     from ..models.base_provider_plan_request import BaseProviderPlanRequest
     from ..models.merged_plugin_options_request import MergedPluginOptionsRequest
     from ..models.offering_component_request import OfferingComponentRequest
@@ -48,6 +49,7 @@ class OfferingCreateRequestMultipart:
         resource_options (Union[Unset, OfferingOptionsRequest]):
         components (Union[Unset, list['OfferingComponentRequest']]):
         plugin_options (Union[Unset, MergedPluginOptionsRequest]):
+        agent_configuration (Union[Unset, AgentConfigurationRequest]):
         vendor_details (Union[Unset, str]):
         getting_started (Union[Unset, str]):
         integration_guide (Union[Unset, str]):
@@ -85,6 +87,7 @@ class OfferingCreateRequestMultipart:
     resource_options: Union[Unset, "OfferingOptionsRequest"] = UNSET
     components: Union[Unset, list["OfferingComponentRequest"]] = UNSET
     plugin_options: Union[Unset, "MergedPluginOptionsRequest"] = UNSET
+    agent_configuration: Union[Unset, "AgentConfigurationRequest"] = UNSET
     vendor_details: Union[Unset, str] = UNSET
     getting_started: Union[Unset, str] = UNSET
     integration_guide: Union[Unset, str] = UNSET
@@ -154,6 +157,10 @@ class OfferingCreateRequestMultipart:
         plugin_options: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.plugin_options, Unset):
             plugin_options = self.plugin_options.to_dict()
+
+        agent_configuration: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.agent_configuration, Unset):
+            agent_configuration = self.agent_configuration.to_dict()
 
         vendor_details = self.vendor_details
 
@@ -275,6 +282,8 @@ class OfferingCreateRequestMultipart:
             field_dict["components"] = components
         if plugin_options is not UNSET:
             field_dict["plugin_options"] = plugin_options
+        if agent_configuration is not UNSET:
+            field_dict["agent_configuration"] = agent_configuration
         if vendor_details is not UNSET:
             field_dict["vendor_details"] = vendor_details
         if getting_started is not UNSET:
@@ -372,6 +381,14 @@ class OfferingCreateRequestMultipart:
                 ("plugin_options", (None, json.dumps(self.plugin_options.to_dict()).encode(), "application/json"))
             )
 
+        if not isinstance(self.agent_configuration, Unset):
+            files.append(
+                (
+                    "agent_configuration",
+                    (None, json.dumps(self.agent_configuration.to_dict()).encode(), "application/json"),
+                )
+            )
+
         if not isinstance(self.vendor_details, Unset):
             files.append(("vendor_details", (None, str(self.vendor_details).encode(), "text/plain")))
 
@@ -459,6 +476,7 @@ class OfferingCreateRequestMultipart:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.agent_configuration_request import AgentConfigurationRequest
         from ..models.base_provider_plan_request import BaseProviderPlanRequest
         from ..models.merged_plugin_options_request import MergedPluginOptionsRequest
         from ..models.offering_component_request import OfferingComponentRequest
@@ -536,6 +554,13 @@ class OfferingCreateRequestMultipart:
             plugin_options = UNSET
         else:
             plugin_options = MergedPluginOptionsRequest.from_dict(_plugin_options)
+
+        _agent_configuration = d.pop("agent_configuration", UNSET)
+        agent_configuration: Union[Unset, AgentConfigurationRequest]
+        if isinstance(_agent_configuration, Unset):
+            agent_configuration = UNSET
+        else:
+            agent_configuration = AgentConfigurationRequest.from_dict(_agent_configuration)
 
         vendor_details = d.pop("vendor_details", UNSET)
 
@@ -693,6 +718,7 @@ class OfferingCreateRequestMultipart:
             resource_options=resource_options,
             components=components,
             plugin_options=plugin_options,
+            agent_configuration=agent_configuration,
             vendor_details=vendor_details,
             getting_started=getting_started,
             integration_guide=integration_guide,

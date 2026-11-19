@@ -7,6 +7,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.agent_configuration_request import AgentConfigurationRequest
     from ..models.merged_plugin_options_request import MergedPluginOptionsRequest
     from ..models.merged_secret_options_request import MergedSecretOptionsRequest
     from ..models.offering_integration_update_request_service_attributes import (
@@ -23,12 +24,14 @@ class OfferingIntegrationUpdateRequest:
     Attributes:
         secret_options (Union[Unset, MergedSecretOptionsRequest]):
         plugin_options (Union[Unset, MergedPluginOptionsRequest]):
+        agent_configuration (Union[Unset, AgentConfigurationRequest]):
         service_attributes (Union[Unset, OfferingIntegrationUpdateRequestServiceAttributes]):
         backend_id (Union[Unset, str]):
     """
 
     secret_options: Union[Unset, "MergedSecretOptionsRequest"] = UNSET
     plugin_options: Union[Unset, "MergedPluginOptionsRequest"] = UNSET
+    agent_configuration: Union[Unset, "AgentConfigurationRequest"] = UNSET
     service_attributes: Union[Unset, "OfferingIntegrationUpdateRequestServiceAttributes"] = UNSET
     backend_id: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -41,6 +44,10 @@ class OfferingIntegrationUpdateRequest:
         plugin_options: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.plugin_options, Unset):
             plugin_options = self.plugin_options.to_dict()
+
+        agent_configuration: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.agent_configuration, Unset):
+            agent_configuration = self.agent_configuration.to_dict()
 
         service_attributes: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.service_attributes, Unset):
@@ -55,6 +62,8 @@ class OfferingIntegrationUpdateRequest:
             field_dict["secret_options"] = secret_options
         if plugin_options is not UNSET:
             field_dict["plugin_options"] = plugin_options
+        if agent_configuration is not UNSET:
+            field_dict["agent_configuration"] = agent_configuration
         if service_attributes is not UNSET:
             field_dict["service_attributes"] = service_attributes
         if backend_id is not UNSET:
@@ -64,6 +73,7 @@ class OfferingIntegrationUpdateRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.agent_configuration_request import AgentConfigurationRequest
         from ..models.merged_plugin_options_request import MergedPluginOptionsRequest
         from ..models.merged_secret_options_request import MergedSecretOptionsRequest
         from ..models.offering_integration_update_request_service_attributes import (
@@ -85,6 +95,13 @@ class OfferingIntegrationUpdateRequest:
         else:
             plugin_options = MergedPluginOptionsRequest.from_dict(_plugin_options)
 
+        _agent_configuration = d.pop("agent_configuration", UNSET)
+        agent_configuration: Union[Unset, AgentConfigurationRequest]
+        if isinstance(_agent_configuration, Unset):
+            agent_configuration = UNSET
+        else:
+            agent_configuration = AgentConfigurationRequest.from_dict(_agent_configuration)
+
         _service_attributes = d.pop("service_attributes", UNSET)
         service_attributes: Union[Unset, OfferingIntegrationUpdateRequestServiceAttributes]
         if isinstance(_service_attributes, Unset):
@@ -97,6 +114,7 @@ class OfferingIntegrationUpdateRequest:
         offering_integration_update_request = cls(
             secret_options=secret_options,
             plugin_options=plugin_options,
+            agent_configuration=agent_configuration,
             service_attributes=service_attributes,
             backend_id=backend_id,
         )

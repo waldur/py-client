@@ -7,6 +7,7 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.agent_configuration import AgentConfiguration
     from ..models.export_component_data import ExportComponentData
     from ..models.export_endpoint_data import ExportEndpointData
     from ..models.export_file_data import ExportFileData
@@ -38,6 +39,7 @@ class OfferingExportData:
         plugin_options (Union[Unset, OfferingExportDataPluginOptions]):
         secret_options (Union[Unset, OfferingExportDataSecretOptions]):
         resource_options (Union[Unset, OfferingExportDataResourceOptions]):
+        agent_configuration (Union[Unset, AgentConfiguration]):
     """
 
     offering: "ExportOfferingData"
@@ -51,6 +53,7 @@ class OfferingExportData:
     plugin_options: Union[Unset, "OfferingExportDataPluginOptions"] = UNSET
     secret_options: Union[Unset, "OfferingExportDataSecretOptions"] = UNSET
     resource_options: Union[Unset, "OfferingExportDataResourceOptions"] = UNSET
+    agent_configuration: Union[Unset, "AgentConfiguration"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -117,6 +120,10 @@ class OfferingExportData:
         if not isinstance(self.resource_options, Unset):
             resource_options = self.resource_options.to_dict()
 
+        agent_configuration: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.agent_configuration, Unset):
+            agent_configuration = self.agent_configuration.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -144,11 +151,14 @@ class OfferingExportData:
             field_dict["secret_options"] = secret_options
         if resource_options is not UNSET:
             field_dict["resource_options"] = resource_options
+        if agent_configuration is not UNSET:
+            field_dict["agent_configuration"] = agent_configuration
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.agent_configuration import AgentConfiguration
         from ..models.export_component_data import ExportComponentData
         from ..models.export_endpoint_data import ExportEndpointData
         from ..models.export_file_data import ExportFileData
@@ -234,6 +244,13 @@ class OfferingExportData:
         else:
             resource_options = OfferingExportDataResourceOptions.from_dict(_resource_options)
 
+        _agent_configuration = d.pop("agent_configuration", UNSET)
+        agent_configuration: Union[Unset, AgentConfiguration]
+        if isinstance(_agent_configuration, Unset):
+            agent_configuration = UNSET
+        else:
+            agent_configuration = AgentConfiguration.from_dict(_agent_configuration)
+
         offering_export_data = cls(
             offering=offering,
             components=components,
@@ -246,6 +263,7 @@ class OfferingExportData:
             plugin_options=plugin_options,
             secret_options=secret_options,
             resource_options=resource_options,
+            agent_configuration=agent_configuration,
         )
 
         offering_export_data.additional_properties = d

@@ -2257,6 +2257,11 @@ Module: `waldur_api_client.api.marketplace_site_agent_logs`
 - `marketplace_site_agent_logs_count` HEAD `/api/marketplace-site-agent-logs/` — Get number of items in the collection matching the request parameters (5 query params)
 - `marketplace_site_agent_logs_create` POST `/api/marketplace-site-agent-logs/` — Push site agent logs (5 query params | request body)
 
+## marketplace-site-agent-plugins
+Module: `waldur_api_client.api.marketplace_site_agent_plugins`
+
+- `marketplace_site_agent_plugins_list` GET `/api/marketplace-site-agent-plugins/` — List site agent plugins (1 query param)
+
 ## marketplace-site-agent-processors
 Module: `waldur_api_client.api.marketplace_site_agent_processors`
 

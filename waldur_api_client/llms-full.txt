@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.3.dev.20261119125716
+# Version: 8.1.5-rc.3.dev.20261119162720
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -14780,6 +14780,17 @@ Query parameters (5):
   - timestamp_from
   - timestamp_to
 Request body: yes
+
+============================================================
+## marketplace-site-agent-plugins  (module: waldur_api_client.api.marketplace_site_agent_plugins)
+============================================================
+
+### marketplace_site_agent_plugins_list
+GET /api/marketplace-site-agent-plugins/
+Summary: List site agent plugins
+Description: Backends from the site agent plugin catalog, with the roles each can fill, their settings and component schemas, and which settings are secrets that stay in the agent configuration file.
+Query parameters (1):
+  - role — Only backends that can fill this role
 
 ============================================================
 ## marketplace-site-agent-processors  (module: waldur_api_client.api.marketplace_site_agent_processors)

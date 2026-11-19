@@ -14,6 +14,7 @@ from ..models.offering_state import OfferingState
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.agent_configuration import AgentConfiguration
     from ..models.base_provider_plan import BaseProviderPlan
     from ..models.integration_status import IntegrationStatus
     from ..models.merged_plugin_options import MergedPluginOptions
@@ -86,6 +87,7 @@ class ProviderOfferingDetails:
         plugin_options (Union[Unset, MergedPluginOptions]):
         account_settings (Union[Unset, OfferingAccountSettings]):
         secret_options (Union[Unset, MergedSecretOptions]):
+        agent_configuration (Union[Unset, AgentConfiguration]):
         service_attributes (Union[Unset, ProviderOfferingDetailsServiceAttributes]):
         can_update_integration (Union[Unset, bool]):
         can_update_options (Union[Unset, bool]):
@@ -178,6 +180,7 @@ class ProviderOfferingDetails:
     plugin_options: Union[Unset, "MergedPluginOptions"] = UNSET
     account_settings: Union[Unset, "OfferingAccountSettings"] = UNSET
     secret_options: Union[Unset, "MergedSecretOptions"] = UNSET
+    agent_configuration: Union[Unset, "AgentConfiguration"] = UNSET
     service_attributes: Union[Unset, "ProviderOfferingDetailsServiceAttributes"] = UNSET
     can_update_integration: Union[Unset, bool] = UNSET
     can_update_options: Union[Unset, bool] = UNSET
@@ -389,6 +392,10 @@ class ProviderOfferingDetails:
         secret_options: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.secret_options, Unset):
             secret_options = self.secret_options.to_dict()
+
+        agent_configuration: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.agent_configuration, Unset):
+            agent_configuration = self.agent_configuration.to_dict()
 
         service_attributes: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.service_attributes, Unset):
@@ -733,6 +740,8 @@ class ProviderOfferingDetails:
             field_dict["account_settings"] = account_settings
         if secret_options is not UNSET:
             field_dict["secret_options"] = secret_options
+        if agent_configuration is not UNSET:
+            field_dict["agent_configuration"] = agent_configuration
         if service_attributes is not UNSET:
             field_dict["service_attributes"] = service_attributes
         if can_update_integration is not UNSET:
@@ -844,6 +853,7 @@ class ProviderOfferingDetails:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.agent_configuration import AgentConfiguration
         from ..models.base_provider_plan import BaseProviderPlan
         from ..models.integration_status import IntegrationStatus
         from ..models.merged_plugin_options import MergedPluginOptions
@@ -1093,6 +1103,13 @@ class ProviderOfferingDetails:
             secret_options = UNSET
         else:
             secret_options = MergedSecretOptions.from_dict(_secret_options)
+
+        _agent_configuration = d.pop("agent_configuration", UNSET)
+        agent_configuration: Union[Unset, AgentConfiguration]
+        if isinstance(_agent_configuration, Unset):
+            agent_configuration = UNSET
+        else:
+            agent_configuration = AgentConfiguration.from_dict(_agent_configuration)
 
         _service_attributes = d.pop("service_attributes", UNSET)
         service_attributes: Union[Unset, ProviderOfferingDetailsServiceAttributes]
@@ -1539,6 +1556,7 @@ class ProviderOfferingDetails:
             plugin_options=plugin_options,
             account_settings=account_settings,
             secret_options=secret_options,
+            agent_configuration=agent_configuration,
             service_attributes=service_attributes,
             can_update_integration=can_update_integration,
             can_update_options=can_update_options,
