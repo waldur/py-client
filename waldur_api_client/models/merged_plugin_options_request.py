@@ -116,6 +116,8 @@ class MergedPluginOptionsRequest:
             when enable_scim_entitlements is set. Each entry is a DNS hostname only (for example login.example.org): stored
             lowercased, with no ssh:// URL, user@host, or host:port. These are not access links and do not appear in the
             resource access dropdown.
+        scim_login_port (Union[None, Unset, int]): SSH port clients should use for every host in scim_login_nodes. When
+            unset, clients use port 22. Outbound SCIM entitlements carry the hostname only and ignore this value.
         enable_resource_access_subnets (Union[Unset, bool]): If set to True, an Access subnets tab is shown on resource
             detail pages, letting consumers curate the IPs allowed to reach the backend entity. The list is advisory data
             for external firewalls.
@@ -330,6 +332,7 @@ class MergedPluginOptionsRequest:
     enable_membership_sync_status: Union[Unset, bool] = UNSET
     enable_scim_entitlements: Union[Unset, bool] = UNSET
     scim_login_nodes: Union[Unset, list[str]] = UNSET
+    scim_login_port: Union[None, Unset, int] = UNSET
     enable_resource_access_subnets: Union[Unset, bool] = UNSET
     conceal_subnet_restricted_resources: Union[Unset, bool] = UNSET
     resource_projects_limit_policy: Union[BlankEnum, None, ResourceProjectsLimitPolicyEnum, Unset] = UNSET
@@ -523,6 +526,12 @@ class MergedPluginOptionsRequest:
         scim_login_nodes: Union[Unset, list[str]] = UNSET
         if not isinstance(self.scim_login_nodes, Unset):
             scim_login_nodes = self.scim_login_nodes
+
+        scim_login_port: Union[None, Unset, int]
+        if isinstance(self.scim_login_port, Unset):
+            scim_login_port = UNSET
+        else:
+            scim_login_port = self.scim_login_port
 
         enable_resource_access_subnets = self.enable_resource_access_subnets
 
@@ -868,6 +877,8 @@ class MergedPluginOptionsRequest:
             field_dict["enable_scim_entitlements"] = enable_scim_entitlements
         if scim_login_nodes is not UNSET:
             field_dict["scim_login_nodes"] = scim_login_nodes
+        if scim_login_port is not UNSET:
+            field_dict["scim_login_port"] = scim_login_port
         if enable_resource_access_subnets is not UNSET:
             field_dict["enable_resource_access_subnets"] = enable_resource_access_subnets
         if conceal_subnet_restricted_resources is not UNSET:
@@ -1203,6 +1214,15 @@ class MergedPluginOptionsRequest:
         enable_scim_entitlements = d.pop("enable_scim_entitlements", UNSET)
 
         scim_login_nodes = cast(list[str], d.pop("scim_login_nodes", UNSET))
+
+        def _parse_scim_login_port(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        scim_login_port = _parse_scim_login_port(d.pop("scim_login_port", UNSET))
 
         enable_resource_access_subnets = d.pop("enable_resource_access_subnets", UNSET)
 
@@ -1611,6 +1631,7 @@ class MergedPluginOptionsRequest:
             enable_membership_sync_status=enable_membership_sync_status,
             enable_scim_entitlements=enable_scim_entitlements,
             scim_login_nodes=scim_login_nodes,
+            scim_login_port=scim_login_port,
             enable_resource_access_subnets=enable_resource_access_subnets,
             conceal_subnet_restricted_resources=conceal_subnet_restricted_resources,
             resource_projects_limit_policy=resource_projects_limit_policy,

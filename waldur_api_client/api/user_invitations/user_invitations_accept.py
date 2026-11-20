@@ -57,7 +57,8 @@ def sync_detailed(
 
      Accepts an invitation for the currently authenticated user. This grants the user the specified role
     in the invitation's scope. Staff may pass `user` to accept it for that user instead, for example
-    from a service account that registers users elsewhere; the user's email must match the invitation.
+    from a service account that registers users elsewhere; the user's email must match the invitation
+    unless `allow_email_mismatch` is set, for a caller that has verified the person's identity itself.
 
     Args:
         uuid (UUID):
@@ -93,7 +94,8 @@ async def asyncio_detailed(
 
      Accepts an invitation for the currently authenticated user. This grants the user the specified role
     in the invitation's scope. Staff may pass `user` to accept it for that user instead, for example
-    from a service account that registers users elsewhere; the user's email must match the invitation.
+    from a service account that registers users elsewhere; the user's email must match the invitation
+    unless `allow_email_mismatch` is set, for a caller that has verified the person's identity itself.
 
     Args:
         uuid (UUID):

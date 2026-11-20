@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.3.dev.20261119162720
+# Version: 8.1.5-rc.3.dev.20261120175827
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -28622,7 +28622,7 @@ Path parameters:
 ### user_invitations_accept
 POST /api/user-invitations/{uuid}/accept/
 Summary: Accept an invitation
-Description: Accepts an invitation for the currently authenticated user. This grants the user the specified role in the invitation's scope. Staff may pass `user` to accept it for that user instead, for example from a service account that registers users elsewhere; the user's email must match the invitation.
+Description: Accepts an invitation for the currently authenticated user. This grants the user the specified role in the invitation's scope. Staff may pass `user` to accept it for that user instead, for example from a service account that registers users elsewhere; the user's email must match the invitation un...
 Path parameters:
   - uuid
 Request body: yes

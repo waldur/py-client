@@ -15,10 +15,16 @@ class UserInvitationAcceptRequest:
     """
     Attributes:
         user (Union[None, UUID, Unset]): Staff only. Accept the invitation for this user instead of the caller. The
-            user's email must match the invitation. Empty, null or the caller's own uuid accepts for the caller.
+            user's email must match the invitation unless allow_email_mismatch is set. Empty, null or the caller's own uuid
+            accepts for the caller.
+        allow_email_mismatch (Union[None, Unset, bool]): Only with user. Accept even though the user's email differs
+            from the invitation's, for a caller that has verified the person's identity itself. Has no effect while
+            ENABLE_STRICT_CHECK_ACCEPTING_INVITATION is on. The role-granted event records the bypass in
+            email_check_bypassed, invitation_uuid and invitation_email.
     """
 
     user: Union[None, UUID, Unset] = UNSET
+    allow_email_mismatch: Union[None, Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -30,11 +36,19 @@ class UserInvitationAcceptRequest:
         else:
             user = self.user
 
+        allow_email_mismatch: Union[None, Unset, bool]
+        if isinstance(self.allow_email_mismatch, Unset):
+            allow_email_mismatch = UNSET
+        else:
+            allow_email_mismatch = self.allow_email_mismatch
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if user is not UNSET:
             field_dict["user"] = user
+        if allow_email_mismatch is not UNSET:
+            field_dict["allow_email_mismatch"] = allow_email_mismatch
 
         return field_dict
 
@@ -59,8 +73,18 @@ class UserInvitationAcceptRequest:
 
         user = _parse_user(d.pop("user", UNSET))
 
+        def _parse_allow_email_mismatch(data: object) -> Union[None, Unset, bool]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, bool], data)
+
+        allow_email_mismatch = _parse_allow_email_mismatch(d.pop("allow_email_mismatch", UNSET))
+
         user_invitation_accept_request = cls(
             user=user,
+            allow_email_mismatch=allow_email_mismatch,
         )
 
         user_invitation_accept_request.additional_properties = d
