@@ -19,6 +19,7 @@ class ExportComponentDataRequest:
         unit_factor (Union[None, float]):
         limit_period (Union[None, str]):
         limit_amount (Union[None, int]):
+        limit_increase_only (bool):
         article_code (str):
         backend_id (str):
     """
@@ -31,6 +32,7 @@ class ExportComponentDataRequest:
     unit_factor: Union[None, float]
     limit_period: Union[None, str]
     limit_amount: Union[None, int]
+    limit_increase_only: bool
     article_code: str
     backend_id: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -55,6 +57,8 @@ class ExportComponentDataRequest:
         limit_amount: Union[None, int]
         limit_amount = self.limit_amount
 
+        limit_increase_only = self.limit_increase_only
+
         article_code = self.article_code
 
         backend_id = self.backend_id
@@ -71,6 +75,7 @@ class ExportComponentDataRequest:
                 "unit_factor": unit_factor,
                 "limit_period": limit_period,
                 "limit_amount": limit_amount,
+                "limit_increase_only": limit_increase_only,
                 "article_code": article_code,
                 "backend_id": backend_id,
             }
@@ -112,6 +117,8 @@ class ExportComponentDataRequest:
 
         limit_amount = _parse_limit_amount(d.pop("limit_amount"))
 
+        limit_increase_only = d.pop("limit_increase_only")
+
         article_code = d.pop("article_code")
 
         backend_id = d.pop("backend_id")
@@ -125,6 +132,7 @@ class ExportComponentDataRequest:
             unit_factor=unit_factor,
             limit_period=limit_period,
             limit_amount=limit_amount,
+            limit_increase_only=limit_increase_only,
             article_code=article_code,
             backend_id=backend_id,
         )

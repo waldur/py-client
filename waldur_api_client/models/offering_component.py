@@ -36,6 +36,8 @@ class OfferingComponent:
         max_value (Union[None, Unset, float]):
         min_value (Union[None, Unset, float]):
         max_available_limit (Union[None, Unset, float]):
+        limit_increase_only (Union[Unset, bool]): If set, a consumer cannot lower this component's limit below the
+            resource's current limit.
         is_boolean (Union[Unset, bool]):
         default_limit (Union[None, Unset, float]):
         spending_limit_periods (Union[Unset, OfferingComponentSpendingLimitPeriods]): Periods (day, week, month,
@@ -78,6 +80,7 @@ class OfferingComponent:
     max_value: Union[None, Unset, float] = UNSET
     min_value: Union[None, Unset, float] = UNSET
     max_available_limit: Union[None, Unset, float] = UNSET
+    limit_increase_only: Union[Unset, bool] = UNSET
     is_boolean: Union[Unset, bool] = UNSET
     default_limit: Union[None, Unset, float] = UNSET
     spending_limit_periods: Union[Unset, "OfferingComponentSpendingLimitPeriods"] = UNSET
@@ -151,6 +154,8 @@ class OfferingComponent:
             max_available_limit = UNSET
         else:
             max_available_limit = self.max_available_limit
+
+        limit_increase_only = self.limit_increase_only
 
         is_boolean = self.is_boolean
 
@@ -251,6 +256,8 @@ class OfferingComponent:
             field_dict["min_value"] = min_value
         if max_available_limit is not UNSET:
             field_dict["max_available_limit"] = max_available_limit
+        if limit_increase_only is not UNSET:
+            field_dict["limit_increase_only"] = limit_increase_only
         if is_boolean is not UNSET:
             field_dict["is_boolean"] = is_boolean
         if default_limit is not UNSET:
@@ -373,6 +380,8 @@ class OfferingComponent:
 
         max_available_limit = _parse_max_available_limit(d.pop("max_available_limit", UNSET))
 
+        limit_increase_only = d.pop("limit_increase_only", UNSET)
+
         is_boolean = d.pop("is_boolean", UNSET)
 
         def _parse_default_limit(data: object) -> Union[None, Unset, float]:
@@ -491,6 +500,7 @@ class OfferingComponent:
             max_value=max_value,
             min_value=min_value,
             max_available_limit=max_available_limit,
+            limit_increase_only=limit_increase_only,
             is_boolean=is_boolean,
             default_limit=default_limit,
             spending_limit_periods=spending_limit_periods,
