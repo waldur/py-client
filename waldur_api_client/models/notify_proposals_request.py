@@ -15,7 +15,7 @@ T = TypeVar("T", bound="NotifyProposalsRequest")
 class NotifyProposalsRequest:
     """
     Attributes:
-        proposal_uuids (list[UUID]): Proposals of this call whose applicants receive the message
+        proposal_uuids (list[UUID]): Proposals of this call whose applicants or reviewers receive the message
         subject (str):
         body (str):
         recipients (Union[Unset, RecipientsEnum]):  Default: RecipientsEnum.APPLICANT.

@@ -16,7 +16,8 @@ class NotifyProposalsResponse:
     """
     Attributes:
         proposals_notified (int):
-        skipped_proposals (list['SkippedProposal']): Requested proposals that are not part of this call
+        skipped_proposals (list['SkippedProposal']): Requested proposals not written to, with the reason: not part of
+            this call, or nobody it is addressed to receives mail
     """
 
     proposals_notified: int

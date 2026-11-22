@@ -58,9 +58,11 @@ def sync_detailed(
 ) -> Response[File]:
     """Generate site agent configuration
 
-     Generates a YAML configuration file for waldur-site-agent based on selected SLURM offerings. The
-    configuration includes offering details, components, backend settings, and optionally SLURM periodic
-    usage policy settings. Secrets are shown as placeholders that need to be filled in.
+     Generates a YAML configuration file for waldur-site-agent based on selected site agent offerings.
+    The configuration includes offering details, the agent roles, event and backend settings,
+    components, and optionally SLURM periodic usage policy settings. Secrets are never included: each is
+    left as a placeholder (secret_format) and listed in the header; site_agent_config_secrets lists them
+    as data.
 
     Args:
         uuid (UUID):
@@ -94,9 +96,11 @@ def sync(
 ) -> File:
     """Generate site agent configuration
 
-     Generates a YAML configuration file for waldur-site-agent based on selected SLURM offerings. The
-    configuration includes offering details, components, backend settings, and optionally SLURM periodic
-    usage policy settings. Secrets are shown as placeholders that need to be filled in.
+     Generates a YAML configuration file for waldur-site-agent based on selected site agent offerings.
+    The configuration includes offering details, the agent roles, event and backend settings,
+    components, and optionally SLURM periodic usage policy settings. Secrets are never included: each is
+    left as a placeholder (secret_format) and listed in the header; site_agent_config_secrets lists them
+    as data.
 
     Args:
         uuid (UUID):
@@ -125,9 +129,11 @@ async def asyncio_detailed(
 ) -> Response[File]:
     """Generate site agent configuration
 
-     Generates a YAML configuration file for waldur-site-agent based on selected SLURM offerings. The
-    configuration includes offering details, components, backend settings, and optionally SLURM periodic
-    usage policy settings. Secrets are shown as placeholders that need to be filled in.
+     Generates a YAML configuration file for waldur-site-agent based on selected site agent offerings.
+    The configuration includes offering details, the agent roles, event and backend settings,
+    components, and optionally SLURM periodic usage policy settings. Secrets are never included: each is
+    left as a placeholder (secret_format) and listed in the header; site_agent_config_secrets lists them
+    as data.
 
     Args:
         uuid (UUID):
@@ -159,9 +165,11 @@ async def asyncio(
 ) -> File:
     """Generate site agent configuration
 
-     Generates a YAML configuration file for waldur-site-agent based on selected SLURM offerings. The
-    configuration includes offering details, components, backend settings, and optionally SLURM periodic
-    usage policy settings. Secrets are shown as placeholders that need to be filled in.
+     Generates a YAML configuration file for waldur-site-agent based on selected site agent offerings.
+    The configuration includes offering details, the agent roles, event and backend settings,
+    components, and optionally SLURM periodic usage policy settings. Secrets are never included: each is
+    left as a placeholder (secret_format) and listed in the header; site_agent_config_secrets lists them
+    as data.
 
     Args:
         uuid (UUID):

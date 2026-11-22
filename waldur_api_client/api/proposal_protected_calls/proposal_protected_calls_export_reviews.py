@@ -8,12 +8,14 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.proposal_review_state_enum import ProposalReviewStateEnum
+from ...models.query_file_format_enum import QueryFileFormatEnum
 from ...types import UNSET, File, Response, Unset
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
+    file_format: Union[Unset, QueryFileFormatEnum] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     review_state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
@@ -21,6 +23,12 @@ def _get_kwargs(
     round_uuid: Union[Unset, UUID] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    json_file_format: Union[Unset, str] = UNSET
+    if not isinstance(file_format, Unset):
+        json_file_format = file_format.value
+
+    params["file_format"] = json_file_format
 
     params["proposal_name"] = proposal_name
 
@@ -86,17 +94,20 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    file_format: Union[Unset, QueryFileFormatEnum] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     review_state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[File]:
-    """Download the call's reviews as CSV, one row per review. The reviewer's private comment is never
-    included: the export is open to call managers, and the review API keeps that field from them.
+    """Download the call's reviews as CSV or as an Excel workbook, one row per review. The reviewer's
+    private comment is never included: the export is open to call managers, and the review API keeps
+    that field from them.
 
     Args:
         uuid (UUID):
+        file_format (Union[Unset, QueryFileFormatEnum]):
         proposal_name (Union[Unset, str]):
         proposal_uuid (Union[Unset, list[UUID]]):
         review_state (Union[Unset, list[ProposalReviewStateEnum]]):
@@ -113,6 +124,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        file_format=file_format,
         proposal_name=proposal_name,
         proposal_uuid=proposal_uuid,
         review_state=review_state,
@@ -131,17 +143,20 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    file_format: Union[Unset, QueryFileFormatEnum] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     review_state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
 ) -> File:
-    """Download the call's reviews as CSV, one row per review. The reviewer's private comment is never
-    included: the export is open to call managers, and the review API keeps that field from them.
+    """Download the call's reviews as CSV or as an Excel workbook, one row per review. The reviewer's
+    private comment is never included: the export is open to call managers, and the review API keeps
+    that field from them.
 
     Args:
         uuid (UUID):
+        file_format (Union[Unset, QueryFileFormatEnum]):
         proposal_name (Union[Unset, str]):
         proposal_uuid (Union[Unset, list[UUID]]):
         review_state (Union[Unset, list[ProposalReviewStateEnum]]):
@@ -159,6 +174,7 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
+        file_format=file_format,
         proposal_name=proposal_name,
         proposal_uuid=proposal_uuid,
         review_state=review_state,
@@ -171,17 +187,20 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    file_format: Union[Unset, QueryFileFormatEnum] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     review_state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[File]:
-    """Download the call's reviews as CSV, one row per review. The reviewer's private comment is never
-    included: the export is open to call managers, and the review API keeps that field from them.
+    """Download the call's reviews as CSV or as an Excel workbook, one row per review. The reviewer's
+    private comment is never included: the export is open to call managers, and the review API keeps
+    that field from them.
 
     Args:
         uuid (UUID):
+        file_format (Union[Unset, QueryFileFormatEnum]):
         proposal_name (Union[Unset, str]):
         proposal_uuid (Union[Unset, list[UUID]]):
         review_state (Union[Unset, list[ProposalReviewStateEnum]]):
@@ -198,6 +217,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        file_format=file_format,
         proposal_name=proposal_name,
         proposal_uuid=proposal_uuid,
         review_state=review_state,
@@ -214,17 +234,20 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    file_format: Union[Unset, QueryFileFormatEnum] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     review_state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
     reviewer_uuid: Union[Unset, UUID] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
 ) -> File:
-    """Download the call's reviews as CSV, one row per review. The reviewer's private comment is never
-    included: the export is open to call managers, and the review API keeps that field from them.
+    """Download the call's reviews as CSV or as an Excel workbook, one row per review. The reviewer's
+    private comment is never included: the export is open to call managers, and the review API keeps
+    that field from them.
 
     Args:
         uuid (UUID):
+        file_format (Union[Unset, QueryFileFormatEnum]):
         proposal_name (Union[Unset, str]):
         proposal_uuid (Union[Unset, list[UUID]]):
         review_state (Union[Unset, list[ProposalReviewStateEnum]]):
@@ -243,6 +266,7 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
+            file_format=file_format,
             proposal_name=proposal_name,
             proposal_uuid=proposal_uuid,
             review_state=review_state,

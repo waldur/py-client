@@ -8,6 +8,7 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.proposal_states import ProposalStates
+from ...models.query_file_format_enum import QueryFileFormatEnum
 from ...types import UNSET, File, Response, Unset
 
 
@@ -15,6 +16,7 @@ def _get_kwargs(
     uuid: UUID,
     *,
     created_by_uuid: Union[Unset, UUID] = UNSET,
+    file_format: Union[Unset, QueryFileFormatEnum] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
     proposal_uuid: Union[Unset, list[UUID]] = UNSET,
@@ -26,6 +28,12 @@ def _get_kwargs(
     if not isinstance(created_by_uuid, Unset):
         json_created_by_uuid = str(created_by_uuid)
     params["created_by_uuid"] = json_created_by_uuid
+
+    json_file_format: Union[Unset, str] = UNSET
+    if not isinstance(file_format, Unset):
+        json_file_format = file_format.value
+
+    params["file_format"] = json_file_format
 
     params["proposal_name"] = proposal_name
 
@@ -87,18 +95,20 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     created_by_uuid: Union[Unset, UUID] = UNSET,
+    file_format: Union[Unset, QueryFileFormatEnum] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
     proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[File]:
-    """Download the call's proposals as CSV, one row per proposal, with one column per requested offering
-    component. The column set is derived from the call, so it is the same for every row and between
-    exports of the same call.
+    """Download the call's proposals as CSV or as an Excel workbook, one row per proposal, with one column
+    per requested offering component. The column set is derived from the call, so it is the same for
+    every row and between exports of the same call.
 
     Args:
         uuid (UUID):
         created_by_uuid (Union[Unset, UUID]):
+        file_format (Union[Unset, QueryFileFormatEnum]):
         proposal_name (Union[Unset, str]):
         proposal_state (Union[Unset, list[ProposalStates]]):
         proposal_uuid (Union[Unset, list[UUID]]):
@@ -115,6 +125,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         uuid=uuid,
         created_by_uuid=created_by_uuid,
+        file_format=file_format,
         proposal_name=proposal_name,
         proposal_state=proposal_state,
         proposal_uuid=proposal_uuid,
@@ -133,18 +144,20 @@ def sync(
     *,
     client: AuthenticatedClient,
     created_by_uuid: Union[Unset, UUID] = UNSET,
+    file_format: Union[Unset, QueryFileFormatEnum] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
     proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
 ) -> File:
-    """Download the call's proposals as CSV, one row per proposal, with one column per requested offering
-    component. The column set is derived from the call, so it is the same for every row and between
-    exports of the same call.
+    """Download the call's proposals as CSV or as an Excel workbook, one row per proposal, with one column
+    per requested offering component. The column set is derived from the call, so it is the same for
+    every row and between exports of the same call.
 
     Args:
         uuid (UUID):
         created_by_uuid (Union[Unset, UUID]):
+        file_format (Union[Unset, QueryFileFormatEnum]):
         proposal_name (Union[Unset, str]):
         proposal_state (Union[Unset, list[ProposalStates]]):
         proposal_uuid (Union[Unset, list[UUID]]):
@@ -162,6 +175,7 @@ def sync(
         uuid=uuid,
         client=client,
         created_by_uuid=created_by_uuid,
+        file_format=file_format,
         proposal_name=proposal_name,
         proposal_state=proposal_state,
         proposal_uuid=proposal_uuid,
@@ -174,18 +188,20 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     created_by_uuid: Union[Unset, UUID] = UNSET,
+    file_format: Union[Unset, QueryFileFormatEnum] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
     proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
 ) -> Response[File]:
-    """Download the call's proposals as CSV, one row per proposal, with one column per requested offering
-    component. The column set is derived from the call, so it is the same for every row and between
-    exports of the same call.
+    """Download the call's proposals as CSV or as an Excel workbook, one row per proposal, with one column
+    per requested offering component. The column set is derived from the call, so it is the same for
+    every row and between exports of the same call.
 
     Args:
         uuid (UUID):
         created_by_uuid (Union[Unset, UUID]):
+        file_format (Union[Unset, QueryFileFormatEnum]):
         proposal_name (Union[Unset, str]):
         proposal_state (Union[Unset, list[ProposalStates]]):
         proposal_uuid (Union[Unset, list[UUID]]):
@@ -202,6 +218,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         uuid=uuid,
         created_by_uuid=created_by_uuid,
+        file_format=file_format,
         proposal_name=proposal_name,
         proposal_state=proposal_state,
         proposal_uuid=proposal_uuid,
@@ -218,18 +235,20 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     created_by_uuid: Union[Unset, UUID] = UNSET,
+    file_format: Union[Unset, QueryFileFormatEnum] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_state: Union[Unset, list[ProposalStates]] = UNSET,
     proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     round_uuid: Union[Unset, UUID] = UNSET,
 ) -> File:
-    """Download the call's proposals as CSV, one row per proposal, with one column per requested offering
-    component. The column set is derived from the call, so it is the same for every row and between
-    exports of the same call.
+    """Download the call's proposals as CSV or as an Excel workbook, one row per proposal, with one column
+    per requested offering component. The column set is derived from the call, so it is the same for
+    every row and between exports of the same call.
 
     Args:
         uuid (UUID):
         created_by_uuid (Union[Unset, UUID]):
+        file_format (Union[Unset, QueryFileFormatEnum]):
         proposal_name (Union[Unset, str]):
         proposal_state (Union[Unset, list[ProposalStates]]):
         proposal_uuid (Union[Unset, list[UUID]]):
@@ -248,6 +267,7 @@ async def asyncio(
             uuid=uuid,
             client=client,
             created_by_uuid=created_by_uuid,
+            file_format=file_format,
             proposal_name=proposal_name,
             proposal_state=proposal_state,
             proposal_uuid=proposal_uuid,

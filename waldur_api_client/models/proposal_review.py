@@ -79,6 +79,8 @@ class ProposalReview:
             Writing it replaces the scores, and summary_score becomes their weighted average, rounded half up.
         summary_public_comment (Union[Unset, str]):
         summary_private_comment (Union[Unset, str]):
+        decline_reason (Union[Unset, str]): Why the reviewer sent the review back, as they gave it. For the call team
+            only; empty when no reason was given, and on reviews that expired or were withdrawn.
         comment_project_title (Union[None, Unset, str]):
         comment_project_summary (Union[None, Unset, str]):
         comment_project_description (Union[None, Unset, str]):
@@ -124,6 +126,7 @@ class ProposalReview:
     criteria_scores: Union[Unset, "ProposalReviewCriteriaScores"] = UNSET
     summary_public_comment: Union[Unset, str] = UNSET
     summary_private_comment: Union[Unset, str] = UNSET
+    decline_reason: Union[Unset, str] = UNSET
     comment_project_title: Union[None, Unset, str] = UNSET
     comment_project_summary: Union[None, Unset, str] = UNSET
     comment_project_description: Union[None, Unset, str] = UNSET
@@ -238,6 +241,8 @@ class ProposalReview:
 
         summary_private_comment = self.summary_private_comment
 
+        decline_reason = self.decline_reason
+
         comment_project_title: Union[None, Unset, str]
         if isinstance(self.comment_project_title, Unset):
             comment_project_title = UNSET
@@ -325,6 +330,8 @@ class ProposalReview:
             field_dict["summary_public_comment"] = summary_public_comment
         if summary_private_comment is not UNSET:
             field_dict["summary_private_comment"] = summary_private_comment
+        if decline_reason is not UNSET:
+            field_dict["decline_reason"] = decline_reason
         if comment_project_title is not UNSET:
             field_dict["comment_project_title"] = comment_project_title
         if comment_project_summary is not UNSET:
@@ -509,6 +516,8 @@ class ProposalReview:
 
         summary_private_comment = d.pop("summary_private_comment", UNSET)
 
+        decline_reason = d.pop("decline_reason", UNSET)
+
         def _parse_comment_project_title(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -603,6 +612,7 @@ class ProposalReview:
             criteria_scores=criteria_scores,
             summary_public_comment=summary_public_comment,
             summary_private_comment=summary_private_comment,
+            decline_reason=decline_reason,
             comment_project_title=comment_project_title,
             comment_project_summary=comment_project_summary,
             comment_project_description=comment_project_description,

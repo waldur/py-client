@@ -58,8 +58,10 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: NotifyProposalsRequest,
 ) -> Response[NotifyProposalsResponse]:
-    """Email the applicants of selected proposals of this call. One message per recipient per proposal,
-    sent asynchronously; each proposal gets an event recording it.
+    """Email the applicants or the reviewers of selected proposals of this call. One message per recipient
+    per proposal, sent asynchronously; each proposal gets an event recording it. Each reviewer of a
+    proposal's reviews in progress or submitted is written to separately, with a link to their own
+    review; that event is read by the call team, staff and support, not by the applicant team.
 
     Args:
         uuid (UUID):
@@ -91,8 +93,10 @@ def sync(
     client: AuthenticatedClient,
     body: NotifyProposalsRequest,
 ) -> NotifyProposalsResponse:
-    """Email the applicants of selected proposals of this call. One message per recipient per proposal,
-    sent asynchronously; each proposal gets an event recording it.
+    """Email the applicants or the reviewers of selected proposals of this call. One message per recipient
+    per proposal, sent asynchronously; each proposal gets an event recording it. Each reviewer of a
+    proposal's reviews in progress or submitted is written to separately, with a link to their own
+    review; that event is read by the call team, staff and support, not by the applicant team.
 
     Args:
         uuid (UUID):
@@ -119,8 +123,10 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: NotifyProposalsRequest,
 ) -> Response[NotifyProposalsResponse]:
-    """Email the applicants of selected proposals of this call. One message per recipient per proposal,
-    sent asynchronously; each proposal gets an event recording it.
+    """Email the applicants or the reviewers of selected proposals of this call. One message per recipient
+    per proposal, sent asynchronously; each proposal gets an event recording it. Each reviewer of a
+    proposal's reviews in progress or submitted is written to separately, with a link to their own
+    review; that event is read by the call team, staff and support, not by the applicant team.
 
     Args:
         uuid (UUID):
@@ -150,8 +156,10 @@ async def asyncio(
     client: AuthenticatedClient,
     body: NotifyProposalsRequest,
 ) -> NotifyProposalsResponse:
-    """Email the applicants of selected proposals of this call. One message per recipient per proposal,
-    sent asynchronously; each proposal gets an event recording it.
+    """Email the applicants or the reviewers of selected proposals of this call. One message per recipient
+    per proposal, sent asynchronously; each proposal gets an event recording it. Each reviewer of a
+    proposal's reviews in progress or submitted is written to separately, with a link to their own
+    review; that event is read by the call team, staff and support, not by the applicant team.
 
     Args:
         uuid (UUID):

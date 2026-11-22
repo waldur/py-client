@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.3.dev.20261121195802
+# Version: 8.1.5-rc.3.dev.20261122030343
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -4609,7 +4609,7 @@ Query parameters (14):
   - o — Ordering
   - pat_uuid — Personal access token UUID
   - project_uuid — Project UUID
-  - related_user_uuid — Filter events related to a user: Feed scope, actor (context.user_uuid), or affected user (context.affected_user_uuid). Combined with OR. Staff/support may target any user; others only themselves.
+  - related_user_uuid — Filter events related to a user: Feed scope, actor (context.user_uuid), or affected user (context.affected_user_uuid), or an invitation addressed to their email. Combined with OR. Staff/support may target any user; others only themselves.
   - scope — Filter by scope URL.
   - user_uuid — User UUID
 
@@ -4628,7 +4628,7 @@ Query parameters (13):
   - o — Ordering
   - pat_uuid — Personal access token UUID
   - project_uuid — Project UUID
-  - related_user_uuid — Filter events related to a user: Feed scope, actor (context.user_uuid), or affected user (context.affected_user_uuid). Combined with OR. Staff/support may target any user; others only themselves.
+  - related_user_uuid — Filter events related to a user: Feed scope, actor (context.user_uuid), or affected user (context.affected_user_uuid), or an invitation addressed to their email. Combined with OR. Staff/support may target any user; others only themselves.
   - scope — Filter by scope URL.
   - user_uuid — User UUID
 
@@ -4680,7 +4680,7 @@ GET /api/events-stats/
 Query parameters (4):
   - event_type — Filter by event type. Can be specified multiple times.
   - feature — Filter by feature (event group). Can be specified multiple times.
-  - related_user_uuid — Filter events related to a user: Feed scope, actor (context.user_uuid), or affected user (context.affected_user_uuid). Combined with OR. Staff/support may target any user; others only themselves.
+  - related_user_uuid — Filter events related to a user: Feed scope, actor (context.user_uuid), or affected user (context.affected_user_uuid), or an invitation addressed to their email. Combined with OR. Staff/support may target any user; others only themselves.
   - scope — Filter by scope URL.
 
 ### events_stats_count
@@ -4690,7 +4690,7 @@ Description: Get number of items in the collection matching the request paramete
 Query parameters (4):
   - event_type — Filter by event type. Can be specified multiple times.
   - feature — Filter by feature (event group). Can be specified multiple times.
-  - related_user_uuid — Filter events related to a user: Feed scope, actor (context.user_uuid), or affected user (context.affected_user_uuid). Combined with OR. Staff/support may target any user; others only themselves.
+  - related_user_uuid — Filter events related to a user: Feed scope, actor (context.user_uuid), or affected user (context.affected_user_uuid), or an invitation addressed to their email. Combined with OR. Staff/support may target any user; others only themselves.
   - scope — Filter by scope URL.
 
 ============================================================
@@ -14534,7 +14534,7 @@ Request body: yes
 ### marketplace_service_providers_generate_site_agent_config
 POST /api/marketplace-service-providers/{uuid}/generate_site_agent_config/
 Summary: Generate site agent configuration
-Description: Generates a YAML configuration file for waldur-site-agent based on selected SLURM offerings. The configuration includes offering details, components, backend settings, and optionally SLURM periodic usage policy settings. Secrets are shown as placeholders that need to be filled in.
+Description: Generates a YAML configuration file for waldur-site-agent based on selected site agent offerings. The configuration includes offering details, the agent roles, event and backend settings, components, and optionally SLURM periodic usage policy settings. Secrets are never included: each is left as ...
 Path parameters:
   - uuid
 Request body: yes
@@ -14622,6 +14622,23 @@ Summary: Set offering username for a user
 Description: Sets or updates the offering-specific username for a user across all offerings managed by the service provider that the user has access to.
 Path parameters:
   - uuid
+Request body: yes
+
+### marketplace_service_providers_site_agent_config_secrets
+POST /api/marketplace-service-providers/{uuid}/site_agent_config_secrets/
+Summary: List the secrets of a generated site agent configuration
+Description: The secrets the operator adds to the configuration that generate_site_agent_config returns for the same request: the Waldur API token of each offering and the secret settings of its backends, with where each goes and whether the file holds a placeholder for it.
+Path parameters:
+  - uuid
+Query parameters (8):
+  - created — Created after
+  - created_before — Created before
+  - customer — Customer URL
+  - customer_keyword — Customer keyword (name, abbreviation or native name)
+  - customer_uuid — Customer UUID
+  - modified — Modified after
+  - modified_before — Modified before
+  - o — Ordering
 Request body: yes
 
 ### marketplace_service_providers_stat_retrieve
@@ -23326,12 +23343,13 @@ Request body: yes
 
 ### proposal_protected_calls_export_proposals
 GET /api/proposal-protected-calls/{uuid}/export-proposals/
-Summary: Download the call's proposals as CSV, one row per proposal, with one column per requested offering component
-Description: Download the call's proposals as CSV, one row per proposal, with one column per requested offering component. The column set is derived from the call, so it is the same for every row and between exports of the same call.
+Summary: Download the call's proposals as CSV or as an Excel workbook, one row per proposal, with one column per requested offering component
+Description: Download the call's proposals as CSV or as an Excel workbook, one row per proposal, with one column per requested offering component. The column set is derived from the call, so it is the same for every row and between exports of the same call.
 Path parameters:
   - uuid
-Query parameters (5):
+Query parameters (6):
   - created_by_uuid — Limit the export to one applicant.
+  - file_format — csv (the default) or xlsx, an Excel workbook of the same header and rows. Named file_format because a bare `format` is read by the API itself.
   - proposal_name — Limit the export to proposals whose name contains this text — the list's search box. Named proposal_name because a bare `name` is read by the call's own filterset.
   - proposal_state — Limit the export to proposals in these states.
   - proposal_uuid — Limit the export to these proposals, such as those selected in the list; repeat the parameter for each.
@@ -23339,11 +23357,12 @@ Query parameters (5):
 
 ### proposal_protected_calls_export_reviews
 GET /api/proposal-protected-calls/{uuid}/export-reviews/
-Summary: Download the call's reviews as CSV, one row per review
-Description: Download the call's reviews as CSV, one row per review. The reviewer's private comment is never included: the export is open to call managers, and the review API keeps that field from them.
+Summary: Download the call's reviews as CSV or as an Excel workbook, one row per review
+Description: Download the call's reviews as CSV or as an Excel workbook, one row per review. The reviewer's private comment is never included: the export is open to call managers, and the review API keeps that field from them.
 Path parameters:
   - uuid
-Query parameters (5):
+Query parameters (6):
+  - file_format — csv (the default) or xlsx, an Excel workbook of the same header and rows. Named file_format because a bare `format` is read by the API itself.
   - proposal_name — Limit the export to proposals whose name contains this text — the list's search box. Named proposal_name because a bare `name` is read by the call's own filterset.
   - proposal_uuid — Limit the export to these proposals, such as those selected in the list; repeat the parameter for each.
   - review_state — Limit the export to reviews in these states.
@@ -23515,8 +23534,8 @@ Request body: yes
 
 ### proposal_protected_calls_notify_proposals
 POST /api/proposal-protected-calls/{uuid}/notify-proposals/
-Summary: Email the applicants of selected proposals of this call
-Description: Email the applicants of selected proposals of this call. One message per recipient per proposal, sent asynchronously; each proposal gets an event recording it.
+Summary: Email the applicants or the reviewers of selected proposals of this call
+Description: Email the applicants or the reviewers of selected proposals of this call. One message per recipient per proposal, sent asynchronously; each proposal gets an event recording it. Each reviewer of a proposal's reviews in progress or submitted is written to separately, with a link to their own review...
 Path parameters:
   - uuid
 Request body: yes
@@ -24641,10 +24660,11 @@ Path parameters:
 
 ### proposal_reviews_reject
 POST /api/proposal-reviews/{uuid}/reject/
-Summary: Reject a review, changing its state to REJECTED
-Description: Reject a review, changing its state to REJECTED.
+Summary: Reject a review, changing its state to REJECTED: the reviewer sends back a review they accepted
+Description: Reject a review, changing its state to REJECTED: the reviewer sends back a review they accepted. They may say why; the reason is kept on the review as decline_reason and sent to the call's managers.
 Path parameters:
   - uuid
+Request body: yes
 
 ### proposal_reviews_submit
 POST /api/proposal-reviews/{uuid}/submit/
