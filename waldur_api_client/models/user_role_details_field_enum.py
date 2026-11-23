@@ -12,6 +12,7 @@ class UserRoleDetailsFieldEnum(str, Enum):
     USER_EMAIL = "user_email"
     USER_FULL_NAME = "user_full_name"
     USER_IMAGE = "user_image"
+    USER_IS_SERVICE_ACCOUNT = "user_is_service_account"
     USER_USERNAME = "user_username"
     USER_UUID = "user_uuid"
     UUID = "uuid"

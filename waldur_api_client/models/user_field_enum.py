@@ -34,6 +34,7 @@ class UserFieldEnum(str, Enum):
     IS_ACTIVE = "is_active"
     IS_ADMIN_DEACTIVATED = "is_admin_deactivated"
     IS_IDENTITY_MANAGER = "is_identity_manager"
+    IS_SERVICE_ACCOUNT = "is_service_account"
     IS_STAFF = "is_staff"
     IS_SUPPORT = "is_support"
     JOB_TITLE = "job_title"

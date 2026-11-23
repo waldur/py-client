@@ -72,9 +72,10 @@ def sync_detailed(
 
     Drives the create-PAT frontend's type picker. For staff users every
     type is offered for every permission (they bypass UserRole checks).
-    For other users we return only types where they hold an active role
-    granting the permission directly (the binding then inherits to
-    descendants at request time).
+    For other users, the type a role granting the permission is held on
+    and the types below it (an organization's projects, offerings and
+    resources, say), as the create serializer accepts a binding below the
+    role; every type for a permission held site-wide.
 
     Args:
         page (Union[Unset, int]):
@@ -112,9 +113,10 @@ def sync(
 
     Drives the create-PAT frontend's type picker. For staff users every
     type is offered for every permission (they bypass UserRole checks).
-    For other users we return only types where they hold an active role
-    granting the permission directly (the binding then inherits to
-    descendants at request time).
+    For other users, the type a role granting the permission is held on
+    and the types below it (an organization's projects, offerings and
+    resources, say), as the create serializer accepts a binding below the
+    role; every type for a permission held site-wide.
 
     Args:
         page (Union[Unset, int]):
@@ -147,9 +149,10 @@ async def asyncio_detailed(
 
     Drives the create-PAT frontend's type picker. For staff users every
     type is offered for every permission (they bypass UserRole checks).
-    For other users we return only types where they hold an active role
-    granting the permission directly (the binding then inherits to
-    descendants at request time).
+    For other users, the type a role granting the permission is held on
+    and the types below it (an organization's projects, offerings and
+    resources, say), as the create serializer accepts a binding below the
+    role; every type for a permission held site-wide.
 
     Args:
         page (Union[Unset, int]):
@@ -185,9 +188,10 @@ async def asyncio(
 
     Drives the create-PAT frontend's type picker. For staff users every
     type is offered for every permission (they bypass UserRole checks).
-    For other users we return only types where they hold an active role
-    granting the permission directly (the binding then inherits to
-    descendants at request time).
+    For other users, the type a role granting the permission is held on
+    and the types below it (an organization's projects, offerings and
+    resources, say), as the create serializer accepts a binding below the
+    role; every type for a permission held site-wide.
 
     Args:
         page (Union[Unset, int]):

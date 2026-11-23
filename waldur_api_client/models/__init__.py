@@ -104,6 +104,8 @@ from .agent_service_statistics import AgentServiceStatistics
 from .agent_service_statistics_request import AgentServiceStatisticsRequest
 from .agent_service_statistics_request_statistics import AgentServiceStatisticsRequestStatistics
 from .agent_service_status import AgentServiceStatus
+from .agent_settings import AgentSettings
+from .agent_settings_request import AgentSettingsRequest
 from .agent_stats_backend_type import AgentStatsBackendType
 from .agent_stats_identities import AgentStatsIdentities
 from .agent_stats_offering_count import AgentStatsOfferingCount
@@ -312,6 +314,8 @@ from .billing_mode_enum import BillingModeEnum
 from .billing_source_enum import BillingSourceEnum
 from .billing_type_enum import BillingTypeEnum
 from .billing_unit import BillingUnit
+from .bindable_entity import BindableEntity
+from .bindable_entity_type_enum import BindableEntityTypeEnum
 from .blank_enum import BlankEnum
 from .booking import Booking
 from .booking_order_uuid import BookingOrderUUID
@@ -809,6 +813,8 @@ from .database_size_stats import DatabaseSizeStats
 from .database_stats_response import DatabaseStatsResponse
 from .dead_letter_queue import DeadLetterQueue
 from .decline_step_contribution_request import DeclineStepContributionRequest
+from .dedicated_user_token_create_request import DedicatedUserTokenCreateRequest
+from .dedicated_user_token_created import DedicatedUserTokenCreated
 from .default_permission_enum import DefaultPermissionEnum
 from .defaultidp_enum import DEFAULTIDPEnum
 from .delegate_step_contribution_request import DelegateStepContributionRequest
@@ -2107,6 +2113,29 @@ from .order_details_limits import OrderDetailsLimits
 from .order_details_o_enum import OrderDetailsOEnum
 from .order_details_offering_plugin_options import OrderDetailsOfferingPluginOptions
 from .order_error_details_request import OrderErrorDetailsRequest
+from .order_flow_actor import OrderFlowActor
+from .order_flow_actor_enum import OrderFlowActorEnum
+from .order_flow_check import OrderFlowCheck
+from .order_flow_description import OrderFlowDescription
+from .order_flow_description_order_kind_enum import OrderFlowDescriptionOrderKindEnum
+from .order_flow_description_orderer_enum import OrderFlowDescriptionOrdererEnum
+from .order_flow_offering import OrderFlowOffering
+from .order_flow_order_kind import OrderFlowOrderKind
+from .order_flow_orderer import OrderFlowOrderer
+from .order_flow_orderer_kind_enum import OrderFlowOrdererKindEnum
+from .order_flow_rule import OrderFlowRule
+from .order_flow_source import OrderFlowSource
+from .order_flow_source_kind_enum import OrderFlowSourceKindEnum
+from .order_flow_source_value_type_0 import OrderFlowSourceValueType0
+from .order_flow_state_count import OrderFlowStateCount
+from .order_flow_stats import OrderFlowStats
+from .order_flow_step import OrderFlowStep
+from .order_flow_step_key_enum import OrderFlowStepKeyEnum
+from .order_flow_step_mode_enum import OrderFlowStepModeEnum
+from .order_flow_step_stat import OrderFlowStepStat
+from .order_flow_step_status_enum import OrderFlowStepStatusEnum
+from .order_flow_terminal import OrderFlowTerminal
+from .order_flow_terminal_key_enum import OrderFlowTerminalKeyEnum
 from .order_info_response import OrderInfoResponse
 from .order_period_usage import OrderPeriodUsage
 from .order_provider_info_request import OrderProviderInfoRequest
@@ -2159,6 +2188,10 @@ from .passkey_revoke_request import PasskeyRevokeRequest
 from .passkey_staff_revoke_request import PasskeyStaffRevokeRequest
 from .passkey_token import PasskeyToken
 from .password_change_request import PasswordChangeRequest
+from .pat_template import PatTemplate
+from .pat_template_binding import PatTemplateBinding
+from .pat_template_feature import PatTemplateFeature
+from .pat_template_target import PatTemplateTarget
 from .patched_access_subnet_request import PatchedAccessSubnetRequest
 from .patched_admin_announcement_request import PatchedAdminAnnouncementRequest
 from .patched_affiliated_organization_request import PatchedAffiliatedOrganizationRequest
@@ -3404,6 +3437,15 @@ from .site_agent_config_generation_request import SiteAgentConfigGenerationReque
 from .site_agent_config_secret import SiteAgentConfigSecret
 from .site_agent_log import SiteAgentLog
 from .site_agent_log_create_request import SiteAgentLogCreateRequest
+from .site_agent_offering_config import SiteAgentOfferingConfig
+from .site_agent_offering_secret import SiteAgentOfferingSecret
+from .site_agent_offering_settings import SiteAgentOfferingSettings
+from .site_agent_offering_settings_backend_components import SiteAgentOfferingSettingsBackendComponents
+from .site_agent_offering_settings_backend_components_additional_property import (
+    SiteAgentOfferingSettingsBackendComponentsAdditionalProperty,
+)
+from .site_agent_offering_settings_backend_settings import SiteAgentOfferingSettingsBackendSettings
+from .site_agent_offering_settings_policy_settings import SiteAgentOfferingSettingsPolicySettings
 from .site_maintenance_reservation_request import SiteMaintenanceReservationRequest
 from .skipped_proposal import SkippedProposal
 from .skipped_reason_enum import SkippedReasonEnum
@@ -3958,6 +4000,8 @@ __all__ = (
     "AgentServiceStatisticsRequest",
     "AgentServiceStatisticsRequestStatistics",
     "AgentServiceStatus",
+    "AgentSettings",
+    "AgentSettingsRequest",
     "AgentStatsBackendType",
     "AgentStatsIdentities",
     "AgentStatsOfferingCount",
@@ -4166,6 +4210,8 @@ __all__ = (
     "BillingSourceEnum",
     "BillingTypeEnum",
     "BillingUnit",
+    "BindableEntity",
+    "BindableEntityTypeEnum",
     "BlankEnum",
     "Booking",
     "BookingOrderUUID",
@@ -4653,6 +4699,8 @@ __all__ = (
     "DataVolumeRequest",
     "DeadLetterQueue",
     "DeclineStepContributionRequest",
+    "DedicatedUserTokenCreated",
+    "DedicatedUserTokenCreateRequest",
     "DEFAULTIDPEnum",
     "DefaultPermissionEnum",
     "DelegateStepContributionRequest",
@@ -5865,6 +5913,29 @@ __all__ = (
     "OrderDetailsOEnum",
     "OrderDetailsOfferingPluginOptions",
     "OrderErrorDetailsRequest",
+    "OrderFlowActor",
+    "OrderFlowActorEnum",
+    "OrderFlowCheck",
+    "OrderFlowDescription",
+    "OrderFlowDescriptionOrdererEnum",
+    "OrderFlowDescriptionOrderKindEnum",
+    "OrderFlowOffering",
+    "OrderFlowOrderer",
+    "OrderFlowOrdererKindEnum",
+    "OrderFlowOrderKind",
+    "OrderFlowRule",
+    "OrderFlowSource",
+    "OrderFlowSourceKindEnum",
+    "OrderFlowSourceValueType0",
+    "OrderFlowStateCount",
+    "OrderFlowStats",
+    "OrderFlowStep",
+    "OrderFlowStepKeyEnum",
+    "OrderFlowStepModeEnum",
+    "OrderFlowStepStat",
+    "OrderFlowStepStatusEnum",
+    "OrderFlowTerminal",
+    "OrderFlowTerminalKeyEnum",
     "OrderInfoResponse",
     "OrderPeriodUsage",
     "OrderProviderInfoRequest",
@@ -6156,6 +6227,10 @@ __all__ = (
     "PatchedUserRequestMultipart",
     "PatchedVmwareVirtualMachineRequest",
     "PatchedWebHookRequest",
+    "PatTemplate",
+    "PatTemplateBinding",
+    "PatTemplateFeature",
+    "PatTemplateTarget",
     "PayEarlierInvoices",
     "PayEarlierInvoicesRequestRequest",
     "Payment",
@@ -7102,6 +7177,13 @@ __all__ = (
     "SiteAgentConfigSecret",
     "SiteAgentLog",
     "SiteAgentLogCreateRequest",
+    "SiteAgentOfferingConfig",
+    "SiteAgentOfferingSecret",
+    "SiteAgentOfferingSettings",
+    "SiteAgentOfferingSettingsBackendComponents",
+    "SiteAgentOfferingSettingsBackendComponentsAdditionalProperty",
+    "SiteAgentOfferingSettingsBackendSettings",
+    "SiteAgentOfferingSettingsPolicySettings",
     "SiteMaintenanceReservationRequest",
     "SkippedProposal",
     "SkippedReasonEnum",

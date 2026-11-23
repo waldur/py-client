@@ -9,6 +9,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.agent_configuration_request_backend_components import AgentConfigurationRequestBackendComponents
     from ..models.agent_configuration_request_backend_settings import AgentConfigurationRequestBackendSettings
+    from ..models.agent_settings_request import AgentSettingsRequest
     from ..models.event_settings_request import EventSettingsRequest
 
 
@@ -28,6 +29,7 @@ class AgentConfigurationRequest:
         backend_settings (Union[Unset, AgentConfigurationRequestBackendSettings]):
         backend_components (Union[Unset, AgentConfigurationRequestBackendComponents]):
         event_settings (Union[Unset, EventSettingsRequest]):
+        agent_settings (Union[Unset, AgentSettingsRequest]):
     """
 
     order_processing_backend: Union[Unset, str] = UNSET
@@ -38,6 +40,7 @@ class AgentConfigurationRequest:
     backend_settings: Union[Unset, "AgentConfigurationRequestBackendSettings"] = UNSET
     backend_components: Union[Unset, "AgentConfigurationRequestBackendComponents"] = UNSET
     event_settings: Union[Unset, "EventSettingsRequest"] = UNSET
+    agent_settings: Union[Unset, "AgentSettingsRequest"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -65,6 +68,10 @@ class AgentConfigurationRequest:
         if not isinstance(self.event_settings, Unset):
             event_settings = self.event_settings.to_dict()
 
+        agent_settings: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.agent_settings, Unset):
+            agent_settings = self.agent_settings.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -84,6 +91,8 @@ class AgentConfigurationRequest:
             field_dict["backend_components"] = backend_components
         if event_settings is not UNSET:
             field_dict["event_settings"] = event_settings
+        if agent_settings is not UNSET:
+            field_dict["agent_settings"] = agent_settings
 
         return field_dict
 
@@ -91,6 +100,7 @@ class AgentConfigurationRequest:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.agent_configuration_request_backend_components import AgentConfigurationRequestBackendComponents
         from ..models.agent_configuration_request_backend_settings import AgentConfigurationRequestBackendSettings
+        from ..models.agent_settings_request import AgentSettingsRequest
         from ..models.event_settings_request import EventSettingsRequest
 
         d = dict(src_dict)
@@ -125,6 +135,13 @@ class AgentConfigurationRequest:
         else:
             event_settings = EventSettingsRequest.from_dict(_event_settings)
 
+        _agent_settings = d.pop("agent_settings", UNSET)
+        agent_settings: Union[Unset, AgentSettingsRequest]
+        if isinstance(_agent_settings, Unset):
+            agent_settings = UNSET
+        else:
+            agent_settings = AgentSettingsRequest.from_dict(_agent_settings)
+
         agent_configuration_request = cls(
             order_processing_backend=order_processing_backend,
             membership_sync_backend=membership_sync_backend,
@@ -134,6 +151,7 @@ class AgentConfigurationRequest:
             backend_settings=backend_settings,
             backend_components=backend_components,
             event_settings=event_settings,
+            agent_settings=agent_settings,
         )
 
         agent_configuration_request.additional_properties = d

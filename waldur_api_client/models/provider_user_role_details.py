@@ -29,6 +29,7 @@ class ProviderUserRoleDetails:
             characters
         user_uuid (Union[Unset, UUID]):
         user_image (Union[Unset, str]):
+        user_is_service_account (Union[Unset, bool]):
         created_by_full_name (Union[Unset, str]):
         created_by_uuid (Union[Unset, UUID]):
         source (Union[Unset, str]):
@@ -72,6 +73,7 @@ class ProviderUserRoleDetails:
     user_username: Union[Unset, str] = UNSET
     user_uuid: Union[Unset, UUID] = UNSET
     user_image: Union[Unset, str] = UNSET
+    user_is_service_account: Union[Unset, bool] = UNSET
     created_by_full_name: Union[Unset, str] = UNSET
     created_by_uuid: Union[Unset, UUID] = UNSET
     source: Union[Unset, str] = UNSET
@@ -134,6 +136,8 @@ class ProviderUserRoleDetails:
             user_uuid = str(self.user_uuid)
 
         user_image = self.user_image
+
+        user_is_service_account = self.user_is_service_account
 
         created_by_full_name = self.created_by_full_name
 
@@ -246,6 +250,8 @@ class ProviderUserRoleDetails:
             field_dict["user_uuid"] = user_uuid
         if user_image is not UNSET:
             field_dict["user_image"] = user_image
+        if user_is_service_account is not UNSET:
+            field_dict["user_is_service_account"] = user_is_service_account
         if created_by_full_name is not UNSET:
             field_dict["created_by_full_name"] = created_by_full_name
         if created_by_uuid is not UNSET:
@@ -358,6 +364,8 @@ class ProviderUserRoleDetails:
             user_uuid = UUID(_user_uuid)
 
         user_image = d.pop("user_image", UNSET)
+
+        user_is_service_account = d.pop("user_is_service_account", UNSET)
 
         created_by_full_name = d.pop("created_by_full_name", UNSET)
 
@@ -486,6 +494,7 @@ class ProviderUserRoleDetails:
             user_username=user_username,
             user_uuid=user_uuid,
             user_image=user_image,
+            user_is_service_account=user_is_service_account,
             created_by_full_name=created_by_full_name,
             created_by_uuid=created_by_uuid,
             source=source,

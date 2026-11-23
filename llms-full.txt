@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.3.dev.20261123060605
+# Version: 8.1.5-rc.3.dev.20261123095912
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -10697,6 +10697,18 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_provider_offerings_order_flow_description_retrieve
+GET /api/marketplace-provider-offerings/{uuid}/order_flow_description/
+Summary: Describe how orders for the offering move from placement to done
+Description: For one kind of order and one kind of orderer: the steps an order goes through, who acts at each, the rules that decide whether a review step runs and the settings each rule reads. Review steps are decided by the same rules that route real orders. A fact that depends on the order, such as an atta...
+Path parameters:
+  - uuid
+Query parameters (4):
+  - order_kind — The kind of order to describe.
+  - orderer — Who places the order. `any` draws every branch; `role` needs `role`.
+  - role — Name of a project or organization role the orderer holds.
+  - with_stats — Add order counts per state and step durations.
+
 ### marketplace_provider_offerings_orders_list
 GET /api/marketplace-provider-offerings/{uuid}/orders/
 Summary: List orders for an offering
@@ -10794,6 +10806,13 @@ Description: Sets the offering's `profile` FK. Pass `profile: <uuid>` to bind, o
 Path parameters:
   - uuid
 Request body: yes
+
+### marketplace_provider_offerings_site_agent_config_retrieve
+GET /api/marketplace-provider-offerings/{uuid}/site_agent_config/
+Summary: Site agent configuration of an offering
+Description: The configuration a site agent loads for this offering: the offering block that generate_site_agent_config writes, from the same build, without the Waldur API URL, token and offering UUID the agent needs to make this call. No secret is included, not even as a placeholder: each secret the offering...
+Path parameters:
+  - uuid
 
 ### marketplace_provider_offerings_state_counters_retrieve
 GET /api/marketplace-provider-offerings/{uuid}/state_counters/
@@ -21250,6 +21269,35 @@ POST /api/personal-access-tokens/
 Summary: Create a personal access token
 Request body: yes
 
+### personal_access_tokens_agent_user
+POST /api/personal-access-tokens/agent_user/
+Summary: Create a dedicated user and its token for a template target
+Description: Staff: create a user that only holds the template's role on the
+target (an offering's manager, for a site agent), and a token for it
+with the template's scopes, restricted to the target.
+
+Unlike a staff user's own token, which works there only with
+STAFF.ACCESS and then reaches everything, this o...
+Request body: yes
+
+### personal_access_tokens_available_binding_entities_list
+GET /api/personal-access-tokens/available_binding_entities/
+Summary: List entities the caller can restrict a token to
+Description: The first matches, for a search-as-you-type picker: entities the
+create endpoint would accept as a binding, before the token's
+permissions are known.
+Query parameters (2):
+  - query — Part of the name to match.
+  - type (required) — Entity type.
+
+### personal_access_tokens_available_binding_entities_count
+HEAD /api/personal-access-tokens/available_binding_entities/
+Summary: List entities the caller can restrict a token to
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (2):
+  - query — Part of the name to match.
+  - type (required) — Entity type.
+
 ### personal_access_tokens_available_binding_targets_list
 GET /api/personal-access-tokens/available_binding_targets/
 Summary: List entity types the caller can bind each permission to
@@ -21257,8 +21305,8 @@ Description: For each permission, which scope types the caller could bind a PAT 
 
 Drives the create-PAT frontend's type picker. For staff users every
 type is offered for every permission (they bypass UserRole checks).
-For other users we return only types where they hold an active role
-granting the permissi...
+For other users, the type a role granting the permission is held on
+and the types below i...
 
 ### personal_access_tokens_available_binding_targets_count
 HEAD /api/personal-access-tokens/available_binding_targets/
@@ -21278,6 +21326,39 @@ create serializer would acc...
 ### personal_access_tokens_available_scopes_count
 HEAD /api/personal-access-tokens/available_scopes/
 Summary: List available scopes for PAT creation
+Description: Get number of items in the collection matching the request parameters.
+
+### personal_access_tokens_template_targets_list
+GET /api/personal-access-tokens/template_targets/
+Summary: List the entities a template's token can be bound to
+Description: Entities where the caller holds every scope the template requires,
+with the optional features they can add on each.
+Query parameters (3):
+  - name — Part of the entity's name to match.
+  - template (required) — Key of the template.
+  - uuid — Only the entity with this UUID, of any type.
+
+### personal_access_tokens_template_targets_count
+HEAD /api/personal-access-tokens/template_targets/
+Summary: List the entities a template's token can be bound to
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - name — Part of the entity's name to match.
+  - template (required) — Key of the template.
+  - uuid — Only the entity with this UUID, of any type.
+
+### personal_access_tokens_templates_list
+GET /api/personal-access-tokens/templates/
+Summary: List token templates the caller can use
+Description: Suggested scopes for known integrations, such as the site agent.
+
+A template is listed only when the caller can bind a token from it to
+an entity where it would work. A token is still created with explicit
+scopes; a template grants nothing by itself.
+
+### personal_access_tokens_templates_count
+HEAD /api/personal-access-tokens/templates/
+Summary: List token templates the caller can use
 Description: Get number of items in the collection matching the request parameters.
 
 ### personal_access_tokens_retrieve

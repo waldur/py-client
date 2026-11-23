@@ -22,6 +22,7 @@ class Permission:
         user_slug (Union[Unset, str]):
         user_username (Union[Unset, str]):
         user_email (Union[Unset, str]):
+        user_is_service_account (Union[Unset, bool]):
         created (Union[Unset, datetime.datetime]):
         expiration_time (Union[None, Unset, datetime.datetime]):
         is_active (Union[None, Unset, bool]):
@@ -50,6 +51,7 @@ class Permission:
     user_slug: Union[Unset, str] = UNSET
     user_username: Union[Unset, str] = UNSET
     user_email: Union[Unset, str] = UNSET
+    user_is_service_account: Union[Unset, bool] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
     expiration_time: Union[None, Unset, datetime.datetime] = UNSET
     is_active: Union[None, Unset, bool] = UNSET
@@ -88,6 +90,8 @@ class Permission:
         user_username = self.user_username
 
         user_email = self.user_email
+
+        user_is_service_account = self.user_is_service_account
 
         created: Union[Unset, str] = UNSET
         if not isinstance(self.created, Unset):
@@ -194,6 +198,8 @@ class Permission:
             field_dict["user_username"] = user_username
         if user_email is not UNSET:
             field_dict["user_email"] = user_email
+        if user_is_service_account is not UNSET:
+            field_dict["user_is_service_account"] = user_is_service_account
         if created is not UNSET:
             field_dict["created"] = created
         if expiration_time is not UNSET:
@@ -261,6 +267,8 @@ class Permission:
         user_username = d.pop("user_username", UNSET)
 
         user_email = d.pop("user_email", UNSET)
+
+        user_is_service_account = d.pop("user_is_service_account", UNSET)
 
         _created = d.pop("created", UNSET)
         created: Union[Unset, datetime.datetime]
@@ -419,6 +427,7 @@ class Permission:
             user_slug=user_slug,
             user_username=user_username,
             user_email=user_email,
+            user_is_service_account=user_is_service_account,
             created=created,
             expiration_time=expiration_time,
             is_active=is_active,
