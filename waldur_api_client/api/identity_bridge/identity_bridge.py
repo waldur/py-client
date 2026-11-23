@@ -59,8 +59,9 @@ def sync_detailed(
 
      Allows Identity Service Domains (ISDs) to push user attributes to Waldur. Creates or updates a user
     based on username (CUID). Requires FEDERATED_IDENTITY_SYNC_ENABLED to be True. Caller must be staff
-    or an identity manager with the declared source in managed_isds. Only staff may push staff, support
-    or identity manager accounts.
+    or an identity manager with the declared source in managed_isds. Only staff may change staff,
+    support or identity manager accounts: anyone else pushing an existing one gets it back unchanged
+    (`created` false, no `updated_fields`).
 
     Args:
         body (IdentityBridgeRequestRequest):
@@ -93,8 +94,9 @@ def sync(
 
      Allows Identity Service Domains (ISDs) to push user attributes to Waldur. Creates or updates a user
     based on username (CUID). Requires FEDERATED_IDENTITY_SYNC_ENABLED to be True. Caller must be staff
-    or an identity manager with the declared source in managed_isds. Only staff may push staff, support
-    or identity manager accounts.
+    or an identity manager with the declared source in managed_isds. Only staff may change staff,
+    support or identity manager accounts: anyone else pushing an existing one gets it back unchanged
+    (`created` false, no `updated_fields`).
 
     Args:
         body (IdentityBridgeRequestRequest):
@@ -122,8 +124,9 @@ async def asyncio_detailed(
 
      Allows Identity Service Domains (ISDs) to push user attributes to Waldur. Creates or updates a user
     based on username (CUID). Requires FEDERATED_IDENTITY_SYNC_ENABLED to be True. Caller must be staff
-    or an identity manager with the declared source in managed_isds. Only staff may push staff, support
-    or identity manager accounts.
+    or an identity manager with the declared source in managed_isds. Only staff may change staff,
+    support or identity manager accounts: anyone else pushing an existing one gets it back unchanged
+    (`created` false, no `updated_fields`).
 
     Args:
         body (IdentityBridgeRequestRequest):
@@ -154,8 +157,9 @@ async def asyncio(
 
      Allows Identity Service Domains (ISDs) to push user attributes to Waldur. Creates or updates a user
     based on username (CUID). Requires FEDERATED_IDENTITY_SYNC_ENABLED to be True. Caller must be staff
-    or an identity manager with the declared source in managed_isds. Only staff may push staff, support
-    or identity manager accounts.
+    or an identity manager with the declared source in managed_isds. Only staff may change staff,
+    support or identity manager accounts: anyone else pushing an existing one gets it back unchanged
+    (`created` false, no `updated_fields`).
 
     Args:
         body (IdentityBridgeRequestRequest):

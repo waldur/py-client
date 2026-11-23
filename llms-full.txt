@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.3.dev.20261123095912
+# Version: 8.1.5-rc.3.dev.20261123124611
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -5384,7 +5384,7 @@ Path parameters:
 ### identity_bridge
 POST /api/identity-bridge/
 Summary: Push user attributes from an ISD
-Description: Allows Identity Service Domains (ISDs) to push user attributes to Waldur. Creates or updates a user based on username (CUID). Requires FEDERATED_IDENTITY_SYNC_ENABLED to be True. Caller must be staff or an identity manager with the declared source in managed_isds. Only staff may push staff, suppo...
+Description: Allows Identity Service Domains (ISDs) to push user attributes to Waldur. Creates or updates a user based on username (CUID). Requires FEDERATED_IDENTITY_SYNC_ENABLED to be True. Caller must be staff or an identity manager with the declared source in managed_isds. Only staff may change staff, sup...
 Request body: yes
 
 ### identity_bridge_allowed_fields_retrieve
