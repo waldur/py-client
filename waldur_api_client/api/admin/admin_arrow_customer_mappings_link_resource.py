@@ -58,7 +58,7 @@ def sync_detailed(
     client: AuthenticatedClient,
     body: LinkResourceRequestRequest,
 ) -> Response[LinkResourceResponse]:
-    """Link a Waldur resource to an Arrow license by setting its backend_id.
+    """Link a Waldur resource to an Arrow license (its arrow_license_reference attribute).
 
     Args:
         uuid (UUID):
@@ -90,7 +90,7 @@ def sync(
     client: AuthenticatedClient,
     body: LinkResourceRequestRequest,
 ) -> LinkResourceResponse:
-    """Link a Waldur resource to an Arrow license by setting its backend_id.
+    """Link a Waldur resource to an Arrow license (its arrow_license_reference attribute).
 
     Args:
         uuid (UUID):
@@ -117,7 +117,7 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     body: LinkResourceRequestRequest,
 ) -> Response[LinkResourceResponse]:
-    """Link a Waldur resource to an Arrow license by setting its backend_id.
+    """Link a Waldur resource to an Arrow license (its arrow_license_reference attribute).
 
     Args:
         uuid (UUID):
@@ -147,7 +147,7 @@ async def asyncio(
     client: AuthenticatedClient,
     body: LinkResourceRequestRequest,
 ) -> LinkResourceResponse:
-    """Link a Waldur resource to an Arrow license by setting its backend_id.
+    """Link a Waldur resource to an Arrow license (its arrow_license_reference attribute).
 
     Args:
         uuid (UUID):

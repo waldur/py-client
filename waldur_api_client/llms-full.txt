@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.3.dev.20261123153834
+# Version: 8.1.5-rc.3.dev.20261123161929
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -172,6 +172,26 @@ Query parameters (10):
   - settings_uuid
   - state
   - statement_reference
+
+### admin_arrow_billing_syncs_billing_changes
+POST /api/admin/arrow/billing-syncs/billing_changes/
+Summary: Start an Arrow billing action as a background job that reports the invoice items it creates, changes or deletes
+Description: Start an Arrow billing action as a background job that reports the invoice items it creates, changes or deletes. With dry_run (the default) nothing is kept, so the report is a preview of applying the same action. Poll billing_changes_job for the report.
+Request body: yes
+
+### admin_arrow_billing_syncs_billing_changes_job_retrieve
+GET /api/admin/arrow/billing-syncs/billing_changes_job/
+Summary: State and report of a Billing changes job
+Description: State and report of a Billing changes job.
+Query parameters (1):
+  - job_id (required)
+
+### admin_arrow_billing_syncs_billing_changes_job_count
+HEAD /api/admin/arrow/billing-syncs/billing_changes_job/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (1):
+  - job_id (required)
 
 ### admin_arrow_billing_syncs_cleanup_consumption
 POST /api/admin/arrow/billing-syncs/cleanup_consumption/
@@ -436,8 +456,8 @@ Request body: yes
 
 ### admin_arrow_customer_mappings_link_resource
 POST /api/admin/arrow/customer-mappings/{uuid}/link_resource/
-Summary: Link a Waldur resource to an Arrow license by setting its backend_id
-Description: Link a Waldur resource to an Arrow license by setting its backend_id.
+Summary: Link a Waldur resource to an Arrow license (its arrow_license_reference attribute)
+Description: Link a Waldur resource to an Arrow license (its arrow_license_reference attribute).
 Path parameters:
   - uuid
 Request body: yes

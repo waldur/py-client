@@ -30,7 +30,7 @@ class FetchCustomerArrowDataResponse:
         consumption_total_sell (Union[None, str]):
         consumption_total_buy (Union[None, str]):
         total_customer_resources (int): Total number of resources for this customer in Waldur.
-        resources_with_backend_id (int): Number of resources with backend_id set (Arrow license reference).
+        resources_with_backend_id (int): Number of resources linked to an Arrow license.
         matched_resources (int): Number of resources for which consumption was successfully fetched.
         error (Union[None, str]):
     """
