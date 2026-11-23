@@ -15,7 +15,8 @@ class FetchBillingExportRequestRequest:
     Attributes:
         period_from (str): YYYY-MM format
         period_to (str): YYYY-MM format
-        classification (Union[Unset, str]):
+        classification (Union[Unset, str]): Classification to keep (e.g. IAAS); empty keeps every line. Defaults to the
+            settings' classification filter.
     """
 
     period_from: str

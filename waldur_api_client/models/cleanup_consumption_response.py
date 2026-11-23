@@ -16,6 +16,8 @@ class CleanupConsumptionResponse:
         records_deleted (int):
         compensation_items_affected (int):
         invoice_items_affected (int):
+        records_kept_issued (int): Records left in place because their charge is on an issued invoice
+        records_kept_imported (int): Records left in place because an import settled their month
     """
 
     dry_run: bool
@@ -23,6 +25,8 @@ class CleanupConsumptionResponse:
     records_deleted: int
     compensation_items_affected: int
     invoice_items_affected: int
+    records_kept_issued: int
+    records_kept_imported: int
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -36,6 +40,10 @@ class CleanupConsumptionResponse:
 
         invoice_items_affected = self.invoice_items_affected
 
+        records_kept_issued = self.records_kept_issued
+
+        records_kept_imported = self.records_kept_imported
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -45,6 +53,8 @@ class CleanupConsumptionResponse:
                 "records_deleted": records_deleted,
                 "compensation_items_affected": compensation_items_affected,
                 "invoice_items_affected": invoice_items_affected,
+                "records_kept_issued": records_kept_issued,
+                "records_kept_imported": records_kept_imported,
             }
         )
 
@@ -63,12 +73,18 @@ class CleanupConsumptionResponse:
 
         invoice_items_affected = d.pop("invoice_items_affected")
 
+        records_kept_issued = d.pop("records_kept_issued")
+
+        records_kept_imported = d.pop("records_kept_imported")
+
         cleanup_consumption_response = cls(
             dry_run=dry_run,
             records_to_delete=records_to_delete,
             records_deleted=records_deleted,
             compensation_items_affected=compensation_items_affected,
             invoice_items_affected=invoice_items_affected,
+            records_kept_issued=records_kept_issued,
+            records_kept_imported=records_kept_imported,
         )
 
         cleanup_consumption_response.additional_properties = d

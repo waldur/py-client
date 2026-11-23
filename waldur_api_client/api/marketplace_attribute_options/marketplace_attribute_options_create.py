@@ -57,7 +57,7 @@ def sync_detailed(
 ) -> Response[AttributeOption]:
     """Create an attribute option
 
-     Creates a new option for a choice-type attribute. Requires staff permissions.
+     Creates a new option for a choice or list attribute. Requires staff permissions.
 
     Args:
         body (AttributeOptionRequest):
@@ -88,7 +88,7 @@ def sync(
 ) -> AttributeOption:
     """Create an attribute option
 
-     Creates a new option for a choice-type attribute. Requires staff permissions.
+     Creates a new option for a choice or list attribute. Requires staff permissions.
 
     Args:
         body (AttributeOptionRequest):
@@ -114,7 +114,7 @@ async def asyncio_detailed(
 ) -> Response[AttributeOption]:
     """Create an attribute option
 
-     Creates a new option for a choice-type attribute. Requires staff permissions.
+     Creates a new option for a choice or list attribute. Requires staff permissions.
 
     Args:
         body (AttributeOptionRequest):
@@ -143,7 +143,7 @@ async def asyncio(
 ) -> AttributeOption:
     """Create an attribute option
 
-     Creates a new option for a choice-type attribute. Requires staff permissions.
+     Creates a new option for a choice or list attribute. Requires staff permissions.
 
     Args:
         body (AttributeOptionRequest):

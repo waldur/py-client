@@ -24,7 +24,6 @@ class ArrowSettings:
         partner_name (str): Arrow partner name (discovered from API)
         created (datetime.datetime):
         modified (datetime.datetime):
-        api_key (Union[Unset, str]): Arrow API Key (leave empty on update to keep current)
         export_type_reference (Union[Unset, str]): Billing export template reference
         classification_filter (Union[Unset, str]): Filter for IaaS/SaaS classification
         is_active (Union[Unset, bool]): Whether this settings record is active
@@ -40,7 +39,6 @@ class ArrowSettings:
     partner_name: str
     created: datetime.datetime
     modified: datetime.datetime
-    api_key: Union[Unset, str] = UNSET
     export_type_reference: Union[Unset, str] = UNSET
     classification_filter: Union[Unset, str] = UNSET
     is_active: Union[Unset, bool] = UNSET
@@ -63,8 +61,6 @@ class ArrowSettings:
         created = self.created.isoformat()
 
         modified = self.modified.isoformat()
-
-        api_key = self.api_key
 
         export_type_reference = self.export_type_reference
 
@@ -93,8 +89,6 @@ class ArrowSettings:
                 "modified": modified,
             }
         )
-        if api_key is not UNSET:
-            field_dict["api_key"] = api_key
         if export_type_reference is not UNSET:
             field_dict["export_type_reference"] = export_type_reference
         if classification_filter is not UNSET:
@@ -127,8 +121,6 @@ class ArrowSettings:
 
         modified = isoparse(d.pop("modified"))
 
-        api_key = d.pop("api_key", UNSET)
-
         export_type_reference = d.pop("export_type_reference", UNSET)
 
         classification_filter = d.pop("classification_filter", UNSET)
@@ -154,7 +146,6 @@ class ArrowSettings:
             partner_name=partner_name,
             created=created,
             modified=modified,
-            api_key=api_key,
             export_type_reference=export_type_reference,
             classification_filter=classification_filter,
             is_active=is_active,

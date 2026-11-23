@@ -1,5 +1,6 @@
 from http import HTTPStatus
 from typing import Any, Union
+from uuid import UUID
 
 import httpx
 
@@ -12,10 +13,19 @@ from ...utils import parse_link_header
 
 def _get_kwargs(
     *,
+    category: Union[Unset, str] = UNSET,
+    category_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
+
+    params["category"] = category
+
+    json_category_uuid: Union[Unset, str] = UNSET
+    if not isinstance(category_uuid, Unset):
+        json_category_uuid = str(category_uuid)
+    params["category_uuid"] = json_category_uuid
 
     params["page"] = page
 
@@ -61,14 +71,19 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
+    category: Union[Unset, str] = UNSET,
+    category_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["Section"]]:
     """List sections
 
      Returns a paginated list of all sections. Sections are used to group attributes within a category.
+    Filter by category (URL or UUID).
 
     Args:
+        category (Union[Unset, str]):
+        category_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -81,6 +96,8 @@ def sync_detailed(
     """
 
     kwargs = _get_kwargs(
+        category=category,
+        category_uuid=category_uuid,
         page=page,
         page_size=page_size,
     )
@@ -95,14 +112,19 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
+    category: Union[Unset, str] = UNSET,
+    category_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["Section"]:
     """List sections
 
      Returns a paginated list of all sections. Sections are used to group attributes within a category.
+    Filter by category (URL or UUID).
 
     Args:
+        category (Union[Unset, str]):
+        category_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -116,6 +138,8 @@ def sync(
 
     return sync_detailed(
         client=client,
+        category=category,
+        category_uuid=category_uuid,
         page=page,
         page_size=page_size,
     ).parsed
@@ -124,14 +148,19 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
+    category: Union[Unset, str] = UNSET,
+    category_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> Response[list["Section"]]:
     """List sections
 
      Returns a paginated list of all sections. Sections are used to group attributes within a category.
+    Filter by category (URL or UUID).
 
     Args:
+        category (Union[Unset, str]):
+        category_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -144,6 +173,8 @@ async def asyncio_detailed(
     """
 
     kwargs = _get_kwargs(
+        category=category,
+        category_uuid=category_uuid,
         page=page,
         page_size=page_size,
     )
@@ -156,14 +187,19 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
+    category: Union[Unset, str] = UNSET,
+    category_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
 ) -> list["Section"]:
     """List sections
 
      Returns a paginated list of all sections. Sections are used to group attributes within a category.
+    Filter by category (URL or UUID).
 
     Args:
+        category (Union[Unset, str]):
+        category_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
 
@@ -178,6 +214,8 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            category=category,
+            category_uuid=category_uuid,
             page=page,
             page_size=page_size,
         )
@@ -187,6 +225,8 @@ async def asyncio(
 def sync_all(
     *,
     client: AuthenticatedClient,
+    category: Union[Unset, str] = UNSET,
+    category_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Section"]:
     """Get All Pages
 
@@ -196,6 +236,8 @@ def sync_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
+        category (Union[Unset, str]):
+        category_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -209,7 +251,10 @@ def sync_all(
     all_results: list[Section] = []
 
     # Get initial request kwargs
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        category=category,
+        category_uuid=category_uuid,
+    )
 
     # Set page_size to maximum
     if "params" not in kwargs:
@@ -256,6 +301,8 @@ def sync_all(
 async def asyncio_all(
     *,
     client: AuthenticatedClient,
+    category: Union[Unset, str] = UNSET,
+    category_uuid: Union[Unset, UUID] = UNSET,
 ) -> list["Section"]:
     """Get All Pages (Async)
 
@@ -265,6 +312,8 @@ async def asyncio_all(
      Note: page_size will be set to 100 (the maximum allowed) automatically.
 
     Args:
+        category (Union[Unset, str]):
+        category_uuid (Union[Unset, UUID]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -278,7 +327,10 @@ async def asyncio_all(
     all_results: list[Section] = []
 
     # Get initial request kwargs
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        category=category,
+        category_uuid=category_uuid,
+    )
 
     # Set page_size to maximum
     if "params" not in kwargs:

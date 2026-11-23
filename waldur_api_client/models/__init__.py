@@ -226,8 +226,12 @@ from .attachment_request import AttachmentRequest
 from .attachment_request_form import AttachmentRequestForm
 from .attachment_request_multipart import AttachmentRequestMultipart
 from .attribute import Attribute
+from .attribute_create_request import AttributeCreateRequest
+from .attribute_create_request_default_type_0 import AttributeCreateRequestDefaultType0
 from .attribute_default_type_0 import AttributeDefaultType0
 from .attribute_option import AttributeOption
+from .attribute_option_item import AttributeOptionItem
+from .attribute_option_item_request import AttributeOptionItemRequest
 from .attribute_option_request import AttributeOptionRequest
 from .attribute_request import AttributeRequest
 from .attribute_request_default_type_0 import AttributeRequestDefaultType0
@@ -1055,9 +1059,10 @@ from .feedback_request import FeedbackRequest
 from .feedback_request_o_enum import FeedbackRequestOEnum
 from .feedback_state_enum import FeedbackStateEnum
 from .feedback_survey import FeedbackSurvey
+from .feedback_survey_detail import FeedbackSurveyDetail
+from .feedback_survey_detail_request import FeedbackSurveyDetailRequest
 from .feedback_survey_o_enum import FeedbackSurveyOEnum
 from .feedback_survey_public import FeedbackSurveyPublic
-from .feedback_survey_request import FeedbackSurveyRequest
 from .feedback_survey_summary import FeedbackSurveySummary
 from .fetch_billing_export_request_request import FetchBillingExportRequestRequest
 from .fetch_billing_export_response import FetchBillingExportResponse
@@ -2255,7 +2260,7 @@ from .patched_email_hook_request import PatchedEmailHookRequest
 from .patched_external_link_request import PatchedExternalLinkRequest
 from .patched_external_link_request_form import PatchedExternalLinkRequestForm
 from .patched_external_link_request_multipart import PatchedExternalLinkRequestMultipart
-from .patched_feedback_survey_request import PatchedFeedbackSurveyRequest
+from .patched_feedback_survey_detail_request import PatchedFeedbackSurveyDetailRequest
 from .patched_group_invitation_update_request import PatchedGroupInvitationUpdateRequest
 from .patched_identity_provider_request import PatchedIdentityProviderRequest
 from .patched_identity_provider_request_attribute_mapping import PatchedIdentityProviderRequestAttributeMapping
@@ -3352,6 +3357,7 @@ from .scriptrunmode_enum import SCRIPTRUNMODEEnum
 from .secret import Secret
 from .secret_format_enum import SecretFormatEnum
 from .section import Section
+from .section_create_request import SectionCreateRequest
 from .section_request import SectionRequest
 from .security_detail import SecurityDetail
 from .security_group_rule_direction_enum import SecurityGroupRuleDirectionEnum
@@ -3582,6 +3588,13 @@ from .support_user_merge_request import SupportUserMergeRequest
 from .support_user_o_enum import SupportUserOEnum
 from .support_user_request import SupportUserRequest
 from .supported_countries_response import SupportedCountriesResponse
+from .survey_question import SurveyQuestion
+from .survey_question_condition import SurveyQuestionCondition
+from .survey_question_condition_request import SurveyQuestionConditionRequest
+from .survey_question_option import SurveyQuestionOption
+from .survey_question_option_request import SurveyQuestionOptionRequest
+from .survey_question_request import SurveyQuestionRequest
+from .survey_question_type_enum import SurveyQuestionTypeEnum
 from .switch_billing_mode_request import SwitchBillingModeRequest
 from .sync_from_arrow_request_request import SyncFromArrowRequestRequest
 from .sync_pause_request_request import SyncPauseRequestRequest
@@ -4122,8 +4135,12 @@ __all__ = (
     "AttachmentRequestMultipart",
     "AttachResourceRequest",
     "Attribute",
+    "AttributeCreateRequest",
+    "AttributeCreateRequestDefaultType0",
     "AttributeDefaultType0",
     "AttributeOption",
+    "AttributeOptionItem",
+    "AttributeOptionItemRequest",
     "AttributeOptionRequest",
     "AttributeRequest",
     "AttributeRequestDefaultType0",
@@ -4935,9 +4952,10 @@ __all__ = (
     "FeedbackRequestOEnum",
     "FeedbackStateEnum",
     "FeedbackSurvey",
+    "FeedbackSurveyDetail",
+    "FeedbackSurveyDetailRequest",
     "FeedbackSurveyOEnum",
     "FeedbackSurveyPublic",
-    "FeedbackSurveyRequest",
     "FeedbackSurveySummary",
     "FetchBillingExportRequestRequest",
     "FetchBillingExportResponse",
@@ -6051,7 +6069,7 @@ __all__ = (
     "PatchedExternalLinkRequest",
     "PatchedExternalLinkRequestForm",
     "PatchedExternalLinkRequestMultipart",
-    "PatchedFeedbackSurveyRequest",
+    "PatchedFeedbackSurveyDetailRequest",
     "PatchedGroupInvitationUpdateRequest",
     "PatchedIdentityProviderRequest",
     "PatchedIdentityProviderRequestAttributeMapping",
@@ -7096,6 +7114,7 @@ __all__ = (
     "Secret",
     "SecretFormatEnum",
     "Section",
+    "SectionCreateRequest",
     "SectionRequest",
     "SecurityDetail",
     "SecurityGroupRuleDirectionEnum",
@@ -7320,6 +7339,13 @@ __all__ = (
     "SupportUserMergeRequest",
     "SupportUserOEnum",
     "SupportUserRequest",
+    "SurveyQuestion",
+    "SurveyQuestionCondition",
+    "SurveyQuestionConditionRequest",
+    "SurveyQuestionOption",
+    "SurveyQuestionOptionRequest",
+    "SurveyQuestionRequest",
+    "SurveyQuestionTypeEnum",
     "SwitchBillingModeRequest",
     "SyncFromArrowRequestRequest",
     "SyncPauseRequestRequest",

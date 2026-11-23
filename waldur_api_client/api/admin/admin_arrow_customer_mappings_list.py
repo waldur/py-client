@@ -18,6 +18,7 @@ def _get_kwargs(
     is_active: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
     waldur_customer: Union[Unset, str] = UNSET,
@@ -34,6 +35,8 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["query"] = query
 
     params["settings"] = settings
 
@@ -96,6 +99,7 @@ def sync_detailed(
     is_active: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
     waldur_customer: Union[Unset, str] = UNSET,
@@ -108,6 +112,7 @@ def sync_detailed(
         is_active (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         settings (Union[Unset, str]):
         settings_uuid (Union[Unset, UUID]):
         waldur_customer (Union[Unset, str]):
@@ -127,6 +132,7 @@ def sync_detailed(
         is_active=is_active,
         page=page,
         page_size=page_size,
+        query=query,
         settings=settings,
         settings_uuid=settings_uuid,
         waldur_customer=waldur_customer,
@@ -148,6 +154,7 @@ def sync(
     is_active: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
     waldur_customer: Union[Unset, str] = UNSET,
@@ -160,6 +167,7 @@ def sync(
         is_active (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         settings (Union[Unset, str]):
         settings_uuid (Union[Unset, UUID]):
         waldur_customer (Union[Unset, str]):
@@ -180,6 +188,7 @@ def sync(
         is_active=is_active,
         page=page,
         page_size=page_size,
+        query=query,
         settings=settings,
         settings_uuid=settings_uuid,
         waldur_customer=waldur_customer,
@@ -195,6 +204,7 @@ async def asyncio_detailed(
     is_active: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
     waldur_customer: Union[Unset, str] = UNSET,
@@ -207,6 +217,7 @@ async def asyncio_detailed(
         is_active (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         settings (Union[Unset, str]):
         settings_uuid (Union[Unset, UUID]):
         waldur_customer (Union[Unset, str]):
@@ -226,6 +237,7 @@ async def asyncio_detailed(
         is_active=is_active,
         page=page,
         page_size=page_size,
+        query=query,
         settings=settings,
         settings_uuid=settings_uuid,
         waldur_customer=waldur_customer,
@@ -245,6 +257,7 @@ async def asyncio(
     is_active: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
     waldur_customer: Union[Unset, str] = UNSET,
@@ -257,6 +270,7 @@ async def asyncio(
         is_active (Union[Unset, bool]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         settings (Union[Unset, str]):
         settings_uuid (Union[Unset, UUID]):
         waldur_customer (Union[Unset, str]):
@@ -278,6 +292,7 @@ async def asyncio(
             is_active=is_active,
             page=page,
             page_size=page_size,
+            query=query,
             settings=settings,
             settings_uuid=settings_uuid,
             waldur_customer=waldur_customer,
@@ -292,6 +307,7 @@ def sync_all(
     arrow_company_name: Union[Unset, str] = UNSET,
     arrow_reference: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
+    query: Union[Unset, str] = UNSET,
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
     waldur_customer: Union[Unset, str] = UNSET,
@@ -308,6 +324,7 @@ def sync_all(
         arrow_company_name (Union[Unset, str]):
         arrow_reference (Union[Unset, str]):
         is_active (Union[Unset, bool]):
+        query (Union[Unset, str]):
         settings (Union[Unset, str]):
         settings_uuid (Union[Unset, UUID]):
         waldur_customer (Union[Unset, str]):
@@ -329,6 +346,7 @@ def sync_all(
         arrow_company_name=arrow_company_name,
         arrow_reference=arrow_reference,
         is_active=is_active,
+        query=query,
         settings=settings,
         settings_uuid=settings_uuid,
         waldur_customer=waldur_customer,
@@ -383,6 +401,7 @@ async def asyncio_all(
     arrow_company_name: Union[Unset, str] = UNSET,
     arrow_reference: Union[Unset, str] = UNSET,
     is_active: Union[Unset, bool] = UNSET,
+    query: Union[Unset, str] = UNSET,
     settings: Union[Unset, str] = UNSET,
     settings_uuid: Union[Unset, UUID] = UNSET,
     waldur_customer: Union[Unset, str] = UNSET,
@@ -399,6 +418,7 @@ async def asyncio_all(
         arrow_company_name (Union[Unset, str]):
         arrow_reference (Union[Unset, str]):
         is_active (Union[Unset, bool]):
+        query (Union[Unset, str]):
         settings (Union[Unset, str]):
         settings_uuid (Union[Unset, UUID]):
         waldur_customer (Union[Unset, str]):
@@ -420,6 +440,7 @@ async def asyncio_all(
         arrow_company_name=arrow_company_name,
         arrow_reference=arrow_reference,
         is_active=is_active,
+        query=query,
         settings=settings,
         settings_uuid=settings_uuid,
         waldur_customer=waldur_customer,

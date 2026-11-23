@@ -1,7 +1,6 @@
 import datetime
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar, Union
-from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -11,45 +10,42 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.broadcast_message_query_request import BroadcastMessageQueryRequest
+    from ..models.survey_question_request import SurveyQuestionRequest
 
 
-T = TypeVar("T", bound="PatchedFeedbackSurveyRequest")
+T = TypeVar("T", bound="PatchedFeedbackSurveyDetailRequest")
 
 
 @_attrs_define
-class PatchedFeedbackSurveyRequest:
+class PatchedFeedbackSurveyDetailRequest:
     """
     Attributes:
         name (Union[Unset, str]):
         intro (Union[Unset, str]): Markdown text shown above the questions.
-        checklist (Union[Unset, UUID]):
         starts_at (Union[Unset, datetime.datetime]):
         ends_at (Union[Unset, datetime.datetime]):
         is_active (Union[Unset, bool]):
         audience_query (Union[Unset, BroadcastMessageQueryRequest]):
         max_prompts (Union[Unset, int]): How many times a user is prompted at most.
         snooze_days (Union[Unset, int]): Days the prompt stays hidden after it is shown or postponed.
+        questions (Union[Unset, list['SurveyQuestionRequest']]):
     """
 
     name: Union[Unset, str] = UNSET
     intro: Union[Unset, str] = UNSET
-    checklist: Union[Unset, UUID] = UNSET
     starts_at: Union[Unset, datetime.datetime] = UNSET
     ends_at: Union[Unset, datetime.datetime] = UNSET
     is_active: Union[Unset, bool] = UNSET
     audience_query: Union[Unset, "BroadcastMessageQueryRequest"] = UNSET
     max_prompts: Union[Unset, int] = UNSET
     snooze_days: Union[Unset, int] = UNSET
+    questions: Union[Unset, list["SurveyQuestionRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         name = self.name
 
         intro = self.intro
-
-        checklist: Union[Unset, str] = UNSET
-        if not isinstance(self.checklist, Unset):
-            checklist = str(self.checklist)
 
         starts_at: Union[Unset, str] = UNSET
         if not isinstance(self.starts_at, Unset):
@@ -69,6 +65,13 @@ class PatchedFeedbackSurveyRequest:
 
         snooze_days = self.snooze_days
 
+        questions: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.questions, Unset):
+            questions = []
+            for questions_item_data in self.questions:
+                questions_item = questions_item_data.to_dict()
+                questions.append(questions_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -76,8 +79,6 @@ class PatchedFeedbackSurveyRequest:
             field_dict["name"] = name
         if intro is not UNSET:
             field_dict["intro"] = intro
-        if checklist is not UNSET:
-            field_dict["checklist"] = checklist
         if starts_at is not UNSET:
             field_dict["starts_at"] = starts_at
         if ends_at is not UNSET:
@@ -90,24 +91,20 @@ class PatchedFeedbackSurveyRequest:
             field_dict["max_prompts"] = max_prompts
         if snooze_days is not UNSET:
             field_dict["snooze_days"] = snooze_days
+        if questions is not UNSET:
+            field_dict["questions"] = questions
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.broadcast_message_query_request import BroadcastMessageQueryRequest
+        from ..models.survey_question_request import SurveyQuestionRequest
 
         d = dict(src_dict)
         name = d.pop("name", UNSET)
 
         intro = d.pop("intro", UNSET)
-
-        _checklist = d.pop("checklist", UNSET)
-        checklist: Union[Unset, UUID]
-        if isinstance(_checklist, Unset):
-            checklist = UNSET
-        else:
-            checklist = UUID(_checklist)
 
         _starts_at = d.pop("starts_at", UNSET)
         starts_at: Union[Unset, datetime.datetime]
@@ -136,20 +133,27 @@ class PatchedFeedbackSurveyRequest:
 
         snooze_days = d.pop("snooze_days", UNSET)
 
-        patched_feedback_survey_request = cls(
+        questions = []
+        _questions = d.pop("questions", UNSET)
+        for questions_item_data in _questions or []:
+            questions_item = SurveyQuestionRequest.from_dict(questions_item_data)
+
+            questions.append(questions_item)
+
+        patched_feedback_survey_detail_request = cls(
             name=name,
             intro=intro,
-            checklist=checklist,
             starts_at=starts_at,
             ends_at=ends_at,
             is_active=is_active,
             audience_query=audience_query,
             max_prompts=max_prompts,
             snooze_days=snooze_days,
+            questions=questions,
         )
 
-        patched_feedback_survey_request.additional_properties = d
-        return patched_feedback_survey_request
+        patched_feedback_survey_detail_request.additional_properties = d
+        return patched_feedback_survey_detail_request
 
     @property
     def additional_keys(self) -> list[str]:

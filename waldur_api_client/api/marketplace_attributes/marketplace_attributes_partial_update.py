@@ -58,7 +58,9 @@ def sync_detailed(
 ) -> Response[Attribute]:
     """Partially update an attribute
 
-     Partially updates an existing attribute. Requires staff permissions.
+     Partially updates an existing attribute. When options are given, they replace the current ones:
+    options are matched by key, new ones are created and missing ones deleted. Switching to a type
+    without options deletes them. Requires staff permissions.
 
     Args:
         uuid (UUID):
@@ -92,7 +94,9 @@ def sync(
 ) -> Attribute:
     """Partially update an attribute
 
-     Partially updates an existing attribute. Requires staff permissions.
+     Partially updates an existing attribute. When options are given, they replace the current ones:
+    options are matched by key, new ones are created and missing ones deleted. Switching to a type
+    without options deletes them. Requires staff permissions.
 
     Args:
         uuid (UUID):
@@ -121,7 +125,9 @@ async def asyncio_detailed(
 ) -> Response[Attribute]:
     """Partially update an attribute
 
-     Partially updates an existing attribute. Requires staff permissions.
+     Partially updates an existing attribute. When options are given, they replace the current ones:
+    options are matched by key, new ones are created and missing ones deleted. Switching to a type
+    without options deletes them. Requires staff permissions.
 
     Args:
         uuid (UUID):
@@ -153,7 +159,9 @@ async def asyncio(
 ) -> Attribute:
     """Partially update an attribute
 
-     Partially updates an existing attribute. Requires staff permissions.
+     Partially updates an existing attribute. When options are given, they replace the current ones:
+    options are matched by key, new ones are created and missing ones deleted. Switching to a type
+    without options deletes them. Requires staff permissions.
 
     Args:
         uuid (UUID):

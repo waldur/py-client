@@ -6,13 +6,13 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.attribute import Attribute
-from ...models.attribute_request import AttributeRequest
+from ...models.attribute_create_request import AttributeCreateRequest
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: AttributeRequest,
+    body: AttributeCreateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -51,14 +51,15 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: AttributeRequest,
+    body: AttributeCreateRequest,
 ) -> Response[Attribute]:
     """Create an attribute
 
-     Creates a new attribute within a section. Requires staff permissions.
+     Creates a new attribute within a section, optionally with its options. The key is generated from the
+    section key and title when omitted, and cannot be changed afterwards. Requires staff permissions.
 
     Args:
-        body (AttributeRequest):
+        body (AttributeCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -82,14 +83,15 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: AttributeRequest,
+    body: AttributeCreateRequest,
 ) -> Attribute:
     """Create an attribute
 
-     Creates a new attribute within a section. Requires staff permissions.
+     Creates a new attribute within a section, optionally with its options. The key is generated from the
+    section key and title when omitted, and cannot be changed afterwards. Requires staff permissions.
 
     Args:
-        body (AttributeRequest):
+        body (AttributeCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -108,14 +110,15 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: AttributeRequest,
+    body: AttributeCreateRequest,
 ) -> Response[Attribute]:
     """Create an attribute
 
-     Creates a new attribute within a section. Requires staff permissions.
+     Creates a new attribute within a section, optionally with its options. The key is generated from the
+    section key and title when omitted, and cannot be changed afterwards. Requires staff permissions.
 
     Args:
-        body (AttributeRequest):
+        body (AttributeCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -137,14 +140,15 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: AttributeRequest,
+    body: AttributeCreateRequest,
 ) -> Attribute:
     """Create an attribute
 
-     Creates a new attribute within a section. Requires staff permissions.
+     Creates a new attribute within a section, optionally with its options. The key is generated from the
+    section key and title when omitted, and cannot be changed afterwards. Requires staff permissions.
 
     Args:
-        body (AttributeRequest):
+        body (AttributeCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

@@ -6,15 +6,15 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.feedback_survey import FeedbackSurvey
-from ...models.patched_feedback_survey_request import PatchedFeedbackSurveyRequest
+from ...models.feedback_survey_detail import FeedbackSurveyDetail
+from ...models.patched_feedback_survey_detail_request import PatchedFeedbackSurveyDetailRequest
 from ...types import Response
 
 
 def _get_kwargs(
     uuid: UUID,
     *,
-    body: PatchedFeedbackSurveyRequest,
+    body: PatchedFeedbackSurveyDetailRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -31,11 +31,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> FeedbackSurvey:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> FeedbackSurveyDetail:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
-        response_200 = FeedbackSurvey.from_dict(response.json())
+        response_200 = FeedbackSurveyDetail.from_dict(response.json())
 
         return response_200
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -43,7 +43,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[FeedbackSurvey]:
+) -> Response[FeedbackSurveyDetail]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -56,19 +56,19 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedFeedbackSurveyRequest,
-) -> Response[FeedbackSurvey]:
+    body: PatchedFeedbackSurveyDetailRequest,
+) -> Response[FeedbackSurveyDetail]:
     """
     Args:
         uuid (UUID):
-        body (PatchedFeedbackSurveyRequest):
+        body (PatchedFeedbackSurveyDetailRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[FeedbackSurvey]
+        Response[FeedbackSurveyDetail]
     """
 
     kwargs = _get_kwargs(
@@ -87,19 +87,19 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedFeedbackSurveyRequest,
-) -> FeedbackSurvey:
+    body: PatchedFeedbackSurveyDetailRequest,
+) -> FeedbackSurveyDetail:
     """
     Args:
         uuid (UUID):
-        body (PatchedFeedbackSurveyRequest):
+        body (PatchedFeedbackSurveyDetailRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        FeedbackSurvey
+        FeedbackSurveyDetail
     """
 
     return sync_detailed(
@@ -113,19 +113,19 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedFeedbackSurveyRequest,
-) -> Response[FeedbackSurvey]:
+    body: PatchedFeedbackSurveyDetailRequest,
+) -> Response[FeedbackSurveyDetail]:
     """
     Args:
         uuid (UUID):
-        body (PatchedFeedbackSurveyRequest):
+        body (PatchedFeedbackSurveyDetailRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[FeedbackSurvey]
+        Response[FeedbackSurveyDetail]
     """
 
     kwargs = _get_kwargs(
@@ -142,19 +142,19 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
-    body: PatchedFeedbackSurveyRequest,
-) -> FeedbackSurvey:
+    body: PatchedFeedbackSurveyDetailRequest,
+) -> FeedbackSurveyDetail:
     """
     Args:
         uuid (UUID):
-        body (PatchedFeedbackSurveyRequest):
+        body (PatchedFeedbackSurveyDetailRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        FeedbackSurvey
+        FeedbackSurveyDetail
     """
 
     return (

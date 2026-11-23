@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.3.dev.20261123124611
+# Version: 8.1.5-rc.3.dev.20261123153834
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -145,10 +145,11 @@ Path parameters:
 
 ### admin_arrow_billing_syncs_list
 GET /api/admin/arrow/billing-syncs/
-Query parameters (9):
+Query parameters (10):
   - arrow_state
   - customer_mapping
   - customer_mapping_uuid
+  - query — Search by Arrow company, Waldur organization, Arrow reference or statement
   - report_period
   - report_period_from
   - report_period_to
@@ -160,10 +161,11 @@ Query parameters (9):
 HEAD /api/admin/arrow/billing-syncs/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (9):
+Query parameters (10):
   - arrow_state
   - customer_mapping
   - customer_mapping_uuid
+  - query — Search by Arrow company, Waldur organization, Arrow reference or statement
   - report_period
   - report_period_from
   - report_period_to
@@ -225,10 +227,11 @@ Request body: yes
 GET /api/admin/arrow/billing-syncs/pending_records/
 Summary: List pending consumption records (not yet finalized)
 Description: List pending consumption records (not yet finalized).
-Query parameters (9):
+Query parameters (10):
   - arrow_state
   - customer_mapping
   - customer_mapping_uuid
+  - query — Search by Arrow company, Waldur organization, Arrow reference or statement
   - report_period
   - report_period_from
   - report_period_to
@@ -240,10 +243,11 @@ Query parameters (9):
 HEAD /api/admin/arrow/billing-syncs/pending_records/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (9):
+Query parameters (10):
   - arrow_state
   - customer_mapping
   - customer_mapping_uuid
+  - query — Search by Arrow company, Waldur organization, Arrow reference or statement
   - report_period
   - report_period_from
   - report_period_to
@@ -335,10 +339,11 @@ Path parameters:
 
 ### admin_arrow_customer_mappings_list
 GET /api/admin/arrow/customer-mappings/
-Query parameters (7):
+Query parameters (8):
   - arrow_company_name
   - arrow_reference
   - is_active
+  - query — Search by Waldur organization, Arrow company or Arrow reference
   - settings
   - settings_uuid
   - waldur_customer
@@ -348,10 +353,11 @@ Query parameters (7):
 HEAD /api/admin/arrow/customer-mappings/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (7):
+Query parameters (8):
   - arrow_company_name
   - arrow_reference
   - is_active
+  - query — Search by Waldur organization, Arrow company or Arrow reference
   - settings
   - settings_uuid
   - waldur_customer
@@ -6325,7 +6331,7 @@ Query parameters (1):
 ### marketplace_attribute_options_create
 POST /api/marketplace-attribute-options/
 Summary: Create an attribute option
-Description: Creates a new option for a choice-type attribute. Requires staff permissions.
+Description: Creates a new option for a choice or list attribute. Requires staff permissions.
 Request body: yes
 
 ### marketplace_attribute_options_retrieve
@@ -6379,7 +6385,7 @@ Query parameters (1):
 ### marketplace_attributes_create
 POST /api/marketplace-attributes/
 Summary: Create an attribute
-Description: Creates a new attribute within a section. Requires staff permissions.
+Description: Creates a new attribute within a section, optionally with its options. The key is generated from the section key and title when omitted, and cannot be changed afterwards. Requires staff permissions.
 Request body: yes
 
 ### marketplace_attributes_retrieve
@@ -6392,7 +6398,7 @@ Path parameters:
 ### marketplace_attributes_update
 PUT /api/marketplace-attributes/{uuid}/
 Summary: Update an attribute
-Description: Updates an existing attribute. Requires staff permissions.
+Description: Updates an existing attribute. When options are given, they replace the current ones: options are matched by key, new ones are created and missing ones deleted. Switching to a type without options deletes them. Requires staff permissions.
 Path parameters:
   - uuid
 Request body: yes
@@ -6400,7 +6406,7 @@ Request body: yes
 ### marketplace_attributes_partial_update
 PATCH /api/marketplace-attributes/{uuid}/
 Summary: Partially update an attribute
-Description: Partially updates an existing attribute. Requires staff permissions.
+Description: Partially updates an existing attribute. When options are given, they replace the current ones: options are matched by key, new ones are created and missing ones deleted. Switching to a type without options deletes them. Requires staff permissions.
 Path parameters:
   - uuid
 Request body: yes
@@ -13400,17 +13406,23 @@ Request body: yes
 ### marketplace_sections_list
 GET /api/marketplace-sections/
 Summary: List sections
-Description: Returns a paginated list of all sections. Sections are used to group attributes within a category.
+Description: Returns a paginated list of all sections. Sections are used to group attributes within a category. Filter by category (URL or UUID).
+Query parameters (2):
+  - category — Category URL
+  - category_uuid — Category UUID
 
 ### marketplace_sections_count
 HEAD /api/marketplace-sections/
 Summary: List sections
 Description: Get number of items in the collection matching the request parameters.
+Query parameters (2):
+  - category — Category URL
+  - category_uuid — Category UUID
 
 ### marketplace_sections_create
 POST /api/marketplace-sections/
 Summary: Create a section
-Description: Creates a new section within a category. Requires staff permissions.
+Description: Creates a new section within a category. The key is generated from the category and section titles when omitted, and cannot be changed afterwards. Requires staff permissions.
 Request body: yes
 
 ### marketplace_sections_retrieve

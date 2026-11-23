@@ -8,6 +8,7 @@ from ..models.attribute_type_enum import AttributeTypeEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.attribute_option_item_request import AttributeOptionItemRequest
     from ..models.attribute_request_default_type_0 import AttributeRequestDefaultType0
 
 
@@ -24,6 +25,7 @@ class AttributeRequest:
         type_ (AttributeTypeEnum):
         required (Union[Unset, bool]): A value must be provided for the attribute.
         default (Union['AttributeRequestDefaultType0', None, Unset]):
+        options (Union[Unset, list['AttributeOptionItemRequest']]):
     """
 
     key: str
@@ -32,6 +34,7 @@ class AttributeRequest:
     type_: AttributeTypeEnum
     required: Union[Unset, bool] = UNSET
     default: Union["AttributeRequestDefaultType0", None, Unset] = UNSET
+    options: Union[Unset, list["AttributeOptionItemRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -55,6 +58,13 @@ class AttributeRequest:
         else:
             default = self.default
 
+        options: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.options, Unset):
+            options = []
+            for options_item_data in self.options:
+                options_item = options_item_data.to_dict()
+                options.append(options_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -69,11 +79,14 @@ class AttributeRequest:
             field_dict["required"] = required
         if default is not UNSET:
             field_dict["default"] = default
+        if options is not UNSET:
+            field_dict["options"] = options
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.attribute_option_item_request import AttributeOptionItemRequest
         from ..models.attribute_request_default_type_0 import AttributeRequestDefaultType0
 
         d = dict(src_dict)
@@ -104,6 +117,13 @@ class AttributeRequest:
 
         default = _parse_default(d.pop("default", UNSET))
 
+        options = []
+        _options = d.pop("options", UNSET)
+        for options_item_data in _options or []:
+            options_item = AttributeOptionItemRequest.from_dict(options_item_data)
+
+            options.append(options_item)
+
         attribute_request = cls(
             key=key,
             title=title,
@@ -111,6 +131,7 @@ class AttributeRequest:
             type_=type_,
             required=required,
             default=default,
+            options=options,
         )
 
         attribute_request.additional_properties = d

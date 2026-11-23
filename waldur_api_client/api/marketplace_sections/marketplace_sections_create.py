@@ -6,13 +6,13 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.section import Section
-from ...models.section_request import SectionRequest
+from ...models.section_create_request import SectionCreateRequest
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: SectionRequest,
+    body: SectionCreateRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -51,14 +51,15 @@ def _build_response(*, client: Union[AuthenticatedClient, Client], response: htt
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: SectionRequest,
+    body: SectionCreateRequest,
 ) -> Response[Section]:
     """Create a section
 
-     Creates a new section within a category. Requires staff permissions.
+     Creates a new section within a category. The key is generated from the category and section titles
+    when omitted, and cannot be changed afterwards. Requires staff permissions.
 
     Args:
-        body (SectionRequest):
+        body (SectionCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -82,14 +83,15 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: SectionRequest,
+    body: SectionCreateRequest,
 ) -> Section:
     """Create a section
 
-     Creates a new section within a category. Requires staff permissions.
+     Creates a new section within a category. The key is generated from the category and section titles
+    when omitted, and cannot be changed afterwards. Requires staff permissions.
 
     Args:
-        body (SectionRequest):
+        body (SectionCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -108,14 +110,15 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: SectionRequest,
+    body: SectionCreateRequest,
 ) -> Response[Section]:
     """Create a section
 
-     Creates a new section within a category. Requires staff permissions.
+     Creates a new section within a category. The key is generated from the category and section titles
+    when omitted, and cannot be changed afterwards. Requires staff permissions.
 
     Args:
-        body (SectionRequest):
+        body (SectionCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
@@ -137,14 +140,15 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: SectionRequest,
+    body: SectionCreateRequest,
 ) -> Section:
     """Create a section
 
-     Creates a new section within a category. Requires staff permissions.
+     Creates a new section within a category. The key is generated from the category and section titles
+    when omitted, and cannot be changed afterwards. Requires staff permissions.
 
     Args:
-        body (SectionRequest):
+        body (SectionCreateRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.

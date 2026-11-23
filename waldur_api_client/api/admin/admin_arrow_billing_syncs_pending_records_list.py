@@ -18,6 +18,7 @@ def _get_kwargs(
     customer_mapping_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     report_period: Union[Unset, str] = UNSET,
     report_period_from: Union[Unset, str] = UNSET,
     report_period_to: Union[Unset, str] = UNSET,
@@ -39,6 +40,8 @@ def _get_kwargs(
     params["page"] = page
 
     params["page_size"] = page_size
+
+    params["query"] = query
 
     params["report_period"] = report_period
 
@@ -100,6 +103,7 @@ def sync_detailed(
     customer_mapping_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     report_period: Union[Unset, str] = UNSET,
     report_period_from: Union[Unset, str] = UNSET,
     report_period_to: Union[Unset, str] = UNSET,
@@ -115,6 +119,7 @@ def sync_detailed(
         customer_mapping_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         report_period (Union[Unset, str]):
         report_period_from (Union[Unset, str]):
         report_period_to (Union[Unset, str]):
@@ -136,6 +141,7 @@ def sync_detailed(
         customer_mapping_uuid=customer_mapping_uuid,
         page=page,
         page_size=page_size,
+        query=query,
         report_period=report_period,
         report_period_from=report_period_from,
         report_period_to=report_period_to,
@@ -159,6 +165,7 @@ def sync(
     customer_mapping_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     report_period: Union[Unset, str] = UNSET,
     report_period_from: Union[Unset, str] = UNSET,
     report_period_to: Union[Unset, str] = UNSET,
@@ -174,6 +181,7 @@ def sync(
         customer_mapping_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         report_period (Union[Unset, str]):
         report_period_from (Union[Unset, str]):
         report_period_to (Union[Unset, str]):
@@ -196,6 +204,7 @@ def sync(
         customer_mapping_uuid=customer_mapping_uuid,
         page=page,
         page_size=page_size,
+        query=query,
         report_period=report_period,
         report_period_from=report_period_from,
         report_period_to=report_period_to,
@@ -213,6 +222,7 @@ async def asyncio_detailed(
     customer_mapping_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     report_period: Union[Unset, str] = UNSET,
     report_period_from: Union[Unset, str] = UNSET,
     report_period_to: Union[Unset, str] = UNSET,
@@ -228,6 +238,7 @@ async def asyncio_detailed(
         customer_mapping_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         report_period (Union[Unset, str]):
         report_period_from (Union[Unset, str]):
         report_period_to (Union[Unset, str]):
@@ -249,6 +260,7 @@ async def asyncio_detailed(
         customer_mapping_uuid=customer_mapping_uuid,
         page=page,
         page_size=page_size,
+        query=query,
         report_period=report_period,
         report_period_from=report_period_from,
         report_period_to=report_period_to,
@@ -270,6 +282,7 @@ async def asyncio(
     customer_mapping_uuid: Union[Unset, UUID] = UNSET,
     page: Union[Unset, int] = UNSET,
     page_size: Union[Unset, int] = UNSET,
+    query: Union[Unset, str] = UNSET,
     report_period: Union[Unset, str] = UNSET,
     report_period_from: Union[Unset, str] = UNSET,
     report_period_to: Union[Unset, str] = UNSET,
@@ -285,6 +298,7 @@ async def asyncio(
         customer_mapping_uuid (Union[Unset, UUID]):
         page (Union[Unset, int]):
         page_size (Union[Unset, int]):
+        query (Union[Unset, str]):
         report_period (Union[Unset, str]):
         report_period_from (Union[Unset, str]):
         report_period_to (Union[Unset, str]):
@@ -308,6 +322,7 @@ async def asyncio(
             customer_mapping_uuid=customer_mapping_uuid,
             page=page,
             page_size=page_size,
+            query=query,
             report_period=report_period,
             report_period_from=report_period_from,
             report_period_to=report_period_to,
@@ -324,6 +339,7 @@ def sync_all(
     arrow_state: Union[Unset, str] = UNSET,
     customer_mapping: Union[Unset, str] = UNSET,
     customer_mapping_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
     report_period: Union[Unset, str] = UNSET,
     report_period_from: Union[Unset, str] = UNSET,
     report_period_to: Union[Unset, str] = UNSET,
@@ -342,6 +358,7 @@ def sync_all(
         arrow_state (Union[Unset, str]):
         customer_mapping (Union[Unset, str]):
         customer_mapping_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
         report_period (Union[Unset, str]):
         report_period_from (Union[Unset, str]):
         report_period_to (Union[Unset, str]):
@@ -365,6 +382,7 @@ def sync_all(
         arrow_state=arrow_state,
         customer_mapping=customer_mapping,
         customer_mapping_uuid=customer_mapping_uuid,
+        query=query,
         report_period=report_period,
         report_period_from=report_period_from,
         report_period_to=report_period_to,
@@ -421,6 +439,7 @@ async def asyncio_all(
     arrow_state: Union[Unset, str] = UNSET,
     customer_mapping: Union[Unset, str] = UNSET,
     customer_mapping_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
     report_period: Union[Unset, str] = UNSET,
     report_period_from: Union[Unset, str] = UNSET,
     report_period_to: Union[Unset, str] = UNSET,
@@ -439,6 +458,7 @@ async def asyncio_all(
         arrow_state (Union[Unset, str]):
         customer_mapping (Union[Unset, str]):
         customer_mapping_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
         report_period (Union[Unset, str]):
         report_period_from (Union[Unset, str]):
         report_period_to (Union[Unset, str]):
@@ -462,6 +482,7 @@ async def asyncio_all(
         arrow_state=arrow_state,
         customer_mapping=customer_mapping,
         customer_mapping_uuid=customer_mapping_uuid,
+        query=query,
         report_period=report_period,
         report_period_from=report_period_from,
         report_period_to=report_period_to,

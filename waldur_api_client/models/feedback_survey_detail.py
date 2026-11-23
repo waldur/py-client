@@ -10,48 +10,59 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
-    from ..models.broadcast_message_query_request import BroadcastMessageQueryRequest
+    from ..models.query_output import QueryOutput
+    from ..models.survey_question import SurveyQuestion
 
 
-T = TypeVar("T", bound="FeedbackSurveyRequest")
+T = TypeVar("T", bound="FeedbackSurveyDetail")
 
 
 @_attrs_define
-class FeedbackSurveyRequest:
+class FeedbackSurveyDetail:
     """
     Attributes:
+        uuid (UUID):
+        created (datetime.datetime):
         name (str):
-        checklist (UUID):
         starts_at (datetime.datetime):
         ends_at (datetime.datetime):
-        audience_query (BroadcastMessageQueryRequest):
+        is_open (bool):
+        audience (QueryOutput):
         intro (Union[Unset, str]): Markdown text shown above the questions.
         is_active (Union[Unset, bool]):
         max_prompts (Union[Unset, int]): How many times a user is prompted at most.
         snooze_days (Union[Unset, int]): Days the prompt stays hidden after it is shown or postponed.
+        questions (Union[Unset, list['SurveyQuestion']]):
     """
 
+    uuid: UUID
+    created: datetime.datetime
     name: str
-    checklist: UUID
     starts_at: datetime.datetime
     ends_at: datetime.datetime
-    audience_query: "BroadcastMessageQueryRequest"
+    is_open: bool
+    audience: "QueryOutput"
     intro: Union[Unset, str] = UNSET
     is_active: Union[Unset, bool] = UNSET
     max_prompts: Union[Unset, int] = UNSET
     snooze_days: Union[Unset, int] = UNSET
+    questions: Union[Unset, list["SurveyQuestion"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        name = self.name
+        uuid = str(self.uuid)
 
-        checklist = str(self.checklist)
+        created = self.created.isoformat()
+
+        name = self.name
 
         starts_at = self.starts_at.isoformat()
 
         ends_at = self.ends_at.isoformat()
 
-        audience_query = self.audience_query.to_dict()
+        is_open = self.is_open
+
+        audience = self.audience.to_dict()
 
         intro = self.intro
 
@@ -61,15 +72,24 @@ class FeedbackSurveyRequest:
 
         snooze_days = self.snooze_days
 
+        questions: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.questions, Unset):
+            questions = []
+            for questions_item_data in self.questions:
+                questions_item = questions_item_data.to_dict()
+                questions.append(questions_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "uuid": uuid,
+                "created": created,
                 "name": name,
-                "checklist": checklist,
                 "starts_at": starts_at,
                 "ends_at": ends_at,
-                "audience_query": audience_query,
+                "is_open": is_open,
+                "audience": audience,
             }
         )
         if intro is not UNSET:
@@ -80,23 +100,30 @@ class FeedbackSurveyRequest:
             field_dict["max_prompts"] = max_prompts
         if snooze_days is not UNSET:
             field_dict["snooze_days"] = snooze_days
+        if questions is not UNSET:
+            field_dict["questions"] = questions
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
-        from ..models.broadcast_message_query_request import BroadcastMessageQueryRequest
+        from ..models.query_output import QueryOutput
+        from ..models.survey_question import SurveyQuestion
 
         d = dict(src_dict)
-        name = d.pop("name")
+        uuid = UUID(d.pop("uuid"))
 
-        checklist = UUID(d.pop("checklist"))
+        created = isoparse(d.pop("created"))
+
+        name = d.pop("name")
 
         starts_at = isoparse(d.pop("starts_at"))
 
         ends_at = isoparse(d.pop("ends_at"))
 
-        audience_query = BroadcastMessageQueryRequest.from_dict(d.pop("audience_query"))
+        is_open = d.pop("is_open")
+
+        audience = QueryOutput.from_dict(d.pop("audience"))
 
         intro = d.pop("intro", UNSET)
 
@@ -106,20 +133,30 @@ class FeedbackSurveyRequest:
 
         snooze_days = d.pop("snooze_days", UNSET)
 
-        feedback_survey_request = cls(
+        questions = []
+        _questions = d.pop("questions", UNSET)
+        for questions_item_data in _questions or []:
+            questions_item = SurveyQuestion.from_dict(questions_item_data)
+
+            questions.append(questions_item)
+
+        feedback_survey_detail = cls(
+            uuid=uuid,
+            created=created,
             name=name,
-            checklist=checklist,
             starts_at=starts_at,
             ends_at=ends_at,
-            audience_query=audience_query,
+            is_open=is_open,
+            audience=audience,
             intro=intro,
             is_active=is_active,
             max_prompts=max_prompts,
             snooze_days=snooze_days,
+            questions=questions,
         )
 
-        feedback_survey_request.additional_properties = d
-        return feedback_survey_request
+        feedback_survey_detail.additional_properties = d
+        return feedback_survey_detail
 
     @property
     def additional_keys(self) -> list[str]:

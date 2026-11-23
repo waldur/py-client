@@ -23,8 +23,6 @@ class FeedbackSurvey:
         uuid (UUID):
         created (datetime.datetime):
         name (str):
-        checklist (UUID):
-        checklist_name (str):
         starts_at (datetime.datetime):
         ends_at (datetime.datetime):
         is_open (bool):
@@ -38,8 +36,6 @@ class FeedbackSurvey:
     uuid: UUID
     created: datetime.datetime
     name: str
-    checklist: UUID
-    checklist_name: str
     starts_at: datetime.datetime
     ends_at: datetime.datetime
     is_open: bool
@@ -56,10 +52,6 @@ class FeedbackSurvey:
         created = self.created.isoformat()
 
         name = self.name
-
-        checklist = str(self.checklist)
-
-        checklist_name = self.checklist_name
 
         starts_at = self.starts_at.isoformat()
 
@@ -84,8 +76,6 @@ class FeedbackSurvey:
                 "uuid": uuid,
                 "created": created,
                 "name": name,
-                "checklist": checklist,
-                "checklist_name": checklist_name,
                 "starts_at": starts_at,
                 "ends_at": ends_at,
                 "is_open": is_open,
@@ -114,10 +104,6 @@ class FeedbackSurvey:
 
         name = d.pop("name")
 
-        checklist = UUID(d.pop("checklist"))
-
-        checklist_name = d.pop("checklist_name")
-
         starts_at = isoparse(d.pop("starts_at"))
 
         ends_at = isoparse(d.pop("ends_at"))
@@ -138,8 +124,6 @@ class FeedbackSurvey:
             uuid=uuid,
             created=created,
             name=name,
-            checklist=checklist,
-            checklist_name=checklist_name,
             starts_at=starts_at,
             ends_at=ends_at,
             is_open=is_open,

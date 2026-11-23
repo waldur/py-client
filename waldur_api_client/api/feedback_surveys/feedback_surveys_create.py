@@ -5,14 +5,14 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.feedback_survey import FeedbackSurvey
-from ...models.feedback_survey_request import FeedbackSurveyRequest
+from ...models.feedback_survey_detail import FeedbackSurveyDetail
+from ...models.feedback_survey_detail_request import FeedbackSurveyDetailRequest
 from ...types import Response
 
 
 def _get_kwargs(
     *,
-    body: FeedbackSurveyRequest,
+    body: FeedbackSurveyDetailRequest,
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
 
@@ -29,11 +29,11 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> FeedbackSurvey:
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> FeedbackSurveyDetail:
     if response.status_code == 404:
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 201:
-        response_201 = FeedbackSurvey.from_dict(response.json())
+        response_201 = FeedbackSurveyDetail.from_dict(response.json())
 
         return response_201
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
@@ -41,7 +41,7 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[FeedbackSurvey]:
+) -> Response[FeedbackSurveyDetail]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -53,18 +53,18 @@ def _build_response(
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-    body: FeedbackSurveyRequest,
-) -> Response[FeedbackSurvey]:
+    body: FeedbackSurveyDetailRequest,
+) -> Response[FeedbackSurveyDetail]:
     """
     Args:
-        body (FeedbackSurveyRequest):
+        body (FeedbackSurveyDetailRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[FeedbackSurvey]
+        Response[FeedbackSurveyDetail]
     """
 
     kwargs = _get_kwargs(
@@ -81,18 +81,18 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-    body: FeedbackSurveyRequest,
-) -> FeedbackSurvey:
+    body: FeedbackSurveyDetailRequest,
+) -> FeedbackSurveyDetail:
     """
     Args:
-        body (FeedbackSurveyRequest):
+        body (FeedbackSurveyDetailRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        FeedbackSurvey
+        FeedbackSurveyDetail
     """
 
     return sync_detailed(
@@ -104,18 +104,18 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-    body: FeedbackSurveyRequest,
-) -> Response[FeedbackSurvey]:
+    body: FeedbackSurveyDetailRequest,
+) -> Response[FeedbackSurveyDetail]:
     """
     Args:
-        body (FeedbackSurveyRequest):
+        body (FeedbackSurveyDetailRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[FeedbackSurvey]
+        Response[FeedbackSurveyDetail]
     """
 
     kwargs = _get_kwargs(
@@ -130,18 +130,18 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-    body: FeedbackSurveyRequest,
-) -> FeedbackSurvey:
+    body: FeedbackSurveyDetailRequest,
+) -> FeedbackSurveyDetail:
     """
     Args:
-        body (FeedbackSurveyRequest):
+        body (FeedbackSurveyDetailRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code.
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        FeedbackSurvey
+        FeedbackSurveyDetail
     """
 
     return (
