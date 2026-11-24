@@ -31,6 +31,8 @@ class OfferingMetric:
         good_direction (GoodDirectionEnum):
         attribute_keys (list[str]):
         state (OfferingMetricStateEnum):
+        last_reported_at (Union[None, datetime.datetime]): When a point for this metric was last accepted, to within a
+            minute; empty if none ever was.
         created (datetime.datetime):
         display_name (Union[Unset, str]): Empty shows the definition's name.
         project_aggregation (Union[Unset, ProjectAggregationEnum]):
@@ -47,6 +49,7 @@ class OfferingMetric:
     good_direction: GoodDirectionEnum
     attribute_keys: list[str]
     state: OfferingMetricStateEnum
+    last_reported_at: Union[None, datetime.datetime]
     created: datetime.datetime
     display_name: Union[Unset, str] = UNSET
     project_aggregation: Union[Unset, ProjectAggregationEnum] = UNSET
@@ -75,6 +78,12 @@ class OfferingMetric:
 
         state = self.state.value
 
+        last_reported_at: Union[None, str]
+        if isinstance(self.last_reported_at, datetime.datetime):
+            last_reported_at = self.last_reported_at.isoformat()
+        else:
+            last_reported_at = self.last_reported_at
+
         created = self.created.isoformat()
 
         display_name = self.display_name
@@ -98,6 +107,7 @@ class OfferingMetric:
                 "good_direction": good_direction,
                 "attribute_keys": attribute_keys,
                 "state": state,
+                "last_reported_at": last_reported_at,
                 "created": created,
             }
         )
@@ -133,6 +143,21 @@ class OfferingMetric:
 
         state = OfferingMetricStateEnum(d.pop("state"))
 
+        def _parse_last_reported_at(data: object) -> Union[None, datetime.datetime]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                last_reported_at_type_0 = isoparse(data)
+
+                return last_reported_at_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, datetime.datetime], data)
+
+        last_reported_at = _parse_last_reported_at(d.pop("last_reported_at"))
+
         created = isoparse(d.pop("created"))
 
         display_name = d.pop("display_name", UNSET)
@@ -156,6 +181,7 @@ class OfferingMetric:
             good_direction=good_direction,
             attribute_keys=attribute_keys,
             state=state,
+            last_reported_at=last_reported_at,
             created=created,
             display_name=display_name,
             project_aggregation=project_aggregation,

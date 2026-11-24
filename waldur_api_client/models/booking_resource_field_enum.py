@@ -20,6 +20,7 @@ class BookingResourceFieldEnum(str, Enum):
     CREATED_BY_USERNAME = "created_by_username"
     CREATION_ORDER = "creation_order"
     CURRENT_USAGES = "current_usages"
+    CUSTOMER_ABBREVIATION = "customer_abbreviation"
     CUSTOMER_NAME = "customer_name"
     CUSTOMER_SLUG = "customer_slug"
     CUSTOMER_UUID = "customer_uuid"

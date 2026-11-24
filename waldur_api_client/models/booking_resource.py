@@ -154,6 +154,7 @@ class BookingResource:
         service_settings_uuid (Union[Unset, UUID]):
         project_slug (Union[Unset, str]):
         customer_slug (Union[Unset, str]):
+        customer_abbreviation (Union[Unset, str]):
         user_requires_reconsent (Union[Unset, bool]): Check if the current user needs to re-consent for this resource's
             offering.
         renewal_date (Union['BookingResourceRenewalDateType0', None, Unset]):
@@ -264,6 +265,7 @@ class BookingResource:
     service_settings_uuid: Union[Unset, UUID] = UNSET
     project_slug: Union[Unset, str] = UNSET
     customer_slug: Union[Unset, str] = UNSET
+    customer_abbreviation: Union[Unset, str] = UNSET
     user_requires_reconsent: Union[Unset, bool] = UNSET
     renewal_date: Union["BookingResourceRenewalDateType0", None, Unset] = UNSET
     offering_state: Union[Unset, OfferingState] = UNSET
@@ -633,6 +635,8 @@ class BookingResource:
 
         customer_slug = self.customer_slug
 
+        customer_abbreviation = self.customer_abbreviation
+
         user_requires_reconsent = self.user_requires_reconsent
 
         renewal_date: Union[None, Unset, dict[str, Any]]
@@ -864,6 +868,8 @@ class BookingResource:
             field_dict["project_slug"] = project_slug
         if customer_slug is not UNSET:
             field_dict["customer_slug"] = customer_slug
+        if customer_abbreviation is not UNSET:
+            field_dict["customer_abbreviation"] = customer_abbreviation
         if user_requires_reconsent is not UNSET:
             field_dict["user_requires_reconsent"] = user_requires_reconsent
         if renewal_date is not UNSET:
@@ -1479,6 +1485,8 @@ class BookingResource:
 
         customer_slug = d.pop("customer_slug", UNSET)
 
+        customer_abbreviation = d.pop("customer_abbreviation", UNSET)
+
         user_requires_reconsent = d.pop("user_requires_reconsent", UNSET)
 
         def _parse_renewal_date(data: object) -> Union["BookingResourceRenewalDateType0", None, Unset]:
@@ -1642,6 +1650,7 @@ class BookingResource:
             service_settings_uuid=service_settings_uuid,
             project_slug=project_slug,
             customer_slug=customer_slug,
+            customer_abbreviation=customer_abbreviation,
             user_requires_reconsent=user_requires_reconsent,
             renewal_date=renewal_date,
             offering_state=offering_state,
