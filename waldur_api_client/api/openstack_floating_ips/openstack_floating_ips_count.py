@@ -30,6 +30,7 @@ def _get_kwargs(
     project: Union[Unset, UUID] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
@@ -86,6 +87,8 @@ def _get_kwargs(
     if not isinstance(project_uuid, Unset):
         json_project_uuid = str(project_uuid)
     params["project_uuid"] = json_project_uuid
+
+    params["query"] = query
 
     params["runtime_state"] = runtime_state
 
@@ -170,6 +173,7 @@ def sync_detailed(
     project: Union[Unset, UUID] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
@@ -200,6 +204,7 @@ def sync_detailed(
         project (Union[Unset, UUID]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
@@ -234,6 +239,7 @@ def sync_detailed(
         project=project,
         project_name=project_name,
         project_uuid=project_uuid,
+        query=query,
         runtime_state=runtime_state,
         service_settings_name=service_settings_name,
         service_settings_uuid=service_settings_uuid,
@@ -270,6 +276,7 @@ def sync(
     project: Union[Unset, UUID] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
@@ -300,6 +307,7 @@ def sync(
         project (Union[Unset, UUID]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
@@ -335,6 +343,7 @@ def sync(
         project=project,
         project_name=project_name,
         project_uuid=project_uuid,
+        query=query,
         runtime_state=runtime_state,
         service_settings_name=service_settings_name,
         service_settings_uuid=service_settings_uuid,
@@ -365,6 +374,7 @@ async def asyncio_detailed(
     project: Union[Unset, UUID] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
@@ -395,6 +405,7 @@ async def asyncio_detailed(
         project (Union[Unset, UUID]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
@@ -429,6 +440,7 @@ async def asyncio_detailed(
         project=project,
         project_name=project_name,
         project_uuid=project_uuid,
+        query=query,
         runtime_state=runtime_state,
         service_settings_name=service_settings_name,
         service_settings_uuid=service_settings_uuid,
@@ -463,6 +475,7 @@ async def asyncio(
     project: Union[Unset, UUID] = UNSET,
     project_name: Union[Unset, str] = UNSET,
     project_uuid: Union[Unset, UUID] = UNSET,
+    query: Union[Unset, str] = UNSET,
     runtime_state: Union[Unset, str] = UNSET,
     service_settings_name: Union[Unset, str] = UNSET,
     service_settings_uuid: Union[Unset, UUID] = UNSET,
@@ -493,6 +506,7 @@ async def asyncio(
         project (Union[Unset, UUID]):
         project_name (Union[Unset, str]):
         project_uuid (Union[Unset, UUID]):
+        query (Union[Unset, str]):
         runtime_state (Union[Unset, str]):
         service_settings_name (Union[Unset, str]):
         service_settings_uuid (Union[Unset, UUID]):
@@ -529,6 +543,7 @@ async def asyncio(
             project=project,
             project_name=project_name,
             project_uuid=project_uuid,
+            query=query,
             runtime_state=runtime_state,
             service_settings_name=service_settings_name,
             service_settings_uuid=service_settings_uuid,

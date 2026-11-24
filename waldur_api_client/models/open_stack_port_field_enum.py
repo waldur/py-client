@@ -19,6 +19,7 @@ class OpenStackPortFieldEnum(str, Enum):
     ERROR_TRACEBACK = "error_traceback"
     FIXED_IPS = "fixed_ips"
     FLOATING_IPS = "floating_ips"
+    FLOATING_IP_ADDRESSES = "floating_ip_addresses"
     IS_LIMIT_BASED = "is_limit_based"
     IS_USAGE_BASED = "is_usage_based"
     MAC_ADDRESS = "mac_address"

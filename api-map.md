@@ -2899,8 +2899,8 @@ Module: `waldur_api_client.api.openstack_flavors`
 ## openstack-floating-ips
 Module: `waldur_api_client.api.openstack_floating_ips`
 
-- `openstack_floating_ips_list` GET `/api/openstack-floating-ips/` — List floating IPs (23 query params)
-- `openstack_floating_ips_count` HEAD `/api/openstack-floating-ips/` — List floating IPs (22 query params)
+- `openstack_floating_ips_list` GET `/api/openstack-floating-ips/` — List floating IPs (24 query params)
+- `openstack_floating_ips_count` HEAD `/api/openstack-floating-ips/` — List floating IPs (23 query params)
 - `openstack_floating_ips_retrieve` GET `/api/openstack-floating-ips/{uuid}/` — Get floating IP details (path: uuid | 1 query param)
 - `openstack_floating_ips_destroy` DELETE `/api/openstack-floating-ips/{uuid}/` — Delete floating IP (path: uuid)
 - `openstack_floating_ips_attach_to_port` POST `/api/openstack-floating-ips/{uuid}/attach_to_port/` — Attach floating IP to a port (path: uuid | request body)

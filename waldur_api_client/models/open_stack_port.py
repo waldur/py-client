@@ -13,6 +13,7 @@ from ..types import UNSET, Unset
 if TYPE_CHECKING:
     from ..models.open_stack_allowed_address_pair import OpenStackAllowedAddressPair
     from ..models.open_stack_fixed_ip import OpenStackFixedIp
+    from ..models.open_stack_port_floating_ip import OpenStackPortFloatingIp
     from ..models.open_stack_port_marketplace_offering_plugin_options_type_0 import (
         OpenStackPortMarketplaceOfferingPluginOptionsType0,
     )
@@ -61,6 +62,8 @@ class OpenStackPort:
         network_name (Union[Unset, str]):
         network_uuid (Union[Unset, UUID]):
         floating_ips (Union[Unset, list[str]]):
+        floating_ip_addresses (Union[Unset, list['OpenStackPortFloatingIp']]): Floating IPs associated with the port,
+            with the public IP each one is mapped to, if any
         device_id (Union[None, Unset, str]): ID of device (instance, router etc) to which this port is connected
         device_owner (Union[None, Unset, str]): Entity that uses this port (e.g. network:router_interface)
         port_security_enabled (Union[Unset, bool]): If True, security groups and rules will be applied to this port
@@ -116,6 +119,7 @@ class OpenStackPort:
     network_name: Union[Unset, str] = UNSET
     network_uuid: Union[Unset, UUID] = UNSET
     floating_ips: Union[Unset, list[str]] = UNSET
+    floating_ip_addresses: Union[Unset, list["OpenStackPortFloatingIp"]] = UNSET
     device_id: Union[None, Unset, str] = UNSET
     device_owner: Union[None, Unset, str] = UNSET
     port_security_enabled: Union[Unset, bool] = UNSET
@@ -256,6 +260,13 @@ class OpenStackPort:
         floating_ips: Union[Unset, list[str]] = UNSET
         if not isinstance(self.floating_ips, Unset):
             floating_ips = self.floating_ips
+
+        floating_ip_addresses: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.floating_ip_addresses, Unset):
+            floating_ip_addresses = []
+            for floating_ip_addresses_item_data in self.floating_ip_addresses:
+                floating_ip_addresses_item = floating_ip_addresses_item_data.to_dict()
+                floating_ip_addresses.append(floating_ip_addresses_item)
 
         device_id: Union[None, Unset, str]
         if isinstance(self.device_id, Unset):
@@ -431,6 +442,8 @@ class OpenStackPort:
             field_dict["network_uuid"] = network_uuid
         if floating_ips is not UNSET:
             field_dict["floating_ips"] = floating_ips
+        if floating_ip_addresses is not UNSET:
+            field_dict["floating_ip_addresses"] = floating_ip_addresses
         if device_id is not UNSET:
             field_dict["device_id"] = device_id
         if device_owner is not UNSET:
@@ -472,6 +485,7 @@ class OpenStackPort:
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.open_stack_allowed_address_pair import OpenStackAllowedAddressPair
         from ..models.open_stack_fixed_ip import OpenStackFixedIp
+        from ..models.open_stack_port_floating_ip import OpenStackPortFloatingIp
         from ..models.open_stack_port_marketplace_offering_plugin_options_type_0 import (
             OpenStackPortMarketplaceOfferingPluginOptionsType0,
         )
@@ -631,6 +645,13 @@ class OpenStackPort:
             network_uuid = UUID(_network_uuid)
 
         floating_ips = cast(list[str], d.pop("floating_ips", UNSET))
+
+        floating_ip_addresses = []
+        _floating_ip_addresses = d.pop("floating_ip_addresses", UNSET)
+        for floating_ip_addresses_item_data in _floating_ip_addresses or []:
+            floating_ip_addresses_item = OpenStackPortFloatingIp.from_dict(floating_ip_addresses_item_data)
+
+            floating_ip_addresses.append(floating_ip_addresses_item)
 
         def _parse_device_id(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -826,6 +847,7 @@ class OpenStackPort:
             network_name=network_name,
             network_uuid=network_uuid,
             floating_ips=floating_ips,
+            floating_ip_addresses=floating_ip_addresses,
             device_id=device_id,
             device_owner=device_owner,
             port_security_enabled=port_security_enabled,

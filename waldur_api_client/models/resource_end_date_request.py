@@ -15,8 +15,8 @@ T = TypeVar("T", bound="ResourceEndDateRequest")
 class ResourceEndDateRequest:
     """
     Attributes:
-        end_date (Union[None, Unset, datetime.date]): The date is inclusive. Once reached, a resource will be scheduled
-            for termination.
+        end_date (Union[None, Unset, datetime.date]): The resource is scheduled for termination on this date, so the day
+            before is the last full day of use.
     """
 
     end_date: Union[None, Unset, datetime.date] = UNSET

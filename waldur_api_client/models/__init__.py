@@ -2006,6 +2006,7 @@ from .open_stack_pool_member_marketplace_offering_plugin_options_type_0 import (
 )
 from .open_stack_port import OpenStackPort
 from .open_stack_port_field_enum import OpenStackPortFieldEnum
+from .open_stack_port_floating_ip import OpenStackPortFloatingIp
 from .open_stack_port_ip_update_request import OpenStackPortIPUpdateRequest
 from .open_stack_port_marketplace_offering_plugin_options_type_0 import (
     OpenStackPortMarketplaceOfferingPluginOptionsType0,
@@ -5875,6 +5876,7 @@ __all__ = (
     "OpenStackPoolMemberMarketplaceOfferingPluginOptionsType0",
     "OpenStackPort",
     "OpenStackPortFieldEnum",
+    "OpenStackPortFloatingIp",
     "OpenStackPortIPUpdateRequest",
     "OpenStackPortMarketplaceOfferingPluginOptionsType0",
     "OpenStackPortNestedSecurityGroup",

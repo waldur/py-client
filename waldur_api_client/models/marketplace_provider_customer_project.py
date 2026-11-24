@@ -23,8 +23,9 @@ class MarketplaceProviderCustomerProject:
         uuid (Union[Unset, UUID]):
         name (Union[Unset, str]):
         description (Union[Unset, str]):
-        end_date (Union[None, Unset, datetime.date]): The date is inclusive. Once reached, all project resource will be
-            scheduled for termination.
+        end_date (Union[None, Unset, datetime.date]): The project's resources are scheduled for termination on this date
+            plus the grace period, if one is configured. Offerings that disable the grace period terminate them on this
+            date.
         resources_count (Union[Unset, int]):
         users_count (Union[Unset, int]):
         billing_price_estimate (Union[Unset, NestedPriceEstimate]):

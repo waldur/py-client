@@ -82,8 +82,9 @@ class Resource:
         project_name (Union[Unset, str]):
         project_description (Union[Unset, str]):
         project_start_date (Union[None, Unset, datetime.date]):
-        project_end_date (Union[None, Unset, datetime.date]): The date is inclusive. Once reached, all project resource
-            will be scheduled for termination.
+        project_end_date (Union[None, Unset, datetime.date]): The project's resources are scheduled for termination on
+            this date plus the grace period, if one is configured. Offerings that disable the grace period terminate them on
+            this date.
         project_effective_end_date (Union[None, Unset, datetime.date]): Effective project end date including grace
             period. After this date, resources are terminated, except resources of offerings that disable the grace period —
             those are terminated on the raw project end date.
@@ -112,8 +113,8 @@ class Resource:
             reported usage amounts.
         can_terminate (Union[Unset, bool]):
         report (Union[Unset, list['ReportSection']]):
-        end_date (Union[None, Unset, datetime.date]): The date is inclusive. Once reached, a resource will be scheduled
-            for termination.
+        end_date (Union[None, Unset, datetime.date]): The resource is scheduled for termination on this date, so the day
+            before is the last full day of use.
         end_date_requested_by (Union[None, Unset, str]):
         end_date_updated_at (Union[None, Unset, datetime.datetime]): Timestamp of the last end_date change.
         terminated_at (Union[None, Unset, datetime.datetime]): When the resource was terminated. Unlike end_date, which

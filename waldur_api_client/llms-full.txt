@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.4.dev.20261124115937
+# Version: 8.1.5-rc.4.dev.20261124161508
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -18507,7 +18507,7 @@ Query parameters (1):
 GET /api/openstack-floating-ips/
 Summary: List floating IPs
 Description: Get a list of floating IP addresses. Status *DOWN* means that floating IP is not linked to a VM, status *ACTIVE* means that it is in use.
-Query parameters (23):
+Query parameters (24):
   - address
   - backend_id — Backend ID
   - can_manage — Can manage
@@ -18525,6 +18525,7 @@ Query parameters (23):
   - project — Project UUID
   - project_name — Project name
   - project_uuid — Project UUID
+  - query — Search by name, address or mapped public IP
   - runtime_state
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
@@ -18536,7 +18537,7 @@ Query parameters (23):
 HEAD /api/openstack-floating-ips/
 Summary: List floating IPs
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (22):
+Query parameters (23):
   - address
   - backend_id — Backend ID
   - can_manage — Can manage
@@ -18553,6 +18554,7 @@ Query parameters (22):
   - project — Project UUID
   - project_name — Project name
   - project_uuid — Project UUID
+  - query — Search by name, address or mapped public IP
   - runtime_state
   - service_settings_name — Service settings name
   - service_settings_uuid — Service settings UUID
@@ -19819,7 +19821,7 @@ Query parameters (18):
   - network_name — Search by network name
   - network_uuid — Search by network UUID
   - o — Ordering
-  - query — Search by name, MAC address or backend ID
+  - query — Search by name, MAC address, backend ID, fixed IP, floating IP or its mapped public IP
   - status
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
@@ -19842,7 +19844,7 @@ Query parameters (17):
   - network_name — Search by network name
   - network_uuid — Search by network UUID
   - o — Ordering
-  - query — Search by name, MAC address or backend ID
+  - query — Search by name, MAC address, backend ID, fixed IP, floating IP or its mapped public IP
   - status
   - tenant — Tenant URL
   - tenant_uuid — Tenant UUID
