@@ -18,6 +18,7 @@ class AdminAnnouncementFieldEnum(str, Enum):
     MAINTENANCE_UUID = "maintenance_uuid"
     TYPE = "type"
     UUID = "uuid"
+    VISIBLE_TO_ANONYMOUS_USERS = "visible_to_anonymous_users"
 
     def __str__(self) -> str:
         return str(self.value)

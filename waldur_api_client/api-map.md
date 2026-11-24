@@ -1526,6 +1526,21 @@ Module: `waldur_api_client.api.marketplace_offering_roles`
 - `marketplace_offering_roles_partial_update` PATCH `/api/marketplace-offering-roles/{uuid}/` (path: uuid | request body)
 - `marketplace_offering_roles_destroy` DELETE `/api/marketplace-offering-roles/{uuid}/` (path: uuid)
 
+## marketplace-offering-templates
+Module: `waldur_api_client.api.marketplace_offering_templates`
+
+- `marketplace_offering_templates_list` GET `/api/marketplace-offering-templates/` (4 query params)
+- `marketplace_offering_templates_count` HEAD `/api/marketplace-offering-templates/` — Get number of items in the collection matching the request parameters (4 query params)
+- `marketplace_offering_templates_create` POST `/api/marketplace-offering-templates/` (request body)
+- `marketplace_offering_templates_load_preset` POST `/api/marketplace-offering-templates/load_preset/` — Load offering template presets (request body)
+- `marketplace_offering_templates_presets_list` GET `/api/marketplace-offering-templates/presets/` — List the offering template presets (no params)
+- `marketplace_offering_templates_presets_count` HEAD `/api/marketplace-offering-templates/presets/` — List the offering template presets (no params)
+- `marketplace_offering_templates_retrieve` GET `/api/marketplace-offering-templates/{uuid}/` (path: uuid)
+- `marketplace_offering_templates_update` PUT `/api/marketplace-offering-templates/{uuid}/` (path: uuid | request body)
+- `marketplace_offering_templates_partial_update` PATCH `/api/marketplace-offering-templates/{uuid}/` (path: uuid | request body)
+- `marketplace_offering_templates_destroy` DELETE `/api/marketplace-offering-templates/{uuid}/` (path: uuid)
+- `marketplace_offering_templates_versions_list` GET `/api/marketplace-offering-templates/{uuid}/versions/` — List the template's versions (path: uuid)
+
 ## marketplace-offering-terms-of-service
 Module: `waldur_api_client.api.marketplace_offering_terms_of_service`
 
@@ -1822,6 +1837,7 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_remove_partition` POST `/api/marketplace-provider-offerings/{uuid}/remove_partition/` — Remove a partition from an offering (path: uuid | request body)
 - `marketplace_provider_offerings_remove_qos` POST `/api/marketplace-provider-offerings/{uuid}/remove_qos/` — Remove a QoS profile from an offering (path: uuid | request body)
 - `marketplace_provider_offerings_remove_software_catalog` POST `/api/marketplace-provider-offerings/{uuid}/remove_software_catalog/` — Remove a software catalog from an offering (path: uuid | request body)
+- `marketplace_provider_offerings_save_as_template` POST `/api/marketplace-provider-offerings/{uuid}/save_as_template/` — Save the offering as an offering template (path: uuid | request body)
 - `marketplace_provider_offerings_set_backend_metadata` POST `/api/marketplace-provider-offerings/{uuid}/set_backend_metadata/` — Set offering backend metadata (path: uuid | request body)
 - `marketplace_provider_offerings_set_offering_group` POST `/api/marketplace-provider-offerings/{uuid}/set_offering_group/` — Assign or clear the offering group (path: uuid | request body)
 - `marketplace_provider_offerings_set_partition_qos` POST `/api/marketplace-provider-offerings/{uuid}/set_partition_qos/` — Set the QoS allow-list of a partition (path: uuid | request body)

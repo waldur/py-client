@@ -651,6 +651,7 @@ from .components_usage_stats import ComponentsUsageStats
 from .components_usage_stats_per_offering import ComponentsUsageStatsPerOffering
 from .compute_affinities_response import ComputeAffinitiesResponse
 from .configuration_retrieve_response_200 import ConfigurationRetrieveResponse200
+from .configuration_source_enum import ConfigurationSourceEnum
 from .confirm_email_request_request import ConfirmEmailRequestRequest
 from .conflict_of_interest import ConflictOfInterest
 from .conflict_of_interest_evidence_data import ConflictOfInterestEvidenceData
@@ -1012,6 +1013,8 @@ from .expertise_category import ExpertiseCategory
 from .expertise_category_o_enum import ExpertiseCategoryOEnum
 from .export_component_data import ExportComponentData
 from .export_component_data_request import ExportComponentDataRequest
+from .export_component_data_request_spending_limit_periods import ExportComponentDataRequestSpendingLimitPeriods
+from .export_component_data_spending_limit_periods import ExportComponentDataSpendingLimitPeriods
 from .export_endpoint_data import ExportEndpointData
 from .export_endpoint_data_request import ExportEndpointDataRequest
 from .export_file_data import ExportFileData
@@ -1343,6 +1346,8 @@ from .load_balancer_protocol_enum import LoadBalancerProtocolEnum
 from .load_balancer_set_security_groups_request import LoadBalancerSetSecurityGroupsRequest
 from .load_call_template_preset_request import LoadCallTemplatePresetRequest
 from .load_call_template_preset_response import LoadCallTemplatePresetResponse
+from .load_offering_template_preset_request import LoadOfferingTemplatePresetRequest
+from .load_offering_template_preset_response import LoadOfferingTemplatePresetResponse
 from .load_science_domain_preset_request import LoadScienceDomainPresetRequest
 from .load_science_domain_preset_response import LoadScienceDomainPresetResponse
 from .lock_stats import LockStats
@@ -1809,6 +1814,7 @@ from .offering_referral_o_enum import OfferingReferralOEnum
 from .offering_resource_options_update_request import OfferingResourceOptionsUpdateRequest
 from .offering_role import OfferingRole
 from .offering_role_request import OfferingRoleRequest
+from .offering_save_as_template_request import OfferingSaveAsTemplateRequest
 from .offering_software_catalog import OfferingSoftwareCatalog
 from .offering_software_catalog_request import OfferingSoftwareCatalogRequest
 from .offering_state import OfferingState
@@ -1821,6 +1827,16 @@ from .offering_team_person import OfferingTeamPerson
 from .offering_team_provider import OfferingTeamProvider
 from .offering_team_slot import OfferingTeamSlot
 from .offering_team_step import OfferingTeamStep
+from .offering_template import OfferingTemplate
+from .offering_template_document import OfferingTemplateDocument
+from .offering_template_parameter import OfferingTemplateParameter
+from .offering_template_parameter_default_type_0 import OfferingTemplateParameterDefaultType0
+from .offering_template_parameter_type_enum import OfferingTemplateParameterTypeEnum
+from .offering_template_preset import OfferingTemplatePreset
+from .offering_template_request import OfferingTemplateRequest
+from .offering_template_request_document import OfferingTemplateRequestDocument
+from .offering_template_version import OfferingTemplateVersion
+from .offering_template_version_document import OfferingTemplateVersionDocument
 from .offering_terms_of_service import OfferingTermsOfService
 from .offering_terms_of_service_create import OfferingTermsOfServiceCreate
 from .offering_terms_of_service_create_request import OfferingTermsOfServiceCreateRequest
@@ -2315,6 +2331,8 @@ from .patched_offering_profile_request import PatchedOfferingProfileRequest
 from .patched_offering_qo_s_update_request import PatchedOfferingQoSUpdateRequest
 from .patched_offering_role_request import PatchedOfferingRoleRequest
 from .patched_offering_software_catalog_update_request import PatchedOfferingSoftwareCatalogUpdateRequest
+from .patched_offering_template_request import PatchedOfferingTemplateRequest
+from .patched_offering_template_request_document import PatchedOfferingTemplateRequestDocument
 from .patched_offering_terms_of_service_request import PatchedOfferingTermsOfServiceRequest
 from .patched_offering_usage_policy_request import PatchedOfferingUsagePolicyRequest
 from .patched_offering_usage_policy_request_options import PatchedOfferingUsagePolicyRequestOptions
@@ -4565,6 +4583,7 @@ __all__ = (
     "ComponentUserUsageOEnum",
     "ComputeAffinitiesResponse",
     "ConfigurationRetrieveResponse200",
+    "ConfigurationSourceEnum",
     "ConfirmEmailRequestRequest",
     "ConflictOfInterest",
     "ConflictOfInterestEvidenceData",
@@ -4916,6 +4935,8 @@ __all__ = (
     "ExpertiseCategoryOEnum",
     "ExportComponentData",
     "ExportComponentDataRequest",
+    "ExportComponentDataRequestSpendingLimitPeriods",
+    "ExportComponentDataSpendingLimitPeriods",
     "ExportEndpointData",
     "ExportEndpointDataRequest",
     "ExportFileData",
@@ -5243,6 +5264,8 @@ __all__ = (
     "LoadBalancerSetSecurityGroupsRequest",
     "LoadCallTemplatePresetRequest",
     "LoadCallTemplatePresetResponse",
+    "LoadOfferingTemplatePresetRequest",
+    "LoadOfferingTemplatePresetResponse",
     "LoadScienceDomainPresetRequest",
     "LoadScienceDomainPresetResponse",
     "LockStats",
@@ -5675,6 +5698,7 @@ __all__ = (
     "OfferingResourceOptionsUpdateRequest",
     "OfferingRole",
     "OfferingRoleRequest",
+    "OfferingSaveAsTemplateRequest",
     "OfferingSoftwareCatalog",
     "OfferingSoftwareCatalogRequest",
     "OfferingState",
@@ -5687,6 +5711,16 @@ __all__ = (
     "OfferingTeamProvider",
     "OfferingTeamSlot",
     "OfferingTeamStep",
+    "OfferingTemplate",
+    "OfferingTemplateDocument",
+    "OfferingTemplateParameter",
+    "OfferingTemplateParameterDefaultType0",
+    "OfferingTemplateParameterTypeEnum",
+    "OfferingTemplatePreset",
+    "OfferingTemplateRequest",
+    "OfferingTemplateRequestDocument",
+    "OfferingTemplateVersion",
+    "OfferingTemplateVersionDocument",
     "OfferingTermsOfService",
     "OfferingTermsOfServiceCreate",
     "OfferingTermsOfServiceCreateRequest",
@@ -6127,6 +6161,8 @@ __all__ = (
     "PatchedOfferingQoSUpdateRequest",
     "PatchedOfferingRoleRequest",
     "PatchedOfferingSoftwareCatalogUpdateRequest",
+    "PatchedOfferingTemplateRequest",
+    "PatchedOfferingTemplateRequestDocument",
     "PatchedOfferingTermsOfServiceRequest",
     "PatchedOfferingUsagePolicyRequest",
     "PatchedOfferingUsagePolicyRequestOptions",

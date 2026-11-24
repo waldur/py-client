@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.4.dev.20261123185930
+# Version: 8.1.5-rc.4.dev.20261124115937
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -8195,6 +8195,77 @@ Path parameters:
   - uuid
 
 ============================================================
+## marketplace-offering-templates  (module: waldur_api_client.api.marketplace_offering_templates)
+============================================================
+
+### marketplace_offering_templates_list
+GET /api/marketplace-offering-templates/
+Query parameters (4):
+  - is_published
+  - name
+  - o — Ordering
+  - offering_type
+
+### marketplace_offering_templates_count
+HEAD /api/marketplace-offering-templates/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (4):
+  - is_published
+  - name
+  - o — Ordering
+  - offering_type
+
+### marketplace_offering_templates_create
+POST /api/marketplace-offering-templates/
+Request body: yes
+
+### marketplace_offering_templates_load_preset
+POST /api/marketplace-offering-templates/load_preset/
+Summary: Load offering template presets
+Description: Create an offering template from each preset given: a copy that keeps no link to the preset. Refused, with nothing created, when a template already holds the name a preset would be loaded under. The templates are published only if publish is set.
+Request body: yes
+
+### marketplace_offering_templates_presets_list
+GET /api/marketplace-offering-templates/presets/
+Summary: List the offering template presets
+Description: The offering templates shipped with this portal: starting points for a template, with whether a template already holds the name each would be loaded under.
+
+### marketplace_offering_templates_presets_count
+HEAD /api/marketplace-offering-templates/presets/
+Summary: List the offering template presets
+Description: Get number of items in the collection matching the request parameters.
+
+### marketplace_offering_templates_retrieve
+GET /api/marketplace-offering-templates/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_offering_templates_update
+PUT /api/marketplace-offering-templates/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_offering_templates_partial_update
+PATCH /api/marketplace-offering-templates/{uuid}/
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_offering_templates_destroy
+DELETE /api/marketplace-offering-templates/{uuid}/
+Path parameters:
+  - uuid
+
+### marketplace_offering_templates_versions_list
+GET /api/marketplace-offering-templates/{uuid}/versions/
+Summary: List the template's versions
+Description: Every version of the template's document, oldest first.
+Path parameters:
+  - uuid
+
+============================================================
 ## marketplace-offering-terms-of-service  (module: waldur_api_client.api.marketplace_offering_terms_of_service)
 ============================================================
 
@@ -9094,7 +9165,7 @@ Path parameters:
 ### marketplace_orders_set_state_erred
 POST /api/marketplace-orders/{uuid}/set_state_erred/
 Summary: Set order state to erred (agent)
-Description: Used by external agents to report a failure during order processing. An error message and traceback can be provided.
+Description: Used by external agents to report a failure during order processing. An error message and traceback can be provided. Only an unfinished order (pending or executing) can be marked as erred.
 Path parameters:
   - uuid
 Request body: yes
@@ -10797,6 +10868,14 @@ Request body: yes
 POST /api/marketplace-provider-offerings/{uuid}/remove_software_catalog/
 Summary: Remove a software catalog from an offering
 Description: Disassociates a software catalog from an offering.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_offerings_save_as_template
+POST /api/marketplace-provider-offerings/{uuid}/save_as_template/
+Summary: Save the offering as an offering template
+Description: Save the offering's setup -- options, plugin options, agent configuration, components, plans, endpoints and terms of service -- as a new, unpublished offering template. Secrets, organization groups, screenshots and files are left out. The values that tie the offering to its site (its backend ID, ...
 Path parameters:
   - uuid
 Request body: yes

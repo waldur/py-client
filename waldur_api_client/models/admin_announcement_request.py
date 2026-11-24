@@ -20,12 +20,15 @@ class AdminAnnouncementRequest:
         active_to (datetime.datetime):
         description (Union[Unset, str]):
         type_ (Union[Unset, AdminAnnouncementTypeEnum]):
+        visible_to_anonymous_users (Union[Unset, bool]): Show the announcement to signed-out visitors, e.g. on the login
+            page, while it is active.
     """
 
     active_from: datetime.datetime
     active_to: datetime.datetime
     description: Union[Unset, str] = UNSET
     type_: Union[Unset, AdminAnnouncementTypeEnum] = UNSET
+    visible_to_anonymous_users: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -39,6 +42,8 @@ class AdminAnnouncementRequest:
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 
+        visible_to_anonymous_users = self.visible_to_anonymous_users
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -51,6 +56,8 @@ class AdminAnnouncementRequest:
             field_dict["description"] = description
         if type_ is not UNSET:
             field_dict["type"] = type_
+        if visible_to_anonymous_users is not UNSET:
+            field_dict["visible_to_anonymous_users"] = visible_to_anonymous_users
 
         return field_dict
 
@@ -70,11 +77,14 @@ class AdminAnnouncementRequest:
         else:
             type_ = AdminAnnouncementTypeEnum(_type_)
 
+        visible_to_anonymous_users = d.pop("visible_to_anonymous_users", UNSET)
+
         admin_announcement_request = cls(
             active_from=active_from,
             active_to=active_to,
             description=description,
             type_=type_,
+            visible_to_anonymous_users=visible_to_anonymous_users,
         )
 
         admin_announcement_request.additional_properties = d

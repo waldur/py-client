@@ -35,6 +35,8 @@ def _parse_response(*, client: Union[AuthenticatedClient, Client], response: htt
         raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
     if response.status_code == 200:
         return None
+    if response.status_code == 409:
+        return None
     raise errors.UnexpectedStatus(response.status_code, response.content, response.url)
 
 
@@ -56,7 +58,7 @@ def sync_detailed(
     """Set order state to erred (agent)
 
      Used by external agents to report a failure during order processing. An error message and traceback
-    can be provided.
+    can be provided. Only an unfinished order (pending or executing) can be marked as erred.
 
     Args:
         uuid (UUID):
@@ -91,7 +93,7 @@ async def asyncio_detailed(
     """Set order state to erred (agent)
 
      Used by external agents to report a failure during order processing. An error message and traceback
-    can be provided.
+    can be provided. Only an unfinished order (pending or executing) can be marked as erred.
 
     Args:
         uuid (UUID):

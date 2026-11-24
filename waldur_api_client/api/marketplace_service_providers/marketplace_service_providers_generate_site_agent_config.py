@@ -62,7 +62,8 @@ def sync_detailed(
     The configuration includes offering details, the agent roles, event and backend settings,
     components, and optionally SLURM periodic usage policy settings. Secrets are never included: each is
     left as a placeholder (secret_format) and listed in the header; site_agent_config_secrets lists them
-    as data.
+    as data. With configuration_source 'waldur' each offering holds only how to reach Waldur and the
+    secret placeholders, and the agent reads the rest from site_agent_config.
 
     Args:
         uuid (UUID):
@@ -100,7 +101,8 @@ def sync(
     The configuration includes offering details, the agent roles, event and backend settings,
     components, and optionally SLURM periodic usage policy settings. Secrets are never included: each is
     left as a placeholder (secret_format) and listed in the header; site_agent_config_secrets lists them
-    as data.
+    as data. With configuration_source 'waldur' each offering holds only how to reach Waldur and the
+    secret placeholders, and the agent reads the rest from site_agent_config.
 
     Args:
         uuid (UUID):
@@ -133,7 +135,8 @@ async def asyncio_detailed(
     The configuration includes offering details, the agent roles, event and backend settings,
     components, and optionally SLURM periodic usage policy settings. Secrets are never included: each is
     left as a placeholder (secret_format) and listed in the header; site_agent_config_secrets lists them
-    as data.
+    as data. With configuration_source 'waldur' each offering holds only how to reach Waldur and the
+    secret placeholders, and the agent reads the rest from site_agent_config.
 
     Args:
         uuid (UUID):
@@ -169,7 +172,8 @@ async def asyncio(
     The configuration includes offering details, the agent roles, event and backend settings,
     components, and optionally SLURM periodic usage policy settings. Secrets are never included: each is
     left as a placeholder (secret_format) and listed in the header; site_agent_config_secrets lists them
-    as data.
+    as data. With configuration_source 'waldur' each offering holds only how to reach Waldur and the
+    secret placeholders, and the agent reads the rest from site_agent_config.
 
     Args:
         uuid (UUID):

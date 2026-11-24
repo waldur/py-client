@@ -30,6 +30,8 @@ class AdminAnnouncement:
         is_active (Union[Unset, bool]):
         type_ (Union[Unset, AdminAnnouncementTypeEnum]):
         created (Union[Unset, datetime.datetime]):
+        visible_to_anonymous_users (Union[Unset, bool]): Show the announcement to signed-out visitors, e.g. on the login
+            page, while it is active.
         maintenance_uuid (Union[Unset, str]):
         maintenance_name (Union[Unset, str]):
         maintenance_type (Union[Unset, str]):
@@ -48,6 +50,7 @@ class AdminAnnouncement:
     is_active: Union[Unset, bool] = UNSET
     type_: Union[Unset, AdminAnnouncementTypeEnum] = UNSET
     created: Union[Unset, datetime.datetime] = UNSET
+    visible_to_anonymous_users: Union[Unset, bool] = UNSET
     maintenance_uuid: Union[Unset, str] = UNSET
     maintenance_name: Union[Unset, str] = UNSET
     maintenance_type: Union[Unset, str] = UNSET
@@ -83,6 +86,8 @@ class AdminAnnouncement:
         created: Union[Unset, str] = UNSET
         if not isinstance(self.created, Unset):
             created = self.created.isoformat()
+
+        visible_to_anonymous_users = self.visible_to_anonymous_users
 
         maintenance_uuid = self.maintenance_uuid
 
@@ -128,6 +133,8 @@ class AdminAnnouncement:
             field_dict["type"] = type_
         if created is not UNSET:
             field_dict["created"] = created
+        if visible_to_anonymous_users is not UNSET:
+            field_dict["visible_to_anonymous_users"] = visible_to_anonymous_users
         if maintenance_uuid is not UNSET:
             field_dict["maintenance_uuid"] = maintenance_uuid
         if maintenance_name is not UNSET:
@@ -195,6 +202,8 @@ class AdminAnnouncement:
         else:
             created = isoparse(_created)
 
+        visible_to_anonymous_users = d.pop("visible_to_anonymous_users", UNSET)
+
         maintenance_uuid = d.pop("maintenance_uuid", UNSET)
 
         maintenance_name = d.pop("maintenance_name", UNSET)
@@ -238,6 +247,7 @@ class AdminAnnouncement:
             is_active=is_active,
             type_=type_,
             created=created,
+            visible_to_anonymous_users=visible_to_anonymous_users,
             maintenance_uuid=maintenance_uuid,
             maintenance_name=maintenance_name,
             maintenance_type=maintenance_type,

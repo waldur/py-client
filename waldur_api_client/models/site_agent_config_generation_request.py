@@ -5,6 +5,7 @@ from uuid import UUID
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.configuration_source_enum import ConfigurationSourceEnum
 from ..models.secret_format_enum import SecretFormatEnum
 from ..types import UNSET, Unset
 
@@ -21,6 +22,7 @@ class SiteAgentConfigGenerationRequest:
         waldur_api_url (Union[Unset, str]): Waldur API URL (defaults to current server URL)
         timezone (Union[Unset, str]): Timezone for the site agent Default: 'UTC'.
         secret_format (Union[Unset, SecretFormatEnum]):  Default: SecretFormatEnum.COMMENT.
+        configuration_source (Union[Unset, ConfigurationSourceEnum]):  Default: ConfigurationSourceEnum.LOCAL.
     """
 
     offering_uuids: list[UUID]
@@ -28,6 +30,7 @@ class SiteAgentConfigGenerationRequest:
     waldur_api_url: Union[Unset, str] = UNSET
     timezone: Union[Unset, str] = "UTC"
     secret_format: Union[Unset, SecretFormatEnum] = SecretFormatEnum.COMMENT
+    configuration_source: Union[Unset, ConfigurationSourceEnum] = ConfigurationSourceEnum.LOCAL
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -46,6 +49,10 @@ class SiteAgentConfigGenerationRequest:
         if not isinstance(self.secret_format, Unset):
             secret_format = self.secret_format.value
 
+        configuration_source: Union[Unset, str] = UNSET
+        if not isinstance(self.configuration_source, Unset):
+            configuration_source = self.configuration_source.value
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -61,6 +68,8 @@ class SiteAgentConfigGenerationRequest:
             field_dict["timezone"] = timezone
         if secret_format is not UNSET:
             field_dict["secret_format"] = secret_format
+        if configuration_source is not UNSET:
+            field_dict["configuration_source"] = configuration_source
 
         return field_dict
 
@@ -87,12 +96,20 @@ class SiteAgentConfigGenerationRequest:
         else:
             secret_format = SecretFormatEnum(_secret_format)
 
+        _configuration_source = d.pop("configuration_source", UNSET)
+        configuration_source: Union[Unset, ConfigurationSourceEnum]
+        if isinstance(_configuration_source, Unset):
+            configuration_source = UNSET
+        else:
+            configuration_source = ConfigurationSourceEnum(_configuration_source)
+
         site_agent_config_generation_request = cls(
             offering_uuids=offering_uuids,
             include_policy_settings=include_policy_settings,
             waldur_api_url=waldur_api_url,
             timezone=timezone,
             secret_format=secret_format,
+            configuration_source=configuration_source,
         )
 
         site_agent_config_generation_request.additional_properties = d

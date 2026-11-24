@@ -20,12 +20,15 @@ class PatchedAdminAnnouncementRequest:
         active_from (Union[Unset, datetime.datetime]):
         active_to (Union[Unset, datetime.datetime]):
         type_ (Union[Unset, AdminAnnouncementTypeEnum]):
+        visible_to_anonymous_users (Union[Unset, bool]): Show the announcement to signed-out visitors, e.g. on the login
+            page, while it is active.
     """
 
     description: Union[Unset, str] = UNSET
     active_from: Union[Unset, datetime.datetime] = UNSET
     active_to: Union[Unset, datetime.datetime] = UNSET
     type_: Union[Unset, AdminAnnouncementTypeEnum] = UNSET
+    visible_to_anonymous_users: Union[Unset, bool] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -43,6 +46,8 @@ class PatchedAdminAnnouncementRequest:
         if not isinstance(self.type_, Unset):
             type_ = self.type_.value
 
+        visible_to_anonymous_users = self.visible_to_anonymous_users
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -54,6 +59,8 @@ class PatchedAdminAnnouncementRequest:
             field_dict["active_to"] = active_to
         if type_ is not UNSET:
             field_dict["type"] = type_
+        if visible_to_anonymous_users is not UNSET:
+            field_dict["visible_to_anonymous_users"] = visible_to_anonymous_users
 
         return field_dict
 
@@ -83,11 +90,14 @@ class PatchedAdminAnnouncementRequest:
         else:
             type_ = AdminAnnouncementTypeEnum(_type_)
 
+        visible_to_anonymous_users = d.pop("visible_to_anonymous_users", UNSET)
+
         patched_admin_announcement_request = cls(
             description=description,
             active_from=active_from,
             active_to=active_to,
             type_=type_,
+            visible_to_anonymous_users=visible_to_anonymous_users,
         )
 
         patched_admin_announcement_request.additional_properties = d
