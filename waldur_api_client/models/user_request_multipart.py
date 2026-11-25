@@ -57,7 +57,7 @@ class UserRequestMultipart:
         is_identity_manager (Union[Unset, bool]): Designates whether the user is allowed to manage remote user
             identities.
         can_use_personal_access_tokens (Union[Unset, bool]): Designates whether the user is allowed to create and use
-            personal access tokens.
+            personal access tokens while they are not enabled for every user (PAT_ENABLED).
         managed_isds (Union[Unset, list[str]]):
         active_isds (Union[Unset, list[str]]):
         deactivation_reason (Union[Unset, str]): Reason why the user was deactivated. Visible to staff and support.

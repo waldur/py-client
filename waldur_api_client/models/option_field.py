@@ -29,6 +29,8 @@ class OptionField:
     Attributes:
         type_ (OptionFieldTypeEnum):
         label (str):
+        k8s_config_option (str): For a k8s_egress_rules resource option: the Kubernetes cluster order option it pairs
+            with. Set by the server.
         help_text (Union[Unset, str]):
         required (Union[Unset, bool]):  Default: False.
         choices (Union[Unset, list[str]]):
@@ -57,6 +59,7 @@ class OptionField:
 
     type_: OptionFieldTypeEnum
     label: str
+    k8s_config_option: str
     help_text: Union[Unset, str] = UNSET
     required: Union[Unset, bool] = False
     choices: Union[Unset, list[str]] = UNSET
@@ -84,6 +87,8 @@ class OptionField:
         type_ = self.type_.value
 
         label = self.label
+
+        k8s_config_option = self.k8s_config_option
 
         help_text = self.help_text
 
@@ -158,6 +163,7 @@ class OptionField:
             {
                 "type": type_,
                 "label": label,
+                "k8s_config_option": k8s_config_option,
             }
         )
         if help_text is not UNSET:
@@ -218,6 +224,8 @@ class OptionField:
         type_ = OptionFieldTypeEnum(d.pop("type"))
 
         label = d.pop("label")
+
+        k8s_config_option = d.pop("k8s_config_option")
 
         help_text = d.pop("help_text", UNSET)
 
@@ -320,6 +328,7 @@ class OptionField:
         option_field = cls(
             type_=type_,
             label=label,
+            k8s_config_option=k8s_config_option,
             help_text=help_text,
             required=required,
             choices=choices,

@@ -10,6 +10,7 @@ class OptionFieldTypeEnum(str, Enum):
     DATE = "date"
     HTML_TEXT = "html_text"
     INTEGER = "integer"
+    K8S_EGRESS_RULES = "k8s_egress_rules"
     MONEY = "money"
     MULTI_DATACENTER_K8S_CONFIG = "multi_datacenter_k8s_config"
     SELECT_MULTIPLE_OPENSTACK_INSTANCES = "select_multiple_openstack_instances"

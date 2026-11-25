@@ -863,6 +863,7 @@ from .dependency_logic_operator_enum import DependencyLogicOperatorEnum
 from .deployment_mode_enum import DeploymentModeEnum
 from .deprecated_network_rbac_policy import DeprecatedNetworkRBACPolicy
 from .deprecated_network_rbac_policy_request import DeprecatedNetworkRBACPolicyRequest
+from .destination_type_enum import DestinationTypeEnum
 from .detail import Detail
 from .detail_response import DetailResponse
 from .detail_state import DetailState
@@ -1310,6 +1311,9 @@ from .jira_issue_project_request import JiraIssueProjectRequest
 from .jira_issue_request import JiraIssueRequest
 from .k8s_default_configuration import K8SDefaultConfiguration
 from .k8s_default_configuration_request import K8SDefaultConfigurationRequest
+from .k8s_egress_rule import K8SEgressRule
+from .k8s_egress_rule_protocol_enum import K8SEgressRuleProtocolEnum
+from .k8s_egress_rule_request import K8SEgressRuleRequest
 from .keycloak_group import KeycloakGroup
 from .keycloak_user_group_membership import KeycloakUserGroupMembership
 from .keycloak_user_group_membership_request import KeycloakUserGroupMembershipRequest
@@ -4790,6 +4794,7 @@ __all__ = (
     "DeploymentModeEnum",
     "DeprecatedNetworkRBACPolicy",
     "DeprecatedNetworkRBACPolicyRequest",
+    "DestinationTypeEnum",
     "Detail",
     "DetailResponse",
     "DetailState",
@@ -5229,6 +5234,9 @@ __all__ = (
     "JiraIssueRequest",
     "K8SDefaultConfiguration",
     "K8SDefaultConfigurationRequest",
+    "K8SEgressRule",
+    "K8SEgressRuleProtocolEnum",
+    "K8SEgressRuleRequest",
     "KeycloakGroup",
     "KeycloakUserGroupMembership",
     "KeycloakUserGroupMembershipRequest",

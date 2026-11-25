@@ -90,7 +90,7 @@ class User:
         is_identity_manager (Union[Unset, bool]): Designates whether the user is allowed to manage remote user
             identities.
         can_use_personal_access_tokens (Union[Unset, bool]): Designates whether the user is allowed to create and use
-            personal access tokens.
+            personal access tokens while they are not enabled for every user (PAT_ENABLED).
         attribute_sources (Union[Unset, UserAttributeSources]): Per-attribute source and freshness tracking. Format:
             {'field_name': {'source': 'isd:<name>', 'timestamp': 'ISO8601'}}.
         managed_isds (Union[Unset, list[str]]):

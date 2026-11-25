@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -7,6 +7,10 @@ from attrs import field as _attrs_field
 from ..models.load_balancer_mode_enum import LoadBalancerModeEnum
 from ..models.topology_mode_enum import TopologyModeEnum
 from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.k8s_egress_rule_request import K8SEgressRuleRequest
+
 
 T = TypeVar("T", bound="K8SDefaultConfigurationRequest")
 
@@ -32,6 +36,13 @@ class K8SDefaultConfigurationRequest:
         default_storage_san_disk_gb (Union[Unset, int]):
         available_kubernetes_versions (Union[Unset, str]): Comma-separated list of Kubernetes versions (e.g.,
             1.32.0,1.33.0,1.34.0)
+        egress_rules_enabled (Union[Unset, bool]): Whether customers may restrict the cluster's outbound traffic to a
+            list of destinations (egress_rules). Off when omitted.
+        egress_domain_rules_allowed (Union[Unset, bool]): Whether customers' egress rules may name domains; otherwise
+            only networks (CIDR). Off when omitted.
+        egress_baseline_rules (Union[Unset, list['K8SEgressRuleRequest']]): Destinations every cluster of the offering
+            may reach, such as DNS, NTP and image registries. Shown to customers read-only; once a cluster has any egress
+            rule, outbound traffic is allowed to these and to the customer's destinations only.
     """
 
     default_controller_vcpus: Union[Unset, int] = UNSET
@@ -50,6 +61,9 @@ class K8SDefaultConfigurationRequest:
     default_storage_data_disk_gb: Union[Unset, int] = UNSET
     default_storage_san_disk_gb: Union[Unset, int] = UNSET
     available_kubernetes_versions: Union[Unset, str] = UNSET
+    egress_rules_enabled: Union[Unset, bool] = UNSET
+    egress_domain_rules_allowed: Union[Unset, bool] = UNSET
+    egress_baseline_rules: Union[Unset, list["K8SEgressRuleRequest"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -89,6 +103,17 @@ class K8SDefaultConfigurationRequest:
 
         available_kubernetes_versions = self.available_kubernetes_versions
 
+        egress_rules_enabled = self.egress_rules_enabled
+
+        egress_domain_rules_allowed = self.egress_domain_rules_allowed
+
+        egress_baseline_rules: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.egress_baseline_rules, Unset):
+            egress_baseline_rules = []
+            for egress_baseline_rules_item_data in self.egress_baseline_rules:
+                egress_baseline_rules_item = egress_baseline_rules_item_data.to_dict()
+                egress_baseline_rules.append(egress_baseline_rules_item)
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -124,11 +149,19 @@ class K8SDefaultConfigurationRequest:
             field_dict["default_storage_san_disk_gb"] = default_storage_san_disk_gb
         if available_kubernetes_versions is not UNSET:
             field_dict["available_kubernetes_versions"] = available_kubernetes_versions
+        if egress_rules_enabled is not UNSET:
+            field_dict["egress_rules_enabled"] = egress_rules_enabled
+        if egress_domain_rules_allowed is not UNSET:
+            field_dict["egress_domain_rules_allowed"] = egress_domain_rules_allowed
+        if egress_baseline_rules is not UNSET:
+            field_dict["egress_baseline_rules"] = egress_baseline_rules
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.k8s_egress_rule_request import K8SEgressRuleRequest
+
         d = dict(src_dict)
         default_controller_vcpus = d.pop("default_controller_vcpus", UNSET)
 
@@ -172,6 +205,17 @@ class K8SDefaultConfigurationRequest:
 
         available_kubernetes_versions = d.pop("available_kubernetes_versions", UNSET)
 
+        egress_rules_enabled = d.pop("egress_rules_enabled", UNSET)
+
+        egress_domain_rules_allowed = d.pop("egress_domain_rules_allowed", UNSET)
+
+        egress_baseline_rules = []
+        _egress_baseline_rules = d.pop("egress_baseline_rules", UNSET)
+        for egress_baseline_rules_item_data in _egress_baseline_rules or []:
+            egress_baseline_rules_item = K8SEgressRuleRequest.from_dict(egress_baseline_rules_item_data)
+
+            egress_baseline_rules.append(egress_baseline_rules_item)
+
         k8s_default_configuration_request = cls(
             default_controller_vcpus=default_controller_vcpus,
             default_controller_ram_gb=default_controller_ram_gb,
@@ -189,6 +233,9 @@ class K8SDefaultConfigurationRequest:
             default_storage_data_disk_gb=default_storage_data_disk_gb,
             default_storage_san_disk_gb=default_storage_san_disk_gb,
             available_kubernetes_versions=available_kubernetes_versions,
+            egress_rules_enabled=egress_rules_enabled,
+            egress_domain_rules_allowed=egress_domain_rules_allowed,
+            egress_baseline_rules=egress_baseline_rules,
         )
 
         k8s_default_configuration_request.additional_properties = d
