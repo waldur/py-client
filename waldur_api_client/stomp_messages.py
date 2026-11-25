@@ -27,7 +27,26 @@ class _OrderMessageRequired(TypedDict):
 
 
 class OrderMessage(_OrderMessageRequired, total=False):
-    """Sent on every state transition of an order."""
+    """Sent on every state transition of an order.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        order_uuid: UUID of the order
+        order_state: Display name of the order state
+        order_type (optional): Order type
+        resource_uuid (optional): UUID of the resource
+        resource_backend_id (optional): Backend identifier of the resource
+        resource_name (optional): Name of the resource
+        project_uuid (optional): UUID of the project
+        project_name (optional): Name of the project
+        attributes (optional): Order attributes with secrets removed
+        limits (optional): Resource limits
+        plan_uuid (optional): UUID of the resource's plan, when it has one
+    """
 
     event_type: str
     offering_uuid: str
@@ -54,7 +73,27 @@ class _PendingOrderMessageRequired(TypedDict):
 
 
 class PendingOrderMessage(_PendingOrderMessageRequired, total=False):
-    """Periodic resend of pending orders (hourly task)."""
+    """Periodic resend of pending orders (hourly task).
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        order_uuid: UUID of the order
+        order_state: Display name of the order state
+        sequence_number: Incremental message sequence number
+        order_type (optional): Order type
+        resource_uuid (optional): UUID of the resource
+        resource_backend_id (optional): Backend identifier of the resource
+        resource_name (optional): Name of the resource
+        project_uuid (optional): UUID of the project
+        project_name (optional): Name of the project
+        attributes (optional): Order attributes with secrets removed
+        limits (optional): Resource limits
+        plan_uuid (optional): UUID of the resource's plan, when it has one
+    """
 
     event_type: str
     offering_uuid: str
@@ -80,7 +119,26 @@ class _OrderInfoMessageRequired(TypedDict):
 
 
 class OrderInfoMessage(_OrderInfoMessageRequired, total=False):
-    """Sent when the provider or the consumer sets order information for the other side."""
+    """Sent when the provider or the consumer sets order information for the other side.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        order_uuid: UUID of the order
+        action: Action: 'provider_info_set' or 'consumer_info_set'
+        order_type (optional): Order type
+        resource_uuid (optional): UUID of the resource
+        resource_backend_id (optional): Backend identifier of the resource
+        resource_name (optional): Name of the resource
+        project_uuid (optional): UUID of the project
+        project_name (optional): Name of the project
+        attributes (optional): Order attributes with secrets removed
+        limits (optional): Resource limits
+        plan_uuid (optional): UUID of the resource's plan, when it has one
+    """
 
     event_type: str
     offering_uuid: str
@@ -110,7 +168,26 @@ class _ResourceUpdateMessageRequired(TypedDict):
 
 
 class ResourceUpdateMessage(_ResourceUpdateMessageRequired, total=False):
-    """Sent when resource downscale, access restriction, or pause state changes."""
+    """Sent when resource downscale, access restriction, or pause state changes.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        resource_uuid: UUID of the resource
+        resource_backend_id: Backend identifier of the resource
+        downscaled: Whether the resource is downscaled
+        restrict_member_access: Whether member access is restricted
+        paused: Whether the resource is paused
+        sequence_number: Incremental message sequence number
+        resource_name (optional): Name of the resource
+        resource_state (optional): Display name of the resource state
+        project_uuid (optional): UUID of the project
+        project_name (optional): Name of the project
+        limits (optional): Resource limits
+    """
 
     event_type: str
     offering_uuid: str
@@ -132,7 +209,22 @@ class _ResourceStateMessageRequired(TypedDict):
 
 
 class ResourceStateMessage(_ResourceStateMessageRequired, total=False):
-    """Sent when a resource is created and on every state transition."""
+    """Sent when a resource is created and on every state transition.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        resource_uuid: UUID of the resource
+        resource_backend_id: Backend identifier of the resource
+        resource_name (optional): Name of the resource
+        resource_state (optional): Display name of the resource state
+        project_uuid (optional): UUID of the project
+        project_name (optional): Name of the project
+        limits (optional): Resource limits
+    """
 
     event_type: str
     offering_uuid: str
@@ -158,7 +250,21 @@ class _OfferingUserMessageRequired(TypedDict):
 
 
 class OfferingUserMessage(_OfferingUserMessageRequired, total=False):
-    """Sent when an offering user's username is set or changed."""
+    """Sent when an offering user's username is set or changed.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        offering_user_uuid: UUID of the offering user
+        user_uuid: UUID of the Waldur user
+        username: Username of the offering user
+        state: State of the offering user, as its raw value
+        action: Action type: username_set
+        resource_backend_ids: Backend IDs of associated resources
+    """
 
     event_type: str
     offering_uuid: str
@@ -180,7 +286,22 @@ class _OfferingUserCreatedMessageRequired(TypedDict):
 
 
 class OfferingUserCreatedMessage(_OfferingUserCreatedMessageRequired, total=False):
-    """Sent when an offering user is created."""
+    """Sent when an offering user is created.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        offering_user_uuid: UUID of the offering user
+        user_uuid: UUID of the Waldur user
+        username: Username of the offering user
+        state: Display name of the offering user state
+        runtime_state: Runtime state reported by the backend
+        action: Action type: create
+        attributes: User profile attributes exposed to the offering
+    """
 
     event_type: str
     offering_uuid: str
@@ -202,7 +323,22 @@ class _OfferingUserUpdatedMessageRequired(TypedDict):
 
 
 class OfferingUserUpdatedMessage(_OfferingUserUpdatedMessageRequired, total=False):
-    """Sent when tracked fields of an offering user change."""
+    """Sent when tracked fields of an offering user change.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        offering_user_uuid: UUID of the offering user
+        user_uuid: UUID of the Waldur user
+        username: Username of the offering user
+        state: Display name of the offering user state
+        runtime_state: Runtime state reported by the backend
+        changed_fields: Fields that changed
+        action: Action type: update
+    """
 
     event_type: str
     offering_uuid: str
@@ -221,7 +357,19 @@ class _OfferingUserDeletedMessageRequired(TypedDict):
 
 
 class OfferingUserDeletedMessage(_OfferingUserDeletedMessageRequired, total=False):
-    """Sent when an offering user is deleted."""
+    """Sent when an offering user is deleted.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        offering_user_uuid: UUID of the offering user
+        user_uuid: UUID of the Waldur user
+        username: Username of the offering user
+        action: Action type: delete
+    """
 
     event_type: str
     offering_uuid: str
@@ -242,7 +390,21 @@ class _OfferingUserAttributeUpdateMessageRequired(TypedDict):
 
 
 class OfferingUserAttributeUpdateMessage(_OfferingUserAttributeUpdateMessageRequired, total=False):
-    """Sent for each offering of a user when profile attributes exposed to that offering change."""
+    """Sent for each offering of a user when profile attributes exposed to that offering change.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        offering_user_uuid: UUID of the offering user
+        user_uuid: UUID of the Waldur user
+        username: Username of the offering user
+        action: Action type: attribute_update
+        changed_attributes: Exposed profile fields that changed
+        attributes: User profile attributes exposed to the offering
+    """
 
     event_type: str
     offering_uuid: str
@@ -262,7 +424,20 @@ class _OfferingUserAccountStatusUpdateMessageRequired(TypedDict):
 
 
 class OfferingUserAccountStatusUpdateMessage(_OfferingUserAccountStatusUpdateMessageRequired, total=False):
-    """Sent for each offering of a user when the user's Waldur account is activated or deactivated."""
+    """Sent for each offering of a user when the user's Waldur account is activated or deactivated.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        offering_user_uuid: UUID of the offering user
+        user_uuid: UUID of the Waldur user
+        username: Username of the offering user
+        action: Action type: account_status_update
+        user_is_active: Whether the Waldur user account is active
+    """
 
     event_type: str
     offering_uuid: str
@@ -283,7 +458,23 @@ class _UserRoleMessageRequired(TypedDict):
 
 
 class UserRoleMessage(_UserRoleMessageRequired, total=False):
-    """Sent when a user role is granted or revoked in a project."""
+    """Sent when a user role is granted or revoked in a project.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        user_uuid: UUID of the user
+        user_username: Username of the user
+        project_uuid: UUID of the project
+        project_name: Name of the project
+        role_name: Name of the role
+        granted: True if granted, False if revoked
+        user_email (optional): Email of the user
+        user_full_name (optional): Full name of the user
+    """
 
     event_type: str
     offering_uuid: str
@@ -302,7 +493,18 @@ class _UserRoleSyncMessageRequired(TypedDict):
 
 
 class UserRoleSyncMessage(_UserRoleSyncMessageRequired, total=False):
-    """Sent to trigger a user-role sync for a project, or for one resource when resource_uuid is present."""
+    """Sent to trigger a user-role sync for a project, or for one resource when resource_uuid is present.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        project_uuid: UUID of the project
+        project_name: Name of the project
+        resource_uuid (optional): UUID of the resource to re-sync; absent for a project-wide sync
+    """
 
     event_type: str
     offering_uuid: str
@@ -324,7 +526,21 @@ class _AccountMessageRequired(TypedDict):
 
 
 class AccountMessage(_AccountMessageRequired, total=False):
-    """Sent when a service or course account is created or deleted."""
+    """Sent when a service or course account is created or deleted.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        account_uuid: UUID of the account
+        account_username: Username of the account
+        scope_type: Scope type (always 'project')
+        project_uuid: UUID of the project
+        project_name: Name of the project
+        action: Action: 'create' or 'delete'
+    """
 
     event_type: str
     offering_uuid: str
@@ -346,7 +562,21 @@ class _PeriodicLimitsMessageRequired(TypedDict):
 
 
 class PeriodicLimitsMessage(_PeriodicLimitsMessageRequired, total=False):
-    """Sent when SLURM policy periodic settings need to be applied."""
+    """Sent when SLURM policy periodic settings need to be applied.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid: UUID of the offering
+        resource_uuid: UUID of the resource
+        backend_id: Backend resource identifier (SLURM account name)
+        policy_uuid: UUID of the policy
+        action: Action: 'apply_periodic_settings'
+        settings: SLURM settings dict (fairshare, limits, thresholds)
+        timestamp: ISO 8601 timestamp for the current period
+    """
 
     event_type: str
 
@@ -361,7 +591,16 @@ class _BackendResourceRequestMessageRequired(TypedDict):
 
 
 class BackendResourceRequestMessage(_BackendResourceRequestMessageRequired, total=False):
-    """Asks the agent to list the backend resources that can be imported into the offering."""
+    """Asks the agent to list the backend resources that can be imported into the offering.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        backend_resource_request_uuid: UUID of the backend resource request to fulfill
+    """
 
     event_type: str
     offering_uuid: str
@@ -377,7 +616,16 @@ class _OfferingResourcesSyncMessageRequired(TypedDict):
 
 
 class OfferingResourcesSyncMessage(_OfferingResourcesSyncMessageRequired, total=False):
-    """Asks the agent to reconcile every resource of the offering."""
+    """Asks the agent to reconcile every resource of the offering.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        requested_by_user_uuid: UUID of the user who requested the synchronization
+    """
 
     event_type: str
     offering_uuid: str
@@ -397,7 +645,23 @@ class _ApiKeyCommandMessageRequired(TypedDict):
 
 
 class ApiKeyCommandMessage(_ApiKeyCommandMessageRequired, total=False):
-    """A command on one of a resource's API keys: create, rotate, pause, resume, update or delete."""
+    """A command on one of a resource's API keys: create, rotate, pause, resume, update or delete. Carried on the resource_api_key_rotation observable type, which is named for the first command and kept so subscriptions do not change.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        action: One of ResourceApiKeyActions
+        resource_uuid: UUID of the resource
+        resource_backend_id: Backend identifier of the resource
+        api_key_uuid: UUID of the API key
+        client_id: Backend client id of the key; blank on a key being created
+        limits (optional): Monthly limits per component, null when the key has none; only on commands that carry the key's settings
+        spending_limits (optional): Spending limits for every period, null when the key has none; only on commands that carry the key's settings
+        allowed_models (optional): Models the key may call (['*'] for all, [] for none): the key's own list narrowed by its resource's model selection. Only on commands that carry the key's settings; absent from Waldur versions older than ['*'], where absence allows every model
+    """
 
     event_type: str
     offering_uuid: str
@@ -418,7 +682,24 @@ class _ProjectGroupMessageRequired(TypedDict):
 
 
 class ProjectGroupMessage(_ProjectGroupMessageRequired, total=False):
-    """A provider project group was created, updated or deleted, or project groups were switched on or off for the provider."""
+    """A provider project group was created, updated or deleted, or project groups were switched on or off for the provider.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        action: Action: 'create' (the group got its first GID), 'update' (its name or GID changed), 'delete', or 'switch' (project groups switched on or off for the provider)
+        service_provider_uuid: UUID of the service provider
+        customer_uuid: UUID of the provider's organization
+        project_group_uuid (optional): UUID of the group; absent on 'switch'
+        project_uuid (optional): UUID of the group's project if it still exists; absent on 'switch'
+        name (optional): Group name; absent on 'switch'
+        gid (optional): Group GID; absent on 'switch'
+        changed_fields (optional): Fields that changed; only on 'update'
+        project_groups_enabled (optional): The new setting; only on 'switch'
+    """
 
     event_type: str
     offering_uuid: str
@@ -440,7 +721,28 @@ class _OrderEventRequired(TypedDict):
 
 
 class OrderEvent(_OrderEventRequired, total=False):
-    """Any message delivered for order: OrderMessage, PendingOrderMessage, OrderInfoMessage."""
+    """Any message delivered for order: OrderMessage, PendingOrderMessage, OrderInfoMessage.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        order_uuid: UUID of the order
+        order_state (optional): Display name of the order state
+        order_type (optional): Order type
+        resource_uuid (optional): UUID of the resource
+        resource_backend_id (optional): Backend identifier of the resource
+        resource_name (optional): Name of the resource
+        project_uuid (optional): UUID of the project
+        project_name (optional): Name of the project
+        attributes (optional): Order attributes with secrets removed
+        limits (optional): Resource limits
+        plan_uuid (optional): UUID of the resource's plan, when it has one
+        sequence_number (optional): Incremental message sequence number
+        action (optional): Action: 'provider_info_set' or 'consumer_info_set'
+    """
 
     event_type: str
     offering_uuid: str
@@ -469,7 +771,26 @@ class _ResourceEventRequired(TypedDict):
 
 
 class ResourceEvent(_ResourceEventRequired, total=False):
-    """Any message delivered for resource: ResourceUpdateMessage, ResourceStateMessage."""
+    """Any message delivered for resource: ResourceUpdateMessage, ResourceStateMessage.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        resource_uuid: UUID of the resource
+        resource_backend_id: Backend identifier of the resource
+        downscaled (optional): Whether the resource is downscaled
+        restrict_member_access (optional): Whether member access is restricted
+        paused (optional): Whether the resource is paused
+        sequence_number (optional): Incremental message sequence number
+        resource_name (optional): Name of the resource
+        resource_state (optional): Display name of the resource state
+        project_uuid (optional): UUID of the project
+        project_name (optional): Name of the project
+        limits (optional): Resource limits
+    """
 
     event_type: str
     offering_uuid: str
@@ -497,7 +818,26 @@ class _OfferingUserEventRequired(TypedDict):
 
 
 class OfferingUserEvent(_OfferingUserEventRequired, total=False):
-    """Any message delivered for offering_user: OfferingUserMessage, OfferingUserCreatedMessage, OfferingUserUpdatedMessage, OfferingUserDeletedMessage, OfferingUserAttributeUpdateMessage, OfferingUserAccountStatusUpdateMessage."""
+    """Any message delivered for offering_user: OfferingUserMessage, OfferingUserCreatedMessage, OfferingUserUpdatedMessage, OfferingUserDeletedMessage, OfferingUserAttributeUpdateMessage, OfferingUserAccountStatusUpdateMessage.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        offering_user_uuid: UUID of the offering user
+        user_uuid: UUID of the Waldur user
+        username: Username of the offering user
+        state (optional): State of the offering user, as its raw value; Display name of the offering user state
+        action: Action type: username_set; Action type: create; Action type: update; Action type: delete; Action type: attribute_update; Action type: account_status_update
+        resource_backend_ids (optional): Backend IDs of associated resources
+        runtime_state (optional): Runtime state reported by the backend
+        attributes (optional): User profile attributes exposed to the offering
+        changed_fields (optional): Fields that changed
+        changed_attributes (optional): Exposed profile fields that changed
+        user_is_active (optional): Whether the Waldur user account is active
+    """
 
     event_type: str
     offering_uuid: str
@@ -521,7 +861,24 @@ class _UserRoleEventRequired(TypedDict):
 
 
 class UserRoleEvent(_UserRoleEventRequired, total=False):
-    """Any message delivered for user_role: UserRoleMessage, UserRoleSyncMessage."""
+    """Any message delivered for user_role: UserRoleMessage, UserRoleSyncMessage.
+
+    Attributes:
+        object_type: ObservableObjectType this message is delivered for
+        schema_version: Version of the envelope format
+        emitted_at: ISO 8601 time the event was emitted, for discarding stale updates
+        event_type (optional): Event type, when the event comes from the event log
+        offering_uuid (optional): UUID of the offering; added to every offering-scoped event
+        user_uuid (optional): UUID of the user
+        user_username (optional): Username of the user
+        project_uuid: UUID of the project
+        project_name: Name of the project
+        role_name (optional): Name of the role
+        granted (optional): True if granted, False if revoked
+        user_email (optional): Email of the user
+        user_full_name (optional): Full name of the user
+        resource_uuid (optional): UUID of the resource to re-sync; absent for a project-wide sync
+    """
 
     event_type: str
     offering_uuid: str
