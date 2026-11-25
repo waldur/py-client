@@ -61,6 +61,15 @@ class GenerateStompMessagesTest(unittest.TestCase):
                 if len(names) >= 2:
                     event_cls = getattr(module, gen.event_name(object_type))
                     typing.get_type_hints(event_cls)
+
+            api_key_doc = module.ApiKeyCommandMessage.__doc__ or ""
+            self.assertIn("Attributes:", api_key_doc)
+            self.assertIn("allowed_models (optional):", api_key_doc)
+            self.assertIn("resource_api_key_rotation", api_key_doc)
+
+            offering_user_event_doc = module.OfferingUserEvent.__doc__ or ""
+            self.assertIn("Attributes:", offering_user_event_doc)
+            self.assertIn("state (optional):", offering_user_event_doc)
         finally:
             sys.modules.pop(mod_name, None)
 

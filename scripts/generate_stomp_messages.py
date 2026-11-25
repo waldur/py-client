@@ -77,6 +77,7 @@ class Field:
     name: str
     type_spec: TypeSpec
     required: bool
+    description: str = ""
 
 
 def _literal(values: list[Any]) -> str:
@@ -125,10 +126,14 @@ def message_fields(document: dict[str, Any], message: dict[str, Any]) -> list[Fi
         for name, prop in schema["properties"].items():
             # allOf: a key either part requires is required.
             already_required = name in fields and fields[name].required
+            description = " ".join(str(prop.get("description", "")).split())
+            if not description and name in fields:
+                description = fields[name].description
             fields[name] = Field(
                 name=name,
                 type_spec=schema_to_type(prop),
                 required=already_required or name in required,
+                description=description,
             )
     return list(fields.values())
 
@@ -157,21 +162,26 @@ def merge_fields(variants: list[list[Field]]) -> list[Field]:
     """Fields of a handler that receives any of ``variants``."""
     order: list[str] = []
     specs_by_name: dict[str, list[TypeSpec]] = {}
+    descriptions_by_name: dict[str, list[str]] = {}
     required_in: dict[str, int] = {}
     for fields in variants:
         for field in fields:
             if field.name not in specs_by_name:
                 order.append(field.name)
                 specs_by_name[field.name] = []
+                descriptions_by_name[field.name] = []
                 required_in[field.name] = 0
             if field.type_spec not in specs_by_name[field.name]:
                 specs_by_name[field.name].append(field.type_spec)
+            if field.description and field.description not in descriptions_by_name[field.name]:
+                descriptions_by_name[field.name].append(field.description)
             required_in[field.name] += field.required
     return [
         Field(
             name=name,
             type_spec=merge_type_specs(specs_by_name[name]),
             required=required_in[name] == len(variants),
+            description="; ".join(descriptions_by_name[name]),
         )
         for name in order
     ]
@@ -179,6 +189,24 @@ def merge_fields(variants: list[list[Field]]) -> list[Field]:
 
 def _escape_docstring(text: str) -> str:
     return text.replace("\\", "\\\\").replace('"""', '\\"\\"\\"')
+
+
+def _format_docstring(summary: str, fields: list[Field]) -> list[str]:
+    documented = [f for f in fields if f.description]
+    if not summary and not documented:
+        return []
+    if not documented:
+        return [f'    """{_escape_docstring(summary)}"""', ""]
+    lines = [f'    """{_escape_docstring(summary)}' if summary else '    """']
+    if summary:
+        lines.append("")
+    lines.append("    Attributes:")
+    for f in documented:
+        suffix = "" if f.required else " (optional)"
+        lines.append(f"        {f.name}{suffix}: {_escape_docstring(f.description)}")
+    lines.append('    """')
+    lines.append("")
+    return lines
 
 
 def render_typed_dict(name: str, fields: list[Field], docstring: str) -> str:
@@ -189,9 +217,10 @@ def render_typed_dict(name: str, fields: list[Field], docstring: str) -> str:
     lines += [f"    {f.name}: {f.type_spec.render()}" for f in required]
     lines += ["", ""]
     lines += [f"class {name}({base}, total=False):"]
-    lines += [f'    """{_escape_docstring(docstring)}"""', ""] if docstring else []
+    doc_lines = _format_docstring(docstring, fields)
+    lines += doc_lines
     lines += [f"    {f.name}: {f.type_spec.render()}" for f in optional]
-    if not optional and not docstring:
+    if not optional and not doc_lines:
         lines.append("    pass")
     return "\n".join(lines).rstrip() + "\n"
 
