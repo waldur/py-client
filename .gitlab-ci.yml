@@ -33,6 +33,24 @@ Fetch OpenAPI schema:
       - "$OPENAPI_SCHEMA_DEST"
       - waldur-asyncapi.yaml
 
+Test STOMP message generator:
+  stage: test
+  image: "registry.hpc.ut.ee/mirror/library/python:$PYTHON_VERSION-slim"
+  interruptible: true
+  needs: []
+  parallel:
+    matrix:
+      - PYTHON_VERSION: ["3.9", "3.13"]
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+    - if: '$CI_PIPELINE_SOURCE == "trigger"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+  script:
+    - pip install --quiet pyyaml
+    - python scripts/generate_stomp_messages.py waldur_api_client/asyncapi.yaml waldur_api_client/stomp_messages.py --check
+    - python -m unittest discover -s tests -v
+
 # GitLab unpacks artifacts over the job's checkout, which still holds the client
 # committed last time. A module the generator no longer writes (a removed
 # endpoint or model) therefore survived into both the nightly commit and the
@@ -83,8 +101,18 @@ Build Python SDK:
     - rm -rf gen-client
     - echo "Compiling generated Python module..."
     - python -m py_compile $(find generated/waldur_api_client -name "*.py")
-    # Defining the TypedDicts evaluates more than compiling does.
-    - python -c "import importlib.util as u; s = u.spec_from_file_location('m', 'generated/waldur_api_client/stomp_messages.py'); s.loader.exec_module(u.module_from_spec(s))"
+    # Defining and resolving every TypedDict catches invalid annotations that py_compile misses.
+    - |
+      python - << 'EOF'
+      import importlib.util, sys, typing
+      spec = importlib.util.spec_from_file_location("m", "generated/waldur_api_client/stomp_messages.py")
+      mod = importlib.util.module_from_spec(spec)
+      sys.modules["m"] = mod
+      spec.loader.exec_module(mod)
+      for name, obj in vars(mod).items():
+          if isinstance(obj, type) and hasattr(obj, "__required_keys__"):
+              typing.get_type_hints(obj)
+      EOF
   artifacts:
     paths:
       - generated/waldur_api_client/

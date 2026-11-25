@@ -11,10 +11,9 @@ merged ``<ObjectType>Event`` TypedDict: a handler subscribed to the type can
 receive any of them, so only keys every message carries are required.
 """
 
-# Keeps the ``X | None`` annotations unevaluated on Python 3.9.
-from __future__ import annotations
-
-from typing import Any, Literal, TypedDict  # noqa: F401
+# Optional/Union instead of PEP 604 `X | Y` keeps typing.get_type_hints() working on Python 3.9.
+# ruff: noqa: UP007, UP045
+from typing import Any, Literal, Optional, TypedDict, Union  # noqa: F401
 
 
 class _OrderMessageRequired(TypedDict):
@@ -402,8 +401,8 @@ class ApiKeyCommandMessage(_ApiKeyCommandMessageRequired, total=False):
 
     event_type: str
     offering_uuid: str
-    limits: dict[str, Any] | None
-    spending_limits: dict[str, Any] | None
+    limits: Optional[dict[str, Any]]
+    spending_limits: Optional[dict[str, Any]]
     allowed_models: list[str]
 
 
@@ -424,9 +423,9 @@ class ProjectGroupMessage(_ProjectGroupMessageRequired, total=False):
     event_type: str
     offering_uuid: str
     project_group_uuid: str
-    project_uuid: str | None
+    project_uuid: Optional[str]
     name: str
-    gid: int | None
+    gid: Optional[int]
     changed_fields: list[str]
     project_groups_enabled: bool
 
@@ -502,7 +501,7 @@ class OfferingUserEvent(_OfferingUserEventRequired, total=False):
 
     event_type: str
     offering_uuid: str
-    state: int | str
+    state: Union[int, str]
     resource_backend_ids: list[str]
     runtime_state: str
     attributes: dict[str, Any]
@@ -537,7 +536,7 @@ class UserRoleEvent(_UserRoleEventRequired, total=False):
 
 
 # Message names by the object type they are delivered for.
-MESSAGES_BY_OBJECT_TYPE = {
+MESSAGES_BY_OBJECT_TYPE: dict[str, tuple[str, ...]] = {
     "order": ("OrderMessage", "PendingOrderMessage", "OrderInfoMessage",),
     "resource": ("ResourceUpdateMessage", "ResourceStateMessage",),
     "offering_user": ("OfferingUserMessage", "OfferingUserCreatedMessage", "OfferingUserUpdatedMessage", "OfferingUserDeletedMessage", "OfferingUserAttributeUpdateMessage", "OfferingUserAccountStatusUpdateMessage",),
