@@ -1060,6 +1060,18 @@ from .feature_metadata_response_feature_enums import FeatureMetadataResponseFeat
 from .feature_metadata_response_feature_enums_additional_property import (
     FeatureMetadataResponseFeatureEnumsAdditionalProperty,
 )
+from .feature_rule import FeatureRule
+from .feature_rule_check import FeatureRuleCheck
+from .feature_rule_check_rule_value_type_0 import FeatureRuleCheckRuleValueType0
+from .feature_rule_check_user_value_type_0 import FeatureRuleCheckUserValueType0
+from .feature_rule_matched_user import FeatureRuleMatchedUser
+from .feature_rule_matched_users_response import FeatureRuleMatchedUsersResponse
+from .feature_rule_request import FeatureRuleRequest
+from .feature_rule_request_user_claims import FeatureRuleRequestUserClaims
+from .feature_rule_test_match_request_request import FeatureRuleTestMatchRequestRequest
+from .feature_rule_test_match_response import FeatureRuleTestMatchResponse
+from .feature_rule_user_claims import FeatureRuleUserClaims
+from .feature_scope_enum import FeatureScopeEnum
 from .feature_section import FeatureSection
 from .feature_values_body import FeatureValuesBody
 from .federatedidentitydeactivationpolicy_enum import FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum
@@ -1544,6 +1556,9 @@ from .metric_series_group_attributes import MetricSeriesGroupAttributes
 from .metric_series_response import MetricSeriesResponse
 from .metric_series_response_aggregate_enum import MetricSeriesResponseAggregateEnum
 from .metric_series_response_granularity_enum import MetricSeriesResponseGranularityEnum
+from .micro_app_mode_enum import MicroAppModeEnum
+from .micro_app_setting import MicroAppSetting
+from .micro_app_setting_request import MicroAppSettingRequest
 from .migration_create import MigrationCreate
 from .migration_create_request import MigrationCreateRequest
 from .migration_details import MigrationDetails
@@ -1561,6 +1576,7 @@ from .my_task_due_enum import MyTaskDueEnum
 from .my_task_summary import MyTaskSummary
 from .name_enum import NameEnum
 from .name_uuid import NameUUID
+from .named_summary import NamedSummary
 from .needed_enum import NeededEnum
 from .nested_agent_processor import NestedAgentProcessor
 from .nested_agent_service import NestedAgentService
@@ -1679,6 +1695,8 @@ from .offering_component_request import OfferingComponentRequest
 from .offering_component_request_spending_limit_periods import OfferingComponentRequestSpendingLimitPeriods
 from .offering_component_spending_limit_periods import OfferingComponentSpendingLimitPeriods
 from .offering_component_stat import OfferingComponentStat
+from .offering_configuration_finding import OfferingConfigurationFinding
+from .offering_configuration_finding_severity_enum import OfferingConfigurationFindingSeverityEnum
 from .offering_cost import OfferingCost
 from .offering_costs_summary import OfferingCostsSummary
 from .offering_country_stats import OfferingCountryStats
@@ -2290,6 +2308,8 @@ from .patched_email_hook_request import PatchedEmailHookRequest
 from .patched_external_link_request import PatchedExternalLinkRequest
 from .patched_external_link_request_form import PatchedExternalLinkRequestForm
 from .patched_external_link_request_multipart import PatchedExternalLinkRequestMultipart
+from .patched_feature_rule_request import PatchedFeatureRuleRequest
+from .patched_feature_rule_request_user_claims import PatchedFeatureRuleRequestUserClaims
 from .patched_feedback_survey_detail_request import PatchedFeedbackSurveyDetailRequest
 from .patched_group_invitation_update_request import PatchedGroupInvitationUpdateRequest
 from .patched_identity_provider_request import PatchedIdentityProviderRequest
@@ -2313,6 +2333,7 @@ from .patched_matching_configuration_request import PatchedMatchingConfiguration
 from .patched_message_template_request import PatchedMessageTemplateRequest
 from .patched_metric_definition_request import PatchedMetricDefinitionRequest
 from .patched_metric_goal_request import PatchedMetricGoalRequest
+from .patched_micro_app_setting_request import PatchedMicroAppSettingRequest
 from .patched_notification_request import PatchedNotificationRequest
 from .patched_notification_template_detail_serializers_request import (
     PatchedNotificationTemplateDetailSerializersRequest,
@@ -3304,6 +3325,7 @@ from .round_step_proposal_result import RoundStepProposalResult
 from .round_workflow_step_due_date_request import RoundWorkflowStepDueDateRequest
 from .route_to_provider_request import RouteToProviderRequest
 from .rule import Rule
+from .rule_enum import RuleEnum
 from .rule_plan_attributes import RulePlanAttributes
 from .rule_plan_limits import RulePlanLimits
 from .rule_request import RuleRequest
@@ -3339,6 +3361,7 @@ from .s3_object_request_request import S3ObjectRequestRequest
 from .s3_public_access_block import S3PublicAccessBlock
 from .s3_quota_limit import S3QuotaLimit
 from .s3_quotas import S3Quotas
+from .s3_quotas_scope_enum import S3QuotasScopeEnum
 from .s3_tag import S3Tag
 from .s3_upload_request_request import S3UploadRequestRequest
 from .s3_versioning import S3Versioning
@@ -3374,7 +3397,6 @@ from .science_sub_domain_request import ScienceSubDomainRequest
 from .scim_pull_attributes_response import ScimPullAttributesResponse
 from .scim_sync_all_response import ScimSyncAllResponse
 from .scimusermatchwaldurattribute_enum import SCIMUSERMATCHWALDURATTRIBUTEEnum
-from .scope_enum import ScopeEnum
 from .scoped_offering import ScopedOffering
 from .scoped_offering_request import ScopedOfferingRequest
 from .screenshot import Screenshot
@@ -3750,6 +3772,9 @@ from .user_data_access_log import UserDataAccessLog
 from .user_data_access_log_context import UserDataAccessLogContext
 from .user_details import UserDetails
 from .user_email_change_request import UserEmailChangeRequest
+from .user_feature_state import UserFeatureState
+from .user_feature_state_source_enum import UserFeatureStateSourceEnum
+from .user_features_response import UserFeaturesResponse
 from .user_field_enum import UserFieldEnum
 from .user_has_resource_access import UserHasResourceAccess
 from .user_identity_source_count import UserIdentitySourceCount
@@ -3763,7 +3788,11 @@ from .user_mapping_map import UserMappingMap
 from .user_me import UserMe
 from .user_me_attribute_sources import UserMeAttributeSources
 from .user_me_details import UserMeDetails
+from .user_me_features import UserMeFeatures
+from .user_me_features_additional_property import UserMeFeaturesAdditionalProperty
 from .user_me_field_enum import UserMeFieldEnum
+from .user_me_micro_apps import UserMeMicroApps
+from .user_micro_app_state import UserMicroAppState
 from .user_nationality_stats import UserNationalityStats
 from .user_offering_consent import UserOfferingConsent
 from .user_offering_consent_create import UserOfferingConsentCreate
@@ -3789,6 +3818,7 @@ from .user_role_details_o_enum import UserRoleDetailsOEnum
 from .user_role_expiration_time import UserRoleExpirationTime
 from .user_role_permission_action_request import UserRolePermissionActionRequest
 from .user_role_update_request import UserRoleUpdateRequest
+from .user_summary import UserSummary
 from .username_generation_policy_enum import UsernameGenerationPolicyEnum
 from .users_history_at_retrieve_response_400 import UsersHistoryAtRetrieveResponse400
 from .users_history_at_retrieve_response_404 import UsersHistoryAtRetrieveResponse404
@@ -4985,6 +5015,18 @@ __all__ = (
     "FeatureMetadataResponse",
     "FeatureMetadataResponseFeatureEnums",
     "FeatureMetadataResponseFeatureEnumsAdditionalProperty",
+    "FeatureRule",
+    "FeatureRuleCheck",
+    "FeatureRuleCheckRuleValueType0",
+    "FeatureRuleCheckUserValueType0",
+    "FeatureRuleMatchedUser",
+    "FeatureRuleMatchedUsersResponse",
+    "FeatureRuleRequest",
+    "FeatureRuleRequestUserClaims",
+    "FeatureRuleTestMatchRequestRequest",
+    "FeatureRuleTestMatchResponse",
+    "FeatureRuleUserClaims",
+    "FeatureScopeEnum",
     "FeatureSection",
     "FeatureValuesBody",
     "FEDERATEDIDENTITYDEACTIVATIONPOLICYEnum",
@@ -5439,6 +5481,9 @@ __all__ = (
     "MetricSeriesResponse",
     "MetricSeriesResponseAggregateEnum",
     "MetricSeriesResponseGranularityEnum",
+    "MicroAppModeEnum",
+    "MicroAppSetting",
+    "MicroAppSettingRequest",
     "MigrationCreate",
     "MigrationCreateRequest",
     "MigrationDetails",
@@ -5454,6 +5499,7 @@ __all__ = (
     "MyTask",
     "MyTaskDueEnum",
     "MyTaskSummary",
+    "NamedSummary",
     "NameEnum",
     "NameUUID",
     "NeededEnum",
@@ -5574,6 +5620,8 @@ __all__ = (
     "OfferingComponentRequestSpendingLimitPeriods",
     "OfferingComponentSpendingLimitPeriods",
     "OfferingComponentStat",
+    "OfferingConfigurationFinding",
+    "OfferingConfigurationFindingSeverityEnum",
     "OfferingCost",
     "OfferingCostsSummary",
     "OfferingCountryStats",
@@ -6131,6 +6179,8 @@ __all__ = (
     "PatchedExternalLinkRequest",
     "PatchedExternalLinkRequestForm",
     "PatchedExternalLinkRequestMultipart",
+    "PatchedFeatureRuleRequest",
+    "PatchedFeatureRuleRequestUserClaims",
     "PatchedFeedbackSurveyDetailRequest",
     "PatchedGroupInvitationUpdateRequest",
     "PatchedIdentityProviderRequest",
@@ -6152,6 +6202,7 @@ __all__ = (
     "PatchedMessageTemplateRequest",
     "PatchedMetricDefinitionRequest",
     "PatchedMetricGoalRequest",
+    "PatchedMicroAppSettingRequest",
     "PatchedNotificationRequest",
     "PatchedNotificationTemplateDetailSerializersRequest",
     "PatchedOfferingAccessSubnetRequest",
@@ -7093,6 +7144,7 @@ __all__ = (
     "RoundWorkflowStepDueDateRequest",
     "RouteToProviderRequest",
     "Rule",
+    "RuleEnum",
     "RulePlanAttributes",
     "RulePlanLimits",
     "RuleRequest",
@@ -7128,6 +7180,7 @@ __all__ = (
     "S3PublicAccessBlock",
     "S3QuotaLimit",
     "S3Quotas",
+    "S3QuotasScopeEnum",
     "S3Tag",
     "S3UploadRequestRequest",
     "S3Versioning",
@@ -7165,7 +7218,6 @@ __all__ = (
     "SCIMUSERMATCHWALDURATTRIBUTEEnum",
     "ScopedOffering",
     "ScopedOfferingRequest",
-    "ScopeEnum",
     "Screenshot",
     "ScreenshotRequest",
     "ScreenshotRequestForm",
@@ -7533,6 +7585,9 @@ __all__ = (
     "UserDataAccessLogContext",
     "UserDetails",
     "UserEmailChangeRequest",
+    "UserFeaturesResponse",
+    "UserFeatureState",
+    "UserFeatureStateSourceEnum",
     "UserFieldEnum",
     "UserHasResourceAccess",
     "UserIdentitySourceCount",
@@ -7546,7 +7601,11 @@ __all__ = (
     "UserMe",
     "UserMeAttributeSources",
     "UserMeDetails",
+    "UserMeFeatures",
+    "UserMeFeaturesAdditionalProperty",
     "UserMeFieldEnum",
+    "UserMeMicroApps",
+    "UserMicroAppState",
     "UsernameGenerationPolicyEnum",
     "UserNationalityStats",
     "UserOfferingConsent",
@@ -7575,6 +7634,7 @@ __all__ = (
     "UserRoleUpdateRequest",
     "UsersHistoryAtRetrieveResponse400",
     "UsersHistoryAtRetrieveResponse404",
+    "UserSummary",
     "ValidationDecisionEnum",
     "ValidationMethodEnum",
     "ValueEnum",

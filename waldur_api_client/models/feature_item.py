@@ -4,6 +4,8 @@ from typing import Any, TypeVar
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.feature_scope_enum import FeatureScopeEnum
+
 T = TypeVar("T", bound="FeatureItem")
 
 
@@ -13,10 +15,12 @@ class FeatureItem:
     Attributes:
         key (str):
         description (str):
+        scope (FeatureScopeEnum):
     """
 
     key: str
     description: str
+    scope: FeatureScopeEnum
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -24,12 +28,15 @@ class FeatureItem:
 
         description = self.description
 
+        scope = self.scope.value
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "key": key,
                 "description": description,
+                "scope": scope,
             }
         )
 
@@ -42,9 +49,12 @@ class FeatureItem:
 
         description = d.pop("description")
 
+        scope = FeatureScopeEnum(d.pop("scope"))
+
         feature_item = cls(
             key=key,
             description=description,
+            scope=scope,
         )
 
         feature_item.additional_properties = d

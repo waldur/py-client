@@ -1,6 +1,6 @@
 # Waldur API
 
-> Auto-generated Python SDK for the Waldur API (version 8.1.5-rc.4.dev.20261125083712).
+> Auto-generated Python SDK for the Waldur API (version 8.1.5-rc.4.dev.20261125100104).
 > This SDK is generated from an OpenAPI specification using openapi-python-client.
 
 ## Quick Start
@@ -113,6 +113,7 @@ waldur_api_client/
 - **expertise-categories** (3 endpoints)
 - **export-pdf** (1 endpoint)
 - **external-links** (7 endpoints)
+- **feature-rules** (9 endpoints)
 - **feature-values** (1 endpoint)
 - **feedback-requests** (8 endpoints)
 - **feedback-surveys** (9 endpoints)
@@ -198,7 +199,7 @@ waldur_api_client/
 - **marketplace-project-service-accounts** (8 endpoints)
 - **marketplace-project-update-requests** (5 endpoints)
 - **marketplace-project-usage** (2 endpoints)
-- **marketplace-provider-offerings** (101 endpoints)
+- **marketplace-provider-offerings** (102 endpoints)
 - **marketplace-provider-resource-projects** (13 endpoints)
 - **marketplace-provider-resources** (49 endpoints)
 - **marketplace-public-api** (2 endpoints)
@@ -241,6 +242,7 @@ waldur_api_client/
 - **matrix** (31 endpoints)
 - **media** (1 endpoint)
 - **metadata** (4 endpoints)
+- **micro-app-settings** (7 endpoints)
 - **my-assignment-batches** (3 endpoints)
 - **notification-messages** (9 endpoints)
 - **notification-messages-templates** (8 endpoints)
@@ -400,7 +402,7 @@ waldur_api_client/
 - **user-invitations** (16 endpoints)
 - **user-permission-requests** (7 endpoints)
 - **user-permissions** (5 endpoints)
-- **users** (36 endpoints)
+- **users** (37 endpoints)
 - **version** (1 endpoint)
 - **vmware-clusters** (3 endpoints)
 - **vmware-datastores** (3 endpoints)

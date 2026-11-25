@@ -16,6 +16,8 @@ if TYPE_CHECKING:
     from ..models.profile_completeness import ProfileCompleteness
     from ..models.user_me_attribute_sources import UserMeAttributeSources
     from ..models.user_me_details import UserMeDetails
+    from ..models.user_me_features import UserMeFeatures
+    from ..models.user_me_micro_apps import UserMeMicroApps
 
 
 T = TypeVar("T", bound="UserMe")
@@ -101,6 +103,11 @@ class UserMe:
             not be reactivated automatically by the role-sync task. Visible to staff and support.
         details (Union[Unset, UserMeDetails]): Extra details from authentication backend.
         profile_completeness (Union[Unset, ProfileCompleteness]):
+        features (Union[Unset, UserMeFeatures]): Effective values of the user-scoped feature flags for this user: the
+            global value, or on when a feature rule matches the user. Same section -> key -> bool shape as FEATURES in the
+            configuration.
+        micro_apps (Union[Unset, UserMeMicroApps]): Whether each micro-app with an operator setting is offered to this
+            user. An app that is absent has no setting and follows the user.show_micro_apps feature.
     """
 
     url: Union[Unset, str] = UNSET
@@ -169,6 +176,8 @@ class UserMe:
     is_admin_deactivated: Union[Unset, bool] = UNSET
     details: Union[Unset, "UserMeDetails"] = UNSET
     profile_completeness: Union[Unset, "ProfileCompleteness"] = UNSET
+    features: Union[Unset, "UserMeFeatures"] = UNSET
+    micro_apps: Union[Unset, "UserMeMicroApps"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -381,6 +390,14 @@ class UserMe:
         if not isinstance(self.profile_completeness, Unset):
             profile_completeness = self.profile_completeness.to_dict()
 
+        features: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.features, Unset):
+            features = self.features.to_dict()
+
+        micro_apps: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.micro_apps, Unset):
+            micro_apps = self.micro_apps.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -516,6 +533,10 @@ class UserMe:
             field_dict["details"] = details
         if profile_completeness is not UNSET:
             field_dict["profile_completeness"] = profile_completeness
+        if features is not UNSET:
+            field_dict["features"] = features
+        if micro_apps is not UNSET:
+            field_dict["micro_apps"] = micro_apps
 
         return field_dict
 
@@ -525,6 +546,8 @@ class UserMe:
         from ..models.profile_completeness import ProfileCompleteness
         from ..models.user_me_attribute_sources import UserMeAttributeSources
         from ..models.user_me_details import UserMeDetails
+        from ..models.user_me_features import UserMeFeatures
+        from ..models.user_me_micro_apps import UserMeMicroApps
 
         d = dict(src_dict)
         url = d.pop("url", UNSET)
@@ -799,6 +822,20 @@ class UserMe:
         else:
             profile_completeness = ProfileCompleteness.from_dict(_profile_completeness)
 
+        _features = d.pop("features", UNSET)
+        features: Union[Unset, UserMeFeatures]
+        if isinstance(_features, Unset):
+            features = UNSET
+        else:
+            features = UserMeFeatures.from_dict(_features)
+
+        _micro_apps = d.pop("micro_apps", UNSET)
+        micro_apps: Union[Unset, UserMeMicroApps]
+        if isinstance(_micro_apps, Unset):
+            micro_apps = UNSET
+        else:
+            micro_apps = UserMeMicroApps.from_dict(_micro_apps)
+
         user_me = cls(
             url=url,
             uuid=uuid,
@@ -866,6 +903,8 @@ class UserMe:
             is_admin_deactivated=is_admin_deactivated,
             details=details,
             profile_completeness=profile_completeness,
+            features=features,
+            micro_apps=micro_apps,
         )
 
         user_me.additional_properties = d

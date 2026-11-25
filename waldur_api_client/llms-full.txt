@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.4.dev.20261125083712
+# Version: 8.1.5-rc.4.dev.20261125100104
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -4813,6 +4813,79 @@ Summary: Delete an external link
 Description: Delete an existing external link. This action is restricted to staff users.
 Path parameters:
   - uuid
+
+============================================================
+## feature-rules  (module: waldur_api_client.api.feature_rules)
+============================================================
+
+### feature_rules_list
+GET /api/feature-rules/
+Summary: Rules that turn a user-scoped feature flag, or a micro-app, on for the users they match
+Description: Rules that turn a user-scoped feature flag, or a micro-app, on for the users they match. Staff manage them; support may read them.
+Query parameters (3):
+  - feature_key
+  - is_active
+  - orphaned — Only rules without effect: their feature is no longer user-scoped, or their micro-app has no setting.
+
+### feature_rules_count
+HEAD /api/feature-rules/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (3):
+  - feature_key
+  - is_active
+  - orphaned — Only rules without effect: their feature is no longer user-scoped, or their micro-app has no setting.
+
+### feature_rules_create
+POST /api/feature-rules/
+Summary: Rules that turn a user-scoped feature flag, or a micro-app, on for the users they match
+Description: Rules that turn a user-scoped feature flag, or a micro-app, on for the users they match. Staff manage them; support may read them.
+Request body: yes
+
+### feature_rules_retrieve
+GET /api/feature-rules/{uuid}/
+Summary: Rules that turn a user-scoped feature flag, or a micro-app, on for the users they match
+Description: Rules that turn a user-scoped feature flag, or a micro-app, on for the users they match. Staff manage them; support may read them.
+Path parameters:
+  - uuid
+
+### feature_rules_update
+PUT /api/feature-rules/{uuid}/
+Summary: Rules that turn a user-scoped feature flag, or a micro-app, on for the users they match
+Description: Rules that turn a user-scoped feature flag, or a micro-app, on for the users they match. Staff manage them; support may read them.
+Path parameters:
+  - uuid
+Request body: yes
+
+### feature_rules_partial_update
+PATCH /api/feature-rules/{uuid}/
+Summary: Rules that turn a user-scoped feature flag, or a micro-app, on for the users they match
+Description: Rules that turn a user-scoped feature flag, or a micro-app, on for the users they match. Staff manage them; support may read them.
+Path parameters:
+  - uuid
+Request body: yes
+
+### feature_rules_destroy
+DELETE /api/feature-rules/{uuid}/
+Summary: Rules that turn a user-scoped feature flag, or a micro-app, on for the users they match
+Description: Rules that turn a user-scoped feature flag, or a micro-app, on for the users they match. Staff manage them; support may read them.
+Path parameters:
+  - uuid
+
+### feature_rules_matched_users_retrieve
+GET /api/feature-rules/{uuid}/matched-users/
+Summary: Users a feature rule matches
+Description: Counts the active users this rule matches and lists the first of them. Identity attributes are checked for a bounded number of candidates; 'complete' is false when the count is a lower bound.
+Path parameters:
+  - uuid
+
+### feature_rules_test_match
+POST /api/feature-rules/{uuid}/test-match/
+Summary: Evaluate a feature rule against a user
+Description: Checks each criterion of this rule against the given user and reports whether the rule matches. Nothing is changed.
+Path parameters:
+  - uuid
+Request body: yes
 
 ============================================================
 ## feature-values  (module: waldur_api_client.api.feature_values)
@@ -10178,6 +10251,13 @@ Request body: yes
 POST /api/marketplace-provider-offerings/{uuid}/archive/
 Summary: Archive an offering
 Description: Archives an offering, making it permanently unavailable for new orders.
+Path parameters:
+  - uuid
+
+### marketplace_provider_offerings_check_configuration_list
+GET /api/marketplace-provider-offerings/{uuid}/check_configuration/
+Summary: Check a site agent offering against the consistency rules
+Description: Rules that span the site agent's plugins, applied per role from the offering's agent configuration: SLURM components are TRES names, DWDI compute reporting has a node component, a node component SLURM limits and DWDI reports sets unit_factor_reporting, the offering's backend ID equals SLURM's clu...
 Path parameters:
   - uuid
 
@@ -16521,6 +16601,56 @@ Description: Retrieves metadata about roles, permissions, and their descriptions
 GET /api/metadata/settings/
 Summary: Get overridable settings metadata
 Description: Retrieves metadata for all settings that can be changed at runtime. This includes setting keys, human-readable descriptions, default values, and types. This endpoint is publicly accessible.
+
+============================================================
+## micro-app-settings  (module: waldur_api_client.api.micro_app_settings)
+============================================================
+
+### micro_app_settings_list
+GET /api/micro-app-settings/
+Summary: Who each deployed micro-app is offered to
+Description: Who each deployed micro-app is offered to. An app without a setting follows the user.show_micro_apps feature. Staff manage them; support may read them.
+
+### micro_app_settings_count
+HEAD /api/micro-app-settings/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+
+### micro_app_settings_create
+POST /api/micro-app-settings/
+Summary: Who each deployed micro-app is offered to
+Description: Who each deployed micro-app is offered to. An app without a setting follows the user.show_micro_apps feature. Staff manage them; support may read them.
+Request body: yes
+
+### micro_app_settings_retrieve
+GET /api/micro-app-settings/{uuid}/
+Summary: Who each deployed micro-app is offered to
+Description: Who each deployed micro-app is offered to. An app without a setting follows the user.show_micro_apps feature. Staff manage them; support may read them.
+Path parameters:
+  - uuid
+
+### micro_app_settings_update
+PUT /api/micro-app-settings/{uuid}/
+Summary: Who each deployed micro-app is offered to
+Description: Who each deployed micro-app is offered to. An app without a setting follows the user.show_micro_apps feature. Staff manage them; support may read them.
+Path parameters:
+  - uuid
+Request body: yes
+
+### micro_app_settings_partial_update
+PATCH /api/micro-app-settings/{uuid}/
+Summary: Who each deployed micro-app is offered to
+Description: Who each deployed micro-app is offered to. An app without a setting follows the user.show_micro_apps feature. Staff manage them; support may read them.
+Path parameters:
+  - uuid
+Request body: yes
+
+### micro_app_settings_destroy
+DELETE /api/micro-app-settings/{uuid}/
+Summary: Who each deployed micro-app is offered to
+Description: Who each deployed micro-app is offered to. An app without a setting follows the user.show_micro_apps feature. Staff manage them; support may read them.
+Path parameters:
+  - uuid
 
 ============================================================
 ## my-assignment-batches  (module: waldur_api_client.api.my_assignment_batches)
@@ -29423,6 +29553,13 @@ Query parameters (27):
   - user_keyword — User keyword
   - username — Username (exact)
   - username_list — Comma-separated usernames
+
+### users_features_retrieve
+GET /api/users/{uuid}/features/
+Summary: Effective feature flags of a user
+Description: Each feature flag's value for this user and where it comes from: the global value, the feature rules that match the user, or neither. Also lists the micro-apps that have an operator setting.
+Path parameters:
+  - uuid
 
 ### users_history_list
 GET /api/users/{uuid}/history/

@@ -875,6 +875,19 @@ Module: `waldur_api_client.api.external_links`
 - `external_links_partial_update` PATCH `/api/external-links/{uuid}/` — Partially update an external link (path: uuid | request body)
 - `external_links_destroy` DELETE `/api/external-links/{uuid}/` — Delete an external link (path: uuid)
 
+## feature-rules
+Module: `waldur_api_client.api.feature_rules`
+
+- `feature_rules_list` GET `/api/feature-rules/` — Rules that turn a user-scoped feature flag, or a micro-app, on for the users they match (3 query params)
+- `feature_rules_count` HEAD `/api/feature-rules/` — Get number of items in the collection matching the request parameters (3 query params)
+- `feature_rules_create` POST `/api/feature-rules/` — Rules that turn a user-scoped feature flag, or a micro-app, on for the users they match (request body)
+- `feature_rules_retrieve` GET `/api/feature-rules/{uuid}/` — Rules that turn a user-scoped feature flag, or a micro-app, on for the users they match (path: uuid)
+- `feature_rules_update` PUT `/api/feature-rules/{uuid}/` — Rules that turn a user-scoped feature flag, or a micro-app, on for the users they match (path: uuid | request body)
+- `feature_rules_partial_update` PATCH `/api/feature-rules/{uuid}/` — Rules that turn a user-scoped feature flag, or a micro-app, on for the users they match (path: uuid | request body)
+- `feature_rules_destroy` DELETE `/api/feature-rules/{uuid}/` — Rules that turn a user-scoped feature flag, or a micro-app, on for the users they match (path: uuid)
+- `feature_rules_matched_users_retrieve` GET `/api/feature-rules/{uuid}/matched-users/` — Users a feature rule matches (path: uuid)
+- `feature_rules_test_match` POST `/api/feature-rules/{uuid}/test-match/` — Evaluate a feature rule against a user (path: uuid | request body)
+
 ## feature-values
 Module: `waldur_api_client.api.feature_values`
 
@@ -1794,6 +1807,7 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_add_software_catalog` POST `/api/marketplace-provider-offerings/{uuid}/add_software_catalog/` — Add a software catalog to an offering (path: uuid | request body)
 - `marketplace_provider_offerings_add_user` POST `/api/marketplace-provider-offerings/{uuid}/add_user/` — Grant a role to a user (path: uuid | request body)
 - `marketplace_provider_offerings_archive` POST `/api/marketplace-provider-offerings/{uuid}/archive/` — Archive an offering (path: uuid)
+- `marketplace_provider_offerings_check_configuration_list` GET `/api/marketplace-provider-offerings/{uuid}/check_configuration/` — Check a site agent offering against the consistency rules (path: uuid)
 - `marketplace_provider_offerings_check_unique_backend_id` POST `/api/marketplace-provider-offerings/{uuid}/check_unique_backend_id/` — Check if backend_id is unique (path: uuid | request body)
 - `marketplace_provider_offerings_component_stats_list` GET `/api/marketplace-provider-offerings/{uuid}/component_stats/` — Get statistics for offering components (path: uuid | 46 query params)
 - `marketplace_provider_offerings_costs_list` GET `/api/marketplace-provider-offerings/{uuid}/costs/` — Get costs for an offering (path: uuid | 47 query params)
@@ -2554,6 +2568,17 @@ Module: `waldur_api_client.api.metadata`
 - `metadata_features_retrieve` GET `/api/metadata/features/` — Get feature flag metadata (no params)
 - `metadata_permissions_retrieve` GET `/api/metadata/permissions/` — Get permission metadata (no params)
 - `metadata_settings_retrieve` GET `/api/metadata/settings/` — Get overridable settings metadata (no params)
+
+## micro-app-settings
+Module: `waldur_api_client.api.micro_app_settings`
+
+- `micro_app_settings_list` GET `/api/micro-app-settings/` — Who each deployed micro-app is offered to (no params)
+- `micro_app_settings_count` HEAD `/api/micro-app-settings/` — Get number of items in the collection matching the request parameters (no params)
+- `micro_app_settings_create` POST `/api/micro-app-settings/` — Who each deployed micro-app is offered to (request body)
+- `micro_app_settings_retrieve` GET `/api/micro-app-settings/{uuid}/` — Who each deployed micro-app is offered to (path: uuid)
+- `micro_app_settings_update` PUT `/api/micro-app-settings/{uuid}/` — Who each deployed micro-app is offered to (path: uuid | request body)
+- `micro_app_settings_partial_update` PATCH `/api/micro-app-settings/{uuid}/` — Who each deployed micro-app is offered to (path: uuid | request body)
+- `micro_app_settings_destroy` DELETE `/api/micro-app-settings/{uuid}/` — Who each deployed micro-app is offered to (path: uuid)
 
 ## my-assignment-batches
 Module: `waldur_api_client.api.my_assignment_batches`
@@ -4599,6 +4624,7 @@ Module: `waldur_api_client.api.users`
 - `users_change_password` POST `/api/users/{uuid}/change_password/` — Change user password (path: uuid | request body)
 - `users_data_access_retrieve` GET `/api/users/{uuid}/data_access/` — Get user data access visibility (path: uuid)
 - `users_data_access_history_list` GET `/api/users/{uuid}/data_access_history/` — Get user data access history (path: uuid | 27 query params)
+- `users_features_retrieve` GET `/api/users/{uuid}/features/` — Effective feature flags of a user (path: uuid)
 - `users_history_list` GET `/api/users/{uuid}/history/` — Get version history (path: uuid | 26 query params)
 - `users_history_at_retrieve` GET `/api/users/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 - `users_identity_bridge_status_retrieve` GET `/api/users/{uuid}/identity_bridge_status/` — Get identity bridge status for a user (path: uuid)

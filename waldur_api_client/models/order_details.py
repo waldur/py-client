@@ -110,13 +110,8 @@ class OrderDetails:
         new_plan_uuid (Union[None, UUID, Unset]):
         old_plan_billing_mode (Union[None, Unset, str]):
         new_plan_billing_mode (Union[None, Unset, str]):
-        old_cost_estimate (Union[Unset, float]): The old-limits estimate, snapshotted by init_cost() at creation.
-
-            Must not recompute live: _compute_old_cost_estimate() prices from
-            "today", which keeps advancing on every read while `cost` stays fixed
-            from creation -- the shown cost change would grow the longer an order
-            sits unread. Orders that predate this field have no snapshot, so they
-            fall back to the live computation rather than a wrong zero.
+        old_cost_estimate (Union[Unset, float]): Cost estimate for the old limits, snapshotted when the order was
+            created.
         new_cost_estimate (Union[None, Unset, str]):
         can_terminate (Union[Unset, bool]):
         fixed_price (Union[Unset, float]):

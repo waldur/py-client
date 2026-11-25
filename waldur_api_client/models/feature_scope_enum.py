@@ -1,8 +1,8 @@
 from enum import Enum
 
 
-class ScopeEnum(str, Enum):
-    ACCOUNT = "account"
+class FeatureScopeEnum(str, Enum):
+    DEPLOYMENT = "deployment"
     USER = "user"
 
     def __str__(self) -> str:

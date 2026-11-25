@@ -10,6 +10,7 @@ from dateutil.parser import isoparse
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.offering_configuration_finding import OfferingConfigurationFinding
     from ..models.offering_template_document import OfferingTemplateDocument
     from ..models.offering_template_parameter import OfferingTemplateParameter
 
@@ -30,6 +31,8 @@ class OfferingTemplate:
             screenshots, files, a customer, resources or people. Non-staff see only the offering's name, description and
             type, its components, plans and parameters.
         parameters (list['OfferingTemplateParameter']):
+        configuration_findings (list['OfferingConfigurationFinding']): What the site-agent consistency rules find in the
+            document. Paths a parameter fills are skipped. Staff only.
         schema_version (int):
         version (int): Incremented whenever the document changes; name, description and publication leave it as it is.
         created_by (Union[None, UUID]):
@@ -45,6 +48,7 @@ class OfferingTemplate:
     offering_type: str
     document: "OfferingTemplateDocument"
     parameters: list["OfferingTemplateParameter"]
+    configuration_findings: list["OfferingConfigurationFinding"]
     schema_version: int
     version: int
     created_by: Union[None, UUID]
@@ -69,6 +73,11 @@ class OfferingTemplate:
         for parameters_item_data in self.parameters:
             parameters_item = parameters_item_data.to_dict()
             parameters.append(parameters_item)
+
+        configuration_findings = []
+        for configuration_findings_item_data in self.configuration_findings:
+            configuration_findings_item = configuration_findings_item_data.to_dict()
+            configuration_findings.append(configuration_findings_item)
 
         schema_version = self.schema_version
 
@@ -98,6 +107,7 @@ class OfferingTemplate:
                 "offering_type": offering_type,
                 "document": document,
                 "parameters": parameters,
+                "configuration_findings": configuration_findings,
                 "schema_version": schema_version,
                 "version": version,
                 "created_by": created_by,
@@ -114,6 +124,7 @@ class OfferingTemplate:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.offering_configuration_finding import OfferingConfigurationFinding
         from ..models.offering_template_document import OfferingTemplateDocument
         from ..models.offering_template_parameter import OfferingTemplateParameter
 
@@ -134,6 +145,13 @@ class OfferingTemplate:
             parameters_item = OfferingTemplateParameter.from_dict(parameters_item_data)
 
             parameters.append(parameters_item)
+
+        configuration_findings = []
+        _configuration_findings = d.pop("configuration_findings")
+        for configuration_findings_item_data in _configuration_findings:
+            configuration_findings_item = OfferingConfigurationFinding.from_dict(configuration_findings_item_data)
+
+            configuration_findings.append(configuration_findings_item)
 
         schema_version = d.pop("schema_version")
 
@@ -169,6 +187,7 @@ class OfferingTemplate:
             offering_type=offering_type,
             document=document,
             parameters=parameters,
+            configuration_findings=configuration_findings,
             schema_version=schema_version,
             version=version,
             created_by=created_by,

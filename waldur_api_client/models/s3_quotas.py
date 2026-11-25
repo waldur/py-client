@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.scope_enum import ScopeEnum
+from ..models.s3_quotas_scope_enum import S3QuotasScopeEnum
 
 if TYPE_CHECKING:
     from ..models.s3_quota_limit import S3QuotaLimit
@@ -17,12 +17,12 @@ T = TypeVar("T", bound="S3Quotas")
 class S3Quotas:
     """
     Attributes:
-        scope (ScopeEnum):
+        scope (S3QuotasScopeEnum):
         total (Union['S3QuotaLimit', None]): Limit across all buckets; null when unlimited.
         per_bucket (Union['S3QuotaLimit', None]): Limit on each bucket; null when unlimited.
     """
 
-    scope: ScopeEnum
+    scope: S3QuotasScopeEnum
     total: Union["S3QuotaLimit", None]
     per_bucket: Union["S3QuotaLimit", None]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -61,7 +61,7 @@ class S3Quotas:
         from ..models.s3_quota_limit import S3QuotaLimit
 
         d = dict(src_dict)
-        scope = ScopeEnum(d.pop("scope"))
+        scope = S3QuotasScopeEnum(d.pop("scope"))
 
         def _parse_total(data: object) -> Union["S3QuotaLimit", None]:
             if data is None:
