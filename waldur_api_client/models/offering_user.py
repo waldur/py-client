@@ -70,6 +70,8 @@ class OfferingUser:
         modified (Union[Unset, datetime.datetime]):
         customer_uuid (Union[Unset, UUID]):
         customer_name (Union[Unset, str]):
+        user_is_active (Union[Unset, bool]): Whether the Waldur account is active. Deactivating the account does not
+            change this offering user's state.
         is_restricted (Union[Unset, bool]): Signal to service if the user account is restricted or not
         state (Union[Unset, OfferingUserState]):
         runtime_state (Union[Unset, RuntimeStateEnum]):
@@ -134,6 +136,7 @@ class OfferingUser:
     modified: Union[Unset, datetime.datetime] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
     customer_name: Union[Unset, str] = UNSET
+    user_is_active: Union[Unset, bool] = UNSET
     is_restricted: Union[Unset, bool] = UNSET
     state: Union[Unset, OfferingUserState] = UNSET
     runtime_state: Union[Unset, RuntimeStateEnum] = UNSET
@@ -286,6 +289,8 @@ class OfferingUser:
             customer_uuid = str(self.customer_uuid)
 
         customer_name = self.customer_name
+
+        user_is_active = self.user_is_active
 
         is_restricted = self.is_restricted
 
@@ -444,6 +449,8 @@ class OfferingUser:
             field_dict["customer_uuid"] = customer_uuid
         if customer_name is not UNSET:
             field_dict["customer_name"] = customer_name
+        if user_is_active is not UNSET:
+            field_dict["user_is_active"] = user_is_active
         if is_restricted is not UNSET:
             field_dict["is_restricted"] = is_restricted
         if state is not UNSET:
@@ -664,6 +671,8 @@ class OfferingUser:
 
         customer_name = d.pop("customer_name", UNSET)
 
+        user_is_active = d.pop("user_is_active", UNSET)
+
         is_restricted = d.pop("is_restricted", UNSET)
 
         _state = d.pop("state", UNSET)
@@ -820,6 +829,7 @@ class OfferingUser:
             modified=modified,
             customer_uuid=customer_uuid,
             customer_name=customer_name,
+            user_is_active=user_is_active,
             is_restricted=is_restricted,
             state=state,
             runtime_state=runtime_state,

@@ -42,6 +42,7 @@ class OfferingUserFieldEnum(str, Enum):
     USER_FULL_NAME = "user_full_name"
     USER_GENDER = "user_gender"
     USER_IDENTITY_SOURCE = "user_identity_source"
+    USER_IS_ACTIVE = "user_is_active"
     USER_JOB_TITLE = "user_job_title"
     USER_LAST_NAME = "user_last_name"
     USER_NATIONALITIES = "user_nationalities"

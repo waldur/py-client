@@ -61,6 +61,8 @@ class ProviderUserRoleDetails:
             offering's gid_source is 'user_attribute'.
         user_active_isds (Union[Unset, list[str]]): List of ISDs that have asserted this user exists. User is
             deactivated when this becomes empty.
+        user_first_name (Union[Unset, str]):
+        user_last_name (Union[Unset, str]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
@@ -100,6 +102,8 @@ class ProviderUserRoleDetails:
     user_uid_number: Union[None, Unset, int] = UNSET
     user_primary_gid: Union[None, Unset, int] = UNSET
     user_active_isds: Union[Unset, list[str]] = UNSET
+    user_first_name: Union[Unset, str] = UNSET
+    user_last_name: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -227,6 +231,10 @@ class ProviderUserRoleDetails:
         if not isinstance(self.user_active_isds, Unset):
             user_active_isds = self.user_active_isds
 
+        user_first_name = self.user_first_name
+
+        user_last_name = self.user_last_name
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -304,6 +312,10 @@ class ProviderUserRoleDetails:
             field_dict["user_primary_gid"] = user_primary_gid
         if user_active_isds is not UNSET:
             field_dict["user_active_isds"] = user_active_isds
+        if user_first_name is not UNSET:
+            field_dict["user_first_name"] = user_first_name
+        if user_last_name is not UNSET:
+            field_dict["user_last_name"] = user_last_name
 
         return field_dict
 
@@ -483,6 +495,10 @@ class ProviderUserRoleDetails:
 
         user_active_isds = cast(list[str], d.pop("user_active_isds", UNSET))
 
+        user_first_name = d.pop("user_first_name", UNSET)
+
+        user_last_name = d.pop("user_last_name", UNSET)
+
         provider_user_role_details = cls(
             uuid=uuid,
             created=created,
@@ -521,6 +537,8 @@ class ProviderUserRoleDetails:
             user_uid_number=user_uid_number,
             user_primary_gid=user_primary_gid,
             user_active_isds=user_active_isds,
+            user_first_name=user_first_name,
+            user_last_name=user_last_name,
         )
 
         provider_user_role_details.additional_properties = d
