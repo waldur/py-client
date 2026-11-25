@@ -23,6 +23,33 @@ stages:
 
 Fetch OpenAPI schema:
   extends: .fetch-openapi-schema
+  # The template extracts mastermind's whole "Generate OpenAPI schema" artifact,
+  # which also holds the AsyncAPI document of the STOMP messages; keep it for
+  # Build Python SDK. (A list in `extends` is replaced, not merged, so the
+  # template's own path is repeated.)
+  artifacts:
+    expire_in: 1 day
+    paths:
+      - "$OPENAPI_SCHEMA_DEST"
+      - waldur-asyncapi.yaml
+
+Test STOMP message generator:
+  stage: test
+  image: "registry.hpc.ut.ee/mirror/library/python:$PYTHON_VERSION-slim"
+  interruptible: true
+  needs: []
+  parallel:
+    matrix:
+      - PYTHON_VERSION: ["3.9", "3.13"]
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+    - if: '$CI_PIPELINE_SOURCE == "trigger"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+  script:
+    - pip install --quiet pyyaml
+    - python scripts/generate_stomp_messages.py waldur_api_client/asyncapi.yaml waldur_api_client/stomp_messages.py --check
+    - python -m unittest discover -s tests -v
 
 # GitLab unpacks artifacts over the job's checkout, which still holds the client
 # committed last time. A module the generator no longer writes (a removed
@@ -53,6 +80,19 @@ Build Python SDK:
     - python scripts/generate_llm_docs.py waldur-openapi-schema.yaml gen-client/
     - mkdir generated
     - cp -a gen-client/waldur_api_client generated/waldur_api_client
+    # STOMP message types, from the same mastermind commit as the REST client.
+    # Only mastermind's own artifact carries the document; the waldur-docs
+    # fallbacks do not. Building without it would publish a client whose
+    # stomp_messages module silently vanished, so stop instead.
+    - |
+      if [ ! -s waldur-asyncapi.yaml ]; then
+        echo "ERROR: waldur-asyncapi.yaml was not fetched with the OpenAPI schema." >&2
+        echo "It comes only from waldur-mastermind's 'Generate OpenAPI schema' artifact;" >&2
+        echo "the waldur-docs fallbacks do not carry it." >&2
+        exit 1
+      fi
+    - cp waldur-asyncapi.yaml generated/waldur_api_client/asyncapi.yaml
+    - python scripts/generate_stomp_messages.py waldur-asyncapi.yaml generated/waldur_api_client/stomp_messages.py
     - cp gen-client/llms.txt llms.txt
     - cp gen-client/llms-full.txt llms-full.txt
     - cp gen-client/api-map.md api-map.md
@@ -61,6 +101,18 @@ Build Python SDK:
     - rm -rf gen-client
     - echo "Compiling generated Python module..."
     - python -m py_compile $(find generated/waldur_api_client -name "*.py")
+    # Defining and resolving every TypedDict catches invalid annotations that py_compile misses.
+    - |
+      python - << 'EOF'
+      import importlib.util, sys, typing
+      spec = importlib.util.spec_from_file_location("m", "generated/waldur_api_client/stomp_messages.py")
+      mod = importlib.util.module_from_spec(spec)
+      sys.modules["m"] = mod
+      spec.loader.exec_module(mod)
+      for name, obj in vars(mod).items():
+          if isinstance(obj, type) and hasattr(obj, "__required_keys__"):
+              typing.get_type_hints(obj)
+      EOF
   artifacts:
     paths:
       - generated/waldur_api_client/
@@ -68,6 +120,7 @@ Build Python SDK:
       - llms-full.txt
       - api-map.md
       - waldur-openapi-schema.yaml
+      - waldur-asyncapi.yaml
     expire_in: 1 day
 
 # The 8.1.0 client was generated from the 8.0.9 schema — the fetch had silently
