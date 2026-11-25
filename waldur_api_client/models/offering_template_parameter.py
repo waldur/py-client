@@ -5,8 +5,10 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.offering_template_parameter_type_enum import OfferingTemplateParameterTypeEnum
+from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.offering_template_parameter_choices_item import OfferingTemplateParameterChoicesItem
     from ..models.offering_template_parameter_default_type_0 import OfferingTemplateParameterDefaultType0
 
 
@@ -25,6 +27,9 @@ class OfferingTemplateParameter:
         default (Union['OfferingTemplateParameterDefaultType0', None]):
         paths (list[str]): Dotted paths into the document that the value fills, such as offering.backend_id; digits
             address list items.
+        choices (Union[Unset, list['OfferingTemplateParameterChoicesItem']]): The values allowed, when the parameter is
+            limited to some.
+        pattern (Union[Unset, str]): A regular expression a string value must match in full.
     """
 
     key: str
@@ -34,6 +39,8 @@ class OfferingTemplateParameter:
     required: bool
     default: Union["OfferingTemplateParameterDefaultType0", None]
     paths: list[str]
+    choices: Union[Unset, list["OfferingTemplateParameterChoicesItem"]] = UNSET
+    pattern: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -57,6 +64,15 @@ class OfferingTemplateParameter:
 
         paths = self.paths
 
+        choices: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.choices, Unset):
+            choices = []
+            for choices_item_data in self.choices:
+                choices_item = choices_item_data.to_dict()
+                choices.append(choices_item)
+
+        pattern = self.pattern
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -70,11 +86,16 @@ class OfferingTemplateParameter:
                 "paths": paths,
             }
         )
+        if choices is not UNSET:
+            field_dict["choices"] = choices
+        if pattern is not UNSET:
+            field_dict["pattern"] = pattern
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.offering_template_parameter_choices_item import OfferingTemplateParameterChoicesItem
         from ..models.offering_template_parameter_default_type_0 import OfferingTemplateParameterDefaultType0
 
         d = dict(src_dict)
@@ -105,6 +126,15 @@ class OfferingTemplateParameter:
 
         paths = cast(list[str], d.pop("paths"))
 
+        choices = []
+        _choices = d.pop("choices", UNSET)
+        for choices_item_data in _choices or []:
+            choices_item = OfferingTemplateParameterChoicesItem.from_dict(choices_item_data)
+
+            choices.append(choices_item)
+
+        pattern = d.pop("pattern", UNSET)
+
         offering_template_parameter = cls(
             key=key,
             label=label,
@@ -113,6 +143,8 @@ class OfferingTemplateParameter:
             required=required,
             default=default,
             paths=paths,
+            choices=choices,
+            pattern=pattern,
         )
 
         offering_template_parameter.additional_properties = d

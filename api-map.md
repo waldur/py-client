@@ -1552,6 +1552,7 @@ Module: `waldur_api_client.api.marketplace_offering_templates`
 - `marketplace_offering_templates_update` PUT `/api/marketplace-offering-templates/{uuid}/` (path: uuid | request body)
 - `marketplace_offering_templates_partial_update` PATCH `/api/marketplace-offering-templates/{uuid}/` (path: uuid | request body)
 - `marketplace_offering_templates_destroy` DELETE `/api/marketplace-offering-templates/{uuid}/` (path: uuid)
+- `marketplace_offering_templates_create_offering` POST `/api/marketplace-offering-templates/{uuid}/create_offering/` — Create an offering from the template (path: uuid | request body)
 - `marketplace_offering_templates_versions_list` GET `/api/marketplace-offering-templates/{uuid}/versions/` — List the template's versions (path: uuid)
 
 ## marketplace-offering-terms-of-service
@@ -1862,6 +1863,7 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_switch_billing_mode` POST `/api/marketplace-provider-offerings/{uuid}/switch_billing_mode/` — Switch billing mode for builtin components (path: uuid | request body)
 - `marketplace_provider_offerings_sync` POST `/api/marketplace-provider-offerings/{uuid}/sync/` — Synchronize offering service settings (path: uuid)
 - `marketplace_provider_offerings_sync_resources` POST `/api/marketplace-provider-offerings/{uuid}/sync_resources/` — Synchronize offering resources (path: uuid)
+- `marketplace_provider_offerings_template_diff_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/template_diff/` — Compare the offering with its offering template (path: uuid)
 - `marketplace_provider_offerings_tos_stats_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/tos_stats/` — Get Terms of Service consent statistics (path: uuid)
 - `marketplace_provider_offerings_unpause` POST `/api/marketplace-provider-offerings/{uuid}/unpause/` — Unpause an offering (path: uuid)
 - `marketplace_provider_offerings_update_user_attribute_config` POST `/api/marketplace-provider-offerings/{uuid}/update-user-attribute-config/` — Update user attribute config (path: uuid | request body)

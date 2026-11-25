@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.4.dev.20261125100104
+# Version: 8.1.5-rc.4.dev.20261125110108
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -8331,6 +8331,14 @@ DELETE /api/marketplace-offering-templates/{uuid}/
 Path parameters:
   - uuid
 
+### marketplace_offering_templates_create_offering
+POST /api/marketplace-offering-templates/{uuid}/create_offering/
+Summary: Create an offering from the template
+Description: Create a draft offering for an organization from the template's current version: its document with the parameters filled in, imported as import_offering imports. Each parameter takes the value given or its default; a missing required value or a value that does not fit its declaration is refused, ...
+Path parameters:
+  - uuid
+Request body: yes
+
 ### marketplace_offering_templates_versions_list
 GET /api/marketplace-offering-templates/{uuid}/versions/
 Summary: List the template's versions
@@ -11032,6 +11040,13 @@ Path parameters:
 POST /api/marketplace-provider-offerings/{uuid}/sync_resources/
 Summary: Synchronize offering resources
 Description: Requests connected site agents to run a full reconciliation of all resources belonging to this offering: recreate missing backend accounts, restore user associations and re-apply resource limits. Useful when the provider backend has lost state, e.g. a wiped SLURM database.
+Path parameters:
+  - uuid
+
+### marketplace_provider_offerings_template_diff_retrieve
+GET /api/marketplace-provider-offerings/{uuid}/template_diff/
+Summary: Compare the offering with its offering template
+Description: Where the offering differs from the offering template it was created from: from the version it was created from, and from the template's latest version, both filled in with the parameter values the offering was created with (a parameter added since takes its default). Only what the template sets ...
 Path parameters:
   - uuid
 

@@ -34,6 +34,7 @@ class ExportOfferingData:
         longitude (Union[None, float]):
         access_url (str):
         paused_reason (str):
+        backend_id (Union[Unset, str]):
         attributes (Union[Unset, ExportOfferingDataAttributes]):
         options (Union[Unset, ExportOfferingDataOptions]):
     """
@@ -54,6 +55,7 @@ class ExportOfferingData:
     longitude: Union[None, float]
     access_url: str
     paused_reason: str
+    backend_id: Union[Unset, str] = UNSET
     attributes: Union[Unset, "ExportOfferingDataAttributes"] = UNSET
     options: Union[Unset, "ExportOfferingDataOptions"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -94,6 +96,8 @@ class ExportOfferingData:
 
         paused_reason = self.paused_reason
 
+        backend_id = self.backend_id
+
         attributes: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
@@ -124,6 +128,8 @@ class ExportOfferingData:
                 "paused_reason": paused_reason,
             }
         )
+        if backend_id is not UNSET:
+            field_dict["backend_id"] = backend_id
         if attributes is not UNSET:
             field_dict["attributes"] = attributes
         if options is not UNSET:
@@ -184,6 +190,8 @@ class ExportOfferingData:
 
         paused_reason = d.pop("paused_reason")
 
+        backend_id = d.pop("backend_id", UNSET)
+
         _attributes = d.pop("attributes", UNSET)
         attributes: Union[Unset, ExportOfferingDataAttributes]
         if isinstance(_attributes, Unset):
@@ -215,6 +223,7 @@ class ExportOfferingData:
             longitude=longitude,
             access_url=access_url,
             paused_reason=paused_reason,
+            backend_id=backend_id,
             attributes=attributes,
             options=options,
         )

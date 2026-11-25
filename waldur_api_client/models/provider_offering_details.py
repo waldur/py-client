@@ -142,6 +142,9 @@ class ProviderOfferingDetails:
         offering_group (Union[None, Unset, str]):
         offering_group_uuid (Union[None, UUID, Unset]):
         offering_group_title (Union[None, Unset, str]):
+        template_uuid (Union[None, UUID, Unset]):
+        template_name (Union[None, Unset, str]):
+        template_version (Union[None, Unset, int]):
         integration_status (Union[None, Unset, list['IntegrationStatus']]):
     """
 
@@ -233,6 +236,9 @@ class ProviderOfferingDetails:
     offering_group: Union[None, Unset, str] = UNSET
     offering_group_uuid: Union[None, UUID, Unset] = UNSET
     offering_group_title: Union[None, Unset, str] = UNSET
+    template_uuid: Union[None, UUID, Unset] = UNSET
+    template_name: Union[None, Unset, str] = UNSET
+    template_version: Union[None, Unset, int] = UNSET
     integration_status: Union[None, Unset, list["IntegrationStatus"]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -655,6 +661,26 @@ class ProviderOfferingDetails:
         else:
             offering_group_title = self.offering_group_title
 
+        template_uuid: Union[None, Unset, str]
+        if isinstance(self.template_uuid, Unset):
+            template_uuid = UNSET
+        elif isinstance(self.template_uuid, UUID):
+            template_uuid = str(self.template_uuid)
+        else:
+            template_uuid = self.template_uuid
+
+        template_name: Union[None, Unset, str]
+        if isinstance(self.template_name, Unset):
+            template_name = UNSET
+        else:
+            template_name = self.template_name
+
+        template_version: Union[None, Unset, int]
+        if isinstance(self.template_version, Unset):
+            template_version = UNSET
+        else:
+            template_version = self.template_version
+
         integration_status: Union[None, Unset, list[dict[str, Any]]]
         if isinstance(self.integration_status, Unset):
             integration_status = UNSET
@@ -846,6 +872,12 @@ class ProviderOfferingDetails:
             field_dict["offering_group_uuid"] = offering_group_uuid
         if offering_group_title is not UNSET:
             field_dict["offering_group_title"] = offering_group_title
+        if template_uuid is not UNSET:
+            field_dict["template_uuid"] = template_uuid
+        if template_name is not UNSET:
+            field_dict["template_name"] = template_name
+        if template_version is not UNSET:
+            field_dict["template_version"] = template_version
         if integration_status is not UNSET:
             field_dict["integration_status"] = integration_status
 
@@ -1498,6 +1530,41 @@ class ProviderOfferingDetails:
 
         offering_group_title = _parse_offering_group_title(d.pop("offering_group_title", UNSET))
 
+        def _parse_template_uuid(data: object) -> Union[None, UUID, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                template_uuid_type_0 = UUID(data)
+
+                return template_uuid_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, UUID, Unset], data)
+
+        template_uuid = _parse_template_uuid(d.pop("template_uuid", UNSET))
+
+        def _parse_template_name(data: object) -> Union[None, Unset, str]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, str], data)
+
+        template_name = _parse_template_name(d.pop("template_name", UNSET))
+
+        def _parse_template_version(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        template_version = _parse_template_version(d.pop("template_version", UNSET))
+
         def _parse_integration_status(data: object) -> Union[None, Unset, list["IntegrationStatus"]]:
             if data is None:
                 return data
@@ -1609,6 +1676,9 @@ class ProviderOfferingDetails:
             offering_group=offering_group,
             offering_group_uuid=offering_group_uuid,
             offering_group_title=offering_group_title,
+            template_uuid=template_uuid,
+            template_name=template_name,
+            template_version=template_version,
             integration_status=integration_status,
         )
 

@@ -1850,8 +1850,18 @@ from .offering_team_provider import OfferingTeamProvider
 from .offering_team_slot import OfferingTeamSlot
 from .offering_team_step import OfferingTeamStep
 from .offering_template import OfferingTemplate
+from .offering_template_create_offering_request import OfferingTemplateCreateOfferingRequest
+from .offering_template_create_offering_request_parameters import OfferingTemplateCreateOfferingRequestParameters
+from .offering_template_create_offering_response import OfferingTemplateCreateOfferingResponse
+from .offering_template_create_offering_response_document import OfferingTemplateCreateOfferingResponseDocument
+from .offering_template_create_offering_response_parameters import OfferingTemplateCreateOfferingResponseParameters
+from .offering_template_diff import OfferingTemplateDiff
+from .offering_template_difference import OfferingTemplateDifference
+from .offering_template_difference_offering_type_0 import OfferingTemplateDifferenceOfferingType0
+from .offering_template_difference_template_type_0 import OfferingTemplateDifferenceTemplateType0
 from .offering_template_document import OfferingTemplateDocument
 from .offering_template_parameter import OfferingTemplateParameter
+from .offering_template_parameter_choices_item import OfferingTemplateParameterChoicesItem
 from .offering_template_parameter_default_type_0 import OfferingTemplateParameterDefaultType0
 from .offering_template_parameter_type_enum import OfferingTemplateParameterTypeEnum
 from .offering_template_preset import OfferingTemplatePreset
@@ -5769,8 +5779,18 @@ __all__ = (
     "OfferingTeamSlot",
     "OfferingTeamStep",
     "OfferingTemplate",
+    "OfferingTemplateCreateOfferingRequest",
+    "OfferingTemplateCreateOfferingRequestParameters",
+    "OfferingTemplateCreateOfferingResponse",
+    "OfferingTemplateCreateOfferingResponseDocument",
+    "OfferingTemplateCreateOfferingResponseParameters",
+    "OfferingTemplateDiff",
+    "OfferingTemplateDifference",
+    "OfferingTemplateDifferenceOfferingType0",
+    "OfferingTemplateDifferenceTemplateType0",
     "OfferingTemplateDocument",
     "OfferingTemplateParameter",
+    "OfferingTemplateParameterChoicesItem",
     "OfferingTemplateParameterDefaultType0",
     "OfferingTemplateParameterTypeEnum",
     "OfferingTemplatePreset",
