@@ -16,6 +16,7 @@ include = [
     "waldur_api_client/llms.txt",
     "waldur_api_client/llms-full.txt",
     "waldur_api_client/api-map.md",
+    "waldur_api_client/asyncapi.yaml",
 ]
 
 [tool.poetry.dependencies]
