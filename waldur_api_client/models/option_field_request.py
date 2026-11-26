@@ -13,7 +13,7 @@ if TYPE_CHECKING:
     from ..models.component_multiplier_config_request import ComponentMultiplierConfigRequest
     from ..models.component_sum_config_request import ComponentSumConfigRequest
     from ..models.display_limit_config_request import DisplayLimitConfigRequest
-    from ..models.k8s_default_configuration_request import K8SDefaultConfigurationRequest
+    from ..models.option_default_configs_request import OptionDefaultConfigsRequest
     from ..models.option_transform_request import OptionTransformRequest
     from ..models.option_validator_request import OptionValidatorRequest
     from ..models.option_visible_if_request import OptionVisibleIfRequest
@@ -41,7 +41,7 @@ class OptionFieldRequest:
         component_sum_config (Union[Unset, ComponentSumConfigRequest]):
         display_limit_config (Union[Unset, DisplayLimitConfigRequest]):
         storage_folder_config (Union[Unset, StorageFolderConfigRequest]):
-        default_configs (Union[Unset, K8SDefaultConfigurationRequest]):
+        default_configs (Union[Unset, OptionDefaultConfigsRequest]):
         validators (Union[Unset, list['OptionValidatorRequest']]):
         visible_if (Union[Unset, OptionVisibleIfRequest]):
         unique (Union[Unset, bool]): The value must not be used by another non-terminated resource of this offering.
@@ -69,7 +69,7 @@ class OptionFieldRequest:
     component_sum_config: Union[Unset, "ComponentSumConfigRequest"] = UNSET
     display_limit_config: Union[Unset, "DisplayLimitConfigRequest"] = UNSET
     storage_folder_config: Union[Unset, "StorageFolderConfigRequest"] = UNSET
-    default_configs: Union[Unset, "K8SDefaultConfigurationRequest"] = UNSET
+    default_configs: Union[Unset, "OptionDefaultConfigsRequest"] = UNSET
     validators: Union[Unset, list["OptionValidatorRequest"]] = UNSET
     visible_if: Union[Unset, "OptionVisibleIfRequest"] = UNSET
     unique: Union[Unset, bool] = UNSET
@@ -208,7 +208,7 @@ class OptionFieldRequest:
         from ..models.component_multiplier_config_request import ComponentMultiplierConfigRequest
         from ..models.component_sum_config_request import ComponentSumConfigRequest
         from ..models.display_limit_config_request import DisplayLimitConfigRequest
-        from ..models.k8s_default_configuration_request import K8SDefaultConfigurationRequest
+        from ..models.option_default_configs_request import OptionDefaultConfigsRequest
         from ..models.option_transform_request import OptionTransformRequest
         from ..models.option_validator_request import OptionValidatorRequest
         from ..models.option_visible_if_request import OptionVisibleIfRequest
@@ -274,11 +274,11 @@ class OptionFieldRequest:
             storage_folder_config = StorageFolderConfigRequest.from_dict(_storage_folder_config)
 
         _default_configs = d.pop("default_configs", UNSET)
-        default_configs: Union[Unset, K8SDefaultConfigurationRequest]
+        default_configs: Union[Unset, OptionDefaultConfigsRequest]
         if isinstance(_default_configs, Unset):
             default_configs = UNSET
         else:
-            default_configs = K8SDefaultConfigurationRequest.from_dict(_default_configs)
+            default_configs = OptionDefaultConfigsRequest.from_dict(_default_configs)
 
         validators = []
         _validators = d.pop("validators", UNSET)

@@ -28,6 +28,7 @@ if TYPE_CHECKING:
     from ..models.resource_limit_usage import ResourceLimitUsage
     from ..models.resource_limits import ResourceLimits
     from ..models.resource_offering_plugin_options import ResourceOfferingPluginOptions
+    from ..models.resource_option_secrets import ResourceOptionSecrets
     from ..models.resource_options_type_0 import ResourceOptionsType0
     from ..models.resource_renewal_date_type_0 import ResourceRenewalDateType0
     from ..models.resource_spending_limits import ResourceSpendingLimits
@@ -166,6 +167,8 @@ class Resource:
         offering_account_settings (Union[Unset, OfferingAccountSettings]):
         display_limits (Union[Unset, ResourceDisplayLimits]): Resource option values shown as the limits of usage-based
             components. Display only: not stored in limits, billed or enforced.
+        option_secrets (Union[Unset, ResourceOptionSecrets]): Whether each secret option of the offering is set, by
+            option name. Never the value; the reveal_option_secret action returns it to whom may read it.
     """
 
     offering: Union[Unset, str] = UNSET
@@ -264,6 +267,7 @@ class Resource:
     api_key_counts: Union[Unset, "ResourceApiKeyCounts"] = UNSET
     offering_account_settings: Union[Unset, "OfferingAccountSettings"] = UNSET
     display_limits: Union[Unset, "ResourceDisplayLimits"] = UNSET
+    option_secrets: Union[Unset, "ResourceOptionSecrets"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -655,6 +659,10 @@ class Resource:
         if not isinstance(self.display_limits, Unset):
             display_limits = self.display_limits.to_dict()
 
+        option_secrets: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.option_secrets, Unset):
+            option_secrets = self.option_secrets.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -850,6 +858,8 @@ class Resource:
             field_dict["offering_account_settings"] = offering_account_settings
         if display_limits is not UNSET:
             field_dict["display_limits"] = display_limits
+        if option_secrets is not UNSET:
+            field_dict["option_secrets"] = option_secrets
 
         return field_dict
 
@@ -868,6 +878,7 @@ class Resource:
         from ..models.resource_limit_usage import ResourceLimitUsage
         from ..models.resource_limits import ResourceLimits
         from ..models.resource_offering_plugin_options import ResourceOfferingPluginOptions
+        from ..models.resource_option_secrets import ResourceOptionSecrets
         from ..models.resource_options_type_0 import ResourceOptionsType0
         from ..models.resource_renewal_date_type_0 import ResourceRenewalDateType0
         from ..models.resource_spending_limits import ResourceSpendingLimits
@@ -1492,6 +1503,13 @@ class Resource:
         else:
             display_limits = ResourceDisplayLimits.from_dict(_display_limits)
 
+        _option_secrets = d.pop("option_secrets", UNSET)
+        option_secrets: Union[Unset, ResourceOptionSecrets]
+        if isinstance(_option_secrets, Unset):
+            option_secrets = UNSET
+        else:
+            option_secrets = ResourceOptionSecrets.from_dict(_option_secrets)
+
         resource = cls(
             offering=offering,
             offering_name=offering_name,
@@ -1589,6 +1607,7 @@ class Resource:
             api_key_counts=api_key_counts,
             offering_account_settings=offering_account_settings,
             display_limits=display_limits,
+            option_secrets=option_secrets,
         )
 
         resource.additional_properties = d

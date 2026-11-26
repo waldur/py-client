@@ -23,6 +23,7 @@ if TYPE_CHECKING:
     from ..models.booking_resource_limit_usage import BookingResourceLimitUsage
     from ..models.booking_resource_limits import BookingResourceLimits
     from ..models.booking_resource_offering_plugin_options import BookingResourceOfferingPluginOptions
+    from ..models.booking_resource_option_secrets import BookingResourceOptionSecrets
     from ..models.booking_resource_options_type_0 import BookingResourceOptionsType0
     from ..models.booking_resource_renewal_date_type_0 import BookingResourceRenewalDateType0
     from ..models.booking_resource_spending_limits import BookingResourceSpendingLimits
@@ -167,6 +168,8 @@ class BookingResource:
         offering_account_settings (Union[Unset, OfferingAccountSettings]):
         display_limits (Union[Unset, BookingResourceDisplayLimits]): Resource option values shown as the limits of
             usage-based components. Display only: not stored in limits, billed or enforced.
+        option_secrets (Union[Unset, BookingResourceOptionSecrets]): Whether each secret option of the offering is set,
+            by option name. Never the value; the reveal_option_secret action returns it to whom may read it.
         created_by (Union[Unset, str]):
         created_by_username (Union[Unset, str]): Required. 128 characters or fewer. Lowercase letters, numbers and
             @/./+/-/_ characters
@@ -274,6 +277,7 @@ class BookingResource:
     api_key_counts: Union[Unset, "BookingResourceApiKeyCounts"] = UNSET
     offering_account_settings: Union[Unset, "OfferingAccountSettings"] = UNSET
     display_limits: Union[Unset, "BookingResourceDisplayLimits"] = UNSET
+    option_secrets: Union[Unset, "BookingResourceOptionSecrets"] = UNSET
     created_by: Union[Unset, str] = UNSET
     created_by_username: Union[Unset, str] = UNSET
     created_by_full_name: Union[Unset, str] = UNSET
@@ -672,6 +676,10 @@ class BookingResource:
         if not isinstance(self.display_limits, Unset):
             display_limits = self.display_limits.to_dict()
 
+        option_secrets: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.option_secrets, Unset):
+            option_secrets = self.option_secrets.to_dict()
+
         created_by = self.created_by
 
         created_by_username = self.created_by_username
@@ -886,6 +894,8 @@ class BookingResource:
             field_dict["offering_account_settings"] = offering_account_settings
         if display_limits is not UNSET:
             field_dict["display_limits"] = display_limits
+        if option_secrets is not UNSET:
+            field_dict["option_secrets"] = option_secrets
         if created_by is not UNSET:
             field_dict["created_by"] = created_by
         if created_by_username is not UNSET:
@@ -913,6 +923,7 @@ class BookingResource:
         from ..models.booking_resource_limit_usage import BookingResourceLimitUsage
         from ..models.booking_resource_limits import BookingResourceLimits
         from ..models.booking_resource_offering_plugin_options import BookingResourceOfferingPluginOptions
+        from ..models.booking_resource_option_secrets import BookingResourceOptionSecrets
         from ..models.booking_resource_options_type_0 import BookingResourceOptionsType0
         from ..models.booking_resource_renewal_date_type_0 import BookingResourceRenewalDateType0
         from ..models.booking_resource_spending_limits import BookingResourceSpendingLimits
@@ -1543,6 +1554,13 @@ class BookingResource:
         else:
             display_limits = BookingResourceDisplayLimits.from_dict(_display_limits)
 
+        _option_secrets = d.pop("option_secrets", UNSET)
+        option_secrets: Union[Unset, BookingResourceOptionSecrets]
+        if isinstance(_option_secrets, Unset):
+            option_secrets = UNSET
+        else:
+            option_secrets = BookingResourceOptionSecrets.from_dict(_option_secrets)
+
         created_by = d.pop("created_by", UNSET)
 
         created_by_username = d.pop("created_by_username", UNSET)
@@ -1659,6 +1677,7 @@ class BookingResource:
             api_key_counts=api_key_counts,
             offering_account_settings=offering_account_settings,
             display_limits=display_limits,
+            option_secrets=option_secrets,
             created_by=created_by,
             created_by_username=created_by_username,
             created_by_full_name=created_by_full_name,

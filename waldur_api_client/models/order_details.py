@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from ..models.order_details_attributes import OrderDetailsAttributes
     from ..models.order_details_limits import OrderDetailsLimits
     from ..models.order_details_offering_plugin_options import OrderDetailsOfferingPluginOptions
+    from ..models.order_details_option_secrets import OrderDetailsOptionSecrets
 
 
 T = TypeVar("T", bound="OrderDetails")
@@ -131,6 +132,8 @@ class OrderDetails:
         auto_approved (Union[Unset, bool]):
         auto_approved_by_rule_uuid (Union[None, UUID, Unset]):
         auto_approved_cost_limit_snapshot (Union[None, Unset, str]):
+        option_secrets (Union[Unset, OrderDetailsOptionSecrets]): Of the order's resource: whether each secret option of
+            the offering is set, by option name. Never the value.
         issue (Union['IssueReference', None, Unset]):
         award (Union['OrderAward', None, Unset]):
     """
@@ -231,6 +234,7 @@ class OrderDetails:
     auto_approved: Union[Unset, bool] = UNSET
     auto_approved_by_rule_uuid: Union[None, UUID, Unset] = UNSET
     auto_approved_cost_limit_snapshot: Union[None, Unset, str] = UNSET
+    option_secrets: Union[Unset, "OrderDetailsOptionSecrets"] = UNSET
     issue: Union["IssueReference", None, Unset] = UNSET
     award: Union["OrderAward", None, Unset] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
@@ -665,6 +669,10 @@ class OrderDetails:
         else:
             auto_approved_cost_limit_snapshot = self.auto_approved_cost_limit_snapshot
 
+        option_secrets: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.option_secrets, Unset):
+            option_secrets = self.option_secrets.to_dict()
+
         issue: Union[None, Unset, dict[str, Any]]
         if isinstance(self.issue, Unset):
             issue = UNSET
@@ -876,6 +884,8 @@ class OrderDetails:
             field_dict["auto_approved_by_rule_uuid"] = auto_approved_by_rule_uuid
         if auto_approved_cost_limit_snapshot is not UNSET:
             field_dict["auto_approved_cost_limit_snapshot"] = auto_approved_cost_limit_snapshot
+        if option_secrets is not UNSET:
+            field_dict["option_secrets"] = option_secrets
         if issue is not UNSET:
             field_dict["issue"] = issue
         if award is not UNSET:
@@ -890,6 +900,7 @@ class OrderDetails:
         from ..models.order_details_attributes import OrderDetailsAttributes
         from ..models.order_details_limits import OrderDetailsLimits
         from ..models.order_details_offering_plugin_options import OrderDetailsOfferingPluginOptions
+        from ..models.order_details_option_secrets import OrderDetailsOptionSecrets
 
         d = dict(src_dict)
         offering = d.pop("offering", UNSET)
@@ -1600,6 +1611,13 @@ class OrderDetails:
             d.pop("auto_approved_cost_limit_snapshot", UNSET)
         )
 
+        _option_secrets = d.pop("option_secrets", UNSET)
+        option_secrets: Union[Unset, OrderDetailsOptionSecrets]
+        if isinstance(_option_secrets, Unset):
+            option_secrets = UNSET
+        else:
+            option_secrets = OrderDetailsOptionSecrets.from_dict(_option_secrets)
+
         def _parse_issue(data: object) -> Union["IssueReference", None, Unset]:
             if data is None:
                 return data
@@ -1731,6 +1749,7 @@ class OrderDetails:
             auto_approved=auto_approved,
             auto_approved_by_rule_uuid=auto_approved_by_rule_uuid,
             auto_approved_cost_limit_snapshot=auto_approved_cost_limit_snapshot,
+            option_secrets=option_secrets,
             issue=issue,
             award=award,
         )

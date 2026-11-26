@@ -3,6 +3,7 @@ from enum import Enum
 
 class OptionFieldTypeEnum(str, Enum):
     BOOLEAN = "boolean"
+    CIDR = "cidr"
     COMPONENT_FORMULA = "component_formula"
     COMPONENT_MULTIPLIER = "component_multiplier"
     COMPONENT_SUM = "component_sum"
@@ -10,9 +11,11 @@ class OptionFieldTypeEnum(str, Enum):
     DATE = "date"
     HTML_TEXT = "html_text"
     INTEGER = "integer"
+    IPSEC_VPN_CONFIG = "ipsec_vpn_config"
     K8S_EGRESS_RULES = "k8s_egress_rules"
     MONEY = "money"
     MULTI_DATACENTER_K8S_CONFIG = "multi_datacenter_k8s_config"
+    SECRET = "secret"
     SELECT_MULTIPLE_OPENSTACK_INSTANCES = "select_multiple_openstack_instances"
     SELECT_MULTIPLE_OPENSTACK_TENANTS = "select_multiple_openstack_tenants"
     SELECT_OPENSTACK_INSTANCE = "select_openstack_instance"

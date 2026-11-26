@@ -1,22 +1,27 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar, Union
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
+from ..models.cidr_ip_version_enum import CidrIpVersionEnum
 from ..models.load_balancer_mode_enum import LoadBalancerModeEnum
+from ..models.option_secret_source_enum import OptionSecretSourceEnum
 from ..models.topology_mode_enum import TopologyModeEnum
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.cidr_policy import CidrPolicy
+    from ..models.ipsec_phase_1_policy import IpsecPhase1Policy
+    from ..models.ipsec_phase_2_policy import IpsecPhase2Policy
     from ..models.k8s_egress_rule import K8SEgressRule
 
 
-T = TypeVar("T", bound="K8SDefaultConfiguration")
+T = TypeVar("T", bound="OptionDefaultConfigs")
 
 
 @_attrs_define
-class K8SDefaultConfiguration:
+class OptionDefaultConfigs:
     """
     Attributes:
         default_controller_vcpus (Union[Unset, int]):
@@ -43,6 +48,32 @@ class K8SDefaultConfiguration:
         egress_baseline_rules (Union[Unset, list['K8SEgressRule']]): Destinations every cluster of the offering may
             reach, such as DNS, NTP and image registries. Shown to customers read-only; once a cluster has any egress rule,
             outbound traffic is allowed to these and to the customer's destinations only.
+        ip_version (Union[Unset, CidrIpVersionEnum]):
+        prefix_length_min (Union[Unset, int]): The smallest prefix length allowed, that is the largest network.
+        prefix_length_max (Union[Unset, int]): The largest prefix length allowed, that is the smallest network.
+        allowed_ranges (Union[Unset, list[str]]): Networks the value must lie inside one of, such as the private ranges
+            10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 and fc00::/7. Any network when empty.
+        excluded_ranges (Union[Unset, list[str]]): Networks the value must not overlap.
+        max_items (Union[Unset, int]): For a list: the most networks it may hold.
+        multiple (Union[Unset, bool]): Whether the value is a list of networks. Off when omitted.
+        secret_source (Union[Unset, OptionSecretSourceEnum]):
+        customer_can_reveal (Union[Unset, bool]): Whether users holding RESOURCE.REVEAL_API_KEY on the resource's
+            project or organization may read the secret back. When omitted: no for a customer-set secret, yes for a
+            provider-set one.
+        min_length (Union[Unset, int]): 1 when omitted.
+        max_length (Union[Unset, int]): 4096 when omitted; at most 65536.
+        multiline (Union[Unset, bool]): Whether the secret may span lines, such as a PEM key or a kubeconfig. Off when
+            omitted.
+        ikev1_allowed (Union[Unset, bool]): Whether IKEv1 is accepted. Off when omitted.
+        allow_private_peer (Union[Unset, bool]): Whether the customer's gateway may have a private, loopback, link-
+            local, multicast, reserved or CGNAT address. Off when omitted.
+        provider_gateway_ip (Union[Unset, str]): The provider's end of new tunnels: its gateway's IP address.
+        provider_local_subnets (Union[Unset, list[str]]): The provider's end of new tunnels: the networks behind it.
+        remote_subnets (Union[Unset, CidrPolicy]):
+        no_overlap_with (Union[Unset, list[str]]): Names of cidr options whose networks the remote subnets must not
+            overlap. A resource option may name order options too.
+        phase1 (Union[Unset, IpsecPhase1Policy]):
+        phase2 (Union[Unset, IpsecPhase2Policy]):
     """
 
     default_controller_vcpus: Union[Unset, int] = UNSET
@@ -64,6 +95,26 @@ class K8SDefaultConfiguration:
     egress_rules_enabled: Union[Unset, bool] = UNSET
     egress_domain_rules_allowed: Union[Unset, bool] = UNSET
     egress_baseline_rules: Union[Unset, list["K8SEgressRule"]] = UNSET
+    ip_version: Union[Unset, CidrIpVersionEnum] = UNSET
+    prefix_length_min: Union[Unset, int] = UNSET
+    prefix_length_max: Union[Unset, int] = UNSET
+    allowed_ranges: Union[Unset, list[str]] = UNSET
+    excluded_ranges: Union[Unset, list[str]] = UNSET
+    max_items: Union[Unset, int] = UNSET
+    multiple: Union[Unset, bool] = UNSET
+    secret_source: Union[Unset, OptionSecretSourceEnum] = UNSET
+    customer_can_reveal: Union[Unset, bool] = UNSET
+    min_length: Union[Unset, int] = UNSET
+    max_length: Union[Unset, int] = UNSET
+    multiline: Union[Unset, bool] = UNSET
+    ikev1_allowed: Union[Unset, bool] = UNSET
+    allow_private_peer: Union[Unset, bool] = UNSET
+    provider_gateway_ip: Union[Unset, str] = UNSET
+    provider_local_subnets: Union[Unset, list[str]] = UNSET
+    remote_subnets: Union[Unset, "CidrPolicy"] = UNSET
+    no_overlap_with: Union[Unset, list[str]] = UNSET
+    phase1: Union[Unset, "IpsecPhase1Policy"] = UNSET
+    phase2: Union[Unset, "IpsecPhase2Policy"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -114,6 +165,64 @@ class K8SDefaultConfiguration:
                 egress_baseline_rules_item = egress_baseline_rules_item_data.to_dict()
                 egress_baseline_rules.append(egress_baseline_rules_item)
 
+        ip_version: Union[Unset, str] = UNSET
+        if not isinstance(self.ip_version, Unset):
+            ip_version = self.ip_version.value
+
+        prefix_length_min = self.prefix_length_min
+
+        prefix_length_max = self.prefix_length_max
+
+        allowed_ranges: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.allowed_ranges, Unset):
+            allowed_ranges = self.allowed_ranges
+
+        excluded_ranges: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.excluded_ranges, Unset):
+            excluded_ranges = self.excluded_ranges
+
+        max_items = self.max_items
+
+        multiple = self.multiple
+
+        secret_source: Union[Unset, str] = UNSET
+        if not isinstance(self.secret_source, Unset):
+            secret_source = self.secret_source.value
+
+        customer_can_reveal = self.customer_can_reveal
+
+        min_length = self.min_length
+
+        max_length = self.max_length
+
+        multiline = self.multiline
+
+        ikev1_allowed = self.ikev1_allowed
+
+        allow_private_peer = self.allow_private_peer
+
+        provider_gateway_ip = self.provider_gateway_ip
+
+        provider_local_subnets: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.provider_local_subnets, Unset):
+            provider_local_subnets = self.provider_local_subnets
+
+        remote_subnets: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.remote_subnets, Unset):
+            remote_subnets = self.remote_subnets.to_dict()
+
+        no_overlap_with: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.no_overlap_with, Unset):
+            no_overlap_with = self.no_overlap_with
+
+        phase1: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.phase1, Unset):
+            phase1 = self.phase1.to_dict()
+
+        phase2: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.phase2, Unset):
+            phase2 = self.phase2.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -155,11 +264,54 @@ class K8SDefaultConfiguration:
             field_dict["egress_domain_rules_allowed"] = egress_domain_rules_allowed
         if egress_baseline_rules is not UNSET:
             field_dict["egress_baseline_rules"] = egress_baseline_rules
+        if ip_version is not UNSET:
+            field_dict["ip_version"] = ip_version
+        if prefix_length_min is not UNSET:
+            field_dict["prefix_length_min"] = prefix_length_min
+        if prefix_length_max is not UNSET:
+            field_dict["prefix_length_max"] = prefix_length_max
+        if allowed_ranges is not UNSET:
+            field_dict["allowed_ranges"] = allowed_ranges
+        if excluded_ranges is not UNSET:
+            field_dict["excluded_ranges"] = excluded_ranges
+        if max_items is not UNSET:
+            field_dict["max_items"] = max_items
+        if multiple is not UNSET:
+            field_dict["multiple"] = multiple
+        if secret_source is not UNSET:
+            field_dict["secret_source"] = secret_source
+        if customer_can_reveal is not UNSET:
+            field_dict["customer_can_reveal"] = customer_can_reveal
+        if min_length is not UNSET:
+            field_dict["min_length"] = min_length
+        if max_length is not UNSET:
+            field_dict["max_length"] = max_length
+        if multiline is not UNSET:
+            field_dict["multiline"] = multiline
+        if ikev1_allowed is not UNSET:
+            field_dict["ikev1_allowed"] = ikev1_allowed
+        if allow_private_peer is not UNSET:
+            field_dict["allow_private_peer"] = allow_private_peer
+        if provider_gateway_ip is not UNSET:
+            field_dict["provider_gateway_ip"] = provider_gateway_ip
+        if provider_local_subnets is not UNSET:
+            field_dict["provider_local_subnets"] = provider_local_subnets
+        if remote_subnets is not UNSET:
+            field_dict["remote_subnets"] = remote_subnets
+        if no_overlap_with is not UNSET:
+            field_dict["no_overlap_with"] = no_overlap_with
+        if phase1 is not UNSET:
+            field_dict["phase1"] = phase1
+        if phase2 is not UNSET:
+            field_dict["phase2"] = phase2
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.cidr_policy import CidrPolicy
+        from ..models.ipsec_phase_1_policy import IpsecPhase1Policy
+        from ..models.ipsec_phase_2_policy import IpsecPhase2Policy
         from ..models.k8s_egress_rule import K8SEgressRule
 
         d = dict(src_dict)
@@ -216,7 +368,72 @@ class K8SDefaultConfiguration:
 
             egress_baseline_rules.append(egress_baseline_rules_item)
 
-        k8s_default_configuration = cls(
+        _ip_version = d.pop("ip_version", UNSET)
+        ip_version: Union[Unset, CidrIpVersionEnum]
+        if isinstance(_ip_version, Unset):
+            ip_version = UNSET
+        else:
+            ip_version = CidrIpVersionEnum(_ip_version)
+
+        prefix_length_min = d.pop("prefix_length_min", UNSET)
+
+        prefix_length_max = d.pop("prefix_length_max", UNSET)
+
+        allowed_ranges = cast(list[str], d.pop("allowed_ranges", UNSET))
+
+        excluded_ranges = cast(list[str], d.pop("excluded_ranges", UNSET))
+
+        max_items = d.pop("max_items", UNSET)
+
+        multiple = d.pop("multiple", UNSET)
+
+        _secret_source = d.pop("secret_source", UNSET)
+        secret_source: Union[Unset, OptionSecretSourceEnum]
+        if isinstance(_secret_source, Unset):
+            secret_source = UNSET
+        else:
+            secret_source = OptionSecretSourceEnum(_secret_source)
+
+        customer_can_reveal = d.pop("customer_can_reveal", UNSET)
+
+        min_length = d.pop("min_length", UNSET)
+
+        max_length = d.pop("max_length", UNSET)
+
+        multiline = d.pop("multiline", UNSET)
+
+        ikev1_allowed = d.pop("ikev1_allowed", UNSET)
+
+        allow_private_peer = d.pop("allow_private_peer", UNSET)
+
+        provider_gateway_ip = d.pop("provider_gateway_ip", UNSET)
+
+        provider_local_subnets = cast(list[str], d.pop("provider_local_subnets", UNSET))
+
+        _remote_subnets = d.pop("remote_subnets", UNSET)
+        remote_subnets: Union[Unset, CidrPolicy]
+        if isinstance(_remote_subnets, Unset):
+            remote_subnets = UNSET
+        else:
+            remote_subnets = CidrPolicy.from_dict(_remote_subnets)
+
+        no_overlap_with = cast(list[str], d.pop("no_overlap_with", UNSET))
+
+        _phase1 = d.pop("phase1", UNSET)
+        phase1: Union[Unset, IpsecPhase1Policy]
+        if isinstance(_phase1, Unset):
+            phase1 = UNSET
+        else:
+            phase1 = IpsecPhase1Policy.from_dict(_phase1)
+
+        _phase2 = d.pop("phase2", UNSET)
+        phase2: Union[Unset, IpsecPhase2Policy]
+        if isinstance(_phase2, Unset):
+            phase2 = UNSET
+        else:
+            phase2 = IpsecPhase2Policy.from_dict(_phase2)
+
+        option_default_configs = cls(
             default_controller_vcpus=default_controller_vcpus,
             default_controller_ram_gb=default_controller_ram_gb,
             default_controller_system_disk_gb=default_controller_system_disk_gb,
@@ -236,10 +453,30 @@ class K8SDefaultConfiguration:
             egress_rules_enabled=egress_rules_enabled,
             egress_domain_rules_allowed=egress_domain_rules_allowed,
             egress_baseline_rules=egress_baseline_rules,
+            ip_version=ip_version,
+            prefix_length_min=prefix_length_min,
+            prefix_length_max=prefix_length_max,
+            allowed_ranges=allowed_ranges,
+            excluded_ranges=excluded_ranges,
+            max_items=max_items,
+            multiple=multiple,
+            secret_source=secret_source,
+            customer_can_reveal=customer_can_reveal,
+            min_length=min_length,
+            max_length=max_length,
+            multiline=multiline,
+            ikev1_allowed=ikev1_allowed,
+            allow_private_peer=allow_private_peer,
+            provider_gateway_ip=provider_gateway_ip,
+            provider_local_subnets=provider_local_subnets,
+            remote_subnets=remote_subnets,
+            no_overlap_with=no_overlap_with,
+            phase1=phase1,
+            phase2=phase2,
         )
 
-        k8s_default_configuration.additional_properties = d
-        return k8s_default_configuration
+        option_default_configs.additional_properties = d
+        return option_default_configs
 
     @property
     def additional_keys(self) -> list[str]:

@@ -131,6 +131,8 @@ class EventMetadataResponseEventGroupsAdditionalPropertyItem(str, Enum):
     MARKETPLACE_RESOURCE_LIMIT_CHANGE_REQUEST_APPROVED = "marketplace_resource_limit_change_request_approved"
     MARKETPLACE_RESOURCE_LIMIT_CHANGE_REQUEST_CREATED = "marketplace_resource_limit_change_request_created"
     MARKETPLACE_RESOURCE_LIMIT_CHANGE_REQUEST_REJECTED = "marketplace_resource_limit_change_request_rejected"
+    MARKETPLACE_RESOURCE_OPTION_SECRET_REVEALED = "marketplace_resource_option_secret_revealed"
+    MARKETPLACE_RESOURCE_OPTION_SECRET_SET = "marketplace_resource_option_secret_set"
     MARKETPLACE_RESOURCE_PAUSED = "marketplace_resource_paused"
     MARKETPLACE_RESOURCE_PLAN_SWITCHED = "marketplace_resource_plan_switched"
     MARKETPLACE_RESOURCE_PROJECT_CREATED = "marketplace_resource_project_created"

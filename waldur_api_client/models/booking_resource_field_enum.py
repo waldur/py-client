@@ -58,6 +58,7 @@ class BookingResourceFieldEnum(str, Enum):
     OFFERING_TYPE = "offering_type"
     OFFERING_UUID = "offering_uuid"
     OPTIONS = "options"
+    OPTION_SECRETS = "option_secrets"
     ORDER_IN_PROGRESS = "order_in_progress"
     PARENT_NAME = "parent_name"
     PARENT_OFFERING_NAME = "parent_offering_name"

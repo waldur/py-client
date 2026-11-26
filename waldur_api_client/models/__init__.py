@@ -342,6 +342,7 @@ from .booking_resource_limit_usage import BookingResourceLimitUsage
 from .booking_resource_limits import BookingResourceLimits
 from .booking_resource_o_enum import BookingResourceOEnum
 from .booking_resource_offering_plugin_options import BookingResourceOfferingPluginOptions
+from .booking_resource_option_secrets import BookingResourceOptionSecrets
 from .booking_resource_options_type_0 import BookingResourceOptionsType0
 from .booking_resource_renewal_date_type_0 import BookingResourceRenewalDateType0
 from .booking_resource_spending_limits import BookingResourceSpendingLimits
@@ -580,6 +581,9 @@ from .checklist_reviewer_response import ChecklistReviewerResponse
 from .checklist_short import ChecklistShort
 from .checklist_template import ChecklistTemplate
 from .checklist_type_enum import ChecklistTypeEnum
+from .cidr_ip_version_enum import CidrIpVersionEnum
+from .cidr_policy import CidrPolicy
+from .cidr_policy_request import CidrPolicyRequest
 from .circuit_breaker_config import CircuitBreakerConfig
 from .circuit_breaker_reset import CircuitBreakerReset
 from .circuit_breaker_state_change import CircuitBreakerStateChange
@@ -1292,6 +1296,17 @@ from .invoices_history_at_retrieve_response_400 import InvoicesHistoryAtRetrieve
 from .invoices_history_at_retrieve_response_404 import InvoicesHistoryAtRetrieveResponse404
 from .ip_mapping import IPMapping
 from .ip_mapping_request import IPMappingRequest
+from .ipsec_dh_group_enum import IpsecDhGroupEnum
+from .ipsec_encryption_enum import IpsecEncryptionEnum
+from .ipsec_integrity_enum import IpsecIntegrityEnum
+from .ipsec_phase_1 import IpsecPhase1
+from .ipsec_phase_1_policy import IpsecPhase1Policy
+from .ipsec_phase_1_policy_request import IpsecPhase1PolicyRequest
+from .ipsec_phase_1_request import IpsecPhase1Request
+from .ipsec_phase_2 import IpsecPhase2
+from .ipsec_phase_2_policy import IpsecPhase2Policy
+from .ipsec_phase_2_policy_request import IpsecPhase2PolicyRequest
+from .ipsec_phase_2_request import IpsecPhase2Request
 from .ipv_6_mode import Ipv6Mode
 from .isd_user_count import ISDUserCount
 from .issue import Issue
@@ -1321,8 +1336,6 @@ from .jira_issue_fields_request_comment import JiraIssueFieldsRequestComment
 from .jira_issue_project import JiraIssueProject
 from .jira_issue_project_request import JiraIssueProjectRequest
 from .jira_issue_request import JiraIssueRequest
-from .k8s_default_configuration import K8SDefaultConfiguration
-from .k8s_default_configuration_request import K8SDefaultConfigurationRequest
 from .k8s_egress_rule import K8SEgressRule
 from .k8s_egress_rule_protocol_enum import K8SEgressRuleProtocolEnum
 from .k8s_egress_rule_request import K8SEgressRuleRequest
@@ -2134,9 +2147,12 @@ from .openportal_unmanaged_projects_history_at_retrieve_response_404 import (
 from .openportalmembershipsyncmode_enum import OPENPORTALMEMBERSHIPSYNCMODEEnum
 from .openstack_flavors_usage_stats_retrieve_response_200 import OpenstackFlavorsUsageStatsRetrieveResponse200
 from .openstack_tenants_set_quotas_body import OpenstackTenantsSetQuotasBody
+from .option_default_configs import OptionDefaultConfigs
+from .option_default_configs_request import OptionDefaultConfigsRequest
 from .option_field import OptionField
 from .option_field_request import OptionFieldRequest
 from .option_field_type_enum import OptionFieldTypeEnum
+from .option_secret_source_enum import OptionSecretSourceEnum
 from .option_transform import OptionTransform
 from .option_transform_case import OptionTransformCase
 from .option_transform_request import OptionTransformRequest
@@ -2175,6 +2191,7 @@ from .order_details_field_enum import OrderDetailsFieldEnum
 from .order_details_limits import OrderDetailsLimits
 from .order_details_o_enum import OrderDetailsOEnum
 from .order_details_offering_plugin_options import OrderDetailsOfferingPluginOptions
+from .order_details_option_secrets import OrderDetailsOptionSecrets
 from .order_error_details_request import OrderErrorDetailsRequest
 from .order_flow_actor import OrderFlowActor
 from .order_flow_actor_enum import OrderFlowActorEnum
@@ -3095,6 +3112,7 @@ from .resource_api_key_create_request_spending_limits_type_0_additional_property
     ResourceApiKeyCreateRequestSpendingLimitsType0AdditionalPropertyType0,
 )
 from .resource_api_key_current_usages_type_0 import ResourceApiKeyCurrentUsagesType0
+from .resource_api_key_insights import ResourceApiKeyInsights
 from .resource_api_key_limits_type_0 import ResourceApiKeyLimitsType0
 from .resource_api_key_report_created_request import ResourceApiKeyReportCreatedRequest
 from .resource_api_key_resource_spending_limits import ResourceApiKeyResourceSpendingLimits
@@ -3160,6 +3178,11 @@ from .resource_missing_usage import ResourceMissingUsage
 from .resource_o_enum import ResourceOEnum
 from .resource_offering import ResourceOffering
 from .resource_offering_plugin_options import ResourceOfferingPluginOptions
+from .resource_option_secret_name_request import ResourceOptionSecretNameRequest
+from .resource_option_secret_set_request import ResourceOptionSecretSetRequest
+from .resource_option_secret_status import ResourceOptionSecretStatus
+from .resource_option_secret_value import ResourceOptionSecretValue
+from .resource_option_secrets import ResourceOptionSecrets
 from .resource_options_request import ResourceOptionsRequest
 from .resource_options_request_options_type_0 import ResourceOptionsRequestOptionsType0
 from .resource_options_type_0 import ResourceOptionsType0
@@ -4323,6 +4346,7 @@ __all__ = (
     "BookingResourceLimitUsage",
     "BookingResourceOEnum",
     "BookingResourceOfferingPluginOptions",
+    "BookingResourceOptionSecrets",
     "BookingResourceOptionsType0",
     "BookingResourceRenewalDateType0",
     "BookingResourceSpendingLimits",
@@ -4557,6 +4581,9 @@ __all__ = (
     "CheckRunStatusEnum",
     "CheckUniqueBackendIDRequest",
     "CheckUniqueBackendIDResponse",
+    "CidrIpVersionEnum",
+    "CidrPolicy",
+    "CidrPolicyRequest",
     "CircuitBreakerConfig",
     "CircuitBreakerReset",
     "CircuitBreakerStateChange",
@@ -5255,6 +5282,17 @@ __all__ = (
     "InvoiceStatsOffering",
     "IPMapping",
     "IPMappingRequest",
+    "IpsecDhGroupEnum",
+    "IpsecEncryptionEnum",
+    "IpsecIntegrityEnum",
+    "IpsecPhase1",
+    "IpsecPhase1Policy",
+    "IpsecPhase1PolicyRequest",
+    "IpsecPhase1Request",
+    "IpsecPhase2",
+    "IpsecPhase2Policy",
+    "IpsecPhase2PolicyRequest",
+    "IpsecPhase2Request",
     "Ipv6Mode",
     "ISDUserCount",
     "Issue",
@@ -5284,8 +5322,6 @@ __all__ = (
     "JiraIssueProject",
     "JiraIssueProjectRequest",
     "JiraIssueRequest",
-    "K8SDefaultConfiguration",
-    "K8SDefaultConfigurationRequest",
     "K8SEgressRule",
     "K8SEgressRuleProtocolEnum",
     "K8SEgressRuleRequest",
@@ -6021,9 +6057,12 @@ __all__ = (
     "OpenStackVolumeRetypeRequest",
     "OpenStackVolumeType",
     "OpenStepDiscussionRequest",
+    "OptionDefaultConfigs",
+    "OptionDefaultConfigsRequest",
     "OptionField",
     "OptionFieldRequest",
     "OptionFieldTypeEnum",
+    "OptionSecretSourceEnum",
     "OptionTransform",
     "OptionTransformCase",
     "OptionTransformRequest",
@@ -6060,6 +6099,7 @@ __all__ = (
     "OrderDetailsLimits",
     "OrderDetailsOEnum",
     "OrderDetailsOfferingPluginOptions",
+    "OrderDetailsOptionSecrets",
     "OrderErrorDetailsRequest",
     "OrderFlowActor",
     "OrderFlowActorEnum",
@@ -6934,6 +6974,7 @@ __all__ = (
     "ResourceApiKeyCreateRequestSpendingLimitsType0",
     "ResourceApiKeyCreateRequestSpendingLimitsType0AdditionalPropertyType0",
     "ResourceApiKeyCurrentUsagesType0",
+    "ResourceApiKeyInsights",
     "ResourceApiKeyLimitsType0",
     "ResourceApiKeyReportCreatedRequest",
     "ResourceApiKeyResourceSpendingLimits",
@@ -6989,6 +7030,11 @@ __all__ = (
     "ResourceOEnum",
     "ResourceOffering",
     "ResourceOfferingPluginOptions",
+    "ResourceOptionSecretNameRequest",
+    "ResourceOptionSecrets",
+    "ResourceOptionSecretSetRequest",
+    "ResourceOptionSecretStatus",
+    "ResourceOptionSecretValue",
     "ResourceOptionsRequest",
     "ResourceOptionsRequestOptionsType0",
     "ResourceOptionsType0",

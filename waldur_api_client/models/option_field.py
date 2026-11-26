@@ -13,7 +13,7 @@ if TYPE_CHECKING:
     from ..models.component_multiplier_config import ComponentMultiplierConfig
     from ..models.component_sum_config import ComponentSumConfig
     from ..models.display_limit_config import DisplayLimitConfig
-    from ..models.k8s_default_configuration import K8SDefaultConfiguration
+    from ..models.option_default_configs import OptionDefaultConfigs
     from ..models.option_transform import OptionTransform
     from ..models.option_validator import OptionValidator
     from ..models.option_visible_if import OptionVisibleIf
@@ -43,7 +43,7 @@ class OptionField:
         component_sum_config (Union[Unset, ComponentSumConfig]):
         display_limit_config (Union[Unset, DisplayLimitConfig]):
         storage_folder_config (Union[Unset, StorageFolderConfig]):
-        default_configs (Union[Unset, K8SDefaultConfiguration]):
+        default_configs (Union[Unset, OptionDefaultConfigs]):
         validators (Union[Unset, list['OptionValidator']]):
         visible_if (Union[Unset, OptionVisibleIf]):
         unique (Union[Unset, bool]): The value must not be used by another non-terminated resource of this offering.
@@ -72,7 +72,7 @@ class OptionField:
     component_sum_config: Union[Unset, "ComponentSumConfig"] = UNSET
     display_limit_config: Union[Unset, "DisplayLimitConfig"] = UNSET
     storage_folder_config: Union[Unset, "StorageFolderConfig"] = UNSET
-    default_configs: Union[Unset, "K8SDefaultConfiguration"] = UNSET
+    default_configs: Union[Unset, "OptionDefaultConfigs"] = UNSET
     validators: Union[Unset, list["OptionValidator"]] = UNSET
     visible_if: Union[Unset, "OptionVisibleIf"] = UNSET
     unique: Union[Unset, bool] = UNSET
@@ -214,7 +214,7 @@ class OptionField:
         from ..models.component_multiplier_config import ComponentMultiplierConfig
         from ..models.component_sum_config import ComponentSumConfig
         from ..models.display_limit_config import DisplayLimitConfig
-        from ..models.k8s_default_configuration import K8SDefaultConfiguration
+        from ..models.option_default_configs import OptionDefaultConfigs
         from ..models.option_transform import OptionTransform
         from ..models.option_validator import OptionValidator
         from ..models.option_visible_if import OptionVisibleIf
@@ -282,11 +282,11 @@ class OptionField:
             storage_folder_config = StorageFolderConfig.from_dict(_storage_folder_config)
 
         _default_configs = d.pop("default_configs", UNSET)
-        default_configs: Union[Unset, K8SDefaultConfiguration]
+        default_configs: Union[Unset, OptionDefaultConfigs]
         if isinstance(_default_configs, Unset):
             default_configs = UNSET
         else:
-            default_configs = K8SDefaultConfiguration.from_dict(_default_configs)
+            default_configs = OptionDefaultConfigs.from_dict(_default_configs)
 
         validators = []
         _validators = d.pop("validators", UNSET)

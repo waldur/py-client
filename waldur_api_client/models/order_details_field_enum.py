@@ -65,6 +65,7 @@ class OrderDetailsFieldEnum(str, Enum):
     OLD_PLAN_BILLING_MODE = "old_plan_billing_mode"
     OLD_PLAN_NAME = "old_plan_name"
     OLD_PLAN_UUID = "old_plan_uuid"
+    OPTION_SECRETS = "option_secrets"
     ORDER_SUBTYPE = "order_subtype"
     OUTPUT = "output"
     OUTPUT_UPDATED_AT = "output_updated_at"

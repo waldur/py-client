@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.4.dev.20261125140739
+# Version: 8.1.5-rc.4.dev.20261126062705
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -5483,7 +5483,7 @@ Path parameters:
 ### identity_bridge
 POST /api/identity-bridge/
 Summary: Push user attributes from an ISD
-Description: Allows Identity Service Domains (ISDs) to push user attributes to Waldur. Creates or updates a user based on username (CUID). Requires FEDERATED_IDENTITY_SYNC_ENABLED to be True. Caller must be staff or an identity manager with the declared source in managed_isds. Only staff may change staff, sup...
+Description: Allows Identity Service Domains (ISDs) to push user attributes to Waldur. Creates or updates a user based on username (CUID). When no user has the username and the push carries a civil_number the bridge may set, an existing user with that civil number (ignoring case) is returned unchanged instead...
 Request body: yes
 
 ### identity_bridge_allowed_fields_retrieve
@@ -11783,6 +11783,14 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_provider_resources_reveal_option_secret
+POST /api/marketplace-provider-resources/{uuid}/reveal_option_secret/
+Summary: Reveal the value of a secret option
+Description: Lets the service provider or its site agent read the value of one of the resource's secret options, such as a VPN pre-shared key to configure its end of a tunnel. The response must not be cached. Audited, naming any impersonator.
+Path parameters:
+  - uuid
+Request body: yes
+
 ### marketplace_provider_resources_robot_account_users_list
 GET /api/marketplace-provider-resources/{uuid}/robot_account_users/
 Summary: List users a robot account on this resource may link
@@ -11884,6 +11892,14 @@ Request body: yes
 POST /api/marketplace-provider-resources/{uuid}/set_membership_sync_statuses/
 Summary: Report per-member sync statuses for a resource
 Description: Complete report from the site agent: afterwards the resource's stored member sync statuses are exactly the submitted set. Only the differences are written; unchanged statuses are left as they are, and the report time is recorded once per resource. Requires the offering to opt in via the enable_me...
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_provider_resources_set_option_secret
+POST /api/marketplace-provider-resources/{uuid}/set_option_secret/
+Summary: Set the value of a secret option
+Description: Lets the service provider or its site agent store, or replace, the value of one of the resource's secret options, encrypted, whoever the option's source. The value is never returned; the response says whether it is set. Audited.
 Path parameters:
   - uuid
 Request body: yes
@@ -12283,6 +12299,44 @@ POST /api/marketplace-resource-api-keys/
 Summary: Request an API key
 Description: Asks the site agent to create a key for the resource. Waldur generates nothing: the key appears as Creating and turns OK once the agent reports it. Only on offerings with enable_api_key_provisioning, and refused with 409 until the agent has created the resource (it has no backend_id yet).
 Request body: yes
+
+### marketplace_resource_api_keys_insights_retrieve
+GET /api/marketplace-resource-api-keys/insights/
+Summary: What API keys spent over time, with charts
+Description: The keys' spend this month, its recent daily pace and a forecast to the month's end, how many keys are active and paused, and three charts: spend this month (against the resource's own month limit when resource_uuid is given), spend per day by key and usage per day of the components the plan does...
+Query parameters (13):
+  - customer_uuid — One of resource_uuid, project_uuid, customer_uuid, offering_uuid and provider_uuid is required.
+  - days — How many days, up to today, the per-day charts cover.
+  - has_pending_action — Has a pending command
+  - modified_before — Modified before
+  - o — Ordering
+  - offering_uuid — One of resource_uuid, project_uuid, customer_uuid, offering_uuid and provider_uuid is required.
+  - paused_by_limit — Paused by a spending limit
+  - pending_action — Pending command
+  - project_uuid — One of resource_uuid, project_uuid, customer_uuid, offering_uuid and provider_uuid is required.
+  - provider_uuid — One of resource_uuid, project_uuid, customer_uuid, offering_uuid and provider_uuid is required.
+  - resource_uuid — One of resource_uuid, project_uuid, customer_uuid, offering_uuid and provider_uuid is required.
+  - state — API key state
+  - user_uuid — Assignee UUID
+
+### marketplace_resource_api_keys_insights_count
+HEAD /api/marketplace-resource-api-keys/insights/
+Summary: What API keys spent over time, with charts
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (13):
+  - customer_uuid — One of resource_uuid, project_uuid, customer_uuid, offering_uuid and provider_uuid is required.
+  - days — How many days, up to today, the per-day charts cover.
+  - has_pending_action — Has a pending command
+  - modified_before — Modified before
+  - o — Ordering
+  - offering_uuid — One of resource_uuid, project_uuid, customer_uuid, offering_uuid and provider_uuid is required.
+  - paused_by_limit — Paused by a spending limit
+  - pending_action — Pending command
+  - project_uuid — One of resource_uuid, project_uuid, customer_uuid, offering_uuid and provider_uuid is required.
+  - provider_uuid — One of resource_uuid, project_uuid, customer_uuid, offering_uuid and provider_uuid is required.
+  - resource_uuid — One of resource_uuid, project_uuid, customer_uuid, offering_uuid and provider_uuid is required.
+  - state — API key state
+  - user_uuid — Assignee UUID
 
 ### marketplace_resource_api_keys_report_created
 POST /api/marketplace-resource-api-keys/report_created/
@@ -13194,6 +13248,14 @@ Path parameters:
   - uuid
 Request body: yes
 
+### marketplace_resources_reveal_option_secret
+POST /api/marketplace-resources/{uuid}/reveal_option_secret/
+Summary: Reveal the value of a secret option
+Description: Returns the value of one of the resource's secret options, when the option's policy lets customers read it (customer_can_reveal). The response must not be cached. Audited, naming any impersonator.
+Path parameters:
+  - uuid
+Request body: yes
+
 ### marketplace_resources_set_downscaled
 POST /api/marketplace-resources/{uuid}/set_downscaled/
 Summary: Set downscaled flag for resource
@@ -13214,6 +13276,14 @@ Request body: yes
 POST /api/marketplace-resources/{uuid}/set_end_date_by_staff/
 Summary: Set end date of the resource by staff
 Description: Deprecated: Use set_end_date instead. Allows a staff user to set or update the end date for a resource.
+Path parameters:
+  - uuid
+Request body: yes
+
+### marketplace_resources_set_option_secret
+POST /api/marketplace-resources/{uuid}/set_option_secret/
+Summary: Set the value of a secret option
+Description: Stores, or replaces, the value of one of the resource's secret options, encrypted. Only for an option the customer sets (secret_source customer). The value is checked against the option's policy and never returned; the response says whether it is set. Audited.
 Path parameters:
   - uuid
 Request body: yes
