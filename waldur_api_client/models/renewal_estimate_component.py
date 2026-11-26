@@ -1,8 +1,12 @@
+import datetime
 from collections.abc import Mapping
 from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
+from dateutil.parser import isoparse
+
+from ..models.renewal_term_enum import RenewalTermEnum
 
 T = TypeVar("T", bound="RenewalEstimateComponent")
 
@@ -15,11 +19,16 @@ class RenewalEstimateComponent:
         component_name (str):
         billing_type (str):
         billing_period (Union[None, str]):
-        current_limit (int):
-        new_limit (int):
+        term (Union[None, RenewalTermEnum]): For a prepaid line, the term it covers: the rest of the current term,
+            charged for a raised limit, or the extension.
+        current_limit (float):
+        new_limit (float):
         unit_price (str):
         measured_unit (str):
         period_description (str):
+        period_start (Union[None, datetime.date]):
+        period_end (Union[None, datetime.date]):
+        quantity (Union[None, str]): For a prepaid line, the units charged: limit x months.
         total (str):
     """
 
@@ -27,11 +36,15 @@ class RenewalEstimateComponent:
     component_name: str
     billing_type: str
     billing_period: Union[None, str]
-    current_limit: int
-    new_limit: int
+    term: Union[None, RenewalTermEnum]
+    current_limit: float
+    new_limit: float
     unit_price: str
     measured_unit: str
     period_description: str
+    period_start: Union[None, datetime.date]
+    period_end: Union[None, datetime.date]
+    quantity: Union[None, str]
     total: str
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -45,6 +58,12 @@ class RenewalEstimateComponent:
         billing_period: Union[None, str]
         billing_period = self.billing_period
 
+        term: Union[None, str]
+        if isinstance(self.term, RenewalTermEnum):
+            term = self.term.value
+        else:
+            term = self.term
+
         current_limit = self.current_limit
 
         new_limit = self.new_limit
@@ -54,6 +73,21 @@ class RenewalEstimateComponent:
         measured_unit = self.measured_unit
 
         period_description = self.period_description
+
+        period_start: Union[None, str]
+        if isinstance(self.period_start, datetime.date):
+            period_start = self.period_start.isoformat()
+        else:
+            period_start = self.period_start
+
+        period_end: Union[None, str]
+        if isinstance(self.period_end, datetime.date):
+            period_end = self.period_end.isoformat()
+        else:
+            period_end = self.period_end
+
+        quantity: Union[None, str]
+        quantity = self.quantity
 
         total = self.total
 
@@ -65,11 +99,15 @@ class RenewalEstimateComponent:
                 "component_name": component_name,
                 "billing_type": billing_type,
                 "billing_period": billing_period,
+                "term": term,
                 "current_limit": current_limit,
                 "new_limit": new_limit,
                 "unit_price": unit_price,
                 "measured_unit": measured_unit,
                 "period_description": period_description,
+                "period_start": period_start,
+                "period_end": period_end,
+                "quantity": quantity,
                 "total": total,
             }
         )
@@ -92,6 +130,21 @@ class RenewalEstimateComponent:
 
         billing_period = _parse_billing_period(d.pop("billing_period"))
 
+        def _parse_term(data: object) -> Union[None, RenewalTermEnum]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                term_type_0 = RenewalTermEnum(data)
+
+                return term_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, RenewalTermEnum], data)
+
+        term = _parse_term(d.pop("term"))
+
         current_limit = d.pop("current_limit")
 
         new_limit = d.pop("new_limit")
@@ -102,6 +155,43 @@ class RenewalEstimateComponent:
 
         period_description = d.pop("period_description")
 
+        def _parse_period_start(data: object) -> Union[None, datetime.date]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                period_start_type_0 = isoparse(data).date()
+
+                return period_start_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, datetime.date], data)
+
+        period_start = _parse_period_start(d.pop("period_start"))
+
+        def _parse_period_end(data: object) -> Union[None, datetime.date]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                period_end_type_0 = isoparse(data).date()
+
+                return period_end_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, datetime.date], data)
+
+        period_end = _parse_period_end(d.pop("period_end"))
+
+        def _parse_quantity(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        quantity = _parse_quantity(d.pop("quantity"))
+
         total = d.pop("total")
 
         renewal_estimate_component = cls(
@@ -109,11 +199,15 @@ class RenewalEstimateComponent:
             component_name=component_name,
             billing_type=billing_type,
             billing_period=billing_period,
+            term=term,
             current_limit=current_limit,
             new_limit=new_limit,
             unit_price=unit_price,
             measured_unit=measured_unit,
             period_description=period_description,
+            period_start=period_start,
+            period_end=period_end,
+            quantity=quantity,
             total=total,
         )
 

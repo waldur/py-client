@@ -3068,6 +3068,8 @@ from .renewal_estimate_component import RenewalEstimateComponent
 from .renewal_estimate_request_request import RenewalEstimateRequestRequest
 from .renewal_estimate_request_request_limits import RenewalEstimateRequestRequestLimits
 from .renewal_estimate_response import RenewalEstimateResponse
+from .renewal_limit_decrease_policy_enum import RenewalLimitDecreasePolicyEnum
+from .renewal_term_enum import RenewalTermEnum
 from .reopen_contribution_request import ReopenContributionRequest
 from .reopen_decision_request import ReopenDecisionRequest
 from .replication_stats import ReplicationStats
@@ -6932,6 +6934,8 @@ __all__ = (
     "RenewalEstimateRequestRequest",
     "RenewalEstimateRequestRequestLimits",
     "RenewalEstimateResponse",
+    "RenewalLimitDecreasePolicyEnum",
+    "RenewalTermEnum",
     "ReopenContributionRequest",
     "ReopenDecisionRequest",
     "ReplicationStats",

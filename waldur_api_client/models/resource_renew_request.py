@@ -20,7 +20,11 @@ class ResourceRenewRequest:
     """
     Attributes:
         extension_months (int): Number of months to extend the subscription by.
-        limits (Union[Unset, ResourceRenewRequestLimits]): Optional new limits for the resource. Supports upgrades only.
+        limits (Union[Unset, ResourceRenewRequestLimits]): Optional new limits for the resource; components left out
+            keep their current limits. A raised prepaid limit is also charged for the rest of the current term. A renewal
+            that only lowers limits gets no credit; if the offering's renewal_limit_decrease_policy is stretch_paid_term,
+            the value already paid for the rest of the term is spread over the lower limits and the extension starts when it
+            runs out.
         request_comment (Union[Unset, str]): Optional comment for the renewal request.
         attachment (Union[Unset, File]): Optional PDF attachment for the renewal request.
     """

@@ -12,6 +12,7 @@ from ..models.blank_enum import BlankEnum
 from ..models.deployment_mode_enum import DeploymentModeEnum
 from ..models.instance_metrics_enum import InstanceMetricsEnum
 from ..models.posix_id_source_enum import PosixIdSourceEnum
+from ..models.renewal_limit_decrease_policy_enum import RenewalLimitDecreasePolicyEnum
 from ..models.resource_projects_limit_policy_enum import ResourceProjectsLimitPolicyEnum
 from ..models.s3_browser_flavor_enum import S3BrowserFlavorEnum
 from ..models.storage_mode_enum import StorageModeEnum
@@ -128,6 +129,11 @@ class MergedPluginOptionsRequest:
             resource limits are enforced on child resource projects: 'none' (accepted as-is, default), 'per_project' (each
             resource project limit must be within the parent resource limit), or 'aggregate' (the sum of all resource
             project limits must be within the parent limit).
+        renewal_limit_decrease_policy (Union[None, RenewalLimitDecreasePolicyEnum, Unset]): What a renewal that only
+            lowers prepaid limits does with the value already paid for the rest of the current term: 'no_credit' (the lower
+            limits apply at once and the extension starts at the current end date, default) or 'stretch_paid_term' (the
+            value is spread over the lower limits, so the paid-up period lasts longer, and the extension starts when it runs
+            out). Neither refunds or credits anything.
         auto_ok_resource_projects (Union[Unset, bool]): If set to True, newly-created resource projects are immediately
             transitioned from CREATING to OK on save, bypassing the provider/site-agent reconciliation callback. Use for
             offerings that have no external backend to reconcile against.
@@ -336,6 +342,7 @@ class MergedPluginOptionsRequest:
     enable_resource_access_subnets: Union[Unset, bool] = UNSET
     conceal_subnet_restricted_resources: Union[Unset, bool] = UNSET
     resource_projects_limit_policy: Union[BlankEnum, None, ResourceProjectsLimitPolicyEnum, Unset] = UNSET
+    renewal_limit_decrease_policy: Union[None, RenewalLimitDecreasePolicyEnum, Unset] = UNSET
     auto_ok_resource_projects: Union[Unset, bool] = UNSET
     resource_projects_limits_required: Union[Unset, bool] = UNSET
     create_orders_on_resource_project_change: Union[Unset, bool] = UNSET
@@ -546,6 +553,14 @@ class MergedPluginOptionsRequest:
             resource_projects_limit_policy = self.resource_projects_limit_policy.value
         else:
             resource_projects_limit_policy = self.resource_projects_limit_policy
+
+        renewal_limit_decrease_policy: Union[None, Unset, str]
+        if isinstance(self.renewal_limit_decrease_policy, Unset):
+            renewal_limit_decrease_policy = UNSET
+        elif isinstance(self.renewal_limit_decrease_policy, RenewalLimitDecreasePolicyEnum):
+            renewal_limit_decrease_policy = self.renewal_limit_decrease_policy.value
+        else:
+            renewal_limit_decrease_policy = self.renewal_limit_decrease_policy
 
         auto_ok_resource_projects = self.auto_ok_resource_projects
 
@@ -885,6 +900,8 @@ class MergedPluginOptionsRequest:
             field_dict["conceal_subnet_restricted_resources"] = conceal_subnet_restricted_resources
         if resource_projects_limit_policy is not UNSET:
             field_dict["resource_projects_limit_policy"] = resource_projects_limit_policy
+        if renewal_limit_decrease_policy is not UNSET:
+            field_dict["renewal_limit_decrease_policy"] = renewal_limit_decrease_policy
         if auto_ok_resource_projects is not UNSET:
             field_dict["auto_ok_resource_projects"] = auto_ok_resource_projects
         if resource_projects_limits_required is not UNSET:
@@ -1255,6 +1272,25 @@ class MergedPluginOptionsRequest:
 
         resource_projects_limit_policy = _parse_resource_projects_limit_policy(
             d.pop("resource_projects_limit_policy", UNSET)
+        )
+
+        def _parse_renewal_limit_decrease_policy(data: object) -> Union[None, RenewalLimitDecreasePolicyEnum, Unset]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                renewal_limit_decrease_policy_type_0 = RenewalLimitDecreasePolicyEnum(data)
+
+                return renewal_limit_decrease_policy_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, RenewalLimitDecreasePolicyEnum, Unset], data)
+
+        renewal_limit_decrease_policy = _parse_renewal_limit_decrease_policy(
+            d.pop("renewal_limit_decrease_policy", UNSET)
         )
 
         auto_ok_resource_projects = d.pop("auto_ok_resource_projects", UNSET)
@@ -1635,6 +1671,7 @@ class MergedPluginOptionsRequest:
             enable_resource_access_subnets=enable_resource_access_subnets,
             conceal_subnet_restricted_resources=conceal_subnet_restricted_resources,
             resource_projects_limit_policy=resource_projects_limit_policy,
+            renewal_limit_decrease_policy=renewal_limit_decrease_policy,
             auto_ok_resource_projects=auto_ok_resource_projects,
             resource_projects_limits_required=resource_projects_limits_required,
             create_orders_on_resource_project_change=create_orders_on_resource_project_change,

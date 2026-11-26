@@ -22,6 +22,9 @@ class RenewalEstimateResponse:
         limit_change_total (str):
         total (str):
         remaining_days (int):
+        paid_up_end_date (datetime.date): Where the extension starts: the current end date, or later when the renewal
+            only lowers limits and the offering's renewal_limit_decrease_policy spreads the value already paid for the rest
+            of the current term over the lower limits.
         new_end_date (datetime.date):
     """
 
@@ -30,6 +33,7 @@ class RenewalEstimateResponse:
     limit_change_total: str
     total: str
     remaining_days: int
+    paid_up_end_date: datetime.date
     new_end_date: datetime.date
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -47,6 +51,8 @@ class RenewalEstimateResponse:
 
         remaining_days = self.remaining_days
 
+        paid_up_end_date = self.paid_up_end_date.isoformat()
+
         new_end_date = self.new_end_date.isoformat()
 
         field_dict: dict[str, Any] = {}
@@ -58,6 +64,7 @@ class RenewalEstimateResponse:
                 "limit_change_total": limit_change_total,
                 "total": total,
                 "remaining_days": remaining_days,
+                "paid_up_end_date": paid_up_end_date,
                 "new_end_date": new_end_date,
             }
         )
@@ -84,6 +91,8 @@ class RenewalEstimateResponse:
 
         remaining_days = d.pop("remaining_days")
 
+        paid_up_end_date = isoparse(d.pop("paid_up_end_date")).date()
+
         new_end_date = isoparse(d.pop("new_end_date")).date()
 
         renewal_estimate_response = cls(
@@ -92,6 +101,7 @@ class RenewalEstimateResponse:
             limit_change_total=limit_change_total,
             total=total,
             remaining_days=remaining_days,
+            paid_up_end_date=paid_up_end_date,
             new_end_date=new_end_date,
         )
 
