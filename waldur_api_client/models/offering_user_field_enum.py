@@ -8,6 +8,7 @@ class OfferingUserFieldEnum(str, Enum):
     CUSTOMER_UUID = "customer_uuid"
     HAS_COMPLIANCE_CHECKLIST = "has_compliance_checklist"
     HAS_CONSENT = "has_consent"
+    HAS_INITIAL_PASSWORD = "has_initial_password"
     HOME_DIRECTORY = "home_directory"
     IS_PROFILE_COMPLETE = "is_profile_complete"
     IS_RESTRICTED = "is_restricted"

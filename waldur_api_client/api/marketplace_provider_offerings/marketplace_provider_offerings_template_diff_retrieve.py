@@ -51,10 +51,11 @@ def sync_detailed(
 
      Where the offering differs from the offering template it was created from: from the version it was
     created from, and from the template's latest version, both filled in with the parameter values the
-    offering was created with (a parameter added since takes its default). Only what the template sets
-    is compared, and the offering's name is not. The agent configuration is compared only for who may
-    see the integration settings. Refused for an offering not created from a template, or whose template
-    was deleted.
+    offering was created with (a parameter added since takes its default). The latest version is left
+    out, as null, for who may not see the template: it is unpublished. Only what the template sets is
+    compared, and the offering's name is not. The agent configuration is compared only for who may see
+    the integration settings. Refused for an offering not created from a template, or whose template was
+    deleted.
 
     Args:
         uuid (UUID):
@@ -87,10 +88,11 @@ def sync(
 
      Where the offering differs from the offering template it was created from: from the version it was
     created from, and from the template's latest version, both filled in with the parameter values the
-    offering was created with (a parameter added since takes its default). Only what the template sets
-    is compared, and the offering's name is not. The agent configuration is compared only for who may
-    see the integration settings. Refused for an offering not created from a template, or whose template
-    was deleted.
+    offering was created with (a parameter added since takes its default). The latest version is left
+    out, as null, for who may not see the template: it is unpublished. Only what the template sets is
+    compared, and the offering's name is not. The agent configuration is compared only for who may see
+    the integration settings. Refused for an offering not created from a template, or whose template was
+    deleted.
 
     Args:
         uuid (UUID):
@@ -118,10 +120,11 @@ async def asyncio_detailed(
 
      Where the offering differs from the offering template it was created from: from the version it was
     created from, and from the template's latest version, both filled in with the parameter values the
-    offering was created with (a parameter added since takes its default). Only what the template sets
-    is compared, and the offering's name is not. The agent configuration is compared only for who may
-    see the integration settings. Refused for an offering not created from a template, or whose template
-    was deleted.
+    offering was created with (a parameter added since takes its default). The latest version is left
+    out, as null, for who may not see the template: it is unpublished. Only what the template sets is
+    compared, and the offering's name is not. The agent configuration is compared only for who may see
+    the integration settings. Refused for an offering not created from a template, or whose template was
+    deleted.
 
     Args:
         uuid (UUID):
@@ -152,10 +155,11 @@ async def asyncio(
 
      Where the offering differs from the offering template it was created from: from the version it was
     created from, and from the template's latest version, both filled in with the parameter values the
-    offering was created with (a parameter added since takes its default). Only what the template sets
-    is compared, and the offering's name is not. The agent configuration is compared only for who may
-    see the integration settings. Refused for an offering not created from a template, or whose template
-    was deleted.
+    offering was created with (a parameter added since takes its default). The latest version is left
+    out, as null, for who may not see the template: it is unpublished. Only what the template sets is
+    compared, and the offering's name is not. The agent configuration is compared only for who may see
+    the integration settings. Refused for an offering not created from a template, or whose template was
+    deleted.
 
     Args:
         uuid (UUID):

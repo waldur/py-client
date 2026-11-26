@@ -1904,6 +1904,7 @@ from .offering_user_attribute_config import OfferingUserAttributeConfig
 from .offering_user_attribute_config_request import OfferingUserAttributeConfigRequest
 from .offering_user_consent_data_type_0 import OfferingUserConsentDataType0
 from .offering_user_field_enum import OfferingUserFieldEnum
+from .offering_user_initial_password import OfferingUserInitialPassword
 from .offering_user_o_enum import OfferingUserOEnum
 from .offering_user_posix_allocation import OfferingUserPosixAllocation
 from .offering_user_posix_attributes_request import OfferingUserPosixAttributesRequest
@@ -1912,6 +1913,7 @@ from .offering_user_posix_group_kind_enum import OfferingUserPosixGroupKindEnum
 from .offering_user_posix_update_response import OfferingUserPosixUpdateResponse
 from .offering_user_request import OfferingUserRequest
 from .offering_user_service_provider_comment import OfferingUserServiceProviderComment
+from .offering_user_set_initial_password_request import OfferingUserSetInitialPasswordRequest
 from .offering_user_state import OfferingUserState
 from .offering_user_state_transition_request import OfferingUserStateTransitionRequest
 from .offering_user_update_restriction_request import OfferingUserUpdateRestrictionRequest
@@ -5858,6 +5860,7 @@ __all__ = (
     "OfferingUserAttributeConfigRequest",
     "OfferingUserConsentDataType0",
     "OfferingUserFieldEnum",
+    "OfferingUserInitialPassword",
     "OfferingUserOEnum",
     "OfferingUserPosixAllocation",
     "OfferingUserPosixAttributesRequest",
@@ -5866,6 +5869,7 @@ __all__ = (
     "OfferingUserPosixUpdateResponse",
     "OfferingUserRequest",
     "OfferingUserServiceProviderComment",
+    "OfferingUserSetInitialPasswordRequest",
     "OfferingUserState",
     "OfferingUserStateTransitionRequest",
     "OfferingUserUpdateRestrictionRequest",

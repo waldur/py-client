@@ -86,6 +86,8 @@ class OfferingUser:
         offering_has_active_tos (Union[Unset, bool]):
         has_compliance_checklist (Union[Unset, bool]): Check if the offering user has a connected compliance checklist
             completion.
+        has_initial_password (Union[Unset, bool]): Whether the site agent stored an initial password the user can
+            reveal.
         consent_data (Union['OfferingUserConsentDataType0', None, Unset]): User consent data including uuid, version,
             and agreement_date
         is_profile_complete (Union[Unset, bool]):
@@ -148,6 +150,7 @@ class OfferingUser:
     requires_reconsent: Union[Unset, bool] = UNSET
     offering_has_active_tos: Union[Unset, bool] = UNSET
     has_compliance_checklist: Union[Unset, bool] = UNSET
+    has_initial_password: Union[Unset, bool] = UNSET
     consent_data: Union["OfferingUserConsentDataType0", None, Unset] = UNSET
     is_profile_complete: Union[Unset, bool] = UNSET
     missing_profile_attributes: Union[Unset, list[str]] = UNSET
@@ -328,6 +331,8 @@ class OfferingUser:
 
         has_compliance_checklist = self.has_compliance_checklist
 
+        has_initial_password = self.has_initial_password
+
         consent_data: Union[None, Unset, dict[str, Any]]
         if isinstance(self.consent_data, Unset):
             consent_data = UNSET
@@ -473,6 +478,8 @@ class OfferingUser:
             field_dict["offering_has_active_tos"] = offering_has_active_tos
         if has_compliance_checklist is not UNSET:
             field_dict["has_compliance_checklist"] = has_compliance_checklist
+        if has_initial_password is not UNSET:
+            field_dict["has_initial_password"] = has_initial_password
         if consent_data is not UNSET:
             field_dict["consent_data"] = consent_data
         if is_profile_complete is not UNSET:
@@ -731,6 +738,8 @@ class OfferingUser:
 
         has_compliance_checklist = d.pop("has_compliance_checklist", UNSET)
 
+        has_initial_password = d.pop("has_initial_password", UNSET)
+
         def _parse_consent_data(data: object) -> Union["OfferingUserConsentDataType0", None, Unset]:
             if data is None:
                 return data
@@ -841,6 +850,7 @@ class OfferingUser:
             requires_reconsent=requires_reconsent,
             offering_has_active_tos=offering_has_active_tos,
             has_compliance_checklist=has_compliance_checklist,
+            has_initial_password=has_initial_password,
             consent_data=consent_data,
             is_profile_complete=is_profile_complete,
             missing_profile_attributes=missing_profile_attributes,

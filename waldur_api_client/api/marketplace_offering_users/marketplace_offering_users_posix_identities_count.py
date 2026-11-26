@@ -19,6 +19,7 @@ def _get_kwargs(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
+    has_initial_password: Union[Unset, bool] = UNSET,
     is_provider_backed: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
@@ -55,6 +56,8 @@ def _get_kwargs(
     params["has_complete_profile"] = has_complete_profile
 
     params["has_consent"] = has_consent
+
+    params["has_initial_password"] = has_initial_password
 
     params["is_provider_backed"] = is_provider_backed
 
@@ -188,6 +191,7 @@ def sync_detailed(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
+    has_initial_password: Union[Unset, bool] = UNSET,
     is_provider_backed: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
@@ -218,6 +222,7 @@ def sync_detailed(
         created_before (Union[Unset, datetime.datetime]):
         has_complete_profile (Union[Unset, bool]):
         has_consent (Union[Unset, bool]):
+        has_initial_password (Union[Unset, bool]):
         is_provider_backed (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
@@ -252,6 +257,7 @@ def sync_detailed(
         created_before=created_before,
         has_complete_profile=has_complete_profile,
         has_consent=has_consent,
+        has_initial_password=has_initial_password,
         is_provider_backed=is_provider_backed,
         is_restricted=is_restricted,
         modified=modified,
@@ -288,6 +294,7 @@ def sync(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
+    has_initial_password: Union[Unset, bool] = UNSET,
     is_provider_backed: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
@@ -318,6 +325,7 @@ def sync(
         created_before (Union[Unset, datetime.datetime]):
         has_complete_profile (Union[Unset, bool]):
         has_consent (Union[Unset, bool]):
+        has_initial_password (Union[Unset, bool]):
         is_provider_backed (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
@@ -353,6 +361,7 @@ def sync(
         created_before=created_before,
         has_complete_profile=has_complete_profile,
         has_consent=has_consent,
+        has_initial_password=has_initial_password,
         is_provider_backed=is_provider_backed,
         is_restricted=is_restricted,
         modified=modified,
@@ -383,6 +392,7 @@ async def asyncio_detailed(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
+    has_initial_password: Union[Unset, bool] = UNSET,
     is_provider_backed: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
@@ -413,6 +423,7 @@ async def asyncio_detailed(
         created_before (Union[Unset, datetime.datetime]):
         has_complete_profile (Union[Unset, bool]):
         has_consent (Union[Unset, bool]):
+        has_initial_password (Union[Unset, bool]):
         is_provider_backed (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
@@ -447,6 +458,7 @@ async def asyncio_detailed(
         created_before=created_before,
         has_complete_profile=has_complete_profile,
         has_consent=has_consent,
+        has_initial_password=has_initial_password,
         is_provider_backed=is_provider_backed,
         is_restricted=is_restricted,
         modified=modified,
@@ -481,6 +493,7 @@ async def asyncio(
     created_before: Union[Unset, datetime.datetime] = UNSET,
     has_complete_profile: Union[Unset, bool] = UNSET,
     has_consent: Union[Unset, bool] = UNSET,
+    has_initial_password: Union[Unset, bool] = UNSET,
     is_provider_backed: Union[Unset, bool] = UNSET,
     is_restricted: Union[Unset, bool] = UNSET,
     modified: Union[Unset, datetime.datetime] = UNSET,
@@ -511,6 +524,7 @@ async def asyncio(
         created_before (Union[Unset, datetime.datetime]):
         has_complete_profile (Union[Unset, bool]):
         has_consent (Union[Unset, bool]):
+        has_initial_password (Union[Unset, bool]):
         is_provider_backed (Union[Unset, bool]):
         is_restricted (Union[Unset, bool]):
         modified (Union[Unset, datetime.datetime]):
@@ -547,6 +561,7 @@ async def asyncio(
             created_before=created_before,
             has_complete_profile=has_complete_profile,
             has_consent=has_consent,
+            has_initial_password=has_initial_password,
             is_provider_backed=is_provider_backed,
             is_restricted=is_restricted,
             modified=modified,

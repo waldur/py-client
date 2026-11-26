@@ -10,7 +10,7 @@ T = TypeVar("T", bound="OfferingTemplateCreateOfferingResponseDocument")
 @_attrs_define
 class OfferingTemplateCreateOfferingResponseDocument:
     """The template's document with the parameters filled in: what the offering is created from, in the import_offering
-    format.
+    format. Its agent_configuration is left out for who may not see the organization's integration settings.
 
     """
 

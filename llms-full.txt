@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.4.dev.20261126075526
+# Version: 8.1.5-rc.4.dev.20261126130953
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -8511,12 +8511,13 @@ Path parameters:
 GET /api/marketplace-offering-users/
 Summary: List offering users
 Description: Returns a paginated list of users associated with offerings. The visibility of users depends on the role of the authenticated user. Staff and support can see all users. Service providers can see users of their offerings if the user has consented. Regular users can only see their own offering-user...
-Query parameters (23):
+Query parameters (24):
   - created — Created after
   - created_before — Created before
   - field
   - has_complete_profile — User has complete profile for the offering
   - has_consent — User Has Consent
+  - has_initial_password — Has an initial password stored
   - is_provider_backed — Backed by a service provider account
   - is_restricted — Is restricted
   - modified — Modified after
@@ -8540,11 +8541,12 @@ Query parameters (23):
 HEAD /api/marketplace-offering-users/
 Summary: List offering users
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (22):
+Query parameters (23):
   - created — Created after
   - created_before — Created before
   - has_complete_profile — User has complete profile for the offering
   - has_consent — User Has Consent
+  - has_initial_password — Has an initial password stored
   - is_provider_backed — Backed by a service provider account
   - is_restricted — Is restricted
   - modified — Modified after
@@ -8574,7 +8576,7 @@ Request body: yes
 GET /api/marketplace-offering-users/facets/
 Summary: Count the values each filter can still take
 Description: Accepts the same filters as the list. Each facet is counted under every filter except its own, so its values are those that still have rows given the other selections and search.
-Query parameters (25):
+Query parameters (26):
   - created — Created after
   - created_before — Created before
   - facet — Comma-separated facet names to compute; all by default.
@@ -8582,6 +8584,7 @@ Query parameters (25):
   - facet_q — Keep only values whose label contains this text (at most 100 characters).
   - has_complete_profile — User has complete profile for the offering
   - has_consent — User Has Consent
+  - has_initial_password — Has an initial password stored
   - is_provider_backed — Backed by a service provider account
   - is_restricted — Is restricted
   - modified — Modified after
@@ -8605,11 +8608,12 @@ Query parameters (25):
 GET /api/marketplace-offering-users/posix_identities/
 Summary: List a user's POSIX identities across all their offerings
 Description: Consolidated view of one user's POSIX identifiers (UID, primary GID and project group GIDs), one row per pool and namespace: a UID allocated once for the user is reported once, listing every offering that uses it. An offering with its own pool yields its own row. Scoped to the offering users the ...
-Query parameters (22):
+Query parameters (23):
   - created — Created after
   - created_before — Created before
   - has_complete_profile — User has complete profile for the offering
   - has_consent — User Has Consent
+  - has_initial_password — Has an initial password stored
   - is_provider_backed — Backed by a service provider account
   - is_restricted — Is restricted
   - modified — Modified after
@@ -8633,11 +8637,12 @@ Query parameters (22):
 HEAD /api/marketplace-offering-users/posix_identities/
 Summary: List a user's POSIX identities across all their offerings
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (22):
+Query parameters (23):
   - created — Created after
   - created_before — Created before
   - has_complete_profile — User has complete profile for the offering
   - has_consent — User Has Consent
+  - has_initial_password — Has an initial password stored
   - is_provider_backed — Backed by a service provider account
   - is_restricted — Is restricted
   - modified — Modified after
@@ -8718,6 +8723,13 @@ Description: Get checklist with questions and existing answers including review 
 Path parameters:
   - uuid
 
+### marketplace_offering_users_clear_initial_password
+POST /api/marketplace-offering-users/{uuid}/clear_initial_password/
+Summary: Clear the user's initial password
+Description: Removes the stored initial password, e.g. a wrong value or one for an account that was replaced. Succeeds when none is stored. The site agent stores the password again on its next pass if it still holds the account it created.
+Path parameters:
+  - uuid
+
 ### marketplace_offering_users_completion_review_status_retrieve
 GET /api/marketplace-offering-users/{uuid}/completion_review_status/
 Summary: Get checklist completion status with review triggers (reviewers only)
@@ -8738,11 +8750,12 @@ Summary: List POSIX UID/GID allocations of an offering user
 Description: Returns the user's POSIX identifiers (UID, primary GID) and, for each, the POSIX ID pool that tracks it plus the user's other offerings that resolve to the same pool and therefore carry the very same value. The pool fields are null when the value is not tracked by a pool.
 Path parameters:
   - uuid
-Query parameters (22):
+Query parameters (23):
   - created — Created after
   - created_before — Created before
   - has_complete_profile — User has complete profile for the offering
   - has_consent — User Has Consent
+  - has_initial_password — Has an initial password stored
   - is_provider_backed — Backed by a service provider account
   - is_restricted — Is restricted
   - modified — Modified after
@@ -8768,11 +8781,12 @@ Summary: List project group GIDs an offering user belongs to
 Description: Returns the project group GIDs (shared GIDs that appear in the user's GLAuth otherGroups) for this offering user.
 Path parameters:
   - uuid
-Query parameters (22):
+Query parameters (23):
   - created — Created after
   - created_before — Created before
   - has_complete_profile — User has complete profile for the offering
   - has_consent — User Has Consent
+  - has_initial_password — Has an initial password stored
   - is_provider_backed — Backed by a service provider account
   - is_restricted — Is restricted
   - modified — Modified after
@@ -8796,6 +8810,13 @@ Query parameters (22):
 POST /api/marketplace-offering-users/{uuid}/request_deletion/
 Summary: Request deletion of an offering user
 Description: Initiates the deletion process for an offering user account by transitioning it to the 'Deletion Requested' state.
+Path parameters:
+  - uuid
+
+### marketplace_offering_users_reveal_initial_password_retrieve
+GET /api/marketplace-offering-users/{uuid}/reveal_initial_password/
+Summary: Reveal the user's initial password
+Description: Returns the password the site agent created the user's account with at the backend. Revealed only to the user it belongs to, signed in as themselves: refused with 403 to anyone else, to staff impersonating the user, and to a personal access token. Audit-logged. It is the initial password: once th...
 Path parameters:
   - uuid
 
@@ -8826,6 +8847,14 @@ Summary: Set state to Error Deleting
 Description: Manually moves the offering user into the 'Error Deleting' state. This is typically used by an agent to report a failure during the deletion process.
 Path parameters:
   - uuid
+
+### marketplace_offering_users_set_initial_password
+POST /api/marketplace-offering-users/{uuid}/set_initial_password/
+Summary: Set the user's initial password
+Description: Stores the password the site agent created the user's account with at the backend (e.g. an Open WebUI chat account), so the user can reveal it in Waldur instead of being sent it. Stored encrypted; replaces any value stored before. Only the user reveals it. It is the initial password: a change the...
+Path parameters:
+  - uuid
+Request body: yes
 
 ### marketplace_offering_users_set_ok
 POST /api/marketplace-offering-users/{uuid}/set_ok/
@@ -11046,7 +11075,7 @@ Path parameters:
 ### marketplace_provider_offerings_template_diff_retrieve
 GET /api/marketplace-provider-offerings/{uuid}/template_diff/
 Summary: Compare the offering with its offering template
-Description: Where the offering differs from the offering template it was created from: from the version it was created from, and from the template's latest version, both filled in with the parameter values the offering was created with (a parameter added since takes its default). Only what the template sets ...
+Description: Where the offering differs from the offering template it was created from: from the version it was created from, and from the template's latest version, both filled in with the parameter values the offering was created with (a parameter added since takes its default). The latest version is left o...
 Path parameters:
   - uuid
 

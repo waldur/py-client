@@ -1,5 +1,5 @@
 from collections.abc import Mapping
-from typing import TYPE_CHECKING, Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar, Union, cast
 from uuid import UUID
 
 from attrs import define as _attrs_define
@@ -19,18 +19,20 @@ class OfferingTemplateDiff:
         template_uuid (UUID):
         template_name (str):
         template_version (int): The version the offering was created from.
-        latest_version (int):
+        latest_version (Union[None, int]): The template's latest version; null for who may not see the template, as it
+            is unpublished.
         created_version_differences (list['OfferingTemplateDifference']): Differences from the version the offering was
             created from.
-        latest_version_differences (list['OfferingTemplateDifference']):
+        latest_version_differences (Union[None, list['OfferingTemplateDifference']]): Differences from the latest
+            version; null with latest_version.
     """
 
     template_uuid: UUID
     template_name: str
     template_version: int
-    latest_version: int
+    latest_version: Union[None, int]
     created_version_differences: list["OfferingTemplateDifference"]
-    latest_version_differences: list["OfferingTemplateDifference"]
+    latest_version_differences: Union[None, list["OfferingTemplateDifference"]]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -40,6 +42,7 @@ class OfferingTemplateDiff:
 
         template_version = self.template_version
 
+        latest_version: Union[None, int]
         latest_version = self.latest_version
 
         created_version_differences = []
@@ -47,10 +50,15 @@ class OfferingTemplateDiff:
             created_version_differences_item = created_version_differences_item_data.to_dict()
             created_version_differences.append(created_version_differences_item)
 
-        latest_version_differences = []
-        for latest_version_differences_item_data in self.latest_version_differences:
-            latest_version_differences_item = latest_version_differences_item_data.to_dict()
-            latest_version_differences.append(latest_version_differences_item)
+        latest_version_differences: Union[None, list[dict[str, Any]]]
+        if isinstance(self.latest_version_differences, list):
+            latest_version_differences = []
+            for latest_version_differences_type_0_item_data in self.latest_version_differences:
+                latest_version_differences_type_0_item = latest_version_differences_type_0_item_data.to_dict()
+                latest_version_differences.append(latest_version_differences_type_0_item)
+
+        else:
+            latest_version_differences = self.latest_version_differences
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -78,7 +86,12 @@ class OfferingTemplateDiff:
 
         template_version = d.pop("template_version")
 
-        latest_version = d.pop("latest_version")
+        def _parse_latest_version(data: object) -> Union[None, int]:
+            if data is None:
+                return data
+            return cast(Union[None, int], data)
+
+        latest_version = _parse_latest_version(d.pop("latest_version"))
 
         created_version_differences = []
         _created_version_differences = d.pop("created_version_differences")
@@ -89,12 +102,27 @@ class OfferingTemplateDiff:
 
             created_version_differences.append(created_version_differences_item)
 
-        latest_version_differences = []
-        _latest_version_differences = d.pop("latest_version_differences")
-        for latest_version_differences_item_data in _latest_version_differences:
-            latest_version_differences_item = OfferingTemplateDifference.from_dict(latest_version_differences_item_data)
+        def _parse_latest_version_differences(data: object) -> Union[None, list["OfferingTemplateDifference"]]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                latest_version_differences_type_0 = []
+                _latest_version_differences_type_0 = data
+                for latest_version_differences_type_0_item_data in _latest_version_differences_type_0:
+                    latest_version_differences_type_0_item = OfferingTemplateDifference.from_dict(
+                        latest_version_differences_type_0_item_data
+                    )
 
-            latest_version_differences.append(latest_version_differences_item)
+                    latest_version_differences_type_0.append(latest_version_differences_type_0_item)
+
+                return latest_version_differences_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, list["OfferingTemplateDifference"]], data)
+
+        latest_version_differences = _parse_latest_version_differences(d.pop("latest_version_differences"))
 
         offering_template_diff = cls(
             template_uuid=template_uuid,

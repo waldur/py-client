@@ -28,7 +28,8 @@ class OfferingTemplateCreateOfferingResponse:
         template_version (int):
         parameters (OfferingTemplateCreateOfferingResponseParameters): The value of every parameter, defaults included.
         document (OfferingTemplateCreateOfferingResponseDocument): The template's document with the parameters filled
-            in: what the offering is created from, in the import_offering format.
+            in: what the offering is created from, in the import_offering format. Its agent_configuration is left out for
+            who may not see the organization's integration settings.
         warnings (list[str]): What the import of the document reported.
         findings (list['OfferingConfigurationFinding']): What the site-agent consistency rules find in the filled-in
             document, errors first. A create with an error is refused.
