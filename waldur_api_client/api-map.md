@@ -1982,6 +1982,7 @@ Module: `waldur_api_client.api.marketplace_public_offerings`
 - `marketplace_public_offerings_count` HEAD `/api/marketplace-public-offerings/` — List public offerings (43 query params)
 - `marketplace_public_offerings_facets_list` GET `/api/marketplace-public-offerings/facets/` — Count the values each filter can still take (46 query params)
 - `marketplace_public_offerings_retrieve` GET `/api/marketplace-public-offerings/{uuid}/` — Retrieve a public offering (path: uuid | 1 query param)
+- `marketplace_public_offerings_k8s_sites_retrieve` GET `/api/marketplace-public-offerings/{uuid}/k8s_sites/` — List the sites and common flavors of a Kubernetes option (path: uuid | 2 query params)
 - `marketplace_public_offerings_plans_list` GET `/api/marketplace-public-offerings/{uuid}/plans/` — List plans for an offering (path: uuid)
 - `marketplace_public_offerings_plans_retrieve` GET `/api/marketplace-public-offerings/{uuid}/plans/{plan_uuid}/` — Retrieve a specific plan for an offering (path: plan_uuid, uuid)
 

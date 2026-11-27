@@ -5,6 +5,7 @@ from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
 from ..models.cidr_ip_version_enum import CidrIpVersionEnum
+from ..models.infrastructure_mode_enum import InfrastructureModeEnum
 from ..models.load_balancer_mode_enum import LoadBalancerModeEnum
 from ..models.option_secret_source_enum import OptionSecretSourceEnum
 from ..models.topology_mode_enum import TopologyModeEnum
@@ -15,6 +16,7 @@ if TYPE_CHECKING:
     from ..models.ipsec_phase_1_policy import IpsecPhase1Policy
     from ..models.ipsec_phase_2_policy import IpsecPhase2Policy
     from ..models.k8s_egress_rule import K8SEgressRule
+    from ..models.option_default_configs_fixed_openstack_offerings import OptionDefaultConfigsFixedOpenstackOfferings
 
 
 T = TypeVar("T", bound="OptionDefaultConfigs")
@@ -48,6 +50,10 @@ class OptionDefaultConfigs:
         egress_baseline_rules (Union[Unset, list['K8SEgressRule']]): Destinations every cluster of the offering may
             reach, such as DNS, NTP and image registries. Shown to customers read-only; once a cluster has any egress rule,
             outbound traffic is allowed to these and to the customer's destinations only.
+        infrastructure_mode (Union[Unset, InfrastructureModeEnum]):
+        fixed_openstack_offerings (Union[Unset, OptionDefaultConfigsFixedOpenstackOfferings]): With provider_fixed: the
+            UUIDs of the OpenStack tenant offerings a cluster is deployed to, per topology, in site order. "1-datacenter"
+            takes one, "3-datacenter" three; every topology the option allows needs its list.
         ip_version (Union[Unset, CidrIpVersionEnum]):
         prefix_length_min (Union[Unset, int]): The smallest prefix length allowed, that is the largest network.
         prefix_length_max (Union[Unset, int]): The largest prefix length allowed, that is the smallest network.
@@ -95,6 +101,8 @@ class OptionDefaultConfigs:
     egress_rules_enabled: Union[Unset, bool] = UNSET
     egress_domain_rules_allowed: Union[Unset, bool] = UNSET
     egress_baseline_rules: Union[Unset, list["K8SEgressRule"]] = UNSET
+    infrastructure_mode: Union[Unset, InfrastructureModeEnum] = UNSET
+    fixed_openstack_offerings: Union[Unset, "OptionDefaultConfigsFixedOpenstackOfferings"] = UNSET
     ip_version: Union[Unset, CidrIpVersionEnum] = UNSET
     prefix_length_min: Union[Unset, int] = UNSET
     prefix_length_max: Union[Unset, int] = UNSET
@@ -164,6 +172,14 @@ class OptionDefaultConfigs:
             for egress_baseline_rules_item_data in self.egress_baseline_rules:
                 egress_baseline_rules_item = egress_baseline_rules_item_data.to_dict()
                 egress_baseline_rules.append(egress_baseline_rules_item)
+
+        infrastructure_mode: Union[Unset, str] = UNSET
+        if not isinstance(self.infrastructure_mode, Unset):
+            infrastructure_mode = self.infrastructure_mode.value
+
+        fixed_openstack_offerings: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.fixed_openstack_offerings, Unset):
+            fixed_openstack_offerings = self.fixed_openstack_offerings.to_dict()
 
         ip_version: Union[Unset, str] = UNSET
         if not isinstance(self.ip_version, Unset):
@@ -264,6 +280,10 @@ class OptionDefaultConfigs:
             field_dict["egress_domain_rules_allowed"] = egress_domain_rules_allowed
         if egress_baseline_rules is not UNSET:
             field_dict["egress_baseline_rules"] = egress_baseline_rules
+        if infrastructure_mode is not UNSET:
+            field_dict["infrastructure_mode"] = infrastructure_mode
+        if fixed_openstack_offerings is not UNSET:
+            field_dict["fixed_openstack_offerings"] = fixed_openstack_offerings
         if ip_version is not UNSET:
             field_dict["ip_version"] = ip_version
         if prefix_length_min is not UNSET:
@@ -313,6 +333,9 @@ class OptionDefaultConfigs:
         from ..models.ipsec_phase_1_policy import IpsecPhase1Policy
         from ..models.ipsec_phase_2_policy import IpsecPhase2Policy
         from ..models.k8s_egress_rule import K8SEgressRule
+        from ..models.option_default_configs_fixed_openstack_offerings import (
+            OptionDefaultConfigsFixedOpenstackOfferings,
+        )
 
         d = dict(src_dict)
         default_controller_vcpus = d.pop("default_controller_vcpus", UNSET)
@@ -367,6 +390,22 @@ class OptionDefaultConfigs:
             egress_baseline_rules_item = K8SEgressRule.from_dict(egress_baseline_rules_item_data)
 
             egress_baseline_rules.append(egress_baseline_rules_item)
+
+        _infrastructure_mode = d.pop("infrastructure_mode", UNSET)
+        infrastructure_mode: Union[Unset, InfrastructureModeEnum]
+        if isinstance(_infrastructure_mode, Unset):
+            infrastructure_mode = UNSET
+        else:
+            infrastructure_mode = InfrastructureModeEnum(_infrastructure_mode)
+
+        _fixed_openstack_offerings = d.pop("fixed_openstack_offerings", UNSET)
+        fixed_openstack_offerings: Union[Unset, OptionDefaultConfigsFixedOpenstackOfferings]
+        if isinstance(_fixed_openstack_offerings, Unset):
+            fixed_openstack_offerings = UNSET
+        else:
+            fixed_openstack_offerings = OptionDefaultConfigsFixedOpenstackOfferings.from_dict(
+                _fixed_openstack_offerings
+            )
 
         _ip_version = d.pop("ip_version", UNSET)
         ip_version: Union[Unset, CidrIpVersionEnum]
@@ -453,6 +492,8 @@ class OptionDefaultConfigs:
             egress_rules_enabled=egress_rules_enabled,
             egress_domain_rules_allowed=egress_domain_rules_allowed,
             egress_baseline_rules=egress_baseline_rules,
+            infrastructure_mode=infrastructure_mode,
+            fixed_openstack_offerings=fixed_openstack_offerings,
             ip_version=ip_version,
             prefix_length_min=prefix_length_min,
             prefix_length_max=prefix_length_max,

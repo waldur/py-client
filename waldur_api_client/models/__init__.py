@@ -1249,6 +1249,7 @@ from .import_usage_response import ImportUsageResponse
 from .importable_resource import ImportableResource
 from .imported_offering_block import ImportedOfferingBlock
 from .imported_policy import ImportedPolicy
+from .infrastructure_mode_enum import InfrastructureModeEnum
 from .inherited_account_setting import InheritedAccountSetting
 from .injection_severity_enum import InjectionSeverityEnum
 from .instance_flavor_change_request import InstanceFlavorChangeRequest
@@ -1356,9 +1357,14 @@ from .jira_issue_fields_request_comment import JiraIssueFieldsRequestComment
 from .jira_issue_project import JiraIssueProject
 from .jira_issue_project_request import JiraIssueProjectRequest
 from .jira_issue_request import JiraIssueRequest
+from .k8s_common_flavor import K8SCommonFlavor
 from .k8s_egress_rule import K8SEgressRule
 from .k8s_egress_rule_protocol_enum import K8SEgressRuleProtocolEnum
 from .k8s_egress_rule_request import K8SEgressRuleRequest
+from .k8s_site import K8SSite
+from .k8s_site_flavor import K8SSiteFlavor
+from .k8s_sites import K8SSites
+from .k8s_sites_topology_enum import K8SSitesTopologyEnum
 from .keycloak_group import KeycloakGroup
 from .keycloak_user_group_membership import KeycloakUserGroupMembership
 from .keycloak_user_group_membership_request import KeycloakUserGroupMembershipRequest
@@ -2175,7 +2181,9 @@ from .openportalmembershipsyncmode_enum import OPENPORTALMEMBERSHIPSYNCMODEEnum
 from .openstack_flavors_usage_stats_retrieve_response_200 import OpenstackFlavorsUsageStatsRetrieveResponse200
 from .openstack_tenants_set_quotas_body import OpenstackTenantsSetQuotasBody
 from .option_default_configs import OptionDefaultConfigs
+from .option_default_configs_fixed_openstack_offerings import OptionDefaultConfigsFixedOpenstackOfferings
 from .option_default_configs_request import OptionDefaultConfigsRequest
+from .option_default_configs_request_fixed_openstack_offerings import OptionDefaultConfigsRequestFixedOpenstackOfferings
 from .option_field import OptionField
 from .option_field_request import OptionFieldRequest
 from .option_field_type_enum import OptionFieldTypeEnum
@@ -5268,6 +5276,7 @@ __all__ = (
     "ImportUsageItemRequest",
     "ImportUsageRequest",
     "ImportUsageResponse",
+    "InfrastructureModeEnum",
     "InheritedAccountSetting",
     "InjectionSeverityEnum",
     "InstanceFlavorChangeRequest",
@@ -5375,9 +5384,14 @@ __all__ = (
     "JiraIssueProject",
     "JiraIssueProjectRequest",
     "JiraIssueRequest",
+    "K8SCommonFlavor",
     "K8SEgressRule",
     "K8SEgressRuleProtocolEnum",
     "K8SEgressRuleRequest",
+    "K8SSite",
+    "K8SSiteFlavor",
+    "K8SSites",
+    "K8SSitesTopologyEnum",
     "KeycloakGroup",
     "KeycloakUserGroupMembership",
     "KeycloakUserGroupMembershipRequest",
@@ -6116,7 +6130,9 @@ __all__ = (
     "OpenStackVolumeType",
     "OpenStepDiscussionRequest",
     "OptionDefaultConfigs",
+    "OptionDefaultConfigsFixedOpenstackOfferings",
     "OptionDefaultConfigsRequest",
+    "OptionDefaultConfigsRequestFixedOpenstackOfferings",
     "OptionField",
     "OptionFieldRequest",
     "OptionFieldTypeEnum",

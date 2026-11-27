@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.5.dev.20261127204102
+# Version: 8.1.5-rc.5.dev.20261127210128
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -12228,6 +12228,16 @@ Path parameters:
   - uuid
 Query parameters (1):
   - field
+
+### marketplace_public_offerings_k8s_sites_retrieve
+GET /api/marketplace-public-offerings/{uuid}/k8s_sites/
+Summary: List the sites and common flavors of a Kubernetes option
+Description: For a k8s_cluster_config order option whose provider fixed the OpenStack sites (infrastructure_mode provider_fixed): the sites of a topology, in order, and the flavors every site has under one name with the same vCPUs and RAM. Each flavor lists every site's own flavor UUID. Works for any caller w...
+Path parameters:
+  - uuid
+Query parameters (2):
+  - option (required) — Name of the offering's k8s_cluster_config order option.
+  - topology (required) — The cluster topology whose sites to list.
 
 ### marketplace_public_offerings_plans_list
 GET /api/marketplace-public-offerings/{uuid}/plans/
