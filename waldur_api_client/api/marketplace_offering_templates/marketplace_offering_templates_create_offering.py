@@ -73,7 +73,9 @@ def sync_detailed(
     keeps no link to the template: a later edit of the template changes nothing in it. With dry_run,
     everything is checked and the filled-in document returned, and nothing is created. The site-agent
     consistency rules check the filled-in document: an error finding refuses the create, under findings;
-    a dry run returns every finding.
+    a dry run returns every finding. agent_roles replaces the template's role backends before the
+    checks, and backend_settings is merged over the template's backend settings after them; a secret in
+    it is refused, under backend_settings.
 
     Args:
         uuid (UUID):
@@ -114,7 +116,9 @@ def sync(
     keeps no link to the template: a later edit of the template changes nothing in it. With dry_run,
     everything is checked and the filled-in document returned, and nothing is created. The site-agent
     consistency rules check the filled-in document: an error finding refuses the create, under findings;
-    a dry run returns every finding.
+    a dry run returns every finding. agent_roles replaces the template's role backends before the
+    checks, and backend_settings is merged over the template's backend settings after them; a secret in
+    it is refused, under backend_settings.
 
     Args:
         uuid (UUID):
@@ -150,7 +154,9 @@ async def asyncio_detailed(
     keeps no link to the template: a later edit of the template changes nothing in it. With dry_run,
     everything is checked and the filled-in document returned, and nothing is created. The site-agent
     consistency rules check the filled-in document: an error finding refuses the create, under findings;
-    a dry run returns every finding.
+    a dry run returns every finding. agent_roles replaces the template's role backends before the
+    checks, and backend_settings is merged over the template's backend settings after them; a secret in
+    it is refused, under backend_settings.
 
     Args:
         uuid (UUID):
@@ -189,7 +195,9 @@ async def asyncio(
     keeps no link to the template: a later edit of the template changes nothing in it. With dry_run,
     everything is checked and the filled-in document returned, and nothing is created. The site-agent
     consistency rules check the filled-in document: an error finding refuses the create, under findings;
-    a dry run returns every finding.
+    a dry run returns every finding. agent_roles replaces the template's role backends before the
+    checks, and backend_settings is merged over the template's backend settings after them; a secret in
+    it is refused, under backend_settings.
 
     Args:
         uuid (UUID):

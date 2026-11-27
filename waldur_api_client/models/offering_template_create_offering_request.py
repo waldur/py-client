@@ -8,6 +8,10 @@ from attrs import field as _attrs_field
 from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
+    from ..models.offering_template_agent_roles_request import OfferingTemplateAgentRolesRequest
+    from ..models.offering_template_create_offering_request_backend_settings import (
+        OfferingTemplateCreateOfferingRequestBackendSettings,
+    )
     from ..models.offering_template_create_offering_request_parameters import (
         OfferingTemplateCreateOfferingRequestParameters,
     )
@@ -25,6 +29,11 @@ class OfferingTemplateCreateOfferingRequest:
         name (str): Name of the new offering.
         parameters (Union[Unset, OfferingTemplateCreateOfferingRequestParameters]): A value for each of the template's
             parameters, by key. A parameter left out takes its default.
+        agent_roles (Union[Unset, OfferingTemplateAgentRolesRequest]):
+        backend_settings (Union[Unset, OfferingTemplateCreateOfferingRequestBackendSettings]): Backend settings of the
+            site agent, by name, over the template's: what the chosen role backends need that the template does not set. A
+            nested mapping is merged key by key. Checked as the agent configuration's backend_settings; secrets are refused,
+            they stay in the agent configuration file on the agent host. Site agent templates only.
         dry_run (Union[Unset, bool]): Check everything and report what would be created, creating nothing. Default:
             False.
     """
@@ -33,6 +42,8 @@ class OfferingTemplateCreateOfferingRequest:
     category: UUID
     name: str
     parameters: Union[Unset, "OfferingTemplateCreateOfferingRequestParameters"] = UNSET
+    agent_roles: Union[Unset, "OfferingTemplateAgentRolesRequest"] = UNSET
+    backend_settings: Union[Unset, "OfferingTemplateCreateOfferingRequestBackendSettings"] = UNSET
     dry_run: Union[Unset, bool] = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -47,6 +58,14 @@ class OfferingTemplateCreateOfferingRequest:
         if not isinstance(self.parameters, Unset):
             parameters = self.parameters.to_dict()
 
+        agent_roles: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.agent_roles, Unset):
+            agent_roles = self.agent_roles.to_dict()
+
+        backend_settings: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.backend_settings, Unset):
+            backend_settings = self.backend_settings.to_dict()
+
         dry_run = self.dry_run
 
         field_dict: dict[str, Any] = {}
@@ -60,6 +79,10 @@ class OfferingTemplateCreateOfferingRequest:
         )
         if parameters is not UNSET:
             field_dict["parameters"] = parameters
+        if agent_roles is not UNSET:
+            field_dict["agent_roles"] = agent_roles
+        if backend_settings is not UNSET:
+            field_dict["backend_settings"] = backend_settings
         if dry_run is not UNSET:
             field_dict["dry_run"] = dry_run
 
@@ -67,6 +90,10 @@ class OfferingTemplateCreateOfferingRequest:
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.offering_template_agent_roles_request import OfferingTemplateAgentRolesRequest
+        from ..models.offering_template_create_offering_request_backend_settings import (
+            OfferingTemplateCreateOfferingRequestBackendSettings,
+        )
         from ..models.offering_template_create_offering_request_parameters import (
             OfferingTemplateCreateOfferingRequestParameters,
         )
@@ -85,6 +112,20 @@ class OfferingTemplateCreateOfferingRequest:
         else:
             parameters = OfferingTemplateCreateOfferingRequestParameters.from_dict(_parameters)
 
+        _agent_roles = d.pop("agent_roles", UNSET)
+        agent_roles: Union[Unset, OfferingTemplateAgentRolesRequest]
+        if isinstance(_agent_roles, Unset):
+            agent_roles = UNSET
+        else:
+            agent_roles = OfferingTemplateAgentRolesRequest.from_dict(_agent_roles)
+
+        _backend_settings = d.pop("backend_settings", UNSET)
+        backend_settings: Union[Unset, OfferingTemplateCreateOfferingRequestBackendSettings]
+        if isinstance(_backend_settings, Unset):
+            backend_settings = UNSET
+        else:
+            backend_settings = OfferingTemplateCreateOfferingRequestBackendSettings.from_dict(_backend_settings)
+
         dry_run = d.pop("dry_run", UNSET)
 
         offering_template_create_offering_request = cls(
@@ -92,6 +133,8 @@ class OfferingTemplateCreateOfferingRequest:
             category=category,
             name=name,
             parameters=parameters,
+            agent_roles=agent_roles,
+            backend_settings=backend_settings,
             dry_run=dry_run,
         )
 

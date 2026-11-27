@@ -1863,7 +1863,12 @@ from .offering_team_provider import OfferingTeamProvider
 from .offering_team_slot import OfferingTeamSlot
 from .offering_team_step import OfferingTeamStep
 from .offering_template import OfferingTemplate
+from .offering_template_agent_roles import OfferingTemplateAgentRoles
+from .offering_template_agent_roles_request import OfferingTemplateAgentRolesRequest
 from .offering_template_create_offering_request import OfferingTemplateCreateOfferingRequest
+from .offering_template_create_offering_request_backend_settings import (
+    OfferingTemplateCreateOfferingRequestBackendSettings,
+)
 from .offering_template_create_offering_request_parameters import OfferingTemplateCreateOfferingRequestParameters
 from .offering_template_create_offering_response import OfferingTemplateCreateOfferingResponse
 from .offering_template_create_offering_response_document import OfferingTemplateCreateOfferingResponseDocument
@@ -5820,7 +5825,10 @@ __all__ = (
     "OfferingTeamSlot",
     "OfferingTeamStep",
     "OfferingTemplate",
+    "OfferingTemplateAgentRoles",
+    "OfferingTemplateAgentRolesRequest",
     "OfferingTemplateCreateOfferingRequest",
+    "OfferingTemplateCreateOfferingRequestBackendSettings",
     "OfferingTemplateCreateOfferingRequestParameters",
     "OfferingTemplateCreateOfferingResponse",
     "OfferingTemplateCreateOfferingResponseDocument",

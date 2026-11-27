@@ -11,6 +11,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.offering_configuration_finding import OfferingConfigurationFinding
+    from ..models.offering_template_agent_roles import OfferingTemplateAgentRoles
     from ..models.offering_template_document import OfferingTemplateDocument
     from ..models.offering_template_parameter import OfferingTemplateParameter
 
@@ -31,6 +32,7 @@ class OfferingTemplate:
             screenshots, files, a customer, resources or people. Non-staff see only the offering's name, description and
             type, its components, plans and parameters.
         parameters (list['OfferingTemplateParameter']):
+        agent_roles (OfferingTemplateAgentRoles):
         configuration_findings (list['OfferingConfigurationFinding']): What the site-agent consistency rules find in the
             document. Paths a parameter fills are skipped. Staff only.
         schema_version (int):
@@ -48,6 +50,7 @@ class OfferingTemplate:
     offering_type: str
     document: "OfferingTemplateDocument"
     parameters: list["OfferingTemplateParameter"]
+    agent_roles: "OfferingTemplateAgentRoles"
     configuration_findings: list["OfferingConfigurationFinding"]
     schema_version: int
     version: int
@@ -73,6 +76,8 @@ class OfferingTemplate:
         for parameters_item_data in self.parameters:
             parameters_item = parameters_item_data.to_dict()
             parameters.append(parameters_item)
+
+        agent_roles = self.agent_roles.to_dict()
 
         configuration_findings = []
         for configuration_findings_item_data in self.configuration_findings:
@@ -107,6 +112,7 @@ class OfferingTemplate:
                 "offering_type": offering_type,
                 "document": document,
                 "parameters": parameters,
+                "agent_roles": agent_roles,
                 "configuration_findings": configuration_findings,
                 "schema_version": schema_version,
                 "version": version,
@@ -125,6 +131,7 @@ class OfferingTemplate:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         from ..models.offering_configuration_finding import OfferingConfigurationFinding
+        from ..models.offering_template_agent_roles import OfferingTemplateAgentRoles
         from ..models.offering_template_document import OfferingTemplateDocument
         from ..models.offering_template_parameter import OfferingTemplateParameter
 
@@ -145,6 +152,8 @@ class OfferingTemplate:
             parameters_item = OfferingTemplateParameter.from_dict(parameters_item_data)
 
             parameters.append(parameters_item)
+
+        agent_roles = OfferingTemplateAgentRoles.from_dict(d.pop("agent_roles"))
 
         configuration_findings = []
         _configuration_findings = d.pop("configuration_findings")
@@ -187,6 +196,7 @@ class OfferingTemplate:
             offering_type=offering_type,
             document=document,
             parameters=parameters,
+            agent_roles=agent_roles,
             configuration_findings=configuration_findings,
             schema_version=schema_version,
             version=version,
