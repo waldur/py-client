@@ -20,7 +20,10 @@ class RenewalEstimateResponse:
         components (list['RenewalEstimateComponent']):
         subscription_total (str):
         limit_change_total (str):
-        total (str):
+        discount_total (str): The volume discounts known now, as a positive amount.
+        discount_deferred (bool): A volume discount aggregated over the organization's resources may still lower the
+            invoice.
+        total (str): What the renewal is charged: the totals less discount_total.
         remaining_days (int):
         paid_up_end_date (datetime.date): Where the extension starts: the current end date, or later when the renewal
             only lowers limits and the offering's renewal_limit_decrease_policy spreads the value already paid for the rest
@@ -31,6 +34,8 @@ class RenewalEstimateResponse:
     components: list["RenewalEstimateComponent"]
     subscription_total: str
     limit_change_total: str
+    discount_total: str
+    discount_deferred: bool
     total: str
     remaining_days: int
     paid_up_end_date: datetime.date
@@ -47,6 +52,10 @@ class RenewalEstimateResponse:
 
         limit_change_total = self.limit_change_total
 
+        discount_total = self.discount_total
+
+        discount_deferred = self.discount_deferred
+
         total = self.total
 
         remaining_days = self.remaining_days
@@ -62,6 +71,8 @@ class RenewalEstimateResponse:
                 "components": components,
                 "subscription_total": subscription_total,
                 "limit_change_total": limit_change_total,
+                "discount_total": discount_total,
+                "discount_deferred": discount_deferred,
                 "total": total,
                 "remaining_days": remaining_days,
                 "paid_up_end_date": paid_up_end_date,
@@ -87,6 +98,10 @@ class RenewalEstimateResponse:
 
         limit_change_total = d.pop("limit_change_total")
 
+        discount_total = d.pop("discount_total")
+
+        discount_deferred = d.pop("discount_deferred")
+
         total = d.pop("total")
 
         remaining_days = d.pop("remaining_days")
@@ -99,6 +114,8 @@ class RenewalEstimateResponse:
             components=components,
             subscription_total=subscription_total,
             limit_change_total=limit_change_total,
+            discount_total=discount_total,
+            discount_deferred=discount_deferred,
             total=total,
             remaining_days=remaining_days,
             paid_up_end_date=paid_up_end_date,

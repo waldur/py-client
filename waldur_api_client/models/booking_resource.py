@@ -91,10 +91,16 @@ class BookingResource:
             period. After this date, resources are terminated, except resources of offerings that disable the grace period —
             those are terminated on the raw project end date.
         resource_effective_end_date (Union[None, Unset, datetime.date]): The date this resource is scheduled to
-            terminate: the earliest of its own end date and the project-driven termination date (the raw project end date if
-            the offering disables the grace period, otherwise the effective with-grace end date).
+            terminate: the earliest of its own end date and the project end date, each plus the grace length the offering
+            resolves. Unset offering grace keeps a resource end date as a hard stop and inherits the project grace.
+            grace_period_days 0, and disable_grace_period, use the raw project end date.
         project_is_in_grace_period (Union[Unset, bool]): True if the project is past its end date but still within the
-            grace period.
+            organization and project grace period. This is the project clock. is_in_grace_period is the clock this
+            resource's offering resolves.
+        is_in_grace_period (Union[Unset, bool]): True when this resource is past a raw end date and still within the
+            grace period its offering resolves. Independent of whether the resource is paused.
+        grace_period_end_date (Union[None, Unset, datetime.date]): The last day of this resource's grace window. Empty
+            when the offering gives it no grace period.
         project_end_date_requested_by (Union[None, Unset, str]):
         customer_uuid (Union[Unset, UUID]):
         customer_name (Union[Unset, str]):
@@ -225,6 +231,8 @@ class BookingResource:
     project_effective_end_date: Union[None, Unset, datetime.date] = UNSET
     resource_effective_end_date: Union[None, Unset, datetime.date] = UNSET
     project_is_in_grace_period: Union[Unset, bool] = UNSET
+    is_in_grace_period: Union[Unset, bool] = UNSET
+    grace_period_end_date: Union[None, Unset, datetime.date] = UNSET
     project_end_date_requested_by: Union[None, Unset, str] = UNSET
     customer_uuid: Union[Unset, UUID] = UNSET
     customer_name: Union[Unset, str] = UNSET
@@ -455,6 +463,16 @@ class BookingResource:
             resource_effective_end_date = self.resource_effective_end_date
 
         project_is_in_grace_period = self.project_is_in_grace_period
+
+        is_in_grace_period = self.is_in_grace_period
+
+        grace_period_end_date: Union[None, Unset, str]
+        if isinstance(self.grace_period_end_date, Unset):
+            grace_period_end_date = UNSET
+        elif isinstance(self.grace_period_end_date, datetime.date):
+            grace_period_end_date = self.grace_period_end_date.isoformat()
+        else:
+            grace_period_end_date = self.grace_period_end_date
 
         project_end_date_requested_by: Union[None, Unset, str]
         if isinstance(self.project_end_date_requested_by, Unset):
@@ -790,6 +808,10 @@ class BookingResource:
             field_dict["resource_effective_end_date"] = resource_effective_end_date
         if project_is_in_grace_period is not UNSET:
             field_dict["project_is_in_grace_period"] = project_is_in_grace_period
+        if is_in_grace_period is not UNSET:
+            field_dict["is_in_grace_period"] = is_in_grace_period
+        if grace_period_end_date is not UNSET:
+            field_dict["grace_period_end_date"] = grace_period_end_date
         if project_end_date_requested_by is not UNSET:
             field_dict["project_end_date_requested_by"] = project_end_date_requested_by
         if customer_uuid is not UNSET:
@@ -1204,6 +1226,25 @@ class BookingResource:
         resource_effective_end_date = _parse_resource_effective_end_date(d.pop("resource_effective_end_date", UNSET))
 
         project_is_in_grace_period = d.pop("project_is_in_grace_period", UNSET)
+
+        is_in_grace_period = d.pop("is_in_grace_period", UNSET)
+
+        def _parse_grace_period_end_date(data: object) -> Union[None, Unset, datetime.date]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                grace_period_end_date_type_0 = isoparse(data).date()
+
+                return grace_period_end_date_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[None, Unset, datetime.date], data)
+
+        grace_period_end_date = _parse_grace_period_end_date(d.pop("grace_period_end_date", UNSET))
 
         def _parse_project_end_date_requested_by(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -1625,6 +1666,8 @@ class BookingResource:
             project_effective_end_date=project_effective_end_date,
             resource_effective_end_date=resource_effective_end_date,
             project_is_in_grace_period=project_is_in_grace_period,
+            is_in_grace_period=is_in_grace_period,
+            grace_period_end_date=grace_period_end_date,
             project_end_date_requested_by=project_end_date_requested_by,
             customer_uuid=customer_uuid,
             customer_name=customer_name,

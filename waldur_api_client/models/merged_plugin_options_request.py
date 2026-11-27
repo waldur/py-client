@@ -69,8 +69,14 @@ class MergedPluginOptionsRequest:
             ORDER.APPROVE permission). Termination orders, staff users and provider approval are not affected
         supports_downscaling (Union[Unset, bool]): If set to True, it will be possible to downscale resources
         supports_pausing (Union[Unset, bool]): If set to True, it will be possible to pause resources
-        disable_grace_period (Union[Unset, bool]): If set to True, this offering's resources ignore the project grace
-            period and are terminated on the project end date. Only staff can change this option.
+        disable_grace_period (Union[Unset, bool]): Deprecated. If set to True, and grace_period_days is unset, this
+            offering's resources ignore the project grace period and are terminated on the project end date. Prefer
+            grace_period_days: 0. Only staff can change this option.
+        grace_period_days (Union[None, Unset, int]): Days after a project or resource end date before this offering's
+            resources are terminated. Unset inherits the organization and project grace period for the project end date, and
+            keeps a resource's own end date a hard stop. 0 terminates on the raw end date. A value above 0 is that many days
+            past either end date and overrides the organization and project length. Null clears the setting so the offering
+            inherits again. Only staff can change it.
         action_on_usage_limit (Union[ActionOnUsageLimitEnum, BlankEnum, None, Unset]): If set to 'pause' or 'downscale',
             resources are automatically paused or downscaled when reported usage in the current period reaches a component's
             limit_amount, and the restriction is lifted when usage drops below the limit again (e.g. a new billing period or
@@ -179,6 +185,9 @@ class MergedPluginOptionsRequest:
         instance_metrics_poll_interval_minutes (Union[Unset, int]): Minutes between custom metrics polls of each
             instance in tenants of this offering (default: 360).
         billing_source (Union[Unset, BillingSourceEnum]):
+        bill_inactive_instances (Union[Unset, bool]): Bill the cores, RAM and other compute of instances that are not
+            running (SHUTOFF, SUSPENDED, SHELVED, SHELVED_OFFLOADED) under usage-based billing (default: true). Storage is
+            billed either way.
         heappe_cluster_id (Union[None, Unset, str]): HEAppE cluster id
         heappe_local_base_path (Union[None, Unset, str]): HEAppE local base path
         heappe_url (Union[None, Unset, str]): HEAppE url
@@ -321,6 +330,7 @@ class MergedPluginOptionsRequest:
     supports_downscaling: Union[Unset, bool] = UNSET
     supports_pausing: Union[Unset, bool] = UNSET
     disable_grace_period: Union[Unset, bool] = UNSET
+    grace_period_days: Union[None, Unset, int] = UNSET
     action_on_usage_limit: Union[ActionOnUsageLimitEnum, BlankEnum, None, Unset] = UNSET
     minimal_team_count_for_provisioning: Union[Unset, int] = UNSET
     maximal_resource_count_per_project: Union[Unset, int] = UNSET
@@ -366,6 +376,7 @@ class MergedPluginOptionsRequest:
     instance_metrics: Union[Unset, list[InstanceMetricsEnum]] = UNSET
     instance_metrics_poll_interval_minutes: Union[Unset, int] = UNSET
     billing_source: Union[Unset, BillingSourceEnum] = UNSET
+    bill_inactive_instances: Union[Unset, bool] = UNSET
     heappe_cluster_id: Union[None, Unset, str] = UNSET
     heappe_local_base_path: Union[None, Unset, str] = UNSET
     heappe_url: Union[None, Unset, str] = UNSET
@@ -481,6 +492,12 @@ class MergedPluginOptionsRequest:
         supports_pausing = self.supports_pausing
 
         disable_grace_period = self.disable_grace_period
+
+        grace_period_days: Union[None, Unset, int]
+        if isinstance(self.grace_period_days, Unset):
+            grace_period_days = UNSET
+        else:
+            grace_period_days = self.grace_period_days
 
         action_on_usage_limit: Union[None, Unset, str]
         if isinstance(self.action_on_usage_limit, Unset):
@@ -628,6 +645,8 @@ class MergedPluginOptionsRequest:
         billing_source: Union[Unset, str] = UNSET
         if not isinstance(self.billing_source, Unset):
             billing_source = self.billing_source.value
+
+        bill_inactive_instances = self.bill_inactive_instances
 
         heappe_cluster_id: Union[None, Unset, str]
         if isinstance(self.heappe_cluster_id, Unset):
@@ -858,6 +877,8 @@ class MergedPluginOptionsRequest:
             field_dict["supports_pausing"] = supports_pausing
         if disable_grace_period is not UNSET:
             field_dict["disable_grace_period"] = disable_grace_period
+        if grace_period_days is not UNSET:
+            field_dict["grace_period_days"] = grace_period_days
         if action_on_usage_limit is not UNSET:
             field_dict["action_on_usage_limit"] = action_on_usage_limit
         if minimal_team_count_for_provisioning is not UNSET:
@@ -948,6 +969,8 @@ class MergedPluginOptionsRequest:
             field_dict["instance_metrics_poll_interval_minutes"] = instance_metrics_poll_interval_minutes
         if billing_source is not UNSET:
             field_dict["billing_source"] = billing_source
+        if bill_inactive_instances is not UNSET:
+            field_dict["bill_inactive_instances"] = bill_inactive_instances
         if heappe_cluster_id is not UNSET:
             field_dict["heappe_cluster_id"] = heappe_cluster_id
         if heappe_local_base_path is not UNSET:
@@ -1166,6 +1189,15 @@ class MergedPluginOptionsRequest:
 
         disable_grace_period = d.pop("disable_grace_period", UNSET)
 
+        def _parse_grace_period_days(data: object) -> Union[None, Unset, int]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[None, Unset, int], data)
+
+        grace_period_days = _parse_grace_period_days(d.pop("grace_period_days", UNSET))
+
         def _parse_action_on_usage_limit(data: object) -> Union[ActionOnUsageLimitEnum, BlankEnum, None, Unset]:
             if data is None:
                 return data
@@ -1374,6 +1406,8 @@ class MergedPluginOptionsRequest:
             billing_source = UNSET
         else:
             billing_source = BillingSourceEnum(_billing_source)
+
+        bill_inactive_instances = d.pop("bill_inactive_instances", UNSET)
 
         def _parse_heappe_cluster_id(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -1650,6 +1684,7 @@ class MergedPluginOptionsRequest:
             supports_downscaling=supports_downscaling,
             supports_pausing=supports_pausing,
             disable_grace_period=disable_grace_period,
+            grace_period_days=grace_period_days,
             action_on_usage_limit=action_on_usage_limit,
             minimal_team_count_for_provisioning=minimal_team_count_for_provisioning,
             maximal_resource_count_per_project=maximal_resource_count_per_project,
@@ -1695,6 +1730,7 @@ class MergedPluginOptionsRequest:
             instance_metrics=instance_metrics,
             instance_metrics_poll_interval_minutes=instance_metrics_poll_interval_minutes,
             billing_source=billing_source,
+            bill_inactive_instances=bill_inactive_instances,
             heappe_cluster_id=heappe_cluster_id,
             heappe_local_base_path=heappe_local_base_path,
             heappe_url=heappe_url,

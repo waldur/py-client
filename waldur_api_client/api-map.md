@@ -310,8 +310,8 @@ Module: `waldur_api_client.api.booking_offerings`
 ## booking-resources
 Module: `waldur_api_client.api.booking_resources`
 
-- `booking_resources_list` GET `/api/booking-resources/` (47 query params)
-- `booking_resources_count` HEAD `/api/booking-resources/` — Get number of items in the collection matching the request parameters (46 query params)
+- `booking_resources_list` GET `/api/booking-resources/` (48 query params)
+- `booking_resources_count` HEAD `/api/booking-resources/` — Get number of items in the collection matching the request parameters (47 query params)
 - `booking_resources_retrieve` GET `/api/booking-resources/{uuid}/` (path: uuid | 1 query param)
 - `booking_resources_accept` POST `/api/booking-resources/{uuid}/accept/` (path: uuid)
 - `booking_resources_reject` POST `/api/booking-resources/{uuid}/reject/` (path: uuid)
@@ -1916,9 +1916,9 @@ Module: `waldur_api_client.api.marketplace_provider_resource_projects`
 ## marketplace-provider-resources
 Module: `waldur_api_client.api.marketplace_provider_resources`
 
-- `marketplace_provider_resources_list` GET `/api/marketplace-provider-resources/` — List provider resources (47 query params)
-- `marketplace_provider_resources_count` HEAD `/api/marketplace-provider-resources/` — List provider resources (46 query params)
-- `marketplace_provider_resources_facets_list` GET `/api/marketplace-provider-resources/facets/` — Count the values each filter can still take (49 query params)
+- `marketplace_provider_resources_list` GET `/api/marketplace-provider-resources/` — List provider resources (48 query params)
+- `marketplace_provider_resources_count` HEAD `/api/marketplace-provider-resources/` — List provider resources (47 query params)
+- `marketplace_provider_resources_facets_list` GET `/api/marketplace-provider-resources/facets/` — Count the values each filter can still take (50 query params)
 - `marketplace_provider_resources_retrieve` GET `/api/marketplace-provider-resources/{uuid}/` — Retrieve a provider resource (path: uuid | 1 query param)
 - `marketplace_provider_resources_update` PUT `/api/marketplace-provider-resources/{uuid}/` — Update a provider resource (path: uuid | request body)
 - `marketplace_provider_resources_partial_update` PATCH `/api/marketplace-provider-resources/{uuid}/` — Partially update a provider resource (path: uuid | request body)
@@ -1928,7 +1928,7 @@ Module: `waldur_api_client.api.marketplace_provider_resources`
 - `marketplace_provider_resources_details_retrieve` GET `/api/marketplace-provider-resources/{uuid}/details/` — Get resource details (path: uuid)
 - `marketplace_provider_resources_glauth_tree_retrieve` GET `/api/marketplace-provider-resources/{uuid}/glauth_tree/` — Get structured GLauth tree for a resource (path: uuid)
 - `marketplace_provider_resources_glauth_users_config_retrieve` GET `/api/marketplace-provider-resources/{uuid}/glauth_users_config/` — Get GLauth user configuration for a resource (path: uuid)
-- `marketplace_provider_resources_history_list` GET `/api/marketplace-provider-resources/{uuid}/history/` — Get version history (path: uuid | 47 query params)
+- `marketplace_provider_resources_history_list` GET `/api/marketplace-provider-resources/{uuid}/history/` — Get version history (path: uuid | 48 query params)
 - `marketplace_provider_resources_history_at_retrieve` GET `/api/marketplace-provider-resources/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 - `marketplace_provider_resources_list_users_list` GET `/api/marketplace-provider-resources/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 11 query params)
 - `marketplace_provider_resources_list_users_count` HEAD `/api/marketplace-provider-resources/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 11 query params)
@@ -2091,9 +2091,9 @@ Module: `waldur_api_client.api.marketplace_resource_projects`
 ## marketplace-resources
 Module: `waldur_api_client.api.marketplace_resources`
 
-- `marketplace_resources_list` GET `/api/marketplace-resources/` — List consumer resources (47 query params)
-- `marketplace_resources_count` HEAD `/api/marketplace-resources/` — List consumer resources (46 query params)
-- `marketplace_resources_facets_list` GET `/api/marketplace-resources/facets/` — Count the values each filter can still take (49 query params)
+- `marketplace_resources_list` GET `/api/marketplace-resources/` — List consumer resources (48 query params)
+- `marketplace_resources_count` HEAD `/api/marketplace-resources/` — List consumer resources (47 query params)
+- `marketplace_resources_facets_list` GET `/api/marketplace-resources/facets/` — Count the values each filter can still take (50 query params)
 - `marketplace_resources_suggest_name` POST `/api/marketplace-resources/suggest_name/` — Suggest a resource name (request body)
 - `marketplace_resources_retrieve` GET `/api/marketplace-resources/{uuid}/` — Retrieve a consumer resource (path: uuid | 1 query param)
 - `marketplace_resources_update` PUT `/api/marketplace-resources/{uuid}/` — Update a consumer resource (path: uuid | request body)
@@ -2103,7 +2103,7 @@ Module: `waldur_api_client.api.marketplace_resources`
 - `marketplace_resources_delete_user` POST `/api/marketplace-resources/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `marketplace_resources_details_retrieve` GET `/api/marketplace-resources/{uuid}/details/` — Get resource details (path: uuid)
 - `marketplace_resources_estimate_renewal` POST `/api/marketplace-resources/{uuid}/estimate_renewal/` — Estimate renewal cost breakdown (path: uuid | request body)
-- `marketplace_resources_history_list` GET `/api/marketplace-resources/{uuid}/history/` — Get version history (path: uuid | 47 query params)
+- `marketplace_resources_history_list` GET `/api/marketplace-resources/{uuid}/history/` — Get version history (path: uuid | 48 query params)
 - `marketplace_resources_history_at_retrieve` GET `/api/marketplace-resources/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
 - `marketplace_resources_list_users_list` GET `/api/marketplace-resources/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 11 query params)
 - `marketplace_resources_list_users_count` HEAD `/api/marketplace-resources/{uuid}/list_users/` — List users and their roles in a scope (path: uuid | 11 query params)
@@ -2127,7 +2127,7 @@ Module: `waldur_api_client.api.marketplace_resources`
 - `marketplace_resources_set_spending_limits` POST `/api/marketplace-resources/{uuid}/set_spending_limits/` — Set resource spending limits (path: uuid | request body)
 - `marketplace_resources_switch_plan` POST `/api/marketplace-resources/{uuid}/switch_plan/` — Switch resource plan (path: uuid | request body)
 - `marketplace_resources_team_list` GET `/api/marketplace-resources/{uuid}/team/` — Get resource team (path: uuid | 1 query param)
-- `marketplace_resources_team_members_list` GET `/api/marketplace-resources/{uuid}/team_members/` — List team members of a resource (path: uuid | 47 query params)
+- `marketplace_resources_team_members_list` GET `/api/marketplace-resources/{uuid}/team_members/` — List team members of a resource (path: uuid | 48 query params)
 - `marketplace_resources_terminate` POST `/api/marketplace-resources/{uuid}/terminate/` — Terminate a resource (path: uuid | request body)
 - `marketplace_resources_unlink` POST `/api/marketplace-resources/{uuid}/unlink/` — Unlink a resource (staff only) (path: uuid)
 - `marketplace_resources_update_limits` POST `/api/marketplace-resources/{uuid}/update_limits/` — Update resource limits (path: uuid | request body)
@@ -2273,6 +2273,7 @@ Module: `waldur_api_client.api.marketplace_service_providers`
 - `marketplace_service_providers_robot_account_customers_list` GET `/api/marketplace-service-providers/{uuid}/robot_account_customers/` — List customers with robot accounts (path: uuid | 1 query param)
 - `marketplace_service_providers_robot_account_projects_list` GET `/api/marketplace-service-providers/{uuid}/robot_account_projects/` — List projects with robot accounts (path: uuid | 1 query param)
 - `marketplace_service_providers_set_offerings_username` POST `/api/marketplace-service-providers/{uuid}/set_offerings_username/` — Set offering username for a user (path: uuid | request body)
+- `marketplace_service_providers_site_agent_config_list` GET `/api/marketplace-service-providers/{uuid}/site_agent_config/` — Site agent configuration of the service provider's offerings (path: uuid | 3 query params)
 - `marketplace_service_providers_site_agent_config_secrets` POST `/api/marketplace-service-providers/{uuid}/site_agent_config_secrets/` — List the secrets of a generated site agent configuration (path: uuid | 8 query params | request body)
 - `marketplace_service_providers_stat_retrieve` GET `/api/marketplace-service-providers/{uuid}/stat/` — Get service provider statistics (path: uuid)
 - `marketplace_service_providers_update_user` POST `/api/marketplace-service-providers/{uuid}/update_user/` — Update a user's role expiration (path: uuid | request body)

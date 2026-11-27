@@ -18,6 +18,8 @@ class ProposalDocumentation:
         file (str): Upload supporting documentation in PDF format.
         file_name (str):
         file_size (Union[None, int]):
+        file_hash (Union[None, str]): SHA-256 of the file's content, as the duplicate check compares it: a client can
+            tell a file is already attached before uploading it.
         created (datetime.datetime):
     """
 
@@ -25,6 +27,7 @@ class ProposalDocumentation:
     file: str
     file_name: str
     file_size: Union[None, int]
+    file_hash: Union[None, str]
     created: datetime.datetime
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -38,6 +41,9 @@ class ProposalDocumentation:
         file_size: Union[None, int]
         file_size = self.file_size
 
+        file_hash: Union[None, str]
+        file_hash = self.file_hash
+
         created = self.created.isoformat()
 
         field_dict: dict[str, Any] = {}
@@ -48,6 +54,7 @@ class ProposalDocumentation:
                 "file": file,
                 "file_name": file_name,
                 "file_size": file_size,
+                "file_hash": file_hash,
                 "created": created,
             }
         )
@@ -70,6 +77,13 @@ class ProposalDocumentation:
 
         file_size = _parse_file_size(d.pop("file_size"))
 
+        def _parse_file_hash(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        file_hash = _parse_file_hash(d.pop("file_hash"))
+
         created = isoparse(d.pop("created"))
 
         proposal_documentation = cls(
@@ -77,6 +91,7 @@ class ProposalDocumentation:
             file=file,
             file_name=file_name,
             file_size=file_size,
+            file_hash=file_hash,
             created=created,
         )
 

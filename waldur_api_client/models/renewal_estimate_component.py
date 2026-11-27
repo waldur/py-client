@@ -29,7 +29,12 @@ class RenewalEstimateComponent:
         period_start (Union[None, datetime.date]):
         period_end (Union[None, datetime.date]):
         quantity (Union[None, str]): For a prepaid line, the units charged: limit x months.
-        total (str):
+        total (str): The line's price before any volume discount.
+        discount_percent (str): The volume discount the invoice will give this line, in percent. 0 when there is none,
+            or when it is deferred.
+        discount_total (str): The volume discount on this line, as a positive amount.
+        discount_deferred (bool): A volume discount may apply on the invoice that cannot be priced now, because it is
+            aggregated over the organization's resources.
     """
 
     component_type: str
@@ -46,6 +51,9 @@ class RenewalEstimateComponent:
     period_end: Union[None, datetime.date]
     quantity: Union[None, str]
     total: str
+    discount_percent: str
+    discount_total: str
+    discount_deferred: bool
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -91,6 +99,12 @@ class RenewalEstimateComponent:
 
         total = self.total
 
+        discount_percent = self.discount_percent
+
+        discount_total = self.discount_total
+
+        discount_deferred = self.discount_deferred
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -109,6 +123,9 @@ class RenewalEstimateComponent:
                 "period_end": period_end,
                 "quantity": quantity,
                 "total": total,
+                "discount_percent": discount_percent,
+                "discount_total": discount_total,
+                "discount_deferred": discount_deferred,
             }
         )
 
@@ -194,6 +211,12 @@ class RenewalEstimateComponent:
 
         total = d.pop("total")
 
+        discount_percent = d.pop("discount_percent")
+
+        discount_total = d.pop("discount_total")
+
+        discount_deferred = d.pop("discount_deferred")
+
         renewal_estimate_component = cls(
             component_type=component_type,
             component_name=component_name,
@@ -209,6 +232,9 @@ class RenewalEstimateComponent:
             period_end=period_end,
             quantity=quantity,
             total=total,
+            discount_percent=discount_percent,
+            discount_total=discount_total,
+            discount_deferred=discount_deferred,
         )
 
         renewal_estimate_component.additional_properties = d

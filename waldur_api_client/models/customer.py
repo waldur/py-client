@@ -103,9 +103,9 @@ class Customer:
         is_service_provider (Union[Unset, bool]):
         service_provider (Union[None, Unset, str]):
         service_provider_uuid (Union[None, UUID, Unset]):
-        call_managing_organization_uuid (Union[None, Unset, str]):
         billing_price_estimate (Union[Unset, NestedPriceEstimate]):
         has_active_helpdesk (Union[Unset, bool]):
+        call_managing_organization_uuid (Union[None, Unset, str]):
     """
 
     url: Union[Unset, str] = UNSET
@@ -177,9 +177,9 @@ class Customer:
     is_service_provider: Union[Unset, bool] = UNSET
     service_provider: Union[None, Unset, str] = UNSET
     service_provider_uuid: Union[None, UUID, Unset] = UNSET
-    call_managing_organization_uuid: Union[None, Unset, str] = UNSET
     billing_price_estimate: Union[Unset, "NestedPriceEstimate"] = UNSET
     has_active_helpdesk: Union[Unset, bool] = UNSET
+    call_managing_organization_uuid: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -420,17 +420,17 @@ class Customer:
         else:
             service_provider_uuid = self.service_provider_uuid
 
-        call_managing_organization_uuid: Union[None, Unset, str]
-        if isinstance(self.call_managing_organization_uuid, Unset):
-            call_managing_organization_uuid = UNSET
-        else:
-            call_managing_organization_uuid = self.call_managing_organization_uuid
-
         billing_price_estimate: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.billing_price_estimate, Unset):
             billing_price_estimate = self.billing_price_estimate.to_dict()
 
         has_active_helpdesk = self.has_active_helpdesk
+
+        call_managing_organization_uuid: Union[None, Unset, str]
+        if isinstance(self.call_managing_organization_uuid, Unset):
+            call_managing_organization_uuid = UNSET
+        else:
+            call_managing_organization_uuid = self.call_managing_organization_uuid
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -573,12 +573,12 @@ class Customer:
             field_dict["service_provider"] = service_provider
         if service_provider_uuid is not UNSET:
             field_dict["service_provider_uuid"] = service_provider_uuid
-        if call_managing_organization_uuid is not UNSET:
-            field_dict["call_managing_organization_uuid"] = call_managing_organization_uuid
         if billing_price_estimate is not UNSET:
             field_dict["billing_price_estimate"] = billing_price_estimate
         if has_active_helpdesk is not UNSET:
             field_dict["has_active_helpdesk"] = has_active_helpdesk
+        if call_managing_organization_uuid is not UNSET:
+            field_dict["call_managing_organization_uuid"] = call_managing_organization_uuid
 
         return field_dict
 
@@ -889,6 +889,15 @@ class Customer:
 
         service_provider_uuid = _parse_service_provider_uuid(d.pop("service_provider_uuid", UNSET))
 
+        _billing_price_estimate = d.pop("billing_price_estimate", UNSET)
+        billing_price_estimate: Union[Unset, NestedPriceEstimate]
+        if isinstance(_billing_price_estimate, Unset):
+            billing_price_estimate = UNSET
+        else:
+            billing_price_estimate = NestedPriceEstimate.from_dict(_billing_price_estimate)
+
+        has_active_helpdesk = d.pop("has_active_helpdesk", UNSET)
+
         def _parse_call_managing_organization_uuid(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -899,15 +908,6 @@ class Customer:
         call_managing_organization_uuid = _parse_call_managing_organization_uuid(
             d.pop("call_managing_organization_uuid", UNSET)
         )
-
-        _billing_price_estimate = d.pop("billing_price_estimate", UNSET)
-        billing_price_estimate: Union[Unset, NestedPriceEstimate]
-        if isinstance(_billing_price_estimate, Unset):
-            billing_price_estimate = UNSET
-        else:
-            billing_price_estimate = NestedPriceEstimate.from_dict(_billing_price_estimate)
-
-        has_active_helpdesk = d.pop("has_active_helpdesk", UNSET)
 
         customer = cls(
             url=url,
@@ -979,9 +979,9 @@ class Customer:
             is_service_provider=is_service_provider,
             service_provider=service_provider,
             service_provider_uuid=service_provider_uuid,
-            call_managing_organization_uuid=call_managing_organization_uuid,
             billing_price_estimate=billing_price_estimate,
             has_active_helpdesk=has_active_helpdesk,
+            call_managing_organization_uuid=call_managing_organization_uuid,
         )
 
         customer.additional_properties = d

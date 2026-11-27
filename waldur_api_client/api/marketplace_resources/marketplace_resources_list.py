@@ -31,6 +31,7 @@ def _get_kwargs(
     has_terminate_date: Union[Unset, bool] = UNSET,
     image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
+    is_in_grace_period: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -114,6 +115,8 @@ def _get_kwargs(
     params["image_name"] = image_name
 
     params["is_attached"] = is_attached
+
+    params["is_in_grace_period"] = is_in_grace_period
 
     params["lexis_links_supported"] = lexis_links_supported
 
@@ -293,6 +296,7 @@ def sync_detailed(
     has_terminate_date: Union[Unset, bool] = UNSET,
     image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
+    is_in_grace_period: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -348,6 +352,7 @@ def sync_detailed(
         has_terminate_date (Union[Unset, bool]):
         image_name (Union[Unset, str]):
         is_attached (Union[Unset, bool]):
+        is_in_grace_period (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
         limit_component_count (Union[Unset, float]):
@@ -407,6 +412,7 @@ def sync_detailed(
         has_terminate_date=has_terminate_date,
         image_name=image_name,
         is_attached=is_attached,
+        is_in_grace_period=is_in_grace_period,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
         limit_component_count=limit_component_count,
@@ -468,6 +474,7 @@ def sync(
     has_terminate_date: Union[Unset, bool] = UNSET,
     image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
+    is_in_grace_period: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -523,6 +530,7 @@ def sync(
         has_terminate_date (Union[Unset, bool]):
         image_name (Union[Unset, str]):
         is_attached (Union[Unset, bool]):
+        is_in_grace_period (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
         limit_component_count (Union[Unset, float]):
@@ -583,6 +591,7 @@ def sync(
         has_terminate_date=has_terminate_date,
         image_name=image_name,
         is_attached=is_attached,
+        is_in_grace_period=is_in_grace_period,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
         limit_component_count=limit_component_count,
@@ -638,6 +647,7 @@ async def asyncio_detailed(
     has_terminate_date: Union[Unset, bool] = UNSET,
     image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
+    is_in_grace_period: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -693,6 +703,7 @@ async def asyncio_detailed(
         has_terminate_date (Union[Unset, bool]):
         image_name (Union[Unset, str]):
         is_attached (Union[Unset, bool]):
+        is_in_grace_period (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
         limit_component_count (Union[Unset, float]):
@@ -752,6 +763,7 @@ async def asyncio_detailed(
         has_terminate_date=has_terminate_date,
         image_name=image_name,
         is_attached=is_attached,
+        is_in_grace_period=is_in_grace_period,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
         limit_component_count=limit_component_count,
@@ -811,6 +823,7 @@ async def asyncio(
     has_terminate_date: Union[Unset, bool] = UNSET,
     image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
+    is_in_grace_period: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -866,6 +879,7 @@ async def asyncio(
         has_terminate_date (Union[Unset, bool]):
         image_name (Union[Unset, str]):
         is_attached (Union[Unset, bool]):
+        is_in_grace_period (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
         limit_component_count (Union[Unset, float]):
@@ -927,6 +941,7 @@ async def asyncio(
             has_terminate_date=has_terminate_date,
             image_name=image_name,
             is_attached=is_attached,
+            is_in_grace_period=is_in_grace_period,
             lexis_links_supported=lexis_links_supported,
             limit_based=limit_based,
             limit_component_count=limit_component_count,
@@ -983,6 +998,7 @@ def sync_all(
     has_terminate_date: Union[Unset, bool] = UNSET,
     image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
+    is_in_grace_period: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -1039,6 +1055,7 @@ def sync_all(
         has_terminate_date (Union[Unset, bool]):
         image_name (Union[Unset, str]):
         is_attached (Union[Unset, bool]):
+        is_in_grace_period (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
         limit_component_count (Union[Unset, float]):
@@ -1100,6 +1117,7 @@ def sync_all(
         has_terminate_date=has_terminate_date,
         image_name=image_name,
         is_attached=is_attached,
+        is_in_grace_period=is_in_grace_period,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
         limit_component_count=limit_component_count,
@@ -1194,6 +1212,7 @@ async def asyncio_all(
     has_terminate_date: Union[Unset, bool] = UNSET,
     image_name: Union[Unset, str] = UNSET,
     is_attached: Union[Unset, bool] = UNSET,
+    is_in_grace_period: Union[Unset, bool] = UNSET,
     lexis_links_supported: Union[Unset, bool] = UNSET,
     limit_based: Union[Unset, bool] = UNSET,
     limit_component_count: Union[Unset, float] = UNSET,
@@ -1250,6 +1269,7 @@ async def asyncio_all(
         has_terminate_date (Union[Unset, bool]):
         image_name (Union[Unset, str]):
         is_attached (Union[Unset, bool]):
+        is_in_grace_period (Union[Unset, bool]):
         lexis_links_supported (Union[Unset, bool]):
         limit_based (Union[Unset, bool]):
         limit_component_count (Union[Unset, float]):
@@ -1311,6 +1331,7 @@ async def asyncio_all(
         has_terminate_date=has_terminate_date,
         image_name=image_name,
         is_attached=is_attached,
+        is_in_grace_period=is_in_grace_period,
         lexis_links_supported=lexis_links_supported,
         limit_based=limit_based,
         limit_component_count=limit_component_count,

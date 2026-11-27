@@ -2838,6 +2838,7 @@ from .provider_resource_monthly import ProviderResourceMonthly
 from .provider_resource_stats import ProviderResourceStats
 from .provider_resource_stats_by_state import ProviderResourceStatsByState
 from .provider_resource_top_offering import ProviderResourceTopOffering
+from .provider_site_agent_offering_config import ProviderSiteAgentOfferingConfig
 from .provider_stats import ProviderStats
 from .provider_stats_by_status import ProviderStatsByStatus
 from .provider_summary import ProviderSummary
@@ -6718,6 +6719,7 @@ __all__ = (
     "ProviderResourceStats",
     "ProviderResourceStatsByState",
     "ProviderResourceTopOffering",
+    "ProviderSiteAgentOfferingConfig",
     "ProviderStats",
     "ProviderStatsByStatus",
     "ProviderSummary",

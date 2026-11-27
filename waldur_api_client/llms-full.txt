@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.5.dev.20261126203605
+# Version: 8.1.5-rc.5.dev.20261127182110
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -1729,7 +1729,7 @@ Query parameters (1):
 
 ### booking_resources_list
 GET /api/booking-resources/
-Query parameters (47):
+Query parameters (48):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -1744,6 +1744,7 @@ Query parameters (47):
   - has_terminate_date — Has termination date
   - image_name — Image name
   - is_attached — Filter by attached state
+  - is_in_grace_period — In the offering-resolved grace period
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
@@ -1782,7 +1783,7 @@ Query parameters (47):
 HEAD /api/booking-resources/
 Summary: Get number of items in the collection matching the request parameters
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (46):
+Query parameters (47):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -1796,6 +1797,7 @@ Query parameters (46):
   - has_terminate_date — Has termination date
   - image_name — Image name
   - is_attached — Filter by attached state
+  - is_in_grace_period — In the offering-resolved grace period
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
@@ -11425,7 +11427,7 @@ Request body: yes
 GET /api/marketplace-provider-resources/
 Summary: List provider resources
 Description: Returns a paginated list of resources for offerings managed by the current user as a service provider.
-Query parameters (47):
+Query parameters (48):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -11439,6 +11441,7 @@ Query parameters (47):
   - has_terminate_date — Has termination date
   - image_name — Image name
   - is_attached — Filter by attached state
+  - is_in_grace_period — In the offering-resolved grace period
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
@@ -11478,7 +11481,7 @@ Query parameters (47):
 HEAD /api/marketplace-provider-resources/
 Summary: List provider resources
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (46):
+Query parameters (47):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -11491,6 +11494,7 @@ Query parameters (46):
   - has_terminate_date — Has termination date
   - image_name — Image name
   - is_attached — Filter by attached state
+  - is_in_grace_period — In the offering-resolved grace period
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
@@ -11530,7 +11534,7 @@ Query parameters (46):
 GET /api/marketplace-provider-resources/facets/
 Summary: Count the values each filter can still take
 Description: Accepts the same filters as the list. Each facet is counted under every filter except its own, so its values are those that still have rows given the other selections and search.
-Query parameters (49):
+Query parameters (50):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -11546,6 +11550,7 @@ Query parameters (49):
   - has_terminate_date — Has termination date
   - image_name — Image name
   - is_attached — Filter by attached state
+  - is_in_grace_period — In the offering-resolved grace period
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
@@ -11658,7 +11663,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (47):
+Query parameters (48):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -11672,6 +11677,7 @@ Query parameters (47):
   - has_terminate_date — Has termination date
   - image_name — Image name
   - is_attached — Filter by attached state
+  - is_in_grace_period — In the offering-resolved grace period
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
@@ -12883,7 +12889,7 @@ Request body: yes
 GET /api/marketplace-resources/
 Summary: List consumer resources
 Description: Returns a paginated list of resources accessible to the current user as a service consumer.
-Query parameters (47):
+Query parameters (48):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -12897,6 +12903,7 @@ Query parameters (47):
   - has_terminate_date — Has termination date
   - image_name — Image name
   - is_attached — Filter by attached state
+  - is_in_grace_period — In the offering-resolved grace period
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
@@ -12936,7 +12943,7 @@ Query parameters (47):
 HEAD /api/marketplace-resources/
 Summary: List consumer resources
 Description: Get number of items in the collection matching the request parameters.
-Query parameters (46):
+Query parameters (47):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -12949,6 +12956,7 @@ Query parameters (46):
   - has_terminate_date — Has termination date
   - image_name — Image name
   - is_attached — Filter by attached state
+  - is_in_grace_period — In the offering-resolved grace period
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
@@ -12988,7 +12996,7 @@ Query parameters (46):
 GET /api/marketplace-resources/facets/
 Summary: Count the values each filter can still take
 Description: Accepts the same filters as the list. Each facet is counted under every filter except its own, so its values are those that still have rows given the other selections and search.
-Query parameters (49):
+Query parameters (50):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -13004,6 +13012,7 @@ Query parameters (49):
   - has_terminate_date — Has termination date
   - image_name — Image name
   - is_attached — Filter by attached state
+  - is_in_grace_period — In the offering-resolved grace period
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
@@ -13114,7 +13123,7 @@ Summary: Get version history
 Description: Returns the version history for this object. Only accessible by staff and support users.
 Path parameters:
   - uuid
-Query parameters (47):
+Query parameters (48):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -13128,6 +13137,7 @@ Query parameters (47):
   - has_terminate_date — Has termination date
   - image_name — Image name
   - is_attached — Filter by attached state
+  - is_in_grace_period — In the offering-resolved grace period
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
@@ -13372,7 +13382,7 @@ Summary: List team members of a resource
 Description: One row per user (deduplicated) with their direct Resource role and a nested `resource_projects[]` array of their per-ResourceProject grants under this resource. Mirrors the org-level `customers/{uuid}/users/` shape so the frontend can render an expandable per-user view.
 Path parameters:
   - uuid
-Query parameters (47):
+Query parameters (48):
   - backend_id — Backend ID
   - category_uuid — Category UUID
   - component_count — Filter by exact number of components
@@ -13386,6 +13396,7 @@ Query parameters (47):
   - has_terminate_date — Has termination date
   - image_name — Image name
   - is_attached — Filter by attached state
+  - is_in_grace_period — In the offering-resolved grace period
   - lexis_links_supported — LEXIS links supported
   - limit_based — Filter by limit-based offerings
   - limit_component_count — Filter by exact number of limit-based components
@@ -14947,6 +14958,17 @@ Description: Sets or updates the offering-specific username for a user across al
 Path parameters:
   - uuid
 Request body: yes
+
+### marketplace_service_providers_site_agent_config_list
+GET /api/marketplace-service-providers/{uuid}/site_agent_config/
+Summary: Site agent configuration of the service provider's offerings
+Description: For each site agent offering of the service provider that the filters select, the block the offering's own site_agent_config returns: its configuration without secrets, the backend secrets the agent keeps in its own configuration, and the version. backend_id matches exactly and backend_id_startsw...
+Path parameters:
+  - uuid
+Query parameters (3):
+  - backend_id — Only the offering whose backend ID is exactly this.
+  - backend_id_startswith — Only offerings whose backend ID starts with this, such as every offering of one cluster.
+  - offering_uuid — Only these offerings; repeat the parameter for several.
 
 ### marketplace_service_providers_site_agent_config_secrets
 POST /api/marketplace-service-providers/{uuid}/site_agent_config_secrets/

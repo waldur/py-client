@@ -32,7 +32,6 @@ class ProviderOffering:
         type_ (Union[Unset, str]):
         state (Union[Unset, OfferingState]):
         resources_count (Union[Unset, int]):
-        billing_price_estimate (Union[Unset, NestedPriceEstimate]):
         components (Union[Unset, list['OfferingComponent']]):
         plans (Union[Unset, list['BaseProviderPlan']]):
         options (Union[Unset, ProviderOfferingOptions]): Fields describing resource provision form.
@@ -42,6 +41,7 @@ class ProviderOffering:
         offering_group_uuid (Union[None, UUID, Unset]):
         offering_group_title (Union[None, Unset, str]):
         service_provider_can_create_offering_user (Union[Unset, bool]):
+        billing_price_estimate (Union[Unset, NestedPriceEstimate]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
@@ -52,7 +52,6 @@ class ProviderOffering:
     type_: Union[Unset, str] = UNSET
     state: Union[Unset, OfferingState] = UNSET
     resources_count: Union[Unset, int] = UNSET
-    billing_price_estimate: Union[Unset, "NestedPriceEstimate"] = UNSET
     components: Union[Unset, list["OfferingComponent"]] = UNSET
     plans: Union[Unset, list["BaseProviderPlan"]] = UNSET
     options: Union[Unset, "ProviderOfferingOptions"] = UNSET
@@ -62,6 +61,7 @@ class ProviderOffering:
     offering_group_uuid: Union[None, UUID, Unset] = UNSET
     offering_group_title: Union[None, Unset, str] = UNSET
     service_provider_can_create_offering_user: Union[Unset, bool] = UNSET
+    billing_price_estimate: Union[Unset, "NestedPriceEstimate"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -86,10 +86,6 @@ class ProviderOffering:
             state = self.state.value
 
         resources_count = self.resources_count
-
-        billing_price_estimate: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.billing_price_estimate, Unset):
-            billing_price_estimate = self.billing_price_estimate.to_dict()
 
         components: Union[Unset, list[dict[str, Any]]] = UNSET
         if not isinstance(self.components, Unset):
@@ -139,6 +135,10 @@ class ProviderOffering:
 
         service_provider_can_create_offering_user = self.service_provider_can_create_offering_user
 
+        billing_price_estimate: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.billing_price_estimate, Unset):
+            billing_price_estimate = self.billing_price_estimate.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -158,8 +158,6 @@ class ProviderOffering:
             field_dict["state"] = state
         if resources_count is not UNSET:
             field_dict["resources_count"] = resources_count
-        if billing_price_estimate is not UNSET:
-            field_dict["billing_price_estimate"] = billing_price_estimate
         if components is not UNSET:
             field_dict["components"] = components
         if plans is not UNSET:
@@ -178,6 +176,8 @@ class ProviderOffering:
             field_dict["offering_group_title"] = offering_group_title
         if service_provider_can_create_offering_user is not UNSET:
             field_dict["service_provider_can_create_offering_user"] = service_provider_can_create_offering_user
+        if billing_price_estimate is not UNSET:
+            field_dict["billing_price_estimate"] = billing_price_estimate
 
         return field_dict
 
@@ -221,13 +221,6 @@ class ProviderOffering:
             state = OfferingState(_state)
 
         resources_count = d.pop("resources_count", UNSET)
-
-        _billing_price_estimate = d.pop("billing_price_estimate", UNSET)
-        billing_price_estimate: Union[Unset, NestedPriceEstimate]
-        if isinstance(_billing_price_estimate, Unset):
-            billing_price_estimate = UNSET
-        else:
-            billing_price_estimate = NestedPriceEstimate.from_dict(_billing_price_estimate)
 
         components = []
         _components = d.pop("components", UNSET)
@@ -301,6 +294,13 @@ class ProviderOffering:
 
         service_provider_can_create_offering_user = d.pop("service_provider_can_create_offering_user", UNSET)
 
+        _billing_price_estimate = d.pop("billing_price_estimate", UNSET)
+        billing_price_estimate: Union[Unset, NestedPriceEstimate]
+        if isinstance(_billing_price_estimate, Unset):
+            billing_price_estimate = UNSET
+        else:
+            billing_price_estimate = NestedPriceEstimate.from_dict(_billing_price_estimate)
+
         provider_offering = cls(
             uuid=uuid,
             customer_uuid=customer_uuid,
@@ -310,7 +310,6 @@ class ProviderOffering:
             type_=type_,
             state=state,
             resources_count=resources_count,
-            billing_price_estimate=billing_price_estimate,
             components=components,
             plans=plans,
             options=options,
@@ -320,6 +319,7 @@ class ProviderOffering:
             offering_group_uuid=offering_group_uuid,
             offering_group_title=offering_group_title,
             service_provider_can_create_offering_user=service_provider_can_create_offering_user,
+            billing_price_estimate=billing_price_estimate,
         )
 
         provider_offering.additional_properties = d

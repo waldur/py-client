@@ -28,11 +28,11 @@ class MarketplaceProviderCustomer:
         phone_number (Union[Unset, str]):
         email (Union[Unset, str]):
         payment_profiles (Union[Unset, list['PaymentProfile']]):
-        billing_price_estimate (Union[Unset, NestedPriceEstimate]):
         projects_count (Union[Unset, int]):
         users_count (Union[Unset, int]):
         projects (Union[Unset, list['ProviderProject']]):
         users (Union[Unset, list['ProviderUser']]):
+        billing_price_estimate (Union[Unset, NestedPriceEstimate]):
     """
 
     uuid: Union[Unset, UUID] = UNSET
@@ -42,11 +42,11 @@ class MarketplaceProviderCustomer:
     phone_number: Union[Unset, str] = UNSET
     email: Union[Unset, str] = UNSET
     payment_profiles: Union[Unset, list["PaymentProfile"]] = UNSET
-    billing_price_estimate: Union[Unset, "NestedPriceEstimate"] = UNSET
     projects_count: Union[Unset, int] = UNSET
     users_count: Union[Unset, int] = UNSET
     projects: Union[Unset, list["ProviderProject"]] = UNSET
     users: Union[Unset, list["ProviderUser"]] = UNSET
+    billing_price_estimate: Union[Unset, "NestedPriceEstimate"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -71,10 +71,6 @@ class MarketplaceProviderCustomer:
                 payment_profiles_item = payment_profiles_item_data.to_dict()
                 payment_profiles.append(payment_profiles_item)
 
-        billing_price_estimate: Union[Unset, dict[str, Any]] = UNSET
-        if not isinstance(self.billing_price_estimate, Unset):
-            billing_price_estimate = self.billing_price_estimate.to_dict()
-
         projects_count = self.projects_count
 
         users_count = self.users_count
@@ -93,6 +89,10 @@ class MarketplaceProviderCustomer:
                 users_item = users_item_data.to_dict()
                 users.append(users_item)
 
+        billing_price_estimate: Union[Unset, dict[str, Any]] = UNSET
+        if not isinstance(self.billing_price_estimate, Unset):
+            billing_price_estimate = self.billing_price_estimate.to_dict()
+
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -110,8 +110,6 @@ class MarketplaceProviderCustomer:
             field_dict["email"] = email
         if payment_profiles is not UNSET:
             field_dict["payment_profiles"] = payment_profiles
-        if billing_price_estimate is not UNSET:
-            field_dict["billing_price_estimate"] = billing_price_estimate
         if projects_count is not UNSET:
             field_dict["projects_count"] = projects_count
         if users_count is not UNSET:
@@ -120,6 +118,8 @@ class MarketplaceProviderCustomer:
             field_dict["projects"] = projects
         if users is not UNSET:
             field_dict["users"] = users
+        if billing_price_estimate is not UNSET:
+            field_dict["billing_price_estimate"] = billing_price_estimate
 
         return field_dict
 
@@ -155,13 +155,6 @@ class MarketplaceProviderCustomer:
 
             payment_profiles.append(payment_profiles_item)
 
-        _billing_price_estimate = d.pop("billing_price_estimate", UNSET)
-        billing_price_estimate: Union[Unset, NestedPriceEstimate]
-        if isinstance(_billing_price_estimate, Unset):
-            billing_price_estimate = UNSET
-        else:
-            billing_price_estimate = NestedPriceEstimate.from_dict(_billing_price_estimate)
-
         projects_count = d.pop("projects_count", UNSET)
 
         users_count = d.pop("users_count", UNSET)
@@ -180,6 +173,13 @@ class MarketplaceProviderCustomer:
 
             users.append(users_item)
 
+        _billing_price_estimate = d.pop("billing_price_estimate", UNSET)
+        billing_price_estimate: Union[Unset, NestedPriceEstimate]
+        if isinstance(_billing_price_estimate, Unset):
+            billing_price_estimate = UNSET
+        else:
+            billing_price_estimate = NestedPriceEstimate.from_dict(_billing_price_estimate)
+
         marketplace_provider_customer = cls(
             uuid=uuid,
             name=name,
@@ -188,11 +188,11 @@ class MarketplaceProviderCustomer:
             phone_number=phone_number,
             email=email,
             payment_profiles=payment_profiles,
-            billing_price_estimate=billing_price_estimate,
             projects_count=projects_count,
             users_count=users_count,
             projects=projects,
             users=users,
+            billing_price_estimate=billing_price_estimate,
         )
 
         marketplace_provider_customer.additional_properties = d

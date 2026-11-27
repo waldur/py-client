@@ -16,7 +16,11 @@ T = TypeVar("T", bound="SiteAgentConfigGenerationRequest")
 class SiteAgentConfigGenerationRequest:
     """
     Attributes:
-        offering_uuids (list[UUID]): List of SLURM offering UUIDs to include in configuration
+        backend_id (Union[Unset, str]): Only the offering whose backend ID is exactly this.
+        backend_id_startswith (Union[Unset, str]): Only offerings whose backend ID starts with this, such as every
+            offering of one cluster.
+        offering_uuids (Union[Unset, list[UUID]]): Site agent offerings to include. With backend_id or
+            backend_id_startswith, only those of them that match. At least one of the three is required.
         include_policy_settings (Union[Unset, bool]): Include SLURM periodic usage policy settings in configuration
             Default: True.
         waldur_api_url (Union[Unset, str]): Waldur API URL (defaults to current server URL)
@@ -25,7 +29,9 @@ class SiteAgentConfigGenerationRequest:
         configuration_source (Union[Unset, ConfigurationSourceEnum]):  Default: ConfigurationSourceEnum.LOCAL.
     """
 
-    offering_uuids: list[UUID]
+    backend_id: Union[Unset, str] = UNSET
+    backend_id_startswith: Union[Unset, str] = UNSET
+    offering_uuids: Union[Unset, list[UUID]] = UNSET
     include_policy_settings: Union[Unset, bool] = True
     waldur_api_url: Union[Unset, str] = UNSET
     timezone: Union[Unset, str] = "UTC"
@@ -34,10 +40,16 @@ class SiteAgentConfigGenerationRequest:
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        offering_uuids = []
-        for offering_uuids_item_data in self.offering_uuids:
-            offering_uuids_item = str(offering_uuids_item_data)
-            offering_uuids.append(offering_uuids_item)
+        backend_id = self.backend_id
+
+        backend_id_startswith = self.backend_id_startswith
+
+        offering_uuids: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.offering_uuids, Unset):
+            offering_uuids = []
+            for offering_uuids_item_data in self.offering_uuids:
+                offering_uuids_item = str(offering_uuids_item_data)
+                offering_uuids.append(offering_uuids_item)
 
         include_policy_settings = self.include_policy_settings
 
@@ -55,11 +67,13 @@ class SiteAgentConfigGenerationRequest:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update(
-            {
-                "offering_uuids": offering_uuids,
-            }
-        )
+        field_dict.update({})
+        if backend_id is not UNSET:
+            field_dict["backend_id"] = backend_id
+        if backend_id_startswith is not UNSET:
+            field_dict["backend_id_startswith"] = backend_id_startswith
+        if offering_uuids is not UNSET:
+            field_dict["offering_uuids"] = offering_uuids
         if include_policy_settings is not UNSET:
             field_dict["include_policy_settings"] = include_policy_settings
         if waldur_api_url is not UNSET:
@@ -76,9 +90,13 @@ class SiteAgentConfigGenerationRequest:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        backend_id = d.pop("backend_id", UNSET)
+
+        backend_id_startswith = d.pop("backend_id_startswith", UNSET)
+
         offering_uuids = []
-        _offering_uuids = d.pop("offering_uuids")
-        for offering_uuids_item_data in _offering_uuids:
+        _offering_uuids = d.pop("offering_uuids", UNSET)
+        for offering_uuids_item_data in _offering_uuids or []:
             offering_uuids_item = UUID(offering_uuids_item_data)
 
             offering_uuids.append(offering_uuids_item)
@@ -104,6 +122,8 @@ class SiteAgentConfigGenerationRequest:
             configuration_source = ConfigurationSourceEnum(_configuration_source)
 
         site_agent_config_generation_request = cls(
+            backend_id=backend_id,
+            backend_id_startswith=backend_id_startswith,
             offering_uuids=offering_uuids,
             include_policy_settings=include_policy_settings,
             waldur_api_url=waldur_api_url,

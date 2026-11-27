@@ -164,6 +164,8 @@ class _ResourceUpdateMessageRequired(TypedDict):
     downscaled: bool
     restrict_member_access: bool
     paused: bool
+    is_in_grace_period: bool
+    grace_period_end_date: Optional[str]
     sequence_number: int
 
 
@@ -181,6 +183,8 @@ class ResourceUpdateMessage(_ResourceUpdateMessageRequired, total=False):
         downscaled: Whether the resource is downscaled
         restrict_member_access: Whether member access is restricted
         paused: Whether the resource is paused
+        is_in_grace_period: Whether the resource is inside the grace period its offering resolves
+        grace_period_end_date: Last day of that grace period (YYYY-MM-DD), or null when there is none
         sequence_number: Incremental message sequence number
         resource_name (optional): Name of the resource
         resource_state (optional): Display name of the resource state
@@ -784,6 +788,8 @@ class ResourceEvent(_ResourceEventRequired, total=False):
         downscaled (optional): Whether the resource is downscaled
         restrict_member_access (optional): Whether member access is restricted
         paused (optional): Whether the resource is paused
+        is_in_grace_period (optional): Whether the resource is inside the grace period its offering resolves
+        grace_period_end_date (optional): Last day of that grace period (YYYY-MM-DD), or null when there is none
         sequence_number (optional): Incremental message sequence number
         resource_name (optional): Name of the resource
         resource_state (optional): Display name of the resource state
@@ -797,6 +803,8 @@ class ResourceEvent(_ResourceEventRequired, total=False):
     downscaled: bool
     restrict_member_access: bool
     paused: bool
+    is_in_grace_period: bool
+    grace_period_end_date: Optional[str]
     sequence_number: int
     resource_name: str
     resource_state: str
