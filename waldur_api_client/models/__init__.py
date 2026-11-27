@@ -63,12 +63,18 @@ from .affinity_matrix_response_scope_enum import AffinityMatrixResponseScopeEnum
 from .affinity_method_enum import AffinityMethodEnum
 from .agent_compatibility import AgentCompatibility
 from .agent_compatibility_status_enum import AgentCompatibilityStatusEnum
+from .agent_component_field_enum import AgentComponentFieldEnum
 from .agent_configuration import AgentConfiguration
 from .agent_configuration_backend_components import AgentConfigurationBackendComponents
 from .agent_configuration_backend_components_additional_property import (
     AgentConfigurationBackendComponentsAdditionalProperty,
 )
 from .agent_configuration_backend_settings import AgentConfigurationBackendSettings
+from .agent_configuration_change import AgentConfigurationChange
+from .agent_configuration_import_request import AgentConfigurationImportRequest
+from .agent_configuration_import_request_values import AgentConfigurationImportRequestValues
+from .agent_configuration_import_result import AgentConfigurationImportResult
+from .agent_configuration_import_result_errors import AgentConfigurationImportResultErrors
 from .agent_configuration_request import AgentConfigurationRequest
 from .agent_configuration_request_backend_components import AgentConfigurationRequestBackendComponents
 from .agent_configuration_request_backend_components_additional_property import (
@@ -159,6 +165,7 @@ from .answer_answer_data import AnswerAnswerData
 from .answer_submit_request import AnswerSubmitRequest
 from .answer_submit_response import AnswerSubmitResponse
 from .api_auth_token_exchange_response_400 import ApiAuthTokenExchangeResponse400
+from .apply_component_request import ApplyComponentRequest
 from .archive_call_request import ArchiveCallRequest
 from .arrow_billing_line import ArrowBillingLine
 from .arrow_billing_sync import ArrowBillingSync
@@ -364,6 +371,12 @@ from .budget_report_pool import BudgetReportPool
 from .budget_report_totals import BudgetReportTotals
 from .bulk_round_create_request_request import BulkRoundCreateRequestRequest
 from .bulk_silence_response import BulkSilenceResponse
+from .bulk_step_decision import BulkStepDecision
+from .bulk_step_decision_result import BulkStepDecisionResult
+from .bulk_step_decision_result_status_enum import BulkStepDecisionResultStatusEnum
+from .bulk_step_decision_state_enum import BulkStepDecisionStateEnum
+from .bulk_step_decision_summary import BulkStepDecisionSummary
+from .bulk_step_decision_summary_o_enum import BulkStepDecisionSummaryOEnum
 from .bulk_update_issue_request import BulkUpdateIssueRequest
 from .cache_performance import CachePerformance
 from .cached_project_storage_report import CachedProjectStorageReport
@@ -624,6 +637,7 @@ from .complete_workflow_step_response import CompleteWorkflowStepResponse
 from .compliance_overview import ComplianceOverview
 from .component_activity import ComponentActivity
 from .component_daily_usage_item_request import ComponentDailyUsageItemRequest
+from .component_difference import ComponentDifference
 from .component_formula_config import ComponentFormulaConfig
 from .component_formula_config_request import ComponentFormulaConfigRequest
 from .component_formula_target import ComponentFormulaTarget
@@ -830,6 +844,9 @@ from .data_volume_request import DataVolumeRequest
 from .database_size_stats import DatabaseSizeStats
 from .database_stats_response import DatabaseStatsResponse
 from .dead_letter_queue import DeadLetterQueue
+from .decidable_workflow_step import DecidableWorkflowStep
+from .decidable_workflow_steps_request_request import DecidableWorkflowStepsRequestRequest
+from .decide_workflow_steps_request import DecideWorkflowStepsRequest
 from .decline_step_contribution_request import DeclineStepContributionRequest
 from .dedicated_user_token_create_request import DedicatedUserTokenCreateRequest
 from .dedicated_user_token_created import DedicatedUserTokenCreated
@@ -1210,6 +1227,7 @@ from .identity_providers_generate_mapping_response_200 import IdentityProvidersG
 from .identity_providers_generate_mapping_response_200_attribute_mapping import (
     IdentityProvidersGenerateMappingResponse200AttributeMapping,
 )
+from .ignored_key import IgnoredKey
 from .image_create_request import ImageCreateRequest
 from .image_create_response import ImageCreateResponse
 from .image_upload_response import ImageUploadResponse
@@ -1229,6 +1247,8 @@ from .import_usage_item_request import ImportUsageItemRequest
 from .import_usage_request import ImportUsageRequest
 from .import_usage_response import ImportUsageResponse
 from .importable_resource import ImportableResource
+from .imported_offering_block import ImportedOfferingBlock
+from .imported_policy import ImportedPolicy
 from .inherited_account_setting import InheritedAccountSetting
 from .injection_severity_enum import InjectionSeverityEnum
 from .instance_flavor_change_request import InstanceFlavorChangeRequest
@@ -2584,6 +2604,8 @@ from .planned_outcome_enum import PlannedOutcomeEnum
 from .plugin_component import PluginComponent
 from .plugin_offering_type import PluginOfferingType
 from .polarity_enum import PolarityEnum
+from .policy_action_choice import PolicyActionChoice
+from .policy_change import PolicyChange
 from .policy_cost_breakdown import PolicyCostBreakdown
 from .policy_enum import PolicyEnum
 from .policy_gate_enum import PolicyGateEnum
@@ -3769,6 +3791,7 @@ from .trigger_enum import TriggerEnum
 from .trigger_sync_request_request import TriggerSyncRequestRequest
 from .undecided_at_round_completion_enum import UndecidedAtRoundCompletionEnum
 from .unlockable_parts import UnlockableParts
+from .unresolved_setting import UnresolvedSetting
 from .update_actions_request import UpdateActionsRequest
 from .update_actions_response import UpdateActionsResponse
 from .update_endpoint_request import UpdateEndpointRequest
@@ -4083,10 +4106,16 @@ __all__ = (
     "AffinityMethodEnum",
     "AgentCompatibility",
     "AgentCompatibilityStatusEnum",
+    "AgentComponentFieldEnum",
     "AgentConfiguration",
     "AgentConfigurationBackendComponents",
     "AgentConfigurationBackendComponentsAdditionalProperty",
     "AgentConfigurationBackendSettings",
+    "AgentConfigurationChange",
+    "AgentConfigurationImportRequest",
+    "AgentConfigurationImportRequestValues",
+    "AgentConfigurationImportResult",
+    "AgentConfigurationImportResultErrors",
     "AgentConfigurationRequest",
     "AgentConfigurationRequestBackendComponents",
     "AgentConfigurationRequestBackendComponentsAdditionalProperty",
@@ -4173,6 +4202,7 @@ __all__ = (
     "AnswerSubmitRequest",
     "AnswerSubmitResponse",
     "ApiAuthTokenExchangeResponse400",
+    "ApplyComponentRequest",
     "ArchiveCallRequest",
     "ArrowBillingLine",
     "ArrowBillingSync",
@@ -4376,6 +4406,12 @@ __all__ = (
     "BudgetReportTotals",
     "BulkRoundCreateRequestRequest",
     "BulkSilenceResponse",
+    "BulkStepDecision",
+    "BulkStepDecisionResult",
+    "BulkStepDecisionResultStatusEnum",
+    "BulkStepDecisionStateEnum",
+    "BulkStepDecisionSummary",
+    "BulkStepDecisionSummaryOEnum",
     "BulkUpdateIssueRequest",
     "CachedProjectStorageReport",
     "CachedProjectUsageReport",
@@ -4634,6 +4670,7 @@ __all__ = (
     "ComplianceOverview",
     "ComponentActivity",
     "ComponentDailyUsageItemRequest",
+    "ComponentDifference",
     "ComponentFormulaConfig",
     "ComponentFormulaConfigRequest",
     "ComponentFormulaTarget",
@@ -4834,6 +4871,9 @@ __all__ = (
     "DataVolume",
     "DataVolumeRequest",
     "DeadLetterQueue",
+    "DecidableWorkflowStep",
+    "DecidableWorkflowStepsRequestRequest",
+    "DecideWorkflowStepsRequest",
     "DeclineStepContributionRequest",
     "DedicatedUserTokenCreated",
     "DedicatedUserTokenCreateRequest",
@@ -5206,6 +5246,7 @@ __all__ = (
     "IdentityProvidersGenerateMappingResponse200AttributeMapping",
     "IdNamePair",
     "IdNamePairRequest",
+    "IgnoredKey",
     "ImageCreateRequest",
     "ImageCreateResponse",
     "ImageUploadResponse",
@@ -5215,6 +5256,8 @@ __all__ = (
     "ImpactLevelDisplayEnum",
     "ImpactLevelEnum",
     "ImportableResource",
+    "ImportedOfferingBlock",
+    "ImportedPolicy",
     "ImportLicenseRequestRequest",
     "ImportLicenseResponse",
     "ImportPublicationsRequest",
@@ -6478,6 +6521,8 @@ __all__ = (
     "PluginComponent",
     "PluginOfferingType",
     "PolarityEnum",
+    "PolicyActionChoice",
+    "PolicyChange",
     "PolicyCostBreakdown",
     "PolicyEnum",
     "PolicyGateEnum",
@@ -7623,6 +7668,7 @@ __all__ = (
     "TriggerSyncRequestRequest",
     "UndecidedAtRoundCompletionEnum",
     "UnlockableParts",
+    "UnresolvedSetting",
     "UpdateActionsRequest",
     "UpdateActionsResponse",
     "UpdateEndpointRequest",

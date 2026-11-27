@@ -15,7 +15,9 @@ from ...types import UNSET, File, Response, Unset
 def _get_kwargs(
     uuid: UUID,
     *,
+    call_step_uuid: Union[Unset, UUID] = UNSET,
     file_format: Union[Unset, QueryFileFormatEnum] = UNSET,
+    panel_uuid: Union[Unset, UUID] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     review_state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
@@ -24,11 +26,21 @@ def _get_kwargs(
 ) -> dict[str, Any]:
     params: dict[str, Any] = {}
 
+    json_call_step_uuid: Union[Unset, str] = UNSET
+    if not isinstance(call_step_uuid, Unset):
+        json_call_step_uuid = str(call_step_uuid)
+    params["call_step_uuid"] = json_call_step_uuid
+
     json_file_format: Union[Unset, str] = UNSET
     if not isinstance(file_format, Unset):
         json_file_format = file_format.value
 
     params["file_format"] = json_file_format
+
+    json_panel_uuid: Union[Unset, str] = UNSET
+    if not isinstance(panel_uuid, Unset):
+        json_panel_uuid = str(panel_uuid)
+    params["panel_uuid"] = json_panel_uuid
 
     params["proposal_name"] = proposal_name
 
@@ -94,7 +106,9 @@ def sync_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    call_step_uuid: Union[Unset, UUID] = UNSET,
     file_format: Union[Unset, QueryFileFormatEnum] = UNSET,
+    panel_uuid: Union[Unset, UUID] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     review_state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
@@ -107,7 +121,9 @@ def sync_detailed(
 
     Args:
         uuid (UUID):
+        call_step_uuid (Union[Unset, UUID]):
         file_format (Union[Unset, QueryFileFormatEnum]):
+        panel_uuid (Union[Unset, UUID]):
         proposal_name (Union[Unset, str]):
         proposal_uuid (Union[Unset, list[UUID]]):
         review_state (Union[Unset, list[ProposalReviewStateEnum]]):
@@ -124,7 +140,9 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        call_step_uuid=call_step_uuid,
         file_format=file_format,
+        panel_uuid=panel_uuid,
         proposal_name=proposal_name,
         proposal_uuid=proposal_uuid,
         review_state=review_state,
@@ -143,7 +161,9 @@ def sync(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    call_step_uuid: Union[Unset, UUID] = UNSET,
     file_format: Union[Unset, QueryFileFormatEnum] = UNSET,
+    panel_uuid: Union[Unset, UUID] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     review_state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
@@ -156,7 +176,9 @@ def sync(
 
     Args:
         uuid (UUID):
+        call_step_uuid (Union[Unset, UUID]):
         file_format (Union[Unset, QueryFileFormatEnum]):
+        panel_uuid (Union[Unset, UUID]):
         proposal_name (Union[Unset, str]):
         proposal_uuid (Union[Unset, list[UUID]]):
         review_state (Union[Unset, list[ProposalReviewStateEnum]]):
@@ -174,7 +196,9 @@ def sync(
     return sync_detailed(
         uuid=uuid,
         client=client,
+        call_step_uuid=call_step_uuid,
         file_format=file_format,
+        panel_uuid=panel_uuid,
         proposal_name=proposal_name,
         proposal_uuid=proposal_uuid,
         review_state=review_state,
@@ -187,7 +211,9 @@ async def asyncio_detailed(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    call_step_uuid: Union[Unset, UUID] = UNSET,
     file_format: Union[Unset, QueryFileFormatEnum] = UNSET,
+    panel_uuid: Union[Unset, UUID] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     review_state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
@@ -200,7 +226,9 @@ async def asyncio_detailed(
 
     Args:
         uuid (UUID):
+        call_step_uuid (Union[Unset, UUID]):
         file_format (Union[Unset, QueryFileFormatEnum]):
+        panel_uuid (Union[Unset, UUID]):
         proposal_name (Union[Unset, str]):
         proposal_uuid (Union[Unset, list[UUID]]):
         review_state (Union[Unset, list[ProposalReviewStateEnum]]):
@@ -217,7 +245,9 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         uuid=uuid,
+        call_step_uuid=call_step_uuid,
         file_format=file_format,
+        panel_uuid=panel_uuid,
         proposal_name=proposal_name,
         proposal_uuid=proposal_uuid,
         review_state=review_state,
@@ -234,7 +264,9 @@ async def asyncio(
     uuid: UUID,
     *,
     client: AuthenticatedClient,
+    call_step_uuid: Union[Unset, UUID] = UNSET,
     file_format: Union[Unset, QueryFileFormatEnum] = UNSET,
+    panel_uuid: Union[Unset, UUID] = UNSET,
     proposal_name: Union[Unset, str] = UNSET,
     proposal_uuid: Union[Unset, list[UUID]] = UNSET,
     review_state: Union[Unset, list[ProposalReviewStateEnum]] = UNSET,
@@ -247,7 +279,9 @@ async def asyncio(
 
     Args:
         uuid (UUID):
+        call_step_uuid (Union[Unset, UUID]):
         file_format (Union[Unset, QueryFileFormatEnum]):
+        panel_uuid (Union[Unset, UUID]):
         proposal_name (Union[Unset, str]):
         proposal_uuid (Union[Unset, list[UUID]]):
         review_state (Union[Unset, list[ProposalReviewStateEnum]]):
@@ -266,7 +300,9 @@ async def asyncio(
         await asyncio_detailed(
             uuid=uuid,
             client=client,
+            call_step_uuid=call_step_uuid,
             file_format=file_format,
+            panel_uuid=panel_uuid,
             proposal_name=proposal_name,
             proposal_uuid=proposal_uuid,
             review_state=review_state,

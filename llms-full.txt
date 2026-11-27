@@ -1,5 +1,5 @@
 # Waldur API — Full Endpoint Reference
-# Version: 8.1.5-rc.5.dev.20261127190226
+# Version: 8.1.5-rc.5.dev.20261127204102
 #
 # Import pattern:
 #   from waldur_api_client.api.<domain> import <operation_id>
@@ -10648,6 +10648,14 @@ Path parameters:
   - uuid
 Query parameters (1):
   - timestamp (required) — ISO 8601 timestamp to query the object state at
+
+### marketplace_provider_offerings_import_agent_configuration
+POST /api/marketplace-provider-offerings/{uuid}/import_agent_configuration/
+Summary: Import a site agent configuration file into the agent configuration
+Description: Reads one offering block of an existing site agent configuration file (YAML) into this offering's agent configuration: role backends (backend_type fills the three agent roles when the block sets none), event and agent settings, backend_settings and the agent-only fields of backend_components. Sec...
+Path parameters:
+  - uuid
+Request body: yes
 
 ### marketplace_provider_offerings_import_maintenance_reservations
 POST /api/marketplace-provider-offerings/{uuid}/import_maintenance_reservations/
@@ -22446,6 +22454,35 @@ Path parameters:
   - uuid
 
 ============================================================
+## proposal-bulk-step-decisions  (module: waldur_api_client.api.proposal_bulk_step_decisions)
+============================================================
+
+### proposal_bulk_step_decisions_list
+GET /api/proposal-bulk-step-decisions/
+Query parameters (5):
+  - call_uuid
+  - dry_run
+  - o — Ordering
+  - state
+  - uuid
+
+### proposal_bulk_step_decisions_count
+HEAD /api/proposal-bulk-step-decisions/
+Summary: Get number of items in the collection matching the request parameters
+Description: Get number of items in the collection matching the request parameters.
+Query parameters (5):
+  - call_uuid
+  - dry_run
+  - o — Ordering
+  - state
+  - uuid
+
+### proposal_bulk_step_decisions_retrieve
+GET /api/proposal-bulk-step-decisions/{uuid}/
+Path parameters:
+  - uuid
+
+============================================================
 ## proposal-my-requested-resources  (module: waldur_api_client.api.proposal_my_requested_resources)
 ============================================================
 
@@ -23769,6 +23806,34 @@ Path parameters:
   - uuid
 Request body: yes
 
+### proposal_protected_calls_decidable_workflow_steps
+POST /api/proposal-protected-calls/{uuid}/decidable_workflow_steps/
+Summary: The decision steps the selected proposals of the call stand on that decide_workflow_steps takes, each with its outcomes and the proposals standing on it that the caller may act on, the largest group first
+Description: The decision steps the selected proposals of the call stand on that decide_workflow_steps takes, each with its outcomes and the proposals standing on it that the caller may act on, the largest group first. A proposal running steps side by side may stand in two groups.
+Path parameters:
+  - uuid
+Query parameters (11):
+  - customer
+  - customer_keyword
+  - customer_uuid
+  - has_active_round
+  - name
+  - o — Ordering
+  - offering_uuid
+  - offerings_provider_uuid
+  - open_for_offering_uuid — Calls the offering can be requested through right now
+  - slug — Slug
+  - state
+Request body: yes
+
+### proposal_protected_calls_decide_workflow_steps
+POST /api/proposal-protected-calls/{uuid}/decide_workflow_steps/
+Summary: Decide one decision step for many proposals of the call at once, with one outcome and reason
+Description: Decide one decision step for many proposals of the call at once, with one outcome and reason. Each proposal is decided as complete_workflow_step decides it on its page -- it must stand on the step, the caller must be allowed to act on it, and the step's gates must let the outcome through -- each ...
+Path parameters:
+  - uuid
+Request body: yes
+
 ### proposal_protected_calls_delete_user
 POST /api/proposal-protected-calls/{uuid}/delete_user/
 Summary: Revoke a role from a user
@@ -23801,15 +23866,42 @@ Path parameters:
   - uuid
 Request body: yes
 
+### proposal_protected_calls_export_evaluations
+GET /api/proposal-protected-calls/{uuid}/export-evaluations/
+Summary: Download the call's step contributions as CSV or as an Excel workbook, one row per proposal and contribution: individual and consolidated reports, technical assessments and every other contribution to a step, with its outcome, conditions, comment and one column per question of the step's form
+Description: Download the call's step contributions as CSV or as an Excel workbook, one row per proposal and contribution: individual and consolidated reports, technical assessments and every other contribution to a step, with its outcome, conditions, comment and one column per question of the step's form. Op...
+Path parameters:
+  - uuid
+Query parameters (6):
+  - call_step_uuid — Limit the export to one step of the call's workflow.
+  - file_format — csv (the default) or xlsx, an Excel workbook of the same header and rows. Named file_format because a bare `format` is read by the API itself.
+  - panel_uuid — Limit the export to the proposals routed to one panel of the call.
+  - proposal_name — Limit the export to proposals whose name contains this text — the list's search box. Named proposal_name because a bare `name` is read by the call's own filterset.
+  - proposal_uuid — Limit the export to these proposals, such as those selected in the list; repeat the parameter for each.
+  - round_uuid — Limit the export to one round.
+
+### proposal_protected_calls_export_panel_sheet
+GET /api/proposal-protected-calls/{uuid}/export-panel-sheet/
+Summary: Download a panel's evaluation sheet: one row per proposal routed to the panel, with the amounts it requests, its review scores and their average per criterion, the outcome of each assessment step and the technical assessment of each requested offering
+Description: Download a panel's evaluation sheet: one row per proposal routed to the panel, with the amounts it requests, its review scores and their average per criterion, the outcome of each assessment step and the technical assessment of each requested offering. CSV or Excel for one panel, named in panel_u...
+Path parameters:
+  - uuid
+Query parameters (3):
+  - file_format — csv (the default) or xlsx, an Excel workbook of the same header and rows. Named file_format because a bare `format` is read by the API itself.
+  - panel_uuid — Limit the export to the proposals routed to one panel of the call.
+  - round_uuid — Limit the export to one round.
+
 ### proposal_protected_calls_export_proposals
 GET /api/proposal-protected-calls/{uuid}/export-proposals/
 Summary: Download the call's proposals as CSV or as an Excel workbook, one row per proposal, with one column per requested offering component
 Description: Download the call's proposals as CSV or as an Excel workbook, one row per proposal, with one column per requested offering component. The column set is derived from the call, so it is the same for every row and between exports of the same call.
 Path parameters:
   - uuid
-Query parameters (6):
+Query parameters (8):
+  - call_step_uuid — Limit the export to one step of the call's workflow.
   - created_by_uuid — Limit the export to one applicant.
   - file_format — csv (the default) or xlsx, an Excel workbook of the same header and rows. Named file_format because a bare `format` is read by the API itself.
+  - panel_uuid — Limit the export to the proposals routed to one panel of the call.
   - proposal_name — Limit the export to proposals whose name contains this text — the list's search box. Named proposal_name because a bare `name` is read by the call's own filterset.
   - proposal_state — Limit the export to proposals in these states.
   - proposal_uuid — Limit the export to these proposals, such as those selected in the list; repeat the parameter for each.
@@ -23821,8 +23913,10 @@ Summary: Download the call's reviews as CSV or as an Excel workbook, one row per
 Description: Download the call's reviews as CSV or as an Excel workbook, one row per review. The reviewer's private comment is never included: the export is open to call managers, and the review API keeps that field from them.
 Path parameters:
   - uuid
-Query parameters (6):
+Query parameters (8):
+  - call_step_uuid — Limit the export to one step of the call's workflow.
   - file_format — csv (the default) or xlsx, an Excel workbook of the same header and rows. Named file_format because a bare `format` is read by the API itself.
+  - panel_uuid — Limit the export to the proposals routed to one panel of the call.
   - proposal_name — Limit the export to proposals whose name contains this text — the list's search box. Named proposal_name because a bare `name` is read by the call's own filterset.
   - proposal_uuid — Limit the export to these proposals, such as those selected in the list; repeat the parameter for each.
   - review_state — Limit the export to reviews in these states.

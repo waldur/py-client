@@ -1832,6 +1832,7 @@ Module: `waldur_api_client.api.marketplace_provider_offerings`
 - `marketplace_provider_offerings_glauth_users_config_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/glauth_users_config/` — Get GLauth user configuration (path: uuid)
 - `marketplace_provider_offerings_history_list` GET `/api/marketplace-provider-offerings/{uuid}/history/` — Get version history (path: uuid | 45 query params)
 - `marketplace_provider_offerings_history_at_retrieve` GET `/api/marketplace-provider-offerings/{uuid}/history/at/` — Get object state at a specific timestamp (path: uuid | 1 query param)
+- `marketplace_provider_offerings_import_agent_configuration` POST `/api/marketplace-provider-offerings/{uuid}/import_agent_configuration/` — Import a site agent configuration file into the agent configuration (path: uuid | request body)
 - `marketplace_provider_offerings_import_maintenance_reservations` POST `/api/marketplace-provider-offerings/{uuid}/import_maintenance_reservations/` — Import the cluster's maintenance reservations as drafts (path: uuid | request body)
 - `marketplace_provider_offerings_import_resource` POST `/api/marketplace-provider-offerings/{uuid}/import_resource/` — Import a resource (path: uuid | request body)
 - `marketplace_provider_offerings_importable_resources_list` GET `/api/marketplace-provider-offerings/{uuid}/importable_resources/` — List importable resources (path: uuid)
@@ -3460,6 +3461,13 @@ Module: `waldur_api_client.api.promotions_campaigns`
 - `promotions_campaigns_resources_list` GET `/api/promotions-campaigns/{uuid}/resources/` — Return a list of resources for which the campaign is applied (path: uuid | 1 query param)
 - `promotions_campaigns_terminate` POST `/api/promotions-campaigns/{uuid}/terminate/` — Terminate campaign (path: uuid)
 
+## proposal-bulk-step-decisions
+Module: `waldur_api_client.api.proposal_bulk_step_decisions`
+
+- `proposal_bulk_step_decisions_list` GET `/api/proposal-bulk-step-decisions/` (5 query params)
+- `proposal_bulk_step_decisions_count` HEAD `/api/proposal-bulk-step-decisions/` — Get number of items in the collection matching the request parameters (5 query params)
+- `proposal_bulk_step_decisions_retrieve` GET `/api/proposal-bulk-step-decisions/{uuid}/` (path: uuid)
+
 ## proposal-my-requested-resources
 Module: `waldur_api_client.api.proposal_my_requested_resources`
 
@@ -3602,12 +3610,16 @@ Module: `waldur_api_client.api.proposal_protected_calls`
 - `proposal_protected_calls_conflict_summary_retrieve` GET `/api/proposal-protected-calls/{uuid}/conflict-summary/` — Get summary statistics of conflicts for this call (path: uuid)
 - `proposal_protected_calls_conflicts_list` GET `/api/proposal-protected-calls/{uuid}/conflicts/` — List all conflicts of interest detected for this call (path: uuid | 11 query params)
 - `proposal_protected_calls_create_manual_assignment` POST `/api/proposal-protected-calls/{uuid}/create-manual-assignment/` — Create a manual assignment batch for a specific reviewer (path: uuid | request body)
+- `proposal_protected_calls_decidable_workflow_steps` POST `/api/proposal-protected-calls/{uuid}/decidable_workflow_steps/` — The decision steps the selected proposals of the call stand on that decide_workflow_steps takes, each with its outcomes and the proposals standing on it that the caller may act on, the largest group first (path: uuid | 11 query params | request body)
+- `proposal_protected_calls_decide_workflow_steps` POST `/api/proposal-protected-calls/{uuid}/decide_workflow_steps/` — Decide one decision step for many proposals of the call at once, with one outcome and reason (path: uuid | request body)
 - `proposal_protected_calls_delete_user` POST `/api/proposal-protected-calls/{uuid}/delete_user/` — Revoke a role from a user (path: uuid | request body)
 - `proposal_protected_calls_detach_documents` POST `/api/proposal-protected-calls/{uuid}/detach_documents/` — Detach documents from call (path: uuid | request body)
 - `proposal_protected_calls_detect_conflicts` POST `/api/proposal-protected-calls/{uuid}/detect-conflicts/` — Trigger automated COI detection for all reviewer-proposal pairs (path: uuid | request body)
 - `proposal_protected_calls_duplicate` POST `/api/proposal-protected-calls/{uuid}/duplicate/` — Duplicate a call (path: uuid | request body)
-- `proposal_protected_calls_export_proposals` GET `/api/proposal-protected-calls/{uuid}/export-proposals/` — Download the call's proposals as CSV or as an Excel workbook, one row per proposal, with one column per requested offering component (path: uuid | 6 query params)
-- `proposal_protected_calls_export_reviews` GET `/api/proposal-protected-calls/{uuid}/export-reviews/` — Download the call's reviews as CSV or as an Excel workbook, one row per review (path: uuid | 6 query params)
+- `proposal_protected_calls_export_evaluations` GET `/api/proposal-protected-calls/{uuid}/export-evaluations/` — Download the call's step contributions as CSV or as an Excel workbook, one row per proposal and contribution: individual and consolidated reports, technical assessments and every other contribution to a step, with its outcome, conditions, comment and one column per question of the step's form (path: uuid | 6 query params)
+- `proposal_protected_calls_export_panel_sheet` GET `/api/proposal-protected-calls/{uuid}/export-panel-sheet/` — Download a panel's evaluation sheet: one row per proposal routed to the panel, with the amounts it requests, its review scores and their average per criterion, the outcome of each assessment step and the technical assessment of each requested offering (path: uuid | 3 query params)
+- `proposal_protected_calls_export_proposals` GET `/api/proposal-protected-calls/{uuid}/export-proposals/` — Download the call's proposals as CSV or as an Excel workbook, one row per proposal, with one column per requested offering component (path: uuid | 8 query params)
+- `proposal_protected_calls_export_reviews` GET `/api/proposal-protected-calls/{uuid}/export-reviews/` — Download the call's reviews as CSV or as an Excel workbook, one row per review (path: uuid | 8 query params)
 - `proposal_protected_calls_export_call` POST `/api/proposal-protected-calls/{uuid}/export_call/` — Export call configuration (path: uuid | request body)
 - `proposal_protected_calls_generate_assignments` POST `/api/proposal-protected-calls/{uuid}/generate-assignments/` — Generate assignment batches for reviewers (path: uuid | request body)
 - `proposal_protected_calls_generate_suggestions` POST `/api/proposal-protected-calls/{uuid}/generate-suggestions/` — Generate reviewer suggestions with configurable matching source (path: uuid | request body)

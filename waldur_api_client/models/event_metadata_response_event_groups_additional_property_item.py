@@ -307,6 +307,7 @@ class EventMetadataResponseEventGroupsAdditionalPropertyItem(str, Enum):
     PROPOSAL_REVIEWERS_NOTIFIED = "proposal_reviewers_notified"
     PROPOSAL_RUN_CLOSED = "proposal_run_closed"
     PROPOSAL_RUN_OPENED = "proposal_run_opened"
+    PROPOSAL_STEPS_DECIDED_IN_BULK = "proposal_steps_decided_in_bulk"
     PROPOSAL_STEP_COMPLETED = "proposal_step_completed"
     PROPOSAL_STEP_SKIPPED = "proposal_step_skipped"
     PROPOSAL_STEP_STARTED = "proposal_step_started"
